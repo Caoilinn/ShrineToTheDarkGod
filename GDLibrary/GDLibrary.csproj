@@ -1,0 +1,133 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{2ED0B0C9-D1D7-472E-868C-AFFFF00EA06B}</ProjectGuid>
+    <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GDLibrary</RootNamespace>
+    <AssemblyName>GDLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
+    <XnaPlatform>Windows</XnaPlatform>
+    <XnaProfile>Reach</XnaProfile>
+    <XnaCrossPlatformGroupID>72472e6d-a3f8-44c9-a0d2-a99477b2fd8d</XnaCrossPlatformGroupID>
+    <XnaOutputType>Library</XnaOutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <XnaCompressContent>false</XnaCompressContent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <XnaCompressContent>true</XnaCompressContent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.GamerServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Net" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GDLibrary\Actor\3D\Camera\Camera3D.cs" />
+    <Compile Include="GDLibrary\Actor\3D\Camera\SecurityCamera3D.cs" />
+    <Compile Include="GDLibrary\Actor\3D\Drawn\Base\DrawnActor3D.cs" />
+    <Compile Include="GDLibrary\Actor\3D\Drawn\Model\ModelObject.cs" />
+    <Compile Include="GDLibrary\Actor\3D\Drawn\Primitive\PrimitiveObject.cs" />
+    <Compile Include="GDLibrary\Actor\3D\Drawn\Room\RoomObject.cs" />
+    <Compile Include="GDLibrary\Actor\Base\Actor.cs" />
+    <Compile Include="GDLibrary\Actor\Base\Actor3D.cs" />
+    <Compile Include="GDLibrary\Controllers\3D\Base\DriveController.cs" />
+    <Compile Include="GDLibrary\Controllers\3D\Base\TargetController.cs" />
+    <Compile Include="GDLibrary\Controllers\3D\Base\ThirdPersonController.cs" />
+    <Compile Include="GDLibrary\Controllers\3D\Base\TrackController.cs" />
+    <Compile Include="GDLibrary\Controllers\3D\Base\UserInputController.cs" />
+    <Compile Include="GDLibrary\Controllers\3D\Camera\DollyCameraController.cs" />
+    <Compile Include="GDLibrary\Controllers\3D\Base\RailController.cs" />
+    <Compile Include="GDLibrary\Controllers\3D\Camera\FirstPersonCameraController.cs" />
+    <Compile Include="GDLibrary\Controllers\3D\Camera\FlightCameraController.cs" />
+    <Compile Include="GDLibrary\Controllers\3D\Camera\SecurityCameraController.cs" />
+    <Compile Include="GDLibrary\Controllers\Base\Controller.cs" />
+    <Compile Include="GDLibrary\Enums\ControllerType.cs" />
+    <Compile Include="GDLibrary\Events\EventData.cs" />
+    <Compile Include="GDLibrary\Events\EventDispatcher.cs" />
+    <Compile Include="GDLibrary\Parameters\Camera\RailParameters.cs" />
+    <Compile Include="GDLibrary\Parameters\Curve\Curve1D.cs" />
+    <Compile Include="GDLibrary\Parameters\Curve\Curve2D.cs" />
+    <Compile Include="GDLibrary\Parameters\Curve\Curve3D.cs" />
+    <Compile Include="GDLibrary\Parameters\Curve\Transform2DCurve.cs" />
+    <Compile Include="GDLibrary\Parameters\Curve\Transform3DCurve.cs" />
+    <Compile Include="GDLibrary\Enums\ActorType.cs" />
+    <Compile Include="GDLibrary\Enums\StatusType.cs" />
+    <Compile Include="GDLibrary\Factory\VertexFactory.cs" />
+    <Compile Include="GDLibrary\Interfaces\IActor.cs" />
+    <Compile Include="GDLibrary\Interfaces\IController.cs" />
+    <Compile Include="GDLibrary\Interfaces\IVertexData.cs" />
+    <Compile Include="GDLibrary\Managers\Camera\CameraManager.cs" />
+    <Compile Include="GDLibrary\Managers\Input\KeyboardManager.cs" />
+    <Compile Include="GDLibrary\Managers\Input\MouseManager.cs" />
+    <Compile Include="GDLibrary\Managers\Object\ObjectManager.cs" />
+    <Compile Include="GDLibrary\Parameters\Camera\ProjectionParameters.cs" />
+    <Compile Include="GDLibrary\Parameters\Effect\EffectParameters.cs" />
+    <Compile Include="GDLibrary\Parameters\Other\ManagerParameters.cs" />
+    <Compile Include="GDLibrary\Parameters\Other\TrigonometricParameters.cs" />
+    <Compile Include="GDLibrary\Parameters\Primitive\VertexData.cs" />
+    <Compile Include="GDLibrary\Parameters\Transforms\3D\Transform3D.cs" />
+    <Compile Include="GDLibrary\_Demo\Events\EventSenderDemo.cs" />
+    <Compile Include="GDLibrary\Utility\Integer.cs" />
+    <Compile Include="GDLibrary\Utility\Integer2.cs" />
+    <Compile Include="GDLibrary\Utility\Integer3.cs" />
+    <Compile Include="GDLibrary\Utility\MathUtility.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GDLibrary\Managers\Input\GamepadManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Class Diagram - Week 4.cd" />
+    <None Include="Class Diagram - Week 5.cd" />
+    <None Include="Class Diagram - Week 6.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GDLibrary\Debug\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
+  <!--
+      To modify your build process, add your task inside one of the targets below and uncomment it. 
+      Other similar extension points exist, see Microsoft.Common.targets.
+      <Target Name="BeforeBuild">
+      </Target>
+      <Target Name="AfterBuild">
+      </Target>
+    -->
+</Project>
