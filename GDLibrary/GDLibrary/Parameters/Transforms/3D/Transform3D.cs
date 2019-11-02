@@ -141,8 +141,8 @@ namespace GDLibrary
         
         public void RotateBy(Vector3 rotateBy) //in degrees
         {
-            this.rotation = this.originalRotation + rotateBy;
-            this.originalRotation = this.rotation;
+            //Rotate
+            this.rotation += rotateBy;
 
             //X = Pitch, Y = Yaw, Z = roll
             Matrix rot = Matrix.CreateFromYawPitchRoll(
