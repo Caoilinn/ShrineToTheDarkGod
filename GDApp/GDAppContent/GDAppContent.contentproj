@@ -190,8 +190,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Audio\Demo2DSound.xap">
-      <Name>Demo2DSound</Name>
+    <Compile Include="Assets\Audio\GameAudio.xap">
+      <Name>GameAudio</Name>
       <Importer>XactImporter</Importer>
       <Processor>XactProcessor</Processor>
     </Compile>

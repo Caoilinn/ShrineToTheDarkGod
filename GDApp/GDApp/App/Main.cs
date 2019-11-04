@@ -221,7 +221,7 @@ namespace GDApp
                 this.eventDispatcher,
                 StatusType.Update,
                 "Content/Assets/Audio/",
-                "Demo2DSound.xgs",
+                "GameAudio.xgs",
                 "Movement.xwb",
                 "Movement.xsb"
             );

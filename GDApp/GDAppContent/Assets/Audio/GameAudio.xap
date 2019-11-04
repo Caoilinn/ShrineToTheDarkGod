@@ -11,9 +11,9 @@ Options
 
 Global Settings
 {
-    Xbox File = Xbox\Demo2DSound.xgs;
-    Windows File = Win\Demo2DSound.xgs;
-    Header File = Demo2DSound.h;
+    Xbox File = Xbox\GameAudio.xgs;
+    Windows File = Win\GameAudio.xgs;
+    Header File = GameAudio.h;
     Exclude Category Names = 0;
     Exclude Variable Names = 0;
     Last Modified Low = 0;
