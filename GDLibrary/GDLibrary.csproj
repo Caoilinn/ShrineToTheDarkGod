@@ -42,10 +42,15 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JigLibX">
+      <HintPath>..\..\..\..\3D Game Development\Exercises\Week6\GDApp-Class\GDLibrary\Dependencies\Physics\JigLibX.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.GamerServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Video, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Xna.Framework.Xact, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -58,59 +63,73 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GDLibrary\Actor\3D\Camera\Camera3D.cs" />
-    <Compile Include="GDLibrary\Actor\3D\Camera\SecurityCamera3D.cs" />
-    <Compile Include="GDLibrary\Actor\3D\Drawn\Base\DrawnActor3D.cs" />
-    <Compile Include="GDLibrary\Actor\3D\Drawn\Model\ModelObject.cs" />
-    <Compile Include="GDLibrary\Actor\3D\Drawn\Primitive\PrimitiveObject.cs" />
-    <Compile Include="GDLibrary\Actor\3D\Drawn\Room\RoomObject.cs" />
-    <Compile Include="GDLibrary\Actor\Base\Actor.cs" />
-    <Compile Include="GDLibrary\Actor\Base\Actor3D.cs" />
-    <Compile Include="GDLibrary\Controllers\3D\Base\DriveController.cs" />
-    <Compile Include="GDLibrary\Controllers\3D\Base\TargetController.cs" />
-    <Compile Include="GDLibrary\Controllers\3D\Base\ThirdPersonController.cs" />
-    <Compile Include="GDLibrary\Controllers\3D\Base\TrackController.cs" />
-    <Compile Include="GDLibrary\Controllers\3D\Base\UserInputController.cs" />
-    <Compile Include="GDLibrary\Controllers\3D\Camera\DollyCameraController.cs" />
-    <Compile Include="GDLibrary\Controllers\3D\Base\RailController.cs" />
-    <Compile Include="GDLibrary\Controllers\3D\Camera\FirstPersonCameraController.cs" />
-    <Compile Include="GDLibrary\Controllers\3D\Camera\FlightCameraController.cs" />
-    <Compile Include="GDLibrary\Controllers\3D\Camera\SecurityCameraController.cs" />
-    <Compile Include="GDLibrary\Controllers\Base\Controller.cs" />
-    <Compile Include="GDLibrary\Enums\ControllerType.cs" />
-    <Compile Include="GDLibrary\Events\EventData.cs" />
-    <Compile Include="GDLibrary\Events\EventDispatcher.cs" />
-    <Compile Include="GDLibrary\Parameters\Camera\RailParameters.cs" />
-    <Compile Include="GDLibrary\Parameters\Curve\Curve1D.cs" />
-    <Compile Include="GDLibrary\Parameters\Curve\Curve2D.cs" />
-    <Compile Include="GDLibrary\Parameters\Curve\Curve3D.cs" />
-    <Compile Include="GDLibrary\Parameters\Curve\Transform2DCurve.cs" />
-    <Compile Include="GDLibrary\Parameters\Curve\Transform3DCurve.cs" />
-    <Compile Include="GDLibrary\Enums\ActorType.cs" />
-    <Compile Include="GDLibrary\Enums\StatusType.cs" />
-    <Compile Include="GDLibrary\Factory\VertexFactory.cs" />
-    <Compile Include="GDLibrary\Interfaces\IActor.cs" />
-    <Compile Include="GDLibrary\Interfaces\IController.cs" />
-    <Compile Include="GDLibrary\Interfaces\IVertexData.cs" />
-    <Compile Include="GDLibrary\Managers\Camera\CameraManager.cs" />
-    <Compile Include="GDLibrary\Managers\Input\KeyboardManager.cs" />
-    <Compile Include="GDLibrary\Managers\Input\MouseManager.cs" />
-    <Compile Include="GDLibrary\Managers\Object\ObjectManager.cs" />
-    <Compile Include="GDLibrary\Parameters\Camera\ProjectionParameters.cs" />
-    <Compile Include="GDLibrary\Parameters\Effect\EffectParameters.cs" />
-    <Compile Include="GDLibrary\Parameters\Other\ManagerParameters.cs" />
-    <Compile Include="GDLibrary\Parameters\Other\TrigonometricParameters.cs" />
-    <Compile Include="GDLibrary\Parameters\Primitive\VertexData.cs" />
-    <Compile Include="GDLibrary\Parameters\Transforms\3D\Transform3D.cs" />
-    <Compile Include="GDLibrary\_Demo\Events\EventSenderDemo.cs" />
-    <Compile Include="GDLibrary\Utility\Integer.cs" />
-    <Compile Include="GDLibrary\Utility\Integer2.cs" />
-    <Compile Include="GDLibrary\Utility\Integer3.cs" />
-    <Compile Include="GDLibrary\Utility\MathUtility.cs" />
+    <Compile Include="Actor\Base\Actor2D.cs" />
+    <Compile Include="Actor\Camera\Camera3D.cs" />
+    <Compile Include="Actor\Camera\SecurityCamera3D.cs" />
+    <Compile Include="Actor\Drawn\3D\Collidable\CollidableObject.cs" />
+    <Compile Include="Actor\Drawn\3D\Collidable\TriangleMeshObject.cs" />
+    <Compile Include="Actor\Drawn\3D\DrawnActor3D.cs" />
+    <Compile Include="Actor\Drawn\3D\ModelObject.cs" />
+    <Compile Include="Actor\Drawn\3D\Primitives\PrimitiveObject.cs" />
+    <Compile Include="Actor\Base\Actor.cs" />
+    <Compile Include="Actor\Base\Actor3D.cs" />
+    <Compile Include="Controllers\3D\Base\DriveController.cs" />
+    <Compile Include="Controllers\3D\Base\TargetController.cs" />
+    <Compile Include="Controllers\3D\Base\ThirdPersonController.cs" />
+    <Compile Include="Controllers\3D\Base\TrackController.cs" />
+    <Compile Include="Controllers\3D\Base\UserInputController.cs" />
+    <Compile Include="Controllers\3D\Camera\DollyCameraController.cs" />
+    <Compile Include="Controllers\3D\Base\RailController.cs" />
+    <Compile Include="Controllers\3D\Camera\FirstPersonCameraController.cs" />
+    <Compile Include="Controllers\3D\Camera\FlightCameraController.cs" />
+    <Compile Include="Controllers\3D\Camera\SecurityCameraController.cs" />
+    <Compile Include="Controllers\Base\Controller.cs" />
+    <Compile Include="Enums\ControllerType.cs" />
+    <Compile Include="Enums\EventActionType.cs" />
+    <Compile Include="Enums\EventCategoryType.cs" />
+    <Compile Include="Events\Base\EventDataEqualityComparer.cs" />
+    <Compile Include="Events\Data\EventData.cs" />
+    <Compile Include="Events\Base\EventDispatcher.cs" />
+    <Compile Include="Managers\Content\ContentDictionary.cs" />
+    <Compile Include="Managers\Sound\Cue3D.cs" />
+    <Compile Include="Managers\Sound\SoundManager.cs" />
+    <Compile Include="Parameters\Camera\RailParameters.cs" />
+    <Compile Include="Parameters\Curve\Curve1D.cs" />
+    <Compile Include="Parameters\Curve\Curve2D.cs" />
+    <Compile Include="Parameters\Curve\Curve3D.cs" />
+    <Compile Include="Parameters\Curve\Transform2DCurve.cs" />
+    <Compile Include="Parameters\Curve\Transform3DCurve.cs" />
+    <Compile Include="Enums\ActorType.cs" />
+    <Compile Include="Enums\StatusType.cs" />
+    <Compile Include="Factory\VertexFactory.cs" />
+    <Compile Include="Interfaces\IActor.cs" />
+    <Compile Include="Interfaces\IController.cs" />
+    <Compile Include="Interfaces\IVertexData.cs" />
+    <Compile Include="Managers\Camera\CameraManager.cs" />
+    <Compile Include="Managers\Input\KeyboardManager.cs" />
+    <Compile Include="Managers\Input\MouseManager.cs" />
+    <Compile Include="Managers\Object\ObjectManager.cs" />
+    <Compile Include="Parameters\Camera\ProjectionParameters.cs" />
+    <Compile Include="Parameters\Effect\EffectParameters.cs" />
+    <Compile Include="Parameters\Other\ManagerParameters.cs" />
+    <Compile Include="Parameters\Other\TrigonometricParameters.cs" />
+    <Compile Include="Parameters\Primitive\VertexData.cs" />
+    <Compile Include="Parameters\Transforms\2D\Transform2D.cs" />
+    <Compile Include="Parameters\Transforms\3D\Transform3D.cs" />
+    <Compile Include="Templates\PausableDrawableGameComponent.cs" />
+    <Compile Include="Templates\PausableGameComponent.cs" />
+    <Compile Include="Templates\SimpleDrawableComponent.cs" />
+    <Compile Include="Utility\CollisionUtility.cs" />
+    <Compile Include="Utility\StringUtility.cs" />
+    <Compile Include="_Demo\Events\EventSenderDemo.cs" />
+    <Compile Include="Utility\Integer.cs" />
+    <Compile Include="Utility\Integer2.cs" />
+    <Compile Include="Utility\Integer3.cs" />
+    <Compile Include="Utility\MathUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GDLibrary\Managers\Input\GamepadManager.cs" />
+    <Compile Include="Managers\Input\GamepadManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Class Diagram - Week 4.cd" />
@@ -118,7 +137,9 @@
     <None Include="Class Diagram - Week 6.cd" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GDLibrary\Debug\" />
+    <Folder Include="Actor\Drawn\2D\" />
+    <Folder Include="Debug\" />
+    <Folder Include="GDLibrary\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

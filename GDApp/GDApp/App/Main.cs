@@ -1,36 +1,52 @@
-using System;
 using GDLibrary;
+using JigLibX.Geometry;
+using JigLibX.Collision;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.IO;
+using System;
 
 namespace GDApp
 {
-    /// <summary>
-    /// Demonstrates the use of a PrimitiveObject to store a reference to user-defined vertices and draw and update same.
-    /// </summary>
     public class Main : Game
     {
+        //Graphics
         SpriteBatch spriteBatch;
         GraphicsDeviceManager graphics;
+
+        //Vertices
         private VertexPositionColorTexture[] vertices;
+
+        //Effects
         private BasicEffect texturedVertexEffect;
         private BasicEffect modelEffect;
 
-        private CameraManager cameraManager;
+        //Managers
+        private ManagerParameters managerParameters;
         private ObjectManager object3DManager;
-        private KeyboardManager keyboardManager;
+        private CameraManager cameraManager;
         private MouseManager mouseManager;
+        private KeyboardManager keyboardManager;
+        private GamePadManager gamePadManager;
+        private SoundManager soundManager;
+
+        //Dispatchers
+        private EventDispatcher eventDispatcher;
+
+        //Vectors
         private Vector2 screenCentre;
+        private Vector3 driveRotation = Vector3.Zero;
 
-        private ModelObject staticModel;
+        //Models
+        private CollidableObject staticModel;
         private ModelObject drivableModel;
-        Vector3 driveRotation = Vector3.Zero;
-
-        private int currentLevel = 0;
-        private int[,,] map;
+        
+        //Dictionaries
+        private ContentDictionary<Model> modelDictionary;
+        private ContentDictionary<Texture2D> textureDictionary;
+        private Dictionary<string, EffectParameters> effectDictionary;
 
         public Main()
         {
@@ -40,28 +56,28 @@ namespace GDApp
 
         protected override void Initialize()
         {
-            initGraphics(1280, 800);
-            initEffects();
-            initVertices();
+            Window.Title = "Shrine to the Dark God";
 
-            initManagers();
+            int currentLevel = 0; //Should load current level from file
+            int[,,] levelMap;
 
-            loadMap();
-            initMap();
+            InitializeGraphics(1280, 800);
+            InitializeEffects();
+            InitializeVertices();
+
+            InitializeEventDispatcher();
+            InitializeManagers();
+
+            levelMap = LoadMap(currentLevel);
+            InitializeMap(levelMap);
 
             float worldScale = 2.54f;
-            initCameras(worldScale);
-            initGround(worldScale);
-            initBack(worldScale);
-            initLeft(worldScale);
-            initRight(worldScale);
-            initTop(worldScale);
-            initFront(worldScale);
-
+            InitializeCameras(worldScale, 1920, 1080);
+            
             base.Initialize();
         }
 
-        private void initModels()
+        private void InitializeModels()
         {
             #region DriveableModel
             Transform3D transform = new Transform3D(
@@ -101,8 +117,8 @@ namespace GDApp
             effectParameters = new EffectParameters(this.modelEffect, texture, Color.White, 1);
             model = Content.Load<Model>("Assets/Models/room_001");
 
-            this.staticModel = new ModelObject(
-                "room1",
+            this.staticModel = new CollidableObject(
+                "room",
                 ActorType.Billboard,
                 StatusType.Update | StatusType.Drawn,
                 transform,
@@ -128,212 +144,113 @@ namespace GDApp
             #endregion
         }
 
-        private void initMap()
+        private void LoadDictionaries()
         {
-            Transform3D transform;
-            Texture2D texture = Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1");
-            EffectParameters effectParameters;
-            Model model;
+            //Models
+            this.modelDictionary = new ContentDictionary<Model>("Model Dictionary", this.Content);
+        
+            //Textures
+            this.textureDictionary = new ContentDictionary<Texture2D>("Texture Dictionary", this.Content);
 
-            //List<Texture2D> textureList = new List<Texture2D>() { Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1") };
+            //Effect parameters
+            this.effectDictionary = new Dictionary<string, EffectParameters>();
+        }
 
-            List<EffectParameters> effectParametersList = new List<EffectParameters>() {
-                new EffectParameters(this.modelEffect, texture, Color.White, 1),
-                new EffectParameters(this.modelEffect, texture, Color.White, 1),
-                new EffectParameters(this.modelEffect, texture, Color.White, 1),
-                new EffectParameters(this.modelEffect, texture, Color.White, 1),
-                new EffectParameters(this.modelEffect, texture, Color.White, 1),
-                new EffectParameters(this.modelEffect, texture, Color.White, 1),
-                new EffectParameters(this.modelEffect, texture, Color.White, 1),
-                new EffectParameters(this.modelEffect, texture, Color.White, 1),
-                new EffectParameters(this.modelEffect, texture, Color.White, 1),
-                new EffectParameters(this.modelEffect, texture, Color.White, 1),
-                new EffectParameters(this.modelEffect, texture, Color.White, 1),
-                new EffectParameters(this.modelEffect, texture, Color.White, 1),
-                new EffectParameters(this.modelEffect, texture, Color.White, 1),
-                new EffectParameters(this.modelEffect, texture, Color.White, 1),
-                new EffectParameters(this.modelEffect, texture, Color.White, 1),
-                new EffectParameters(this.modelEffect, texture, Color.White, 1)
-            };
-
-            List<Model> modelList = new List<Model>() {
-                Content.Load<Model>("Assets/Models/Room_001"),
-                Content.Load<Model>("Assets/Models/Room_002"),
-                Content.Load<Model>("Assets/Models/Room_003"),
-                Content.Load<Model>("Assets/Models/Room_004"),
-                Content.Load<Model>("Assets/Models/Room_005"),
-                Content.Load<Model>("Assets/Models/Room_006"),
-                Content.Load<Model>("Assets/Models/Room_007"),
-                Content.Load<Model>("Assets/Models/Room_008"),
-                Content.Load<Model>("Assets/Models/Room_009"),
-                Content.Load<Model>("Assets/Models/Room_010"),
-                Content.Load<Model>("Assets/Models/Room_011"),
-                Content.Load<Model>("Assets/Models/Room_012"),
-                Content.Load<Model>("Assets/Models/Room_013"),
-                Content.Load<Model>("Assets/Models/Room_014"),
-                Content.Load<Model>("Assets/Models/Room_015"),
-                Content.Load<Model>("Assets/Models/Room_016"),
-            };
-
-            for (int x = 0; x < this.map.GetLength(0); x++)
-                for (int y = 0; y < this.map.GetLength(1); y++)
-                    for (int z = 0; z < this.map.GetLength(2); z++)
-                    {
-                        transform = new Transform3D(
-                            new Vector3(x * (100 * 2.54f), y * (100 * 2.54f), z * (100 * 2.54f)),
-                            new Vector3(0, 0, 0),
-                            new Vector3(1, 1, 1),
-                            -Vector3.UnitZ,
-                            Vector3.UnitY
-                        );
-
-                        Console.WriteLine("x: " + x + ", y: " + y + ", z: " + z + ", value: " + this.map[x,y,z]);
-
-                        if (this.map[x, y, z] > 0)
-                        {
-                            //texture = textureList[(this.map[x, y, z]) - 1];
-                            effectParameters = effectParametersList[this.map[x, y, z] - 1];
-                            model = modelList[this.map[x, y, z] - 1];
-
-                            this.staticModel = new ModelObject(
-                                "room1",
-                                ActorType.Billboard,
-                                StatusType.Update | StatusType.Drawn,
-                                transform,
-                                effectParameters,
-                                model
-                            );
-
-                            this.object3DManager.Add(staticModel);
-                        }
-                    }
-        }     
-
-        private void loadMap()
+        private void LoadAssets()
         {
-            int x = 1, y = 1, z = 1;
-
-            //Store all file data
-            string fileText = File.ReadAllText("App/Data/levelData.txt");
-
-            //Split the file into an array of levels
-            string[] levels = fileText.Split('*');
-
-            //Split the current level into an array of layers (y axis)
-            string[] layers = levels[this.currentLevel].Split('&');
-            y = layers.Length;
-
-            #region Determine Map Size
-            //Loop through each layer
-            foreach (string layer in layers)
-            {
-                //Cleanup layer
-                string cleanLayer;
-                cleanLayer = layer.Trim();
-
-                //Split the current layer into lines
-                string[] lines = cleanLayer.Split('/');
-
-                //If the amount of lines is larger than the current z (lines = z)
-                if (lines.Length > z)
-
-                    //Update z
-                    z = lines.Length;
-
-                //Loop through each line
-                foreach (string line in lines)
-                {
-                    string cleanLine;
-
-                    //Cleanup line
-                    cleanLine = line.Trim();
-                    cleanLine = cleanLine.Replace('|', ' ');
-                    cleanLine = cleanLine.Replace(" ", string.Empty);
-                    cleanLine = cleanLine.Replace(",", string.Empty);
-
-                    //If the line lenght is larger than the current x (each line length)
-                    if (cleanLine.Length > x)
-
-                        //Update x dimension
-                        x = cleanLine.Length;
-                }
-            }
-
-            //Create array based on map size
-            this.map = new int[x, y, z];
+            #region Models
+            //Rooms
+            this.modelDictionary.Load("Assets/Models/Rooms/room001", "room001");
+            this.modelDictionary.Load("Assets/Models/Rooms/room002", "room002");
+            this.modelDictionary.Load("Assets/Models/Rooms/room003", "room003");
+            this.modelDictionary.Load("Assets/Models/Rooms/room004", "room004");
+            this.modelDictionary.Load("Assets/Models/Rooms/room005", "room005");
+            this.modelDictionary.Load("Assets/Models/Rooms/room006", "room006");
+            this.modelDictionary.Load("Assets/Models/Rooms/room007", "room007");
+            this.modelDictionary.Load("Assets/Models/Rooms/room008", "room008");
+            this.modelDictionary.Load("Assets/Models/Rooms/room009", "room009");
+            this.modelDictionary.Load("Assets/Models/Rooms/room010", "room010");
+            this.modelDictionary.Load("Assets/Models/Rooms/room011", "room011");
+            this.modelDictionary.Load("Assets/Models/Rooms/room012", "room012");
+            this.modelDictionary.Load("Assets/Models/Rooms/room013", "room013");
+            this.modelDictionary.Load("Assets/Models/Rooms/room014", "room014");
+            this.modelDictionary.Load("Assets/Models/Rooms/room015", "room015");
+            this.modelDictionary.Load("Assets/Models/Rooms/room016", "room016");
             #endregion
 
-            #region Create Map
-            x = y = z = 0;
-
-            //Loop through each layer
-            foreach (string layer in layers)
-            {
-                //Cleanup layer
-                string cleanLayer;
-                cleanLayer = layer.Trim();
-
-                //Split the current layer into lines
-                string[] lines = cleanLayer.Split('/');
-
-                //Loop through each line
-                foreach (string line in lines)
-                {
-                    //Cleanup line
-                    string cleanLine;
-                    cleanLine = line.Trim();
-                    cleanLine = cleanLine.Replace('|', ' ');
-                    cleanLine = cleanLine.Replace(" ", string.Empty);
-
-                    //Split the current line into rooms
-                    string[] rooms = cleanLine.Split(',');
-
-                    //Loop through each room
-                    foreach (string room in rooms)
-                    {
-                        //Place room in map
-                        map[x, y, z] = int.Parse(room);
-
-                        //Iterate x
-                        x++;
-                    }
-
-                    //Iterate z
-                    z++;
-                    x = 0;
-                }
-
-                //Iterate y
-                y++;
-                z = 0;
-            }
+            #region Textures
+            //Rooms
+            this.textureDictionary.Load("Assets/Textures/Props/Crates/crate_001");
             #endregion
         }
 
-        private void initVertices()
+        private void InitializeVertices()
         {
             this.vertices = VertexFactory.GetVertexPositionColorTextureQuad();
         }
 
-        private void initManagers()
+        private void InitializeManagers()
         {
-            this.mouseManager = new MouseManager(this);
-            Components.Add(this.mouseManager);
-            this.mouseManager.SetPosition(this.screenCentre);
-
-            this.keyboardManager = new KeyboardManager(this);
-            Components.Add(this.keyboardManager);
-
+            #region Camera Manager
             this.cameraManager = new CameraManager(this);
             Components.Add(this.cameraManager);
+            #endregion
 
-            //new manager to store all drawn objects
-            //add to the component list so that it will receive the Update() and Draw() heartbeat
+            #region Object Manager
             this.object3DManager = new ObjectManager(this, this.cameraManager);
             Components.Add(this.object3DManager);
+            #endregion
+
+            #region Mouse Manager
+            this.mouseManager = new MouseManager(this);
+            this.mouseManager.SetPosition(this.screenCentre);
+            Components.Add(this.mouseManager);
+            #endregion
+
+            #region Keyboard Manager
+            this.keyboardManager = new KeyboardManager(this);
+            Components.Add(this.keyboardManager);
+            #endregion
+
+            #region Gamepad Manager
+            #endregion
+
+            #region SoundManager
+            this.soundManager = new SoundManager(
+                this,
+                this.eventDispatcher,
+                StatusType.Update,
+                "Content/Assets/Audio/",
+                "Demo2DSound.xgs",
+                "Movement.xwb",
+                "Movement.xsb"
+            );
+
+            Components.Add(this.soundManager);
+            #endregion
+
+            #region Manager Parameters
+            this.managerParameters = new ManagerParameters(
+                object3DManager,
+                cameraManager,
+                mouseManager,
+                keyboardManager,
+                gamePadManager,
+                soundManager
+            );
+            #endregion
         }
 
-        private void initGraphics(int width, int height)
+        private void InitializeEventDispatcher()
+        {
+            //Initialize with an arbitrary size based on the expected number of events per update cycle, increase/reduce where appropriate
+            this.eventDispatcher = new EventDispatcher(this, 20);
+
+            //Dont forget to add to the Component list otherwise EventDispatcher::Update won't get called and no event processing will occur!
+            Components.Add(this.eventDispatcher);
+        }
+
+        private void InitializeGraphics(int width, int height)
         {
             //set the preferred resolution
             //See https://en.wikipedia.org/wiki/Display_resolution#/media/File:Vector_Video_Standards8.svg
@@ -351,16 +268,18 @@ namespace GDApp
             );
         }
 
-        private void initCameras(float worldScale)
+        private void InitializeCameras(float worldScale, int resolutionWidth, int resolutionHeight)
         {
             Transform3D transform = null;
             Camera3D camera = null;
+
+            Viewport viewPort = new Viewport(0, 0, resolutionWidth, (int) (resolutionHeight / 1.25f));
 
             #region First-Person Camera
             transform = new Transform3D(
                 new Vector3(635, 127, 889),
                 Vector3.Zero,
-                Vector3.One * worldScale,
+                Vector3.One,
                 -Vector3.UnitZ,
                 Vector3.UnitY
             );
@@ -378,13 +297,8 @@ namespace GDApp
                 )
             );
 
-            ManagerParameters managerParameters = new ManagerParameters(
-                object3DManager,
-                cameraManager,
-                mouseManager,
-                keyboardManager,
-                null
-            );
+            Vector3 movementVector = new Vector3(100, 100, 100) * worldScale;
+            Vector3 rotationVector = new Vector3(0, 90, 0);
 
             IController firstPersonCameraController = new FirstPersonCameraController(
                 "FP Controller 1",
@@ -393,7 +307,9 @@ namespace GDApp
                 AppData.CameraMoveSpeed,
                 AppData.CameraStrafeSpeed,
                 AppData.CameraRotationSpeed,
-                managerParameters
+                this.managerParameters,
+                movementVector,
+                rotationVector
             );
 
             camera.AttachController(firstPersonCameraController);
@@ -485,7 +401,7 @@ namespace GDApp
             this.cameraManager.SetActiveCameraIndex(0);
         }
 
-        private void initEffects()
+        private void InitializeEffects()
         {
             //handle/reference to a default shader on the GFX card
             this.texturedVertexEffect = new BasicEffect(graphics.GraphicsDevice);
@@ -499,225 +415,438 @@ namespace GDApp
             this.modelEffect.PreferPerPixelLighting = true;
         }
 
-        private void initGround(float worldScale)
+        #region Sky Box
+        //private void InitializeGround(float worldScale)
+        //{
+        //    Transform3D transform = new Transform3D(
+        //        new Vector3(0, 0, 0),
+        //        new Vector3(-90, 0, 0),
+        //        new Vector3(worldScale, worldScale, 1),
+        //        Vector3.UnitZ, 
+        //        Vector3.UnitY
+        //    );
+
+        //    Texture2D texture = Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1");
+        //    EffectParameters effectParameters = new EffectParameters(
+        //        this.texturedVertexEffect,
+        //        texture, 
+        //        Color.White, 
+        //        1
+        //    );
+
+        //    VertexData<VertexPositionColorTexture> vertexData = new VertexData<VertexPositionColorTexture>(
+        //        this.vertices, 
+        //        PrimitiveType.TriangleStrip, 
+        //        2
+        //    );
+
+        //    PrimitiveObject pObj = new PrimitiveObject(
+        //        "grass", 
+        //        ActorType.Decorator,
+        //        StatusType.Update | StatusType.Drawn,
+        //        transform,
+        //        effectParameters,
+        //        vertexData
+        //    );
+
+        //    this.object3DManager.Add(pObj);
+        //}
+    
+        //private void InitializeRight(float worldScale)
+        //{
+        //    Transform3D transform = new Transform3D(
+        //        new Vector3(worldScale / 2, 0, 0),
+        //        new Vector3(0, -90, 0),
+        //        new Vector3(worldScale, worldScale, 1),
+        //        Vector3.UnitZ, 
+        //        Vector3.UnitY
+        //    );
+
+        //    Texture2D texture = Content.Load<Texture2D>("Assets/Textures/Skybox/right");
+        //    EffectParameters effectParameters = new EffectParameters(
+        //        this.texturedVertexEffect,
+        //        texture, 
+        //        Color.White, 
+        //        1
+        //    );
+
+        //    VertexData<VertexPositionColorTexture> vertexData = new VertexData<VertexPositionColorTexture>(
+        //        this.vertices,
+        //        PrimitiveType.TriangleStrip, 
+        //        2
+        //    );
+
+        //    PrimitiveObject pObj = new PrimitiveObject(
+        //        "right skybox", 
+        //        ActorType.Decorator,
+        //        StatusType.Update | StatusType.Drawn,
+        //        transform,
+        //        effectParameters,
+        //        vertexData
+        //    );
+
+        //    this.object3DManager.Add(pObj);
+        //}
+
+        //private void InitializeLeft(float worldScale)
+        //{
+        //    Transform3D transform = new Transform3D(
+        //        new Vector3(-worldScale / 2, 0, 0),
+        //        new Vector3(0, 90, 0),
+        //        new Vector3(worldScale, worldScale, 1),
+        //        Vector3.UnitZ, 
+        //        Vector3.UnitY
+        //    );
+
+        //    Texture2D texture = Content.Load<Texture2D>("Assets/Textures/Skybox/left");
+        //    EffectParameters effectParameters = new EffectParameters(
+        //        this.texturedVertexEffect,
+        //        texture, 
+        //        Color.White, 
+        //        1
+        //    );
+
+        //    VertexData<VertexPositionColorTexture> vertexData = new VertexData<VertexPositionColorTexture>(
+        //        this.vertices,
+        //        PrimitiveType.TriangleStrip, 
+        //        2
+        //    );
+
+        //    PrimitiveObject pObj = new PrimitiveObject(
+        //        "left skybox", 
+        //        ActorType.Decorator,
+        //        StatusType.Update | StatusType.Drawn,
+        //        transform,
+        //        effectParameters,
+        //        vertexData
+        //    );
+
+        //    this.object3DManager.Add(pObj);
+        //}
+
+        //private void InitializeBack(float worldScale)
+        //{
+        //    Transform3D transform = new Transform3D(
+        //        new Vector3(0, 0, -worldScale / 2),
+        //        Vector3.Zero,
+        //        new Vector3(worldScale, worldScale, 1),
+        //        Vector3.UnitZ, 
+        //        Vector3.UnitY
+        //    );
+
+        //    Texture2D texture = Content.Load<Texture2D>("Assets/Textures/Skybox/back");
+        //    EffectParameters effectParameters = new EffectParameters(
+        //        this.texturedVertexEffect,
+        //        texture, 
+        //        Color.White, 
+        //        1
+        //    );
+
+        //    VertexData<VertexPositionColorTexture> vertexData = new VertexData<VertexPositionColorTexture>(
+        //        this.vertices,
+        //        PrimitiveType.TriangleStrip, 
+        //        2
+        //    );
+
+        //    PrimitiveObject pObj = new PrimitiveObject(
+        //        "back skybox", 
+        //        ActorType.Decorator,
+        //        StatusType.Update | StatusType.Drawn,
+        //        transform,
+        //        effectParameters,
+        //        vertexData
+        //    );
+
+        //    this.object3DManager.Add(pObj);
+        //}
+
+        //private void InitializeTop(float worldScale)
+        //{
+        //    Transform3D transform = new Transform3D(
+        //        new Vector3(0, worldScale / 2, 0),
+        //        new Vector3(90, -90, 0),
+        //        new Vector3(worldScale, worldScale, 1),
+        //        -Vector3.UnitY, 
+        //        Vector3.UnitZ
+        //    );
+
+        //    Texture2D texture = Content.Load<Texture2D>("Assets/Textures/Skybox/sky");
+        //    EffectParameters effectParameters = new EffectParameters(
+        //        this.texturedVertexEffect,
+        //        texture, 
+        //        Color.White, 
+        //        1
+        //    );
+
+        //    VertexData<VertexPositionColorTexture> vertexData = new VertexData<VertexPositionColorTexture>(
+        //        this.vertices,
+        //        PrimitiveType.TriangleStrip, 
+        //        2
+        //    );
+
+        //    PrimitiveObject pObj = new PrimitiveObject(
+        //        "back skybox", 
+        //        ActorType.Decorator,
+        //        StatusType.Update | StatusType.Drawn,
+        //        transform,
+        //        effectParameters,
+        //        vertexData
+        //    );
+
+        //    this.object3DManager.Add(pObj);
+        //}
+
+        //private void InitializeFront(float worldScale)
+        //{
+        //    Transform3D transform = new Transform3D(
+        //        new Vector3(0, 0, worldScale / 2),
+        //        new Vector3(0, 180, 0),
+        //        new Vector3(worldScale, worldScale, 1),
+        //        -Vector3.UnitY, 
+        //        Vector3.UnitZ
+        //    );
+
+        //    Texture2D texture = Content.Load<Texture2D>("Assets/Textures/Skybox/front");
+        //    EffectParameters effectParameters = new EffectParameters(
+        //        this.texturedVertexEffect,
+        //        texture, 
+        //        Color.White, 
+        //        1
+        //    );
+
+        //    VertexData<VertexPositionColorTexture> vertexData = new VertexData<VertexPositionColorTexture>(
+        //        this.vertices,
+        //        PrimitiveType.TriangleStrip, 
+        //        2
+        //    );
+
+        //    PrimitiveObject pObj = new PrimitiveObject(
+        //        "front skybox", 
+        //        ActorType.Decorator,
+        //        StatusType.Update | StatusType.Drawn,
+        //        transform,
+        //        effectParameters,
+        //        vertexData
+        //    );
+
+        //    this.object3DManager.Add(pObj);
+        //}
+        #endregion
+
+        private int[, ,] LoadMap(int currentLevel)
         {
-            Transform3D transform = new Transform3D(
-                new Vector3(0, 0, 0),
-                new Vector3(-90, 0, 0),
-                new Vector3(worldScale, worldScale, 1),
-                Vector3.UnitZ, 
-                Vector3.UnitY
-            );
+            #region Read File
+            int x = 1, y = 1, z = 1;
 
-            Texture2D texture = Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1");
-            EffectParameters effectParameters = new EffectParameters(
-                this.texturedVertexEffect,
-                texture, 
-                Color.White, 
-                1
-            );
+            //Store all file data
+            string fileText = File.ReadAllText("App/Data/levelData.txt");
 
-            VertexData<VertexPositionColorTexture> vertexData = new VertexData<VertexPositionColorTexture>(
-                this.vertices, 
-                PrimitiveType.TriangleStrip, 
-                2
-            );
+            //Split the file into an array of levels
+            string[] levels = fileText.Split('*');
 
-            PrimitiveObject pObj = new PrimitiveObject(
-                "grass", 
-                ActorType.Decorator,
-                StatusType.Update | StatusType.Drawn,
-                transform,
-                effectParameters,
-                vertexData
-            );
+            //Split the current level into an array of layers (y axis)
+            string[] layers = levels[currentLevel].Split('&');
+            #endregion
 
-            this.object3DManager.Add(pObj);
+            #region Determine Map Size
+            //Set y - The amount of layers correspond to the amount of rooms in the y dimension
+            y = layers.Length;                  
+
+            //Loop through each layer
+            foreach (string layer in layers)
+            {
+                //Cleanup layer
+                string cleanLayer;
+                cleanLayer = layer.Trim();
+
+                //Split the current layer into lines
+                string[] lines = cleanLayer.Split('/');
+
+                //If the amount of lines is larger than the current z (lines = z)
+                if (lines.Length > z)
+
+                    //Update z - The amount of lines correspond to the amount of rooms in the z dimension
+                    z = lines.Length;
+
+                //Loop through each line
+                foreach (string line in lines)
+                {
+                    //Cleanup line
+                    string cleanLine;
+                    cleanLine = line.Trim();
+                    cleanLine = cleanLine.Replace('|', ' ');
+                    cleanLine = cleanLine.Replace(" ", string.Empty);
+                    cleanLine = cleanLine.Replace(",", string.Empty);
+
+                    //If the line length is larger than the current x (each line length)
+                    if (cleanLine.Length > x)
+
+                        //Update x - The length of the line corresponds to the amount of rooms in the x dimension
+                        x = cleanLine.Length;
+                }
+            }
+
+            //Create array based on map size
+            int[, ,] levelMap = new int[x, y, z];
+            #endregion
+
+            #region Create Map
+            x = y = z = 0;
+
+            //Loop through each layer
+            foreach (string layer in layers)
+            {
+                //Cleanup layer
+                string cleanLayer;
+                cleanLayer = layer.Trim();
+
+                //Split the current layer into lines
+                string[] lines = cleanLayer.Split('/');
+
+                //Loop through each line
+                foreach (string line in lines)
+                {
+                    //Cleanup line
+                    string cleanLine;
+                    cleanLine = line.Trim();
+                    cleanLine = cleanLine.Replace('|', ' ');
+                    cleanLine = cleanLine.Replace(" ", string.Empty);
+
+                    //Split the current line into rooms
+                    string[] rooms = cleanLine.Split(',');
+
+                    //Loop through each room
+                    foreach (string room in rooms)
+                    {
+                        //Place room in map
+                        levelMap[x, y, z] = int.Parse(room);
+
+                        //Iterate x
+                        x++;
+                    }
+
+                    //Iterate z
+                    z++;
+                    x = 0;
+                }
+
+                //Iterate y
+                y++;
+                z = 0;
+            }
+
+            return levelMap;
+            #endregion
         }
 
-        private void initRight(float worldScale)
+        private void InitializeMap(int[, ,] levelMap)
         {
-            Transform3D transform = new Transform3D(
-                new Vector3(worldScale / 2, 0, 0),
-                new Vector3(0, -90, 0),
-                new Vector3(worldScale, worldScale, 1),
-                Vector3.UnitZ, 
-                Vector3.UnitY
-            );
+            Transform3D transform;
+            Texture2D texture;
+            EffectParameters effectParameters;
+            Model model;
 
-            Texture2D texture = Content.Load<Texture2D>("Assets/Textures/Skybox/right");
-            EffectParameters effectParameters = new EffectParameters(
-                this.texturedVertexEffect,
-                texture, 
-                Color.White, 
-                1
-            );
+            //To be taken out and placed into dictionaries
+            #region Assets
+            List<Texture2D> textureList = new List<Texture2D>() {
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+                Content.Load<Texture2D>("Assets/Textures/Foliage/Ground/grass1"),
+            };
 
-            VertexData<VertexPositionColorTexture> vertexData = new VertexData<VertexPositionColorTexture>(
-                this.vertices,
-                PrimitiveType.TriangleStrip, 
-                2
-            );
+            List<EffectParameters> effectParametersList = new List<EffectParameters>() {
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1),
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1),
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1),
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1),
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1),
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1),
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1),
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1),
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1),
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1),
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1),
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1),
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1),
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1),
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1),
+                new EffectParameters(this.modelEffect, null, Color.DarkGray, 1)
+            };
 
-            PrimitiveObject pObj = new PrimitiveObject(
-                "right skybox", 
-                ActorType.Decorator,
-                StatusType.Update | StatusType.Drawn,
-                transform,
-                effectParameters,
-                vertexData
-            );
+            List<Model> modelList = new List<Model>() {
+                Content.Load<Model>("Assets/Models/Rooms/room_001"),
+                Content.Load<Model>("Assets/Models/Rooms/room_002"),
+                Content.Load<Model>("Assets/Models/Rooms/room_003"),
+                Content.Load<Model>("Assets/Models/Rooms/room_004"),
+                Content.Load<Model>("Assets/Models/Rooms/room_005"),
+                Content.Load<Model>("Assets/Models/Rooms/room_006"),
+                Content.Load<Model>("Assets/Models/Rooms/room_007"),
+                Content.Load<Model>("Assets/Models/Rooms/room_008"),
+                Content.Load<Model>("Assets/Models/Rooms/room_009"),
+                Content.Load<Model>("Assets/Models/Rooms/room_010"),
+                Content.Load<Model>("Assets/Models/Rooms/room_011"),
+                Content.Load<Model>("Assets/Models/Rooms/room_012"),
+                Content.Load<Model>("Assets/Models/Rooms/room_013"),
+                Content.Load<Model>("Assets/Models/Rooms/room_014"),
+                Content.Load<Model>("Assets/Models/Rooms/room_015"),
+                Content.Load<Model>("Assets/Models/Rooms/room_016"),
+            };
+            #endregion
 
-            this.object3DManager.Add(pObj);
-        }
+            //Loop through each element in the 3D array
+            for (int x = 0; x < levelMap.GetLength(0); x++) {
+                for (int y = 0; y < levelMap.GetLength(1); y++) {
+                    for (int z = 0; z < levelMap.GetLength(2); z++) {
 
-        private void initLeft(float worldScale)
-        {
-            Transform3D transform = new Transform3D(
-                new Vector3(-worldScale / 2, 0, 0),
-                new Vector3(0, 90, 0),
-                new Vector3(worldScale, worldScale, 1),
-                Vector3.UnitZ, 
-                Vector3.UnitY
-            );
+                        //Calculate position
+                        transform = new Transform3D(
+                            new Vector3(x * (100 * 2.54f), y * (100 * 2.54f), z * (100 * 2.54f)),
+                            new Vector3(0, 0, 0),
+                            new Vector3(1, 1, 1),
+                            -Vector3.UnitZ,
+                            Vector3.UnitY
+                        );
 
-            Texture2D texture = Content.Load<Texture2D>("Assets/Textures/Skybox/left");
-            EffectParameters effectParameters = new EffectParameters(
-                this.texturedVertexEffect,
-                texture, 
-                Color.White, 
-                1
-            );
+                        //If a room has been set at this position
+                        if (levelMap[x, y, z] > 0) {
 
-            VertexData<VertexPositionColorTexture> vertexData = new VertexData<VertexPositionColorTexture>(
-                this.vertices,
-                PrimitiveType.TriangleStrip, 
-                2
-            );
+                            //Load model, texture, and effect parameters
+                            texture = textureList[(levelMap[x, y, z]) - 1];
+                            effectParameters = effectParametersList[levelMap[x, y, z] - 1];
+                            model = modelList[levelMap[x, y, z] - 1];
 
-            PrimitiveObject pObj = new PrimitiveObject(
-                "left skybox", 
-                ActorType.Decorator,
-                StatusType.Update | StatusType.Drawn,
-                transform,
-                effectParameters,
-                vertexData
-            );
+                            //Create model
+                            this.staticModel = new CollidableObject(
+                                "room" + z,
+                                ActorType.CollidableArchitecture,
+                                StatusType.Update | StatusType.Drawn,
+                                transform,
+                                effectParameters,
+                                model
+                            );
 
-            this.object3DManager.Add(pObj);
-        }
+                            this.staticModel.AddPrimitive(new JigLibX.Geometry.Plane(transform.Up, transform.Translation), new MaterialProperties(0.8f, 0.8f, 0.7f));
+                            this.staticModel.Enable(true, 1);
 
-        private void initBack(float worldScale)
-        {
-            Transform3D transform = new Transform3D(
-                new Vector3(0, 0, -worldScale / 2),
-                Vector3.Zero,
-                new Vector3(worldScale, worldScale, 1),
-                Vector3.UnitZ, 
-                Vector3.UnitY
-            );
-
-            Texture2D texture = Content.Load<Texture2D>("Assets/Textures/Skybox/back");
-            EffectParameters effectParameters = new EffectParameters(
-                this.texturedVertexEffect,
-                texture, 
-                Color.White, 
-                1
-            );
-
-            VertexData<VertexPositionColorTexture> vertexData = new VertexData<VertexPositionColorTexture>(
-                this.vertices,
-                PrimitiveType.TriangleStrip, 
-                2
-            );
-
-            PrimitiveObject pObj = new PrimitiveObject(
-                "back skybox", 
-                ActorType.Decorator,
-                StatusType.Update | StatusType.Drawn,
-                transform,
-                effectParameters,
-                vertexData
-            );
-
-            this.object3DManager.Add(pObj);
-        }
-
-        private void initTop(float worldScale)
-        {
-            Transform3D transform = new Transform3D(
-                new Vector3(0, worldScale / 2, 0),
-                new Vector3(90, -90, 0),
-                new Vector3(worldScale, worldScale, 1),
-                -Vector3.UnitY, 
-                Vector3.UnitZ
-            );
-
-            Texture2D texture = Content.Load<Texture2D>("Assets/Textures/Skybox/sky");
-            EffectParameters effectParameters = new EffectParameters(
-                this.texturedVertexEffect,
-                texture, 
-                Color.White, 
-                1
-            );
-
-            VertexData<VertexPositionColorTexture> vertexData = new VertexData<VertexPositionColorTexture>(
-                this.vertices,
-                PrimitiveType.TriangleStrip, 
-                2
-            );
-
-            PrimitiveObject pObj = new PrimitiveObject(
-                "back skybox", 
-                ActorType.Decorator,
-                StatusType.Update | StatusType.Drawn,
-                transform,
-                effectParameters,
-                vertexData
-            );
-
-            this.object3DManager.Add(pObj);
-        }
-
-        private void initFront(float worldScale)
-        {
-            Transform3D transform = new Transform3D(
-                new Vector3(0, 0, worldScale / 2),
-                new Vector3(0, 180, 0),
-                new Vector3(worldScale, worldScale, 1),
-                -Vector3.UnitY, 
-                Vector3.UnitZ
-            );
-
-            Texture2D texture = Content.Load<Texture2D>("Assets/Textures/Skybox/front");
-            EffectParameters effectParameters = new EffectParameters(
-                this.texturedVertexEffect,
-                texture, 
-                Color.White, 
-                1
-            );
-
-            VertexData<VertexPositionColorTexture> vertexData = new VertexData<VertexPositionColorTexture>(
-                this.vertices,
-                PrimitiveType.TriangleStrip, 
-                2
-            );
-
-            PrimitiveObject pObj = new PrimitiveObject(
-                "front skybox", 
-                ActorType.Decorator,
-                StatusType.Update | StatusType.Drawn,
-                transform,
-                effectParameters,
-                vertexData
-            );
-
-            this.object3DManager.Add(pObj);
-        }
-
-        private void initMap(float worldScale)
-        {
-
+                            //Add to object manager list
+                            this.object3DManager.Add(staticModel);
+                        }
+                    }
+                }
+            }
         }
 
         protected override void LoadContent()
@@ -733,7 +862,9 @@ namespace GDApp
         protected override void Update(GameTime gameTime)
         {
             DemoCameraManager();
+            DemoSoundManager();
             DriveModel(gameTime);
+
             base.Update(gameTime);
         }
 
@@ -777,6 +908,33 @@ namespace GDApp
                 int length = eventData.AdditionalParameters.Length;
                 string msg = eventData.AdditionalParameters[length - 1] as string;
                 if (msg != null) Console.WriteLine("Sender said" + msg);
+            }
+        }
+
+        private void DemoSoundManager()
+        {
+            if (this.keyboardManager.IsFirstKeyPress(Keys.W) || this.keyboardManager.IsFirstKeyPress(Keys.S) || this.keyboardManager.IsFirstKeyPress(Keys.A) || this.keyboardManager.IsFirstKeyPress(Keys.D))
+            {
+                object[] additionalParameters = { "environment_stone_steps" };
+                EventDispatcher.Publish(
+                    new EventData(
+                        EventActionType.OnPlay,
+                        EventCategoryType.Sound2D,
+                        additionalParameters
+                    )
+                );
+            }
+
+            if (this.keyboardManager.IsFirstKeyPress(Keys.Q) || this.keyboardManager.IsFirstKeyPress(Keys.E))
+            {
+                object[] additionalParameters = { "turn_around" };
+                EventDispatcher.Publish(
+                    new EventData(
+                        EventActionType.OnPlay,
+                        EventCategoryType.Sound2D,
+                        additionalParameters
+                    )
+                );
             }
         }
         #endregion
