@@ -94,6 +94,10 @@
             {
                 return this.triggerType;
             }
+            set
+            {
+                this.triggerType = value;
+            }
         }
 
         public object[] AdditionalParameters
@@ -121,7 +125,7 @@
         }
         #endregion
 
-        #region Constructor
+        #region Constructors
         public TriggerVolume(
             float x, 
             float y, 
@@ -142,28 +146,34 @@
             this.additionalParameters = additionalParameters;
             this.hasFired = false;
         }
+
+        public TriggerVolume(
+                float x,
+                float y,
+                float z,
+                float width,
+                float height,
+                float depth
+        ) {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+            this.width = width;
+            this.height = height;
+            this.depth = depth;
+            this.hasFired = false;
+        }
         #endregion
 
         #region Methods
         public bool isActorWithin(Actor3D actor)
         {
-            float minX = this.x;
-            float minY = this.y;
-            float minZ = this.z;
-            float maxX = (this.x + (this.width));
-            float maxY = (this.y + (this.height));
-            float maxZ = (this.z + (this.depth));
-
-            return (actor.Transform.Translation.X >= minX && actor.Transform.Translation.X <= maxX)
-                && (actor.Transform.Translation.Y >= minY && actor.Transform.Translation.Y <= maxY)
-                && (actor.Transform.Translation.Z >= minZ && actor.Transform.Translation.Z <= maxZ);
-            
-            //return ((actor.Transform.Translation.X >= this.x && actor.Transform.Translation.X <= (this.x + (this.width)))
-            //    && (actor.Transform.Translation.Y >= this.y && actor.Transform.Translation.Y <= (this.y + (this.height)))
-            //    && (actor.Transform.Translation.Z >= this.z && actor.Transform.Translation.Z <= (this.z + (this.depth))));
+            return (actor.Transform.Translation.X >= this.x && actor.Transform.Translation.X <= (this.x + (this.width)))
+                && (actor.Transform.Translation.Y >= this.y && actor.Transform.Translation.Y <= (this.y + (this.height)))
+                && (actor.Transform.Translation.Z >= this.z && actor.Transform.Translation.Z <= (this.z + (this.depth)));
         }
 
-        public void Test()
+        public void fireEvent()
         {
             switch (triggerType)
             {
@@ -190,16 +200,9 @@
                 case TriggerType.EndLevel:
                     EventDispatcher.Publish(
                         new EventData(
-                            EventActionType.OnPlay,
-                            EventCategoryType.Sound2D,
+                            EventActionType.OnWin,
+                            EventCategoryType.Game,
                             this.additionalParameters
-                        )
-                    );
-
-                    EventDispatcher.Publish(
-                        new EventData(
-                            EventActionType.OnPause,
-                            EventCategoryType.Screen
                         )
                     );
                     break;

@@ -92,6 +92,7 @@
     <Compile Include="Events\Data\EventData.cs" />
     <Compile Include="Events\Base\EventDispatcher.cs" />
     <Compile Include="Managers\Content\ContentDictionary.cs" />
+    <Compile Include="Managers\GameStateManager\GameStateManager.cs" />
     <Compile Include="Managers\Sound\Cue3D.cs" />
     <Compile Include="Managers\Sound\SoundManager.cs" />
     <Compile Include="Utility\BitwiseExtraction.cs" />

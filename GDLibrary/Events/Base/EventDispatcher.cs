@@ -25,6 +25,7 @@ namespace GDLibrary
         public delegate void Sound2DEventHandler(EventData eventData);
         public delegate void Sound3DEventHandler(EventData eventData);
         public delegate void GlobalSoundEventHandler(EventData eventData);
+        public delegate void GameEventHandler(EventData eventData);
 
         //An event is either null (not yet happened) or non-null - when the event occurs the delegate reads through its list and calls all the listening functions
         public event CameraEventHandler CameraChanged;
@@ -32,7 +33,7 @@ namespace GDLibrary
         public event Sound2DEventHandler Sound2DChanged;
         public event Sound3DEventHandler Sound3DChanged;
         public event GlobalSoundEventHandler GlobalSoundChanged;
-
+        public event GameEventHandler GameChanged;
 
         public EventDispatcher(
             Game game, 
@@ -91,6 +92,10 @@ namespace GDLibrary
                     OnGlobalSound(eventData);
                     break;
 
+                case EventCategoryType.Game:
+                    OnGameChanged(eventData);
+                    break;
+
                 default:
                     break;
             }
@@ -124,6 +129,12 @@ namespace GDLibrary
         protected virtual void OnGlobalSound(EventData eventData)
         {
             GlobalSoundChanged?.Invoke(eventData);
+        }
+        
+        //Called when the game state has changed (next level, reset level etc.)
+        protected virtual void OnGameChanged(EventData eventData)
+        {
+            GameChanged?.Invoke(eventData);
         }
     }
 }

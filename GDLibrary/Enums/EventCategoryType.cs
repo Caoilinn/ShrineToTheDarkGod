@@ -18,5 +18,6 @@
         Sound3D,
         Video,
         GlobalSound,
+        Game
     }
 }

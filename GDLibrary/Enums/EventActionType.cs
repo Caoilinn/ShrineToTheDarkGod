@@ -9,7 +9,7 @@
         OnStop,
         OnStopAll,
 
-        //Sent by Multiple Managers  - Menu, Sound, Object, UI, Physics & Video Controller
+        //Sent by Multiple Managers - Menu, Sound, Object, UI, Physics & Video Controller
         OnStart,
         OnRestart,
         OnVolumeUp,
@@ -24,7 +24,7 @@
         OnClick,
         OnHover,
 
-        //sent by game state manager
+        //Sent by game state manager
         OnLose,
         OnWin,
 
