@@ -12,7 +12,17 @@ using System;
 namespace GDLibrary
 {
     public class Transform3D : ICloneable
-    {     
+    {
+        #region Statics
+        public static Transform3D Zero
+        {
+            get
+            {
+                return new Transform3D(Vector3.Zero, Vector3.Zero, Vector3.One, -Vector3.UnitZ, Vector3.UnitY);
+            }
+        }
+        #endregion
+
         #region Fields
         private Vector3 translation, rotation, scale;
         private Vector3 originalRotation;
@@ -164,7 +174,7 @@ namespace GDLibrary
                 MathHelper.ToRadians(this.rotation.Z)
             );
 
-            //update the look and up
+            //Update the look and up
             this.Look = Vector3.Transform(this.originalLook, rot);
             this.Up = Vector3.Transform(this.originalUp, rot);
         }

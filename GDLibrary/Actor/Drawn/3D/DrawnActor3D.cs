@@ -31,12 +31,19 @@ namespace GDLibrary
         }
         #endregion
 
-        public DrawnActor3D(string id, ActorType actorType, StatusType statusType, Transform3D transform, EffectParameters effectParameters) 
-            : base(id, actorType, statusType, transform)
-        {
+        #region Constructors
+        public DrawnActor3D(
+            string id, 
+            ActorType actorType, 
+            StatusType statusType, 
+            Transform3D transform, 
+            EffectParameters effectParameters
+        ) : base(id, actorType, statusType, transform) {
             this.effectParameters = effectParameters;
         }
+        #endregion
 
+        #region Methods
         public override bool Equals(object obj)
         {
             DrawnActor3D other = obj as DrawnActor3D;
@@ -58,17 +65,20 @@ namespace GDLibrary
 
         public new object Clone()
         {
-            return new DrawnActor3D("clone - " + ID, //deep
-                this.ActorType, //deep
-                  this.StatusType, //deep - a simple numeric type
-                    (Transform3D)this.Transform.Clone(), //deep - calls the clone for Transform3D explicitly
-                        (EffectParameters)this.EffectParameters.Clone()); //hybrid - shallow (texture and effect) and deep (all other fields)            
+            return new DrawnActor3D(
+                "Clone - " + ID,                                //Deep
+                this.ActorType,                                 //Deep
+                this.StatusType,                                //Deep - a simple numeric type
+                (Transform3D)this.Transform.Clone(),            //Deep - calls the clone for Transform3D explicitly
+                (EffectParameters)this.EffectParameters.Clone() //Hybrid - shallow (texture and effect) and deep (all other fields)
+            );
         }
 
-        //notice we add a Draw() method since this will be the parent class for ModelObject, PRimitiveObject, CollidableObject
+        //Notice we add a Draw() method since this will be the parent class for ModelObject, PRimitiveObject, CollidableObject
         public virtual void Draw(GameTime gameTime, Camera3D camera)
         {
 
         }
+        #endregion
     }
 }

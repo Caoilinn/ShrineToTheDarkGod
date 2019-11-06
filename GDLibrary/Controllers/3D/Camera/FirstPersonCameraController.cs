@@ -115,6 +115,21 @@ namespace GDLibrary
             //If the camera is moving
             if (translation != Vector3.Zero)
             {
+                if (!inMotion)
+                {
+                    object[] additionalParameters = { "environment_stone_steps" };
+
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlay,
+                            EventCategoryType.Sound2D,
+                            additionalParameters
+                        )
+                    );
+
+
+                }
+
                 //If the cameras current current positon is near the target position
                 if (Vector3.Distance(targetPosition, currentPosition) <= 10)
                 {
@@ -138,6 +153,7 @@ namespace GDLibrary
 
                     //Prevent keypress
                     this.inMotion = true;
+
                 }
             }
             #endregion
@@ -146,6 +162,19 @@ namespace GDLibrary
             //If the camera is rotating
             if (rotation != Vector3.Zero)
             {
+                if (!inMotion)
+                {
+                    object[] additionalParameters = { "turn_around" };
+
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlay,
+                            EventCategoryType.Sound2D,
+                            additionalParameters
+                        )
+                    );
+                }
+
                 //If the cameras heading is near the target heading
                 if (Vector3.Distance(currentHeading, targetHeading) <= 5)
                 {

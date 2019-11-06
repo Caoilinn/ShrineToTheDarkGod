@@ -30,6 +30,7 @@ namespace GDLibrary
                 this.transform = value;
             }
         }
+
         public Matrix World
         {
             get
@@ -39,13 +40,18 @@ namespace GDLibrary
         }
         #endregion
 
-        #region Methods
-        public Actor2D(string id, ActorType actorType, Transform2D transform, StatusType statusType)
-            : base(id, actorType, statusType)
-        {
+        #region Constructor
+        public Actor2D(
+            string id, 
+            ActorType actorType, 
+            Transform2D transform, 
+            StatusType statusType
+        ) : base(id, actorType, statusType) {
             this.transform = transform;
         }
+        #endregion
 
+        #region Methods
         public override Matrix GetWorldMatrix()
         {
             return this.transform.World;

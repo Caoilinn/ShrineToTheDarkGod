@@ -87,12 +87,16 @@
     <Compile Include="Enums\ControllerType.cs" />
     <Compile Include="Enums\EventActionType.cs" />
     <Compile Include="Enums\EventCategoryType.cs" />
+    <Compile Include="Enums\TriggerType.cs" />
     <Compile Include="Events\Base\EventDataEqualityComparer.cs" />
     <Compile Include="Events\Data\EventData.cs" />
     <Compile Include="Events\Base\EventDispatcher.cs" />
     <Compile Include="Managers\Content\ContentDictionary.cs" />
     <Compile Include="Managers\Sound\Cue3D.cs" />
     <Compile Include="Managers\Sound\SoundManager.cs" />
+    <Compile Include="Utility\BitwiseExtraction.cs" />
+    <Compile Include="Utility\ScreenUtility.cs" />
+    <Compile Include="Volumes\Triggers\TriggerVolume.cs" />
     <Compile Include="Parameters\Camera\RailParameters.cs" />
     <Compile Include="Parameters\Curve\Curve1D.cs" />
     <Compile Include="Parameters\Curve\Curve2D.cs" />
@@ -121,7 +125,6 @@
     <Compile Include="Templates\SimpleDrawableComponent.cs" />
     <Compile Include="Utility\CollisionUtility.cs" />
     <Compile Include="Utility\StringUtility.cs" />
-    <Compile Include="_Demo\Events\EventSenderDemo.cs" />
     <Compile Include="Utility\Integer.cs" />
     <Compile Include="Utility\Integer2.cs" />
     <Compile Include="Utility\Integer3.cs" />

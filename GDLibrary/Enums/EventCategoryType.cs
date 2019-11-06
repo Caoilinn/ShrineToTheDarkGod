@@ -16,6 +16,7 @@
         SystemRemove,   //Used to send remove related events e.g. remove objects from oject manager, camera manager, ui manager
         Sound2D,
         Sound3D,
+        Video,
         GlobalSound,
     }
 }

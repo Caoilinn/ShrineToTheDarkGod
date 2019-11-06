@@ -30,13 +30,18 @@ namespace GDLibrary
         }
         #endregion
 
-        public Actor3D(string id, ActorType actorType,
-                            StatusType statusType, Transform3D transform)
-            : base(id, actorType, statusType)
-        {
+        #region Constructor
+        public Actor3D(
+            string id, 
+            ActorType actorType,                
+            StatusType statusType, 
+            Transform3D transform
+        ) : base(id, actorType, statusType) {
             this.Transform = transform;
         }
+        #endregion
 
+        #region Methods
         public override bool Equals(object obj)
         {
             Actor3D other = obj as Actor3D;
@@ -64,5 +69,6 @@ namespace GDLibrary
                 (Transform3D)this.transform.Clone()); //deep
                 
         }
+        #endregion
     }
 }

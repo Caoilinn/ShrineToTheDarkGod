@@ -7,16 +7,15 @@ Bugs:			None
 Fixes:			Added IEnumberable
 */
 
-using Microsoft.Xna.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 namespace GDLibrary
 {
-
-    public class CameraManager : GameComponent
+    public class CameraManager : PausableGameComponent, IEnumerable<Camera3D>
     {
-
         #region Fields
         private List<Camera3D> cameraList;
         private int activeCameraIndex = -1;
@@ -30,35 +29,58 @@ namespace GDLibrary
                 return this.cameraList[this.activeCameraIndex];
             }
         }
+
+        public int ActiveCameraIndex
+        {
+            get
+            {
+                return this.activeCameraIndex;
+            }
+            set
+            {
+                this.activeCameraIndex = (value >= 0 && value < this.cameraList.Count) ? value : 0;
+            }
+        }
+
+        public Camera3D this[int index]
+        {
+            get
+            {
+                if (this.cameraList[index] == null)
+                    throw new Exception("Camera " + index + " does not exist.");
+
+                return this.cameraList[index];
+            }
+        }
         #endregion
 
-        public CameraManager(Game game) 
-            : base(game)
-        {
-            
+        #region Constructors
+        public CameraManager(
+            Game game, 
+            int initialSize, 
+            EventDispatcher eventDispatcher,
+            StatusType statusType
+        ) : base(game, eventDispatcher, statusType) {
+            this.cameraList = new List<Camera3D>(initialSize);
         }
+        #endregion
 
-        public int SetActiveCameraIndex(int index)
-        {
-            //if user wants to set a valid index then allow, otherwise set to 0.
-            this.activeCameraIndex = (index >= 0 && index < this.cameraList.Count) ? index : 0;
-            return this.activeCameraIndex;
-        }
+        #region Methods
         public void Add(Camera3D camera)
         {
-            //first time in ensures that we have a list
-            if (this.cameraList == null)
-            {
-                this.cameraList = new List<Camera3D>();
-                //set the first camera in the list to be active, until we call SetActiveCamera() later
+            //First time in ensures that we have a list
+            if (this.cameraList.Count == 0)
                 this.activeCameraIndex = 0;
-            }
+
             this.cameraList.Add(camera);
+
+            this.cameraList.Sort((a, b) => (a.DrawDepth <= b.DrawDepth ? 1 : -1));
         }
 
         public bool Remove(Predicate<Camera3D> predicate)
         {
             Camera3D foundCamera = this.cameraList.Find(predicate);
+
             if (foundCamera != null)
                 return this.cameraList.Remove(foundCamera);
 
@@ -69,26 +91,20 @@ namespace GDLibrary
         {
             return this.cameraList.RemoveAll(predicate);
         }
-      
-        //to do - Add SetActiveCameraBy() and CycleCamera()
-        public int CycleCamera()
+
+        public void CycleActiveCamera()
         {
-            this.activeCameraIndex++;
-            this.activeCameraIndex %= this.cameraList.Count;
-            return this.activeCameraIndex;
+            this.ActiveCameraIndex = this.activeCameraIndex + 1;
         }
 
-        public int SetActiveCameraBy(int startIndex, Predicate<Camera3D> predicate)
+        public bool SetActiveCamera(Predicate<Camera3D> predicate)
         {
-            int findIndex = this.cameraList.FindIndex(startIndex, predicate);
-
-            if (findIndex != -1)
-                this.activeCameraIndex = findIndex;
-            
-            return findIndex;
+            int index = this.cameraList.FindIndex(predicate);
+            this.ActiveCameraIndex = index;
+            return (index != -1) ? true : false;
         }
 
-        public override void Update(GameTime gameTime)
+        protected override void ApplyUpdate(GameTime gameTime)
         {
             /* 
              * Update all the cameras in the list.
@@ -98,7 +114,19 @@ namespace GDLibrary
             foreach (Camera3D camera in this.cameraList)
                 camera.Update(gameTime);
            
-            base.Update(gameTime);
+            base.ApplyUpdate(gameTime);
         }
+
+        public IEnumerator<Camera3D> GetEnumerator()
+        {
+            return this.cameraList.GetEnumerator();
+        }
+
+        //This method is called by any external foreach() loop with a handle to the camera manager
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator(); //calls IEnumerator<Camera3D> GetEnumerator() above
+        }
+        #endregion
     }
 }

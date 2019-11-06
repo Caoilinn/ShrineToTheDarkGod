@@ -68,14 +68,19 @@ namespace GDLibrary
         }
         #endregion
 
-        #region Methods
-        public Actor(string id, ActorType actorType, StatusType statusType)
-        {
+        #region Constructor
+        public Actor(
+            string id, 
+            ActorType actorType, 
+            StatusType statusType
+        ) {
             this.ID = id;
             this.ActorType = actorType;
             this.StatusType = statusType;
         }
+        #endregion
 
+        #region Methods
         public virtual Matrix GetWorldMatrix()
         {
             return Matrix.Identity;
@@ -160,7 +165,7 @@ namespace GDLibrary
 
         public virtual bool Remove()
         {
-            //tag for garbage collection
+            //Tag for garbage collection
             if (this.controllerList != null)
             {
                 this.controllerList.Clear();
@@ -170,7 +175,7 @@ namespace GDLibrary
             return true;
         }
 
-        //notice we must implment Update() if we implement IActor
+        //Notice we must implment Update() if we implement IActor
         //See https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/virtual
         public virtual void Update(GameTime gameTime)
         {

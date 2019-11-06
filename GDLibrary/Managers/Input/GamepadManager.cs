@@ -43,28 +43,30 @@ namespace GDLibrary
         }
         #endregion
 
-        public GamePadManager(Game game, int numberOfConnectedPlayers)
-            : base(game)
-        {
+        #region Constructor
+        public GamePadManager(
+            Game game, 
+            int numberOfConnectedPlayers
+        ) : base(game) {
             this.NumberOfConnectedPlayers = numberOfConnectedPlayers;
         }
+        #endregion
 
+        #region Methods
         public override void Initialize()
         {
-            // TODO: Add your initialization code here
-
             base.Initialize();
         }
 
         public override void Update(GameTime gameTime)
         {
-            //store the old states
+            //Store the old states
             for (int i = 0; i < this.numberOfConnectedPlayers; i++)
             {
                 this.oldState[i] = this.newState[i];
             }
 
-            //update the new states
+            //Update the new states
             for (int i = 0; i < this.numberOfConnectedPlayers; i++)
             {
                 this.newState[i] = GamePad.GetState(playerIndices[i]);
@@ -73,7 +75,7 @@ namespace GDLibrary
             base.Update(gameTime);
         }
 
-        //is a specific button pressed on the gamepad for a specific connected player?
+        //If a specific button pressed on the gamepad for a specific connected player?
         public bool IsButtonPressed(PlayerIndex playerIndex, Buttons button)
         {
             if (IsPlayerConnected(playerIndex))
@@ -82,7 +84,7 @@ namespace GDLibrary
                 return false;
         }
 
-        //is a specific button pressed now that was not pressed in the last update for a specific connected player?
+        //If a specific button pressed now that was not pressed in the last update for a specific connected player?
         public bool IsFirstButtonPress(PlayerIndex playerIndex, Buttons button)
         {
             if (IsPlayerConnected(playerIndex))
@@ -91,7 +93,7 @@ namespace GDLibrary
                 return false;
         }
 
-        //has the gamepad state changed since the last update for a specific connected player?
+        //Has the gamepad state changed since the last update for a specific connected player?
         public bool IsStateChanged(PlayerIndex playerIndex)
         {
             if (IsPlayerConnected(playerIndex))
@@ -100,7 +102,7 @@ namespace GDLibrary
                 return false;
         }
 
-        //returns the position of the thumbsticks for a specific connected player
+        //Returns the position of the thumbsticks for a specific connected player
         public GamePadThumbSticks GetThumbSticks(PlayerIndex playerIndex)
         {
             if (IsPlayerConnected(playerIndex))
@@ -109,7 +111,7 @@ namespace GDLibrary
                 return default(GamePadThumbSticks);
         }
 
-        //returns the state of the triggers (i.e. front of controller) for a specific connected player
+        //Returns the state of the triggers (i.e. front of controller) for a specific connected player
         public GamePadTriggers GetTriggers(PlayerIndex playerIndex)
         {
             if (IsPlayerConnected(playerIndex))
@@ -118,7 +120,7 @@ namespace GDLibrary
                 return default(GamePadTriggers);
         }
 
-        //returns the state of the DPad (i.e. front of controller) for a specific connected player
+        //Returns the state of the DPad (i.e. front of controller) for a specific connected player
         public GamePadDPad GetDPad(PlayerIndex playerIndex)
         {
             if (IsPlayerConnected(playerIndex))
@@ -127,7 +129,7 @@ namespace GDLibrary
                 return default(GamePadDPad);
         }
 
-        //returns the state of the buttons for a specific connected player
+        //Returns the state of the buttons for a specific connected player
         public GamePadButtons GetButtons(PlayerIndex playerIndex)
         {
             if (IsPlayerConnected(playerIndex))
@@ -136,7 +138,7 @@ namespace GDLibrary
                 return default(GamePadButtons);
         }
 
-        //is player index for a controller within 1-4 range and connected?
+        //Is player index for a controller within 1-4 range and connected?
         public bool IsPlayerConnected(PlayerIndex playerIndex)
         {
             if (this.newState[(int)playerIndex].IsConnected)
@@ -146,5 +148,6 @@ namespace GDLibrary
             //or more aggressively we can throw an exception
                 //throw new GamePadException(DebugUtility.GetCurrentMethod(), playerIndex, "not connected");
         }
+        #endregion
     }
 }

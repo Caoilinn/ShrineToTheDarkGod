@@ -92,7 +92,7 @@ namespace GDLibrary
 
         }
 
-        //Qhen we don't have any pertinent string data in ID AND sender but have additional event parameters
+        //When we don't have any pertinent string data in ID AND sender but have additional event parameters
         public EventData(
             EventActionType eventType,
             EventCategoryType eventCategoryType,

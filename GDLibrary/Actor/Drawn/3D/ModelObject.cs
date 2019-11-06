@@ -61,7 +61,7 @@ namespace GDLibrary
             * Without 5 bones in a table all the meshes would collapse down to be centred on the origin our table, wouldnt look very much like a table!
             */
 
-            //load bone transforms and copy transfroms to transform array (transforms)
+            //Load bone transforms and copy transfroms to transform array (transforms)
             if (this.model != null)
             {
                 this.boneTransforms = new Matrix[this.model.Bones.Count];

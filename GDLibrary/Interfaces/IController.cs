@@ -14,9 +14,8 @@ namespace GDLibrary
 {
     public interface IController : ICloneable
     {
-        void Update(GameTime gameTime, IActor actor); //update the actor controller by this controller
+        void Update(GameTime gameTime, IActor actor);
 
-        //to do...
         string GetID();
         ControllerType GetControllerType();
     }

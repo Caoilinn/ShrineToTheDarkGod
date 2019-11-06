@@ -7,6 +7,7 @@ Fixes:			None
 */
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace GDLibrary
 {
@@ -15,6 +16,9 @@ namespace GDLibrary
     {
         #region Fields
         private ProjectionParameters projectionParameters;
+        private Viewport viewport;
+        private Vector2 viewportCentre;
+        private float drawDepth;
         #endregion
 
         #region Properties
@@ -27,6 +31,7 @@ namespace GDLibrary
                     this.Transform.Up);
             }
         }
+
         public Matrix Projection
         {
             get
@@ -34,6 +39,7 @@ namespace GDLibrary
                 return this.projectionParameters.Projection;
             }
         }
+
         public ProjectionParameters ProjectionParameters
         {
             get
@@ -45,13 +51,81 @@ namespace GDLibrary
                 this.projectionParameters = value;
             }
         }
+
+        public Viewport Viewport
+        {
+            get
+            {
+                return this.viewport;
+            }
+            set
+            {
+                this.viewport = value;
+                this.viewportCentre = new Vector2((this.viewport.Width / 2.0f), (this.viewport.Height / 2.0f));
+            }
+        }
+
+        public Vector2 ViewportCentre
+        {
+            get
+            {
+                return this.viewportCentre;
+            }
+        }
+
+        public float DrawDepth
+        {
+            get
+            {
+                return this.drawDepth;
+            }
+            set
+            {
+                this.drawDepth = value;
+            }
+        }
+
+        public BoundingFrustum BoundingFrustum
+        {
+            get
+            {
+                return new BoundingFrustum(this.View * this.projectionParameters.Projection);
+            }
+        }
         #endregion
 
-        public Camera3D(string id, ActorType actorType, StatusType statusType,
-            Transform3D transform, ProjectionParameters projectionParameters)
-            : base(id, actorType, statusType, transform)
-        {
+        public Camera3D(
+            string id, 
+            ActorType actorType, 
+            StatusType statusType,
+            Transform3D transform, 
+            ProjectionParameters projectionParameters,
+            Viewport viewport
+        ) : this (id, actorType, statusType, transform, projectionParameters, viewport, 0) {
+        }
+
+        public Camera3D(
+            string id,
+            ActorType actorType,
+            StatusType statusType,
+            Transform3D transform,
+            ProjectionParameters projectionParameters,
+            Viewport viewport,
+            float drawDepth
+        ) : base(id, actorType, statusType, transform) {
             this.projectionParameters = projectionParameters;
+            this.Viewport = viewport;
+            this.DrawDepth = drawDepth;
+        }
+
+        public Camera3D(
+            string id,
+            ActorType actorType,
+            StatusType statusType,
+            Viewport viewport,
+            float drawDepth
+        ) : this (id, actorType, statusType, Transform3D.Zero, ProjectionParameters.StandardMediumFourThree, viewport, 0) {
+
         }
 
         public override bool Equals(object obj)
@@ -77,21 +151,26 @@ namespace GDLibrary
             hash = hash * 53 + this.ProjectionParameters.GetHashCode();
             return hash;
         }
+
         public new object Clone()
         {
-            return new Camera3D("clone - " + this.ID,
-                this.ActorType, StatusType.Update,
+            return new Camera3D(
+                "Clone - " + this.ID,
+                this.ActorType, 
+                StatusType.Update,
                 (Transform3D)this.Transform.Clone(),
-                (ProjectionParameters)this.projectionParameters.Clone());
+                (ProjectionParameters)this.projectionParameters.Clone(),
+                this.viewport,
+                this.drawDepth
+            );
         }
         public override string ToString()
         {
             return this.ID
                 + ", Translation: " + MathUtility.Round(this.Transform.Translation, 0)
-                    + ", Look: " + MathUtility.Round(this.Transform.Look, 0)
-                        + ", Up: " + MathUtility.Round(this.Transform.Up, 0);
-
+                + ", Look: " + MathUtility.Round(this.Transform.Look, 0)
+                + ", Up: " + MathUtility.Round(this.Transform.Up, 0)
+                + ", Depth: " + this.drawDepth;
         }
     }
 }
-

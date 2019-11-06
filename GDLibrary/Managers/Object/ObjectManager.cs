@@ -12,7 +12,6 @@ using System.Collections.Generic;
 
 namespace GDLibrary
 {
-    //to do...
     public class ObjectManager : DrawableGameComponent
     {
         #region Fields
@@ -21,15 +20,19 @@ namespace GDLibrary
         #endregion
 
         #region Properties
-        //to do...
         #endregion
 
-        public ObjectManager(Game game, CameraManager cameraManager) : base(game)
-        {
+        #region Constructor
+        public ObjectManager(
+            Game game, 
+            CameraManager cameraManager
+        ) : base(game) {
             this.cameraManager = cameraManager;
             this.drawList = new List<DrawnActor3D>();
         }
+        #endregion
 
+        #region Methods
         public void Add(DrawnActor3D actor)
         {
             this.drawList.Add(actor);
@@ -47,7 +50,7 @@ namespace GDLibrary
 
         public override void Update(GameTime gameTime)
         {
-            //here we manually call a draw on the actor
+            //Here we manually call a draw on the actor
             foreach (DrawnActor3D actor in this.drawList)
                 actor.Update(gameTime);
 
@@ -56,11 +59,12 @@ namespace GDLibrary
 
         public override void Draw(GameTime gameTime)
         {
-            //here we manually call a draw on the actor
+            //Here we manually call a draw on the actor
             foreach (DrawnActor3D actor in this.drawList)
                 actor.Draw(gameTime, this.cameraManager.ActiveCamera);
 
             base.Draw(gameTime);
         }
+        #endregion
     }
 }

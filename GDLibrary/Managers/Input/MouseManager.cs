@@ -28,27 +28,19 @@ namespace GDLibrary
         }
         #endregion
 
-        public MouseManager(Game game)
-            : base(game)
-        {
-
+        #region Constructors
+        public MouseManager(
+            Game game
+        ) : base(game) {
         }
+        #endregion
 
-        /// <summary>
-        /// Allows the game component to perform any initialization it needs to before starting
-        /// to run.  This is where it can query for any required services and load content.
-        /// </summary>
+        #region Methods
         public override void Initialize()
         {
-            // TODO: Add your initialization code here
-
             base.Initialize();
         }
-     
-        /// <summary>
-        /// Allows the game component to update itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+
         public override void Update(GameTime gameTime)
         {
             //store the old state
@@ -127,13 +119,13 @@ namespace GDLibrary
             return new Vector2(this.newState.X - screenCentre.X, this.newState.Y - screenCentre.Y);
         }
 
-        //has the mouse state changed since the last update?
+        //Has the mouse state changed since the last update?
         public bool IsStateChanged()
         {
             return (this.newState.Equals(oldState)) ? false : true;
         }
 
-        //did the mouse move above the limits of precision from centre position
+        //Did the mouse move above the limits of precision from centre position
         public bool IsStateChangedOutsidePrecision(float mousePrecision)
         {
             return ((Math.Abs(newState.X - oldState.X) > mousePrecision) || (Math.Abs(newState.Y - oldState.Y) > mousePrecision));
@@ -144,8 +136,7 @@ namespace GDLibrary
             return newState.ScrollWheelValue;
         }
 
-
-        //how much has the scroll wheel been moved since the last update?
+        //How much has the scroll wheel been moved since the last update?
         public int GetDeltaFromScrollWheel()
         {
             if (IsStateChanged()) //if state changed then return difference
@@ -158,5 +149,6 @@ namespace GDLibrary
         {
             Mouse.SetPosition((int)position.X, (int)position.Y);
         }
+        #endregion
     }
 }

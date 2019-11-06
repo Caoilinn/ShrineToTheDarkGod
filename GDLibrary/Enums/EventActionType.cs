@@ -24,6 +24,10 @@
         OnClick,
         OnHover,
 
+        //sent by game state manager
+        OnLose,
+        OnWin,
+
         //Sent by Camera Manager
         OnCameraSetActive,
         OnCameraCycle,

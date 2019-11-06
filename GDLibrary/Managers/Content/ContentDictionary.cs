@@ -7,9 +7,9 @@ Bugs:			None
 Fixes:			None
 */
 
-using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Content;
 
 namespace GDLibrary
 {
@@ -66,6 +66,7 @@ namespace GDLibrary
         #endregion
 
         #region Methods
+        //Add to dictionary using key
         public virtual bool Load(string assetPath, string key)
         {
             if (!this.dictionary.ContainsKey(key))
@@ -76,12 +77,13 @@ namespace GDLibrary
             return false;
         }
 
-        //Uses assetPath to form key string from regex
+        //Add to dictionary without key
         public virtual bool Load(string assetPath)
         {
             return Load(assetPath, StringUtility.ParseNameFromPath(assetPath));
         }
 
+        //Remove from dictionary
         public virtual bool Unload(string key)
         {
             if (this.dictionary.ContainsKey(key))
@@ -96,11 +98,13 @@ namespace GDLibrary
             return false;
         }
 
+        //Returns count of the pairs in dictionary
         public virtual int Count()
         {
             return this.dictionary.Count;
         }
 
+        //Free object from RAM - Generic
         public virtual void Dispose()
         {
             //Copy values from dictionary to list
@@ -117,6 +121,7 @@ namespace GDLibrary
             this.dictionary.Clear();
         }
 
+        //Free object from RAM
         public virtual void Dispose(V value)
         {
             //If a disposable object (e.g. model, sound, font, texture)

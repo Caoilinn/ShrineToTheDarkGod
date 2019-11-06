@@ -377,6 +377,11 @@ namespace GDLibrary
             foreach (Cue3D cue in cueList3D) cue.Cue.Resume();
         }
 
+        protected override void HandleInput(GameTime gameTime)
+        {
+
+        }
+
         public override void Update(GameTime gameTime)
         {
             this.audioEngine.Update();
