@@ -56,7 +56,7 @@ namespace GDLibrary
         EventData eventData;
         public override void Update(GameTime gameTime)
         { 
-            for (int i = 0; i < queue.Count; i++)
+            while(queue.Count > 0)
             {
                 eventData = queue.Dequeue();
                 Process(eventData);

@@ -50,6 +50,7 @@ namespace GDApp
 
         private List<String> soundEffectList = new List<String>();
         private List<TriggerVolume> triggerList = new List<TriggerVolume>();
+        private GameStateManager gameStateManager;
 
         public Main()
         {
@@ -114,7 +115,9 @@ namespace GDApp
             Components.Add(this.keyboardManager);
             #endregion
 
-            #region Gamepad Manager
+            #region Game State Manager
+            this.gameStateManager = new GameStateManager(this, this.eventDispatcher, StatusType.Update);
+            Components.Add(this.gameStateManager);
             #endregion
 
             #region SoundManager

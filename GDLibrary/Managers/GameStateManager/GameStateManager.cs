@@ -30,6 +30,11 @@ namespace GDLibrary
         #endregion
 
         #region Event Handling
+        protected override void RegisterForEventHandling(EventDispatcher eventDispatcher)
+        {
+            eventDispatcher.GameChanged += EventDispatcher_GameChanged;
+        }
+
         protected override void EventDispatcher_MenuChanged(EventData eventData)
         {
             //Did the event come from the main menu and is it a start game event
@@ -46,7 +51,7 @@ namespace GDLibrary
             }
         }
 
-        protected void EventDispatcher_GameChanged(EventData eventData)
+        private void EventDispatcher_GameChanged(EventData eventData)
         {
             if (eventData.EventType == EventActionType.OnWin)
             {
