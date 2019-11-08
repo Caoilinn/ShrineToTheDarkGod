@@ -52,6 +52,8 @@ namespace GDApp
         private List<TriggerVolume> triggerList = new List<TriggerVolume>();
         private GameStateManager gameStateManager;
 
+        private int[,,] levelMap;
+        
         public Main()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -75,13 +77,12 @@ namespace GDApp
             InitializeEventDispatcher();
             InitializeManagers();
             
-            int[,,] levelMap;
             float worldScale = 2.54f;
 
             LoadLevelFromFile();
 
-            levelMap = LoadMapFromFile();
-            InitializeMap(levelMap, 100, 100, 100, worldScale, 0, 5, 6, 4);
+            LoadMapFromFile();
+            InitializeMap(100, 100, 100, worldScale, 0, 5, 6, 4);
             InitializeCameras(worldScale, 1920, 1080);
 
             base.Initialize();
@@ -401,7 +402,7 @@ namespace GDApp
         private void LoadLevelFromFile()
         {
             if (File.Exists("App/Data/currentLevel.txt"))
-                GameStateManager.currentLevel = int.Parse(File.ReadAllText("App/Data/mapData.txt"));
+                GameStateManager.currentLevel = int.Parse(File.ReadAllText("App/Data/currentLevel.txt"));
             else
                 GameStateManager.currentLevel = 1;
         }
@@ -411,7 +412,7 @@ namespace GDApp
             File.WriteAllText("App/Data/mapData.txt", GameStateManager.currentLevel.ToString());
         }
 
-        private int[,,] LoadMapFromFile()
+        private void LoadMapFromFile()
         {
             #region Read File
             //Store all file data
@@ -425,15 +426,15 @@ namespace GDApp
             #endregion
 
             #region Determine Map Size
-            int[,,] levelMap = CalculateMapSize(layers);
+            CalculateMapSize(layers);
             #endregion
 
             #region Create Map
-            return CreateMap(layers, levelMap);
+            CreateMap(layers);
             #endregion
         }
 
-        private int[,,] CalculateMapSize(string[] layers)
+        private void CalculateMapSize(string[] layers)
         {
             int x = 0, y = 0, z = 0;
 
@@ -475,11 +476,10 @@ namespace GDApp
                 }
             }
 
-            //Create array based on map size
-            return new int[x, y, z];
+            this.levelMap = new int[x, y, z];
         }
 
-        private int[,,] CreateMap(string[] layers, int[,,] levelMap)
+        private void CreateMap(string[] layers)
         {
             int x = 0, y = 0, z = 0;
 
@@ -497,15 +497,15 @@ namespace GDApp
                 foreach (string line in lines)
                 {
                     #region Create Rooms
-                    CreateRooms(line, levelMap, x, y, z);
+                    CreateRooms(line, x, y, z);
                     #endregion
 
                     #region Create Sounds
-                    CreateSounds(line, levelMap, x, y, z);
+                    CreateSounds(line, x, y, z);
                     #endregion
 
                     #region Create Triggers
-                    CreateTriggers(line, levelMap, x, y, z);
+                    CreateTriggers(line, x, y, z);
                     #endregion
 
                     //Iterate z
@@ -518,11 +518,9 @@ namespace GDApp
                 //Iterate y
                 y++;
             }
-
-            return levelMap;
         }
 
-        private void CreateRooms(string line, int[,,] levelMap, int x, int y, int z)
+        private void CreateRooms(string line, int x, int y, int z)
         {
             //Create rooms line
             string roomsLine;
@@ -537,14 +535,14 @@ namespace GDApp
             foreach (string room in rooms)
             {
                 //Place room in map
-                levelMap[x, y, z] += int.Parse(room);
+                this.levelMap[x, y, z] += int.Parse(room);
 
                 //Iterate x
                 x++;
             }
         }
 
-        private void CreateSounds(string line, int[,,] levelMap, int x, int y, int z)
+        private void CreateSounds(string line, int x, int y, int z)
         {
             //Create sounds line
             string soundsLine;
@@ -559,14 +557,14 @@ namespace GDApp
             foreach (string sound in sounds)
             {
                 //Place room in map
-                levelMap[x, y, z] += (int.Parse(sound) << 5);
+                this.levelMap[x, y, z] += (int.Parse(sound) << 5);
 
                 //Iterate x
                 x++;
             }
         }
 
-        private void CreateTriggers(string line, int[,,] levelMap, int x, int y, int z)
+        private void CreateTriggers(string line, int x, int y, int z)
         {
             //Create sounds line
             string triggersLine;
@@ -581,14 +579,14 @@ namespace GDApp
             foreach (string trigger in triggers)
             {
                 //Place trigger in map
-                levelMap[x, y, z] += (int.Parse(trigger) << 11);
+                this.levelMap[x, y, z] += (int.Parse(trigger) << 11);
 
                 //Iterate x
                 x++;
             }
         }
 
-        private void InitializeMap(int[,,] levelMap, float cellWidth, float cellHeight, float cellDepth, float worldScale, int roomsStartPos, int reservedRoomBits, int reservedSoundBits, int reservedTriggerBits)
+        private void InitializeMap(float cellWidth, float cellHeight, float cellDepth, float worldScale, int roomsStartPos, int reservedRoomBits, int reservedSoundBits, int reservedTriggerBits)
         {
             Transform3D transform;
 
@@ -603,11 +601,11 @@ namespace GDApp
 
             #region Construct Cells
             //Loop through each element in the 3D level map array
-            for (int x = 0; x < levelMap.GetLength(0); x++)
+            for (int x = 0; x < this.levelMap.GetLength(0); x++)
             {
-                for (int y = 0; y < levelMap.GetLength(1); y++)
+                for (int y = 0; y < this.levelMap.GetLength(1); y++)
                 {
-                    for (int z = 0; z < levelMap.GetLength(2); z++)
+                    for (int z = 0; z < this.levelMap.GetLength(2); z++)
                     {
                         #region Calculate Transform
                         //Calculate the transform position of each component in the map
@@ -622,7 +620,7 @@ namespace GDApp
 
                         #region Construct Rooms
                         //Extract room from level map
-                        int roomType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(levelMap[x, y, z], reservedRoomBits, roomsStartPos);
+                        int roomType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], reservedRoomBits, roomsStartPos);
 
                         //If a room has been set
                         if (roomType > 0) 
@@ -633,7 +631,7 @@ namespace GDApp
 
                         #region Construct Sounds
                         //Extract sound from level map
-                        int soundType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(levelMap[x, y, z], reservedSoundBits, soundsStartPos);
+                        int soundType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], reservedSoundBits, soundsStartPos);
 
                         //If a sound has been set
                         if (soundType > 0)
@@ -644,7 +642,7 @@ namespace GDApp
 
                         #region Construct Triggers
                         //Extract trigger from level map
-                        int triggerType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(levelMap[x, y, z], reservedTriggerBits, triggersStartPos);
+                        int triggerType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], reservedTriggerBits, triggersStartPos);
 
                         //If a trigger has been set
                         if (triggerType > 0)

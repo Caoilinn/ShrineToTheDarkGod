@@ -66,7 +66,9 @@
     <Compile Include="Actor\Base\Actor2D.cs" />
     <Compile Include="Actor\Camera\Camera3D.cs" />
     <Compile Include="Actor\Camera\SecurityCamera3D.cs" />
+    <Compile Include="Actor\Drawn\3D\Collidable\Player\CharacterObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\CollidableObject.cs" />
+    <Compile Include="Actor\Drawn\3D\Collidable\Player\PlayerObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\TriangleMeshObject.cs" />
     <Compile Include="Actor\Drawn\3D\DrawnActor3D.cs" />
     <Compile Include="Actor\Drawn\3D\ModelObject.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="Controllers\3D\Base\ThirdPersonController.cs" />
     <Compile Include="Controllers\3D\Base\TrackController.cs" />
     <Compile Include="Controllers\3D\Base\UserInputController.cs" />
+    <Compile Include="Controllers\3D\Camera\Collidable\CollidableFirstPersonCameraController.cs" />
     <Compile Include="Controllers\3D\Camera\DollyCameraController.cs" />
     <Compile Include="Controllers\3D\Base\RailController.cs" />
     <Compile Include="Controllers\3D\Camera\FirstPersonCameraController.cs" />

@@ -81,8 +81,9 @@
     <Compile Include="App\Main.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\Data\levelData.txt" />
-    <Content Include="App\Data\mapData.txt" />
+    <Content Include="App\Data\mapData.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
