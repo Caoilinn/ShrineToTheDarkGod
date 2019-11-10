@@ -27,6 +27,7 @@ namespace GDApp
         private BasicEffect texturedVertexEffect;
 
         //Managers
+        private GameStateManager gameStateManager;
         private ManagerParameters managerParameters;
         private ObjectManager object3DManager;
         private CameraManager cameraManager;
@@ -46,25 +47,45 @@ namespace GDApp
 
         //Dictionaries
         private ContentDictionary<Model> modelDictionary;
+        private ContentDictionary<Model> collisionBoxDictionary;
         private ContentDictionary<Texture2D> textureDictionary;
         private ContentDictionary<SoundEffect> soundEffectDictionary;
         private ContentDictionary<SpriteFont> fontDictionary;
         private Dictionary<string, EffectParameters> effectDictionary;
 
+        //Lists
         private List<string> soundEffectList = new List<String>();
         private List<TriggerVolume> triggerList = new List<TriggerVolume>();
-        private GameStateManager gameStateManager;
 
+        //Debug
+        private PhysicsDebugDrawer physicsDebugDrawer;
+
+        //Map
         private int[,,] levelMap;
 
-        private int roomStartPos;
-        private int pickupStartPos;
-        private int triggerStartPos;
+        //Array Position
+        private int roomsStartPosition = 1;
+        private int pickupsStartPosition = 2;
+        private int triggersStartPosition = 3;
+        private int playersStartPosition = 4;
+        private int enemiesStartPosition = 5;
 
+        //Array Shift Position
+        private int roomsShiftPosition;
+        private int pickupsShiftPosition;
+        private int triggersShiftPosition;
+        private int enemiesShiftPosition;
+        private int playersShiftPosition;
+
+        //Array Reserved Bits
         private int reservedRoomBits;
         private int reservedPickupBits;
         private int reservedTriggerBits;
-        private PhysicsDebugDrawer physicsDebugDrawer;
+        private int reservedPlayerBits;
+        private int reservedEnemyBits;
+
+        //Player Posiiton
+        private Transform3D playerPosition;
 
         public Main()
         {
@@ -90,7 +111,7 @@ namespace GDApp
             
             float worldScale = 2.54f;
 
-            SetupBitArray(0, 5, 4, 4);
+            SetupBitArray(0, 5, 4, 4, 3, 2);
 
             LoadLevelFromFile();
             LoadMapFromFile();
@@ -211,10 +232,10 @@ namespace GDApp
             //this.texturedModelEffect.Alpha = 1;
 
             //Setup fog
-            this.modelEffect.FogColor = new Vector3(0.1f, 0.05f, 0.1f);
-            this.modelEffect.FogEnabled = true;
-            this.modelEffect.FogStart = 127;
-            this.modelEffect.FogEnd = 400;
+            //this.modelEffect.FogColor = new Vector3(0.1f, 0.05f, 0.1f);
+            //this.modelEffect.FogEnabled = true;
+            //this.modelEffect.FogStart = 127;
+            //this.modelEffect.FogEnd = 400;
 
             //Setup color ambience
             this.modelEffect.DiffuseColor = new Vector3(0, 0, 0);
@@ -247,128 +268,17 @@ namespace GDApp
 
             AddFirstPersonCamera(projectionParameters, viewport, depth);
             #endregion
+        }
 
-            #region Mini-map
-            //projectionParameters = new ProjectionParameters(
-            //    MathHelper.ToRadians(45),
-            //    aspectRatio,
-            //    nearClipPlane,
-            //    farClipPlane
-            //);
-
-            //viewport = new Viewport(100, 100, 175, 175);
-            //depth = 0f;
-
-            //AddSecurityCamera(projectionParameters, viewport, depth);
-            #endregion
-
-            #region Rail Camera
-            //transform = new Transform3D(
-            //    new Vector3(0, 5, 100),
-            //    Vector3.Zero,
-            //    Vector3.One, //scale makes no sense for a camera so we may add another Transform3D constructor flavour
-            //    -Vector3.UnitZ,
-            //    Vector3.UnitY
-            //);
-
-            //camera = new Camera3D(
-            //    "Rail Cam 1",
-            //    ActorType.Camera,
-            //    StatusType.Update, //cameras dont need to be drawn!
-            //    transform,
-            //    new ProjectionParameters(
-            //        MathHelper.ToRadians(45),
-            //        4 / 3.0f,
-            //        0.1f,
-            //        500
-            //    )
-            //);
-
-            //RailParameters rail = new RailParameters(
-            //    "Rail 1",
-            //    new Vector3(-60, 10, 50),
-            //    new Vector3(60, 10, 10)
-            //);
-
-            //IController railController = new RailController(
-            //    "Rail Controller 1",
-            //    ControllerType.Rail,
-            //    this.drivableModel,
-            //    rail
-            //);
-
-            //camera.AttachController(railController);
-            //this.cameraManager.Add(camera);
-            #endregion
-
-            #region Track Camera
-            //transform = new Transform3D(
-            //    Vector3.Zero,
+        private void AddFirstPersonCamera(ProjectionParameters projectionParameters, Viewport viewport, float depth)
+        {
+            //Transform3D transform = new Transform3D(
+            //    new Vector3(635, 381, 1143),
             //    Vector3.Zero,
             //    Vector3.One,
             //    -Vector3.UnitZ,
             //    Vector3.UnitY
             //);
-
-            //camera = new Camera3D("Track Cam 1",
-            //    ActorType.Camera,
-            //    StatusType.Update,
-            //    transform,
-            //    new ProjectionParameters(
-            //        MathHelper.PiOver4,
-            //        (float)graphics.PreferredBackBufferWidth / graphics.PreferredBackBufferHeight,
-            //        0.1f, 750
-            //    )
-            //);
-
-            //Transform3DCurve transform3DCurve = new Transform3DCurve(CurveLoopType.Constant);
-            //transform3DCurve.Add(new Vector3(0, 10, 200), -Vector3.UnitZ, Vector3.UnitY, 0);
-            //transform3DCurve.Add(new Vector3(0, 15, 180), -Vector3.UnitZ, Vector3.UnitY, 2);  //A
-            //transform3DCurve.Add(new Vector3(0, 10, 170), -Vector3.UnitZ, Vector3.UnitX, 3);  //B
-            //transform3DCurve.Add(new Vector3(0, 5, 160), -Vector3.UnitZ, -Vector3.UnitY, 4);  //C
-            //transform3DCurve.Add(new Vector3(0, 10, 150), -Vector3.UnitZ, -Vector3.UnitX, 5);  //D
-            //transform3DCurve.Add(new Vector3(0, 15, 140), -Vector3.UnitZ, Vector3.UnitY, 6);  //E
-            //transform3DCurve.Add(new Vector3(0, 15, 130), -Vector3.UnitZ, Vector3.UnitY, 11);  //A
-            //transform3DCurve.Add(new Vector3(0, 10, 120), -Vector3.UnitZ, Vector3.UnitX, 18);  //B
-            //transform3DCurve.Add(new Vector3(0, 5, 110), -Vector3.UnitZ, -Vector3.UnitY, 19);  //C
-            //transform3DCurve.Add(new Vector3(0, 10, 100), -Vector3.UnitZ, -Vector3.UnitX, 20);  //D
-            //transform3DCurve.Add(new Vector3(0, 15, 90), -Vector3.UnitZ, Vector3.UnitY, 30);  //E
-
-            //TrackController trackController = new TrackController(
-            //    "Track Controller 1",
-            //    ControllerType.Track,
-            //    transform3DCurve
-            //);
-
-            //camera.AttachController(trackController);
-            //this.cameraManager.Add(camera);
-            #endregion
-        }
-
-        private void AddFirstPersonCamera(ProjectionParameters projectionParameters, Viewport viewport, float depth)
-        {
-            Transform3D transform = new Transform3D(
-                new Vector3(635, 381, 1143),
-                Vector3.Zero,
-                Vector3.One,
-                -Vector3.UnitZ,
-                Vector3.UnitY
-            );
-
-            viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
-
-            Camera3D camera = new Camera3D(
-                "FP Cam 1",
-                ActorType.Camera,
-                StatusType.Update,
-                transform,
-                projectionParameters,
-                viewport,
-                depth
-            );
-
-            Vector3 movementVector = new Vector3(100, 100, 100) * 2.54f;
-            Vector3 rotationVector = new Vector3(0, 90, 0);
 
             //IController firstPersonCameraController = new FirstPersonCameraController(
             //    "FP Controller 1",
@@ -382,9 +292,32 @@ namespace GDApp
             //    rotationVector
             //);
 
+            this.playerPosition = new Transform3D(
+                new Vector3(635, 381, 1143),
+                Vector3.Zero,
+                Vector3.One,
+                -Vector3.UnitZ,
+                Vector3.UnitY
+            );
+
+            viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+
+            Camera3D camera = new Camera3D(
+                "FP Cam 1",
+                ActorType.Camera,
+                StatusType.Update,
+                this.playerPosition,
+                projectionParameters,
+                viewport,
+                depth
+            );
+
+            Vector3 movementVector = new Vector3(100, 100, 100) * 2.54f;
+            Vector3 rotationVector = new Vector3(0, 90, 0);
+
             float width = 254;
             float height = 254;
-            Vector3 translationalOffset = new Vector3(0, 0, 127);
+            Vector3 translationalOffset = new Vector3(0, 0, 0);
 
             IController collidableFirstPersonCameraController = new CollidableFirstPersonCameraController(
                 "CFPC Controller 1",
@@ -405,53 +338,24 @@ namespace GDApp
             camera.AttachController(collidableFirstPersonCameraController);
             this.cameraManager.Add(camera);
         }
-
-        private void AddSecurityCamera(ProjectionParameters projectionParameters, Viewport viewport, float depth)
-        {
-            Transform3D transform = new Transform3D(
-                new Vector3(50, 10, 10),
-                Vector3.Zero,
-                Vector3.Zero,
-                -Vector3.UnitX,
-                Vector3.UnitY
-            );
-
-            Camera3D camera = new Camera3D(
-                "Map Cam 1",
-                ActorType.Camera,
-                StatusType.Update,
-                transform,
-                projectionParameters,
-                viewport,
-                depth
-            );
-
-            camera.AttachController(
-                new SecurityCameraController(
-                    "scc1",
-                    ControllerType.Security,
-                    15,
-                    2,
-                    Vector3.UnitX
-                )
-            );
-
-            this.cameraManager.Add(camera);
-        }
         #endregion
 
         #region Map Setup
-        private void SetupBitArray(int roomStartPos, int reservedRoomBits, int reservedPickupBits, int reservedTriggerBits)
+        private void SetupBitArray(int roomsShiftPosition, int reservedRoomBits, int reservedPickupBits, int reservedTriggerBits, int reservedPlayerBits, int reservedEnemybits)
         {
             //Reserve bits for each map component
             this.reservedRoomBits = reservedRoomBits;
             this.reservedPickupBits = reservedPickupBits;
             this.reservedTriggerBits = reservedTriggerBits;
+            this.reservedPlayerBits = reservedPlayerBits;
+            this.reservedEnemyBits = reservedEnemybits;
 
-            //Calculate start pos of each array component, relative to previous component
-            this.roomStartPos = roomStartPos;
-            this.pickupStartPos = this.roomStartPos + this.reservedRoomBits;
-            this.triggerStartPos = this.pickupStartPos + this.reservedPickupBits;
+            //Calculate shift for each map component, relative to previous component
+            this.roomsShiftPosition = roomsShiftPosition;
+            this.pickupsShiftPosition = this.roomsShiftPosition + this.reservedRoomBits;
+            this.triggersShiftPosition = this.pickupsShiftPosition + this.reservedPickupBits;
+            this.playersShiftPosition = this.triggersShiftPosition + this.reservedTriggerBits;
+            this.enemiesShiftPosition = this.playersShiftPosition + this.reservedPlayerBits;
         }
 
         private void LoadLevelFromFile()
@@ -551,18 +455,26 @@ namespace GDApp
                 //Loop through each line
                 foreach (string line in lines)
                 {
-                    #region Create Rooms
-                    CreateRooms(line, x, y, z);
+                    #region Place Rooms
+                    PlaceComponents(line, this.roomsStartPosition, this.roomsShiftPosition, x, y, z);
                     #endregion
 
-                    #region Create Pickups
-                    CreatePickups(line, x, y, z);
+                    #region Place Pickups
+                    PlaceComponents(line, this.pickupsStartPosition, this.pickupsShiftPosition, x, y, z);
                     #endregion
 
-                    #region Create Triggers
-                    CreateTriggers(line, x, y, z);
+                    #region Place Triggers
+                    PlaceComponents(line, this.triggersStartPosition, this.triggersShiftPosition, x, y, z);
                     #endregion
 
+                    #region Place Players
+                    PlaceComponents(line, this.playersStartPosition, this.playersShiftPosition, x, y, z);
+                    #endregion
+
+                    #region Place Enemies
+                    PlaceComponents(line, this.enemiesStartPosition, this.enemiesShiftPosition, x, y, z);
+                    #endregion
+                   
                     //Iterate z
                     z++;
                 }
@@ -575,66 +487,21 @@ namespace GDApp
             }
         }
 
-        private void CreateRooms(string line, int x, int y, int z)
+        private void PlaceComponents(string line, int index, int shiftPosition, int x, int y, int z)
         {
-            //Create a line to rperesent rooms
-            string roomsLine;
-            roomsLine = line.Split('-')[1].Trim();
-            roomsLine = roomsLine.Replace('|', ' ');
-            roomsLine = roomsLine.Replace(" ", string.Empty);
+            //Filter information
+            line = line.Split('-')[index].Trim();
+            line = line.Replace('|', ' ');
+            line = line.Replace(" ", string.Empty);
 
-            //Split the rooms line into an array of rooms
-            string[] rooms = roomsLine.Split(',');
+            //Split the line into an array of cells
+            string[] cells = line.Split(',');
 
-            //Loop through each room
-            foreach (string room in rooms)
+            //Loop through each cell
+            foreach (string cell in cells)
             {
                 //Place room in map
-                this.levelMap[x, y, z] += (int.Parse(room));
-
-                //Iterate x
-                x++;
-            }
-        }
-
-        private void CreatePickups(string line, int x, int y, int z)
-        {
-            //Create a line to represent pickups
-            string pickupsLine;
-            pickupsLine = line.Split('-')[2].Trim();
-            pickupsLine = pickupsLine.Replace('|', ' ');
-            pickupsLine = pickupsLine.Replace(" ", string.Empty);
-
-            //Split the sounds line into an array of sounds
-            string[] pickups = pickupsLine.Split(',');
-
-            //Loop through each sound
-            foreach (string pickup in pickups)
-            {
-                //Place pickup in map
-                this.levelMap[x, y, z] += (int.Parse(pickup) << this.pickupStartPos);
-
-                //Iterate x
-                x++;
-            }
-        }
-
-        private void CreateTriggers(string line, int x, int y, int z)
-        {
-            //Create a line to represent triggers
-            string triggersLine;
-            triggersLine = line.Split('-')[3].Trim();
-            triggersLine = triggersLine.Replace('|', ' ');
-            triggersLine = triggersLine.Replace(" ", string.Empty);
-
-            //Split the triggers line into an array of triggers
-            string[] triggers = triggersLine.Split(',');
-
-            //Loop through each triggr
-            foreach (string trigger in triggers)
-            {
-                //Place trigger in map
-                this.levelMap[x, y, z] += (int.Parse(trigger) << this.triggerStartPos);
+                this.levelMap[x, y, z] += (int.Parse(cell) << shiftPosition);
 
                 //Iterate x
                 x++;
@@ -671,35 +538,57 @@ namespace GDApp
 
                         #region Construct Rooms
                         //Extract room from level map
-                        int roomType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], this.reservedRoomBits, this.roomStartPos);
+                        int roomType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], this.reservedRoomBits, this.roomsShiftPosition);
 
                         //If a room has been set
                         if (roomType > 0) 
                             
                             //Construct room
-                            ConstructRooms(roomType, transform);
+                            ConstructRoom(roomType, transform);
                         #endregion
 
                         #region Construct Pickups
                         //Extract sound from level map
-                        int pickupType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], this.reservedPickupBits, this.pickupStartPos);
+                        int pickupType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], this.reservedPickupBits, this.pickupsShiftPosition);
 
                         //If a pickup has been set
                         if (pickupType > 0)
                             
-                            //Construct sound
-                            ConstructPickups(pickupType, transform);
+                            //Construct pickup
+                            ConstructPickup(pickupType, transform);
                         #endregion
 
                         #region Construct Triggers
                         //Extract trigger from level map
-                        int triggerType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], this.reservedTriggerBits, this.triggerStartPos);
+                        int triggerType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], this.reservedTriggerBits, this.triggersShiftPosition);
 
                         //If a trigger has been set
                         if (triggerType > 0)
 
                             //Construct trigger
-                            ConstructTriggers(triggerType, transform);
+                            ConstructTrigger(triggerType, transform);
+                        #endregion
+
+                        #region Spawn Players
+                        //Extract player from level map
+                        int playerType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], this.reservedPlayerBits, this.playersShiftPosition);
+
+                        //If a player has been set
+                        if (playerType > 0)
+
+                            //Spawn player
+                            SpawnPlayer(transform);
+                        #endregion
+
+                        #region Spawn Enemies
+                        //Extract enemy from level map
+                        int enemyType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], this.reservedEnemyBits, this.enemiesShiftPosition);
+
+                        ////If an enemy has been set
+                        if (enemyType > 0)
+
+                            //    //Spawn enemy
+                            SpawnEnemy(enemyType, transform);
                         #endregion
                     }
                 }
@@ -707,11 +596,14 @@ namespace GDApp
             #endregion
         }
 
-        public void ConstructRooms(int roomType, Transform3D transform)
+        public void ConstructRoom(int roomType, Transform3D transform)
         {
             //Load model and effect parameters
             EffectParameters effectParameters = this.effectDictionary["roomEffect" + roomType];
             Model model = this.modelDictionary["roomModel" + roomType];
+
+            //Load collision box
+            Model collisionBox = this.collisionBoxDictionary["roomCollision" + roomType];
 
             //Create model
             this.staticModel = new TriangleMeshObject(
@@ -721,24 +613,42 @@ namespace GDApp
                 transform,
                 effectParameters,
                 model,
-                model,
+                collisionBox,
                 new MaterialProperties()
             );
 
             //Add collision
-            //this.staticModel.AddPrimitive(new JigLibX.Geometry.Plane(transform.Up, transform.Translation), new MaterialProperties(0.8f, 0.8f, 0.7f));
             this.staticModel.Enable(true, 1);
 
             //Add to object manager list
             this.object3DManager.Add(staticModel);
         }
 
-        public void ConstructPickups(int pickupType, Transform3D transform)
+        public void ConstructPickup(int pickupType, Transform3D transform)
         {
-            //Create pickup       
+            //Load model and effect parameters
+            //EffectParameters effectParameters = this.effectDictionary["pickupEffect" + pickupType];
+            //Model model = this.modelDictionary["pickupModel" + pickupType];
+
+            //Create model
+            //this.staticModel = new CollidableObject(
+            //    "room" + pickupType,
+            //    ActorType.CollidableArchitecture,
+            //    StatusType.Update | StatusType.Drawn,
+            //    transform,
+            //    effectParameters,
+            //    model
+            //);
+
+            //Add collision
+            //this.staticModel.AddPrimitive(new JigLibX.Geometry.Plane(transform.Up, transform.Translation), new MaterialProperties(0.8f, 0.8f, 0.7f));
+            //this.staticModel.Enable(true, 1);
+
+            //Add to object manager list
+            //this.object3DManager.Add(staticModel);
         }
 
-        public void ConstructTriggers(int triggerType, Transform3D transform)
+        public void ConstructTrigger(int triggerType, Transform3D transform)
         {
             //Determine trigger type
             switch (triggerType)
@@ -774,6 +684,16 @@ namespace GDApp
                     break;
             }
         }
+        
+        public void SpawnPlayer(Transform3D transform)
+        {
+            this.playerPosition = transform;
+        }
+
+        public void SpawnEnemy(int enemyType, Transform3D transform)
+        {
+
+        }
         #endregion
 
         #region Content
@@ -793,6 +713,9 @@ namespace GDApp
             //Models
             this.modelDictionary = new ContentDictionary<Model>("Model Dictionary", this.Content);
 
+            //Collision Boxes
+            this.collisionBoxDictionary = new ContentDictionary<Model>("Collision Box Dictionary", this.Content);
+
             //Textures
             this.textureDictionary = new ContentDictionary<Texture2D>("Texture Dictionary", this.Content);
 
@@ -810,6 +733,10 @@ namespace GDApp
         {
             #region Models
             LoadModels();
+            #endregion
+
+            #region Collision Boxes
+            LoadCollisionBoxes();
             #endregion
 
             #region Textures
@@ -859,6 +786,30 @@ namespace GDApp
             #endregion
         }
 
+        public void LoadCollisionBoxes()
+        {
+            #region Room Collision
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_001", "roomCollision1");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_002", "roomCollision2");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_003", "roomCollision3");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_004", "roomCollision4");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_005", "roomCollision5");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_006", "roomCollision6");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_007", "roomCollision7");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_008", "roomCollision8");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_009", "roomCollision9");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_010", "roomCollision10");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_011", "roomCollision11");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_012", "roomCollision12");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_013", "roomCollision13");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_014", "roomCollision14");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_015", "roomCollision15");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_016", "roomCollision16");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_017", "roomCollision17");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_018", "roomCollision18");
+            #endregion
+        }
+
         public void LoadTextures()
         {
             #region Room Textures
@@ -886,7 +837,7 @@ namespace GDApp
         public void LoadEffects()
         {
             #region Room Effects
-            this.effectDictionary.Add("roomEffect1", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture1"], Color.DarkGray, 1));
+            this.effectDictionary.Add("roomEffect1", new EffectParameters(this.modelEffect, null, Color.Blue, 1));
             this.effectDictionary.Add("roomEffect2", new EffectParameters(this.modelEffect, null, Color.DarkGray, 1));
             this.effectDictionary.Add("roomEffect3", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture3"], Color.DarkGray, 1));
             this.effectDictionary.Add("roomEffect4", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture4"], Color.DarkGray, 1));

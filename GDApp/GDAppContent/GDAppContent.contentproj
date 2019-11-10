@@ -29,47 +29,47 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Models\cylinder.FBX">
+    <Compile Include="Assets\Models\Generics\cylinder.FBX">
       <Name>cylinder</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Models\dome.FBX">
+    <Compile Include="Assets\Models\Generics\dome.FBX">
       <Name>dome</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Models\hedra.FBX">
+    <Compile Include="Assets\Models\Generics\hedra.FBX">
       <Name>hedra</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Models\octahedron.FBX">
+    <Compile Include="Assets\Models\Generics\octahedron.FBX">
       <Name>octahedron</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Models\prism.FBX">
+    <Compile Include="Assets\Models\Generics\prism.FBX">
       <Name>prism</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Models\sphere.FBX">
+    <Compile Include="Assets\Models\Generics\sphere.FBX">
       <Name>sphere</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Models\spindle.FBX">
+    <Compile Include="Assets\Models\Generics\spindle.FBX">
       <Name>spindle</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Models\torus.FBX">
+    <Compile Include="Assets\Models\Generics\torus.FBX">
       <Name>torus</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Models\torusknot.FBX">
+    <Compile Include="Assets\Models\Generics\torusknot.FBX">
       <Name>torusknot</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -173,10 +173,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Assets\Models\Characters\" />
+    <Folder Include="Assets\Models\Pickups\" />
     <Folder Include="Assets\Textures\Debug\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Models\test.FBX">
+    <Compile Include="Assets\Models\Generics\test.FBX">
       <Name>test</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -275,12 +277,12 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Models\box.FBX">
+    <Compile Include="Assets\Models\Generics\box.FBX">
       <Name>box</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Models\plane.FBX">
+    <Compile Include="Assets\Models\Generics\plane.FBX">
       <Name>plane</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -440,7 +442,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Models\gate.FBX">
+    <Compile Include="Assets\Models\Generics\gate.FBX">
       <Name>gate</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -454,6 +456,105 @@
     </Compile>
     <Compile Include="Assets\Textures\Environment\Rooms\room_texture_018.png">
       <Name>room_texture_018</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_001.FBX">
+      <Name>room_collision_001</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_002.FBX">
+      <Name>room_collision_002</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_003.FBX">
+      <Name>room_collision_003</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_004.FBX">
+      <Name>room_collision_004</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_005.FBX">
+      <Name>room_collision_005</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_006.FBX">
+      <Name>room_collision_006</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_007.FBX">
+      <Name>room_collision_007</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_008.FBX">
+      <Name>room_collision_008</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_009.FBX">
+      <Name>room_collision_009</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_010.FBX">
+      <Name>room_collision_010</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_011.FBX">
+      <Name>room_collision_011</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_012.FBX">
+      <Name>room_collision_012</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_013.FBX">
+      <Name>room_collision_013</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_014.FBX">
+      <Name>room_collision_014</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_015.FBX">
+      <Name>room_collision_015</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_016.FBX">
+      <Name>room_collision_016</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_017.FBX">
+      <Name>room_collision_017</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Rooms\room_collision_018.FBX">
+      <Name>room_collision_018</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Models\Rooms\room_001_001.tga">
+      <Name>room_001_001</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
