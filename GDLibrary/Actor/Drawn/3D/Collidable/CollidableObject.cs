@@ -9,7 +9,7 @@ namespace GDLibrary
 {
     public class CollidableObject : ModelObject
     {
-        #region Variables
+        #region Fields
         private Body body;
         private CollisionSkin collision;
         private float mass;
@@ -67,8 +67,8 @@ namespace GDLibrary
             this.collision = new CollisionSkin(this.body);
             this.body.CollisionSkin = this.collision;
 
-            //we will only add this event handling in a class that sub-classes CollidableObject e.g. PickupCollidableObject or PlayerCollidableObject
-            //this.body.CollisionSkin.callbackFn += CollisionSkin_callbackFn;
+            //We will only add this event handling in a class that sub-classes CollidableObject e.g. PickupCollidableObject or PlayerCollidableObject
+            //e.g. this.body.CollisionSkin.callbackFn += CollisionSkin_callbackFn;
         }
         #endregion
 
@@ -84,13 +84,20 @@ namespace GDLibrary
 
         protected Vector3 SetMass(float mass)
         {
-            PrimitiveProperties primitiveProperties = new PrimitiveProperties(PrimitiveProperties.MassDistributionEnum.Solid, PrimitiveProperties.MassTypeEnum.Density, mass);
+            PrimitiveProperties primitiveProperties = new PrimitiveProperties(
+                PrimitiveProperties.MassDistributionEnum.Solid, 
+                PrimitiveProperties.MassTypeEnum.Density, 
+                mass
+            );
 
-            float junk;
-            Vector3 com;
-            Matrix it, itCoM;
+            this.collision.GetMassProperties(
+                primitiveProperties,
+                out float junk,
+                out Vector3 com,
+                out Matrix it,
+                out Matrix itCoM
+            );
 
-            this.collision.GetMassProperties(primitiveProperties, out junk, out com, out it, out itCoM);
             body.BodyInertia = itCoM;
             body.Mass = junk;
 

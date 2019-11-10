@@ -45,6 +45,7 @@ namespace GDLibrary
         }
         #endregion
 
+        #region Constructors
         public ModelObject(
             string id, 
             ActorType actorType, 
@@ -68,12 +69,12 @@ namespace GDLibrary
                 model.CopyAbsoluteBoneTransformsTo(this.boneTransforms);
             }
         }
+        #endregion
 
+        #region Methods
         public override bool Equals(object obj)
         {
-            ModelObject other = obj as ModelObject;
-
-            if (other == null)
+            if (!(obj is ModelObject other))
                 return false;
             else if (this == other)
                 return true;
@@ -92,12 +93,12 @@ namespace GDLibrary
         public new object Clone()
         {
             ModelObject actor = new ModelObject(
-                "clone - " + ID, //deep
-                this.ActorType,   //deep
-                this.StatusType, //deep
-                (Transform3D) this.Transform.Clone(),  //deep
-                (EffectParameters) this.EffectParameters.Clone(), //hybrid - shallow (texture and effect) and deep (all other fields) 
-                this.model //shallow i.e. a reference
+                "clone - " + ID,                                    //Deep
+                this.ActorType,                                     //Deep
+                this.StatusType,                                    //Deep
+                (Transform3D) this.Transform.Clone(),               //Deep
+                (EffectParameters) this.EffectParameters.Clone(),   //Hybrid - shallow (texture and effect) and deep (all other fields) 
+                this.model                                          //Shallow i.e. reference
             );
 
             return actor;
@@ -105,33 +106,32 @@ namespace GDLibrary
 
         public override void Draw(GameTime gameTime, Camera3D camera)
         {
-            //added these two local variables to make the code a little less dense and more readable
+            //Added these two local variables to make the code a little less dense and more readable
             BasicEffect effect = this.EffectParameters.Effect;
             EffectParameters effectParameters = this.EffectParameters;
 
-            //set object position, rotation, scale and set camera
+            //Set object position, rotation, scale and set camera
             effect.View = camera.View;
             effect.Projection = camera.Projection;
             effect.World = this.Transform.World;
 
-            //set surface properties for drawn object
+            //Set surface properties for drawn object
             effect.Texture = effectParameters.Texture;
             effect.Alpha = effectParameters.Alpha;
             effect.DiffuseColor = effectParameters.DiffuseColor.ToVector3();
 
-            //set all the variables above for the next pass that we draw!
+            //Set all the variables above for the next pass that we draw!
             effect.CurrentTechnique.Passes[0].Apply();
 
             foreach (ModelMesh mesh in this.Model.Meshes)
             {
                 foreach (ModelMeshPart part in mesh.MeshParts)
-                {
                     part.Effect = this.EffectParameters.Effect;
-                }
-                this.EffectParameters.Effect.World
-                    = this.BoneTransforms[mesh.ParentBone.Index] * this.Transform.World;
+
+                this.EffectParameters.Effect.World = this.BoneTransforms[mesh.ParentBone.Index] * this.Transform.World;
                 mesh.Draw();
             }
         }
+        #endregion
     }
 }

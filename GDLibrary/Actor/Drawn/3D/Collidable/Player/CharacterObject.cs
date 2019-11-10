@@ -17,6 +17,10 @@ namespace GDLibrary
     /// </summary>
     public class CharacterObject : CollidableObject
     {
+        #region Fields
+        #endregion
+
+        #region Properties
         public Character CharacterBody
         {
             get
@@ -24,23 +28,30 @@ namespace GDLibrary
                 return this.Body as Character;
             }
         }
+        #endregion
 
+        #region Constructors
         public CharacterObject(
-            string id, 
-            ActorType actorType, 
+            string id,
+            ActorType actorType,
             StatusType statusType,
             Transform3D transform,
-            EffectParameters effectParameters, 
+            EffectParameters effectParameters,
             Model model,
-            float radius, 
-            float height, 
-            float accelerationRate, 
+            float radius,
+            float height,
+            float accelerationRate,
             float decelerationRate
         ) : base(id, actorType, statusType, transform, effectParameters, model) {
-            this.Body = new Character(accelerationRate, decelerationRate);
+            this.Body = new Character(
+                accelerationRate, 
+                decelerationRate
+            );
+
             this.Collision = new CollisionSkin(Body);
             this.Body.ExternalData = this;
             this.Body.CollisionSkin = this.Collision;
+
             Capsule capsule = new Capsule(
                 Vector3.Zero, 
                 Matrix.CreateRotationX(MathHelper.PiOver2), 
@@ -53,8 +64,9 @@ namespace GDLibrary
                 (int) MaterialTable.MaterialID.NormalSmooth
             );
         }
+        #endregion
 
-
+        #region Methods
         public override void Enable(bool bImmovable, float mass)
         {
             base.Enable(bImmovable, mass);
@@ -67,7 +79,7 @@ namespace GDLibrary
 
         public override void Update(GameTime gameTime)
         {
-            //update actual position of the model e.g. used by rail camera controllers
+            //Update actual position of the model e.g. used by rail camera controllers
             this.Transform.Translation = this.Body.Transform.Position;
             base.Update(gameTime);
         }
@@ -80,20 +92,20 @@ namespace GDLibrary
                 this.Transform.Orientation *
                 Matrix.CreateTranslation(this.Body.Position);
         }
-
-
-        //add equals, gethashcode, clone, remove...
+        #endregion
     }
 
     class ASkinPredicate : CollisionSkinPredicate1
     {
-        public override bool ConsiderSkin(CollisionSkin skin0)
+        #region Methods
+        public override bool ConsiderSkin(CollisionSkin skin)
         {
-            if (!(skin0.Owner is Character))
+            if (!(skin.Owner is Character))
                 return true;
             else
                 return false;
         }
+        #endregion
     }
 
     public class Character : Body
@@ -105,7 +117,6 @@ namespace GDLibrary
         public float accelerationRate { get; set; }
         public float decelerationRate { get; set; }
         public Vector3 DesiredVelocity { get; set; }
-
         #endregion
 
         #region Properties
@@ -129,13 +140,17 @@ namespace GDLibrary
         }
         #endregion
 
-        public Character(float accelerationRate, float decelerationRate)
-            : base()
-        {
+        #region Constructor
+        public Character(
+            float accelerationRate, 
+            float decelerationRate
+        ) : base() {
             this.accelerationRate = accelerationRate;
             this.decelerationRate = decelerationRate;
         }
+        #endregion
 
+        #region Methods
         public void DoJump(float jumpHeight)
         {
             this.jumpHeight = jumpHeight;
@@ -175,7 +190,7 @@ namespace GDLibrary
 
             deltaVel.Y = -2.0f;
 
-            // start fast, slow down slower
+            //Start fast, slow down slower
             if (running)
                 deltaVel *= accelerationRate; //acceleration multiplier
             else
@@ -186,6 +201,6 @@ namespace GDLibrary
             this.isJumping = false;
             AddGravityToExternalForce();
         }
+        #endregion
     }
-
 }

@@ -32,5 +32,6 @@
         OnCameraSetActive,
         OnCameraCycle,
         OnCameraToggle,
+        OnToggleDebug,
     }
 }

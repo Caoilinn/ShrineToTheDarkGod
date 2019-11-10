@@ -18,6 +18,7 @@
         Sound3D,
         Video,
         GlobalSound,
-        Game
+        Game,
+        Debug
     }
 }

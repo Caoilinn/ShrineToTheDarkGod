@@ -87,6 +87,9 @@
     <Compile Include="Controllers\3D\Camera\FlightCameraController.cs" />
     <Compile Include="Controllers\3D\Camera\SecurityCameraController.cs" />
     <Compile Include="Controllers\Base\Controller.cs" />
+    <Compile Include="Debug\DebugDrawer.cs" />
+    <Compile Include="Debug\Physics\BoundingBoxDrawer.cs" />
+    <Compile Include="Debug\Physics\PhysicsDebugDrawer.cs" />
     <Compile Include="Enums\ControllerType.cs" />
     <Compile Include="Enums\EventActionType.cs" />
     <Compile Include="Enums\EventCategoryType.cs" />
@@ -145,7 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Actor\Drawn\2D\" />
-    <Folder Include="Debug\" />
     <Folder Include="GDLibrary\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

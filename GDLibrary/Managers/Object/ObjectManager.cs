@@ -17,9 +17,26 @@ namespace GDLibrary
         #region Fields
         private CameraManager cameraManager;
         private List<DrawnActor3D> drawList;
+        private List<DrawnActor3D> opaqueDrawList;
+        private List<DrawnActor3D> transparentDrawList;
         #endregion
 
         #region Properties
+        public List<DrawnActor3D> OpaqueDrawList
+        {
+            get
+            {
+                return this.opaqueDrawList;
+            }
+        }
+
+        public List<DrawnActor3D> TransparentDrawList
+        {
+            get
+            {
+                return this.transparentDrawList;
+            }
+        }
         #endregion
 
         #region Constructor

@@ -46,9 +46,7 @@ namespace GDLibrary
         #region Methods
         public override bool Equals(object obj)
         {
-            DrawnActor3D other = obj as DrawnActor3D;
-
-            if (other == null)
+            if (!(obj is DrawnActor3D other))
                 return false;
             else if (this == other)
                 return true;
@@ -77,7 +75,6 @@ namespace GDLibrary
         //Notice we add a Draw() method since this will be the parent class for ModelObject, PRimitiveObject, CollidableObject
         public virtual void Draw(GameTime gameTime, Camera3D camera)
         {
-
         }
         #endregion
     }
