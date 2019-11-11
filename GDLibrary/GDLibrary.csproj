@@ -43,7 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="JigLibX">
-      <HintPath>..\..\..\..\3D Game Development\Exercises\Week6\GDApp-Class\GDLibrary\Dependencies\Physics\JigLibX.dll</HintPath>
+      <HintPath>..\..\..\OneDrive - Dundalk Institute of Technology\Documents\College\Third Year\3D Game Development\GDApp - 15 - Adding the First Person Collidable Camera\Dependencies\Physics\JigLibX.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
