@@ -39,14 +39,12 @@ namespace GDLibrary
             EffectParameters effectParameters,
             Model model,
             float radius,
-            float height,
-            float accelerationRate,
-            float decelerationRate
+            float height
         ) : base(id, actorType, statusType, transform, effectParameters, model) {
-            this.Body = new Character(
-                accelerationRate, 
-                decelerationRate
-            );
+            //this.Body = new Character(
+            //    accelerationRate, 
+            //    decelerationRate
+            //);
 
             this.Collision = new CollisionSkin(Body);
             this.Body.ExternalData = this;

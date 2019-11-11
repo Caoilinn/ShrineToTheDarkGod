@@ -18,12 +18,24 @@ namespace GDLibrary
     {
         #region Fields
         private PlayerObject playerObject;
-        private float width, height;
-        private float accelerationRate, decelerationRate, mass, jumpHeight;
+        private float width;
+        private float height;
+        private float mass;
+        private float jumpHeight;
+        private float accelerationRate;
+        private float decelerationRate;
         private Vector3 translationOffset;
         #endregion
 
         #region Properties
+        public PlayerObject PlayerObject
+        {
+            get
+            {
+                return this.playerObject;
+            }
+        }
+
         public float Width
         {
             get
@@ -176,8 +188,6 @@ namespace GDLibrary
                     this.MoveKeys,
                     width,
                     height,
-                    accelerationRate,
-                    decelerationRate,
                     jumpHeight,
                     translationOffset,
                     this.ManagerParameters.KeyboardManager

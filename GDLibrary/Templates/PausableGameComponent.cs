@@ -64,7 +64,16 @@ namespace GDLibrary
             eventDispatcher.MenuChanged += EventDispatcher_MenuChanged;
         }
 
-        protected virtual void EventDispatcher_MenuChanged(EventData eventData) { }
+        protected virtual void EventDispatcher_MenuChanged(EventData eventData)
+        {
+            if (eventData.EventType == EventActionType.OnStart)
+
+                this.statusType = StatusType.Update;
+
+            else if (eventData.EventType == EventActionType.OnPause)
+
+                this.statusType = StatusType.Off;
+        }
         #endregion
 
         #region Methods

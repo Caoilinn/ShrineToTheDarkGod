@@ -29,6 +29,7 @@ namespace GDLibrary
                 this.eventDispatcher = value;
             }
         }
+
         public StatusType StatusType
         {
             get
@@ -42,48 +43,59 @@ namespace GDLibrary
         }
         #endregion
 
-        public PausableDrawableGameComponent(Game game, EventDispatcher eventDispatcher, StatusType statusType)
-            : base(game)
-        {
-            //store handle to event dispatcher for event registration and de-registration
+        #region Contructors
+        public PausableDrawableGameComponent(
+            Game game, 
+            EventDispatcher eventDispatcher, 
+            StatusType statusType
+        ) : base(game) {
+            //Store handle to event dispatcher for event registration and de-registration
             this.eventDispatcher = eventDispatcher;
 
-            //allows us to start the game component with drawing and/or updating paused
+            //Allows us to start the game component with drawing and/or updating paused
             this.statusType = statusType;
 
-            //register with the event dispatcher for the events of interest
+            //Register with the event dispatcher for the events of interest
             RegisterForEventHandling(eventDispatcher);
         }
+        #endregion
 
         #region Event Handling
         protected virtual void RegisterForEventHandling(EventDispatcher eventDispatcher)
         {
-            eventDispatcher.MenuChanged += EventDispatcher_MenuChanged;
+            this.eventDispatcher.MenuChanged += EventDispatcher_MenuChanged;
         }
 
         protected virtual void EventDispatcher_MenuChanged(EventData eventData)
         {
+            if (eventData.EventType == EventActionType.OnStart)
 
+                this.statusType = StatusType.Drawn | StatusType.Update;
+
+            else if (eventData.EventType == EventActionType.OnPause)
+
+                this.statusType = StatusType.Off;
         }
         #endregion
 
+        #region Methods
         public override void Update(GameTime gameTime)
         {
-            //screen manager needs to listen to input even when paused i.e. hide/show menu - see ScreenManager::HandleInput()
+            //Screen manager needs to listen to input even when paused i.e. hide/show menu - see ScreenManager::HandleInput()
             HandleInput(gameTime);
 
-            if ((this.statusType & StatusType.Update) != 0) //if update flag is set
+            //If update flag is set
+            if ((this.statusType & StatusType.Update) != 0)
             {
                 ApplyUpdate(gameTime);
                 base.Update(gameTime);
             }
         }
 
-        
-
         public override void Draw(GameTime gameTime)
         {
-            if ((this.statusType & StatusType.Drawn) != 0) //if draw flag is set
+            //If draw flag is set
+            if ((this.statusType & StatusType.Drawn) != 0)
             {
                 ApplyDraw(gameTime);
                 base.Draw(gameTime);
@@ -92,32 +104,27 @@ namespace GDLibrary
 
         protected virtual void ApplyUpdate(GameTime gameTime)
         {
-
         }
 
         protected virtual void ApplyDraw(GameTime gameTime)
         {
-
         }
 
         protected virtual void HandleInput(GameTime gameTime)
         {
-
         }
 
         protected virtual void HandleMouse(GameTime gameTime)
         {
-
         }
 
         protected virtual void HandleKeyboard(GameTime gameTime)
         {
-
         }
 
         protected virtual void HandleGamePad(GameTime gameTime)
         {
-
         }
+        #endregion
     }
 }

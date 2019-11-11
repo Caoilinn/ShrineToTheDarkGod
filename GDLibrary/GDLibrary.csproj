@@ -66,6 +66,12 @@
     <Compile Include="Actor\Base\Actor2D.cs" />
     <Compile Include="Actor\Camera\Camera3D.cs" />
     <Compile Include="Actor\Camera\SecurityCamera3D.cs" />
+    <Compile Include="Actor\Drawn\2D\DrawnActor2D.cs" />
+    <Compile Include="Actor\Drawn\2D\UI\UIButtonObjects.cs" />
+    <Compile Include="Actor\Drawn\2D\UI\UIObject.cs" />
+    <Compile Include="Actor\Drawn\2D\UI\UITextObject.cs" />
+    <Compile Include="Actor\Drawn\2D\UI\UITextureObject.cs" />
+    <Compile Include="Actor\Drawn\3D\Collidable\Enemy\Enemy.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Player\CharacterObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\CollidableObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Player\PlayerObject.cs" />
@@ -87,22 +93,34 @@
     <Compile Include="Controllers\3D\Camera\FlightCameraController.cs" />
     <Compile Include="Controllers\3D\Camera\SecurityCameraController.cs" />
     <Compile Include="Controllers\Base\Controller.cs" />
+    <Compile Include="Controllers\Physics\PhysicsController.cs" />
     <Compile Include="Debug\DebugDrawer.cs" />
     <Compile Include="Debug\Physics\BoundingBoxDrawer.cs" />
     <Compile Include="Debug\Physics\PhysicsDebugDrawer.cs" />
     <Compile Include="Enums\ControllerType.cs" />
     <Compile Include="Enums\EventActionType.cs" />
     <Compile Include="Enums\EventCategoryType.cs" />
+    <Compile Include="Enums\PickingBehaviourType.cs" />
+    <Compile Include="Enums\PlayStatusType.cs" />
     <Compile Include="Enums\TriggerType.cs" />
     <Compile Include="Events\Base\EventDataEqualityComparer.cs" />
     <Compile Include="Events\Data\EventData.cs" />
     <Compile Include="Events\Base\EventDispatcher.cs" />
+    <Compile Include="Interfaces\IEffectParameters.cs" />
+    <Compile Include="Managers\Combat\CombatManager.cs" />
     <Compile Include="Managers\Content\ContentDictionary.cs" />
     <Compile Include="Managers\GameStateManager\GameStateManager.cs" />
+    <Compile Include="Managers\Menu\MenuManager.cs" />
+    <Compile Include="Managers\Physics\PhysicsManager.cs" />
+    <Compile Include="Managers\Picking\PickingManager.cs" />
     <Compile Include="Managers\Sound\Cue3D.cs" />
     <Compile Include="Managers\Sound\SoundManager.cs" />
+    <Compile Include="Managers\UI\UIManager.cs" />
+    <Compile Include="Parameters\Effect\BasicEffectParameters.cs" />
+    <Compile Include="Parameters\Effect\DualTextureEffectParameters.cs" />
     <Compile Include="Utility\BitwiseExtraction.cs" />
     <Compile Include="Utility\ScreenUtility.cs" />
+    <Compile Include="Utility\StatefulBool.cs" />
     <Compile Include="Volumes\Triggers\TriggerVolume.cs" />
     <Compile Include="Parameters\Camera\RailParameters.cs" />
     <Compile Include="Parameters\Curve\Curve1D.cs" />
@@ -129,7 +147,6 @@
     <Compile Include="Parameters\Transforms\3D\Transform3D.cs" />
     <Compile Include="Templates\PausableDrawableGameComponent.cs" />
     <Compile Include="Templates\PausableGameComponent.cs" />
-    <Compile Include="Templates\SimpleDrawableComponent.cs" />
     <Compile Include="Utility\CollisionUtility.cs" />
     <Compile Include="Utility\StringUtility.cs" />
     <Compile Include="Utility\Integer.cs" />
@@ -147,7 +164,6 @@
     <None Include="Class Diagram - Week 6.cd" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Actor\Drawn\2D\" />
     <Folder Include="GDLibrary\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

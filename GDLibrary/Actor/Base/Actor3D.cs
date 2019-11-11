@@ -7,6 +7,7 @@ Fixes:			None
 */
 
 using System;
+using Microsoft.Xna.Framework;
 
 namespace GDLibrary
 {
@@ -42,11 +43,26 @@ namespace GDLibrary
         #endregion
 
         #region Methods
+        public override Matrix GetWorldMatrix()
+        {
+            //Returns the compound matrix transformation that will scale, rotate and place the actor in the 3D world of the game
+            return this.transform.World;
+        }
+
+        public override bool Remove()
+        {
+            //Tag for garbage collection
+            this.transform = null;
+            return base.Remove();
+        }
+
+        public virtual void Draw(GameTime gameTime)
+        {
+        }
+
         public override bool Equals(object obj)
         {
-            Actor3D other = obj as Actor3D;
-
-            if (other == null)
+            if (!(obj is Actor3D other))
                 return false;
             else if (this == other)
                 return true;

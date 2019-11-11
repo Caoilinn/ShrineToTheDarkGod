@@ -126,8 +126,6 @@ namespace GDLibrary
                             additionalParameters
                         )
                     );
-
-
                 }
 
                 //If the cameras current current positon is near the target position
@@ -153,7 +151,6 @@ namespace GDLibrary
 
                     //Prevent keypress
                     this.inMotion = true;
-
                 }
             }
             #endregion
