@@ -174,7 +174,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Models\Characters\" />
-    <Folder Include="Assets\Models\Pickups\" />
     <Folder Include="Assets\Textures\Debug\" />
   </ItemGroup>
   <ItemGroup>
@@ -555,6 +554,34 @@
   <ItemGroup>
     <Compile Include="Assets\Models\Rooms\room_001_001.tga">
       <Name>room_001_001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Models\Pickups\potion.fbx">
+      <Name>potion</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Models\Pickups\box.FBX">
+      <Name>box</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Models\Pickups\test.fbx">
+      <Name>test</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Models\Pickups\CubeDiffuseMap.tga">
+      <Name>CubeDiffuseMap</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

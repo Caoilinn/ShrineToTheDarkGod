@@ -86,6 +86,7 @@ namespace GDApp
 
         //Player Posiiton
         private Transform3D playerPosition;
+        private BasicEffect pickupEffect;
 
         public Main()
         {
@@ -219,19 +220,12 @@ namespace GDApp
 
             //Setup textures
             this.modelEffect = new BasicEffect(graphics.GraphicsDevice);
-            this.modelEffect.TextureEnabled = true;
+            this.modelEffect.TextureEnabled = false;
+            this.modelEffect.LightingEnabled = false;
             this.modelEffect.EnableDefaultLighting();
             this.modelEffect.PreferPerPixelLighting = true;
 
-            //this.texturedModelEffect = new BasicEffect(graphics.GraphicsDevice);
-            //this.texturedModelEffect.TextureEnabled = true;
-            //this.texturedModelEffect.EnableDefaultLighting();
-            //this.texturedModelEffect.PreferPerPixelLighting = true;
-            //this.texturedModelEffect.DiffuseColor = new Vector3(1,1,1);
-            //this.texturedModelEffect.Texture = null;
-            //this.texturedModelEffect.Alpha = 1;
-
-            //Setup fog
+            ////Setup fog
             //this.modelEffect.FogColor = new Vector3(0.1f, 0.05f, 0.1f);
             //this.modelEffect.FogEnabled = true;
             //this.modelEffect.FogStart = 127;
@@ -241,6 +235,19 @@ namespace GDApp
             this.modelEffect.DiffuseColor = new Vector3(0, 0, 0);
             this.modelEffect.AmbientLightColor = new Vector3(0.05f, 0, 0.05f);
             this.modelEffect.EmissiveColor = new Vector3(0.05f, 0, 0.05f);
+
+            this.pickupEffect = new BasicEffect(graphics.GraphicsDevice);
+            this.pickupEffect.TextureEnabled = true;
+            this.pickupEffect.EnableDefaultLighting();
+            this.pickupEffect.PreferPerPixelLighting = true;
+
+            //this.texturedModelEffect = new BasicEffect(graphics.GraphicsDevice);
+            //this.texturedModelEffect.TextureEnabled = true;
+            //this.texturedModelEffect.EnableDefaultLighting();
+            //this.texturedModelEffect.PreferPerPixelLighting = true;
+            //this.texturedModelEffect.DiffuseColor = new Vector3(1,1,1);
+            //this.texturedModelEffect.Texture = null;
+            //this.texturedModelEffect.Alpha = 1;
         }
         #endregion
 
@@ -627,25 +634,25 @@ namespace GDApp
         public void ConstructPickup(int pickupType, Transform3D transform)
         {
             //Load model and effect parameters
-            //EffectParameters effectParameters = this.effectDictionary["pickupEffect" + pickupType];
-            //Model model = this.modelDictionary["pickupModel" + pickupType];
+            EffectParameters effectParameters = this.effectDictionary["pickupEffect" + pickupType];
+            Model model = this.modelDictionary["pickupModel" + pickupType];
 
             //Create model
-            //this.staticModel = new CollidableObject(
-            //    "room" + pickupType,
-            //    ActorType.CollidableArchitecture,
-            //    StatusType.Update | StatusType.Drawn,
-            //    transform,
-            //    effectParameters,
-            //    model
-            //);
+            this.staticModel = new CollidableObject(
+                "pickup" + pickupType,
+                ActorType.CollidableArchitecture,
+                StatusType.Update | StatusType.Drawn,
+                transform,
+                effectParameters,
+                model
+            );
 
             //Add collision
-            //this.staticModel.AddPrimitive(new JigLibX.Geometry.Plane(transform.Up, transform.Translation), new MaterialProperties(0.8f, 0.8f, 0.7f));
-            //this.staticModel.Enable(true, 1);
+            this.staticModel.AddPrimitive(new JigLibX.Geometry.Box(transform.Translation, Matrix.Identity, new Vector3(254, 254, 254)), new MaterialProperties(0.8f, 0.8f, 0.7f));
+            this.staticModel.Enable(true, 1);
 
             //Add to object manager list
-            //this.object3DManager.Add(staticModel);
+            this.object3DManager.Add(staticModel);
         }
 
         public void ConstructTrigger(int triggerType, Transform3D transform)
@@ -692,7 +699,6 @@ namespace GDApp
 
         public void SpawnEnemy(int enemyType, Transform3D transform)
         {
-
         }
         #endregion
 
@@ -779,7 +785,11 @@ namespace GDApp
             this.modelDictionary.Load("Assets/Models/Rooms/room_018", "roomModel18");
             #endregion
 
-            #region Prop Models
+            #region Pickup Models
+            this.modelDictionary.Load("Assets/Models/Pickups/box", "pickupModel1");
+            this.modelDictionary.Load("Assets/Models/Pickups/box", "pickupModel2");
+            this.modelDictionary.Load("Assets/Models/Pickups/box", "pickupModel3");
+            this.modelDictionary.Load("Assets/Models/Pickups/box", "pickupModel4");
             #endregion
 
             #region Character Models
@@ -856,6 +866,13 @@ namespace GDApp
             this.effectDictionary.Add("roomEffect17", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture16"], Color.DarkGray, 1));
             this.effectDictionary.Add("roomEffect18", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture16"], Color.DarkGray, 1));
             #endregion
+
+            #region Pickup Effects
+            this.effectDictionary.Add("pickupEffect1", new EffectParameters(this.modelEffect, null, Color.White, 1));
+            this.effectDictionary.Add("pickupEffect2", new EffectParameters(this.modelEffect, null, Color.White, 1));
+            this.effectDictionary.Add("pickupEffect3", new EffectParameters(this.modelEffect, null, Color.White, 1));
+            this.effectDictionary.Add("pickupEffect4", new EffectParameters(this.modelEffect, null, Color.White, 1));
+            #endregion
         }
 
         public void LoadSounds()
@@ -887,10 +904,10 @@ namespace GDApp
             foreach (TriggerVolume trigger in this.triggerList)
             {
                 //If the actor is within the trigger, and the trigger has not yet fired
-                if (trigger.isActorWithin(this.cameraManager[0]) && !trigger.HasFired)
+                if (trigger.isActorWithin(this.cameraManager.ActiveCamera) && !trigger.HasFired)
                 {
                     //Fire the trigger
-                    trigger.fireEvent();
+                    trigger.FireEvent();
 
                     //Flag the trigger as fired
                     trigger.HasFired = true;
@@ -900,8 +917,14 @@ namespace GDApp
                 if (!trigger.isActorWithin(this.cameraManager[0]))
                 {
                     trigger.HasFired = false;
+                    trigger.PauseEvent();
                 }
             }
+        }
+
+        private void DemoProximityTrigger()
+        {
+
         }
         #endregion
 
