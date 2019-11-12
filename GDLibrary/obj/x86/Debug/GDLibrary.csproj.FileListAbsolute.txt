@@ -42,3 +42,4 @@ C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.c
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csproj.CopyComplete
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.dll
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.pdb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csprojAssemblyReference.cache
