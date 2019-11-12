@@ -94,6 +94,7 @@ namespace GDLibrary
         }
         #endregion
 
+        #region Constructors
         public Camera3D(
             string id, 
             ActorType actorType, 
@@ -125,22 +126,21 @@ namespace GDLibrary
             Viewport viewport,
             float drawDepth
         ) : this (id, actorType, statusType, Transform3D.Zero, ProjectionParameters.StandardMediumFourThree, viewport, 0) {
-
         }
+        #endregion
 
+        #region Methods
         public override bool Equals(object obj)
         {
-            Camera3D other = obj as Camera3D;
-
-            if (other == null)
+            if (!(obj is Camera3D other))
                 return false;
             else if (this == other)
                 return true;
 
             return Vector3.Equals(this.Transform.Translation, other.Transform.Translation)
                 && Vector3.Equals(this.Transform.Look, other.Transform.Look)
-                    && Vector3.Equals(this.Transform.Up, other.Transform.Up)
-                        && this.ProjectionParameters.Equals(other.ProjectionParameters);
+                && Vector3.Equals(this.Transform.Up, other.Transform.Up)
+                && this.ProjectionParameters.Equals(other.ProjectionParameters);
         }
 
         public override int GetHashCode() 
@@ -164,6 +164,7 @@ namespace GDLibrary
                 this.drawDepth
             );
         }
+
         public override string ToString()
         {
             return this.ID
@@ -172,5 +173,11 @@ namespace GDLibrary
                 + ", Up: " + MathUtility.Round(this.Transform.Up, 0)
                 + ", Depth: " + this.drawDepth;
         }
+
+        public string GetDescription()
+        {
+            return "Camera: " + this.ID;
+        }
+        #endregion
     }
 }

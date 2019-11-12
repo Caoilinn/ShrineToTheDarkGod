@@ -64,6 +64,7 @@ namespace GDLibrary
         }
         #endregion
 
+        #region Constructors & Others
         public Integer2(int x, int y)
         {
             this.x = x;
@@ -86,6 +87,38 @@ namespace GDLibrary
         {
             return "(x: " + x + ", " + "y: " + y + ")";
         }
+        public override bool Equals(object obj)
+        {
+            Integer2 integer = obj as Integer2;
+            return integer != null &&
+                   x == integer.x &&
+                   y == integer.y;
+        }
+        public override int GetHashCode()
+        {
+            var hashCode = 1502939027;
+            hashCode = hashCode * -1521134295 + x.GetHashCode();
+            hashCode = hashCode * -1521134295 + y.GetHashCode();
+            return hashCode;
+        }
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+        #endregion
+
+
+        #region Operators and Typecast
+        //see https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/operator
+        public static Integer2 operator +(Integer2 a, Integer2 b)
+        {
+            return new Integer2(a.x + b.x, a.y + b.y);
+        }
+        public static Integer2 operator -(Integer2 a, Integer2 b)
+        {
+            return new Integer2(a.x - b.x, a.y - b.y);
+        }
+
 
         public static Integer2 operator *(Integer2 value, int multiplier)
         {
@@ -95,17 +128,28 @@ namespace GDLibrary
         {
             return value * multiplier;
         }
+
+        public static Integer2 operator /(Integer2 value, int divisor)
+        {
+            return new Integer2(value.X / divisor, value.Y / divisor);
+        }
+        public static Integer2 operator /(int divisor, Integer2 value)
+        {
+            return value / divisor;
+        }
+
+        //see https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/implicit
+        //typecasting requires use of the implicit keyword
         public static implicit operator Vector2(Integer2 value)
         {
             return new Vector2(value.X, value.Y);
         }
-
-        //to do - add /, + - operator methods
-
-        public object Clone()
+        public static implicit operator Integer2(Vector2 value)
         {
-            return this.MemberwiseClone();
+            return new Vector2(value.X, value.Y);
         }
-    }
 
+        //TODO - add /, + - operator methods
+        #endregion
+    }
 }

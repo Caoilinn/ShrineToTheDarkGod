@@ -29,9 +29,41 @@ namespace GDLibrary
                 this.effectParameters = value;
             }
         }
+
+        public float Alpha
+        {
+            get
+            {
+                return this.EffectParameters.Alpha;
+            }
+            set
+            {
+                //Opaque to transparent AND valid (i.e. 0 <= x < 1)
+                if (this.EffectParameters.Alpha == 1 && value < 1)
+                {
+                    EventDispatcher.Publish(new EventData("OpTr", this, EventActionType.OnOpaqueToTransparent, EventCategoryType.Opacity));
+                }
+
+                //Transparent to opaque
+                else if (this.EffectParameters.Alpha < 1 && value == 1)
+                {
+                    EventDispatcher.Publish(new EventData("TrOp", this, EventActionType.OnTransparentToOpaque, EventCategoryType.Opacity));
+                }
+
+                this.EffectParameters.Alpha = value;
+            }
+        }
         #endregion
 
         #region Constructors
+        public DrawnActor3D(
+            string id,
+            ActorType actorType,
+            Transform3D transform,
+            EffectParameters effectParameters
+        ) : this(id, actorType, StatusType.Drawn | StatusType.Update, transform, effectParameters) {
+        }
+
         public DrawnActor3D(
             string id, 
             ActorType actorType, 
@@ -46,9 +78,7 @@ namespace GDLibrary
         #region Methods
         public override bool Equals(object obj)
         {
-            DrawnActor3D other = obj as DrawnActor3D;
-
-            if (other == null)
+            if (!(obj is DrawnActor3D other))
                 return false;
             else if (this == other)
                 return true;
@@ -58,26 +88,34 @@ namespace GDLibrary
 
         public override int GetHashCode()
         {
-            int hash = 31 + this.effectParameters.GetHashCode();
+            int hash = 1;
+            hash = hash * 31 + this.effectParameters.GetHashCode();
             hash = hash * 43 + base.GetHashCode();
             return hash;
         }
 
         public new object Clone()
         {
-            return new DrawnActor3D(
+            IActor actor = new DrawnActor3D(
                 "Clone - " + ID,                                //Deep
                 this.ActorType,                                 //Deep
                 this.StatusType,                                //Deep - a simple numeric type
                 (Transform3D)this.Transform.Clone(),            //Deep - calls the clone for Transform3D explicitly
                 (EffectParameters)this.EffectParameters.Clone() //Hybrid - shallow (texture and effect) and deep (all other fields)
             );
+
+            //Clone each of the (behavioural) controllers
+            if (this.ControllerList != null)
+                foreach (IController controller in this.ControllerList)
+                    actor.AttachController((IController)controller.Clone());
+
+            return actor;
         }
 
-        //Notice we add a Draw() method since this will be the parent class for ModelObject, PRimitiveObject, CollidableObject
-        public virtual void Draw(GameTime gameTime, Camera3D camera)
+        public override bool Remove()
         {
-
+            this.effectParameters = null;
+            return base.Remove();
         }
         #endregion
     }

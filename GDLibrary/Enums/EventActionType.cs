@@ -32,5 +32,12 @@
         OnCameraSetActive,
         OnCameraCycle,
         OnCameraToggle,
+        OnToggleDebug,
+        OnRemoveActor,
+        OnAddActor,
+        OnOpaqueToTransparent,
+        OnTransparentToOpaque,
+        OnNonePicked,
+        OnObjectPicked,
     }
 }

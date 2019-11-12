@@ -43,7 +43,27 @@ namespace GDLibrary
                 this.boneTransforms = value;
             }
         }
+
+        public BoundingSphere BoundingSphere
+        {
+            get
+            {
+                //Bug fix for disappearing skybox plane - scale the bounding sphere up by 10%
+                return this.model.Meshes[model.Root.Index].BoundingSphere.Transform(Matrix.CreateScale(1.1f) * this.GetWorldMatrix());
+            }
+        }
         #endregion
+
+        #region Constructors
+        public ModelObject(
+            string id, 
+            ActorType actorType,
+            Transform3D transform, 
+            EffectParameters effectParameters, 
+            Model model
+        ) : this(id, actorType, StatusType.Update | StatusType.Drawn, transform, effectParameters, model) {
+
+        }
 
         public ModelObject(
             string id, 
@@ -67,13 +87,25 @@ namespace GDLibrary
                 this.boneTransforms = new Matrix[this.model.Bones.Count];
                 model.CopyAbsoluteBoneTransformsTo(this.boneTransforms);
             }
+
+            InitializeBoneTransforms();
+        }
+        #endregion
+
+        #region Methods
+        private void InitializeBoneTransforms()
+        {
+            //Load bone transforms and copy transfroms to transform array (transforms)
+            if (this.model != null)
+            {
+                this.boneTransforms = new Matrix[this.model.Bones.Count];
+                model.CopyAbsoluteBoneTransformsTo(this.boneTransforms);
+            }
         }
 
         public override bool Equals(object obj)
         {
-            ModelObject other = obj as ModelObject;
-
-            if (other == null)
+            if (!(obj is ModelObject other))
                 return false;
             else if (this == other)
                 return true;
@@ -92,46 +124,45 @@ namespace GDLibrary
         public new object Clone()
         {
             ModelObject actor = new ModelObject(
-                "clone - " + ID, //deep
-                this.ActorType,   //deep
-                this.StatusType, //deep
-                (Transform3D) this.Transform.Clone(),  //deep
-                (EffectParameters) this.EffectParameters.Clone(), //hybrid - shallow (texture and effect) and deep (all other fields) 
-                this.model //shallow i.e. a reference
+                "clone - " + ID,                                    //Deep
+                this.ActorType,                                     //Deep
+                this.StatusType,                                    //Deep
+                (Transform3D) this.Transform.Clone(),               //Deep
+                (EffectParameters) this.EffectParameters.Clone(),   //Hybrid - shallow (texture and effect) and deep (all other fields) 
+                this.model                                          //Shallow i.e. reference
             );
 
             return actor;
         }
 
-        public override void Draw(GameTime gameTime, Camera3D camera)
-        {
-            //added these two local variables to make the code a little less dense and more readable
-            BasicEffect effect = this.EffectParameters.Effect;
-            EffectParameters effectParameters = this.EffectParameters;
+        //public override void Draw(GameTime gameTime, Camera3D camera)
+        //{
+        //    ////Added these two local variables to make the code a little less dense and more readable
+        //    //BasicEffect effect = this.EffectParameters.Effect;
+        //    //EffectParameters effectParameters = this.EffectParameters;
 
-            //set object position, rotation, scale and set camera
-            effect.View = camera.View;
-            effect.Projection = camera.Projection;
-            effect.World = this.Transform.World;
+        //    ////Set object position, rotation, scale and set camera
+        //    //effect.View = camera.View;
+        //    //effect.Projection = camera.Projection;
+        //    //effect.World = this.Transform.World;
 
-            //set surface properties for drawn object
-            effect.Texture = effectParameters.Texture;
-            effect.Alpha = effectParameters.Alpha;
-            effect.DiffuseColor = effectParameters.DiffuseColor.ToVector3();
+        //    ////Set surface properties for drawn object
+        //    //effect.Texture = effectParameters.Texture;
+        //    //effect.Alpha = effectParameters.Alpha;
+        //    //effect.DiffuseColor = effectParameters.DiffuseColor.ToVector3();
 
-            //set all the variables above for the next pass that we draw!
-            effect.CurrentTechnique.Passes[0].Apply();
+        //    ////Set all the variables above for the next pass that we draw!
+        //    //effect.CurrentTechnique.Passes[0].Apply();
 
-            foreach (ModelMesh mesh in this.Model.Meshes)
-            {
-                foreach (ModelMeshPart part in mesh.MeshParts)
-                {
-                    part.Effect = this.EffectParameters.Effect;
-                }
-                this.EffectParameters.Effect.World
-                    = this.BoneTransforms[mesh.ParentBone.Index] * this.Transform.World;
-                mesh.Draw();
-            }
-        }
+        //    //foreach (ModelMesh mesh in this.Model.Meshes)
+        //    //{
+        //    //    foreach (ModelMeshPart part in mesh.MeshParts)
+        //    //        part.Effect = this.EffectParameters.Effect;
+
+        //    //    this.EffectParameters.Effect.World = this.BoneTransforms[mesh.ParentBone.Index] * this.Transform.World;
+        //    //    mesh.Draw();
+        //    //}
+        //}
+        #endregion
     }
 }

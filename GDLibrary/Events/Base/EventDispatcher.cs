@@ -15,26 +15,38 @@ namespace GDLibrary
 {
     public class EventDispatcher : GameComponent
     {
-        //See Queue doc - https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=netframework-4.7.1
+        #region Static
         private static Queue<EventData> queue; //stores events in arrival sequence
         private static HashSet<EventData> uniqueSet; //prevents the same event from existing in the stack for a single update cycle (e.g. when playing a sound based on keyboard press)
-      
-        //A delegate is basically a list - the list contains a pointer to a function - this function pointer comes from the object wishing to be notified when the event occurs.
+        #endregion
+
+        #region Delegates
+        public delegate void GameEventHandler(EventData eventData);
         public delegate void CameraEventHandler(EventData eventData);
-        public delegate void MenuEventHandler(EventData eventData);
+        public delegate void MenuChangedEventHandler(EventData eventData);
         public delegate void Sound2DEventHandler(EventData eventData);
         public delegate void Sound3DEventHandler(EventData eventData);
         public delegate void GlobalSoundEventHandler(EventData eventData);
-        public delegate void GameEventHandler(EventData eventData);
+        public delegate void OpacityEventHandler(EventData eventData);
+        public delegate void AddActorEventHandler(EventData eventData);
+        public delegate void RemoveActorEventHandler(EventData eventData);
+        public delegate void DebugEventHandler(EventData eventData);
+        #endregion
 
-        //An event is either null (not yet happened) or non-null - when the event occurs the delegate reads through its list and calls all the listening functions
+        #region Events
+        public event GameEventHandler GameChanged;
         public event CameraEventHandler CameraChanged;
-        public event MenuEventHandler MenuChanged;
+        public event MenuChangedEventHandler MenuChanged;
         public event Sound2DEventHandler Sound2DChanged;
         public event Sound3DEventHandler Sound3DChanged;
         public event GlobalSoundEventHandler GlobalSoundChanged;
-        public event GameEventHandler GameChanged;
+        public event OpacityEventHandler OpacityChanged;
+        public event AddActorEventHandler AddActorChanged;
+        public event RemoveActorEventHandler RemoveActorChanged;
+        public event DebugEventHandler DebugChanged;
+        #endregion
 
+        #region Constuctors
         public EventDispatcher(
             Game game, 
             int initialSize
@@ -42,10 +54,14 @@ namespace GDLibrary
             queue = new Queue<EventData>(initialSize);
             uniqueSet = new HashSet<EventData>(new EventDataEqualityComparer());
         }
+        #endregion
+
+        #region Class-Specific Methods
+        EventData eventData;
 
         public static void Publish(EventData eventData)
         {
-            //this prevents the same event being added multiple times within a single update e.g. 10x bell ring sounds
+            //This prevents the same event being added multiple times within a single update e.g. 10x bell ring sounds
             if (!uniqueSet.Contains(eventData))
             {
                 queue.Enqueue(eventData);
@@ -53,7 +69,6 @@ namespace GDLibrary
             }
         }
 
-        EventData eventData;
         public override void Update(GameTime gameTime)
         { 
             while(queue.Count > 0)
@@ -72,12 +87,16 @@ namespace GDLibrary
             //One case for each category type
             switch (eventData.EventCategoryType)
             {
-                case EventCategoryType.MainMenu:
-                    OnMenu(eventData);
+                case EventCategoryType.Game:
+                    OnGameChanged(eventData);
                     break;
 
                 case EventCategoryType.Camera:
-                    OnCamera(eventData);
+                    OnCameraChanged(eventData);
+                    break;
+
+                case EventCategoryType.Menu:
+                    OnMenuChanged(eventData);
                     break;
 
                 case EventCategoryType.Sound2D:
@@ -92,23 +111,43 @@ namespace GDLibrary
                     OnGlobalSound(eventData);
                     break;
 
-                case EventCategoryType.Game:
-                    OnGameChanged(eventData);
+                case EventCategoryType.Opacity:
+                    OnOpacity(eventData);
+                    break;
+
+                case EventCategoryType.SystemAdd:
+                    OnAddActor(eventData);
+                    break;
+
+                case EventCategoryType.SystemRemove:
+                    OnRemoveActor(eventData);
+                    break;
+
+                case EventCategoryType.Debug:
+                    OnDebug(eventData);
                     break;
 
                 default:
                     break;
             }
         }
+        #endregion
+
+        #region Event Methods
+        //Called when the game state has changed (next level, reset level etc.)
+        protected virtual void OnGameChanged(EventData eventData)
+        {
+            GameChanged?.Invoke(eventData);
+        }
 
         //Called when a camera event needs to be generated
-        protected virtual void OnCamera(EventData eventData)
+        protected virtual void OnCameraChanged(EventData eventData)
         {
             CameraChanged?.Invoke(eventData);
         }
 
         //Called when a menu change is requested
-        protected virtual void OnMenu(EventData eventData)
+        protected virtual void OnMenuChanged(EventData eventData)
         {
             MenuChanged?.Invoke(eventData);
         }
@@ -130,11 +169,30 @@ namespace GDLibrary
         {
             GlobalSoundChanged?.Invoke(eventData);
         }
-        
-        //Called when the game state has changed (next level, reset level etc.)
-        protected virtual void OnGameChanged(EventData eventData)
+
+        //Called when a drawn objects opacity changes
+        protected virtual void OnOpacity(EventData eventData)
         {
-            GameChanged?.Invoke(eventData);
+            OpacityChanged?.Invoke(eventData);
         }
+
+        //Called when a drawn objects needs to be added - see PickingManager::DoFireNewObject()
+        protected virtual void OnAddActor(EventData eventData)
+        {
+            AddActorChanged?.Invoke(eventData);
+        }
+
+        //Called when a drawn objects needs to be removed - see UIMouseObject::HandlePickedObject()
+        protected virtual void OnRemoveActor(EventData eventData)
+        {
+            RemoveActorChanged?.Invoke(eventData);
+        }
+
+        //Called when a debug related event occurs (e.g. show/hide debug info)
+        protected virtual void OnDebug(EventData eventData)
+        {
+            DebugChanged?.Invoke(eventData);
+        }
+        #endregion
     }
 }

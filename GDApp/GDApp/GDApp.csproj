@@ -76,9 +76,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\Data\AppData.cs" />
+    <Compile Include="App\Menu\MyMenuManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="App\Main.cs" />
+    <Compile Include="Main.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Data\mapData.txt">

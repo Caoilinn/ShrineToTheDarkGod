@@ -173,9 +173,9 @@
                 && (actor.Transform.Translation.Z >= this.z && actor.Transform.Translation.Z <= (this.z + (this.depth)));
         }
 
-        public void fireEvent()
+        public void FireEvent()
         {
-            switch (triggerType)
+            switch (this.triggerType)
             {
                 case TriggerType.PlaySound:
                     EventDispatcher.Publish(
@@ -225,6 +225,22 @@
 
                 case TriggerType.ActivateEnemy:
                     //To Do
+                    break;
+            }
+        }
+        
+        public void PauseEvent()
+        {
+            switch(this.triggerType)
+            {
+                case TriggerType.PlaySound:
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnStop,
+                            EventCategoryType.Sound2D,
+                            this.additionalParameters
+                        )
+                    );
                     break;
             }
         }

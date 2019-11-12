@@ -15,18 +15,53 @@ namespace GDLibrary
     public class FirstPersonCameraController : UserInputController
     {
         #region Fields
-        Vector3 translation;
-        Vector3 rotation;
-        Vector3 targetPosition;
-        Vector3 currentPosition;
-        Vector3 targetHeading;
-        Vector3 currentHeading;
-        Vector3 movementVector;
-        Vector3 rotationVector;
-        bool inMotion = false;
+        private Vector3 translation;
+        private Vector3 rotation;
+        private Vector3 targetPosition;
+        private Vector3 currentPosition;
+        private Vector3 targetHeading;
+        private Vector3 currentHeading;
+        private Vector3 movementVector;
+        private Vector3 rotationVector;
+        private bool inMotion = false;
         #endregion
 
         #region Properties
+        public Vector3 MovementVector
+        {
+            get
+            {
+                return this.movementVector;
+            }
+            set
+            {
+                this.movementVector = value;
+            }
+        }
+
+        public Vector3 RotationVector
+        {
+            get
+            {
+                return this.rotationVector;
+            }
+            set
+            {
+                this.rotationVector = value;
+            }
+        }
+
+        public bool InMotion
+        {
+            get
+            {
+                return this.inMotion;
+            }
+            set
+            {
+                this.inMotion = value;
+            }
+        }
         #endregion
 
         #region Constructor
@@ -126,8 +161,6 @@ namespace GDLibrary
                             additionalParameters
                         )
                     );
-
-
                 }
 
                 //If the cameras current current positon is near the target position
@@ -139,12 +172,12 @@ namespace GDLibrary
                     //Reset Vectors
                     translation = Vector3.Zero;
                     currentPosition = Vector3.Zero;
-                    
+
                     //Allow keypress
                     this.inMotion = false;
                 }
                 else
-                {                    
+                {
                     //Move camera 
                     parentActor.Transform.TranslateBy(translation);
 
@@ -153,7 +186,6 @@ namespace GDLibrary
 
                     //Prevent keypress
                     this.inMotion = true;
-
                 }
             }
             #endregion

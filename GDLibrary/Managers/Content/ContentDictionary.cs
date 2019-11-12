@@ -56,9 +56,10 @@ namespace GDLibrary
 
         #region Constructors
         public ContentDictionary(
-            string name, 
+            string name,
             ContentManager content
-        ) {
+        )
+        {
             this.name = name;
             this.content = content;
             this.dictionary = new Dictionary<string, V>();

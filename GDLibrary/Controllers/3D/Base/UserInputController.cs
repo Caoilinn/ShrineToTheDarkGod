@@ -114,7 +114,5 @@ namespace GDLibrary
         public virtual void HandleKeyboardInput(GameTime gameTime, Actor3D parentActor)
         {
         }
-
-        //Add Equals, Clone, ToString, GetHashCode...
     }
 }

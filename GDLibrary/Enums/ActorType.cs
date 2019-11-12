@@ -24,5 +24,9 @@ namespace GDLibrary
         CollidablePickup,
         CollidableArchitecture,
         Primitive,          //procedurally created surface i.e. user-defined vertices, color, texture etc
+        CollidableCamera,
+        UIText,
+        UITexture,
+        UIButton,
     }
 }
