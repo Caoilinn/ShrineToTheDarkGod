@@ -16,6 +16,13 @@ namespace GDLibrary
         #endregion
 
         #region Properties
+        /*public String ID
+        {
+            get {
+                return this.ID;
+            }
+        }*/
+
         public float Health
         {
             get {

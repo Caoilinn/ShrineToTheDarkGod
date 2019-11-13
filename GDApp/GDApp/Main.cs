@@ -33,6 +33,7 @@ namespace GDApp
         private KeyboardManager keyboardManager;
         private GamePadManager gamePadManager;
         private SoundManager soundManager;
+        private CombatManager combatManager;
 
         //Dispatchers
         private EventDispatcher eventDispatcher;
@@ -90,6 +91,10 @@ namespace GDApp
         private UIManager uiManager;
         private PickingManager pickingManager;
 
+        private PlayerObject player;
+        private List<Enemy> enemies;
+
+
         public Main()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -129,6 +134,9 @@ namespace GDApp
 
             InitializeDebug();
             InitializeDebugCollisionSkinInfo();
+
+            InitializePlayer();
+            InitializeEnemies();
 
             base.Initialize();
         }
@@ -359,6 +367,20 @@ namespace GDApp
 
             Components.Add(this.uiManager);
             #endregion
+
+            #region Combat Manager
+            this.combatManager = new CombatManager(
+                this, 
+                this.eventDispatcher, 
+                StatusType.Update, 
+                this.managerParameters, 
+                AppData.CombatKeys
+            );
+
+            Components.Add(this.combatManager);
+            
+            #endregion
+
 
             #region Game State Manager
             this.gameStateManager = new GameStateManager(
@@ -914,6 +936,38 @@ namespace GDApp
             }
         }
 
+        #region Player and Enemies
+
+        private void InitializeEnemies()
+        {
+            this.enemies = new List<Enemy>();
+
+            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
+
+            Enemy skeleton = new Enemy("skeleton", ActorType.Interactable, StatusType.Update, this.playerPosition, effectParameters,
+                                        null, 0f, 0f, 100, 20, 20);
+
+            this.enemies.Add(skeleton);
+            this.combatManager.PopulateEnemies(this.enemies);
+            this.object3DManager.Add(skeleton);
+
+        }
+
+        private void InitializePlayer()
+        {
+            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
+
+
+            this.player = new PlayerObject("player", ActorType.Player, StatusType.Update, this.playerPosition,
+                                            effectParameters, null, AppData.CameraMoveKeys, 0f, 0f, 0f,
+                                            Vector3.Zero, this.keyboardManager);
+            this.combatManager.AddPlayer(this.player);
+            this.object3DManager.Add(this.player);
+        }
+
+        #endregion
+
+
         private void InitializeMap(float cellWidth, float cellHeight, float cellDepth, float worldScale)
         {
             #region Calculate Cell Dimensions
@@ -1100,6 +1154,8 @@ namespace GDApp
         {
         }
         #endregion
+
+        
 
         #region Content
         protected override void LoadContent()

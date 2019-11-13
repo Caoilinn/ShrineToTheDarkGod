@@ -10,7 +10,7 @@ namespace GDLibrary
     public class CombatManager : PausableGameComponent
     {
         #region Fields
-        private Keys[] moveKeys;
+        private Keys[] combatKeys;
         private List<CharacterObject> characters;
         private PlayerObject player;
         private List<Enemy> enemies;
@@ -20,19 +20,28 @@ namespace GDLibrary
         #endregion
 
         public CombatManager(Game game, EventDispatcher eventDispatcher, StatusType statusType, 
-            PlayerObject player, ManagerParameters managerParameters, Keys[] moveKeys) : 
+            ManagerParameters managerParameters, Keys[] combatKeys) : 
             base(game, eventDispatcher, statusType)
         {
             this.enemies = new List<Enemy>();
-            this.player = player;
             this.managerParameters = managerParameters;
             this.playerTurn = true;
-            this.moveKeys = moveKeys;
+            this.combatKeys = combatKeys;
         }
 
-        public void Add(Enemy enemy)
+        public void AddPlayer(PlayerObject player)
         {
-            this.enemies.Add(enemy);
+            this.player = player;
+        }
+
+
+        public void PopulateEnemies(List<Enemy> enemies)
+        {
+            foreach(Enemy enemy in enemies)
+            {
+                this.enemies.Add(enemy);
+            }
+   
         }
 
         public bool Remove(Predicate<Enemy> predicate)
@@ -61,72 +70,95 @@ namespace GDLibrary
 
         public override void Update(GameTime gameTime)
         {
+            /*
+            Console.WriteLine("Enemy: " + this.enemies[0].ID + "\n"
+                               + "Health: " + this.enemies[0].Health + "\n"
+                               + "Attack: " + this.enemies[0].Attack + "\n"
+                               + "Defence: " + this.enemies[0].Defence + "\n");
+            */
+
             HandleKeyBoardInput(gameTime);
             base.Update(gameTime);
         }
 
+
+        public void PrintStats(Enemy enemy)
+        {
+            Console.WriteLine("Player: \n" + "Health: " + this.player.Health + "\n"
+                                + " Attack: " + this.player.Attack + "\n"
+                                + "Defence: " + this.player.Defence);
+
+
+
+            Console.WriteLine("Enemy: " + enemy.ID + "\n"
+                                 + "Health: " + enemy.Health + "\n"
+                                 + "Attack: " + enemy.Attack + "\n"
+                                 + "Defence: " + enemy.Defence + "\n");
+        }
+
+
         protected virtual void HandleKeyBoardInput(GameTime gameTime)
         {
-            /** Old Combat Code - TOFIX or Remove
-            if (playerTurn)
+            
+
+            Enemy enemyOnFocus = GetEnemy("skeleton");
+
+
+            if(playerTurn)
             {
-                Enemy enemy = enemies[0];
-                if (this.managerParameters.KeyboardManager.IsFirstKeyPress(this.moveKeys[8]))
+
+                if (this.managerParameters.KeyboardManager.IsFirstKeyPress(this.combatKeys[0]))
                 {
-                    
+                    PrintStats(enemyOnFocus);
 
                     float playerAttack = this.player.Attack;
-                    float enemyDefence = enemy.Defence;
+                    float enemyDefence = enemyOnFocus.Defence;
 
                     float damage = playerAttack - enemyDefence;
 
-                    if(damage > 0)
+                    if (damage > 0)
                     {
-                        enemy.takeDamage(damage);
-                    }
-
-
-                } else if(this.managerParameters.KeyboardManager.IsFirstKeyPress(this.moveKeys[9]))
+                        enemyOnFocus.takeDamage(damage);
+                    } 
+                } else if (this.managerParameters.KeyboardManager.IsFirstKeyPress(this.combatKeys[1]))
                 {
+                    PrintStats(enemyOnFocus);
+
                     float playerDefence = this.player.Defence;
-                    float enemyAttack = enemy.Attack;
+                    float enemyAttack = enemyOnFocus.Attack;
 
                     float damage = enemyAttack - playerDefence;
-                    
-                    if(damage > 0)
+
+                    if (damage > 0)
                     {
                         this.player.takeDamage(damage);
                     }
 
 
-                } else if(this.managerParameters.KeyboardManager.IsFirstKeyPress(this.moveKeys[10]))
+                } else if (this.managerParameters.KeyboardManager.IsFirstKeyPress(this.combatKeys[2]))
                 {
+                    PrintStats(enemyOnFocus);
+
                     int dodge = random.Next(1, 7);
 
-                    if(dodge % 2 == 0)
+                    if (dodge % 2 == 0)
                     {
                         return;
                     } else
                     {
-                        player.takeDamage(enemy.Attack);
+                        player.takeDamage(enemyOnFocus.Attack);
                     }
                 }
-            }
-            **/
-
-            //Enemy enemyOnFocus = GetEnemy();
 
 
-            if(playerTurn)
-            {
-                Console.WriteLine("Player: \n" + "Health: " + this.player.Health + "\n"
-                                    + " Attack: " + this.player.Attack + "\n" 
-                                    + "Defence: " + this.player.Defence);
             }
             else{
-                Console.WriteLine("Player: \n" + "Health: " + this.player.Health + "\n"
-                                    + " Attack: " + this.player.Attack + "\n"
-                                    + "Defence: " + this.player.Defence);
+                PrintStats(enemyOnFocus);
+
+                float enemyAttack = enemyOnFocus.Attack;
+
+                this.player.takeDamage(enemyAttack);
+
             }
 
         }

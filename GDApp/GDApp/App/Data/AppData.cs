@@ -51,6 +51,7 @@ namespace GDLibrary
         public static readonly float CollidableCameraMass = 10;
 
         public static readonly Keys[] CameraMoveKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.E, Keys.Space, Keys.C, Keys.LeftShift, Keys.RightShift};
+        public static readonly Keys[] CombatKeys = {Keys.D1, Keys.D2, Keys.D3};
         public static readonly Keys[] CameraMoveKeys_Alt1 = { Keys.T, Keys.G, Keys.F, Keys.H };
 
         public static readonly float CameraThirdPersonScrollSpeedDistanceMultiplier = 0.00125f;
