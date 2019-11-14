@@ -39,5 +39,11 @@
         OnTransparentToOpaque,
         OnNonePicked,
         OnObjectPicked,
+
+        //Sent by CombatManager
+        OnPlayerAttack,
+        OnPlayerDefend,
+        OnPlayerDodge,
+        OnEnemyAttack,
     }
 }

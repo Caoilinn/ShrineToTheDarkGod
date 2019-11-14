@@ -19,6 +19,8 @@ namespace GDLibrary
         private Random random = new Random();
         #endregion
 
+        #region Constructor
+
         public CombatManager(Game game, EventDispatcher eventDispatcher, StatusType statusType, 
             ManagerParameters managerParameters, Keys[] combatKeys) : 
             base(game, eventDispatcher, statusType)
@@ -28,6 +30,42 @@ namespace GDLibrary
             this.playerTurn = true;
             this.combatKeys = combatKeys;
         }
+
+        #endregion
+
+        #region Event Handling
+
+        protected override void RegisterForEventHandling(EventDispatcher eventDispatcher)
+        {
+            eventDispatcher.CombatEvent += EventDispatcher_PlayerAttack;
+            base.RegisterForEventHandling(eventDispatcher);
+        }
+
+
+        protected void EventDispatcher_PlayerAttack(EventData eventData)
+        {
+            //TODO: Animation events also need published
+
+            if(eventData.EventType == EventActionType.OnPlayerAttack)
+            {
+                Console.WriteLine("Player Attack Event");
+                //Object[] additionalParameters = {"playerAttack"};
+                //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerAttack, EventCategoryType.Sound2D, additionalParameters));
+            } else if(eventData.EventType == EventActionType.OnPlayerDefend)
+            {
+                Console.WriteLine("Player Defend Event");
+                //Object[] additionalParameters = {"playerDefend"};
+                //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.Sound2D, additionalParameters));
+            } else if(eventData.EventType == EventActionType.OnEnemyAttack)
+            {
+                Console.WriteLine("Enemy Attack Event");
+                //Object[] additionalParameters = {"enemyAttack"};
+                //EventDispatcher.Publish(new EventData(EventActionType.OnEnemyAttack, EventCategoryType.Sound2D, additionalParameters));
+            }
+        }
+        #endregion
+
+        #region Methods
 
         public void AddPlayer(PlayerObject player)
         {
@@ -116,6 +154,12 @@ namespace GDLibrary
 
                     float damage = playerAttack - enemyDefence;
 
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlayerAttack,
+                            EventCategoryType.Combat)
+                        );
+
                     if (damage > 0)
                     {
                         enemyOnFocus.takeDamage(damage);
@@ -128,6 +172,12 @@ namespace GDLibrary
                     float enemyAttack = enemyOnFocus.Attack;
 
                     float damage = enemyAttack - playerDefence;
+
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlayerDefend,
+                            EventCategoryType.Combat)
+                        );
 
                     if (damage > 0)
                     {
@@ -143,6 +193,12 @@ namespace GDLibrary
 
                     if (dodge % 2 == 0)
                     {
+                        EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlayerDodge,
+                            EventCategoryType.Combat)
+                        );
+
                         return;
                     } else
                     {
@@ -157,10 +213,18 @@ namespace GDLibrary
 
                 float enemyAttack = enemyOnFocus.Attack;
 
+                EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnEnemyAttack,
+                            EventCategoryType.Combat)
+                        );
+
                 this.player.takeDamage(enemyAttack);
 
             }
 
         }
+
+        #endregion
     }
 }

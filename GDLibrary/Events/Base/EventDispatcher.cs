@@ -31,6 +31,7 @@ namespace GDLibrary
         public delegate void AddActorEventHandler(EventData eventData);
         public delegate void RemoveActorEventHandler(EventData eventData);
         public delegate void DebugEventHandler(EventData eventData);
+        public delegate void CombatEventHandler(EventData eventData);
         #endregion
 
         #region Events
@@ -44,6 +45,7 @@ namespace GDLibrary
         public event AddActorEventHandler AddActorChanged;
         public event RemoveActorEventHandler RemoveActorChanged;
         public event DebugEventHandler DebugChanged;
+        public event CombatEventHandler CombatEvent;
         #endregion
 
         #region Constuctors
@@ -126,6 +128,10 @@ namespace GDLibrary
                 case EventCategoryType.Debug:
                     OnDebug(eventData);
                     break;
+                case EventCategoryType.Combat:
+                    OnCombat(eventData);
+                    break;
+
 
                 default:
                     break;
@@ -193,6 +199,12 @@ namespace GDLibrary
         {
             DebugChanged?.Invoke(eventData);
         }
+
+        protected virtual void OnCombat(EventData eventData)
+        {
+            CombatEvent?.Invoke(eventData);
+        }
+
         #endregion
     }
 }
