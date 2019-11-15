@@ -23,18 +23,6 @@ namespace GDLibrary
         #endregion
 
         #region Properties
-        public ActorType ActorType
-        {
-            get
-            {
-                return this.actorType;
-            }
-            set
-            {
-                this.actorType = value;
-            }
-        }
-
         public string ID
         {
             get
@@ -44,6 +32,18 @@ namespace GDLibrary
             set
             {
                 this.id = value;
+            }
+        }
+
+        public ActorType ActorType
+        {
+            get
+            {
+                return this.actorType;
+            }
+            set
+            {
+                this.actorType = value;
             }
         }
 
@@ -71,12 +71,19 @@ namespace GDLibrary
         #region Constructor
         public Actor(
             string id, 
+            ActorType actorType
+        ) : this(id, actorType, StatusType.Drawn | StatusType.Update) {
+
+        }
+
+        public Actor(
+            string id, 
             ActorType actorType, 
             StatusType statusType
         ) {
-            this.ID = id;
-            this.ActorType = actorType;
-            this.StatusType = statusType;
+            this.id = id;
+            this.actorType = actorType;
+            this.statusType = statusType;
         }
         #endregion
 
@@ -84,6 +91,38 @@ namespace GDLibrary
         public virtual Matrix GetWorldMatrix()
         {
             return Matrix.Identity;
+        }
+
+        public virtual ActorType GetActorType()
+        {
+            return this.actorType;
+        }
+
+        public virtual string GetID()
+        {
+            return this.id;
+        }
+
+        public virtual float GetAlpha()
+        {
+            return 1;
+        }
+
+        public virtual StatusType GetStatusType()
+        {
+            return this.statusType;
+        }
+
+        public virtual bool Remove()
+        {
+            //Tag for garbage collection
+            if (this.controllerList != null)
+            {
+                this.controllerList.Clear();
+                this.controllerList = null;
+            }
+
+            return true;
         }
 
         public virtual void AttachController(IController controller)
@@ -110,6 +149,36 @@ namespace GDLibrary
             return -1;
         }
 
+        public List<IController> FindControllers(Predicate<IController> predicate)
+        {
+            return this.controllerList.FindAll(predicate);
+        }
+
+        //Allows us to set the PlayStatus for all controllers (e.g. play all, reset all, stop all) corresponding to the predicate
+        public virtual int SetControllerPlayStatus(PlayStatusType playStatusType, Predicate<IController> predicate)
+        {
+            List<IController> findList = null;
+
+            if (this.controllerList != null)
+            {
+                findList = FindControllers(predicate);
+                foreach (IController controller in findList)
+                    controller.SetPlayStatus(playStatusType);
+            }
+
+            return findList == null ? 0 : findList.Count;
+        }
+
+        //Allows us to set the PlayStatus for all controllers simultaneously (e.g. play all, reset all, stop all)
+        public virtual int SetAllControllersPlayStatus(PlayStatusType playStatusType)
+        {
+            if (this.controllerList != null)
+                foreach (IController controller in this.controllerList)
+                    controller.SetPlayStatus(playStatusType);
+
+            return this.controllerList == null ? 0 : this.controllerList.Count;
+        }
+
         public List<IController> FindAll(Predicate<IController> predicate)
         {
             if (this.controllerList != null)
@@ -128,26 +197,18 @@ namespace GDLibrary
             return findIndex;
         }
 
-        public virtual string GetID()
-        {
-            return this.id;
-        }
-
         public override bool Equals(object obj)
         {
-            Actor other = obj as Actor;
-
-            if (other == null)
+            if (!(obj is Actor other))
                 return false;
             else if (this == other)
                 return true;
 
             bool bEquals = this.id.Equals(other.ID)
                 && this.actorType == other.ActorType
-                    && this.statusType.Equals(other.StatusType);
+                && this.statusType.Equals(other.StatusType);
 
             return bEquals;
-
         }
 
         public override int GetHashCode()
@@ -163,27 +224,17 @@ namespace GDLibrary
             return new Actor(this.id, this.ActorType, this.StatusType);
         }
 
-        public virtual bool Remove()
-        {
-            //Tag for garbage collection
-            if (this.controllerList != null)
-            {
-                this.controllerList.Clear();
-                this.controllerList = null;
-            }
-
-            return true;
-        }
-
-        //Notice we must implment Update() if we implement IActor
-        //See https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/virtual
         public virtual void Update(GameTime gameTime)
         {
-            if(this.controllerList != null)
+            if (this.controllerList != null && ((this.StatusType & StatusType.Update) == StatusType.Update))
             {
-                foreach(IController controller in this.controllerList)
+                foreach (IController controller in this.controllerList)
                 {
-                    controller.Update(gameTime, this);
+                    //New - only update the individual controller if it is playing
+                    if (controller.GetPlayStatus() == PlayStatusType.Play)
+
+                        //Update the actor that controller is attached to
+                        controller.Update(gameTime, this);
                 }
             }
         }

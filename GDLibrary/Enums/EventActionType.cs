@@ -33,5 +33,15 @@
         OnCameraCycle,
         OnCameraToggle,
         OnToggleDebug,
+        OnRemoveActor,
+        OnAddActor,
+        OnOpaqueToTransparent,
+        OnTransparentToOpaque,
+        OnNonePicked,
+        OnObjectPicked,
+        OnCollideWith,
+        NewTurn,
+        OnMove,
+        EnemyTurn,
     }
 }

@@ -92,6 +92,8 @@ namespace GDLibrary
         #endregion
 
         #region Menu
+        public static readonly string MenuMainID = "main";
+        public static readonly Keys MenuShowHideKey = Keys.Escape;
         public static readonly Keys KeyPauseShowMenu = Keys.Escape;
         public static readonly Keys KeyToggleCameraLayout = Keys.F1;
         #endregion

@@ -19,6 +19,8 @@
         Video,
         GlobalSound,
         Game,
-        Debug
+        Debug,
+        Menu,
+        ObjectPicking
     }
 }

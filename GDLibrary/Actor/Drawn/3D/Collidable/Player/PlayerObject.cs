@@ -1,6 +1,7 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace GDLibrary
 {
@@ -10,6 +11,9 @@ namespace GDLibrary
     public class PlayerObject : CharacterObject
     {
         #region Variables
+        private float health;
+        private float attack;
+        private float defence;
         private Keys[] moveKeys;
         private Vector3 translationOffset;
         private KeyboardManager keyboardManager;
@@ -24,6 +28,7 @@ namespace GDLibrary
                 return keyboardManager;
             }
         }
+
         public float JumpHeight
         {
             get
@@ -35,6 +40,7 @@ namespace GDLibrary
                 jumpHeight = (value > 0) ? value : 1;
             }
         }
+
         public Vector3 TranslationOffset
         {
             get
@@ -46,6 +52,7 @@ namespace GDLibrary
                 translationOffset = value;
             }
         }
+
         public Keys[] MoveKeys
         {
             get
@@ -57,38 +64,70 @@ namespace GDLibrary
                 moveKeys = value;
             }
         }
+
+        public float Health
+        {
+            get
+            {
+                return health;
+            }
+        }
+
+        public float Attack
+        {
+            get
+            {
+                return attack;
+            }
+        }
+
+        public float Defence
+        {
+            get
+            {
+                return defence;
+            }
+        }
         #endregion
 
-        #region Constructors
         public PlayerObject(
-            string id, 
+            string id,
             ActorType actorType,
-            StatusType statusType,
             Transform3D transform,
-            EffectParameters effectParameters, 
+            EffectParameters effectParameters,
             Model model,
-            Keys[] moveKeys, 
-            float radius, 
-            float height, 
-            float accelerationRate, 
-            float decelerationRate, 
+            float width,
+            float height,
+            float depth,
+            float accelerationRate,
+            float dececelerationRate,
+            Vector3 movementVector,
+            Vector3 rotationVector,
+            float moveSpeed,
+            float rotateSpeed,
+            Keys[] moveKeys,
+            Vector3 translationOffset,
+            KeyboardManager keyboardManager,
             float jumpHeight,
-            Vector3 translationOffset, 
-            KeyboardManager keyboardManager
-        ) : base(id, actorType, statusType, transform, effectParameters, model, radius, height, accelerationRate, decelerationRate) {
+            float health,
+            float attack,
+            float defence
+        ) : base(id, actorType, transform, effectParameters, model, width, height, depth, 0, 0, movementVector, rotationVector, moveSpeed, rotateSpeed) {
             this.moveKeys = moveKeys;
             this.translationOffset = translationOffset;
             this.keyboardManager = keyboardManager;
             this.jumpHeight = jumpHeight;
+            this.health = health;
+            this.attack = attack;
+            this.defence = defence;
         }
-        #endregion
 
         public override Matrix GetWorldMatrix()
         {
-            return Matrix.CreateScale(this.Transform.Scale) 
-                * this.Collision.GetPrimitiveLocal(0).Transform.Orientation 
-                * this.Body.Orientation 
-                * this.Transform.Orientation 
+            return Matrix.CreateScale(this.Transform.Scale)
+                * this.Collision.GetPrimitiveLocal(0).Transform.Orientation
+                * this.Body.Orientation
+                * this.Transform.Orientation
                 * Matrix.CreateTranslation(this.Body.Position + translationOffset);
         }
 
@@ -101,12 +140,15 @@ namespace GDLibrary
 
         protected virtual void HandleMouseInput(GameTime gameTime)
         {
-            //Perhaps rotate using mouse pointer distance from centre?
         }
 
         protected virtual void HandleKeyboardInput(GameTime gameTime)
         {
-            //A dd clone, equals, gethashcode, remove...
+        }
+
+        public void TakeDamage(float damage)
+        {
+            this.health -= damage; 
         }
     }
 }

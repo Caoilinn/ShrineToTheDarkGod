@@ -99,6 +99,7 @@ namespace GDLibrary
             HandleMouseInput(gameTime, parentActor);
             HandleKeyboardInput(gameTime, parentActor);
             HandleGamePadInput(gameTime, parentActor);
+
             base.Update(gameTime, actor);
         }
 
@@ -114,7 +115,5 @@ namespace GDLibrary
         public virtual void HandleKeyboardInput(GameTime gameTime, Actor3D parentActor)
         {
         }
-
-        //Add Equals, Clone, ToString, GetHashCode...
     }
 }

@@ -7,6 +7,7 @@ Fixes:			None
 */
 
 using System;
+using Microsoft.Xna.Framework;
 
 namespace GDLibrary
 {
@@ -32,9 +33,9 @@ namespace GDLibrary
 
         #region Constructor
         public Actor3D(
-            string id, 
-            ActorType actorType,                
-            StatusType statusType, 
+            string id,
+            ActorType actorType,
+            StatusType statusType,
             Transform3D transform
         ) : base(id, actorType, statusType) {
             this.Transform = transform;
@@ -42,11 +43,26 @@ namespace GDLibrary
         #endregion
 
         #region Methods
+        public override Matrix GetWorldMatrix()
+        {
+            //Returns the compound matrix transformation that will scale, rotate and place the actor in the 3D world of the game
+            return this.transform.World;
+        }
+
+        public override bool Remove()
+        {
+            //Tag for garbage collection
+            this.transform = null;
+            return base.Remove();
+        }
+
+        public virtual void Draw(GameTime gameTime)
+        {
+        }
+
         public override bool Equals(object obj)
         {
-            Actor3D other = obj as Actor3D;
-
-            if (other == null)
+            if (!(obj is Actor3D other))
                 return false;
             else if (this == other)
                 return true;
@@ -63,11 +79,18 @@ namespace GDLibrary
 
         public new object Clone()
         {
-            return new Actor3D("clone - " + ID, //deep
-                this.ActorType, //deep
-                this.StatusType, //shallow
-                (Transform3D)this.transform.Clone()); //deep
-                
+            IActor actor = new Actor3D(
+                "Clone - " + ID,
+                this.ActorType,
+                this.StatusType,
+                (Transform3D) this.transform.Clone()
+            );
+
+            //Clone each of the (behavioural) controllers
+            foreach (IController controller in this.ControllerList)
+                actor.AttachController((IController)controller.Clone());
+
+            return actor;
         }
         #endregion
     }

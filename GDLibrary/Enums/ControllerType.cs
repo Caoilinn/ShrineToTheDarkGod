@@ -19,5 +19,6 @@ namespace GDLibrary
         Curve,          //applied to camera or model
         Security,       //applied to camera
         Track,
+        CollidableCamera,
     }
 }

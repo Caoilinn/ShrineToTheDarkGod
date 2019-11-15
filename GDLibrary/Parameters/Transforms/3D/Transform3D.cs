@@ -24,11 +24,16 @@ namespace GDLibrary
         #endregion
 
         #region Fields
-        private Vector3 translation, rotation, scale;
-        private Vector3 originalRotation;
-        private Vector3 look, up;
+        private Vector3 translation;
+        private Vector3 rotation;
+        private Vector3 scale;
+        private Vector3 look;
+        private Vector3 up;
         private Matrix world;
         private bool isDirty;
+
+        private Transform3D originalTransform3D;
+        private double distanceToCamera;
         #endregion
 
         #region Properties
@@ -104,9 +109,6 @@ namespace GDLibrary
             }
         }
 
-        private Vector3 originalLook;
-        private Vector3 originalUp;
-
         public Vector3 Target
         {
             get
@@ -148,20 +150,65 @@ namespace GDLibrary
                 return Vector3.Normalize(Vector3.Cross(this.look, this.up));
             }
         }
+
+        public Transform3D OriginalTransform3D
+        {
+            get
+            {
+                return this.originalTransform3D;
+            }
+        }
+
+        public double DistanceToCamera
+        {
+            get
+            {
+                return this.distanceToCamera;
+            }
+            set
+            {
+                this.distanceToCamera = value;
+            }
+        }
         #endregion
 
-        #region Methods
+        #region Constructors
         //Used by drawn objects
         public Transform3D(Vector3 translation, Vector3 rotation, Vector3 scale, Vector3 look, Vector3 up)
         {
+            Initialize(translation, rotation, scale, look, up);
+
+            //Store original values in case of reset
+            this.originalTransform3D = new Transform3D();
+            this.originalTransform3D.Initialize(translation, rotation, scale, look, up);
+        }
+
+        //used internally when creating the originalTransform object
+        private Transform3D()
+        {
+        }
+        #endregion
+
+        #region Methods
+        protected void Initialize(Vector3 translation, Vector3 rotation, Vector3 scale, Vector3 look, Vector3 up)
+        {
             this.Translation = translation;
-            this.originalRotation = this.Rotation = rotation;
+            this.Rotation = rotation;
             this.Scale = scale;
 
-            this.originalLook = this.Look = Vector3.Normalize(look);
-            this.originalUp = this.Up = Vector3.Normalize(up);
+            this.Look = Vector3.Normalize(look);
+            this.Up = Vector3.Normalize(up);
         }
-        
+
+        public void Reset()
+        {
+            this.translation = this.originalTransform3D.Translation;
+            this.rotation = this.originalTransform3D.Rotation;
+            this.scale = this.originalTransform3D.Scale;
+            this.look = this.originalTransform3D.Look;
+            this.up = this.originalTransform3D.Up;
+        }
+
         public void RotateBy(Vector3 rotateBy) //in degrees
         {
             //Rotate
@@ -175,47 +222,73 @@ namespace GDLibrary
             );
 
             //Update the look and up
-            this.Look = Vector3.Transform(this.originalLook, rot);
-            this.Up = Vector3.Transform(this.originalUp, rot);
+            this.Look = Vector3.Normalize(Vector3.Transform(this.originalTransform3D.Look, rot));
+            this.Up = Vector3.Normalize(Vector3.Transform(this.originalTransform3D.Up, rot));
         }
 
+        public void RotateAroundYBy(float magnitude) //in degrees
+        {
+            this.rotation.Y += magnitude;
+            this.look = Vector3.Normalize(
+                Vector3.Transform(
+                    this.originalTransform3D.Look, 
+                    Matrix.CreateRotationY(MathHelper.ToRadians(rotation.Y))
+                )
+            );
+            this.isDirty = true;
+        }
+
+        //Set position
         public void TranslateTo(Vector3 translate) //set
         {
             Translation = translate;
         }
 
-        public void TranslateBy(Vector3 translateBy) //shift/move/delta
+        //Shift, Move
+        public void TranslateBy(Vector3 translateBy)
         {
             Translation += translateBy;
         }
 
-        public void ScaleTo(Vector3 scale) //(1,2,1) set scale as x, 2Y, z
+        //(1,2,1) - Set scale as (x, 2y, z)
+        public void ScaleTo(Vector3 scale)
         {
             Scale = scale;
         }
 
-        public void ScaleBy(Vector3 scaleBy) //(1, 2, 1) stretch along Y
+        //(1, 2, 1) - Stretch along Y
+        public void ScaleBy(Vector3 scaleBy)
         {
             Scale *= scaleBy;
         }
 
         public override bool Equals(object obj)
         {
-            throw new NotImplementedException();
+            if (!(obj is Transform3D other))
+                return false;
+            else if (this == other)
+                return true;
+
+            return Vector3.Equals(this.translation, other.Translation)
+                && Vector3.Equals(this.rotation, other.Rotation)
+                && Vector3.Equals(this.scale, other.Scale)
+                && Vector3.Equals(this.look, other.Look)
+                && Vector3.Equals(this.up, other.Up);
         }
 
         public override int GetHashCode()
         {
-            throw new NotImplementedException();
+            int hash = 1;
+            hash = hash * 31 + this.translation.GetHashCode();
+            hash = hash * 17 + this.look.GetHashCode();
+            hash = hash * 13 + this.up.GetHashCode();
+            return hash;
         }
 
         public object Clone()
         {
-            return new Transform3D(this.translation, this.rotation, this.scale,
-                this.look, this.up);
-
-            //If class contains primitive or in-built types (e.g. Vector3, float)
-            //Return this.MemberwiseClone();
+            //Deep because all variables are either C# types (primitives, structs, or enums) or XNA types
+            return this.MemberwiseClone();
         }
         #endregion
     }
