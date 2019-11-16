@@ -392,7 +392,7 @@ namespace GDApp
             string sceneID = "";
             string buttonID = "";
             string buttonText = "";
-            int verticalBtnSeparation = 50;
+            int verticalBtnSeparation = 75;
 
             #region Main Menu
             sceneID = "main menu";
@@ -427,8 +427,8 @@ namespace GDApp
             buttonText = "Start";
 
             position = new Vector2(
-                graphics.PreferredBackBufferWidth / 2.0f, 
-                200
+                graphics.PreferredBackBufferWidth / 4.0f, 
+                300
             );
 
             texture = this.textureDictionary["genericbtn"];
@@ -436,7 +436,7 @@ namespace GDApp
             transform = new Transform2D(
                 position,
                 0, 
-                new Vector2(1.8f, 0.6f),
+                new Vector2(1.8f, 1f),
                 new Vector2(texture.Width / 2.0f, 
                 texture.Height / 2.0f), 
                 new Integer2(texture.Width, texture.Height)
@@ -447,13 +447,13 @@ namespace GDApp
                 ActorType.UIButton, 
                 StatusType.Update | StatusType.Drawn,
                 transform, 
-                Color.LightPink, 
+                Color.White, 
                 SpriteEffects.None, 
                 0.1f, 
                 texture, 
                 buttonText,
                 this.fontDictionary["menu"],
-                Color.DarkGray, 
+                Color.Black, 
                 new Vector2(0, 2)
             );
 
