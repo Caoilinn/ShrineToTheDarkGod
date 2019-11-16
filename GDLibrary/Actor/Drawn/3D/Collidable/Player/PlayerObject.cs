@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 
 namespace GDLibrary
 {
@@ -26,6 +27,10 @@ namespace GDLibrary
             get
             {
                 return keyboardManager;
+            }
+            set
+            {
+                this.keyboardManager = value;
             }
         }
 
@@ -64,32 +69,9 @@ namespace GDLibrary
                 moveKeys = value;
             }
         }
-
-        public float Health
-        {
-            get
-            {
-                return health;
-            }
-        }
-
-        public float Attack
-        {
-            get
-            {
-                return attack;
-            }
-        }
-
-        public float Defence
-        {
-            get
-            {
-                return defence;
-            }
-        }
         #endregion
 
+        #region Constructors
         public PlayerObject(
             string id,
             ActorType actorType,
@@ -112,16 +94,15 @@ namespace GDLibrary
             float health,
             float attack,
             float defence
-        ) : base(id, actorType, transform, effectParameters, model, width, height, depth, 0, 0, movementVector, rotationVector, moveSpeed, rotateSpeed) {
-            this.moveKeys = moveKeys;
-            this.translationOffset = translationOffset;
-            this.keyboardManager = keyboardManager;
-            this.jumpHeight = jumpHeight;
-            this.health = health;
-            this.attack = attack;
-            this.defence = defence;
+        ) : base(id, actorType, transform, effectParameters, model, width, height, depth, 0, 0, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence) {
+            this.MoveKeys = moveKeys;
+            this.TranslationOffset = translationOffset;
+            this.KeyboardManager = keyboardManager;
+            this.JumpHeight = jumpHeight;
         }
+        #endregion
 
+        #region Methods
         public override Matrix GetWorldMatrix()
         {
             return Matrix.CreateScale(this.Transform.Scale)
@@ -131,12 +112,78 @@ namespace GDLibrary
                 * Matrix.CreateTranslation(this.Body.Position + translationOffset);
         }
 
-        public override void Update(GameTime gameTime)
+
+        public void TakeDamage(float damage)
         {
-            HandleKeyboardInput(gameTime);
-            HandleMouseInput(gameTime);
-            base.Update(gameTime);
+            this.Health -= damage;
         }
+
+        //HashSet<ModelObject> collisionSet = new HashSet<ModelObject>();
+
+        //private void CheckForCollisionWithPickup(float distanceToCollision, CollidableObject pickup)
+        //{
+        //    //If the pickup is in an adjacent cell
+        //    if (distanceToCollision >= 0.5f && distanceToCollision <= 1.0f)
+        //    {
+        //        //If the pickup has not yet been realised
+        //        if (!this.collisionSet.Contains(pickup))
+        //        {
+        //            //Add pickup to the collision set
+        //            this.collisionSet.Add(pickup);
+
+        //            //Publish event to play sound effect
+        //            EventDispatcher.Publish(
+        //                new EventData(
+        //                    EventActionType.OnPlay,
+        //                    EventCategoryType.Sound2D,
+        //                    new object[] { "boing" }
+        //                )
+        //            );
+        //        }
+        //    }
+
+        //    //If the pickup is in the current cell
+        //    if (distanceToCollision <= 0.5f)
+        //    {
+        //        //Publish event to remove pickup
+        //        EventDispatcher.Publish(
+        //            new EventData(
+        //                pickup,
+        //                EventActionType.OnRemoveActor,
+        //                EventCategoryType.SystemRemove
+        //            )
+        //        );
+
+        //        //Publish event to add to inventory
+        //        EventDispatcher.Publish(
+        //            new EventData(
+        //                EventActionType.OnAddToInventory,
+        //                EventCategoryType.Pickup,
+        //                new object[] { pickup }
+        //            )
+        //        );
+
+        //        //Publish event to update hud
+        //        EventDispatcher.Publish(
+        //            new EventData(
+        //                EventActionType.OnUpdateHud,
+        //                EventCategoryType.Pickup,
+        //                new object[] { pickup }
+        //            )
+        //        );
+        //    }
+        //}
+
+        //private void CheckForCollisionWithEnemy(float distanceToCollision)
+        //{
+        //    //If the enemy is an adjacent cell
+        //    if (distanceToCollision >= 0.5f && distanceToCollision <= 1.0f)
+        //    {
+        //        //Publish event to prevent movement
+        //        //Publish event to initiate battle
+        //        //Publish event to play music
+        //    }
+        //}
 
         protected virtual void HandleMouseInput(GameTime gameTime)
         {
@@ -146,9 +193,13 @@ namespace GDLibrary
         {
         }
 
-        public void TakeDamage(float damage)
+        public override void Update(GameTime gameTime)
         {
-            this.health -= damage; 
+            HandleKeyboardInput(gameTime);
+            HandleMouseInput(gameTime);
+            base.Update(gameTime);
         }
+
+        #endregion
     }
 }

@@ -43,5 +43,9 @@
         NewTurn,
         OnMove,
         EnemyTurn,
+        PlayerTurn,
+        OnAddToInventory,
+        OnUpdateHud,
+        OnWayBlocked,
     }
 }

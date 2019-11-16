@@ -31,6 +31,10 @@ namespace GDLibrary
 
         private float moveSpeed;
         private float rotateSpeed;
+
+        private float health;
+        private float attack;
+        private float defence;
         #endregion
 
         #region Properties
@@ -173,6 +177,42 @@ namespace GDLibrary
                 this.rotateSpeed = value;
             }
         }
+
+        public float Health
+        {
+            get
+            {
+                return health;
+            }
+            set
+            {
+                this.health = value;
+            }
+        }
+
+        public float Attack
+        {
+            get
+            {
+                return attack;
+            }
+            set
+            {
+                this.attack = value;
+            }
+        }
+
+        public float Defence
+        {
+            get
+            {
+                return defence;
+            }
+            set
+            {
+                this.defence = value;
+            }
+        }
         #endregion
 
         #region Constructors
@@ -190,7 +230,10 @@ namespace GDLibrary
             Vector3 movementVector,
             Vector3 rotationVector,
             float moveSpeed,
-            float rotateSpeed
+            float rotateSpeed,
+            float health,
+            float attack,
+            float defence
         ) : base(id, actorType, transform, effectParameters, model) {
             this.Body = new Character(
                 accelerationRate,
@@ -201,7 +244,7 @@ namespace GDLibrary
             this.Body.ExternalData = this;
             this.Body.CollisionSkin = this.Collision;
 
-            Capsule capsule = new Capsule(Vector3.Zero, Matrix.Identity, 77, 154);
+            Capsule capsule = new Capsule(translation, Matrix.Identity, 154, 154);
 
             this.Collision.AddPrimitive(
                 capsule,
@@ -212,16 +255,136 @@ namespace GDLibrary
             this.RotationVector = rotationVector;
             this.MoveSpeed = moveSpeed;
             this.RotateSpeed = rotateSpeed;
+            this.Health = health;
+            this.Attack = attack;
+            this.Defence = defence;
         }
         #endregion
 
         #region Methods
+        public override Matrix GetWorldMatrix()
+        {
+            return Matrix.CreateScale(this.Transform.Scale)
+                * this.Collision.GetPrimitiveLocal(0).Transform.Orientation
+                * this.Body.Orientation
+                * this.Transform.Orientation
+                * Matrix.CreateTranslation(this.Body.Position);
+        }
+
         public override void Enable(bool bImmovable, float mass)
         {
             base.Enable(bImmovable, mass);
             Body.SetBodyInvInertia(0.0f, 0.0f, 0.0f);
             Body.AllowFreezing = false;
             Body.EnableBody();
+        }
+
+        //#region Collision
+        ////Checks each direction for a collision (north, south, east & west)
+        //public void DemoCollision(Actor3D parentActor)
+        //{
+        //    float cellWidth = 254;
+        //    Vector3 position = parentActor.Transform.Translation;
+        //    Vector3 north = parentActor.Transform.Look;
+        //    Vector3 south = -parentActor.Transform.Look;
+        //    Vector3 east = parentActor.Transform.Right;
+        //    Vector3 west = -parentActor.Transform.Right;
+
+        //    CheckForCollision(position, north, cellWidth);
+        //    CheckForCollision(position, south, cellWidth);
+        //    CheckForCollision(position, east, cellWidth);
+        //    CheckForCollision(position, west, cellWidth);
+        //}
+
+        //CollisionSkin skin;
+        //private float frac;
+        //private Vector3 pos;
+        //private Vector3 normal;
+
+        //public object[] CheckForCollisionWithRay(Vector3 start, Vector3 delta)
+        //{
+        //    Segment seg = new Segment(start, delta);
+        //    ImmovableSkinPredicate pred = new ImmovableSkinPredicate();
+
+        //    physicsManager.PhysicsSystem.CollisionSystem.SegmentIntersect(
+        //        out frac,
+        //        out skin,
+        //        out pos,
+        //        out normal,
+        //        seg,
+        //        pred
+        //    );
+
+        //    //If a collision has taken place
+        //    if (skin != null && skin.Owner != null)
+        //    {
+        //        //Return an array containing the collision skin and distance to collision
+        //        return new object[] { frac, skin };
+        //    }
+
+        //    return null;
+        //}
+
+        //private void CheckForCollision(Vector3 position, Vector3 direction, float length)
+        //{
+        //    Vector3 start = position;
+        //    Vector3 delta = direction * length;
+
+        //    object[] collisionInfo = CheckForCollisionWithRay(start, delta);
+
+        //    //If a collision has taken place
+        //    if (collisionInfo != null)
+        //    {
+        //        //Cast distance to collision (frac) to a float
+        //        float distanceToCollision = (float)collisionInfo[0];
+
+        //        //Cast the parent actor of the collision skin to a collidable object
+        //        CollidableObject collidableObject = ((collisionInfo[1] as CollisionSkin).Owner.ExternalData as CollidableObject);
+
+        //        switch (collidableObject.ActorType)
+        //        {
+        //            case ActorType.CollidableArchitecture:
+        //                CheckForCollisionWithWall(distanceToCollision, direction);
+        //                break;
+
+        //            case ActorType.CollidablePickup:
+        //                CheckForCollisionWithPickup(distanceToCollision, collidableObject);
+        //                break;
+
+        //            case ActorType.Enemy:
+        //                CheckForCollisionWithEnemy(distanceToCollision);
+        //                break;
+        //        }
+        //    }
+        //}
+
+        //public virtual void CheckForCollisionWithWall(float distanceToCollision, Vector3 collisionDirection)
+        //{
+        //    //If the wall is in the current cell
+        //    if (distanceToCollision <= 0.5f)
+        //    {
+        //        //Publish an event to say that they way is blocked
+        //        EventDispatcher.Publish(
+        //            new EventData(
+        //                EventActionType.OnWayBlocked,
+        //                EventCategoryType.Player,
+        //                new object[] { collisionDirection }
+        //            )
+        //        );
+        //    }
+        //}
+
+        //public virtual void CheckForCollisionWithPickup(float distanceToCollision, CollidableObject collidableObject)
+        //{
+        //}
+
+        //public virtual void CheckForCollisionWithEnemy(float distanceToCollision)
+        //{
+        //}
+        //#endregion
+
+        public virtual void HandleMovement()
+        {
         }
 
         public override void Update(GameTime gameTime)
@@ -231,78 +394,6 @@ namespace GDLibrary
             //Update actual position of the model e.g. used by rail camera controllers
             //this.Transform.Translation = this.Body.Transform.Position;
             base.Update(gameTime);
-        }
-
-        public virtual void HandleMovement()
-        {
-            #region Translation
-            if (translation != Vector3.Zero)
-            {
-                //If the characters positon is near the target position
-                if (Vector3.Distance(targetPosition, currentPosition) <= 10)
-                {
-                    ////Move to the target position
-                    Transform.TranslateBy(((currentPosition - targetPosition) * -Vector3.One));
-
-                    //Reset vectors
-                    translation = Vector3.Zero;
-                    currentPosition = Vector3.Zero;
-
-                    //Update motion state
-                    inMotion = false;
-                }
-                else
-                {
-                    //Translate character
-                    Transform.TranslateBy(translation);
-
-                    //Update current position
-                    currentPosition += translation;
-
-                    //Update motion state
-                    inMotion = true;
-                }
-            }
-            #endregion
-
-            #region Rotation
-            if (rotation != Vector3.Zero)
-            {
-                //If the characters heading is near the target heading
-                if (Vector3.Distance(currentHeading, targetHeading) <= 5)
-                {
-                    //Rotate to the target heading
-                    Transform.RotateBy(((currentHeading - targetHeading)) * -Vector3.One);
-
-                    //Reset vectors
-                    rotation = Vector3.Zero;
-                    currentHeading = Vector3.Zero;
-
-                    //Update motion state
-                    inMotion = false;
-                }
-                else
-                {
-                    //Rotate actor
-                    Transform.RotateBy(rotation);
-
-                    //Update current heading
-                    currentHeading += rotation;
-
-                    //Update motion state
-                    inMotion = true;
-                }
-            }
-            #endregion
-        }
-
-        public override Matrix GetWorldMatrix()
-        {
-            return Matrix.CreateScale(this.Transform.Scale)
-                * this.Collision.GetPrimitiveLocal(0).Transform.Orientation
-                * this.Body.Orientation
-                * this.Transform.Orientation
-                * Matrix.CreateTranslation(this.Body.Position);
         }
         #endregion
     }

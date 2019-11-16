@@ -173,6 +173,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Assets\Models\Zones\" />
     <Folder Include="Assets\Textures\Debug\" />
   </ItemGroup>
   <ItemGroup>
@@ -742,15 +743,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Models\Characters\enemy_model_001.FBX">
-      <Name>enemy_model_001</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Assets\Audio\main theme.wav">
-      <Name>main theme</Name>
+    <Compile Include="Assets\Audio\main_theme.wav">
+      <Name>main_theme</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
@@ -758,6 +752,65 @@
   <ItemGroup>
     <Compile Include="Assets\Audio\item_twinkle.wav">
       <Name>item_twinkle</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Collision Boxes\Zones\zone_collision.FBX">
+      <Name>zone_collision</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Models\Props\gate_001.FBX">
+      <Name>gate_001</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Models\Props\gate_002.FBX">
+      <Name>gate_002</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Collision Boxes\Props\gate_collision_001.FBX">
+      <Name>gate_collision_001</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Collision Boxes\Props\gate_collision_002.FBX">
+      <Name>gate_collision_002</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Models\Characters\enemy_002.FBX">
+      <Name>enemy_002</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Collision Boxes\Characters\enemy_collision_002.FBX">
+      <Name>enemy_collision_002</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Models\Characters\enemy_001.FBX">
+      <Name>enemy_001</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Audio\battle_theme.wav">
+      <Name>battle_theme</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>

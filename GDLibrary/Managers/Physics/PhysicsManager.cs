@@ -7,11 +7,11 @@ Bugs:
 Fixes:			None
 */
 
-using JigLibX.Collision;
 using JigLibX.Physics;
+using JigLibX.Collision;
 using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
+using System;
 
 namespace GDLibrary
 {
@@ -42,49 +42,53 @@ namespace GDLibrary
         }
         #endregion
 
-        //gravity pre-defined
-        public PhysicsManager(Game game, EventDispatcher eventDispatcher, StatusType statusType)
-            : this(game, eventDispatcher, statusType, -10 * Vector3.UnitY)
-        {
+        #region Constructors
+        //Pre-defined gravity
+        public PhysicsManager(
+            Game game, 
+            EventDispatcher eventDispatcher, 
+            StatusType statusType
+        ) : this(game, eventDispatcher, statusType, -10 * Vector3.UnitY) {
 
         }
 
-        //user-defined gravity
-        public PhysicsManager(Game game, EventDispatcher eventDispatcher, StatusType statusType, Vector3 gravity)
-            : base(game, eventDispatcher, statusType)
-        {
+        //User-defined gravity
+        public PhysicsManager(
+            Game game, 
+            EventDispatcher eventDispatcher, 
+            StatusType statusType, 
+            Vector3 gravity
+        ) : base(game, eventDispatcher, statusType) {
             this.physicSystem = new PhysicsSystem();
 
-            //add cd/cr system
+            //Add cd/cr system
             this.physicSystem.CollisionSystem = new CollisionSystemSAP();
 
-            //allows us to define the direction and magnitude of gravity - default is (0, -9.8f, 0)
+            //Allows us to define the direction and magnitude of gravity - default is (0, -9.8f, 0)
             this.physicSystem.Gravity = gravity;
 
-            //25/11/17 - prevents bug where objects would show correct CDCR response when velocity == Vector3.Zero
+            //Prevents bug where objects would show correct CDCR response when velocity == Vector3.Zero
             this.physicSystem.EnableFreezing = false;
 
             this.physicSystem.SolverType = PhysicsSystem.Solver.Normal;
             this.physicSystem.CollisionSystem.UseSweepTests = true;
 
-            //affect accuracy and the overhead == time required
+            //Affect accuracy and the overhead == time required
             this.physicSystem.NumCollisionIterations = 8; //8
             this.physicSystem.NumContactIterations = 8; //8
             this.physicSystem.NumPenetrationRelaxtionTimesteps = 12; //15          
-
-            #region SETTING_COLLISION_ACCURACY
-            //affect accuracy of the collision detection
+            
+            //Affect accuracy of the collision detection
             this.physicSystem.AllowedPenetration = 0.000025f;
             this.physicSystem.CollisionTollerance = 0.00005f;
-            #endregion
 
             this.physCont = new PhysicsController();
             this.physicSystem.AddController(physCont);
 
-            //batch removal - as in ObjectManager
+            //Batch removal - as in ObjectManager
             this.removeList = new List<CollidableObject>();
-
         }
+        #endregion
 
         #region Event Handling
         protected override void RegisterForEventHandling(EventDispatcher eventDispatcher)
@@ -97,7 +101,7 @@ namespace GDLibrary
         {
             if (eventData.EventType == EventActionType.OnRemoveActor)
             {
-                //using the "sender" property of the event to pass reference to object to be removed - use "as" to access Body since sender is defined as a raw object.
+                //Using the "sender" property of the event to pass reference to object to be removed - use "as" to access Body since sender is defined as a raw object.
                 Remove(eventData.Sender as CollidableObject);
             }
         }
@@ -121,13 +125,14 @@ namespace GDLibrary
         }
         #endregion
 
-        //call when we want to remove a drawn object from the scene
+        #region Methods
+        //Call when we want to remove a drawn object from the scene
         public void Remove(CollidableObject collidableObject)
         {
             this.removeList.Add(collidableObject);
         }
 
-        //batch remove on all objects that were requested to be removed
+        //Batch remove on all objects that were requested to be removed
         protected virtual void ApplyRemove()
         {
             foreach (CollidableObject collidableObject in this.removeList)
@@ -145,12 +150,13 @@ namespace GDLibrary
 
             timeStep = (float)gameTime.ElapsedGameTime.Ticks / TimeSpan.TicksPerSecond;
 
-            //if the time between updates indicates a FPS of close to 60 fps or less then update CD/CR engine
+            //If the time between updates indicates a FPS of close to 60 fps or less then update CD/CR engine
             if (timeStep < 1.0f / 60.0f)
                 physicSystem.Integrate(timeStep);
             else
                 //Else fix at 60 updates per second
                 physicSystem.Integrate(1.0f / 60.0f);
         }
+        #endregion
     }
 }

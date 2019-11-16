@@ -15,7 +15,11 @@ namespace GDApp
     {
         public override bool ConsiderSkin(CollisionSkin skin0)
         {
-            return (skin0.Owner != null);
+            if (skin0.Owner.ExternalData is Actor3D)
+                if (!(skin0.Owner.ExternalData as Actor3D).ActorType.Equals(ActorType.CollidableCamera))
+                    return true;
+
+            return false;
         }
     }
 
@@ -77,13 +81,15 @@ namespace GDApp
         private int triggersStartPosition = 3;
         private int playersStartPosition = 4;
         private int enemiesStartPosition = 5;
+        private int gatesStartPosition = 6;
 
         //Array Shift Position
         private int roomsShiftPosition;
         private int pickupsShiftPosition;
         private int triggersShiftPosition;
-        private int enemiesShiftPosition;
         private int playersShiftPosition;
+        private int enemiesShiftPosition;
+        private int gatesShiftPosition;
 
         //Array Reserved Bits
         private int reservedRoomBits;
@@ -91,6 +97,7 @@ namespace GDApp
         private int reservedTriggerBits;
         private int reservedPlayerBits;
         private int reservedEnemyBits;
+        private int reservedGateBits;
 
         //Player Posiiton
         private Transform3D playerPosition;
@@ -99,6 +106,7 @@ namespace GDApp
         private MyMenuManager menuManager;
         private UIManager uiManager;
         private PickingManager pickingManager;
+        private BasicEffect winZoneEffect;
 
         public Main()
         {
@@ -126,7 +134,7 @@ namespace GDApp
             InitializeManagers();
             
             float worldScale = 2.54f;
-            SetupBitArray(0, 5, 4, 4, 3, 2);
+            SetupBitArray(0, 5, 4, 4, 3, 2, 3);
 
             LoadLevelFromFile();
             LoadMapFromFile();
@@ -137,8 +145,8 @@ namespace GDApp
             InitializeMenu();
             InitializeUI();
 
-            InitializeDebug();
-            InitializeDebugCollisionSkinInfo();
+            //InitializeDebug();
+            //InitializeDebugCollisionSkinInfo();
 
             base.Initialize();
         }
@@ -179,12 +187,12 @@ namespace GDApp
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
                 TextureEnabled = true,
-                LightingEnabled = false,
+                LightingEnabled = true,
                 PreferPerPixelLighting = true,
                 FogColor = new Vector3(0.1f, 0.05f, 0.1f),
                 FogEnabled = true,
-                FogStart = 127,
-                FogEnd = 400,
+                FogStart = 100,
+                FogEnd = 300,
                 DiffuseColor = new Vector3(0, 0, 0),
                 AmbientLightColor = new Vector3(0.05f, 0, 0.05f),
                 EmissiveColor = new Vector3(0.05f, 0, 0.05f)
@@ -237,13 +245,46 @@ namespace GDApp
             #endregion
 
             #region Pickup Effects
-            this.pickupEffect = new BasicEffect(graphics.GraphicsDevice)
+            basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
-                TextureEnabled = true
+                TextureEnabled = true,
+                LightingEnabled = false,
+                PreferPerPixelLighting = false,
+                DiffuseColor = Color.Blue.ToVector3(),
+                AmbientLightColor = Color.Purple.ToVector3(),
+                EmissiveColor = Color.Red.ToVector3()
             };
 
-            this.pickupEffect.EnableDefaultLighting();
-            this.pickupEffect.PreferPerPixelLighting = true;
+            basicEffect.SpecularColor = Color.Red.ToVector3();
+            basicEffect.EnableDefaultLighting();
+            basicEffect.PreferPerPixelLighting = true;
+            this.effectDictionary.Add(AppData.PickupEffectID, new BasicEffectParameters(basicEffect));
+            #endregion
+
+            #region Zone Effects
+            basicEffect = new BasicEffect(graphics.GraphicsDevice)
+            {
+                //TextureEnabled = false,
+                //LightingEnabled = true,
+                //PreferPerPixelLighting = true,
+                //DiffuseColor = Color.Blue.ToVector3(),
+                //AmbientLightColor = Color.Purple.ToVector3(),
+                //EmissiveColor = Color.Red.ToVector3()
+                TextureEnabled = true,
+                LightingEnabled = true,
+                PreferPerPixelLighting = true,
+                FogColor = new Vector3(0.1f, 0.05f, 0.1f),
+                FogEnabled = true,
+                FogStart = 100,
+                FogEnd = 300,
+                DiffuseColor = new Vector3(0, 0, 0),
+                AmbientLightColor = new Vector3(0.05f, 0, 0.05f),
+                EmissiveColor = new Vector3(0.05f, 0, 0.05f)
+            };
+
+            basicEffect.EnableDefaultLighting();
+            basicEffect.PreferPerPixelLighting = true;
+            this.effectDictionary.Add(AppData.WinZoneEffectID, new BasicEffectParameters(basicEffect));
             #endregion
         }
 
@@ -295,7 +336,8 @@ namespace GDApp
                 mouseManager,
                 keyboardManager,
                 gamePadManager,
-                soundManager
+                soundManager,
+                this.physicsManager
             );
             #endregion
 
@@ -718,7 +760,8 @@ namespace GDApp
                     1,
                     AppData.CollidableCameraMass,
                     AppData.CollidableCameraJumpHeight,
-                    Vector3.Zero
+                    Vector3.Zero,
+                    this.eventDispatcher
                 )
             );
             
@@ -727,14 +770,15 @@ namespace GDApp
         #endregion
 
         #region Map Setup
-        private void SetupBitArray(int roomsShiftPosition, int reservedRoomBits, int reservedPickupBits, int reservedTriggerBits, int reservedPlayerBits, int reservedEnemybits)
+        private void SetupBitArray(int roomsShiftPosition, int reservedRoomBits, int reservedPickupBits, int reservedTriggerBits, int reservedPlayerBits, int reservedEnemyBits, int reservedGateBits)
         {
             //Reserve bits for each map component
             this.reservedRoomBits = reservedRoomBits;
             this.reservedPickupBits = reservedPickupBits;
             this.reservedTriggerBits = reservedTriggerBits;
             this.reservedPlayerBits = reservedPlayerBits;
-            this.reservedEnemyBits = reservedEnemybits;
+            this.reservedEnemyBits = reservedEnemyBits;
+            this.reservedGateBits = reservedGateBits;
 
             //Calculate shift for each map component, relative to previous component
             this.roomsShiftPosition = roomsShiftPosition;
@@ -742,6 +786,7 @@ namespace GDApp
             this.triggersShiftPosition = this.pickupsShiftPosition + this.reservedPickupBits;
             this.playersShiftPosition = this.triggersShiftPosition + this.reservedTriggerBits;
             this.enemiesShiftPosition = this.playersShiftPosition + this.reservedPlayerBits;
+            this.gatesShiftPosition = this.enemiesShiftPosition + this.reservedEnemyBits;
         }
 
         private void LoadLevelFromFile()
@@ -860,7 +905,11 @@ namespace GDApp
                     #region Place Enemies
                     PlaceComponents(line, this.enemiesStartPosition, this.enemiesShiftPosition, x, y, z);
                     #endregion
-                   
+
+                    #region Place Gates
+                    PlaceComponents(line, this.gatesStartPosition, this.gatesShiftPosition, x, y, z);
+                    #endregion
+
                     //Iterate z
                     z++;
                 }
@@ -970,11 +1019,22 @@ namespace GDApp
                         //Extract enemy from level map
                         int enemyType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], this.reservedEnemyBits, this.enemiesShiftPosition);
 
-                        ////If an enemy has been set
+                        //If an enemy has been set
                         if (enemyType > 0)
 
                             //Spawn enemy
                             SpawnEnemy(enemyType, transform);
+                        #endregion
+
+                        #region Construct Gates
+                        //Extract gate from level map
+                        int gateType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], this.reservedGateBits, this.gatesShiftPosition);
+
+                        //If a gate has been set
+                        if (gateType > 0)
+
+                            //Construct gate
+                            ConstructGate(gateType, transform);
                         #endregion
                     }
                 }
@@ -997,7 +1057,7 @@ namespace GDApp
 
             //Create model
             this.staticModel = new CollidableArchitecture(
-                "room" + roomType,
+                "Room " + roomType,
                 ActorType.CollidableArchitecture,
                 roomTransform,
                 effectParameters,
@@ -1020,7 +1080,7 @@ namespace GDApp
             Transform3D pickupTransform = transform.Clone() as Transform3D;
 
             //Load model and effect parameters
-            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
+            BasicEffectParameters effectParameters = this.effectDictionary[AppData.PickupEffectID].Clone() as BasicEffectParameters;
             Model model = this.modelDictionary["pickupModel" + pickupType];
 
             //Load collision box
@@ -1028,7 +1088,7 @@ namespace GDApp
 
             //Create model
             this.staticModel = new ImmovablePickupObject(
-                "pickup" + pickupType,
+                "Pickup " + pickupType,
                 ActorType.CollidablePickup,
                 pickupTransform,
                 effectParameters,
@@ -1036,7 +1096,7 @@ namespace GDApp
                 collisionBox,
                 new MaterialProperties(0.8f, 0.8f, 0.8f),
                 new PickupParameters(
-                    "Item",
+                    "Boss Gate Key",
                     1,
                     PickupType.Key
                 )
@@ -1051,54 +1111,69 @@ namespace GDApp
 
         public void ConstructTrigger(int triggerType, Transform3D transform)
         {
+            Transform3D gateTransform = transform.Clone() as Transform3D;
+
             //Determine trigger type
             switch (triggerType)
             {
                 case 1:
-                    this.triggerList.Add(
-                        new TriggerVolume(
-                            transform.Translation.X,
-                            transform.Translation.Y,
-                            transform.Translation.Z,
-                            (100 * 2.54f),
-                            (100 * 2.54f),
-                            (100 * 2.54f),
-                            TriggerType.InitiateBattle,
-                            null
-                        )
-                    );
+                    //this.object3DManager.Add(
+                    //    new ZoneObject(
+                    //        "Win Zone",
+                    //        ActorType.Zone,
+                    //        transform,
+                    //        this.effectDictionary[AppData.WinZoneEffectID],
+                    //        this.collisionBoxDictionary["zoneCollision"]
+                    //    )
+                    //);
                     break;
 
-                case 2:
-                    this.triggerList.Add(
-                        new TriggerVolume(
-                            transform.Translation.X,
-                            transform.Translation.Y,
-                            transform.Translation.Z,
-                            (100 * 2.54f),
-                            (100 * 2.54f),
-                            (100 * 2.54f),
-                            TriggerType.EndLevel,
-                            null
-                        )
-                    );
+                default:
                     break;
             }
         }
         
+        public void ConstructGate(int gateType, Transform3D transform)
+        {
+            //Setup dimensions
+            Transform3D gateTransform = transform.Clone() as Transform3D;
+
+            //Load model and effect parameters
+            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
+            Model model = this.modelDictionary["gateModel" + gateType];
+
+            //Load collision box
+            Model collisionBox = this.collisionBoxDictionary["gateCollision" + gateType];
+
+            //Create model
+            this.staticModel = new CollidableArchitecture(
+                "Gate " + gateType,
+                ActorType.CollidableArchitecture,
+                gateTransform,
+                effectParameters,
+                model,
+                collisionBox,
+                new MaterialProperties(0.8f, 0.8f, 0.8f)
+            );
+
+            //Add collision
+            this.staticModel.Enable(true, 1);
+
+            //Add to object manager list
+            this.object3DManager.Add(staticModel);
+        }
+
         public void SpawnPlayer(Transform3D transform)
         {
             this.playerPosition = transform.Clone() as Transform3D;
         }
-
-        Enemy enemy;
 
         public void SpawnEnemy(int enemyType, Transform3D transform)
         {
             //Setup dimensions
             Vector3 enemyDimensions = new Vector3(60, 60, 60) * 2.54f;
             Transform3D enemyTransform = transform.Clone() as Transform3D;
-            enemyTransform.Translation += new Vector3(127, 25, 127);
+            enemyTransform.Translation += new Vector3(127, 0, 127);
 
             //Load model and effect parameters
             BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
@@ -1106,23 +1181,6 @@ namespace GDApp
 
             //Load collision box
             Model collisionBox = this.collisionBoxDictionary["enemyCollision" + enemyType];
-
-            ////Create model
-            //this.staticModel = new ImmovablePickupObject(
-            //    "pickup" + enemyType,
-            //    ActorType.CollidablePickup,
-            //    enemyTransform,
-            //    new BoundingBox(enemyTransform.Translation, (enemyTransform.Translation + enemyDimensions)),
-            //    effectParameters,
-            //    model,
-            //    collisionBox,
-            //    new MaterialProperties(0.8f, 0.8f, 0.8f),
-            //    new PickupParameters(
-            //        "Item",
-            //        1,
-            //        PickupType.Key
-            //    )
-            //);
 
             float width = 154;
             float height = 154;
@@ -1159,43 +1217,6 @@ namespace GDApp
 
             //Add to object manager list
             this.object3DManager.Add(this.staticModel);
-
-            //float width = 100;
-            //float height = 100;
-            //float depth = 100;
-
-            //Vector3 movementVector = new Vector3(254, 254, 254);
-            //Vector3 rotationVector = new Vector3(90, 90, 90);
-
-            //float health = 100;
-            //float attack = 100;
-            //float defence = 100;
-
-            ////Create model
-            //this.staticModel = new Enemy(
-            //    "enemy" + enemyType,
-            //    ActorType.Enemy,
-            //    enemyTransform,
-            //    new BoundingBox(enemyTransform.Translation, (enemyTransform.Translation + enemyDimensions)),
-            //    effectParameters,
-            //    model,
-            //    width,
-            //    height,
-            //    depth,
-            //    movementVector,
-            //    rotationVector,
-            //    AppData.CameraMoveSpeed,
-            //    AppData.CameraRotationSpeed,
-            //    health,
-            //    attack,
-            //    defence
-            //);
-
-            //Add collision
-            //this.staticModel.Enable(true, 1);
-
-            ////Add to object manager list
-            //this.object3DManager.Add(this.staticModel);
         }
         #endregion
 
@@ -1289,8 +1310,13 @@ namespace GDApp
             #endregion
 
             #region Character Models
-            this.modelDictionary.Load("Assets/Models/Characters/enemy_model_001", "enemyModel1");
-            this.modelDictionary.Load("Assets/Models/Characters/enemy_model_001", "enemyModel2");
+            this.modelDictionary.Load("Assets/Models/Characters/enemy_001", "enemyModel1");
+            this.modelDictionary.Load("Assets/Models/Characters/enemy_002", "enemyModel2");
+            #endregion
+
+            #region Prop Models
+            this.modelDictionary.Load("Assets/Models/Props/gate_001", "gateModel1");
+            this.modelDictionary.Load("Assets/Models/Props/gate_002", "gateModel2");
             #endregion
         }
 
@@ -1326,7 +1352,16 @@ namespace GDApp
 
             #region Enemy Collision
             this.collisionBoxDictionary.Load("Assets/Collision Boxes/Characters/enemy_collision_001", "enemyCollision1");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Characters/enemy_collision_001", "enemyCollision2");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Characters/enemy_collision_002", "enemyCollision2");
+            #endregion
+
+            #region Zone Collision
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Zones/zone_collision", "zoneCollision");
+            #endregion
+
+            #region Prop Collision
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Props/gate_collision_001", "gateCollision1");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Props/gate_collision_002", "gateCollision2");
             #endregion
         }
 
@@ -1428,6 +1463,10 @@ namespace GDApp
             this.effectDictionary.Add("pickupEffect3", new EffectParameters(this.modelEffect, null, Color.White, 1));
             this.effectDictionary.Add("pickupEffect4", new EffectParameters(this.modelEffect, null, Color.White, 1));
             #endregion
+
+            #region Zone Effects
+            //this.effectDictionary.Add("winZoneEffect", new EffectParameters(this.modelEffect, null, Color.BlanchedAlmond, 0.5f));
+            #endregion
         }
 
         public void LoadSounds()
@@ -1476,158 +1515,32 @@ namespace GDApp
                 }
             }
         }
+        #endregion
 
-        //HashSet<ModelObject> CurrentPlayerIntersections = new HashSet<ModelObject>();
-
-        private void RemoveNonIntersectingModels(ModelObject model)
-        {
-            //Camera3D player = this.cameraManager.ActiveCamera;
-            //Vector3 cellVector = new Vector3(254, 0, 254);
-
-            //BoundingBox cellAdjacentAhead = new BoundingBox(
-            //    (player.BoundingBox.Min + (cellVector * player.Transform.Look)),
-            //    (player.BoundingBox.Max + (cellVector * player.Transform.Look))
-            //);
-
-            //BoundingBox cellAdjacentLeft = new BoundingBox(
-            //    (player.BoundingBox.Min + (cellVector * player.Transform.Right)),
-            //    (player.BoundingBox.Max + (cellVector * player.Transform.Right))
-            //);
-
-            //BoundingBox cellAdjacentBehind = new BoundingBox(
-            //    (player.BoundingBox.Min + (cellVector * -player.Transform.Look)),
-            //    (player.BoundingBox.Max + (cellVector * -player.Transform.Look))
-            //);
-
-            //BoundingBox cellAdjacentRight = new BoundingBox(
-            //    (player.BoundingBox.Min + (cellVector * -player.Transform.Right)),
-            //    (player.BoundingBox.Max + (cellVector * -player.Transform.Right))
-            //);
-
-            ////If there is no intersection with the model
-            //if (!model.BoundingBox.Intersects(cellAdjacentAhead) 
-            //    && !model.BoundingBox.Intersects(cellAdjacentLeft) 
-            //    && !model.BoundingBox.Intersects(cellAdjacentBehind) 
-            //    && !model.BoundingBox.Intersects(cellAdjacentRight)
-            //) {
-            //    CurrentPlayerIntersections.Remove(model);
-            //}
-        }
-
-        private void DetectIntersectingModels(ModelObject model)
-        {
-            //Camera3D player = this.cameraManager.ActiveCamera;
-            //Vector3 cellVector = new Vector3(254, 0, 254);
-
-            //BoundingBox cellAdjacentAhead = new BoundingBox(
-            //    (player.BoundingBox.Min + (cellVector * player.Transform.Look)),
-            //    (player.BoundingBox.Max + (cellVector * player.Transform.Look))
-            //);
-
-            //BoundingBox cellAdjacentLeft = new BoundingBox(
-            //    (player.BoundingBox.Min + (cellVector * player.Transform.Right)),
-            //    (player.BoundingBox.Max + (cellVector * player.Transform.Right))
-            //);
-
-            //BoundingBox cellAdjacentBehind = new BoundingBox(
-            //    (player.BoundingBox.Min + (cellVector * -player.Transform.Look)),
-            //    (player.BoundingBox.Max + (cellVector * -player.Transform.Look))
-            //);
-
-            //BoundingBox cellAdjacentRight = new BoundingBox(
-            //    (player.BoundingBox.Min + (cellVector * -player.Transform.Right)),
-            //    (player.BoundingBox.Max + (cellVector * -player.Transform.Right))
-            //);
-
-            ////If there is any intersection with the model
-            //if (model.BoundingBox.Intersects(cellAdjacentAhead)
-            //    || model.BoundingBox.Intersects(cellAdjacentLeft)
-            //    || model.BoundingBox.Intersects(cellAdjacentBehind)
-            //    || model.BoundingBox.Intersects(cellAdjacentRight)
-            //) {
-
-            //    //If the intersection set does not contain the current model
-            //    if (!CurrentPlayerIntersections.Contains(model))
-            //    {
-            //        if (model.ActorType == ActorType.CollidablePickup)
-            //        {
-            //            //Add the current model to the intersection set
-            //            CurrentPlayerIntersections.Add(model);
-
-            //            EventDispatcher.Publish(
-            //                new EventData(
-            //                    EventActionType.OnPlay,
-            //                    EventCategoryType.Sound2D,
-            //                    new object[] { "boing" }
-            //                )
-            //            );
-            //        }
-            //    }
-            //}
-        }
-
-        //Get a ray pointing from the player to the sqaure ahead
-        public Microsoft.Xna.Framework.Ray GetRay(Vector3 position, Vector3 direction)
-        {
-            //Get the positions of the mouse in screen space
-            Vector3 near = new Vector3(635, 381, 1143);
-
-            //Convert from screen space to world space
-            return new Microsoft.Xna.Framework.Ray(position, direction);
-        }
-
-        //public CollidableObject CheckForCollisionWithRay(Vector3 s, Vector3 e)
+        #region Old Code
+        ////Checks each direction for a collision (north, south, east & west)
+        //public void DemoCollision()
         //{
-        //    Vector3 ray = Vector3.Normalize(e - s);
-        //    ImmovableSkinPredicate pred = new ImmovableSkinPredicate();
-        //    Segment segment = new Segment(s, e);
-        //    Vector3 end = segment.GetEnd();
+        //    float cellWidth = 254;
+        //    Vector3 position = this.playerPosition.Translation;
+        //    Vector3 north = this.playerPosition.Look;
+        //    Vector3 south = -this.playerPosition.Look;
+        //    Vector3 east = this.playerPosition.Right;
+        //    Vector3 west = -this.playerPosition.Right;
 
-        //    this.physicsManager.PhysicsSystem.CollisionSystem.SegmentIntersect(
-        //        out frac,
-        //        out skin,
-        //        out pos,
-        //        out normal,
-        //        new Segment(s, e),
-        //        pred
-        //    );
-
-        //    //If a skin has been returned (if a collision has taken place)
-        //    if (skin != null && skin.Owner != null)
-        //    {
-        //        CollidableObject collidableObject = (skin.Owner.ExternalData as CollidableObject);
-
-        //        //If the actor is a collidable pickup (cast to collidable object)
-        //        if (collidableObject.ActorType == ActorType.CollidablePickup)
-        //        {
-        //            //If the collision has occurred between 0 and 254 units away
-        //            if (frac > 0 && frac < 254)
-        //            {
-        //                //Publish a sound event
-        //                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "boing" }));
-        //            }
-        //        }
-        //        else if (collidableObject.ActorType == ActorType.CollidableArchitecture)
-        //        {
-        //            if (frac < 254)
-        //            {
-        //                EventDispatcher.Publish(new EventData(EventActionType.AvailableMoves, EventCategoryType.Player), new object[] { }));
-        //            }
-        //        }
-        //        else if (collidableObject.ActorType == ActorType.Enemy)
-        //        {
-
-        //        }
-
-        //        //Return skin
-        //        return skin.Owner.ExternalData as CollidableObject;
-        //    }
-
-        //    //There has been no collision
-        //    return null;
+        //    CheckForCollision(position, north, cellWidth);
+        //    CheckForCollision(position, south, cellWidth);
+        //    CheckForCollision(position, east, cellWidth);
+        //    CheckForCollision(position, west, cellWidth);
         //}
 
-        //public ActorType CheckForCollisionWithRay(Vector3 start, Vector3 delta)
+        //CollisionSkin skin;
+        //private float frac;
+        //private Vector3 pos;
+        //private Vector3 normal;
+        //private BasicEffect winZoneEffect;
+
+        //public object[] CheckForCollisionWithRay(Vector3 start, Vector3 delta)
         //{
         //    Segment seg = new Segment(start, delta);
         //    ImmovableSkinPredicate pred = new ImmovableSkinPredicate();
@@ -1644,251 +1557,132 @@ namespace GDApp
         //    //If a collision has taken place
         //    if (skin != null && skin.Owner != null)
         //    {
-        //        //If the collision was with a collidable object
-        //        if (skin.Owner.ExternalData is CollidableObject)
-        //        {
-        //            //Return the actor type of the collidable object
-        //            return (skin.Owner.ExternalData as CollidableObject).ActorType;
-        //        }
+        //        //Return an array containing the collision skin and distance to collision
+        //        return new object[] { frac, skin };
         //    }
 
-        //    return ActorType.None;
+        //    return null;
         //}
 
-        CollisionSkin skin;
-        private float frac;
-        private Vector3 pos;
-        private Vector3 normal;
-
-        public object[] CheckForCollisionWithRay(Vector3 start, Vector3 delta)
-        {
-            Segment seg = new Segment(start, delta);
-            ImmovableSkinPredicate pred = new ImmovableSkinPredicate();
-
-            this.physicsManager.PhysicsSystem.CollisionSystem.SegmentIntersect(
-                out frac,
-                out skin,
-                out pos,
-                out normal,
-                seg,
-                pred
-            );
-
-            //If a collision has taken place
-            if (skin != null && skin.Owner != null)
-            {
-                //Return an array containing the collision skin and distance to collision
-                return new object[] { frac, skin };
-            }
-
-            return null;
-        }
-
-        //Ray northRay = new Ray(this.playerPosition.Translation, this.playerPosition.Look);
-        //Ray southRay = new Ray(this.playerPosition.Translation, this.playerPosition.Look);
-        //Ray eastRay = new Ray(this.playerPosition.Translation, this.playerPosition.Look);
-        //Ray westRay = new Ray(this.playerPosition.Translation, this.playerPosition.Look);
-
-        ////if (ray.Intersects(model.BoundingBox).Value < 254)
-        ////{
-        ////    if (model.ActorType == ActorType.CollidableArchitecture)
-        ////    {
-
-        ////    }
-
-        ////    if (model.ActorType == ActorType.CollidablePickup)
-        ////    {
-
-        ////    }
-
-
-        ////    if (model.ActorType == ActorType.Gate && innventory.Has(PickupParameters.))
-        ////    {
-        ////        //Publish open gate event
-        ////        //Play sound
-        ////        //Transform 
-        ////    }
-        ////}
-
-        //for (int i = 0; i < 4; i++)
-        //{
-
-        //}
-        //}
-
-        //Casts a ray, checking for collision with an object.
-        //Vector3 position: The starting position of the ray
-        //Vector3 direction: The direction that the ray will point in
-        //float length: The length of the ray
         //private void CheckForCollision(Vector3 position, Vector3 direction, float length)
         //{
         //    Vector3 start = position;
         //    Vector3 delta = direction * length;
 
-        //    object[] parameters = CheckForCollisionWithRay(start, delta);
+        //    object[] collisionInfo = CheckForCollisionWithRay(start, delta);
 
-        //    //If the parameters array has been set
-        //    if (parameters != null)
+        //    //If a collision has taken place
+        //    if (collisionInfo != null)
         //    {
         //        //Cast distance to collision (frac) to a float
-        //        float distanceToCollision = (float) parameters[0];
+        //        float distanceToCollision = (float) collisionInfo[0];
 
         //        //Cast the parent actor of the collision skin to a collidable object
-        //        CollidableObject collidableObject = ((parameters[1] as CollisionSkin).Owner.ExternalData as CollidableObject);
+        //        CollidableObject collidableObject = ((collisionInfo[1] as CollisionSkin).Owner.ExternalData as CollidableObject);
 
-        //        //If the ray has collided with a wall
-        //        if (collidableObject.ActorType == ActorType.CollidableArchitecture)
+        //        switch (collidableObject.ActorType)
         //        {
-        //            //If the wall is in the current cell
-        //            if (distanceToCollision < 127)
-        //            {
+        //            case ActorType.CollidableArchitecture:
+        //                CheckForCollisionWithWall(distanceToCollision, direction);
+        //                break;
 
-        //            }
-        //        }
+        //            case ActorType.CollidablePickup:
+        //                CheckForCollisionWithPickup(distanceToCollision, collidableObject);
+        //                break;
 
-        //        //If the ray has collided with a pickup
-        //        if (collidableObject.ActorType == ActorType.CollidablePickup)
-        //        {
-        //            //If the pickup is in an adjacent cell
-        //            if (distanceToCollision > 127 && distanceToCollision < 254)
-        //            {
-
-        //            }
-
-        //            //If the pickup is in the current cell
-        //            else if (distanceToCollision < 127)
-        //            {
-
-        //            }
-        //        }
-
-        //        //If the ray has collided with an enemy
-        //        if (collidableObject.ActorType == ActorType.Enemy)
-        //        {
-        //            //If the enemy is in an adjacent cell
-        //            if (distanceToCollision > 127 && distanceToCollision < 254)
-        //            {
-
-        //            }
+        //            case ActorType.Enemy:
+        //                CheckForCollisionWithEnemy(distanceToCollision);
+        //                break;
         //        }
         //    }
         //}
 
-        private void CheckForCollision(Vector3 position, Vector3 direction, float length)
-        {
-            Vector3 start = position;
-            Vector3 delta = direction * length;
+        //private void CheckForCollisionWithWall(float distanceToCollision, Vector3 collisionDirection)
+        //{
+        //    //If the wall is in the current cell
+        //    if (distanceToCollision <= 0.5f)
+        //    {
+        //        //Publish an event to say that they way is blocked
+        //        EventDispatcher.Publish(
+        //            new EventData(
+        //                EventActionType.OnWayBlocked, 
+        //                EventCategoryType.Player, 
+        //                new object[] { collisionDirection }
+        //            )
+        //        );
+        //    }
+        //}
 
-            object[] collisionInfo = CheckForCollisionWithRay(start, delta);
+        //HashSet<ModelObject> collisionSet = new HashSet<ModelObject>();
 
-            //If a collision has taken place
-            if (collisionInfo != null)
-            {
-                //Cast distance to collision (frac) to a float
-                float distanceToCollision = (float) collisionInfo[0];
+        //private void CheckForCollisionWithPickup(float distanceToCollision, CollidableObject pickup)
+        //{
+        //    //If the pickup is in an adjacent cell
+        //    if (distanceToCollision >= 0.5f && distanceToCollision <= 1.0f)
+        //    {
+        //        //If the pickup has not yet been realised
+        //        if (!this.collisionSet.Contains(pickup))
+        //        {
+        //            //Add pickup to the collision set
+        //            this.collisionSet.Add(pickup);
 
-                //Cast the parent actor of the collision skin to a collidable object
-                CollidableObject collidableObject = ((collisionInfo[1] as CollisionSkin).Owner.ExternalData as CollidableObject);
+        //            //Publish event to play sound effect
+        //            EventDispatcher.Publish(
+        //                new EventData(
+        //                    EventActionType.OnPlay,
+        //                    EventCategoryType.Sound2D,
+        //                    new object[] { "boing" }
+        //                )
+        //            );
+        //        }
+        //    }
 
-                switch (collidableObject.ActorType)
-                {
-                    case ActorType.CollidableArchitecture:
-                        CheckForCollisionWithWall(distanceToCollision, direction);
-                        break;
+        //    //If the pickup is in the current cell
+        //    if (distanceToCollision <= 0.5f)
+        //    {
+        //        //Publish event to remove pickup
+        //        EventDispatcher.Publish(
+        //            new EventData(
+        //                pickup,
+        //                EventActionType.OnRemoveActor, 
+        //                EventCategoryType.SystemRemove
+        //            )
+        //        );
 
-                    case ActorType.CollidablePickup:
-                        CheckForCollisionWithPickup(distanceToCollision);
-                        break;
+        //        //Publish event to add to inventory
+        //        EventDispatcher.Publish(
+        //            new EventData(
+        //                EventActionType.OnAddToInventory,
+        //                EventCategoryType.Pickup,
+        //                new object[] { pickup }
+        //            )
+        //        );
 
-                    case ActorType.Enemy:
-                        CheckForCollisionWithEnemy(distanceToCollision);
-                        break;
-                }
-            }
-        }
+        //        //Publish event to update hud
+        //        EventDispatcher.Publish(
+        //            new EventData(
+        //                EventActionType.OnUpdateHud,
+        //                EventCategoryType.Pickup,
+        //                new object[] { pickup }
+        //            )
+        //        );
+        //    }
+        //}
 
-        private void CheckForCollisionWithWall(float distanceToCollision, Vector3 collisionDirection)
-        {
-            //If the wall is in the current cell
-            if (distanceToCollision <= 0.5f)
-            {
-                //Publish event to prevent user from moving in the given direction
-                //Publish event to update UI
-            }
-        }
-
-        private void CheckForCollisionWithPickup(float distanceToCollision)
-        {
-            //If the pickup is in an adjacent cell
-            if (distanceToCollision >= 0.5f && distanceToCollision <= 1.0f)
-            {
-                //Publish event to play sound effect
-            }
-
-            //If the pickup is in the current cell
-            if (distanceToCollision <= 0.5f)
-            {
-                //Publish event to remove pickup
-                //Publish event to add to inventory
-                //Publish event to update hud
-            }
-        }
-
-        private void CheckForCollisionWithEnemy(float distanceToCollision)
-        {
-            //If the enemy is an adjacent cell
-            if (distanceToCollision >= 0.5f && distanceToCollision <= 1.0f)
-            {
-                //Publish event to prevent keypress
-                //Publish event to commence battle
-                //Publish event to play music
-            }
-        }
-
-        //Checks each direction for a collision (north, south, east & west)
-        public void DemoCollision()
-        {
-            float cellWidth = 254;
-            Vector3 position = this.playerPosition.Translation;
-            Vector3 north = this.playerPosition.Look;
-            Vector3 south = -this.playerPosition.Look;
-            Vector3 east = this.playerPosition.Right;
-            Vector3 west = -this.playerPosition.Right;
-
-            CheckForCollision(position, north, cellWidth);
-            //CheckForCollision(position, south, cellWidth);
-            //CheckForCollision(position, east, cellWidth);
-            //CheckForCollision(position, west, cellWidth);
-        }
-
-        private void CheckIntersection()
-        {
-            foreach (ModelObject model in this.object3DManager.OpaqueDrawList)
-            {
-                RemoveNonIntersectingModels(model);
-                DetectIntersectingModels(model);
-            }
-        }
-
-        private void DemoToggleMenu()
-        {
-            if (this.keyboardManager.IsFirstKeyPress(AppData.MenuShowHideKey))
-            {
-                if (this.menuManager.IsVisible)
-                    EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu));
-                else
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
-            }
-        }
-
-        private void DemoAStar()
-        {
-
-        }
+        //private void CheckForCollisionWithEnemy(float distanceToCollision)
+        //{
+        //    //If the enemy is an adjacent cell
+        //    if (distanceToCollision >= 0.5f && distanceToCollision <= 1.0f)
+        //    {
+        //        //Publish event to prevent keypress
+        //        //Publish event to commence battle
+        //        //Publish event to play music
+        //    }
+        //}
         #endregion
 
         #region Debug
-        #if DEBUG
+#if DEBUG
         private void InitializeDebug()
         {
             Components.Add(
@@ -1924,8 +1718,6 @@ namespace GDApp
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            DemoCollision();
-            DemoAStar();
         }
 
         protected override void Draw(GameTime gameTime)

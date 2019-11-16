@@ -21,6 +21,7 @@
         Game,
         Debug,
         Menu,
-        ObjectPicking
+        ObjectPicking,
+        Movement
     }
 }

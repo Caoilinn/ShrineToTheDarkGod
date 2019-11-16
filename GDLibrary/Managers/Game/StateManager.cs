@@ -18,6 +18,7 @@ namespace GDLibrary
         #region Fields
         static public int currentLevel;
         static public bool playerTurn;
+        static public bool enemyTurn;
         #endregion
 
         #region Properties
@@ -32,6 +33,7 @@ namespace GDLibrary
                 StateManager.currentLevel = value;
             }
         }
+
         public bool PlayerTurn
         {
             get
@@ -43,6 +45,18 @@ namespace GDLibrary
                 StateManager.playerTurn = value;
             }
         }
+
+        public bool EnemyTurn
+        {
+            get
+            {
+                return StateManager.enemyTurn;
+            }
+            set
+            {
+                StateManager.enemyTurn = value;
+            }
+        }
         #endregion
 
         #region Constructor
@@ -51,7 +65,7 @@ namespace GDLibrary
             EventDispatcher eventDispatcher, 
             StatusType statusType
         ) : base(game, eventDispatcher, statusType) {
-
+            this.PlayerTurn = true;
         }
         #endregion
 
@@ -76,19 +90,28 @@ namespace GDLibrary
                 //Turn off update and draw i.e. show the menu since the game is paused
                 this.StatusType = StatusType.Off;
             }
-
-            //Did the event come from the player making a move
-            else if (eventData.EventType == EventActionType.NewTurn)
-            {
-                this.PlayerTurn = !this.PlayerTurn;
-            }
         }
 
         private void EventDispatcher_GameChanged(EventData eventData)
         {
+            //Did the event come from the game being won?
             if (eventData.EventType == EventActionType.OnWin)
             {
                 this.CurrentLevel++;
+            }
+
+            //Did the event come from the player making a move?
+            else if (eventData.EventType == EventActionType.PlayerTurn)
+            {
+                this.PlayerTurn = true;
+                this.EnemyTurn = false;
+            }
+
+            //Did the event come from an enemy making a move?
+            else if (eventData.EventType == EventActionType.EnemyTurn)
+            {
+                this.EnemyTurn = true;
+                this.PlayerTurn = false;
             }
         }
         #endregion

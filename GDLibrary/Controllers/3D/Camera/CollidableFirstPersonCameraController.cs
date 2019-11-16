@@ -6,11 +6,27 @@ Bugs:			None
 Fixes:			None
 */
 
+using JigLibX.Collision;
+using JigLibX.Geometry;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace GDLibrary
 {
+    //Inner class used for ray picking
+    class ImmovableSkinPredicate : CollisionSkinPredicate1
+    {
+        public override bool ConsiderSkin(CollisionSkin skin0)
+        {
+            if (skin0.Owner.ExternalData is Actor3D)
+                if (!(skin0.Owner.ExternalData as Actor3D).ActorType.Equals(ActorType.CollidableCamera))
+                    return true;
+
+            return false;
+        }
+    }
+
     /// <summary>
     /// A collidable camera has a body and collision skin from a player object but it has no modeldata or texture
     /// </summary>
@@ -25,6 +41,7 @@ namespace GDLibrary
         private float accelerationRate;
         private float decelerationRate;
         private Vector3 translationOffset;
+        private EventDispatcher eventDispatcher;
         #endregion
 
         #region Properties
@@ -129,7 +146,8 @@ namespace GDLibrary
             float decelerationRate,
             float mass,
             float jumpHeight,
-            Vector3 translationOffset
+            Vector3 translationOffset,
+            EventDispatcher eventDispatcher
         ) : this(
             id,
             controllerType,
@@ -149,7 +167,8 @@ namespace GDLibrary
             mass,
             jumpHeight,
             translationOffset,
-            null
+            null,
+            eventDispatcher
         ) {
         }
 
@@ -173,7 +192,8 @@ namespace GDLibrary
             float mass, 
             float jumpHeight, 
             Vector3 translationOffset,
-            PlayerObject collidableObject
+            PlayerObject collidableObject,
+            EventDispatcher eventDispatcher
         ) : base(id, controllerType, moveKeys, moveSpeed, strafeSpeed, rotateSpeed, managerParameters, movementVector, rotationVector) {
             this.width = width;
             this.height = height;
@@ -228,7 +248,29 @@ namespace GDLibrary
                 );
             }
 
-            playerObject.Enable(false, mass);
+            this.playerObject.Enable(true, 1);
+
+            this.eventDispatcher = eventDispatcher;
+            RegisterForEventHandling(eventDispatcher);
+        }
+        #endregion
+
+        #region Event Handling
+        public void RegisterForEventHandling(EventDispatcher eventDispatcher)
+        {
+            this.eventDispatcher.PlayerChanged += EventDispatcher_PlayerChanged;
+        }
+
+        private void EventDispatcher_PlayerChanged(EventData eventData)
+        {
+            if (eventData.EventType == EventActionType.OnWayBlocked)
+            {
+                Vector3 direction = (Vector3) eventData.AdditionalParameters[0];
+                if (!this.blockedPaths.Contains(direction))
+                {
+                    this.blockedPaths.Add(direction);
+                }
+            }
         }
         #endregion
 
@@ -243,16 +285,21 @@ namespace GDLibrary
              *    A capsule's collision response won't alter as a result of any rotation since its cross-section is spherical across the XZ-plane.
              */
 
+            //If it is not the players turn, return
+            if (!StateManager.playerTurn) return;
+
             if (parentActor != null)
             {
                 #region Translation
-                //Forward, Back
+                //Forward
                 if (this.ManagerParameters.KeyboardManager.IsKeyDown(this.MoveKeys[0]) && !this.InMotion)
                 {
                     //Calculate target position, relative to the camera
                     this.TargetPosition = (parentActor.Transform.Look * this.MovementVector);
                     this.Translation = (gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * parentActor.Transform.Look);
                 }
+
+                //Back
                 else if (this.ManagerParameters.KeyboardManager.IsKeyDown(this.MoveKeys[1]) && !this.InMotion)
                 {
                     //Calculate target position, relative to the camera
@@ -260,13 +307,15 @@ namespace GDLibrary
                     this.Translation = -(gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * parentActor.Transform.Look);
                 }
 
-                //Left, Right
+                //Left
                 if (this.ManagerParameters.KeyboardManager.IsKeyDown(this.MoveKeys[2]) && !this.InMotion)
                 {
                     //Calculate target position, relative to the camera
                     this.TargetPosition = -(parentActor.Transform.Right * this.MovementVector);
                     this.Translation = -(gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * parentActor.Transform.Right);
                 }
+
+                //Right
                 else if (this.ManagerParameters.KeyboardManager.IsKeyDown(this.MoveKeys[3]) && !this.InMotion)
                 {
                     //Calculate target position, relative to the camera
@@ -276,16 +325,18 @@ namespace GDLibrary
                 #endregion
 
                 #region Rotation
-                //Rotate
+                //Anti-Clockwise
                 if (this.ManagerParameters.KeyboardManager.IsKeyDown(this.MoveKeys[4]) && !this.InMotion)
                 {
-                    //Rotate the camera anti-clockwise
+                    //Calculate target heading, relative to the camera
                     this.TargetHeading = (parentActor.Transform.Up * this.RotationVector);
                     this.Rotation = (gameTime.ElapsedGameTime.Milliseconds * this.RotationSpeed * parentActor.Transform.Up);
                 }
+
+                //Clockwise
                 else if (this.ManagerParameters.KeyboardManager.IsKeyDown(this.MoveKeys[5]) && !this.InMotion)
                 {
-                    //Rotate the camera clockwise
+                    //Calculate target heading, relative to the camera
                     this.TargetHeading = -(parentActor.Transform.Up * this.RotationVector);
                     this.Rotation = -(gameTime.ElapsedGameTime.Milliseconds * this.RotationSpeed * parentActor.Transform.Up);
                 }
@@ -298,52 +349,48 @@ namespace GDLibrary
             #region Translation
             if (this.Translation != Vector3.Zero)
             {
-                if (!this.InMotion)
-                {
-                    EventDispatcher.Publish(
-                        new EventData(
-                            EventActionType.OnPlay,
-                            EventCategoryType.Sound2D,
-                            new object[] { "environment_stone_steps" }
-                        )
-                    );
+                //Prevenet the player from walking into a wall
+                if (PreventMovement(parentActor)) return;
 
+                //If the current positon is near the target position
+                if (Vector3.Distance(this.CurrentPosition, this.TargetPosition) <= 10)
+                {
+                    //Move to the target position
+                    parentActor.Transform.TranslateBy((this.CurrentPosition - this.TargetPosition) * -Vector3.One);
+                    
+                    //Reset Vectors
+                    this.Translation = Vector3.Zero;
+                    this.CurrentPosition = Vector3.Zero;
+
+                    //Update motion state
+                    this.InMotion = false;
+
+                    //Update game state
                     EventDispatcher.Publish(
                         new EventData(
                             EventActionType.EnemyTurn,
                             EventCategoryType.Game
                         )
                     );
-                }
 
-                //If the cameras current current positon is near the target position
-                if (Vector3.Distance(this.TargetPosition, this.CurrentPosition) <= 10)
-                {
-                    //Move the camera to the target position
-                    parentActor.Transform.TranslateBy(((this.CurrentPosition - this.TargetPosition) * -Vector3.One));
+                    //Clear blocked paths
+                    this.blockedPaths.Clear();
 
-                    //Update collision skin
-                    this.PlayerObject.Transform.Translation = parentActor.Transform.Translation;
+                    //Clear collision set
+                    this.collisionSet.Clear();
 
-                    //Reset Vectors
-                    this.Translation = Vector3.Zero;
-                    this.CurrentPosition = Vector3.Zero;
-
-                    //Allow keypress
-                    this.InMotion = false;
+                    //Check for collision
+                    DetectCollision(parentActor);
                 }
                 else
                 {
-                    //Move camera 
+                    //Translate actor
                     parentActor.Transform.TranslateBy(this.Translation);
-
-                    //Update collision skin
-                    this.PlayerObject.Transform.Translation = parentActor.Transform.Translation;
 
                     //Update current position
                     this.CurrentPosition += this.Translation;
 
-                    //Prevent keypress
+                    //Update motion state
                     this.InMotion = true;
                 }
             }
@@ -352,46 +399,312 @@ namespace GDLibrary
             #region Rotation
             if (this.Rotation != Vector3.Zero)
             {
+                //If the user is not already in motion
                 if (!this.InMotion)
                 {
-                    object[] additionalParameters = { "turn_around" };
-
+                    //Publish a sound event
                     EventDispatcher.Publish(
                         new EventData(
                             EventActionType.OnPlay,
                             EventCategoryType.Sound2D,
-                            additionalParameters
+                            new object[] { "turn_around" }
                         )
                     );
                 }
 
-                //If the cameras heading is near the target heading
+                //If the current heading is near the target heading
                 if (Vector3.Distance(this.CurrentHeading, this.TargetHeading) <= 5)
                 {
-                    //Point camera at the target
+                    //Rotate to the target heading
                     parentActor.Transform.RotateBy((this.CurrentHeading - this.TargetHeading) * -Vector3.One);
 
                     //Reset vectors
                     this.Rotation = Vector3.Zero;
                     this.CurrentHeading = Vector3.Zero;
 
-                    //Allow keypress
+                    //Update motion state
                     this.InMotion = false;
                 }
                 else
                 {
-                    //Rotate camera
+                    //Rotate actor
                     parentActor.Transform.RotateBy(this.Rotation);
 
                     //Update current heading
                     this.CurrentHeading += this.Rotation;
 
-                    //Prevent keypress
+                    //Update motion state
                     this.InMotion = true;
                 }
             }
             #endregion
         }
+
+        private bool PreventMovement(Actor3D parentActor)
+        {
+            //If the player is stationary
+            if (!this.InMotion)
+            {
+                //Detect collisions around the player
+                DetectCollision(parentActor);
+
+                //If the player is about to walk into a wall
+                if (this.blockedPaths.Contains(Vector3.Normalize(this.Translation)))
+                {
+                    //Reset vector
+                    this.Translation = Vector3.Zero;
+
+                    //If this is the firs time that the player has pressed a move key
+                    if (this.isFirstTimePressed)
+                    {
+                        //Publish sound event
+                        EventDispatcher.Publish(
+                            new EventData(
+                                EventActionType.OnPlay,
+                                EventCategoryType.Sound2D,
+                                new object[] { "boing" }
+                            )
+                        );
+
+                        //Update key state
+                        this.isFirstTimePressed = false;
+                    }
+
+                    //If the player has released (or changed) keys
+                    if (this.ManagerParameters.KeyboardManager.IsStateChanged())
+                    {
+                        //Update key state
+                        this.isFirstTimePressed = true;
+                    }
+
+                    //Prevent the player from moving
+                    return true;
+                }
+
+                //If the player is free to move
+                else
+                {
+                    //Publish sound event
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlay,
+                            EventCategoryType.Sound2D,
+                            new object[] { "environment_stone_steps" }
+                        )
+                    );
+                }
+            }
+
+            //Allow the player to move
+            return false;
+        }
+
+        #region Collision Detection
+        //Setup sets for keeping track of blocked paths and current collisions
+        readonly HashSet<Vector3> blockedPaths = new HashSet<Vector3>();
+        readonly HashSet<CollidableObject> collisionSet = new HashSet<CollidableObject>();
+
+        //Setup variables for extracting data from the SegmentIntersect() method
+        //See CheckForCollisionWithRay() method
+        private CollisionSkin skin;
+        private float frac;
+        private Vector3 pos;
+        private Vector3 normal;
+
+        //Setup keystate bool
+        private bool isFirstTimePressed = true;
+
+        //Check each direction for a collision (north, south, east & west)
+        public void DetectCollision(Actor3D parentActor)
+        {
+            float cellWidth = 254;
+            Vector3 position = parentActor.Transform.Translation;
+            Vector3 north = parentActor.Transform.Look;
+            Vector3 south = -parentActor.Transform.Look;
+            Vector3 east = parentActor.Transform.Right;
+            Vector3 west = -parentActor.Transform.Right;
+
+            CheckForCollision(position, north, cellWidth);
+            CheckForCollision(position, south, cellWidth);
+            CheckForCollision(position, east, cellWidth);
+            CheckForCollision(position, west, cellWidth);
+        }
+
+        //Check for collision using a ray, given a starting position, a direction, and the total length of the ray
+        private void CheckForCollision(Vector3 position, Vector3 direction, float length)
+        {
+            //Calculate saegment start and delta
+            Vector3 start = position;
+            Vector3 delta = direction * length;
+
+            //Store an array of info about the collision (if a collision has taken place)
+            object[] collisionInfo = CheckForCollisionWithRay(start, delta);
+
+            //If a collision has taken place
+            if (collisionInfo != null)
+            {
+                //Cast distance to collision (frac) to a float
+                float distanceToCollision = (float) collisionInfo[0];
+
+                //Cast the collision skin's owner to a collidable object
+                CollidableObject collidableObject = ((collisionInfo[1] as CollisionSkin).Owner.ExternalData as CollidableObject);
+
+                //Determine action based on actor type
+                switch (collidableObject.ActorType)
+                {
+                    case ActorType.CollidableArchitecture:
+                        CheckForCollisionWithWall(distanceToCollision, collidableObject, direction);
+                        break;
+
+                    case ActorType.CollidablePickup:
+                        CheckForCollisionWithPickup(distanceToCollision, collidableObject);
+                        break;
+
+                    case ActorType.Enemy:
+                        CheckForCollisionWithEnemy(distanceToCollision, collidableObject, direction);
+                        break;
+                }
+            }
+        }
+
+        //Uses a ray to check for collision with another object, given a start point and a delta (length)
+        public object[] CheckForCollisionWithRay(Vector3 start, Vector3 delta)
+        {
+            //Create a segment ray
+            Segment seg = new Segment(start, delta);
+
+            //Returns true if segment intersects with a collidable object (that is not the player object)
+            ImmovableSkinPredicate pred = new ImmovableSkinPredicate();
+
+            //Use JigLib's in-built SegmentIntersect() method to check for collision with the ray
+            this.ManagerParameters.PhysicsManager.PhysicsSystem.CollisionSystem.SegmentIntersect(
+                out frac,
+                out skin,
+                out pos,
+                out normal,
+                seg,
+                pred
+            );
+
+            //If a collision has taken place
+            if (skin != null && skin.Owner != null)
+            {
+                //Return an array containing the collision skin and distance to collision
+                return new object[] { frac, skin };
+            }
+
+            return null;
+        }
+
+        //Checks for collision with a wall, within a given range
+        private void CheckForCollisionWithWall(float distanceToCollision, CollidableObject collidableObject, Vector3 collisionDirection)
+        {
+            //If the wall is within the range
+            if (distanceToCollision <= 1.0f)
+            {
+                //Marked path as blocked
+                if (!this.blockedPaths.Contains(collisionDirection))
+                {
+                    this.blockedPaths.Add(collisionDirection);
+                }
+            }
+        }
+
+        //Checks for collision with a pickup, within a given range
+        private void CheckForCollisionWithPickup(float distanceToCollision, CollidableObject pickup)
+        {
+            //If the pickup is within the range (adjacent cell)
+            if (distanceToCollision >= 0.5f && distanceToCollision <= 1.0f)
+            {
+                //If the pickup has not yet been realised
+                if (!this.collisionSet.Contains(pickup))
+                {
+                    //Add pickup to the collision set
+                    this.collisionSet.Add(pickup);
+
+                    //Publish event to play sound effect
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlay,
+                            EventCategoryType.Sound2D,
+                            new object[] { "item_twinkle" }
+                        )
+                    );
+                }
+            }
+
+            //If the pickup is within the range (current cell)
+            if (distanceToCollision <= 0.5f)
+            {
+                //Publish event to remove pickup
+                EventDispatcher.Publish(
+                    new EventData(
+                        pickup,
+                        EventActionType.OnRemoveActor,
+                        EventCategoryType.SystemRemove
+                    )
+                );
+
+                //Publish event to add to inventory
+                EventDispatcher.Publish(
+                    new EventData(
+                        EventActionType.OnAddToInventory,
+                        EventCategoryType.Pickup,
+                        new object[] { pickup }
+                    )
+                );
+
+                //Publish event to update hud
+                EventDispatcher.Publish(
+                    new EventData(
+                        EventActionType.OnUpdateHud,
+                        EventCategoryType.Pickup,
+                        new object[] { pickup }
+                    )
+                );
+            }
+        }
+
+        //Checks for collision with an enemy, within a given range
+        private void CheckForCollisionWithEnemy(float distanceToCollision, CollidableObject enemy, Vector3 collisionDirection)
+        {
+            //If the enemy is within the range (adjacent cell)
+            if (distanceToCollision >= 0.5f && distanceToCollision <= 1.0f)
+            {
+                //Marked path as blocked
+                if (!this.blockedPaths.Contains(collisionDirection))
+                {
+                    this.blockedPaths.Add(collisionDirection);
+                }
+
+                //If the enemy has not yet been realised
+                if (!this.collisionSet.Contains(enemy))
+                {
+                    //Add enemy to the collision set
+                    this.collisionSet.Add(enemy);
+
+                    //Publish event to play music
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlay,
+                            EventCategoryType.Sound2D,
+                            new object[] { "battle_theme" }
+                        )
+                    );
+                }
+
+                //Publish event to prevent keypress
+
+                //Publish event to commence battle
+                //EventDispatcher.Publish(
+                //    new EventData(
+                //        EventActionType.OnInitiateBattle,
+                //        EventCategoryType.Battle
+                //    )
+                //);
+            }
+        }
+        #endregion
 
         public override void Update(GameTime gameTime, IActor actor)
         {

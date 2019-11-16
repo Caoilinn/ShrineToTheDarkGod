@@ -17,6 +17,7 @@ namespace GDLibrary
         private KeyboardManager keyboardManager;
         private GamePadManager gamePadManager;
         private SoundManager soundManager;
+        private PhysicsManager physicsManager;
         #endregion
 
         #region Properties
@@ -67,16 +68,25 @@ namespace GDLibrary
                 return this.soundManager;
             }
         }
+
+        public PhysicsManager PhysicsManager
+        {
+            get
+            {
+                return this.physicsManager;
+            }
+        }
         #endregion
 
         #region Constructors
         public ManagerParameters(
-            ObjectManager objectManager, 
+            ObjectManager objectManager,
             CameraManager cameraManager,
-            MouseManager mouseManager, 
-            KeyboardManager keyboardManager, 
+            MouseManager mouseManager,
+            KeyboardManager keyboardManager,
             GamePadManager gamePadManager,
-            SoundManager soundManager
+            SoundManager soundManager,
+            PhysicsManager physicsManager
         ) {
             this.objectManager = objectManager;
             this.cameraManager = cameraManager;
@@ -84,6 +94,7 @@ namespace GDLibrary
             this.keyboardManager = keyboardManager;
             this.gamePadManager = gamePadManager;
             this.soundManager = soundManager;
+            this.physicsManager = physicsManager;
         }
         #endregion
     }
