@@ -646,10 +646,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\potion.xnb</Output>
-      <Time>2019-11-17T21:44:29.9868286+00:00</Time>
+      <Time>2019-11-17T23:25:28.3864607+00:00</Time>
       <Dependency>
         <Key>C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\potion_0.xml</Key>
-        <Value>2019-11-17T22:36:47.413614+00:00</Value>
+        <Value>2019-11-17T23:25:35.5314575+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -659,10 +659,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box.xnb</Output>
-      <Time>2019-11-17T21:44:29.9878245+00:00</Time>
+      <Time>2019-11-17T23:25:28.3854612+00:00</Time>
       <Dependency>
         <Key>C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\box_0.xml</Key>
-        <Value>2019-11-17T22:36:47.4461378+00:00</Value>
+        <Value>2019-11-17T23:25:35.7080117+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -1391,7 +1391,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Buttons\genericbtn.xnb</Output>
-      <Time>2019-11-17T21:44:29.9854574+00:00</Time>
+      <Time>2019-11-17T23:25:28.3874614+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Props\Crates\wc1_diffuse.tga</Source>
@@ -1856,14 +1856,14 @@
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\potion_0.xml</Output>
-      <Time>2019-11-17T21:44:29.9868286+00:00</Time>
+      <Time>2019-11-17T23:25:28.3864607+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Pickups\box.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\box_0.xml</Output>
-      <Time>2019-11-17T21:44:29.9878245+00:00</Time>
+      <Time>2019-11-17T23:25:28.3854612+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Pickups\test.fbx</Source>
