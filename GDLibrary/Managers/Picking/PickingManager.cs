@@ -111,23 +111,23 @@ namespace GDLibrary
 
                     if (this.currentPickedObject != null)// && IsValidCollision(currentPickedObject, pos, normal))
                     {
-                        Vector3 vectorDeltaFromCentreOfMass = pos - this.currentPickedObject.Collision.Owner.Position;
-                        vectorDeltaFromCentreOfMass = Vector3.Transform(vectorDeltaFromCentreOfMass, Matrix.Transpose(this.currentPickedObject.Collision.Owner.Orientation));
-                        cameraPickDistance = (this.cameraManager.ActiveCamera.Transform.Translation - pos).Length();
+                        //Vector3 vectorDeltaFromCentreOfMass = pos - this.currentPickedObject.Collision.Owner.Position;
+                        //vectorDeltaFromCentreOfMass = Vector3.Transform(vectorDeltaFromCentreOfMass, Matrix.Transpose(this.currentPickedObject.Collision.Owner.Orientation));
+                        //cameraPickDistance = (this.cameraManager.ActiveCamera.Transform.Translation - pos).Length();
 
                         //remove any controller from any previous pick-release 
                         objectController.Destroy();
                         damperController.Destroy();
 
-                        this.currentPickedObject.Collision.Owner.SetActive();
-                        //move object by pos (i.e. point of collision and not centre of mass)
-                        this.objectController.Initialise(this.currentPickedObject.Collision.Owner, vectorDeltaFromCentreOfMass, pos);
-                        //dampen velocity (linear and angular) on object to Zero
-                        this.damperController.Initialise(this.currentPickedObject.Collision.Owner, ConstraintVelocity.ReferenceFrame.Body, Vector3.Zero, Vector3.Zero);
-                        this.objectController.EnableConstraint();
-                        this.damperController.EnableConstraint();
-                        //we're picking a valid object for the first time
-                        this.bCurrentlyPicking = true;
+                        //this.currentPickedObject.Collision.Owner.SetActive();
+                        ////move object by pos (i.e. point of collision and not centre of mass)
+                        //this.objectController.Initialise(this.currentPickedObject.Collision.Owner, vectorDeltaFromCentreOfMass, pos);
+                        ////dampen velocity (linear and angular) on object to Zero
+                        //this.damperController.Initialise(this.currentPickedObject.Collision.Owner, ConstraintVelocity.ReferenceFrame.Body, Vector3.Zero, Vector3.Zero);
+                        //this.objectController.EnableConstraint();
+                        //this.damperController.EnableConstraint();
+                        ////we're picking a valid object for the first time
+                        //this.bCurrentlyPicking = true;
 
                         //update mouse text
                         object[] additionalParameters = { currentPickedObject, this.distanceToObject };

@@ -51,8 +51,8 @@ namespace GDLibrary
         public static bool IsCollidableObjectOfInterest(CollidableObject collidableObject)
         {
             //Shouldnt be able to pick immovable things
-            if (collidableObject.Collision.Owner.Immovable)
-                return false;
+            //if (collidableObject.Collision.Owner.Immovable)
+            //    return false;
 
             return collidableObject.ActorType == ActorType.CollidableProp || collidableObject.ActorType == ActorType.CollidablePickup;
         }
@@ -60,8 +60,8 @@ namespace GDLibrary
         public static bool IsCollidableObjectPlayer(CollidableObject collidableObject)
         {
             //Shouldnt be able to pick immovable things
-            if (collidableObject.Collision.Owner.Immovable)
-                return false;
+            //if (collidableObject.Collision.Owner.Immovable)
+            //    return false;
 
             return collidableObject.ActorType == ActorType.Player;
         }

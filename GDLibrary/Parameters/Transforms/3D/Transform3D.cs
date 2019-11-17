@@ -24,8 +24,11 @@ namespace GDLibrary
         #endregion
 
         #region Fields
-        private Vector3 translation, rotation, scale;
-        private Vector3 look, up;
+        private Vector3 translation;
+        private Vector3 rotation;
+        private Vector3 scale;
+        private Vector3 look;
+        private Vector3 up;
         private Matrix world;
         private bool isDirty;
 
@@ -63,6 +66,7 @@ namespace GDLibrary
 
                     this.isDirty = false;
                 }
+
                 return this.world;
             }
         }
@@ -75,8 +79,12 @@ namespace GDLibrary
             }
             set
             {
-                this.translation = value;
                 this.isDirty = true;
+                this.translation = new Vector3(
+                    (float)Math.Round(value.X, 2),
+                    (float)Math.Round(value.Y, 2),
+                    (float)Math.Round(value.Z, 2)
+                );
             }
         }
 
@@ -88,8 +96,12 @@ namespace GDLibrary
             }
             set
             {
-                this.rotation = value;
                 this.isDirty = true;
+                this.rotation = new Vector3(
+                    (float) Math.Round(value.X, 2),
+                    (float) Math.Round(value.Y, 2),
+                    (float) Math.Round(value.Z, 2)
+                );
             }
         }
 
@@ -122,8 +134,14 @@ namespace GDLibrary
             }
             set
             {
-                this.up = Vector3.Normalize(value);
                 this.isDirty = true;
+                this.up = Vector3.Normalize(
+                    new Vector3(
+                        (float) Math.Round(value.X, 2),
+                        (float) Math.Round(value.Y, 2),
+                        (float) Math.Round(value.Z, 2)
+                    )
+                );
             }
         }
 
@@ -135,8 +153,14 @@ namespace GDLibrary
             }
             set
             {
-                this.look = Vector3.Normalize(value);
                 this.isDirty = true;
+                this.look = Vector3.Normalize(
+                    new Vector3(
+                        (float) Math.Round(value.X, 2),
+                        (float) Math.Round(value.Y, 2),
+                        (float) Math.Round(value.Z, 2)
+                    )
+                );
             }
         }
 
@@ -199,39 +223,46 @@ namespace GDLibrary
 
         public void Reset()
         {
-            this.translation = this.originalTransform3D.Translation;
-            this.rotation = this.originalTransform3D.Rotation;
-            this.scale = this.originalTransform3D.Scale;
-            this.look = this.originalTransform3D.Look;
-            this.up = this.originalTransform3D.Up;
+            this.Translation = this.originalTransform3D.Translation;
+            this.Rotation = this.originalTransform3D.Rotation;
+            this.Scale = this.originalTransform3D.Scale;
+            this.Look = this.originalTransform3D.Look;
+            this.Up = this.originalTransform3D.Up;
         }
 
         public void RotateBy(Vector3 rotateBy) //in degrees
         {
             //Rotate
-            this.rotation += rotateBy;
+            this.Rotation += rotateBy;
 
             //X = Pitch, Y = Yaw, Z = roll
             Matrix rot = Matrix.CreateFromYawPitchRoll(
-                MathHelper.ToRadians(this.rotation.Y),
-                MathHelper.ToRadians(this.rotation.X), 
-                MathHelper.ToRadians(this.rotation.Z)
+                MathHelper.ToRadians(this.Rotation.Y),
+                MathHelper.ToRadians(this.Rotation.X), 
+                MathHelper.ToRadians(this.Rotation.Z)
             );
 
-            //Update the look and up
-            this.Look = Vector3.Transform(this.originalTransform3D.Look, rot);
-            this.Up = Vector3.Transform(this.originalTransform3D.Up, rot);
+            //Update look vector
+            this.Look = Vector3.Normalize(Vector3.Transform(this.originalTransform3D.Look, rot));
+
+            //Update up vector
+            this.Up = Vector3.Normalize(Vector3.Transform(this.originalTransform3D.Up, rot));
         }
 
-        public void RotateAroundYBy(float magnitude) //in degrees
+        //Degrees
+        public void RotateAroundYBy(float magnitude)
         {
-            this.rotation.Y += magnitude;
-            this.look = Vector3.Normalize(
+            Vector3 currentRotation = this.Rotation;
+            currentRotation.Y += magnitude;
+
+            this.Rotation = currentRotation;
+            this.Look = Vector3.Normalize(
                 Vector3.Transform(
                     this.originalTransform3D.Look, 
-                    Matrix.CreateRotationY(MathHelper.ToRadians(rotation.Y))
+                    Matrix.CreateRotationY(MathHelper.ToRadians(Rotation.Y))
                 )
             );
+
             this.isDirty = true;
         }
 

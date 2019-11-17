@@ -6,7 +6,6 @@ Bugs:			None
 Fixes:			None
 */
 
-using Microsoft.Xna.Framework;
 using System;
 
 namespace GDLibrary
@@ -68,7 +67,7 @@ namespace GDLibrary
             string id, 
             ActorType actorType, 
             StatusType statusType, 
-            Transform3D transform, 
+            Transform3D transform,
             EffectParameters effectParameters
         ) : base(id, actorType, statusType, transform) {
             this.effectParameters = effectParameters;
@@ -97,11 +96,11 @@ namespace GDLibrary
         public new object Clone()
         {
             IActor actor = new DrawnActor3D(
-                "Clone - " + ID,                                //Deep
-                this.ActorType,                                 //Deep
-                this.StatusType,                                //Deep - a simple numeric type
-                (Transform3D)this.Transform.Clone(),            //Deep - calls the clone for Transform3D explicitly
-                (EffectParameters)this.EffectParameters.Clone() //Hybrid - shallow (texture and effect) and deep (all other fields)
+                "Clone - " + ID,                                    //Deep
+                this.ActorType,                                     //Deep
+                this.StatusType,                                    //Deep - a simple numeric type
+                (Transform3D) this.Transform.Clone(),               //Deep - calls the clone for Transform3D explicitly
+                (EffectParameters) this.EffectParameters.Clone()    //Hybrid - shallow (texture and effect) and deep (all other fields)
             );
 
             //Clone each of the (behavioural) controllers

@@ -224,17 +224,17 @@ namespace GDLibrary
             return new Actor(this.id, this.ActorType, this.StatusType);
         }
 
-        //Notice we must implment Update() if we implement IActor
-        //See https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/virtual
         public virtual void Update(GameTime gameTime)
         {
             if (this.controllerList != null && ((this.StatusType & StatusType.Update) == StatusType.Update))
             {
                 foreach (IController controller in this.controllerList)
                 {
-                    //new - only update the individual controller if it is playing
+                    //New - only update the individual controller if it is playing
                     if (controller.GetPlayStatus() == PlayStatusType.Play)
-                        controller.Update(gameTime, this); //update the actor that controller is attached to
+
+                        //Update the actor that controller is attached to
+                        controller.Update(gameTime, this);
                 }
             }
         }

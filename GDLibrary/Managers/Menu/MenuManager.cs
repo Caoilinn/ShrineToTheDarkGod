@@ -150,7 +150,6 @@ namespace GDLibrary
                         currentUIObject.Update(gameTime);
                 }
             }
-
         }
 
         protected override void ApplyDraw(GameTime gameTime)

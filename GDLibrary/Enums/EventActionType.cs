@@ -39,5 +39,13 @@
         OnTransparentToOpaque,
         OnNonePicked,
         OnObjectPicked,
+        OnCollideWith,
+        NewTurn,
+        OnMove,
+        EnemyTurn,
+        PlayerTurn,
+        OnAddToInventory,
+        OnUpdateHud,
+        OnWayBlocked,
     }
 }

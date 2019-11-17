@@ -8,6 +8,7 @@ Fixes:			None
 Comments:       Should consider making this class a Singleton because of the static message Stack - See https://msdn.microsoft.com/en-us/library/ff650316.aspx
 */
 
+using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
@@ -31,6 +32,7 @@ namespace GDLibrary
         public delegate void AddActorEventHandler(EventData eventData);
         public delegate void RemoveActorEventHandler(EventData eventData);
         public delegate void DebugEventHandler(EventData eventData);
+        public delegate void PlayerEventHandler(EventData eventData);
         #endregion
 
         #region Events
@@ -44,6 +46,7 @@ namespace GDLibrary
         public event AddActorEventHandler AddActorChanged;
         public event RemoveActorEventHandler RemoveActorChanged;
         public event DebugEventHandler DebugChanged;
+        public event PlayerEventHandler PlayerChanged;
         #endregion
 
         #region Constuctors
@@ -127,9 +130,18 @@ namespace GDLibrary
                     OnDebug(eventData);
                     break;
 
+                case EventCategoryType.Player:
+                    OnPlayer(eventData);
+                    break;
+                    
                 default:
                     break;
             }
+        }
+
+        private void OnPlayer(EventData eventData)
+        {
+            PlayerChanged?.Invoke(eventData);
         }
         #endregion
 

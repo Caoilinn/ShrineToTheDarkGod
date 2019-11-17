@@ -253,8 +253,8 @@ Wave Bank
 
 	Wave
     {
-        Name = boing;
-        File = boing.wav;
+        Name = wall_bump;
+        File = wall_bump.wav;
         Build Settings Last Modified Low = 809922770;
         Build Settings Last Modified High = 30430317;
 
@@ -278,6 +278,75 @@ Wave Bank
     {
         Name = turn_around;
         File = turn_around.wav;
+        Build Settings Last Modified Low = 809922770;
+        Build Settings Last Modified High = 30430317;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 11025;
+            Bits Per Sample = 0;
+            Play Region Offset = 44;
+            Play Region Length = 7696;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3805660051;
+            Last Modified High = 30430316;
+        }
+    }
+
+	Wave
+    {
+        Name = item_twinkle;
+        File = item_twinkle.wav;
+        Build Settings Last Modified Low = 809922770;
+        Build Settings Last Modified High = 30430317;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 11025;
+            Bits Per Sample = 0;
+            Play Region Offset = 44;
+            Play Region Length = 7696;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3805660051;
+            Last Modified High = 30430316;
+        }
+    }
+
+	Wave
+    {
+        Name = main_theme;
+        File = main_theme.wav;
+        Build Settings Last Modified Low = 809922770;
+        Build Settings Last Modified High = 30430317;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 11025;
+            Bits Per Sample = 0;
+            Play Region Offset = 44;
+            Play Region Length = 7696;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3805660051;
+            Last Modified High = 30430316;
+        }
+    }
+
+	Wave
+    {
+        Name = battle_theme;
+        File = battle_theme.wav;
         Build Settings Last Modified Low = 809922770;
         Build Settings Last Modified High = 30430317;
 
@@ -373,9 +442,13 @@ Sound Bank
         }
     }
 
+
+
+
+
 	Sound
     {
-        Name = boing;
+        Name = wall_bump;
         Volume = -1200;
         Pitch = 0;
         Priority = 0;
@@ -411,7 +484,7 @@ Sound Bank
                 {
                     Bank Name = Movement;
                     Bank Index = 0;
-                    Entry Name = boing;
+                    Entry Name = wall_bump;
                     Entry Index = 1;
                     Weight = 255;
                     Weight Min = 0;
@@ -422,7 +495,7 @@ Sound Bank
 
     Cue
     {
-        Name = boing;
+        Name = wall_bump;
 
         Variation
         {
@@ -433,12 +506,16 @@ Sound Bank
 
         Sound Entry
         {
-            Name = boing;
+            Name = wall_bump;
             Index = 1;
             Weight Min = 0;
             Weight Max = 255;
         }
     }
+
+
+
+
 
 	Sound
     {
@@ -502,6 +579,220 @@ Sound Bank
         {
             Name = turn_around;
             Index = 2;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+
+
+
+
+
+	Sound
+    {
+        Name = item_twinkle;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Movement;
+                    Bank Index = 0;
+                    Entry Name = item_twinkle;
+                    Entry Index = 3;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Cue
+    {
+        Name = item_twinkle;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = item_twinkle;
+            Index = 3;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+
+
+
+
+	Sound
+    {
+        Name = main_theme;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Movement;
+                    Bank Index = 0;
+                    Entry Name = main_theme;
+                    Entry Index = 4;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Cue
+    {
+        Name = main_theme;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = main_theme;
+            Index = 4;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+
+
+
+
+	Sound
+    {
+        Name = battle_theme;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Movement;
+                    Bank Index = 0;
+                    Entry Name = battle_theme;
+                    Entry Index = 5;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Cue
+    {
+        Name = battle_theme;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = battle_theme;
+            Index = 5;
             Weight Min = 0;
             Weight Max = 255;
         }

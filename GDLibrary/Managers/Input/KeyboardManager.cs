@@ -70,7 +70,7 @@ namespace GDLibrary
         //Has the keyboard state changed since the last update?
         public bool IsStateChanged()
         {
-            return !this.newState.Equals(oldState); //false if no change, otherwise true
+            return !this.newState.Equals(oldState); //False if no change, otherwise true
         }
         #endregion
     }
