@@ -64,3 +64,4 @@ C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.
 C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.Xact.xml
 C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
 C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csproj.CopyComplete
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csprojAssemblyReference.cache

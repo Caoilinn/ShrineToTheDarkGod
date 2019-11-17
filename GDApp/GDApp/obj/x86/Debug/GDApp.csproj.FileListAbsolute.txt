@@ -480,3 +480,4 @@ C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsof
 C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.xml
 C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
 C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CopyComplete
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\JigLibX.dll
