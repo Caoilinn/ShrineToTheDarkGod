@@ -83,7 +83,7 @@ namespace GDLibrary
             eventDispatcher.OpacityChanged += EventDispatcher_OpacityChanged;
             eventDispatcher.RemoveActorChanged += EventDispatcher_RemoveActorChanged;
             eventDispatcher.AddActorChanged += EventDispatcher_AddActorChanged;
-
+            eventDispatcher.DoorEvent += EventDispatcher_DoorOpen;
             //Dont forget to call the base method to register for OnStart, OnPause events!
             base.RegisterForEventHandling(eventDispatcher);
         }
@@ -120,9 +120,34 @@ namespace GDLibrary
                 }
             }
         }
+
+        private void EventDispatcher_DoorOpen(EventData eventData)
+        {
+            if(eventData.EventType == EventActionType.OnDoorOpen)
+            {
+                object[] additionalParameters = eventData.AdditionalParameters;
+                string gateID = (string)additionalParameters[0];
+
+                InteractableGate gate = GetGate(gateID);
+
+                if(gate != null)
+                {
+                    gate.OpenGate();
+                    this.opaqueDrawList.Remove(gate);
+                }
+            }
+
+        }
+
         #endregion
 
         #region Methods
+
+        private InteractableGate GetGate(string gateID)
+        {
+            return this.opaqueDrawList.Find(x => x.ID == gateID) as InteractableGate;
+        }
+
         private void InitializeGraphics()
         {
             //Set the graphics card to repeat the end pixel value for any UV value outside 0-1
@@ -351,6 +376,17 @@ namespace GDLibrary
                 }
             }
         }
+
+        public void OpenDoor(String gateID)
+        {
+            EventDispatcher.Publish(
+                new EventData(
+                    EventActionType.OnDoorOpen,
+                    EventCategoryType.Door,
+                    new object[] { gateID })
+                    );
+        }
+
         #endregion
     }
 }

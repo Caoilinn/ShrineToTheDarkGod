@@ -41,9 +41,19 @@
         OnObjectPicked,
 
         //Sent by CombatManager
+        OnInitiateBattle,
+        OnBattleEnd,
+        OnPlayerDeath,
         OnPlayerAttack,
         OnPlayerDefend,
         OnPlayerDodge,
         OnEnemyAttack,
+
+        //Sent by Object Manager
+        OnDoorOpen,
+
+        //Sent By Inventory Manager
+        OnItemAdded, 
+        OnItemRemoved, 
     }
 }

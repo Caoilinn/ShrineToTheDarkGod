@@ -22,6 +22,7 @@
         Debug,
         Menu,
         ObjectPicking,
-        Combat
+        Combat,
+        Inventory,
     }
 }

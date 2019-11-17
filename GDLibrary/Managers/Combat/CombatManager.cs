@@ -14,6 +14,7 @@ namespace GDLibrary
         private List<CharacterObject> characters;
         private PlayerObject player;
         private List<Enemy> enemies;
+        private bool combat;
         private bool playerTurn;
         private ManagerParameters managerParameters;
         private Random random = new Random();
@@ -37,30 +38,41 @@ namespace GDLibrary
 
         protected override void RegisterForEventHandling(EventDispatcher eventDispatcher)
         {
-            eventDispatcher.CombatEvent += EventDispatcher_PlayerAttack;
+            eventDispatcher.CombatEvent += EventDispatcher_CombatEvent;
             base.RegisterForEventHandling(eventDispatcher);
         }
 
 
-        protected void EventDispatcher_PlayerAttack(EventData eventData)
+        protected void EventDispatcher_CombatEvent(EventData eventData)
         {
             //TODO: Animation events also need published
+           
 
-            if(eventData.EventType == EventActionType.OnPlayerAttack)
+            if (eventData.EventType == EventActionType.OnInitiateBattle)
             {
-                Console.WriteLine("Player Attack Event");
-                //Object[] additionalParameters = {"playerAttack"};
-                //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerAttack, EventCategoryType.Sound2D, additionalParameters));
-            } else if(eventData.EventType == EventActionType.OnPlayerDefend)
+                this.combat = true;
+            } else if (eventData.EventType == EventActionType.OnPlayerDefend)
             {
                 Console.WriteLine("Player Defend Event");
                 //Object[] additionalParameters = {"playerDefend"};
                 //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.Sound2D, additionalParameters));
-            } else if(eventData.EventType == EventActionType.OnEnemyAttack)
+            } else if (eventData.EventType == EventActionType.OnEnemyAttack)
             {
                 Console.WriteLine("Enemy Attack Event");
                 //Object[] additionalParameters = {"enemyAttack"};
                 //EventDispatcher.Publish(new EventData(EventActionType.OnEnemyAttack, EventCategoryType.Sound2D, additionalParameters));
+            } else if (eventData.EventType == EventActionType.OnPlayerAttack)
+            {
+                Console.WriteLine("Player Attack Event");
+                //Object[] additionalParameters = {"playerAttack"};
+                //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerAttack, EventCategoryType.Sound2D, additionalParameters));
+            }else if (eventData.EventType == EventActionType.OnBattleEnd)
+            {
+                this.combat = false;
+            }else if (eventData.EventType == EventActionType.OnPlayerDeath)
+            {
+                //Exit the game for now
+                this.Game.Exit();
             }
         }
         #endregion
@@ -137,92 +149,92 @@ namespace GDLibrary
 
         protected virtual void HandleKeyBoardInput(GameTime gameTime)
         {
-            
-
+            //Grabbing a known Enemy for now 
             Enemy enemyOnFocus = GetEnemy("skeleton");
 
-
-            if(playerTurn)
-            {
-
-                if (this.managerParameters.KeyboardManager.IsFirstKeyPress(this.combatKeys[0]))
+            if (this.combat) { 
+                if(playerTurn)
                 {
-                    PrintStats(enemyOnFocus);
 
-                    float playerAttack = this.player.Attack;
-                    float enemyDefence = enemyOnFocus.Defence;
-
-                    float damage = playerAttack - enemyDefence;
-
-                    EventDispatcher.Publish(
-                        new EventData(
-                            EventActionType.OnPlayerAttack,
-                            EventCategoryType.Combat)
-                        );
-
-                    if (damage > 0)
+                    if (this.managerParameters.KeyboardManager.IsFirstKeyPress(this.combatKeys[0]))
                     {
-                        enemyOnFocus.takeDamage(damage);
-                    } 
-                } else if (this.managerParameters.KeyboardManager.IsFirstKeyPress(this.combatKeys[1]))
-                {
+                        PrintStats(enemyOnFocus);
+
+                        float playerAttack = this.player.Attack;
+                        float enemyDefence = enemyOnFocus.Defence;
+
+                        float damage = playerAttack - enemyDefence;
+
+                        EventDispatcher.Publish(
+                            new EventData(
+                                EventActionType.OnPlayerAttack,
+                                EventCategoryType.Combat)
+                            );
+
+                        if (damage > 0)
+                        {
+                            enemyOnFocus.takeDamage(damage);
+                        }
+                        playerTurn = false;
+                    } else if (this.managerParameters.KeyboardManager.IsFirstKeyPress(this.combatKeys[1]))
+                    {
+                        PrintStats(enemyOnFocus);
+
+                        float playerDefence = this.player.Defence;
+                        float enemyAttack = enemyOnFocus.Attack;
+
+                        float damage = enemyAttack - playerDefence;
+
+                        EventDispatcher.Publish(
+                            new EventData(
+                                EventActionType.OnPlayerDefend,
+                                EventCategoryType.Combat)
+                            );
+
+                        if (damage > 0)
+                        {
+                            this.player.takeDamage(damage);
+                        }
+                        playerTurn = false;
+
+                    } else if (this.managerParameters.KeyboardManager.IsFirstKeyPress(this.combatKeys[2]))
+                    {
+                        PrintStats(enemyOnFocus);
+
+                        int dodge = random.Next(1, 7);
+
+                        if (dodge % 2 == 0)
+                        {
+                            EventDispatcher.Publish(
+                            new EventData(
+                                EventActionType.OnPlayerDodge,
+                                EventCategoryType.Combat)
+                            );
+
+                            return;
+                        } else
+                        {
+                            player.takeDamage(enemyOnFocus.Attack);
+                        }
+                    }
+
+
+                }
+                else{
                     PrintStats(enemyOnFocus);
 
-                    float playerDefence = this.player.Defence;
                     float enemyAttack = enemyOnFocus.Attack;
 
-                    float damage = enemyAttack - playerDefence;
-
                     EventDispatcher.Publish(
-                        new EventData(
-                            EventActionType.OnPlayerDefend,
-                            EventCategoryType.Combat)
-                        );
+                            new EventData(
+                                EventActionType.OnEnemyAttack,
+                                EventCategoryType.Combat)
+                            );
 
-                    if (damage > 0)
-                    {
-                        this.player.takeDamage(damage);
-                    }
+                    this.player.takeDamage(enemyAttack);
 
-
-                } else if (this.managerParameters.KeyboardManager.IsFirstKeyPress(this.combatKeys[2]))
-                {
-                    PrintStats(enemyOnFocus);
-
-                    int dodge = random.Next(1, 7);
-
-                    if (dodge % 2 == 0)
-                    {
-                        EventDispatcher.Publish(
-                        new EventData(
-                            EventActionType.OnPlayerDodge,
-                            EventCategoryType.Combat)
-                        );
-
-                        return;
-                    } else
-                    {
-                        player.takeDamage(enemyOnFocus.Attack);
-                    }
                 }
-
-
             }
-            else{
-                PrintStats(enemyOnFocus);
-
-                float enemyAttack = enemyOnFocus.Attack;
-
-                EventDispatcher.Publish(
-                        new EventData(
-                            EventActionType.OnEnemyAttack,
-                            EventCategoryType.Combat)
-                        );
-
-                this.player.takeDamage(enemyAttack);
-
-            }
-
         }
 
         #endregion

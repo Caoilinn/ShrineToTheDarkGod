@@ -74,6 +74,9 @@
     <Compile Include="Actor\Drawn\3D\Collidable\Enemy\Enemy.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Base\CharacterObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\CollidableObject.cs" />
+    <Compile Include="Actor\Drawn\3D\Collidable\InteractableGate.cs" />
+    <Compile Include="Actor\Drawn\3D\Collidable\Pickup\ImmovablePickupObject.cs" />
+    <Compile Include="Actor\Drawn\3D\Collidable\Pickup\MoveablePickupObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Player\PlayerObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\TriangleMeshObject.cs" />
     <Compile Include="Actor\Drawn\3D\DrawnActor3D.cs" />
@@ -110,6 +113,7 @@
     <Compile Include="Managers\Combat\CombatManager.cs" />
     <Compile Include="Managers\Content\ContentDictionary.cs" />
     <Compile Include="Managers\GameStateManager\GameStateManager.cs" />
+    <Compile Include="Managers\Inventory\InventoryManager.cs" />
     <Compile Include="Managers\Menu\MenuManager.cs" />
     <Compile Include="Managers\Physics\PhysicsManager.cs" />
     <Compile Include="Managers\Picking\PickingManager.cs" />
@@ -118,6 +122,7 @@
     <Compile Include="Managers\UI\UIManager.cs" />
     <Compile Include="Parameters\Effect\BasicEffectParameters.cs" />
     <Compile Include="Parameters\Effect\DualTextureEffectParameters.cs" />
+    <Compile Include="Parameters\Other\PickupParameters.cs" />
     <Compile Include="Utility\BitwiseExtraction.cs" />
     <Compile Include="Utility\ScreenUtility.cs" />
     <Compile Include="Utility\StatefulBool.cs" />

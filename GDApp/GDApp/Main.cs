@@ -308,7 +308,7 @@ namespace GDApp
                 StatusType.Off,
                 this.managerParameters, 
                 this.cameraManager,
-                PickingBehaviourType.PickOnly,
+                PickingBehaviourType.PickAndRemove,
                 AppData.PickStartDistance, 
                 AppData.PickEndDistance, 
                 collisionPredicate

@@ -32,6 +32,8 @@ namespace GDLibrary
         public delegate void RemoveActorEventHandler(EventData eventData);
         public delegate void DebugEventHandler(EventData eventData);
         public delegate void CombatEventHandler(EventData eventData);
+        public delegate void DoorEventHandler(EventData eventData);
+        public delegate void InventoryEventHandler(EventData eventData);
         #endregion
 
         #region Events
@@ -46,6 +48,8 @@ namespace GDLibrary
         public event RemoveActorEventHandler RemoveActorChanged;
         public event DebugEventHandler DebugChanged;
         public event CombatEventHandler CombatEvent;
+        public event DoorEventHandler DoorEvent;
+        public event InventoryEventHandler InventoryEvent;
         #endregion
 
         #region Constuctors
@@ -132,7 +136,12 @@ namespace GDLibrary
                     OnCombat(eventData);
                     break;
 
-
+                case EventCategoryType.Door:
+                    OnDoorOpen(eventData);
+                    break;
+                case EventCategoryType.Inventory:
+                    OnInventoryChanged(eventData);
+                    break;
                 default:
                     break;
             }
@@ -205,6 +214,15 @@ namespace GDLibrary
             CombatEvent?.Invoke(eventData);
         }
 
+        protected virtual void OnDoorOpen(EventData eventData)
+        {
+            DoorEvent?.Invoke(eventData);
+        }
+        
+        protected virtual void OnInventoryChanged(EventData eventData)
+        {
+            InventoryEvent?.Invoke(eventData);
+        }
         #endregion
     }
 }
