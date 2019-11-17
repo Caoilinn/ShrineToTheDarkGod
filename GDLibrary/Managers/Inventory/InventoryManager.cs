@@ -94,14 +94,15 @@ namespace GDLibrary
 
         public override void Update(GameTime gameTime)
         {
-
+            HandleKeyboard(gameTime);
+            base.Update(gameTime);
         }
 
         //Testing adding and removing
         protected override void HandleKeyboard(GameTime gameTime)
         {
 
-        
+            /*
 
 
             if (this.managerParameters.KeyboardManager.IsFirstKeyPress(Microsoft.Xna.Framework.Input.Keys.I))
@@ -114,7 +115,7 @@ namespace GDLibrary
             {
                 PrintInventory();
             }
-
+            */
             base.HandleKeyboard(gameTime);
         }
 
