@@ -173,7 +173,7 @@ namespace GDLibrary
 
                         if (damage > 0)
                         {
-                            enemyOnFocus.takeDamage(damage);
+                            enemyOnFocus.TakeDamage(damage);
                         }
                         playerTurn = false;
                     } else if (this.managerParameters.KeyboardManager.IsFirstKeyPress(this.combatKeys[1]))
@@ -193,7 +193,7 @@ namespace GDLibrary
 
                         if (damage > 0)
                         {
-                            this.player.takeDamage(damage);
+                            this.player.TakeDamage(damage);
                         }
                         playerTurn = false;
 
@@ -214,7 +214,7 @@ namespace GDLibrary
                             return;
                         } else
                         {
-                            player.takeDamage(enemyOnFocus.Attack);
+                            player.TakeDamage(enemyOnFocus.Attack);
                         }
                     }
 
@@ -231,7 +231,7 @@ namespace GDLibrary
                                 EventCategoryType.Combat)
                             );
 
-                    this.player.takeDamage(enemyAttack);
+                    this.player.TakeDamage(enemyAttack);
 
                 }
             }

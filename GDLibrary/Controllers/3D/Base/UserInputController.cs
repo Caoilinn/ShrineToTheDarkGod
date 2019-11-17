@@ -99,6 +99,7 @@ namespace GDLibrary
             HandleMouseInput(gameTime, parentActor);
             HandleKeyboardInput(gameTime, parentActor);
             HandleGamePadInput(gameTime, parentActor);
+
             base.Update(gameTime, actor);
         }
 

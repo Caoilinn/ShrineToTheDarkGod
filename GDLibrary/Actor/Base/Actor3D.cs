@@ -33,9 +33,9 @@ namespace GDLibrary
 
         #region Constructor
         public Actor3D(
-            string id, 
-            ActorType actorType,                
-            StatusType statusType, 
+            string id,
+            ActorType actorType,
+            StatusType statusType,
             Transform3D transform
         ) : base(id, actorType, statusType) {
             this.Transform = transform;
@@ -79,11 +79,18 @@ namespace GDLibrary
 
         public new object Clone()
         {
-            return new Actor3D("clone - " + ID, //deep
-                this.ActorType, //deep
-                this.StatusType, //shallow
-                (Transform3D)this.transform.Clone()); //deep
-                
+            IActor actor = new Actor3D(
+                "Clone - " + ID,
+                this.ActorType,
+                this.StatusType,
+                (Transform3D) this.transform.Clone()
+            );
+
+            //Clone each of the (behavioural) controllers
+            foreach (IController controller in this.ControllerList)
+                actor.AttachController((IController)controller.Clone());
+
+            return actor;
         }
         #endregion
     }

@@ -55,5 +55,13 @@
         //Sent By Inventory Manager
         OnItemAdded, 
         OnItemRemoved, 
+        OnCollideWith,
+        NewTurn,
+        OnMove,
+        EnemyTurn,
+        PlayerTurn,
+        OnAddToInventory,
+        OnUpdateHud,
+        OnWayBlocked,
     }
 }

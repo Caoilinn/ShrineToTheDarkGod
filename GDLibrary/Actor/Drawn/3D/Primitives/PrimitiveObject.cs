@@ -32,13 +32,13 @@
 
 //        #region Constructors
 //        public PrimitiveObject(
-//            string id, 
-//            ActorType actorType, 
-//            StatusType statusType, 
-//            Transform3D transform, 
-//            EffectParameters effectParameters, 
+//            string id,
+//            ActorType actorType,
+//            Transform3D transform,
+//            EffectParameters effectParameters,
 //            IVertexData vertexData
-//        ) : base(id, actorType, statusType, transform, effectParameters) {
+//        ) : base(id, actorType, transform, boundingBox, effectParameters)
+//        {
 //            this.VertexData = vertexData;
 //        }
 //        #endregion
@@ -65,7 +65,7 @@
 
 //            ////Move vertices to GPU on VRAM and draw the damn thing!!!
 //            //this.vertexData.Draw(gameTime, effect);
-    
+
 //            ////nothing happens in the base, so we dont bother calling this method
 //            ////base.Draw(gameTime, camera);
 //        }

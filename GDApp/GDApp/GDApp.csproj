@@ -61,7 +61,7 @@
   <ItemGroup>
     <Reference Include="JigLibX, Version=0.3.1.0, Culture=neutral, PublicKeyToken=96bb577564343f16, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\3D Game Development\Exercises\Week6\GDApp-Class\GDLibrary\Dependencies\Physics\JigLibX.dll</HintPath>
+      <HintPath>..\..\..\..\..\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\Dependencies\Physics\JigLibX.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />

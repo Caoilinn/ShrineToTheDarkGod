@@ -158,7 +158,6 @@ namespace GDLibrary
         //2D Sound Changed
         protected virtual void EventDispatcher_Sound2DChanged(EventData eventData)
         {
-
             //ID - Name
             string cueName = eventData.AdditionalParameters[0] as string;
 
@@ -211,10 +210,7 @@ namespace GDLibrary
         #endregion
 
         #region 2D Cues
-        /*************** Play, Pause, Resume, and Stop 2D Sound Cues ***************/
-
-        //Plays a 2D cue
-        //Menu/Game Music etc.
+        //Plays a 2D cue - Menu/Game Music etc.
         public void PlayCue(string cueName)
         {
             //If we have not already been asked to play this in the current update loop then play it
@@ -251,15 +247,14 @@ namespace GDLibrary
         #endregion
 
         #region 3D Cues
-        /*************** Play, Pause, Resume, and Stop 3D sound cues ***************/
-
         //Plays a cue to be heard from the perspective of a player or camera in the game i.e. in 3D
         public void Play3DCue(string cueName, AudioEmitter audioEmitter)
         {
+            Cue3D sound = new Cue3D
+            {
+                Cue = soundBank.GetCue(cueName)
+            };
 
-            Cue3D sound = new Cue3D();
-
-            sound.Cue = soundBank.GetCue(cueName);
             if (!this.playSet3D.Contains(cueName)) //if we have not already been asked to play this in the current update loop then play it
             {
                 sound.Emitter = audioEmitter;
@@ -270,7 +265,7 @@ namespace GDLibrary
             }
         }
 
-        //pause a 3D cue
+        //Pause a 3D cue
         public void Pause3DCue(string cueName)
         {
             Cue3D cue3D = Get3DCue(cueName);
@@ -278,7 +273,7 @@ namespace GDLibrary
                 cue3D.Cue.Pause();
         }
 
-        //resumes a paused 3D cue
+        //Resumes a paused 3D cue
         public void Resume3DCue(string cueName)
         {
             Cue3D cue3D = Get3DCue(cueName);
@@ -286,7 +281,7 @@ namespace GDLibrary
                 cue3D.Cue.Resume();
         }
 
-        //stop a 3D cue - AudioStopOptions: AsAuthored and Immediate
+        //Stop a 3D cue - AudioStopOptions: AsAuthored and Immediate
         public void Stop3DCue(string cueName, AudioStopOptions audioStopOptions)
         {
             Cue3D cue3D = Get3DCue(cueName);
@@ -297,7 +292,8 @@ namespace GDLibrary
                 this.cueList3D.Remove(cue3D);
             }
         }
-        //stops all 3D cues - AudioStopOptions: AsAuthored and Immediate
+
+        //Stops all 3D cues - AudioStopOptions: AsAuthored and Immediate
         public void StopAll3DCues(AudioStopOptions audioStopOptions)
         {
             foreach (Cue3D cue3D in this.cueList3D)
@@ -307,7 +303,8 @@ namespace GDLibrary
                 this.playSet3D.Remove(cue3D.Cue.Name);
             }
         }
-        //retrieves a 3D cue from the list of currently active cues
+
+        //Retrieves a 3D cue from the list of currently active cues
         public Cue3D Get3DCue(string name)
         {
             foreach (Cue3D cue3D in this.cueList3D)
@@ -320,7 +317,7 @@ namespace GDLibrary
         #endregion
 
         #region Volume
-        //we can control the volume for each category in the sound bank (i.e. diegetic and non-diegetic)
+        //We can control the volume for each category in the sound bank (i.e. diegetic and non-diegetic)
         public void SetVolume(float newVolume, string soundCategoryStr)
         {
             try
@@ -328,7 +325,7 @@ namespace GDLibrary
                 AudioCategory soundCategory = this.audioEngine.GetCategory(soundCategoryStr);
                 if (soundCategory != null)
                 {
-                    //requested volume will be in appropriate range (0-1)
+                    //Requested volume will be in appropriate range (0-1)
                     this.volume = MathHelper.Clamp(newVolume, 0, 1);
                     soundCategory.SetVolume(this.volume);
                 }
@@ -346,7 +343,7 @@ namespace GDLibrary
                 AudioCategory soundCategory = this.audioEngine.GetCategory(soundCategoryStr);
                 if (soundCategory != null)
                 {
-                    //requested volume will be in appropriate range (0-1)
+                    //Requested volume will be in appropriate range (0-1)
                     this.volume = MathHelper.Clamp(this.volume + deltaVolume, 0, 1);
                     soundCategory.SetVolume(this.volume);
                 }

@@ -50,6 +50,16 @@ Content\Assets\Collision Boxes\Rooms\room_collision_018.xnb
 Content\Assets\Models\Pickups\potion.xnb
 Content\Assets\Models\Pickups\box.xnb
 Content\Assets\Models\Pickups\test.xnb
+Content\Assets\Models\Pickups\box_collision.xnb
+Content\Assets\Collision Boxes\Characters\enemy_collision.xnb
+Content\Assets\Collision Boxes\Zones\zone_collision.xnb
+Content\Assets\Models\Props\gate_001.xnb
+Content\Assets\Models\Props\gate_002.xnb
+Content\Assets\Collision Boxes\Props\gate_collision_001.xnb
+Content\Assets\Collision Boxes\Props\gate_collision_002.xnb
+Content\Assets\Models\Characters\enemy_002.xnb
+Content\Assets\Models\Characters\enemy_001.xnb
+Content\Assets\Collision Boxes\Pickups\pickup_collision.xnb
 Content\Assets\Textures\Foliage\Ground\foliage.xnb
 Content\Assets\Textures\Foliage\Ground\grass1.xnb
 Content\Assets\Textures\Foliage\Shrubs\shrub1.xnb
@@ -84,15 +94,9 @@ Content\Assets\Textures\Environment\Rooms\room_texture_013.xnb
 Content\Assets\Textures\Environment\Rooms\room_texture_014.xnb
 Content\Assets\Textures\Environment\Rooms\room_texture_015.xnb
 Content\Assets\Textures\Environment\Rooms\room_texture_016.xnb
-Content\Assets\Debug\Textures\checkerboard.xnb
-Content\Assets\Debug\Textures\checkerboard_greywhite.xnb
-Content\Assets\Debug\Textures\ml.xnb
-Content\Assets\Debug\Textures\slj.xnb
 Content\Assets\Textures\Environment\Rooms\room_texture_002.xnb
 Content\Assets\Textures\Environment\Rooms\room_texture_017.xnb
 Content\Assets\Textures\Environment\Rooms\room_texture_018.xnb
-Content\Assets\Models\Rooms\room_001_001.xnb
-Content\Assets\Models\Pickups\CubeDiffuseMap.xnb
 Content\Assets\Textures\Architecture\Buildings\house-low-texture.xnb
 Content\Assets\Textures\Architecture\Fence\fence1.xnb
 Content\Assets\Textures\Architecture\Fence\fence2.xnb
@@ -125,9 +129,12 @@ Content\Assets\Textures\Props\Crates\wc1_diffuse.xnb
 Content\Assets\Audio\boing.xnb
 Content\Assets\Audio\environment_stone_steps.xnb
 Content\Assets\Audio\turn_around.xnb
+Content\Assets\Audio\main_theme.xnb
+Content\Assets\Audio\item_twinkle.xnb
+Content\Assets\Audio\battle_theme.xnb
+Content\Assets\Audio\wall_bump.xnb
 Content\Assets\Fonts\hudFont.xnb
 Content\Assets\Fonts\menu.xnb
-Content\Assets\Debug\Fonts\debugFont.xnb
 Content\SpriteFont1.xnb
 Content\Assets\Models\Rooms\room_001_001_0.xnb
 Content\Assets\Audio\GameAudio.xgs

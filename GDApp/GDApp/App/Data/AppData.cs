@@ -136,7 +136,9 @@ namespace GDLibrary
         public static readonly string UnlitModelsEffectID = "unlit models basic effect";
         public static readonly string UnLitPrimitivesEffectID = "unlit primitives basic effect";
         public static readonly string UnlitModelDualEffectID = "unlit models dual effect";
-        public static readonly string UnlitBillboardsEffectID = "unlit billboards effect";
+        public static readonly string UnlitBillboardsEffectID = "unlit billboards basic effect";
+        public static readonly string WinZoneEffectID = "win zone basic effect";
+        public static readonly string PickupEffectID = "pickup basic effect";
         #endregion
     }
 }

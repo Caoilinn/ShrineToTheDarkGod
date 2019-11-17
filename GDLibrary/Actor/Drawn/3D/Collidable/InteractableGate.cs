@@ -13,12 +13,11 @@ namespace GDLibrary
         public InteractableGate(
             string id, 
             ActorType actorType, 
-            StatusType statusType, 
             Transform3D transform, 
             EffectParameters effectParameters, 
             Model model, 
-            PickupParameters pickupParameters) 
-            : base(id, actorType, statusType, transform, effectParameters, model, pickupParameters)
+            PickupParameters pickupParameters
+        ) : base(id, actorType, transform, effectParameters, model, pickupParameters)
         {
         }
 
@@ -26,14 +25,8 @@ namespace GDLibrary
         {
             //Transform the gate for an open
             //Transform.TranslateBy();
-            GameTime gameTime; 
 
             Console.WriteLine("Open Gate - GATE");
-
         }
-       
-
-
-
     }
 }

@@ -1,14 +1,28 @@
 using GDLibrary;
+using JigLibX.Geometry;
 using JigLibX.Collision;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using System.IO;
+using System;
 
 namespace GDApp
 {
+    //Inner class used for ray picking
+    class ImmovableSkinPredicate : CollisionSkinPredicate1
+    {
+        public override bool ConsiderSkin(CollisionSkin skin0)
+        {
+            if (skin0.Owner.ExternalData is Actor3D)
+                if (!(skin0.Owner.ExternalData as Actor3D).ActorType.Equals(ActorType.CollidableCamera))
+                    return true;
+
+            return false;
+        }
+    }
+
     public class Main : Game
     {
         //Graphics
@@ -25,7 +39,7 @@ namespace GDApp
         private BasicEffect texturedVertexEffect;
 
         //Managers
-        private GameStateManager gameStateManager;
+        private StateManager gameStateManager;
         private ManagerParameters managerParameters;
         private ObjectManager object3DManager;
         private CameraManager cameraManager;
@@ -34,6 +48,10 @@ namespace GDApp
         private GamePadManager gamePadManager;
         private SoundManager soundManager;
         private CombatManager combatManager;
+        private PhysicsManager physicsManager;
+        private MyMenuManager menuManager;
+        private UIManager uiManager;
+        private PickingManager pickingManager;
 
         //Dispatchers
         private EventDispatcher eventDispatcher;
@@ -51,6 +69,7 @@ namespace GDApp
         private ContentDictionary<SoundEffect> soundEffectDictionary;
         private ContentDictionary<SpriteFont> fontDictionary;
         private Dictionary<string, EffectParameters> effectDictionary;
+        private Dictionary<string, PickupParameters> pickupParametersDictionary;
 
         //Lists
         private List<string> soundEffectList = new List<String>();
@@ -68,13 +87,15 @@ namespace GDApp
         private int triggersStartPosition = 3;
         private int playersStartPosition = 4;
         private int enemiesStartPosition = 5;
+        private int gatesStartPosition = 6;
 
         //Array Shift Position
         private int roomsShiftPosition;
         private int pickupsShiftPosition;
         private int triggersShiftPosition;
-        private int enemiesShiftPosition;
         private int playersShiftPosition;
+        private int enemiesShiftPosition;
+        private int gatesShiftPosition;
 
         //Array Reserved Bits
         private int reservedRoomBits;
@@ -82,19 +103,13 @@ namespace GDApp
         private int reservedTriggerBits;
         private int reservedPlayerBits;
         private int reservedEnemyBits;
+        private int reservedGateBits;
 
         //Player Posiiton
         private Transform3D playerPosition;
-        private BasicEffect pickupEffect;
-        private PhysicsManager physicsManager;
-        private MyMenuManager menuManager;
-        private UIManager uiManager;
-        private PickingManager pickingManager;
-
         private PlayerObject player;
         private List<Enemy> enemies;
-
-
+        
         public Main()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -106,22 +121,23 @@ namespace GDApp
         {
             Window.Title = "Shrine to the Dark God";
 
-            LoadDictionaries();
-            LoadAssets();
+            InitializeVertices();
 
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
-            this.resolution = ScreenUtility.HD720;
+            this.resolution = ScreenUtility.WXGA;
             this.screenCentre = this.resolution / 2;
 
-            InitializeVertices();
             InitializeGraphics();
+
+            LoadContent();
+
             InitializeEffects();
 
             InitializeEventDispatcher();
             InitializeManagers();
             
             float worldScale = 2.54f;
-            SetupBitArray(0, 5, 4, 4, 3, 2);
+            SetupBitArray(0, 5, 4, 4, 3, 2, 3);
 
             LoadLevelFromFile();
             LoadMapFromFile();
@@ -235,21 +251,78 @@ namespace GDApp
             #endregion
 
             #region Pickup Effects
-            this.pickupEffect = new BasicEffect(graphics.GraphicsDevice)
+            basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
-                TextureEnabled = true
+                //TextureEnabled = true,
+                //LightingEnabled = false,
+                //PreferPerPixelLighting = false,
+                //DiffuseColor = Color.Blue.ToVector3(),
+                //AmbientLightColor = Color.Purple.ToVector3(),
+                //EmissiveColor = Color.Red.ToVector3()
+                TextureEnabled = true,
+                LightingEnabled = true,
+                PreferPerPixelLighting = true,
+                FogColor = new Vector3(0.1f, 0.05f, 0.1f),
+                FogEnabled = true,
+                FogStart = 100,
+                FogEnd = 300,
+                DiffuseColor = new Vector3(0, 0, 0),
+                AmbientLightColor = new Vector3(0.05f, 0, 0.05f),
+                EmissiveColor = new Vector3(0.05f, 0, 0.05f)
             };
 
-            this.pickupEffect.EnableDefaultLighting();
-            this.pickupEffect.PreferPerPixelLighting = true;
+            basicEffect.SpecularColor = Color.Red.ToVector3();
+            basicEffect.EnableDefaultLighting();
+            basicEffect.PreferPerPixelLighting = true;
+            this.effectDictionary.Add(AppData.PickupEffectID, new BasicEffectParameters(basicEffect));
+            #endregion
+
+            #region Zone Effects
+            basicEffect = new BasicEffect(graphics.GraphicsDevice)
+            {
+                //TextureEnabled = false,
+                //LightingEnabled = true,
+                //PreferPerPixelLighting = true,
+                //DiffuseColor = Color.Blue.ToVector3(),
+                //AmbientLightColor = Color.Purple.ToVector3(),
+                //EmissiveColor = Color.Red.ToVector3()
+                TextureEnabled = true,
+                LightingEnabled = false,
+                PreferPerPixelLighting = false,
+                FogColor = new Vector3(0.1f, 0.05f, 0.1f),
+                FogEnabled = true,
+                FogStart = 100,
+                FogEnd = 300,
+                AmbientLightColor = new Vector3(0.5f, 0, 0.05f),
+                EmissiveColor = new Vector3(0.05f, 0, 0.05f)
+            };
+            
+            this.effectDictionary.Add(AppData.WinZoneEffectID, new BasicEffectParameters(basicEffect));
             #endregion
         }
 
         private void InitializeManagers()
         {
-            #region Keyboard Manager
-            this.keyboardManager = new KeyboardManager(this);
-            Components.Add(this.keyboardManager);
+            #region Camera Manager
+            this.cameraManager = new CameraManager(
+                this, 
+                2, 
+                this.eventDispatcher, 
+                StatusType.Off
+            );
+
+            Components.Add(this.cameraManager);
+            #endregion
+
+            #region Object Manager
+            this.object3DManager = new ObjectManager(
+                this, 
+                this.cameraManager, 
+                this.eventDispatcher, 
+                StatusType.Off
+            );
+
+            Components.Add(this.object3DManager);
             #endregion
 
             #region Physics Manager
@@ -261,6 +334,11 @@ namespace GDApp
             );
 
             Components.Add(this.physicsManager);
+            #endregion
+
+            #region Keyboard Manager
+            this.keyboardManager = new KeyboardManager(this);
+            Components.Add(this.keyboardManager);
             #endregion
 
             #region Mouse Manager
@@ -275,25 +353,39 @@ namespace GDApp
             Components.Add(this.mouseManager);
             #endregion
 
-            #region Camera Manager
-            this.cameraManager = new CameraManager(
-                this, 
-                2, 
-                this.eventDispatcher, 
+            #region Sound Manager
+            this.soundManager = new SoundManager(
+                this,
+                this.eventDispatcher,
+                StatusType.Update,
+                "Content/Assets/Audio/",
+                "GameAudio.xgs",
+                "Movement.xwb",
+                "Movement.xsb"
+            );
+
+            Components.Add(this.soundManager);
+            #endregion
+            
+            #region State Manager
+            this.gameStateManager = new StateManager(
+                this,
+                this.eventDispatcher,
                 StatusType.Off
             );
 
-            Components.Add(this.cameraManager);
+            Components.Add(this.gameStateManager);
             #endregion
 
             #region Manager Parameters
             this.managerParameters = new ManagerParameters(
-                object3DManager,
-                cameraManager,
-                mouseManager,
-                keyboardManager,
-                gamePadManager,
-                soundManager
+                this.object3DManager,
+                this.cameraManager,
+                this.mouseManager,
+                this.keyboardManager,
+                this.gamePadManager,
+                this.soundManager,
+                this.physicsManager
             );
             #endregion
 
@@ -315,31 +407,6 @@ namespace GDApp
             );
 
             Components.Add(this.pickingManager);
-            #endregion
-
-            #region Object Manager
-            this.object3DManager = new ObjectManager(
-                this, 
-                this.cameraManager, 
-                this.eventDispatcher, 
-                StatusType.Off
-            );
-
-            Components.Add(this.object3DManager);
-            #endregion
-            
-            #region Sound Manager
-            this.soundManager = new SoundManager(
-                this,
-                this.eventDispatcher,
-                StatusType.Update,
-                "Content/Assets/Audio/",
-                "GameAudio.xgs",
-                "Movement.xwb",
-                "Movement.xsb"
-            );
-
-            Components.Add(this.soundManager);
             #endregion
 
             #region Menu Manager
@@ -378,18 +445,6 @@ namespace GDApp
             );
 
             Components.Add(this.combatManager);
-            
-            #endregion
-
-
-            #region Game State Manager
-            this.gameStateManager = new GameStateManager(
-                this,
-                this.eventDispatcher,
-                StatusType.Off
-            );
-
-            Components.Add(this.gameStateManager);
             #endregion
         }
 
@@ -467,7 +522,7 @@ namespace GDApp
                 ActorType.UIButton, 
                 StatusType.Update | StatusType.Drawn,
                 transform, 
-                Color.LightPink, 
+                Color.White, 
                 SpriteEffects.None, 
                 0.1f, 
                 texture, 
@@ -687,71 +742,32 @@ namespace GDApp
             #endregion
         }
 
-        private void AddFirstPersonCamera(ProjectionParameters projectionParameters, Viewport viewport, float depth)
+        private void AddFirstPersonCamera(ProjectionParameters projectionParameters, Viewport viewport, float drawDepth)
         {
-            this.playerPosition = new Transform3D(
-                new Vector3(635, 381, 1143),
-                Vector3.Zero,
-                Vector3.One,
-                -Vector3.UnitZ,
-                Vector3.UnitY
-            );
-
-            viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            this.playerPosition.Translation += new Vector3(127, 127, 127);
+            viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);   
 
             Camera3D camera = new Camera3D(
                 "CFP Cam 1",
-                ActorType.Camera,
+                ActorType.CollidableCamera,
                 StatusType.Update,
                 this.playerPosition,
                 projectionParameters,
                 viewport,
-                depth
+                drawDepth
             );
 
             Vector3 movementVector = new Vector3(100, 100, 100) * 2.54f;
             Vector3 rotationVector = new Vector3(0, 90, 0);
 
-            float width = 254;
-            float height = 254;
+            float width = 100;
+            float height = 100;
+            float depth = 100;
+
             Vector3 translationalOffset = new Vector3(0, 0, 0);
 
-            //IController collidableFirstPersonCameraController = new CollidableFirstPersonCameraController(
-            //    "CFPC Controller 1",
-            //    ControllerType.FirstPerson,
-            //    AppData.CameraMoveKeys,
-            //    AppData.CameraMoveSpeed,
-            //    AppData.CameraStrafeSpeed,
-            //    AppData.CameraRotationSpeed,
-            //    this.managerParameters,
-            //    movementVector,
-            //    rotationVector,
-            //    camera,
-            //    width,
-            //    height,
-            //    translationalOffset
-            //);
-
-            //camera.AttachController(
-            //    new CollidableFirstPersonCameraController(
-            //        camera + " Controller",
-            //        ControllerType.CollidableCamera,
-            //        AppData.CameraMoveKeys,
-            //        AppData.CameraMoveSpeed,
-            //        AppData.CameraStrafeSpeed,
-            //        AppData.CameraRotationSpeed,
-            //        this.managerParameters,
-            //        movementVector,
-            //        rotationVector,
-            //        camera,
-            //        width,
-            //        height,
-            //        translationalOffset
-            //    )
-            //);
-
             camera.AttachController(
-                new FirstPersonCameraController(
+                new CollidableFirstPersonCameraController(
                     camera + " Controller",
                     ControllerType.CollidableCamera,
                     AppData.CameraMoveKeys,
@@ -760,23 +776,34 @@ namespace GDApp
                     AppData.CameraRotationSpeed,
                     this.managerParameters,
                     movementVector,
-                    rotationVector
+                    rotationVector,
+                    camera,
+                    width,
+                    height,
+                    depth,
+                    1,
+                    1,
+                    AppData.CollidableCameraMass,
+                    AppData.CollidableCameraJumpHeight,
+                    Vector3.Zero,
+                    this.eventDispatcher
                 )
             );
-
+            
             this.cameraManager.Add(camera);
         }
         #endregion
 
         #region Map Setup
-        private void SetupBitArray(int roomsShiftPosition, int reservedRoomBits, int reservedPickupBits, int reservedTriggerBits, int reservedPlayerBits, int reservedEnemybits)
+        private void SetupBitArray(int roomsShiftPosition, int reservedRoomBits, int reservedPickupBits, int reservedTriggerBits, int reservedPlayerBits, int reservedEnemyBits, int reservedGateBits)
         {
             //Reserve bits for each map component
             this.reservedRoomBits = reservedRoomBits;
             this.reservedPickupBits = reservedPickupBits;
             this.reservedTriggerBits = reservedTriggerBits;
             this.reservedPlayerBits = reservedPlayerBits;
-            this.reservedEnemyBits = reservedEnemybits;
+            this.reservedEnemyBits = reservedEnemyBits;
+            this.reservedGateBits = reservedGateBits;
 
             //Calculate shift for each map component, relative to previous component
             this.roomsShiftPosition = roomsShiftPosition;
@@ -784,19 +811,20 @@ namespace GDApp
             this.triggersShiftPosition = this.pickupsShiftPosition + this.reservedPickupBits;
             this.playersShiftPosition = this.triggersShiftPosition + this.reservedTriggerBits;
             this.enemiesShiftPosition = this.playersShiftPosition + this.reservedPlayerBits;
+            this.gatesShiftPosition = this.enemiesShiftPosition + this.reservedEnemyBits;
         }
 
         private void LoadLevelFromFile()
         {
             if (File.Exists("App/Data/currentLevel.txt"))
-                GameStateManager.currentLevel = int.Parse(File.ReadAllText("App/Data/currentLevel.txt"));
+                StateManager.currentLevel = int.Parse(File.ReadAllText("App/Data/currentLevel.txt"));
             else
-                GameStateManager.currentLevel = 1;
+                StateManager.currentLevel = 1;
         }
 
         private void WriteLevelToFile()
         {
-            File.WriteAllText("App/Data/mapData.txt", GameStateManager.currentLevel.ToString());
+            File.WriteAllText("App/Data/mapData.txt", StateManager.currentLevel.ToString());
         }
 
         private void LoadMapFromFile()
@@ -809,7 +837,7 @@ namespace GDApp
             string[] levels = fileText.Split('*');
 
             //Split the current level into an array of layers (y axis)
-            string[] layers = levels[GameStateManager.currentLevel].Split('&');
+            string[] layers = levels[StateManager.currentLevel].Split('&');
             #endregion
 
             #region Determine Map Size
@@ -902,7 +930,11 @@ namespace GDApp
                     #region Place Enemies
                     PlaceComponents(line, this.enemiesStartPosition, this.enemiesShiftPosition, x, y, z);
                     #endregion
-                   
+
+                    #region Place Gates
+                    PlaceComponents(line, this.gatesStartPosition, this.gatesShiftPosition, x, y, z);
+                    #endregion
+
                     //Iterate z
                     z++;
                 }
@@ -937,36 +969,53 @@ namespace GDApp
         }
 
         #region Player and Enemies
-
         private void InitializeEnemies()
         {
-            this.enemies = new List<Enemy>();
+            //this.enemies = new List<Enemy>();
+            //BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
 
-            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
+            //Enemy skeleton = new Enemy(
+            //    "skeleton", 
+            //    ActorType.Interactable,
+            //    StatusType.Update, 
+            //    this.playerPosition, 
+            //    effectParameters,
+            //    null, 
+            //    0f, 
+            //    0f, 
+            //    100, 
+            //    20, 
+            //    20
+            //);
 
-            Enemy skeleton = new Enemy("skeleton", ActorType.Interactable, StatusType.Update, this.playerPosition, effectParameters,
-                                        null, 0f, 0f, 100, 20, 20);
-
-            this.enemies.Add(skeleton);
-            this.combatManager.PopulateEnemies(this.enemies);
-            this.object3DManager.Add(skeleton);
-
+            //this.enemies.Add(skeleton);
+            //this.combatManager.PopulateEnemies(this.enemies);
+            //this.object3DManager.Add(skeleton);
         }
 
         private void InitializePlayer()
         {
-            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
+            //BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
 
-
-            this.player = new PlayerObject("player", ActorType.Player, StatusType.Update, this.playerPosition,
-                                            effectParameters, null, AppData.CameraMoveKeys, 0f, 0f, 0f,
-                                            Vector3.Zero, this.keyboardManager);
-            this.combatManager.AddPlayer(this.player);
-            this.object3DManager.Add(this.player);
+            //this.player = new PlayerObject(
+            //    "player", 
+            //    ActorType.Player, 
+            //    StatusType.Update, 
+            //    this.playerPosition,
+            //    effectParameters, 
+            //    null, 
+            //    AppData.CameraMoveKeys, 
+            //    0f, 
+            //    0f, 
+            //    0f,
+            //    Vector3.Zero, 
+            //    this.keyboardManager
+            //);
+            
+            //this.combatManager.AddPlayer(this.player);
+            //this.object3DManager.Add(this.player);
         }
-
         #endregion
-
 
         private void InitializeMap(float cellWidth, float cellHeight, float cellDepth, float worldScale)
         {
@@ -991,7 +1040,7 @@ namespace GDApp
                             new Vector3(x * width, y * height, z * depth),
                             new Vector3(0, 0, 0),
                             new Vector3(1, 1, 1),
-                            Vector3.UnitZ,
+                            -Vector3.UnitZ,
                             Vector3.UnitY
                         );
                         #endregion
@@ -1044,11 +1093,22 @@ namespace GDApp
                         //Extract enemy from level map
                         int enemyType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], this.reservedEnemyBits, this.enemiesShiftPosition);
 
-                        ////If an enemy has been set
+                        //If an enemy has been set
                         if (enemyType > 0)
 
-                            //    //Spawn enemy
+                            //Spawn enemy
                             SpawnEnemy(enemyType, transform);
+                        #endregion
+
+                        #region Construct Gates
+                        //Extract gate from level map
+                        int gateType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], this.reservedGateBits, this.gatesShiftPosition);
+
+                        //If a gate has been set
+                        if (gateType > 0)
+
+                            //Construct gate
+                            ConstructGate(gateType, transform);
                         #endregion
                     }
                 }
@@ -1058,6 +1118,9 @@ namespace GDApp
 
         public void ConstructRoom(int roomType, Transform3D transform)
         {
+            //Setup dimensions
+            Transform3D roomTransform = transform.Clone() as Transform3D;
+
             //Load model and effect parameters
             BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
             Model model = this.modelDictionary["roomModel" + roomType];
@@ -1066,11 +1129,10 @@ namespace GDApp
             Model collisionBox = this.collisionBoxDictionary["roomCollision" + roomType];
 
             //Create model
-            this.staticModel = new TriangleMeshObject(
-                "room" + roomType,
+            this.staticModel = new CollidableArchitecture(
+                "Room " + roomType,
                 ActorType.CollidableArchitecture,
-                StatusType.Update | StatusType.Drawn,
-                transform,
+                roomTransform,
                 effectParameters,
                 model,
                 collisionBox,
@@ -1086,76 +1148,172 @@ namespace GDApp
 
         public void ConstructPickup(int pickupType, Transform3D transform)
         {
+            //Setup dimensions
+            Transform3D pickupTransform = transform.Clone() as Transform3D;
+
             //Load model and effect parameters
-            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
+            BasicEffectParameters effectParameters = this.effectDictionary[AppData.PickupEffectID].Clone() as BasicEffectParameters;
             Model model = this.modelDictionary["pickupModel" + pickupType];
 
+            //Load collision box
+            Model collisionBox = this.collisionBoxDictionary["pickupCollision"];
+
+            //Select pickup parameters
+            PickupParameters pickupParameters = SelectPickupParameters(pickupType);
+
             //Create model
-            this.staticModel = new CollidableObject(
-                "pickup" + pickupType,
-                ActorType.CollidableArchitecture,
-                StatusType.Update | StatusType.Drawn,
-                transform,
+            this.staticModel = new ImmovablePickupObject(
+                "Pickup " + pickupType,
+                ActorType.CollidablePickup,
+                pickupTransform,
                 effectParameters,
-                model
+                model,
+                collisionBox,
+                new MaterialProperties(),
+                pickupParameters
             );
 
             //Add collision
-            this.staticModel.AddPrimitive(new JigLibX.Geometry.Box(transform.Translation, Matrix.Identity, new Vector3(254, 254, 254)), new MaterialProperties(0.8f, 0.8f, 0.7f));
             this.staticModel.Enable(true, 1);
 
             //Add to object manager list
             this.object3DManager.Add(staticModel);
         }
 
+        PickupParameters SelectPickupParameters(int pickupType)
+        {
+            switch (pickupType)
+            {
+                case 1:
+                    return this.pickupParametersDictionary["sword"];
+                case 2:
+                    return this.pickupParametersDictionary["key"];
+                case 3:
+                    return this.pickupParametersDictionary["potion"];
+                default:
+                    return null;
+            }
+        }
+
         public void ConstructTrigger(int triggerType, Transform3D transform)
         {
+            Transform3D gateTransform = transform.Clone() as Transform3D;
+
             //Determine trigger type
             switch (triggerType)
             {
                 case 1:
-                    this.triggerList.Add(
-                        new TriggerVolume(
-                            transform.Translation.X,
-                            transform.Translation.Y,
-                            transform.Translation.Z,
-                            (100 * 2.54f),
-                            (100 * 2.54f),
-                            (100 * 2.54f),
-                            TriggerType.InitiateBattle,
-                            null
-                        )
-                    );
+                    //this.object3DManager.Add(
+                    //    new ZoneObject(
+                    //        "Win Zone",
+                    //        ActorType.Zone,
+                    //        transform,
+                    //        this.effectDictionary[AppData.WinZoneEffectID],
+                    //        this.collisionBoxDictionary["zoneCollision"]
+                    //    )
+                    //);
                     break;
 
-                case 2:
-                    this.triggerList.Add(
-                        new TriggerVolume(
-                            transform.Translation.X,
-                            transform.Translation.Y,
-                            transform.Translation.Z,
-                            (100 * 2.54f),
-                            (100 * 2.54f),
-                            (100 * 2.54f),
-                            TriggerType.EndLevel,
-                            null
-                        )
-                    );
+                default:
                     break;
             }
         }
         
+        public void ConstructGate(int gateType, Transform3D transform)
+        {
+            //Setup dimensions
+            Transform3D gateTransform = transform.Clone() as Transform3D;
+
+            //Load model and effect parameters
+            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
+            Model model = this.modelDictionary["gateModel" + gateType];
+
+            //Load collision box
+            Model collisionBox = this.collisionBoxDictionary["gateCollision" + gateType];
+
+            //Create model
+            this.staticModel = new CollidableArchitecture(
+                "Gate " + gateType,
+                ActorType.CollidableArchitecture,
+                gateTransform,
+                effectParameters,
+                model,
+                collisionBox,
+                new MaterialProperties()
+            );
+
+            //Add collision
+            this.staticModel.Enable(true, 1);
+
+            //Add to object manager list
+            this.object3DManager.Add(staticModel);
+        }
+
         public void SpawnPlayer(Transform3D transform)
         {
-            this.playerPosition = transform;
+            this.playerPosition = transform.Clone() as Transform3D;
         }
 
         public void SpawnEnemy(int enemyType, Transform3D transform)
         {
+            //Setup dimensions
+            Transform3D enemyTransform = transform.Clone() as Transform3D;
+            enemyTransform.Translation += new Vector3(127, 0, 127);
+
+            //Load model and effect parameters
+            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
+            Model model = this.modelDictionary["enemyModel" + enemyType];
+
+            //Load collision box
+            Model collisionBox = this.collisionBoxDictionary["enemyCollision"];
+
+            float width = 154;
+            float height = 154;
+            float depth = 154;
+
+            Vector3 movementVector = new Vector3(254, 254, 254);
+            Vector3 rotationVector = new Vector3(90, 90, 90);
+
+            float health = 100;
+            float attack = 100;
+            float defence = 100;
+
+            if (enemyType == 1)
+            {
+                enemyTransform.Look = Vector3.UnitX;
+            }
+
+            if (enemyType == 2)
+            {
+                enemyTransform.Look = -Vector3.UnitX;
+            }
+
+            //Create model
+            this.staticModel = new Enemy(
+                "Enemy" + enemyType,
+                ActorType.Enemy,
+                enemyTransform,
+                effectParameters,
+                model,
+                width,
+                height,
+                depth,
+                movementVector,
+                rotationVector,
+                AppData.CameraMoveSpeed,
+                AppData.CameraRotationSpeed,
+                health,
+                attack,
+                defence
+            );
+
+            //Add collision
+            this.staticModel.Enable(true, 1);
+
+            //Add to object manager list
+            this.object3DManager.Add(this.staticModel);
         }
         #endregion
-
-        
 
         #region Content
         protected override void LoadContent()
@@ -1183,10 +1341,13 @@ namespace GDApp
             this.soundEffectDictionary = new ContentDictionary<SoundEffect>("Sound Effect Dictionary", this.Content);
 
             //Fonts
-            this.fontDictionary = new ContentDictionary<SpriteFont>("font dictionary", this.Content);
+            this.fontDictionary = new ContentDictionary<SpriteFont>("Font Dictionary", this.Content);
 
             //Effect parameters
             this.effectDictionary = new Dictionary<string, EffectParameters>();
+
+            //Pickup parameters
+            this.pickupParametersDictionary = new Dictionary<string, PickupParameters>();
         }
 
         private void LoadAssets()
@@ -1214,6 +1375,10 @@ namespace GDApp
             #region Fonts
             LoadFonts();
             #endregion
+
+            #region Pickup Parameters
+            LoadPickupParameters();
+            #endregion
         }
 
         public void LoadModels()
@@ -1240,13 +1405,20 @@ namespace GDApp
             #endregion
 
             #region Pickup Models
-            this.modelDictionary.Load("Assets/Models/Pickups/box", "pickupModel1");
-            this.modelDictionary.Load("Assets/Models/Pickups/box", "pickupModel2");
-            this.modelDictionary.Load("Assets/Models/Pickups/box", "pickupModel3");
-            this.modelDictionary.Load("Assets/Models/Pickups/box", "pickupModel4");
+            this.modelDictionary.Load("Assets/Models/Pickups/potion", "pickupModel1");
+            this.modelDictionary.Load("Assets/Models/Pickups/potion", "pickupModel2");
+            this.modelDictionary.Load("Assets/Models/Pickups/potion", "pickupModel3");
+            this.modelDictionary.Load("Assets/Models/Pickups/potion", "pickupModel4");
             #endregion
 
             #region Character Models
+            this.modelDictionary.Load("Assets/Models/Characters/enemy_001", "enemyModel1");
+            this.modelDictionary.Load("Assets/Models/Characters/enemy_002", "enemyModel2");
+            #endregion
+
+            #region Prop Models
+            this.modelDictionary.Load("Assets/Models/Props/gate_001", "gateModel1");
+            this.modelDictionary.Load("Assets/Models/Props/gate_002", "gateModel2");
             #endregion
         }
 
@@ -1271,6 +1443,23 @@ namespace GDApp
             this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_016", "roomCollision16");
             this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_017", "roomCollision17");
             this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_018", "roomCollision18");
+            #endregion
+
+            #region Pickup Collision
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Pickups/pickup_collision", "pickupCollision");
+            #endregion
+
+            #region Enemy Collision
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Characters/enemy_collision", "enemyCollision");
+            #endregion
+
+            #region Zone Collision
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Zones/zone_collision", "zoneCollision");
+            #endregion
+
+            #region Prop Collision
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Props/gate_collision_001", "gateCollision1");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Props/gate_collision_002", "gateCollision2");
             #endregion
         }
 
@@ -1372,15 +1561,14 @@ namespace GDApp
             this.effectDictionary.Add("pickupEffect3", new EffectParameters(this.modelEffect, null, Color.White, 1));
             this.effectDictionary.Add("pickupEffect4", new EffectParameters(this.modelEffect, null, Color.White, 1));
             #endregion
+
+            #region Zone Effects
+            #endregion
         }
 
         public void LoadSounds()
         {
             #region Sound Effects
-            this.soundEffectDictionary.Load("Assets/Audio/boing", "boing");
-            this.soundEffectDictionary.Load("Assets/Audio/boing", "boing");
-            this.soundEffectDictionary.Load("Assets/Audio/boing", "boing");
-            this.soundEffectDictionary.Load("Assets/Audio/boing", "boing");
             #endregion
 
             #region Music
@@ -1394,6 +1582,13 @@ namespace GDApp
             this.fontDictionary.Load("Assets/Fonts/menu", "menu");
             this.fontDictionary.Load("Assets/Debug/Fonts/debugFont", "debugFont");
             #endregion
+        }
+
+        public void LoadPickupParameters()
+        {
+            this.pickupParametersDictionary.Add("sword", new PickupParameters("Steel Sword", 1, PickupType.Sword));
+            this.pickupParametersDictionary.Add("key", new PickupParameters("Gate Key", 2, PickupType.Key));
+            this.pickupParametersDictionary.Add("potion", new PickupParameters("Health Potion", 3, PickupType.Health));
         }
         #endregion
 
@@ -1418,22 +1613,6 @@ namespace GDApp
                     trigger.HasFired = false;
                     trigger.PauseEvent();
                 }
-            }
-        }
-
-        private void DemoProximityTrigger()
-        {
-            Vector3 translation = this.cameraManager.ActiveCamera.Transform.Translation;
-        }
-
-        private void DemoToggleMenu()
-        {
-            if (this.keyboardManager.IsFirstKeyPress(AppData.MenuShowHideKey))
-            {
-                if (this.menuManager.IsVisible)
-                    EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu));
-                else
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
             }
         }
         #endregion
@@ -1474,9 +1653,11 @@ namespace GDApp
         #region Update, Draw
         protected override void Update(GameTime gameTime)
         {
+            foreach (ModelObject modelObj in this.object3DManager.OpaqueDrawList)
+                if (modelObj.ActorType == ActorType.Enemy)
+                    (modelObj as Enemy).TrackPlayer(gameTime, this.playerPosition);
+
             base.Update(gameTime);
-            DemoTriggerVolume();
-            DemoToggleMenu();
         }
 
         protected override void Draw(GameTime gameTime)

@@ -126,7 +126,7 @@ namespace GDApp
         private void DoMenuClickSound()
         {
             //e.g. Play a boing
-            object[] additionalParameters = { "boing" };
+            object[] additionalParameters = { "wall_bump" };
             EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, additionalParameters));
         }
 

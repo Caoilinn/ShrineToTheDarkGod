@@ -26,9 +26,11 @@ namespace GDLibrary
         {
             get
             {
-                return Matrix.CreateLookAt(this.Transform.Translation,
+                return Matrix.CreateLookAt(
+                    this.Transform.Translation,
                     this.Transform.Translation + this.Transform.Look,
-                    this.Transform.Up);
+                    this.Transform.Up
+                );
             }
         }
 
@@ -61,7 +63,10 @@ namespace GDLibrary
             set
             {
                 this.viewport = value;
-                this.viewportCentre = new Vector2((this.viewport.Width / 2.0f), (this.viewport.Height / 2.0f));
+                this.viewportCentre = new Vector2(
+                    (this.viewport.Width / 2.0f), 
+                    (this.viewport.Height / 2.0f)
+                );
             }
         }
 
@@ -99,7 +104,7 @@ namespace GDLibrary
             string id, 
             ActorType actorType, 
             StatusType statusType,
-            Transform3D transform, 
+            Transform3D transform,
             ProjectionParameters projectionParameters,
             Viewport viewport
         ) : this (id, actorType, statusType, transform, projectionParameters, viewport, 0) {
@@ -123,9 +128,17 @@ namespace GDLibrary
             string id,
             ActorType actorType,
             StatusType statusType,
+            CollisionBox collisionBox,
             Viewport viewport,
             float drawDepth
         ) : this (id, actorType, statusType, Transform3D.Zero, ProjectionParameters.StandardMediumFourThree, viewport, 0) {
+        }
+        #endregion
+
+        #region Methods
+        public string GetDescription()
+        {
+            return "Camera: " + this.ID;
         }
         #endregion
 
@@ -158,8 +171,8 @@ namespace GDLibrary
                 "Clone - " + this.ID,
                 this.ActorType, 
                 StatusType.Update,
-                (Transform3D)this.Transform.Clone(),
-                (ProjectionParameters)this.projectionParameters.Clone(),
+                (Transform3D) this.Transform.Clone(),
+                (ProjectionParameters) this.projectionParameters.Clone(),
                 this.viewport,
                 this.drawDepth
             );
@@ -172,11 +185,6 @@ namespace GDLibrary
                 + ", Look: " + MathUtility.Round(this.Transform.Look, 0)
                 + ", Up: " + MathUtility.Round(this.Transform.Up, 0)
                 + ", Depth: " + this.drawDepth;
-        }
-
-        public string GetDescription()
-        {
-            return "Camera: " + this.ID;
         }
         #endregion
     }

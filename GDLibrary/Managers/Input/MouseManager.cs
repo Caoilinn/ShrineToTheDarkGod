@@ -73,10 +73,10 @@ namespace GDLibrary
 
         public override void Update(GameTime gameTime)
         {
-            //store the old state
+            //Store the old state
             this.oldState = newState;
 
-            //get the new state
+            //Get the new state
             this.newState = Mouse.GetState();
 
             base.Update(gameTime);
