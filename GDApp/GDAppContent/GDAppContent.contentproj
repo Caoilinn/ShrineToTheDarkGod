@@ -736,8 +736,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Collision Boxes\Characters\enemy_collision_001.FBX">
-      <Name>enemy_collision_001</Name>
+    <Compile Include="Assets\Collision Boxes\Characters\enemy_collision.FBX">
+      <Name>enemy_collision</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
@@ -795,13 +795,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Collision Boxes\Characters\enemy_collision_002.FBX">
-      <Name>enemy_collision_002</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\Models\Characters\enemy_001.FBX">
       <Name>enemy_001</Name>
       <Importer>FbxImporter</Importer>
@@ -813,6 +806,20 @@
       <Name>battle_theme</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Audio\wall_bump.wav">
+      <Name>wall_bump</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Collision Boxes\Pickups\pickup_collision.FBX">
+      <Name>pickup_collision</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

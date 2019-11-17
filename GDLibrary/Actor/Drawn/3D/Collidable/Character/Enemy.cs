@@ -37,7 +37,7 @@ namespace GDLibrary
         #endregion
 
         #region Methods
-        public void TrackPlayer(GameTime gameTime)
+        public void TrackPlayer(GameTime gameTime, Transform3D playerPos)
         {
             //If it is not the enemy's turn, return
             if (!StateManager.enemyTurn) return;
@@ -46,64 +46,76 @@ namespace GDLibrary
             if (this.InMotion) return;
 
             #region Old Code
-            //Vector3 playerPosition = new Vector3(889, 381, 1143);
-            //Vector3 enemyPosition = this.Transform.Translation;
+            Vector3 playerPosition = playerPos.Translation;
+            Vector3 enemyPosition = this.Transform.Translation;
 
-            //Vector3 movementVector = new Vector3(254, 254, 254);
-            //Vector3 rotationVector = new Vector3(90, 90, 90);
+            Vector3 movementVector = new Vector3(254, 254, 254);
+            Vector3 rotationVector = new Vector3(90, 90, 90);
 
-            //if (!this.InMotion)
-            //{
-            //    //Forward, Back
-            //    Vector3 adjacentCellAhead = enemyPosition + (movementVector * this.Transform.Look);
-            //    Vector3 adjacentCellBehind = enemyPosition + (movementVector * -this.Transform.Look);
+            if (!this.InMotion)
+            {
+                //Forward, Back
+                Vector3 adjacentCellAhead = enemyPosition + (movementVector * this.Transform.Right);
+                Vector3 adjacentCellBehind = enemyPosition + (movementVector * -this.Transform.Right);
 
-            //    //Left, Right
-            //    Vector3 adjacentCellLeft = enemyPosition + (movementVector * -this.Transform.Right);
-            //    Vector3 adjacentCellRight = enemyPosition + (movementVector * this.Transform.Right);
+                //Left, Right
+                Vector3 adjacentCellLeft = enemyPosition + (movementVector * this.Transform.Look);
+                Vector3 adjacentCellRight = enemyPosition + (movementVector * -this.Transform.Look);
 
-            //    if (!this.InMotion)
-            //    {
-            //        //Forward
-            //        if (Vector3.Distance(enemyPosition, playerPosition) > Vector3.Distance(adjacentCellAhead, playerPosition))
-            //        {
-            //            //Calculate target position, relative to the enemy
-            //            this.TargetPosition = (this.Transform.Look * movementVector);
-            //            this.Translation = (gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * this.Transform.Look);
-            //        }
+                if (!this.InMotion)
+                {
+                    //Forward
+                    if (Vector3.Distance(enemyPosition, playerPosition) > Vector3.Distance(adjacentCellAhead, playerPosition))
+                    {
+                        //Calculate target position, relative to the enemy
+                        this.TargetPosition = (this.Transform.Right * movementVector);
+                        this.Translation = (gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * this.Transform.Right);
+                    }
 
-            //        //Back
-            //        else if (Vector3.Distance(enemyPosition, playerPosition) > Vector3.Distance(adjacentCellBehind, playerPosition))
-            //        {
-            //            //Calculate target position, relative to the enemy
-            //            this.TargetPosition = -(this.Transform.Look * movementVector);
-            //            this.Translation = -(gameTime.ElapsedGameTime.Milliseconds * this.RotateSpeed * this.Transform.Look);
-            //        }
+                    //Back
+                    else if (Vector3.Distance(enemyPosition, playerPosition) > Vector3.Distance(adjacentCellBehind, playerPosition))
+                    {
+                        //Calculate target position, relative to the enemy
+                        this.TargetPosition = -(this.Transform.Right * movementVector);
+                        this.Translation = -(gameTime.ElapsedGameTime.Milliseconds * this.RotateSpeed * this.Transform.Right);
+                    }
 
-            //        //Left
-            //        if (Vector3.Distance(enemyPosition, playerPosition) > Vector3.Distance(adjacentCellLeft, playerPosition))
-            //        {
-            //            this.TargetHeading = -(this.Transform.Up * rotationVector);
-            //            this.Rotation = -(gameTime.ElapsedGameTime.Milliseconds * this.RotateSpeed * this.Transform.Up);
-            //        }
+                    //Left
+                    else if (Vector3.Distance(enemyPosition, playerPosition) > Vector3.Distance(adjacentCellLeft, playerPosition))
+                    {
+                        this.TargetHeading = -(this.Transform.Up * rotationVector);
+                        this.Rotation = -(gameTime.ElapsedGameTime.Milliseconds * this.RotateSpeed * this.Transform.Up);
+                    }
 
-            //        //Right
-            //        else if (Vector3.Distance(enemyPosition, playerPosition) > Vector3.Distance(adjacentCellRight, playerPosition))
-            //        {
-            //            this.TargetHeading = (this.Transform.Up * rotationVector);
-            //            this.Rotation = (gameTime.ElapsedGameTime.Milliseconds * this.RotateSpeed * this.Transform.Up);
-            //        }
-            //    }
-            //}
+                    //Right
+                    else if (Vector3.Distance(enemyPosition, playerPosition) > Vector3.Distance(adjacentCellRight, playerPosition))
+                    {
+                        this.TargetHeading = (this.Transform.Up * rotationVector);
+                        this.Rotation = (gameTime.ElapsedGameTime.Milliseconds * this.RotateSpeed * this.Transform.Up);
+                    }
+
+                    //At required position
+                    else
+                    {
+                        //Update game state
+                        EventDispatcher.Publish(
+                            new EventData(
+                                EventActionType.PlayerTurn,
+                                EventCategoryType.Game
+                            )
+                        );
+                    }
+                }
+            }
             #endregion
 
             //Need to create a function that generates a translation and a rotation, based on the players position
             //Function should feed the HandleMovement method
 
             //Very simple test code
-            Vector3 currentPosition = this.Transform.Translation;
-            this.TargetPosition = new Vector3(254, 254, 254) * this.Transform.Look;
-            this.Translation = (gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * this.Transform.Look);
+            //Vector3 currentPosition = this.Transform.Translation;
+            //this.TargetPosition = new Vector3(254, 0, 0);
+            //this.Translation = (gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * this.Transform.Right);
         }
 
         public void TakeDamage(float damage)
@@ -113,6 +125,8 @@ namespace GDLibrary
 
         public override void HandleMovement()
         {
+            if (!StateManager.enemyTurn) return;
+
             #region Translation
             if (this.Translation != Vector3.Zero)
             {
@@ -121,6 +135,11 @@ namespace GDLibrary
                 {
                     //Move to the target position
                     this.Transform.TranslateBy((this.CurrentPosition - this.TargetPosition) * -Vector3.One);
+
+                    //Update collision
+                    this.CharacterBody.Position = this.Transform.Translation;
+                    JigLibX.Math.Transform transform = this.Body.Transform;
+                    this.Body.CollisionSkin.SetNewTransform(ref transform);
 
                     //Reset vectors
                     this.Translation = Vector3.Zero;
@@ -144,6 +163,11 @@ namespace GDLibrary
 
                     //Update current position
                     this.CurrentPosition += this.Translation;
+
+                    //Update collision
+                    this.CharacterBody.Position = this.Transform.Translation;
+                    JigLibX.Math.Transform transform = this.Body.Transform;
+                    this.Body.CollisionSkin.SetNewTransform(ref transform);
 
                     //Update motion state
                     this.InMotion = true;
@@ -184,14 +208,6 @@ namespace GDLibrary
 
         public override void Update(GameTime gameTime)
         {
-            //TrackPlayer(gameTime);
-            //Update game state
-            EventDispatcher.Publish(
-                new EventData(
-                    EventActionType.PlayerTurn,
-                    EventCategoryType.Game
-                )
-            );
             base.Update(gameTime);
         }
         #endregion

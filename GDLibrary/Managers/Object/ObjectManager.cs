@@ -22,8 +22,8 @@ namespace GDLibrary
         private List<DrawnActor3D> removeList;
         private List<DrawnActor3D> opaqueDrawList;
         private List<DrawnActor3D> transparentDrawList;
-        private RasterizerState rasterizerStateOpaque;
-        private RasterizerState rasterizerStateTransparent;
+        //private RasterizerState rasterizerStateOpaque;
+        //private RasterizerState rasterizerStateTransparent;
         #endregion
 
         #region Properties   
@@ -127,50 +127,56 @@ namespace GDLibrary
         #region Methods
         private void InitializeGraphics()
         {
-            //Set the graphics card to repeat the end pixel value for any UV value outside 0-1
-            //See http://what-when-how.com/xna-game-studio-4-0-programmingdeveloping-for-windows-phone-7-and-xbox-360/samplerstates-xna-game-studio-4-0-programming/
-            SamplerState samplerState = new SamplerState();
-            samplerState.AddressU = TextureAddressMode.Mirror;
-            samplerState.AddressV = TextureAddressMode.Mirror;
-            Game.GraphicsDevice.SamplerStates[0] = samplerState;
+            ////Set the graphics card to repeat the end pixel value for any UV value outside 0-1
+            ////See http://what-when-how.com/xna-game-studio-4-0-programmingdeveloping-for-windows-phone-7-and-xbox-360/samplerstates-xna-game-studio-4-0-programming/
+            //SamplerState samplerState = new SamplerState
+            //{
+            //    AddressU = TextureAddressMode.Mirror,
+            //    AddressV = TextureAddressMode.Mirror
+            //};
 
-            //Opaque objects
-            this.rasterizerStateOpaque = new RasterizerState();
-            this.rasterizerStateOpaque.CullMode = CullMode.None;
+            //Game.GraphicsDevice.SamplerStates[0] = samplerState;
 
-            //Transparent objects
-            this.rasterizerStateTransparent = new RasterizerState();
-            this.rasterizerStateTransparent.CullMode = CullMode.None;
+            ////Opaque objects
+            //this.rasterizerStateOpaque = new RasterizerState
+            //{
+            //    CullMode = CullMode.None
+            //};
 
+            ////Transparent objects
+            //this.rasterizerStateTransparent = new RasterizerState
+            //{
+            //    CullMode = CullMode.None
+            //};
         }
 
         private void SetGraphicsStateObjects(bool isOpaque)
         {
-            //Remember this code from our initial aliasing problems with the Sky box?
-            //Enable anti-aliasing along the edges of the quad i.e. to remove jagged edges to the primitive
-            Game.GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
+            ////Remember this code from our initial aliasing problems with the Sky box?
+            ////Enable anti-aliasing along the edges of the quad i.e. to remove jagged edges to the primitive
+            //Game.GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
 
-            if (isOpaque)
-            {
-                //Set the appropriate state for opaque objects
-                Game.GraphicsDevice.RasterizerState = this.rasterizerStateOpaque;
+            //if (isOpaque)
+            //{
+            //    //Set the appropriate state for opaque objects
+            //    Game.GraphicsDevice.RasterizerState = this.rasterizerStateOpaque;
 
-                //Disable to see what happens when we disable depth buffering - look at the boxes
-                Game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
-            }
+            //    //Disable to see what happens when we disable depth buffering - look at the boxes
+            //    Game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            //}
 
-            //Semi-transparent
-            else
-            {
-                //Set the appropriate state for transparent objects
-                Game.GraphicsDevice.RasterizerState = this.rasterizerStateTransparent;
+            ////Semi-transparent
+            //else
+            //{
+            //    //Set the appropriate state for transparent objects
+            //    Game.GraphicsDevice.RasterizerState = this.rasterizerStateTransparent;
 
-                //Enable alpha blending for transparent objects i.e. trees
-                Game.GraphicsDevice.BlendState = BlendState.AlphaBlend;
+            //    //Enable alpha blending for transparent objects i.e. trees
+            //    Game.GraphicsDevice.BlendState = BlendState.AlphaBlend;
 
-                //Disable to see what happens when we disable depth buffering - look at the boxes
-                Game.GraphicsDevice.DepthStencilState = DepthStencilState.DepthRead;
-            }
+            //    //Disable to see what happens when we disable depth buffering - look at the boxes
+            //    Game.GraphicsDevice.DepthStencilState = DepthStencilState.DepthRead;
+            //}
         }
 
         public void Add(DrawnActor3D actor)

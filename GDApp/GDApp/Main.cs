@@ -47,6 +47,10 @@ namespace GDApp
         private KeyboardManager keyboardManager;
         private GamePadManager gamePadManager;
         private SoundManager soundManager;
+        private PhysicsManager physicsManager;
+        private MyMenuManager menuManager;
+        private UIManager uiManager;
+        private PickingManager pickingManager;
 
         //Dispatchers
         private EventDispatcher eventDispatcher;
@@ -64,6 +68,7 @@ namespace GDApp
         private ContentDictionary<SoundEffect> soundEffectDictionary;
         private ContentDictionary<SpriteFont> fontDictionary;
         private Dictionary<string, EffectParameters> effectDictionary;
+        private Dictionary<string, PickupParameters> pickupParametersDictionary;
 
         //Lists
         private List<string> soundEffectList = new List<String>();
@@ -101,12 +106,6 @@ namespace GDApp
 
         //Player Posiiton
         private Transform3D playerPosition;
-        private BasicEffect pickupEffect;
-        private PhysicsManager physicsManager;
-        private MyMenuManager menuManager;
-        private UIManager uiManager;
-        private PickingManager pickingManager;
-        private BasicEffect winZoneEffect;
 
         public Main()
         {
@@ -119,15 +118,16 @@ namespace GDApp
         {
             Window.Title = "Shrine to the Dark God";
 
-            LoadDictionaries();
-            LoadAssets();
+            InitializeVertices();
 
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
             this.resolution = ScreenUtility.WXGA;
             this.screenCentre = this.resolution / 2;
 
-            InitializeVertices();
             InitializeGraphics();
+
+            LoadContent();
+
             InitializeEffects();
 
             InitializeEventDispatcher();
@@ -145,8 +145,8 @@ namespace GDApp
             InitializeMenu();
             InitializeUI();
 
-            //InitializeDebug();
-            //InitializeDebugCollisionSkinInfo();
+            InitializeDebug();
+            InitializeDebugCollisionSkinInfo();
 
             base.Initialize();
         }
@@ -189,10 +189,10 @@ namespace GDApp
                 TextureEnabled = true,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
-                FogColor = new Vector3(0.1f, 0.05f, 0.1f),
-                FogEnabled = true,
-                FogStart = 100,
-                FogEnd = 300,
+                //FogColor = new Vector3(0.1f, 0.05f, 0.1f),
+                //FogEnabled = true,
+                //FogStart = 100,
+                //FogEnd = 300,
                 DiffuseColor = new Vector3(0, 0, 0),
                 AmbientLightColor = new Vector3(0.05f, 0, 0.05f),
                 EmissiveColor = new Vector3(0.05f, 0, 0.05f)
@@ -233,10 +233,10 @@ namespace GDApp
             this.modelEffect.PreferPerPixelLighting = true;
 
             //Setup fog
-            this.modelEffect.FogColor = new Vector3(0.1f, 0.05f, 0.1f);
-            this.modelEffect.FogEnabled = true;
-            this.modelEffect.FogStart = 127;
-            this.modelEffect.FogEnd = 400;
+            //this.modelEffect.FogColor = new Vector3(0.1f, 0.05f, 0.1f);
+            //this.modelEffect.FogEnabled = true;
+            //this.modelEffect.FogStart = 127;
+            //this.modelEffect.FogEnd = 400;
 
             //Setup ambience
             this.modelEffect.DiffuseColor = new Vector3(0, 0, 0);
@@ -247,12 +247,22 @@ namespace GDApp
             #region Pickup Effects
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
+                //TextureEnabled = true,
+                //LightingEnabled = false,
+                //PreferPerPixelLighting = false,
+                //DiffuseColor = Color.Blue.ToVector3(),
+                //AmbientLightColor = Color.Purple.ToVector3(),
+                //EmissiveColor = Color.Red.ToVector3()
                 TextureEnabled = true,
-                LightingEnabled = false,
-                PreferPerPixelLighting = false,
-                DiffuseColor = Color.Blue.ToVector3(),
-                AmbientLightColor = Color.Purple.ToVector3(),
-                EmissiveColor = Color.Red.ToVector3()
+                LightingEnabled = true,
+                PreferPerPixelLighting = true,
+                FogColor = new Vector3(0.1f, 0.05f, 0.1f),
+                FogEnabled = true,
+                FogStart = 100,
+                FogEnd = 300,
+                DiffuseColor = new Vector3(0, 0, 0),
+                AmbientLightColor = new Vector3(0.05f, 0, 0.05f),
+                EmissiveColor = new Vector3(0.05f, 0, 0.05f)
             };
 
             basicEffect.SpecularColor = Color.Red.ToVector3();
@@ -271,28 +281,42 @@ namespace GDApp
                 //AmbientLightColor = Color.Purple.ToVector3(),
                 //EmissiveColor = Color.Red.ToVector3()
                 TextureEnabled = true,
-                LightingEnabled = true,
-                PreferPerPixelLighting = true,
+                LightingEnabled = false,
+                PreferPerPixelLighting = false,
                 FogColor = new Vector3(0.1f, 0.05f, 0.1f),
                 FogEnabled = true,
                 FogStart = 100,
                 FogEnd = 300,
-                DiffuseColor = new Vector3(0, 0, 0),
-                AmbientLightColor = new Vector3(0.05f, 0, 0.05f),
+                AmbientLightColor = new Vector3(0.5f, 0, 0.05f),
                 EmissiveColor = new Vector3(0.05f, 0, 0.05f)
             };
-
-            basicEffect.EnableDefaultLighting();
-            basicEffect.PreferPerPixelLighting = true;
+            
             this.effectDictionary.Add(AppData.WinZoneEffectID, new BasicEffectParameters(basicEffect));
             #endregion
         }
 
         private void InitializeManagers()
         {
-            #region Keyboard Manager
-            this.keyboardManager = new KeyboardManager(this);
-            Components.Add(this.keyboardManager);
+            #region Camera Manager
+            this.cameraManager = new CameraManager(
+                this, 
+                2, 
+                this.eventDispatcher, 
+                StatusType.Off
+            );
+
+            Components.Add(this.cameraManager);
+            #endregion
+
+            #region Object Manager
+            this.object3DManager = new ObjectManager(
+                this, 
+                this.cameraManager, 
+                this.eventDispatcher, 
+                StatusType.Off
+            );
+
+            Components.Add(this.object3DManager);
             #endregion
 
             #region Physics Manager
@@ -304,6 +328,11 @@ namespace GDApp
             );
 
             Components.Add(this.physicsManager);
+            #endregion
+
+            #region Keyboard Manager
+            this.keyboardManager = new KeyboardManager(this);
+            Components.Add(this.keyboardManager);
             #endregion
 
             #region Mouse Manager
@@ -318,25 +347,38 @@ namespace GDApp
             Components.Add(this.mouseManager);
             #endregion
 
-            #region Camera Manager
-            this.cameraManager = new CameraManager(
-                this, 
-                2, 
-                this.eventDispatcher, 
+            #region Sound Manager
+            this.soundManager = new SoundManager(
+                this,
+                this.eventDispatcher,
+                StatusType.Update,
+                "Content/Assets/Audio/",
+                "GameAudio.xgs",
+                "Movement.xwb",
+                "Movement.xsb"
+            );
+
+            Components.Add(this.soundManager);
+            #endregion
+            
+            #region State Manager
+            this.gameStateManager = new StateManager(
+                this,
+                this.eventDispatcher,
                 StatusType.Off
             );
 
-            Components.Add(this.cameraManager);
+            Components.Add(this.gameStateManager);
             #endregion
 
             #region Manager Parameters
             this.managerParameters = new ManagerParameters(
-                object3DManager,
-                cameraManager,
-                mouseManager,
-                keyboardManager,
-                gamePadManager,
-                soundManager,
+                this.object3DManager,
+                this.cameraManager,
+                this.mouseManager,
+                this.keyboardManager,
+                this.gamePadManager,
+                this.soundManager,
                 this.physicsManager
             );
             #endregion
@@ -359,31 +401,6 @@ namespace GDApp
             );
 
             Components.Add(this.pickingManager);
-            #endregion
-
-            #region Object Manager
-            this.object3DManager = new ObjectManager(
-                this, 
-                this.cameraManager, 
-                this.eventDispatcher, 
-                StatusType.Off
-            );
-
-            Components.Add(this.object3DManager);
-            #endregion
-            
-            #region Sound Manager
-            this.soundManager = new SoundManager(
-                this,
-                this.eventDispatcher,
-                StatusType.Update,
-                "Content/Assets/Audio/",
-                "GameAudio.xgs",
-                "Movement.xwb",
-                "Movement.xsb"
-            );
-
-            Components.Add(this.soundManager);
             #endregion
 
             #region Menu Manager
@@ -410,16 +427,6 @@ namespace GDApp
             );
 
             Components.Add(this.uiManager);
-            #endregion
-
-            #region State Manager
-            this.gameStateManager = new StateManager(
-                this,
-                this.eventDispatcher,
-                StatusType.Off
-            );
-
-            Components.Add(this.gameStateManager);
             #endregion
         }
 
@@ -497,7 +504,7 @@ namespace GDApp
                 ActorType.UIButton, 
                 StatusType.Update | StatusType.Drawn,
                 transform, 
-                Color.LightPink, 
+                Color.White, 
                 SpriteEffects.None, 
                 0.1f, 
                 texture, 
@@ -1045,7 +1052,6 @@ namespace GDApp
         public void ConstructRoom(int roomType, Transform3D transform)
         {
             //Setup dimensions
-            Vector3 roomDimensions = new Vector3(100, 100, 100);
             Transform3D roomTransform = transform.Clone() as Transform3D;
 
             //Load model and effect parameters
@@ -1063,7 +1069,7 @@ namespace GDApp
                 effectParameters,
                 model,
                 collisionBox,
-                new MaterialProperties(0.8f, 0.8f, 0.8f)
+                new MaterialProperties()
             );
 
             //Add collision
@@ -1076,7 +1082,6 @@ namespace GDApp
         public void ConstructPickup(int pickupType, Transform3D transform)
         {
             //Setup dimensions
-            Vector3 pickupDimensions = new Vector3(254, 254, 254);
             Transform3D pickupTransform = transform.Clone() as Transform3D;
 
             //Load model and effect parameters
@@ -1084,7 +1089,10 @@ namespace GDApp
             Model model = this.modelDictionary["pickupModel" + pickupType];
 
             //Load collision box
-            Model collisionBox = this.collisionBoxDictionary["pickupCollision" + pickupType];
+            Model collisionBox = this.collisionBoxDictionary["pickupCollision"];
+
+            //Select pickup parameters
+            PickupParameters pickupParameters = SelectPickupParameters(pickupType);
 
             //Create model
             this.staticModel = new ImmovablePickupObject(
@@ -1094,12 +1102,8 @@ namespace GDApp
                 effectParameters,
                 model,
                 collisionBox,
-                new MaterialProperties(0.8f, 0.8f, 0.8f),
-                new PickupParameters(
-                    "Boss Gate Key",
-                    1,
-                    PickupType.Key
-                )
+                new MaterialProperties(),
+                pickupParameters
             );
 
             //Add collision
@@ -1107,6 +1111,21 @@ namespace GDApp
 
             //Add to object manager list
             this.object3DManager.Add(staticModel);
+        }
+
+        PickupParameters SelectPickupParameters(int pickupType)
+        {
+            switch (pickupType)
+            {
+                case 1:
+                    return this.pickupParametersDictionary["sword"];
+                case 2:
+                    return this.pickupParametersDictionary["key"];
+                case 3:
+                    return this.pickupParametersDictionary["potion"];
+                default:
+                    return null;
+            }
         }
 
         public void ConstructTrigger(int triggerType, Transform3D transform)
@@ -1153,7 +1172,7 @@ namespace GDApp
                 effectParameters,
                 model,
                 collisionBox,
-                new MaterialProperties(0.8f, 0.8f, 0.8f)
+                new MaterialProperties()
             );
 
             //Add collision
@@ -1171,7 +1190,6 @@ namespace GDApp
         public void SpawnEnemy(int enemyType, Transform3D transform)
         {
             //Setup dimensions
-            Vector3 enemyDimensions = new Vector3(60, 60, 60) * 2.54f;
             Transform3D enemyTransform = transform.Clone() as Transform3D;
             enemyTransform.Translation += new Vector3(127, 0, 127);
 
@@ -1180,7 +1198,7 @@ namespace GDApp
             Model model = this.modelDictionary["enemyModel" + enemyType];
 
             //Load collision box
-            Model collisionBox = this.collisionBoxDictionary["enemyCollision" + enemyType];
+            Model collisionBox = this.collisionBoxDictionary["enemyCollision"];
 
             float width = 154;
             float height = 154;
@@ -1193,9 +1211,19 @@ namespace GDApp
             float attack = 100;
             float defence = 100;
 
+            if (enemyType == 1)
+            {
+                enemyTransform.Look = Vector3.UnitX;
+            }
+
+            if (enemyType == 2)
+            {
+                enemyTransform.Look = -Vector3.UnitX;
+            }
+
             //Create model
             this.staticModel = new Enemy(
-                "enemy" + enemyType,
+                "Enemy" + enemyType,
                 ActorType.Enemy,
                 enemyTransform,
                 effectParameters,
@@ -1246,10 +1274,13 @@ namespace GDApp
             this.soundEffectDictionary = new ContentDictionary<SoundEffect>("Sound Effect Dictionary", this.Content);
 
             //Fonts
-            this.fontDictionary = new ContentDictionary<SpriteFont>("font dictionary", this.Content);
+            this.fontDictionary = new ContentDictionary<SpriteFont>("Font Dictionary", this.Content);
 
             //Effect parameters
             this.effectDictionary = new Dictionary<string, EffectParameters>();
+
+            //Pickup parameters
+            this.pickupParametersDictionary = new Dictionary<string, PickupParameters>();
         }
 
         private void LoadAssets()
@@ -1277,6 +1308,10 @@ namespace GDApp
             #region Fonts
             LoadFonts();
             #endregion
+
+            #region Pickup Parameters
+            LoadPickupParameters();
+            #endregion
         }
 
         public void LoadModels()
@@ -1303,10 +1338,10 @@ namespace GDApp
             #endregion
 
             #region Pickup Models
-            this.modelDictionary.Load("Assets/Models/Pickups/box", "pickupModel1");
-            this.modelDictionary.Load("Assets/Models/Pickups/box", "pickupModel2");
-            this.modelDictionary.Load("Assets/Models/Pickups/box", "pickupModel3");
-            this.modelDictionary.Load("Assets/Models/Pickups/box", "pickupModel4");
+            this.modelDictionary.Load("Assets/Models/Pickups/potion", "pickupModel1");
+            this.modelDictionary.Load("Assets/Models/Pickups/potion", "pickupModel2");
+            this.modelDictionary.Load("Assets/Models/Pickups/potion", "pickupModel3");
+            this.modelDictionary.Load("Assets/Models/Pickups/potion", "pickupModel4");
             #endregion
 
             #region Character Models
@@ -1344,15 +1379,11 @@ namespace GDApp
             #endregion
 
             #region Pickup Collision
-            this.collisionBoxDictionary.Load("Assets/Models/Pickups/box_collision", "pickupCollision1");
-            this.collisionBoxDictionary.Load("Assets/Models/Pickups/box_collision", "pickupCollision2");
-            this.collisionBoxDictionary.Load("Assets/Models/Pickups/box_collision", "pickupCollision3");
-            this.collisionBoxDictionary.Load("Assets/Models/Pickups/box_collision", "pickupCollision4");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Pickups/pickup_collision", "pickupCollision");
             #endregion
 
             #region Enemy Collision
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Characters/enemy_collision_001", "enemyCollision1");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Characters/enemy_collision_002", "enemyCollision2");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Characters/enemy_collision", "enemyCollision");
             #endregion
 
             #region Zone Collision
@@ -1465,17 +1496,12 @@ namespace GDApp
             #endregion
 
             #region Zone Effects
-            //this.effectDictionary.Add("winZoneEffect", new EffectParameters(this.modelEffect, null, Color.BlanchedAlmond, 0.5f));
             #endregion
         }
 
         public void LoadSounds()
         {
             #region Sound Effects
-            this.soundEffectDictionary.Load("Assets/Audio/boing", "boing");
-            this.soundEffectDictionary.Load("Assets/Audio/boing", "boing");
-            this.soundEffectDictionary.Load("Assets/Audio/boing", "boing");
-            this.soundEffectDictionary.Load("Assets/Audio/boing", "boing");
             #endregion
 
             #region Music
@@ -1489,6 +1515,13 @@ namespace GDApp
             this.fontDictionary.Load("Assets/Fonts/menu", "menu");
             this.fontDictionary.Load("Assets/Debug/Fonts/debugFont", "debugFont");
             #endregion
+        }
+
+        public void LoadPickupParameters()
+        {
+            this.pickupParametersDictionary.Add("sword", new PickupParameters("Steel Sword", 1, PickupType.Sword));
+            this.pickupParametersDictionary.Add("key", new PickupParameters("Gate Key", 2, PickupType.Key));
+            this.pickupParametersDictionary.Add("potion", new PickupParameters("Health Potion", 3, PickupType.Health));
         }
         #endregion
 
@@ -1517,172 +1550,8 @@ namespace GDApp
         }
         #endregion
 
-        #region Old Code
-        ////Checks each direction for a collision (north, south, east & west)
-        //public void DemoCollision()
-        //{
-        //    float cellWidth = 254;
-        //    Vector3 position = this.playerPosition.Translation;
-        //    Vector3 north = this.playerPosition.Look;
-        //    Vector3 south = -this.playerPosition.Look;
-        //    Vector3 east = this.playerPosition.Right;
-        //    Vector3 west = -this.playerPosition.Right;
-
-        //    CheckForCollision(position, north, cellWidth);
-        //    CheckForCollision(position, south, cellWidth);
-        //    CheckForCollision(position, east, cellWidth);
-        //    CheckForCollision(position, west, cellWidth);
-        //}
-
-        //CollisionSkin skin;
-        //private float frac;
-        //private Vector3 pos;
-        //private Vector3 normal;
-        //private BasicEffect winZoneEffect;
-
-        //public object[] CheckForCollisionWithRay(Vector3 start, Vector3 delta)
-        //{
-        //    Segment seg = new Segment(start, delta);
-        //    ImmovableSkinPredicate pred = new ImmovableSkinPredicate();
-
-        //    this.physicsManager.PhysicsSystem.CollisionSystem.SegmentIntersect(
-        //        out frac,
-        //        out skin,
-        //        out pos,
-        //        out normal,
-        //        seg,
-        //        pred
-        //    );
-
-        //    //If a collision has taken place
-        //    if (skin != null && skin.Owner != null)
-        //    {
-        //        //Return an array containing the collision skin and distance to collision
-        //        return new object[] { frac, skin };
-        //    }
-
-        //    return null;
-        //}
-
-        //private void CheckForCollision(Vector3 position, Vector3 direction, float length)
-        //{
-        //    Vector3 start = position;
-        //    Vector3 delta = direction * length;
-
-        //    object[] collisionInfo = CheckForCollisionWithRay(start, delta);
-
-        //    //If a collision has taken place
-        //    if (collisionInfo != null)
-        //    {
-        //        //Cast distance to collision (frac) to a float
-        //        float distanceToCollision = (float) collisionInfo[0];
-
-        //        //Cast the parent actor of the collision skin to a collidable object
-        //        CollidableObject collidableObject = ((collisionInfo[1] as CollisionSkin).Owner.ExternalData as CollidableObject);
-
-        //        switch (collidableObject.ActorType)
-        //        {
-        //            case ActorType.CollidableArchitecture:
-        //                CheckForCollisionWithWall(distanceToCollision, direction);
-        //                break;
-
-        //            case ActorType.CollidablePickup:
-        //                CheckForCollisionWithPickup(distanceToCollision, collidableObject);
-        //                break;
-
-        //            case ActorType.Enemy:
-        //                CheckForCollisionWithEnemy(distanceToCollision);
-        //                break;
-        //        }
-        //    }
-        //}
-
-        //private void CheckForCollisionWithWall(float distanceToCollision, Vector3 collisionDirection)
-        //{
-        //    //If the wall is in the current cell
-        //    if (distanceToCollision <= 0.5f)
-        //    {
-        //        //Publish an event to say that they way is blocked
-        //        EventDispatcher.Publish(
-        //            new EventData(
-        //                EventActionType.OnWayBlocked, 
-        //                EventCategoryType.Player, 
-        //                new object[] { collisionDirection }
-        //            )
-        //        );
-        //    }
-        //}
-
-        //HashSet<ModelObject> collisionSet = new HashSet<ModelObject>();
-
-        //private void CheckForCollisionWithPickup(float distanceToCollision, CollidableObject pickup)
-        //{
-        //    //If the pickup is in an adjacent cell
-        //    if (distanceToCollision >= 0.5f && distanceToCollision <= 1.0f)
-        //    {
-        //        //If the pickup has not yet been realised
-        //        if (!this.collisionSet.Contains(pickup))
-        //        {
-        //            //Add pickup to the collision set
-        //            this.collisionSet.Add(pickup);
-
-        //            //Publish event to play sound effect
-        //            EventDispatcher.Publish(
-        //                new EventData(
-        //                    EventActionType.OnPlay,
-        //                    EventCategoryType.Sound2D,
-        //                    new object[] { "boing" }
-        //                )
-        //            );
-        //        }
-        //    }
-
-        //    //If the pickup is in the current cell
-        //    if (distanceToCollision <= 0.5f)
-        //    {
-        //        //Publish event to remove pickup
-        //        EventDispatcher.Publish(
-        //            new EventData(
-        //                pickup,
-        //                EventActionType.OnRemoveActor, 
-        //                EventCategoryType.SystemRemove
-        //            )
-        //        );
-
-        //        //Publish event to add to inventory
-        //        EventDispatcher.Publish(
-        //            new EventData(
-        //                EventActionType.OnAddToInventory,
-        //                EventCategoryType.Pickup,
-        //                new object[] { pickup }
-        //            )
-        //        );
-
-        //        //Publish event to update hud
-        //        EventDispatcher.Publish(
-        //            new EventData(
-        //                EventActionType.OnUpdateHud,
-        //                EventCategoryType.Pickup,
-        //                new object[] { pickup }
-        //            )
-        //        );
-        //    }
-        //}
-
-        //private void CheckForCollisionWithEnemy(float distanceToCollision)
-        //{
-        //    //If the enemy is an adjacent cell
-        //    if (distanceToCollision >= 0.5f && distanceToCollision <= 1.0f)
-        //    {
-        //        //Publish event to prevent keypress
-        //        //Publish event to commence battle
-        //        //Publish event to play music
-        //    }
-        //}
-        #endregion
-
         #region Debug
-#if DEBUG
+        #if DEBUG
         private void InitializeDebug()
         {
             Components.Add(
@@ -1717,6 +1586,10 @@ namespace GDApp
         #region Update, Draw
         protected override void Update(GameTime gameTime)
         {
+            foreach (ModelObject modelObj in this.object3DManager.OpaqueDrawList)
+                if (modelObj.ActorType == ActorType.Enemy)
+                    (modelObj as Enemy).TrackPlayer(gameTime, this.playerPosition);
+
             base.Update(gameTime);
         }
 

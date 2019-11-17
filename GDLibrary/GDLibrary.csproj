@@ -73,12 +73,12 @@
     <Compile Include="Managers\AI\AIManager.cs" />
     <Compile Include="Parameters\Architecture\ArchitectureParameters.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Architecture\CollidableArchitecture.cs" />
-    <Compile Include="Actor\Drawn\3D\Collidable\Player\Enemy.cs" />
-    <Compile Include="Actor\Drawn\3D\Collidable\Player\CharacterObject.cs" />
+    <Compile Include="Actor\Drawn\3D\Collidable\Character\Enemy.cs" />
+    <Compile Include="Actor\Drawn\3D\Collidable\Character\CharacterObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Base\CollidableObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Pickup\ImmovablePickupObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Pickup\MoveablePickupObject.cs" />
-    <Compile Include="Actor\Drawn\3D\Collidable\Player\PlayerObject.cs" />
+    <Compile Include="Actor\Drawn\3D\Collidable\Character\PlayerObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Base\TriangleMeshObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Zone\ZoneObject.cs" />
     <Compile Include="Actor\Drawn\3D\DrawnActor3D.cs" />

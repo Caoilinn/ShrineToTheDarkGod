@@ -6,6 +6,7 @@ Date Updated:
 Bugs:			None
 Fixes:			None
 */
+
 namespace GDLibrary
 {
     public enum PickupType : sbyte
@@ -13,7 +14,8 @@ namespace GDLibrary
         Health,
         Ammo,
         Key,
-        Inventory
+        Inventory,
+        Sword
     }
 
     public class PickupParameters
@@ -23,7 +25,7 @@ namespace GDLibrary
         private float value;
         private PickupType pickupType;
 
-        //an optional array to store multiple parameters (used for play with sound/video when we pickup this object)
+        //An optional array to store multiple parameters (used for play with sound/video when we pickup this object)
         private object[] additionalParameters;
         #endregion
 
@@ -39,6 +41,7 @@ namespace GDLibrary
                 this.description = (value.Length != 0) ? value : "no description specified";
             }
         }
+
         public float Value
         {
             get
@@ -50,6 +53,7 @@ namespace GDLibrary
                 this.value = (value >= 0) ? value : 0;
             }
         }
+
         public PickupType PickupType
         {
             get
@@ -61,6 +65,7 @@ namespace GDLibrary
                 this.pickupType = value;
             }
         }
+
         public object[] AdditionalParameters
         {
             get
@@ -72,29 +77,37 @@ namespace GDLibrary
                 this.additionalParameters = value;
             }
         }
-
         #endregion
 
-        public PickupParameters(string description, float value, PickupType pickupType)
-            : this(description, value, pickupType, null)
-        {
+        #region Constructors
+        public PickupParameters(
+            string description, 
+            float value, 
+            PickupType pickupType
+        ) : this(description, value, pickupType, null) {
 
         }
 
-        public PickupParameters(string description, float value, PickupType pickupType, object[] additionalParameters)
-        {
+        public PickupParameters(
+            string description, 
+            float value, 
+            PickupType pickupType, 
+            object[] additionalParameters
+        ) {
             this.value = value;
             this.description = description;
             this.pickupType = pickupType;
             this.additionalParameters = additionalParameters;
         }
+        #endregion
 
+        #region Methods
         public override bool Equals(object obj)
         {
             PickupParameters other = obj as PickupParameters;
             bool bEquals = this.description.Equals(other.Description)
                 && this.value == other.Value
-                    && this.pickupType == other.PickupType;
+                && this.pickupType == other.PickupType;
 
             return bEquals && ((this.additionalParameters != null && this.additionalParameters.Length != 0) ? this.additionalParameters.Equals(other.additionalParameters) : true);
         }
@@ -120,6 +133,6 @@ namespace GDLibrary
         {
             return this.MemberwiseClone();
         }
-
+        #endregion
     }
 }

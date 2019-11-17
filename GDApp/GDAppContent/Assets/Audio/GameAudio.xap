@@ -253,8 +253,8 @@ Wave Bank
 
 	Wave
     {
-        Name = boing;
-        File = boing.wav;
+        Name = wall_bump;
+        File = wall_bump.wav;
         Build Settings Last Modified Low = 809922770;
         Build Settings Last Modified High = 30430317;
 
@@ -448,7 +448,7 @@ Sound Bank
 
 	Sound
     {
-        Name = boing;
+        Name = wall_bump;
         Volume = -1200;
         Pitch = 0;
         Priority = 0;
@@ -484,7 +484,7 @@ Sound Bank
                 {
                     Bank Name = Movement;
                     Bank Index = 0;
-                    Entry Name = boing;
+                    Entry Name = wall_bump;
                     Entry Index = 1;
                     Weight = 255;
                     Weight Min = 0;
@@ -495,7 +495,7 @@ Sound Bank
 
     Cue
     {
-        Name = boing;
+        Name = wall_bump;
 
         Variation
         {
@@ -506,7 +506,7 @@ Sound Bank
 
         Sound Entry
         {
-            Name = boing;
+            Name = wall_bump;
             Index = 1;
             Weight Min = 0;
             Weight Max = 255;

@@ -75,7 +75,7 @@ namespace GDLibrary
         }
         #endregion
 
-        #region
+        #region Methods
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             //Draw the texture first
