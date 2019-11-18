@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>room_001</Name>
     <Identity>
-      <SourceFilename>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDAppContent\Assets\Models\Rooms\room_001.FBX</SourceFilename>
+      <SourceFilename>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\room_001.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>
@@ -32,7 +32,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>01 - Default</Name>
       <Identity>
-        <SourceFilename>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDAppContent\Assets\Models\Rooms\room_001.FBX</SourceFilename>
+        <SourceFilename>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\room_001.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

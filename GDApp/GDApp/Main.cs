@@ -1274,7 +1274,7 @@ namespace GDApp
             
             //Add to lists
             this.enemies.Add(this.staticModel as Enemy);
-            this.combatManager.PopulateEnemies(this.enemies);
+            this.combatManager.PopulateEnemies(this.staticModel as Enemy);
             this.object3DManager.Add(this.staticModel);
         }
 

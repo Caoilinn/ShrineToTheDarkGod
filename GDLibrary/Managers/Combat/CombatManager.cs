@@ -16,10 +16,10 @@ namespace GDLibrary
         private bool playerTurn;
         private ManagerParameters managerParameters;
         private Random random = new Random();
+        private Enemy enemyOnFocus;
         #endregion
 
         #region Constructor
-
         public CombatManager(Game game, EventDispatcher eventDispatcher, StatusType statusType, 
             ManagerParameters managerParameters, Keys[] combatKeys) : 
             base(game, eventDispatcher, statusType)
@@ -30,7 +30,6 @@ namespace GDLibrary
             this.combat = false;
             this.combatKeys = combatKeys;
         }
-
         #endregion
 
         #region Event Handling
@@ -46,6 +45,7 @@ namespace GDLibrary
             {
                 //Combat started
                 this.combat = true;
+                this.enemyOnFocus = eventData.AdditionalParameters[0] as Enemy;
             }
             else if (eventData.EventType == EventActionType.OnPlayerAttack)
             {
@@ -84,12 +84,9 @@ namespace GDLibrary
             this.player = player;
         }
 
-        public void PopulateEnemies(List<Enemy> enemies)
+        public void PopulateEnemies(Enemy enemy)
         {
-            foreach(Enemy enemy in enemies)
-            {
-                this.enemies.Add(enemy);
-            }
+           this.enemies.Add(enemy);
         }
 
         public bool Remove(Predicate<Enemy> predicate)
@@ -142,9 +139,6 @@ namespace GDLibrary
 
         protected virtual void HandleKeyBoardInput(GameTime gameTime)
         {
-            //Grabbing a known Enemy for now 
-            Enemy enemyOnFocus = GetEnemy("Skeleton");
-
             if (this.combat)
             { 
                 if(playerTurn)
@@ -159,15 +153,16 @@ namespace GDLibrary
                         EventDispatcher.Publish(
                             new EventData(
                                 EventActionType.OnPlayerAttack,
-                                EventCategoryType.Combat)
-                            );
+                                EventCategoryType.Combat
+                            )
+                        );
 
                         if (damage > 0)
                         {
-                            enemyOnFocus.TakeDamage(damage);
+                            this.enemyOnFocus.TakeDamage(damage);
                         }
 
-                        playerTurn = false;
+                        this.playerTurn = false;
                     }
                     else if (this.managerParameters.KeyboardManager.IsFirstKeyPress(this.combatKeys[1]))
                     {
@@ -223,6 +218,7 @@ namespace GDLibrary
                     );
 
                     this.player.TakeDamage(enemyAttack);
+                    this.playerTurn = true;
                 }
             }
         }

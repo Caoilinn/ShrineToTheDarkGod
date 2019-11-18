@@ -120,7 +120,7 @@ namespace GDLibrary
 
         public void TakeDamage(float damage)
         {
-            this.health -= damage;
+            this.Health -= damage;
         }
 
         public override void HandleMovement()

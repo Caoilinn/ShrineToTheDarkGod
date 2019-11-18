@@ -718,7 +718,8 @@ namespace GDLibrary
                         EventDispatcher.Publish(
                             new EventData(
                                 EventActionType.OnInitiateBattle,
-                                EventCategoryType.Combat
+                                EventCategoryType.Combat,
+                                new object[] { enemy }
                             )
                         );
                     }
