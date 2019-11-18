@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using JigLibX.Collision;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 
 namespace GDLibrary
 {
@@ -17,8 +12,7 @@ namespace GDLibrary
             EffectParameters effectParameters, 
             Model model, 
             PickupParameters pickupParameters
-        ) : base(id, actorType, transform, effectParameters, model, pickupParameters)
-        {
+        ) : base(id, actorType, transform, effectParameters, model, pickupParameters) {
         }
 
         public void OpenGate()

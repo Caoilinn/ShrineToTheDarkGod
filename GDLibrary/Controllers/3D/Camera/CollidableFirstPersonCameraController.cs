@@ -713,6 +713,14 @@ namespace GDLibrary
                                 new object[] { "battle_theme" }
                             )
                         );
+
+                        //
+                        EventDispatcher.Publish(
+                            new EventData(
+                                EventActionType.OnInitiateBattle,
+                                EventCategoryType.Combat
+                            )
+                        );
                     }
                 }
             }

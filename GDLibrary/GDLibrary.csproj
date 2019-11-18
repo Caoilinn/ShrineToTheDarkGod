@@ -172,9 +172,7 @@
     <None Include="Class Diagram - Week 5.cd" />
     <None Include="Class Diagram - Week 6.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GDLibrary\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

@@ -7,6 +7,8 @@ Bugs:			None
 Fixes:			None
 */
 using JigLibX.Collision;
+using JigLibX.Geometry;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GDLibrary
@@ -27,6 +29,12 @@ namespace GDLibrary
             EffectParameters effectParameters,
             Model model
         ) : base(id, actorType, transform, effectParameters, model) {
+
+            //Add the primitive mesh to the collision skin   
+            this.Body.CollisionSkin.AddPrimitive(
+                new Capsule(Vector3.Zero, Matrix.CreateRotationX(0), 77, 154), 
+                (int) MaterialTable.MaterialID.NormalNormal
+            );
 
             //Register for callback on CDCR
             this.Body.CollisionSkin.callbackFn += CollisionSkin_callbackFn;

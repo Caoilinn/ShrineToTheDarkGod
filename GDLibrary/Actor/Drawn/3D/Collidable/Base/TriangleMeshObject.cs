@@ -18,7 +18,7 @@ namespace GDLibrary
     /// </summary>
     public class TriangleMeshObject : CollidableObject
     {
-        #region Variables
+        #region Fields
         #endregion
 
         #region Properties

@@ -18,7 +18,7 @@ namespace GDLibrary
         private Predicate<CollidableObject> collisionPredicate;
         private PickingBehaviourType pickingBehaviourType;
 
-        //local vars
+        //Local vars
         private CollidableObject currentPickedObject;
         private Vector3 pos, normal;
         private float distanceToObject;
@@ -28,11 +28,17 @@ namespace GDLibrary
         private ConstraintWorldPoint objectController = new ConstraintWorldPoint();
         private ConstraintVelocity damperController = new ConstraintVelocity();
 
-        public PickingManager(Game game, EventDispatcher eventDispatcher, StatusType statusType,
-           ManagerParameters managerParameters, CameraManager cameraManager,
-           PickingBehaviourType pickingBehaviourType, float pickStartDistance, float pickEndDistance, Predicate<CollidableObject> collisionPredicate)
-           : base(game, eventDispatcher, statusType)
-        {
+        public PickingManager(
+            Game game, 
+            EventDispatcher eventDispatcher, 
+            StatusType statusType,
+            ManagerParameters managerParameters, 
+            CameraManager cameraManager,
+            PickingBehaviourType pickingBehaviourType, 
+            float pickStartDistance, 
+            float pickEndDistance, 
+            Predicate<CollidableObject> collisionPredicate
+        ) : base(game, eventDispatcher, statusType) {
             this.managerParameters = managerParameters;
             this.cameraManager = cameraManager;
             this.pickingBehaviourType = pickingBehaviourType;

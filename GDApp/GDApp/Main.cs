@@ -132,6 +132,7 @@ namespace GDApp
             LoadContent();
 
             InitializeEffects();
+            InitializeEnemies();
 
             InitializeEventDispatcher();
             InitializeManagers();
@@ -150,9 +151,6 @@ namespace GDApp
 
             InitializeDebug();
             InitializeDebugCollisionSkinInfo();
-
-            InitializePlayer();
-            InitializeEnemies();
 
             base.Initialize();
         }
@@ -745,7 +743,7 @@ namespace GDApp
         private void AddFirstPersonCamera(ProjectionParameters projectionParameters, Viewport viewport, float drawDepth)
         {
             this.playerPosition.Translation += new Vector3(127, 127, 127);
-            viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);   
+            viewport = new Viewport(100, 100, graphics.PreferredBackBufferWidth - 400, graphics.PreferredBackBufferHeight - 250);   
 
             Camera3D camera = new Camera3D(
                 "CFP Cam 1",
@@ -791,6 +789,7 @@ namespace GDApp
             );
             
             this.cameraManager.Add(camera);
+            this.combatManager.AddPlayer((camera.ControllerList[0] as CollidableFirstPersonCameraController).PlayerObject);
         }
         #endregion
 
@@ -967,55 +966,6 @@ namespace GDApp
                 x++;
             }
         }
-
-        #region Player and Enemies
-        private void InitializeEnemies()
-        {
-            //this.enemies = new List<Enemy>();
-            //BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
-
-            //Enemy skeleton = new Enemy(
-            //    "skeleton", 
-            //    ActorType.Interactable,
-            //    StatusType.Update, 
-            //    this.playerPosition, 
-            //    effectParameters,
-            //    null, 
-            //    0f, 
-            //    0f, 
-            //    100, 
-            //    20, 
-            //    20
-            //);
-
-            //this.enemies.Add(skeleton);
-            //this.combatManager.PopulateEnemies(this.enemies);
-            //this.object3DManager.Add(skeleton);
-        }
-
-        private void InitializePlayer()
-        {
-            //BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
-
-            //this.player = new PlayerObject(
-            //    "player", 
-            //    ActorType.Player, 
-            //    StatusType.Update, 
-            //    this.playerPosition,
-            //    effectParameters, 
-            //    null, 
-            //    AppData.CameraMoveKeys, 
-            //    0f, 
-            //    0f, 
-            //    0f,
-            //    Vector3.Zero, 
-            //    this.keyboardManager
-            //);
-            
-            //this.combatManager.AddPlayer(this.player);
-            //this.object3DManager.Add(this.player);
-        }
-        #endregion
 
         private void InitializeMap(float cellWidth, float cellHeight, float cellDepth, float worldScale)
         {
@@ -1203,15 +1153,14 @@ namespace GDApp
             switch (triggerType)
             {
                 case 1:
-                    //this.object3DManager.Add(
-                    //    new ZoneObject(
-                    //        "Win Zone",
-                    //        ActorType.Zone,
-                    //        transform,
-                    //        this.effectDictionary[AppData.WinZoneEffectID],
-                    //        this.collisionBoxDictionary["zoneCollision"]
-                    //    )
-                    //);
+                    this.staticModel = new ZoneObject(
+                        "Win Zone",
+                        ActorType.Zone,
+                        gateTransform,
+                        this.effectDictionary[AppData.WinZoneEffectID],
+                        this.collisionBoxDictionary["zoneCollision"]
+                    );
+                    this.object3DManager.Add(this.staticModel);
                     break;
 
                 default:
@@ -1254,11 +1203,16 @@ namespace GDApp
             this.playerPosition = transform.Clone() as Transform3D;
         }
 
+        //Pull all of this code out into a dictionary
         public void SpawnEnemy(int enemyType, Transform3D transform)
         {
+            //Setup id
+            string id = "Enemy";
+
             //Setup dimensions
             Transform3D enemyTransform = transform.Clone() as Transform3D;
             enemyTransform.Translation += new Vector3(127, 0, 127);
+            enemyTransform.Rotation = new Vector3(-90, 0, 0);
 
             //Load model and effect parameters
             BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
@@ -1278,19 +1232,27 @@ namespace GDApp
             float attack = 100;
             float defence = 100;
 
-            if (enemyType == 1)
-            {
-                enemyTransform.Look = Vector3.UnitX;
+            //Select attributes - to be pulled out into a dictionary
+            switch(enemyType) {
+                case 1:
+                    id = "Skeleton";
+                    transform.Look = Vector3.UnitX;
+                    health = 80;
+                    attack = 20;
+                    defence = 20;
+                    break;
+                case 2:
+                    id = "Cultist";
+                    transform.Look = -Vector3.UnitX;
+                    health = 100;
+                    attack = 30;
+                    defence = 30;
+                    break;
             }
 
-            if (enemyType == 2)
-            {
-                enemyTransform.Look = -Vector3.UnitX;
-            }
-
-            //Create model
+            //Create enemy
             this.staticModel = new Enemy(
-                "Enemy" + enemyType,
+                id,
                 ActorType.Enemy,
                 enemyTransform,
                 effectParameters,
@@ -1309,9 +1271,16 @@ namespace GDApp
 
             //Add collision
             this.staticModel.Enable(true, 1);
-
-            //Add to object manager list
+            
+            //Add to lists
+            this.enemies.Add(this.staticModel as Enemy);
+            this.combatManager.PopulateEnemies(this.enemies);
             this.object3DManager.Add(this.staticModel);
+        }
+
+        private void InitializeEnemies()
+        {
+            this.enemies = new List<Enemy>();
         }
         #endregion
 

@@ -17,8 +17,8 @@ namespace GDLibrary
     public class EventDispatcher : GameComponent
     {
         #region Static
-        private static Queue<EventData> queue; //stores events in arrival sequence
-        private static HashSet<EventData> uniqueSet; //prevents the same event from existing in the stack for a single update cycle (e.g. when playing a sound based on keyboard press)
+        private static Queue<EventData> queue; //Stores events in arrival sequence
+        private static HashSet<EventData> uniqueSet; //Prevents the same event from existing in the stack for a single update cycle (e.g. when playing a sound based on keyboard press)
         #endregion
 
         #region Delegates

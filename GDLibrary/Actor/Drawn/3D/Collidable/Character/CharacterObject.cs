@@ -248,7 +248,7 @@ namespace GDLibrary
 
             this.Collision.AddPrimitive(
                 capsule,
-                (int) MaterialTable.MaterialID.NormalSmooth
+                (int)MaterialTable.MaterialID.NormalSmooth
             );
 
             this.MovementVector = movementVector;
