@@ -21,10 +21,13 @@ namespace GDLibrary
         #endregion
 
         #region Constructor
-        public CombatManager(Game game, EventDispatcher eventDispatcher, StatusType statusType, 
-            ManagerParameters managerParameters, Keys[] combatKeys) : 
-            base(game, eventDispatcher, statusType)
-        {
+        public CombatManager(
+            Game game, 
+            EventDispatcher eventDispatcher, 
+            StatusType statusType, 
+            ManagerParameters managerParameters, 
+            Keys[] combatKeys
+        ) : base(game, eventDispatcher, statusType) {
             this.enemies = new List<Enemy>();
             this.managerParameters = managerParameters;
             this.playerTurn = true;

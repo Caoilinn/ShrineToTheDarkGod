@@ -43,6 +43,9 @@ namespace GDLibrary
             //If it is not the enemy's turn, return
             if (!StateManager.enemyTurn) return;
 
+            //If the enemy is in combat, return
+            if (CombatManager.inCombat) return;
+
             //If the enemy is in motion, return
             if (this.InMotion) return;
 
@@ -56,12 +59,12 @@ namespace GDLibrary
             if (!this.InMotion)
             {
                 //Forward, Back
-                Vector3 adjacentCellAhead = enemyPosition + (movementVector * this.Transform.Right);
-                Vector3 adjacentCellBehind = enemyPosition + (movementVector * -this.Transform.Right);
+                Vector3 adjacentCellRight = enemyPosition + (movementVector * this.Transform.Look);
+                Vector3 adjacentCellLeft = enemyPosition + (movementVector * -this.Transform.Look);
 
                 //Left, Right
-                Vector3 adjacentCellLeft = enemyPosition + (movementVector * this.Transform.Look);
-                Vector3 adjacentCellRight = enemyPosition + (movementVector * -this.Transform.Look);
+                Vector3 adjacentCellAhead = enemyPosition + (movementVector * this.Transform.Right);
+                Vector3 adjacentCellBehind = enemyPosition + (movementVector * -this.Transform.Right);
 
                 if (!this.InMotion)
                 {
@@ -73,22 +76,22 @@ namespace GDLibrary
                         this.Translation = (gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * this.Transform.Right);
                     }
 
-                    //Back
+                    //Turn Around
                     else if (Vector3.Distance(enemyPosition, playerPosition) > Vector3.Distance(adjacentCellBehind, playerPosition))
                     {
                         //Calculate target position, relative to the enemy
-                        this.TargetPosition = -(this.Transform.Right * movementVector);
-                        this.Translation = -(gameTime.ElapsedGameTime.Milliseconds * this.RotateSpeed * this.Transform.Right);
+                        this.TargetHeading = -(this.Transform.Up * (2 * rotationVector));
+                        this.Rotation = -(gameTime.ElapsedGameTime.Milliseconds * this.RotateSpeed * this.Transform.Up);
                     }
 
-                    //Left
+                    //Turn Left
                     else if (Vector3.Distance(enemyPosition, playerPosition) > Vector3.Distance(adjacentCellLeft, playerPosition))
                     {
                         this.TargetHeading = -(this.Transform.Up * rotationVector);
                         this.Rotation = -(gameTime.ElapsedGameTime.Milliseconds * this.RotateSpeed * this.Transform.Up);
                     }
 
-                    //Right
+                    //Turn Right
                     else if (Vector3.Distance(enemyPosition, playerPosition) > Vector3.Distance(adjacentCellRight, playerPosition))
                     {
                         this.TargetHeading = (this.Transform.Up * rotationVector);

@@ -29,20 +29,20 @@ namespace GDLibrary
             EffectParameters effectParameters,
             Model model
         ) : base(id, actorType, transform, effectParameters, model) {
-            this.Collision = new CollisionSkin(Body);
-            this.Body.ExternalData = this;
-            this.Body.CollisionSkin = this.Collision;
+            //this.Collision = new CollisionSkin(Body);
+            //this.Body.ExternalData = this;
+            //this.Body.CollisionSkin = this.Collision;
 
-            Box box = new Box(
-                -0.5f * new Vector3(127, 127, 127),
-                Matrix.CreateRotationX(MathHelper.PiOver2),
-                new Vector3(127, 127, 127)
-            );
+            //Box box = new Box(
+            //    Vector3.Zero,
+            //    Matrix.Identity,
+            //    new Vector3(127, 127, 127)
+            //);
 
-            this.Collision.AddPrimitive(
-                box,
-                (int)MaterialTable.MaterialID.NormalSmooth
-            );
+            //this.Collision.AddPrimitive(
+            //    box,
+            //    (int)MaterialTable.MaterialID.NormalSmooth
+            //);
 
             //Register for callback on CDCR
             this.Body.CollisionSkin.callbackFn += CollisionSkin_callbackFn;

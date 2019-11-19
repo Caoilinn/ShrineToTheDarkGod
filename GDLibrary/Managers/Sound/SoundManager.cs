@@ -17,6 +17,7 @@ namespace GDLibrary
         protected WaveBank waveBank;
         protected SoundBank soundBank;
 
+        protected List<Cue> playingCues;
         protected List<Cue3D> cueList3D;
         protected HashSet<string> playSet3D;
 
@@ -55,6 +56,7 @@ namespace GDLibrary
             this.cueList3D = new List<Cue3D>();
             this.playSet3D = new HashSet<string>();
             this.audioListener = new AudioListener();
+            this.playingCues = new List<Cue>();
         }
         #endregion
 
@@ -217,6 +219,7 @@ namespace GDLibrary
             if (!playSet3D.Contains(cueName))
             {
                 Cue cue = this.soundBank.GetCue(cueName);
+                playingCues.Add(cue);
                 cue.Play();
             }
         }
@@ -224,9 +227,19 @@ namespace GDLibrary
         //Pauses a 2D cue
         public void PauseCue(string cueName)
         {
-            Cue cue = this.soundBank.GetCue(cueName);
-            if ((cue != null) && (cue.IsPlaying))
-                cue.Pause();
+            Cue cue = playingCues.Find(x => x.Name == cueName);
+
+            if (playingCues.Contains(cue))
+            {
+                if (cue.IsPlaying)
+                {
+                    cue.Pause();
+                    playingCues.Remove(cue);
+                }
+                }
+            //Cue cue = this.soundBank.GetCue(cueName);
+            //if ((cue != null) && (cue.IsPlaying))
+            //    cue.Pause();
         }
 
         //Resumes a paused 2D cue

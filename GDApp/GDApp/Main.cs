@@ -185,118 +185,20 @@ namespace GDApp
         private void InitializeEffects()
         {
             BasicEffect basicEffect = null;
-            DualTextureEffect dualTextureEffect = null;
 
             #region Lit Effect
-            //Create a BasicEffect and set the lighting conditions for all models that use this effect in their EffectParameters field
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
                 TextureEnabled = true,
-                LightingEnabled = false,
+                LightingEnabled = true,
                 PreferPerPixelLighting = true,
-                FogColor = new Vector3(0.1f, 0.05f, 0.1f),
-                FogEnabled = true,
-                FogStart = 127,
-                FogEnd = 400,
-                DiffuseColor = new Vector3(0, 0, 0),
-                AmbientLightColor = new Vector3(0.05f, 0, 0.05f),
-                EmissiveColor = new Vector3(0.05f, 0, 0.05f)
+                DiffuseColor = new Vector3(1, 0, 0),
+                AmbientLightColor = new Vector3(1f, 0, 0.05f),
+                EmissiveColor = new Vector3(1f, 0, 0.05f)
             };
 
             basicEffect.EnableDefaultLighting();
             this.effectDictionary.Add(AppData.LitModelsEffectID, new BasicEffectParameters(basicEffect));
-            #endregion
-
-            #region Unlit Effect
-            //Used for model objects that dont interact with lighting i.e. sky
-            basicEffect = new BasicEffect(graphics.GraphicsDevice)
-            {
-                TextureEnabled = true,
-                LightingEnabled = false
-            };
-
-            this.effectDictionary.Add(AppData.UnlitModelsEffectID, new BasicEffectParameters(basicEffect));
-            #endregion
-
-            #region Dual Texture Effect
-            dualTextureEffect = new DualTextureEffect(graphics.GraphicsDevice);
-
-            this.effectDictionary.Add(
-                AppData.UnlitModelDualEffectID,
-                new DualTextureEffectParameters(dualTextureEffect)
-            );
-            #endregion
-
-            #region Model Effects
-            this.modelEffect = new BasicEffect(graphics.GraphicsDevice)
-            {
-                TextureEnabled = false,
-                LightingEnabled = false
-            };
-
-            this.modelEffect.EnableDefaultLighting();
-            this.modelEffect.PreferPerPixelLighting = true;
-
-            //Setup fog
-            this.modelEffect.FogColor = new Vector3(0.1f, 0.05f, 0.1f);
-            this.modelEffect.FogEnabled = true;
-            this.modelEffect.FogStart = 127;
-            this.modelEffect.FogEnd = 400;
-
-            //Setup ambience
-            this.modelEffect.DiffuseColor = new Vector3(0, 0, 0);
-            this.modelEffect.AmbientLightColor = new Vector3(0.05f, 0, 0.05f);
-            this.modelEffect.EmissiveColor = new Vector3(0.05f, 0, 0.05f);
-            #endregion
-
-            #region Pickup Effects
-            basicEffect = new BasicEffect(graphics.GraphicsDevice)
-            {
-                //TextureEnabled = true,
-                //LightingEnabled = false,
-                //PreferPerPixelLighting = false,
-                //DiffuseColor = Color.Blue.ToVector3(),
-                //AmbientLightColor = Color.Purple.ToVector3(),
-                //EmissiveColor = Color.Red.ToVector3()
-                TextureEnabled = true,
-                LightingEnabled = true,
-                PreferPerPixelLighting = true,
-                FogColor = new Vector3(0.1f, 0.05f, 0.1f),
-                FogEnabled = true,
-                FogStart = 100,
-                FogEnd = 300,
-                DiffuseColor = new Vector3(0, 0, 0),
-                AmbientLightColor = new Vector3(0.05f, 0, 0.05f),
-                EmissiveColor = new Vector3(0.05f, 0, 0.05f)
-            };
-
-            basicEffect.SpecularColor = Color.Red.ToVector3();
-            basicEffect.EnableDefaultLighting();
-            basicEffect.PreferPerPixelLighting = true;
-            this.effectDictionary.Add(AppData.PickupEffectID, new BasicEffectParameters(basicEffect));
-            #endregion
-
-            #region Zone Effects
-            basicEffect = new BasicEffect(graphics.GraphicsDevice)
-            {
-                //TextureEnabled = false,
-                //LightingEnabled = true,
-                //PreferPerPixelLighting = true,
-                //DiffuseColor = Color.Blue.ToVector3(),
-                //AmbientLightColor = Color.Purple.ToVector3(),
-                //EmissiveColor = Color.Red.ToVector3()
-                TextureEnabled = true,
-                LightingEnabled = false,
-                PreferPerPixelLighting = false,
-                FogColor = new Vector3(0.1f, 0.05f, 0.1f),
-                FogEnabled = true,
-                FogStart = 100,
-                FogEnd = 300,
-                AmbientLightColor = new Vector3(0.5f, 0, 0.05f),
-                EmissiveColor = new Vector3(0.05f, 0, 0.05f)
-            };
-            
-            this.effectDictionary.Add(AppData.WinZoneEffectID, new BasicEffectParameters(basicEffect));
             #endregion
         }
 
@@ -439,7 +341,7 @@ namespace GDApp
                 this.cameraManager,
                 this.spriteBatch,
                 this.eventDispatcher,
-                StatusType.Off
+                StatusType.Drawn | StatusType.Update
             );
 
             Components.Add(this.uiManager);
@@ -1114,7 +1016,7 @@ namespace GDApp
             Transform3D pickupTransform = transform.Clone() as Transform3D;
 
             //Load model and effect parameters
-            BasicEffectParameters effectParameters = this.effectDictionary[AppData.PickupEffectID].Clone() as BasicEffectParameters;
+            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
             Model model = this.modelDictionary["pickupModel" + pickupType];
 
             //Load collision box
@@ -1166,13 +1068,15 @@ namespace GDApp
             {
                 case 1:
                     //Create win trigger
-                    this.staticModel = new ZoneObject(
-                        "Win Zone",
-                        ActorType.Trigger,
-                        triggerTransform,
-                        this.effectDictionary[AppData.LitModelsEffectID],
-                        this.collisionBoxDictionary["zoneCollision"]
-                    );
+                    //this.staticModel = new ZoneObject(
+                    //    "Win Zone",
+                    //    ActorType.Trigger,
+                    //    triggerTransform,
+                    //    this.effectDictionary[AppData.LitModelsEffectID],
+                    //    null
+                    //);
+
+                    //
 
                     //Enable collision
                     this.staticModel.Enable(true, 1);
@@ -1229,7 +1133,7 @@ namespace GDApp
             //Setup dimensions
             Transform3D enemyTransform = transform.Clone() as Transform3D;
             enemyTransform.Translation += new Vector3(127, 0, 127);
-            enemyTransform.Rotation = new Vector3(-90, -180, 0);
+            enemyTransform.Rotation = new Vector3(-90, 0, 0);
 
             //Load model and effect parameters
             BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
@@ -1253,14 +1157,12 @@ namespace GDApp
             switch(enemyType) {
                 case 1:
                     id = "Skeleton";
-                    transform.Look = Vector3.UnitX;
                     health = 80;
                     attack = 20;
                     defence = 20;
                     break;
                 case 2:
                     id = "Cultist";
-                    transform.Look = Vector3.UnitX;
                     health = 100;
                     attack = 30;
                     defence = 30;

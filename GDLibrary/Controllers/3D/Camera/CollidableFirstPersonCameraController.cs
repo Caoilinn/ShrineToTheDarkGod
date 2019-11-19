@@ -459,6 +459,9 @@ namespace GDLibrary
             //If the player is stationary
             if (!this.InMotion)
             {
+                //Detect collision around the player
+                //DetectCollision(parentActor, Vector3.Normalize(this.Translation));
+
                 //If the player is about to walk into a wall
                 if (this.blockedPaths.Contains(Vector3.Normalize(this.Translation)))
                 {
@@ -550,6 +553,17 @@ namespace GDLibrary
                 CheckForCollisionWithGate(position, direction, length);
             }
         }
+
+        //public void DetectCollision(Actor3D parentActor, Vector3 direction)
+        //{
+        //    float length = 254;
+        //    Vector3 position = parentActor.Transform.Translation;
+        //    CheckForCollisionWithWall(position, direction, length);
+        //    CheckForCollisionWithPickup(position, direction, length);
+        //    CheckForCollisionWithEnemy(position, direction, length);
+        //    CheckForCollisionWithTrigger(position, direction, length);
+        //    CheckForCollisionWithGate(position, direction, length);
+        //}
 
         public object[] CheckForCollision(Vector3 position, Vector3 direction, float length, ActorType actorType)
         {
@@ -681,6 +695,15 @@ namespace GDLibrary
                 //Cast the collision object to a collidable object
                 CollidableObject enemy = (collisionInfo[1] as CollisionSkin).Owner.ExternalData as CollidableObject;
 
+                //If a collision has already taken place with this object
+                if (this.collisionSet.Contains(enemy))
+
+                    //Return
+                    return;
+
+                //Otherwise, add pickup to the collision set
+                this.collisionSet.Add(enemy);
+
                 #region Adjacent Cell
                 //If the collision takes place in this cell, or in an adjacent cell
                 if ((float) collisionInfo[0] >= MIN_ADJACENT_CELL && (float) collisionInfo[0] <= MAX_ADJACENT_CELL)
@@ -787,8 +810,29 @@ namespace GDLibrary
         }
         #endregion
 
+        public void CheckSounds()
+        {
+            if (this.ManagerParameters.SoundManager == null) return;
+
+            bool isEnemyFound = false;
+            bool isPickupFound = false;
+
+            foreach (CollidableObject collidableObject in this.collisionSet)
+                if (collidableObject.ActorType.Equals(ActorType.Enemy))
+                    isEnemyFound = true;
+                else if (collidableObject.ActorType.Equals(ActorType.CollidablePickup))
+                    isPickupFound = true;
+
+            if (!isEnemyFound)
+                this.ManagerParameters.SoundManager.PauseCue("battle_theme");
+
+            if (!isPickupFound)
+                this.ManagerParameters.SoundManager.PauseCue("item_twinkle");
+        }
+
         public override void Update(GameTime gameTime, IActor actor)
         {
+            CheckSounds();
             base.Update(gameTime, actor);
         }
         #endregion
@@ -829,30 +873,3 @@ namespace GDLibrary
 //    //Add enemy to collision set
 //    this.collisionSet.Add(trigger);
 //}
-
-//public void CheckSounds()
-//{
-//    if (this.ManagerParameters.SoundManager == null) return;
-
-//    bool isEnemyFound = false;
-//    bool isPickupFound = false;
-
-//    foreach (CollidableObject collidableObject in this.collisionSet)
-//        if (collidableObject.ActorType.Equals(ActorType.Enemy))
-//            isEnemyFound = true;
-//        else if (collidableObject.ActorType.Equals(ActorType.CollidablePickup))
-//            isPickupFound = true;
-
-//    if (!isEnemyFound)
-//        this.ManagerParameters.SoundManager.PauseCue("battle_theme");
-
-//    if (!isPickupFound)
-//        EventDispatcher.Publish(
-//            new EventData(
-//                EventActionType.OnPause,
-//                EventCategoryType.Sound2D,
-//                new object[] { "item_twinkle" }
-//            )
-//        );
-//}
-//CheckSounds();
