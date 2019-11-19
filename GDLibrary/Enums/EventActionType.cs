@@ -19,6 +19,8 @@
         OnMute,
         OnUnMute,
         OnExit,
+        OnInventoryPickUp,
+
 
         //Sent by Mouse or Gamepad Manager
         OnClick,
@@ -48,6 +50,7 @@
         OnPlayerDefend,
         OnPlayerDodge,
         OnEnemyAttack,
+        OnEnemyDeath,
 
         //Sent by Object Manager
         OnDoorOpen,

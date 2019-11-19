@@ -37,10 +37,30 @@ namespace GDLibrary
         {
             if(eventData.EventType == EventActionType.OnItemAdded)
             {
-                //Publish UI event
+                ImmovablePickupObject itemToAdd = eventData.AdditionalParameters[0] as ImmovablePickupObject;
+
+                EventDispatcher.Publish(new EventData(
+                    EventActionType.OnInventoryPickUp,
+                    EventCategoryType.UIMenu,
+                    new object[] { itemToAdd })
+                    );
+
+                this.AddItem(itemToAdd);
+
+                //Publish UI cahnged event to update the inventory UI
+                EventDispatcher.Publish(new EventData(
+                                        EventActionType.OnAddToInventory,
+                                        EventCategoryType.UIMenu,
+                                        new object[] { itemToAdd.PickupParameters.PickupType}))
             } else if(eventData.EventType == EventActionType.OnItemRemoved)
             {
+                ImmovablePickupObject itemToRemove = eventData.AdditionalParameters[0] as ImmovablePickupObject;
+
+
+
                 //Publish UI event
+                
+
             }
         }
 
@@ -68,6 +88,11 @@ namespace GDLibrary
                 return this.items.Find(x=> x.ID == itemID);
             }
             return null;
+        }
+
+        public bool HasKey(string itemID)
+        {
+            return (this.items.Find(x => x.ID == itemID) != null);
         }
 
         public void UseItem(string itemID)
@@ -101,21 +126,6 @@ namespace GDLibrary
         //Testing adding and removing
         protected override void HandleKeyboard(GameTime gameTime)
         {
-
-            /*
-
-
-            if (this.managerParameters.KeyboardManager.IsFirstKeyPress(Microsoft.Xna.Framework.Input.Keys.I))
-            {
-
-            }else if (this.managerParameters.KeyboardManager.IsFirstKeyPress(Microsoft.Xna.Framework.Input.Keys.I))
-            {
-
-            } else if (this.managerParameters.KeyboardManager.IsFirstKeyPress(Microsoft.Xna.Framework.Input.Keys.K))
-            {
-                PrintInventory();
-            }
-            */
             base.HandleKeyboard(gameTime);
         }
 

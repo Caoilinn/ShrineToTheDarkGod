@@ -84,10 +84,16 @@ namespace GDLibrary
             eventDispatcher.RemoveActorChanged += EventDispatcher_RemoveActorChanged;
             eventDispatcher.AddActorChanged += EventDispatcher_AddActorChanged;
             eventDispatcher.DoorEvent += EventDispatcher_DoorOpen;
+            eventDispatcher.EnemyDeathEvent += EventDispacter_EnemyDeath;
             //Dont forget to call the base method to register for OnStart, OnPause events!
             base.RegisterForEventHandling(eventDispatcher);
         }
 
+        private void EventDispacter_EnemyDeath(EventData eventData)
+        {
+            
+            this.opaqueDrawList.Remove((eventData.AdditionalParameters[0] as Enemy));
+        }
         private void EventDispatcher_AddActorChanged(EventData eventData)
         {
             if (eventData.EventType == EventActionType.OnAddActor)
