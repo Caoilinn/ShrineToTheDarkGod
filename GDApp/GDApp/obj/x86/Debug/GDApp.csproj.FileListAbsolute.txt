@@ -813,3 +813,5 @@ C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\G
 C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CopyComplete
 C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.exe
 C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\sword.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\key.xnb

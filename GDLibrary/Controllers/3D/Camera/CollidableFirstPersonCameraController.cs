@@ -460,7 +460,7 @@ namespace GDLibrary
             if (!this.InMotion)
             {
                 //Detect collision around the player
-                //DetectCollision(parentActor, Vector3.Normalize(this.Translation));
+                DetectCollision(parentActor);
 
                 //If the player is about to walk into a wall
                 if (this.blockedPaths.Contains(Vector3.Normalize(this.Translation)))

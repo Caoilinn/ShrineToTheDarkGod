@@ -151,7 +151,7 @@ namespace GDApp
             InitializeUI();
 
             InitializeDebug();
-            InitializeDebugCollisionSkinInfo();
+            //InitializeDebugCollisionSkinInfo();
 
             base.Initialize();
         }
@@ -192,6 +192,10 @@ namespace GDApp
                 TextureEnabled = true,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
+                FogEnabled = true,
+                FogColor = new Vector3(0.05f, 0.0f, 0.05f),
+                FogStart = 127,
+                FogEnd = 400,
                 DiffuseColor = new Vector3(1, 0, 0),
                 AmbientLightColor = new Vector3(1f, 0, 0.05f),
                 EmissiveColor = new Vector3(1f, 0, 0.05f)
@@ -623,8 +627,8 @@ namespace GDApp
                 new Integer2(100, 25)
             );
 
-            UITextObject uiTextObject = new UITextObject("Greeting", ActorType.UIText, StatusType.Update | StatusType.Drawn, transform, Color.Red, SpriteEffects.None, 1, "Hello World", this.fontDictionary["menu"]);
-            this.uiManager.Add("main_ui", uiTextObject);
+            //UITextObject uiTextObject = new UITextObject("Greeting", ActorType.UIText, StatusType.Update | StatusType.Drawn, transform, Color.Red, SpriteEffects.None, 1, "Hello World", this.fontDictionary["menu"]);
+            //this.uiManager.Add("main_ui", uiTextObject);
         }
         #endregion
 
@@ -1067,7 +1071,7 @@ namespace GDApp
             switch (triggerType)
             {
                 case 1:
-                    //Create win trigger
+                    ////Create win trigger
                     //this.staticModel = new ZoneObject(
                     //    "Win Zone",
                     //    ActorType.Trigger,
@@ -1076,10 +1080,10 @@ namespace GDApp
                     //    null
                     //);
 
-                    //
+                    ////this.staticModel.AddPrimitive();
 
-                    //Enable collision
-                    this.staticModel.Enable(true, 1);
+                    ////Enable collision
+                    //this.staticModel.Enable(true, 1);
 
                     //Add to object manager list
                     this.object3DManager.Add(this.staticModel);
@@ -1293,10 +1297,9 @@ namespace GDApp
             #endregion
 
             #region Pickup Models
-            this.modelDictionary.Load("Assets/Models/Pickups/potion", "pickupModel1");
-            this.modelDictionary.Load("Assets/Models/Pickups/potion", "pickupModel2");
+            this.modelDictionary.Load("Assets/Models/Pickups/sword", "pickupModel1");
+            this.modelDictionary.Load("Assets/Models/Pickups/key", "pickupModel2");
             this.modelDictionary.Load("Assets/Models/Pickups/potion", "pickupModel3");
-            this.modelDictionary.Load("Assets/Models/Pickups/potion", "pickupModel4");
             #endregion
 
             #region Character Models
