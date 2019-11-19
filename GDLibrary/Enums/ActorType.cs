@@ -35,5 +35,6 @@ namespace GDLibrary
         CollidableGround,
         Enemy,
         Gate,
+        Trigger,
     }
 }

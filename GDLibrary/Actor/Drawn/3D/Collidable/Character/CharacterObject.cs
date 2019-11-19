@@ -244,7 +244,7 @@ namespace GDLibrary
             this.Body.ExternalData = this;
             this.Body.CollisionSkin = this.Collision;
 
-            Capsule capsule = new Capsule(new Vector3(127, 127, 127), Matrix.CreateRotationX(MathHelper.PiOver2), 76, 154);
+            Capsule capsule = new Capsule(Vector3.Zero, Matrix.CreateRotationX(MathHelper.PiOver2), 76, 154);
 
             this.Collision.AddPrimitive(
                 capsule,
@@ -255,6 +255,7 @@ namespace GDLibrary
             this.RotationVector = rotationVector;
             this.MoveSpeed = moveSpeed;
             this.RotateSpeed = rotateSpeed;
+
             this.Health = health;
             this.Attack = attack;
             this.Defence = defence;

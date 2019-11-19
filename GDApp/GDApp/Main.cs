@@ -52,6 +52,7 @@ namespace GDApp
         private MyMenuManager menuManager;
         private UIManager uiManager;
         private PickingManager pickingManager;
+        private InventoryManager inventoryManager;
 
         //Dispatchers
         private EventDispatcher eventDispatcher;
@@ -184,118 +185,20 @@ namespace GDApp
         private void InitializeEffects()
         {
             BasicEffect basicEffect = null;
-            DualTextureEffect dualTextureEffect = null;
 
             #region Lit Effect
-            //Create a BasicEffect and set the lighting conditions for all models that use this effect in their EffectParameters field
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
                 TextureEnabled = true,
-                LightingEnabled = false,
+                LightingEnabled = true,
                 PreferPerPixelLighting = true,
-                FogColor = new Vector3(0.1f, 0.05f, 0.1f),
-                FogEnabled = true,
-                FogStart = 127,
-                FogEnd = 400,
-                DiffuseColor = new Vector3(0, 0, 0),
-                AmbientLightColor = new Vector3(0.05f, 0, 0.05f),
-                EmissiveColor = new Vector3(0.05f, 0, 0.05f)
+                DiffuseColor = new Vector3(1, 0, 0),
+                AmbientLightColor = new Vector3(1f, 0, 0.05f),
+                EmissiveColor = new Vector3(1f, 0, 0.05f)
             };
 
             basicEffect.EnableDefaultLighting();
             this.effectDictionary.Add(AppData.LitModelsEffectID, new BasicEffectParameters(basicEffect));
-            #endregion
-
-            #region Unlit Effect
-            //Used for model objects that dont interact with lighting i.e. sky
-            basicEffect = new BasicEffect(graphics.GraphicsDevice)
-            {
-                TextureEnabled = true,
-                LightingEnabled = false
-            };
-
-            this.effectDictionary.Add(AppData.UnlitModelsEffectID, new BasicEffectParameters(basicEffect));
-            #endregion
-
-            #region Dual Texture Effect
-            dualTextureEffect = new DualTextureEffect(graphics.GraphicsDevice);
-
-            this.effectDictionary.Add(
-                AppData.UnlitModelDualEffectID,
-                new DualTextureEffectParameters(dualTextureEffect)
-            );
-            #endregion
-
-            #region Model Effects
-            this.modelEffect = new BasicEffect(graphics.GraphicsDevice)
-            {
-                TextureEnabled = false,
-                LightingEnabled = false
-            };
-
-            this.modelEffect.EnableDefaultLighting();
-            this.modelEffect.PreferPerPixelLighting = true;
-
-            //Setup fog
-            this.modelEffect.FogColor = new Vector3(0.1f, 0.05f, 0.1f);
-            this.modelEffect.FogEnabled = true;
-            this.modelEffect.FogStart = 127;
-            this.modelEffect.FogEnd = 400;
-
-            //Setup ambience
-            this.modelEffect.DiffuseColor = new Vector3(0, 0, 0);
-            this.modelEffect.AmbientLightColor = new Vector3(0.05f, 0, 0.05f);
-            this.modelEffect.EmissiveColor = new Vector3(0.05f, 0, 0.05f);
-            #endregion
-
-            #region Pickup Effects
-            basicEffect = new BasicEffect(graphics.GraphicsDevice)
-            {
-                //TextureEnabled = true,
-                //LightingEnabled = false,
-                //PreferPerPixelLighting = false,
-                //DiffuseColor = Color.Blue.ToVector3(),
-                //AmbientLightColor = Color.Purple.ToVector3(),
-                //EmissiveColor = Color.Red.ToVector3()
-                TextureEnabled = true,
-                LightingEnabled = true,
-                PreferPerPixelLighting = true,
-                FogColor = new Vector3(0.1f, 0.05f, 0.1f),
-                FogEnabled = true,
-                FogStart = 100,
-                FogEnd = 300,
-                DiffuseColor = new Vector3(0, 0, 0),
-                AmbientLightColor = new Vector3(0.05f, 0, 0.05f),
-                EmissiveColor = new Vector3(0.05f, 0, 0.05f)
-            };
-
-            basicEffect.SpecularColor = Color.Red.ToVector3();
-            basicEffect.EnableDefaultLighting();
-            basicEffect.PreferPerPixelLighting = true;
-            this.effectDictionary.Add(AppData.PickupEffectID, new BasicEffectParameters(basicEffect));
-            #endregion
-
-            #region Zone Effects
-            basicEffect = new BasicEffect(graphics.GraphicsDevice)
-            {
-                //TextureEnabled = false,
-                //LightingEnabled = true,
-                //PreferPerPixelLighting = true,
-                //DiffuseColor = Color.Blue.ToVector3(),
-                //AmbientLightColor = Color.Purple.ToVector3(),
-                //EmissiveColor = Color.Red.ToVector3()
-                TextureEnabled = true,
-                LightingEnabled = false,
-                PreferPerPixelLighting = false,
-                FogColor = new Vector3(0.1f, 0.05f, 0.1f),
-                FogEnabled = true,
-                FogStart = 100,
-                FogEnd = 300,
-                AmbientLightColor = new Vector3(0.5f, 0, 0.05f),
-                EmissiveColor = new Vector3(0.05f, 0, 0.05f)
-            };
-            
-            this.effectDictionary.Add(AppData.WinZoneEffectID, new BasicEffectParameters(basicEffect));
             #endregion
         }
 
@@ -375,6 +278,16 @@ namespace GDApp
             Components.Add(this.gameStateManager);
             #endregion
 
+            #region Inventory Manager
+            this.inventoryManager = new InventoryManager(
+                this,
+                this.eventDispatcher,
+                StatusType.Off
+                );
+
+            Components.Add(this.inventoryManager);
+            #endregion
+
             #region Manager Parameters
             this.managerParameters = new ManagerParameters(
                 this.object3DManager,
@@ -383,7 +296,8 @@ namespace GDApp
                 this.keyboardManager,
                 this.gamePadManager,
                 this.soundManager,
-                this.physicsManager
+                this.physicsManager,
+                this.inventoryManager
             );
             #endregion
 
@@ -398,7 +312,7 @@ namespace GDApp
                 StatusType.Off,
                 this.managerParameters, 
                 this.cameraManager,
-                PickingBehaviourType.PickAndRemove,
+                PickingBehaviourType.PickOnly,
                 AppData.PickStartDistance, 
                 AppData.PickEndDistance, 
                 collisionPredicate
@@ -427,7 +341,7 @@ namespace GDApp
                 this.cameraManager,
                 this.spriteBatch,
                 this.eventDispatcher,
-                StatusType.Off
+                StatusType.Drawn | StatusType.Update
             );
 
             Components.Add(this.uiManager);
@@ -465,7 +379,7 @@ namespace GDApp
             string sceneID = "";
             string buttonID = "";
             string buttonText = "";
-            int verticalBtnSeparation = 50;
+            int verticalBtnSeparation = 55;
 
             #region Main Menu
             sceneID = "main menu";
@@ -500,8 +414,8 @@ namespace GDApp
             buttonText = "Start";
 
             position = new Vector2(
-                graphics.PreferredBackBufferWidth / 2.0f, 
-                200
+                graphics.PreferredBackBufferWidth / 4.0f, 
+                300
             );
 
             texture = this.textureDictionary["genericbtn"];
@@ -509,7 +423,7 @@ namespace GDApp
             transform = new Transform2D(
                 position,
                 0, 
-                new Vector2(1.8f, 0.6f),
+                new Vector2(1.8f, 1f),
                 new Vector2(texture.Width / 2.0f, 
                 texture.Height / 2.0f), 
                 new Integer2(texture.Width, texture.Height)
@@ -526,7 +440,7 @@ namespace GDApp
                 texture, 
                 buttonText,
                 this.fontDictionary["menu"],
-                Color.DarkGray, 
+                Color.Black, 
                 new Vector2(0, 2)
             );
 
@@ -541,7 +455,7 @@ namespace GDApp
             clone.Transform.Translation += new Vector2(0, verticalBtnSeparation);
 
             //Change the texture blend color
-            clone.Color = Color.LightGreen;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
             //Add controls button - clone the audio button then just reset texture, ids etc in all the clones
@@ -553,7 +467,7 @@ namespace GDApp
             clone.Transform.Translation += new Vector2(0, 2 * verticalBtnSeparation);
 
             //Change the texture blend color
-            clone.Color = Color.LightBlue;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
             //Add exit button - clone the audio button then just reset texture, ids etc in all the clones
@@ -565,7 +479,7 @@ namespace GDApp
             clone.Transform.Translation += new Vector2(0, 3 * verticalBtnSeparation);
 
             //Change the texture blend color
-            clone.Color = Color.LightYellow;
+            clone.Color = Color.White;
             
             //Store the original color since if we modify with a controller and need to reset
             clone.OriginalColor = clone.Color;
@@ -605,7 +519,7 @@ namespace GDApp
             clone.Text = "Volume Up";
             
             //Change the texture blend color
-            clone.Color = Color.LightPink;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
             //Add volume down button - clone the audio button then just reset texture, ids etc in all the clones
@@ -617,7 +531,7 @@ namespace GDApp
             clone.Text = "Volume Down";
 
             //Change the texture blend color
-            clone.Color = Color.LightGreen;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
             //Add volume mute button - clone the audio button then just reset texture, ids etc in all the clones
@@ -629,7 +543,7 @@ namespace GDApp
             clone.Text = "Volume Mute";
             
             //Change the texture blend color
-            clone.Color = Color.LightBlue;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
             //Add volume mute button - clone the audio button then just reset texture, ids etc in all the clones
@@ -641,7 +555,7 @@ namespace GDApp
             clone.Text = "Volume Un-mute";
             
             //Change the texture blend color
-            clone.Color = Color.LightSalmon;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
             //Add back button - clone the audio button then just reset texture, ids etc in all the clones
@@ -653,7 +567,7 @@ namespace GDApp
             clone.Text = "Back";
             
             //Change the texture blend color
-            clone.Color = Color.LightYellow;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
             #endregion
 
@@ -689,12 +603,12 @@ namespace GDApp
             clone = (UIButtonObject)uiButtonObject.Clone();
             
             //Move down on Y-axis for next button
-            clone.Transform.Translation += new Vector2(0, 9 * verticalBtnSeparation);
+            clone.Transform.Translation += new Vector2(700, 7 * verticalBtnSeparation);
             clone.ID = "backbtn";
             clone.Text = "Back";
             
             //Change the texture blend color
-            clone.Color = Color.LightYellow;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
             #endregion
         }
@@ -1102,7 +1016,7 @@ namespace GDApp
             Transform3D pickupTransform = transform.Clone() as Transform3D;
 
             //Load model and effect parameters
-            BasicEffectParameters effectParameters = this.effectDictionary[AppData.PickupEffectID].Clone() as BasicEffectParameters;
+            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
             Model model = this.modelDictionary["pickupModel" + pickupType];
 
             //Load collision box
@@ -1147,19 +1061,27 @@ namespace GDApp
 
         public void ConstructTrigger(int triggerType, Transform3D transform)
         {
-            Transform3D gateTransform = transform.Clone() as Transform3D;
+            Transform3D triggerTransform = transform.Clone() as Transform3D;
 
             //Determine trigger type
             switch (triggerType)
             {
                 case 1:
-                    this.staticModel = new ZoneObject(
-                        "Win Zone",
-                        ActorType.Zone,
-                        gateTransform,
-                        this.effectDictionary[AppData.WinZoneEffectID],
-                        this.collisionBoxDictionary["zoneCollision"]
-                    );
+                    //Create win trigger
+                    //this.staticModel = new ZoneObject(
+                    //    "Win Zone",
+                    //    ActorType.Trigger,
+                    //    triggerTransform,
+                    //    this.effectDictionary[AppData.LitModelsEffectID],
+                    //    null
+                    //);
+
+                    //
+
+                    //Enable collision
+                    this.staticModel.Enable(true, 1);
+
+                    //Add to object manager list
                     this.object3DManager.Add(this.staticModel);
                     break;
 
@@ -1183,7 +1105,7 @@ namespace GDApp
             //Create model
             this.staticModel = new CollidableArchitecture(
                 "Gate " + gateType,
-                ActorType.CollidableArchitecture,
+                ActorType.Gate,
                 gateTransform,
                 effectParameters,
                 model,
@@ -1202,8 +1124,7 @@ namespace GDApp
         {
             this.playerPosition = transform.Clone() as Transform3D;
         }
-
-        //Pull all of this code out into a dictionary
+        
         public void SpawnEnemy(int enemyType, Transform3D transform)
         {
             //Setup id
@@ -1236,14 +1157,12 @@ namespace GDApp
             switch(enemyType) {
                 case 1:
                     id = "Skeleton";
-                    transform.Look = Vector3.UnitX;
                     health = 80;
                     attack = 20;
                     defence = 20;
                     break;
                 case 2:
                     id = "Cultist";
-                    transform.Look = -Vector3.UnitX;
                     health = 100;
                     attack = 30;
                     defence = 30;

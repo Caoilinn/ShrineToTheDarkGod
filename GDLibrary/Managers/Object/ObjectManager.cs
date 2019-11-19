@@ -132,7 +132,7 @@ namespace GDLibrary
             if(eventData.EventType == EventActionType.OnDoorOpen)
             {
                 object[] additionalParameters = eventData.AdditionalParameters;
-                string gateID = (string)additionalParameters[0];
+                string gateID = (string) additionalParameters[0];
 
                 InteractableGate gate = GetGate(gateID);
 
@@ -142,9 +142,7 @@ namespace GDLibrary
                     this.opaqueDrawList.Remove(gate);
                 }
             }
-
         }
-
         #endregion
 
         #region Methods
@@ -389,10 +387,10 @@ namespace GDLibrary
                 new EventData(
                     EventActionType.OnDoorOpen,
                     EventCategoryType.Door,
-                    new object[] { gateID })
-                    );
+                    new object[] { gateID }
+                )
+            );
         }
-
         #endregion
     }
 }

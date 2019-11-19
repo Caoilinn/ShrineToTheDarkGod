@@ -215,7 +215,7 @@ namespace GDLibrary
         {
             int hash = 7 + this.ID.GetHashCode();
             hash = hash * 11 + this.actorType.GetHashCode();
-            hash = hash * 17 + this.statusType.GetHashCode();
+            //hash = hash * 17 + this.statusType.GetHashCode();
             return hash;
         }
 

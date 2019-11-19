@@ -17,6 +17,7 @@ namespace GDLibrary
         protected WaveBank waveBank;
         protected SoundBank soundBank;
 
+        protected List<Cue> playingCues;
         protected List<Cue3D> cueList3D;
         protected HashSet<string> playSet3D;
 
@@ -41,12 +42,12 @@ namespace GDLibrary
 
         #region Constructor
         public SoundManager(
-            Game game, 
-            EventDispatcher eventDispatcher, 
+            Game game,
+            EventDispatcher eventDispatcher,
             StatusType statusType,
-            string folderPath, 
-            string audioEngineStr, 
-            string waveBankStr, 
+            string folderPath,
+            string audioEngineStr,
+            string waveBankStr,
             string soundBankStr
         ) : base(game, eventDispatcher, statusType) {
             this.audioEngine = new AudioEngine(@"" + folderPath + "/" + audioEngineStr);
@@ -55,6 +56,7 @@ namespace GDLibrary
             this.cueList3D = new List<Cue3D>();
             this.playSet3D = new HashSet<string>();
             this.audioListener = new AudioListener();
+            this.playingCues = new List<Cue>();
         }
         #endregion
 
@@ -187,26 +189,26 @@ namespace GDLibrary
         }
 
         //Do we want sound to play in the menu? In this case, we should remove this code and set statusType to Update in the constructor.
-        protected override void EventDispatcher_MenuChanged(EventData eventData)
-        {
-            //Did the event come from the main menu?
-            //And is it a start game event?
-            if (eventData.EventType == EventActionType.OnStart)
-            {
-                //Turn on update and draw
-                //Hide the menu
-                this.StatusType = StatusType.Update;
-            }
+        //protected override void EventDispatcher_MenuChanged(EventData eventData)
+        //{
+        //    //Did the event come from the main menu?
+        //    //And is it a start game event?
+        //    if (eventData.EventType == EventActionType.OnStart)
+        //    {
+        //        //Turn on update and draw
+        //        //Hide the menu
+        //        this.StatusType = StatusType.Update;
+        //    }
 
-            //Did the event come from the main menu? 
-            //And is it a pause game event?
-            else if (eventData.EventType == EventActionType.OnPause)
-            {
-                //Turn off update and draw
-                //Show the menu since the game is paused
-                this.StatusType = StatusType.Off;
-            }
-        }
+        //    //Did the event come from the main menu? 
+        //    //And is it a pause game event?
+        //    else if (eventData.EventType == EventActionType.OnPause)
+        //    {
+        //        //Turn off update and draw
+        //        //Show the menu since the game is paused
+        //        this.StatusType = StatusType.Off;
+        //    }
+        //}
         #endregion
 
         #region 2D Cues
@@ -217,6 +219,7 @@ namespace GDLibrary
             if (!playSet3D.Contains(cueName))
             {
                 Cue cue = this.soundBank.GetCue(cueName);
+                playingCues.Add(cue);
                 cue.Play();
             }
         }
@@ -224,9 +227,19 @@ namespace GDLibrary
         //Pauses a 2D cue
         public void PauseCue(string cueName)
         {
-            Cue cue = this.soundBank.GetCue(cueName);
-            if ((cue != null) && (cue.IsPlaying))
-                cue.Pause();
+            Cue cue = playingCues.Find(x => x.Name == cueName);
+
+            if (playingCues.Contains(cue))
+            {
+                if (cue.IsPlaying)
+                {
+                    cue.Pause();
+                    playingCues.Remove(cue);
+                }
+                }
+            //Cue cue = this.soundBank.GetCue(cueName);
+            //if ((cue != null) && (cue.IsPlaying))
+            //    cue.Pause();
         }
 
         //Resumes a paused 2D cue

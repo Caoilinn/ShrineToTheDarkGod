@@ -45,6 +45,9 @@ namespace GDLibrary
             Model lowPolygonModel,
             MaterialProperties materialProperties
         ) : base(id, actorType, transform, effectParameters, model) {
+            this.Collision = new CollisionSkin(Body);
+            this.Body.ExternalData = this;
+            this.Body.CollisionSkin = this.Collision;
 
             //Get the primitive mesh which forms the skin - use low poly if it has been provided in the constructor
             TriangleMesh triangleMesh = null;
@@ -121,6 +124,7 @@ namespace GDLibrary
         {
             Matrix[] bones_ = new Matrix[model.Bones.Count];
             model.CopyAbsoluteBoneTransformsTo(bones_);
+
             foreach (ModelMesh mm in model.Meshes)
             {
                 int offset = vertices.Count;

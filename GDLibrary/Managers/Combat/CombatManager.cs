@@ -7,12 +7,13 @@ namespace GDLibrary
 {
     public class CombatManager : PausableGameComponent
     {
+        public static bool inCombat;
+        
         #region Fields
         private Keys[] combatKeys;
         private List<CharacterObject> characters;
         private PlayerObject player;
         private List<Enemy> enemies;
-        private bool combat;
         private bool playerTurn;
         private ManagerParameters managerParameters;
         private Random random = new Random();
@@ -20,14 +21,17 @@ namespace GDLibrary
         #endregion
 
         #region Constructor
-        public CombatManager(Game game, EventDispatcher eventDispatcher, StatusType statusType, 
-            ManagerParameters managerParameters, Keys[] combatKeys) : 
-            base(game, eventDispatcher, statusType)
-        {
+        public CombatManager(
+            Game game, 
+            EventDispatcher eventDispatcher, 
+            StatusType statusType, 
+            ManagerParameters managerParameters, 
+            Keys[] combatKeys
+        ) : base(game, eventDispatcher, statusType) {
             this.enemies = new List<Enemy>();
             this.managerParameters = managerParameters;
             this.playerTurn = true;
-            this.combat = false;
+            CombatManager.inCombat = false;
             this.combatKeys = combatKeys;
         }
         #endregion
@@ -44,7 +48,7 @@ namespace GDLibrary
             if (eventData.EventType == EventActionType.OnInitiateBattle)
             {
                 //Combat started
-                this.combat = true;
+                CombatManager.inCombat = true;
                 this.enemyOnFocus = eventData.AdditionalParameters[0] as Enemy;
             }
             else if (eventData.EventType == EventActionType.OnPlayerAttack)
@@ -68,7 +72,7 @@ namespace GDLibrary
             else if (eventData.EventType == EventActionType.OnBattleEnd)
             {
                 //Combat ended
-                this.combat = false;
+                CombatManager.inCombat = false;
             }
             else if (eventData.EventType == EventActionType.OnPlayerDeath)
             {
@@ -139,7 +143,7 @@ namespace GDLibrary
 
         protected virtual void HandleKeyBoardInput(GameTime gameTime)
         {
-            if (this.combat)
+            if (CombatManager.inCombat)
             { 
                 if(playerTurn)
                 {

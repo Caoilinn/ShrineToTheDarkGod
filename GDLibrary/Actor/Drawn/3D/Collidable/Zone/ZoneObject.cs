@@ -29,12 +29,20 @@ namespace GDLibrary
             EffectParameters effectParameters,
             Model model
         ) : base(id, actorType, transform, effectParameters, model) {
+            //this.Collision = new CollisionSkin(Body);
+            //this.Body.ExternalData = this;
+            //this.Body.CollisionSkin = this.Collision;
 
-            //Add the primitive mesh to the collision skin   
-            this.Body.CollisionSkin.AddPrimitive(
-                new Capsule(Vector3.Zero, Matrix.CreateRotationX(0), 77, 154), 
-                (int) MaterialTable.MaterialID.NormalNormal
-            );
+            //Box box = new Box(
+            //    Vector3.Zero,
+            //    Matrix.Identity,
+            //    new Vector3(127, 127, 127)
+            //);
+
+            //this.Collision.AddPrimitive(
+            //    box,
+            //    (int)MaterialTable.MaterialID.NormalSmooth
+            //);
 
             //Register for callback on CDCR
             this.Body.CollisionSkin.callbackFn += CollisionSkin_callbackFn;
@@ -54,7 +62,7 @@ namespace GDLibrary
         protected virtual void HandleCollisions(CollidableObject collider, CollidableObject collidee)
         {
             //If player hits me then remove me
-            if (collider.ActorType == ActorType.CollidableZone)
+            if (collidee.ActorType == ActorType.CollidableCamera)
             {
             }
         }
