@@ -42,21 +42,16 @@ namespace GDLibrary
 
                 this.AddItem(itemToAdd);
 
-                //Publish UI cahnged event to update the inventory UI
-                EventDispatcher.Publish(new EventData(
-                                        EventActionType.OnAddToInventory,
-                                        EventCategoryType.UIMenu,
-                                        new object[] { itemToAdd.PickupParameters.PickupType}))
+               
                 EventDispatcher.Publish(
                     new EventData(
                         EventActionType.OnUpdateHud,
                         EventCategoryType.UI,
-                        new object[] { item }
+                        new object[] { itemToAdd.PickupParameters.PickupType }
                     )
                 );
 
-                //Add to inventory
-                AddItem(item);
+                
             }
 
             //If a remove item evetn has been published

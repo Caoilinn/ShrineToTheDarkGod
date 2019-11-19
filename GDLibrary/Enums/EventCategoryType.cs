@@ -25,8 +25,7 @@
         Combat,
         Inventory,
         Movement,
-        UI
-        Movement,
+        UI,
         EnemyDeath
     }
 }

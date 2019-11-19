@@ -244,15 +244,9 @@ C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\A
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_014.xnb
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_015.xnb
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_016.xnb
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Debug\Textures\checkerboard.xnb
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Debug\Textures\checkerboard_greywhite.xnb
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Debug\Textures\ml.xnb
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Debug\Textures\slj.xnb
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_002.xnb
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_017.xnb
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_018.xnb
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001_001.xnb
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\CubeDiffuseMap.xnb
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Buildings\house-low-texture.xnb
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence1.xnb
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence2.xnb
@@ -287,7 +281,6 @@ C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\A
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\turn_around.xnb
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\hudFont.xnb
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\menu.xnb
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Debug\Fonts\debugFont.xnb
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\SpriteFont1.xnb
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001_001_0.xnb
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\GameAudio.xgs
@@ -813,3 +806,17 @@ C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\G
 C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CopyComplete
 C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.exe
 C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.pdb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box_collision.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Characters\enemy_collision.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Zones\zone_collision.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_001.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_002.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_001.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_002.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_002.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_001.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Pickups\pickup_collision.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\main_theme.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\item_twinkle.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\battle_theme.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\wall_bump.xnb

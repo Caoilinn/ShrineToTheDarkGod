@@ -7,9 +7,10 @@ namespace GDLibrary
 {
     public class CombatManager : PausableGameComponent
     {
-        public static bool inCombat;
-        
+
+
         #region Fields
+        public static bool inCombat;
         private Keys[] combatKeys;
         private List<CharacterObject> characters;
         private PlayerObject player;
@@ -241,7 +242,7 @@ namespace GDLibrary
                         EventCategoryType.Game));
 
                     this.enemies.Remove(enemyOnFocus);
-                    this.combat = false;
+                    CombatManager.inCombat = false;
                     Console.WriteLine("YOU HAVE WON!!!");
                 }
                   
