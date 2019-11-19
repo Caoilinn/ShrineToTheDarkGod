@@ -477,7 +477,7 @@ namespace GDApp
             string sceneID = "";
             string buttonID = "";
             string buttonText = "";
-            int verticalBtnSeparation = 50;
+            int verticalBtnSeparation = 55;
 
             #region Main Menu
             sceneID = "main menu";
@@ -512,8 +512,8 @@ namespace GDApp
             buttonText = "Start";
 
             position = new Vector2(
-                graphics.PreferredBackBufferWidth / 2.0f, 
-                200
+                graphics.PreferredBackBufferWidth / 4.0f, 
+                300
             );
 
             texture = this.textureDictionary["genericbtn"];
@@ -521,7 +521,7 @@ namespace GDApp
             transform = new Transform2D(
                 position,
                 0, 
-                new Vector2(1.8f, 0.6f),
+                new Vector2(1.8f, 1f),
                 new Vector2(texture.Width / 2.0f, 
                 texture.Height / 2.0f), 
                 new Integer2(texture.Width, texture.Height)
@@ -538,7 +538,7 @@ namespace GDApp
                 texture, 
                 buttonText,
                 this.fontDictionary["menu"],
-                Color.DarkGray, 
+                Color.Black, 
                 new Vector2(0, 2)
             );
 
@@ -553,7 +553,7 @@ namespace GDApp
             clone.Transform.Translation += new Vector2(0, verticalBtnSeparation);
 
             //Change the texture blend color
-            clone.Color = Color.LightGreen;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
             //Add controls button - clone the audio button then just reset texture, ids etc in all the clones
@@ -565,7 +565,7 @@ namespace GDApp
             clone.Transform.Translation += new Vector2(0, 2 * verticalBtnSeparation);
 
             //Change the texture blend color
-            clone.Color = Color.LightBlue;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
             //Add exit button - clone the audio button then just reset texture, ids etc in all the clones
@@ -577,7 +577,7 @@ namespace GDApp
             clone.Transform.Translation += new Vector2(0, 3 * verticalBtnSeparation);
 
             //Change the texture blend color
-            clone.Color = Color.LightYellow;
+            clone.Color = Color.White;
             
             //Store the original color since if we modify with a controller and need to reset
             clone.OriginalColor = clone.Color;
@@ -617,7 +617,7 @@ namespace GDApp
             clone.Text = "Volume Up";
             
             //Change the texture blend color
-            clone.Color = Color.LightPink;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
             //Add volume down button - clone the audio button then just reset texture, ids etc in all the clones
@@ -629,7 +629,7 @@ namespace GDApp
             clone.Text = "Volume Down";
 
             //Change the texture blend color
-            clone.Color = Color.LightGreen;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
             //Add volume mute button - clone the audio button then just reset texture, ids etc in all the clones
@@ -641,7 +641,7 @@ namespace GDApp
             clone.Text = "Volume Mute";
             
             //Change the texture blend color
-            clone.Color = Color.LightBlue;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
             //Add volume mute button - clone the audio button then just reset texture, ids etc in all the clones
@@ -653,7 +653,7 @@ namespace GDApp
             clone.Text = "Volume Un-mute";
             
             //Change the texture blend color
-            clone.Color = Color.LightSalmon;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
             //Add back button - clone the audio button then just reset texture, ids etc in all the clones
@@ -665,7 +665,7 @@ namespace GDApp
             clone.Text = "Back";
             
             //Change the texture blend color
-            clone.Color = Color.LightYellow;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
             #endregion
 
@@ -701,12 +701,12 @@ namespace GDApp
             clone = (UIButtonObject)uiButtonObject.Clone();
             
             //Move down on Y-axis for next button
-            clone.Transform.Translation += new Vector2(0, 9 * verticalBtnSeparation);
+            clone.Transform.Translation += new Vector2(700, 7 * verticalBtnSeparation);
             clone.ID = "backbtn";
             clone.Text = "Back";
             
             //Change the texture blend color
-            clone.Color = Color.LightYellow;
+            clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
             #endregion
         }
