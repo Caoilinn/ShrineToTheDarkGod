@@ -65,6 +65,13 @@ namespace GDLibrary
         #endregion
 
         #region Event Handling
+
+        protected override void RegisterForEventHandling(EventDispatcher eventDispatcher)
+        {
+            eventDispatcher.UIChanged += EventDispatcher_MenuChanged;
+            base.RegisterForEventHandling(eventDispatcher);
+        }
+
         protected override void EventDispatcher_MenuChanged(EventData eventData)
         {
             //We need to override this method because the menu is OFF when other components are ON and vice versa
@@ -79,6 +86,9 @@ namespace GDLibrary
                 this.isVisible = true;
             }
         }
+        
+        
+
         #endregion
 
         #region Methods

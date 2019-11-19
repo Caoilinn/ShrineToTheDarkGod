@@ -7,9 +7,10 @@ namespace GDLibrary
 {
     public class CombatManager : PausableGameComponent
     {
-        public static bool inCombat;
-        
+
+
         #region Fields
+        public static bool inCombat;
         private Keys[] combatKeys;
         private List<CharacterObject> characters;
         private PlayerObject player;
@@ -224,6 +225,29 @@ namespace GDLibrary
                     this.player.TakeDamage(enemyAttack);
                     this.playerTurn = true;
                 }
+
+                if(this.player.Health <= 0)
+                {
+                    Game.Exit();
+                }
+                if(this.enemyOnFocus.Health <= 0)
+                {
+                    EventDispatcher.Publish(new EventData(
+                        EventActionType.OnEnemyDeath,
+                        EventCategoryType.EnemyDeath,
+                        new object[] { enemyOnFocus }));
+
+                    EventDispatcher.Publish(new EventData(
+                        EventActionType.PlayerTurn,
+                        EventCategoryType.Game));
+
+                    this.enemies.Remove(enemyOnFocus);
+                    CombatManager.inCombat = false;
+                    Console.WriteLine("YOU HAVE WON!!!");
+                }
+                  
+
+
             }
         }
         #endregion

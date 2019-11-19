@@ -202,6 +202,12 @@ namespace GDLibrary
             #endregion
         }
 
+        /*
+        public override int GetHashCode()
+        {
+            return ID.GetHashCode();
+        }*/
+
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);

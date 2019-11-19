@@ -32,20 +32,26 @@ namespace GDLibrary
             //If an add item event has been published
             if(eventData.EventType == EventActionType.OnItemAdded)
             {
-                //Create item
-                ImmovablePickupObject item = eventData.AdditionalParameters[0] as ImmovablePickupObject;
+                ImmovablePickupObject itemToAdd = eventData.AdditionalParameters[0] as ImmovablePickupObject;
 
-                //Publish UI event
+                EventDispatcher.Publish(new EventData(
+                    EventActionType.OnInventoryPickUp,
+                    EventCategoryType.UIMenu,
+                    new object[] { itemToAdd })
+                    );
+
+                this.AddItem(itemToAdd);
+
+               
                 EventDispatcher.Publish(
                     new EventData(
                         EventActionType.OnUpdateHud,
                         EventCategoryType.UI,
-                        new object[] { item }
+                        new object[] { itemToAdd.PickupParameters.PickupType }
                     )
                 );
 
-                //Add to inventory
-                AddItem(item);
+                
             }
 
             //If a remove item evetn has been published

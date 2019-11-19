@@ -150,8 +150,8 @@ namespace GDApp
             InitializeMenu();
             InitializeUI();
 
-            InitializeDebug();
-            //InitializeDebugCollisionSkinInfo();
+            //InitializeDebug();
+           // InitializeDebugCollisionSkinInfo();
 
             base.Initialize();
         }
@@ -1392,7 +1392,7 @@ namespace GDApp
             #region Dual Textures
             this.textureDictionary.Load("Assets/Textures/Foliage/Ground/grass_midlevel");
             this.textureDictionary.Load("Assets/Textures/Foliage/Ground/grass_highlevel");
-            this.textureDictionary.Load("Assets/Debug/Textures/checkerboard_greywhite");
+            //this.textureDictionary.Load("Assets/Debug/Textures/checkerboard_greywhite");
             #endregion
 
             #region Menu Buttons
@@ -1417,9 +1417,9 @@ namespace GDApp
             #endregion
 
             #region Debug
-            this.textureDictionary.Load("Assets/Debug/Textures/checkerboard");
-            this.textureDictionary.Load("Assets/Debug/Textures/ml");
-            this.textureDictionary.Load("Assets/Debug/Textures/checkerboard");
+            //this.textureDictionary.Load("Assets/Debug/Textures/checkerboard");
+            //this.textureDictionary.Load("Assets/Debug/Textures/ml");
+            //this.textureDictionary.Load("Assets/Debug/Textures/checkerboard");
             #endregion
         }
 
@@ -1471,7 +1471,7 @@ namespace GDApp
             #region Game Fonts
             this.fontDictionary.Load("Assets/Fonts/hudFont", "hudFont");
             this.fontDictionary.Load("Assets/Fonts/menu", "menu");
-            this.fontDictionary.Load("Assets/Debug/Fonts/debugFont", "debugFont");
+            //this.fontDictionary.Load("Assets/Debug/Fonts/debugFont", "debugFont");
             #endregion
         }
 

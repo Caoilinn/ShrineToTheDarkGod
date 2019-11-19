@@ -36,6 +36,8 @@ namespace GDLibrary
         public delegate void DoorEventHandler(EventData eventData);
         public delegate void InventoryEventHandler(EventData eventData);
         public delegate void PlayerEventHandler(EventData eventData);
+        public delegate void UIChangedEventHandler(EventData eventData);
+        public delegate void EnemyDeathEventHandler(EventData eventData);
         #endregion
 
         #region Events
@@ -53,6 +55,8 @@ namespace GDLibrary
         public event DoorEventHandler DoorEvent;
         public event InventoryEventHandler InventoryEvent;
         public event PlayerEventHandler PlayerChanged;
+        public event UIChangedEventHandler UIChanged;
+        public event EnemyDeathEventHandler EnemyDeathEvent;
         #endregion
 
         #region Constuctors
@@ -151,7 +155,12 @@ namespace GDLibrary
                 case EventCategoryType.Player:
                     OnPlayer(eventData);
                     break;
-                    
+                case EventCategoryType.UIMenu:
+                    OnUIChanged(eventData);
+                    break;
+                case EventCategoryType.EnemyDeath:
+                    OnEnemyDeath(eventData);
+                    break;
                 default:
                     break;
             }
@@ -180,6 +189,11 @@ namespace GDLibrary
         protected virtual void OnMenuChanged(EventData eventData)
         {
             MenuChanged?.Invoke(eventData);
+        }
+
+        protected virtual void OnUIChanged(EventData eventData)
+        {
+            UIChanged?.Invoke(eventData);
         }
 
         //Called when a 2D sound event is sent e.g. play "menu music"
@@ -216,6 +230,11 @@ namespace GDLibrary
         protected virtual void OnRemoveActor(EventData eventData)
         {
             RemoveActorChanged?.Invoke(eventData);
+        }
+
+        protected virtual void OnEnemyDeath(EventData eventData)
+        {
+            EnemyDeathEvent?.Invoke(eventData);
         }
 
         //Called when a debug related event occurs (e.g. show/hide debug info)
