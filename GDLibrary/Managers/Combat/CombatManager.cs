@@ -57,19 +57,68 @@ namespace GDLibrary
                 Console.WriteLine("Player Attack Event");
                 //Object[] additionalParameters = {"playerAttack"};
                 //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerAttack, EventCategoryType.Sound2D, additionalParameters));
+                
+                
+                float damage = (float) eventData.AdditionalParameters[0];
+
+                EventDispatcher.Publish(new EventData(
+                                            EventActionType.OnPlayerAttack,
+                                            EventCategoryType.UI,
+                                            new object[] { damage })
+                                            );
+                
+
             }
             else if (eventData.EventType == EventActionType.OnPlayerDefend)
             {
                 Console.WriteLine("Player Defend Event");
                 //Object[] additionalParameters = {"playerDefend"};
                 //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.Sound2D, additionalParameters));
+
+                
+                float damage = (float) eventData.AdditionalParameters[0];
+
+                
+                EventDispatcher.Publish(new EventData(
+                                            EventActionType.OnPlayerDefend,
+                                            EventCategoryType.UI,
+                                            new object[] { damage })
+                    );
+                
+
             }
+            else if (eventData.EventType == EventActionType.OnPlayerDodge)
+            {
+
+                Console.WriteLine("Player Defend Event");
+                float damage = (float)eventData.AdditionalParameters[0];
+                if (damage <= 0)
+                    Console.WriteLine("Dodge Success");
+
+                EventDispatcher.Publish(new EventData(
+                                            EventActionType.OnPlayerDefend,
+                                            EventCategoryType.UI,
+                                            new object[] { damage })
+                    );
+
+            } 
             else if (eventData.EventType == EventActionType.OnEnemyAttack)
             {
                 Console.WriteLine("Enemy Attack Event");
                 //Object[] additionalParameters = {"enemyAttack"};
                 //EventDispatcher.Publish(new EventData(EventActionType.OnEnemyAttack, EventCategoryType.Sound2D, additionalParameters));
-            }
+                /*
+                float damage = (float)eventData.AdditionalParameters[0];
+
+
+                EventDispatcher.Publish(new EventData(
+                                            EventActionType.OnPlayerDefend,
+                                            EventCategoryType.UI,
+                                            new object[] { damage })
+                    );
+                */
+
+            } 
             else if (eventData.EventType == EventActionType.OnBattleEnd)
             {
                 //Combat ended
@@ -80,6 +129,7 @@ namespace GDLibrary
                 //Exit the game for now
                 this.Game.Exit();
             }
+
         }
         #endregion
 
@@ -99,6 +149,7 @@ namespace GDLibrary
             Enemy enemy= this.enemies.Find(predicate);
             if (enemy != null)
                 return this.enemies.Remove(enemy);
+            
 
             return false;
         }
@@ -158,7 +209,8 @@ namespace GDLibrary
                         EventDispatcher.Publish(
                             new EventData(
                                 EventActionType.OnPlayerAttack,
-                                EventCategoryType.Combat
+                                EventCategoryType.Combat,
+                                new object[] { damage }
                             )
                         );
 
@@ -179,7 +231,8 @@ namespace GDLibrary
                         EventDispatcher.Publish(
                             new EventData(
                                 EventActionType.OnPlayerDefend,
-                                EventCategoryType.Combat
+                                EventCategoryType.Combat,
+                                new object[] { damage }
                             )
                         );
 
@@ -194,20 +247,32 @@ namespace GDLibrary
                     {
                         PrintStats(enemyOnFocus);
                         int dodge = random.Next(1, 7);
+                        float damage = enemyOnFocus.Attack;
 
                         if (dodge % 2 == 0)
                         {
+                            damage = 0f;
+
                             EventDispatcher.Publish(
                             new EventData(
                                 EventActionType.OnPlayerDodge,
-                                EventCategoryType.Combat)
+                                EventCategoryType.Combat,
+                                new object[] { damage })
                             );
 
                             return;
                         }
                         else
                         {
-                            player.TakeDamage(enemyOnFocus.Attack);
+                            player.TakeDamage(damage);
+
+                            EventDispatcher.Publish(
+                            new EventData(
+                                EventActionType.OnPlayerDodge,
+                                EventCategoryType.Combat,
+                                new object[] { damage })
+                            );
+
                         }
                     }
                 }
@@ -221,6 +286,13 @@ namespace GDLibrary
                             EventCategoryType.Combat
                         )
                     );
+
+                    EventDispatcher.Publish(
+                            new EventData(
+                                EventActionType.OnEnemyAttack,
+                                EventCategoryType.UI,
+                                new object[] { enemyAttack })
+                            );
 
                     this.player.TakeDamage(enemyAttack);
                     this.playerTurn = true;
@@ -241,9 +313,13 @@ namespace GDLibrary
                         EventActionType.PlayerTurn,
                         EventCategoryType.Game));
 
+                    EventDispatcher.Publish(new EventData(
+                        EventActionType.OnEnemyDeath,
+                        EventCategoryType.UI));
+
                     this.enemies.Remove(enemyOnFocus);
                     CombatManager.inCombat = false;
-                    Console.WriteLine("YOU HAVE WON!!!");
+                    //Console.WriteLine("YOU HAVE WON!!!");
                 }
                   
 

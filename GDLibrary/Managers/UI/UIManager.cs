@@ -21,24 +21,21 @@ namespace GDLibrary
         #region Properties
         public bool IsVisible
         {
-            get
-            {
+            get {
                 return this.isVisible;
             }
         }
 
         public ManagerParameters ManagerParameters
         {
-            get
-            {
+            get {
                 return this.managerParameters;
             }
         }
 
         public List<DrawnActor2D> ActiveList
         {
-            get
-            {
+            get {
                 return this.activeList;
             }
         }
@@ -46,13 +43,14 @@ namespace GDLibrary
 
         #region Constructors
         public UIManager(
-            Game game, 
+            Game game,
             ManagerParameters managerParameters,
-            CameraManager cameraManager, 
-            SpriteBatch spriteBatch, 
+            CameraManager cameraManager,
+            SpriteBatch spriteBatch,
             EventDispatcher eventDispatcher,
             StatusType statusType
-        ) : base(game, eventDispatcher, statusType) {
+        ) : base(game, eventDispatcher, statusType)
+        {
             this.uiDictionary = new Dictionary<string, List<DrawnActor2D>>();
 
             //Used to listen for input
@@ -69,7 +67,43 @@ namespace GDLibrary
         protected override void RegisterForEventHandling(EventDispatcher eventDispatcher)
         {
             eventDispatcher.UIChanged += EventDispatcher_MenuChanged;
+            eventDispatcher.UIChanged += EventDispatcher_UICombat;
             base.RegisterForEventHandling(eventDispatcher);
+        }
+
+        protected void EventDispatcher_UICombat(EventData eventData)
+        {
+            float damage = 0;
+
+            if (eventData.EventType != EventActionType.OnEnemyDeath)
+            {
+                damage = (float)eventData.AdditionalParameters[0];
+            }
+            switch (eventData.EventType)
+            {
+                case EventActionType.OnPlayerAttack:
+                    Console.WriteLine("Player Attatcked with damage of " + damage);
+                    break;
+                case EventActionType.OnPlayerDefend:
+                    Console.WriteLine("Player Defended taking damage of " + damage);
+                    break;
+                case EventActionType.OnPlayerDodge:
+                    if (damage <= 0)
+                        Console.WriteLine("Player Dodged");
+                    else
+                        Console.WriteLine("Player Dodge Failed, the player took damage of " + damage);
+                    break;
+                case EventActionType.OnEnemyAttack:
+                    Console.WriteLine("Enemy Attatcked with damage of " + damage);
+                    break;
+                case EventActionType.OnEnemyDeath:
+                    Console.WriteLine("YOU HAVE BEATEN THE ENEMY");
+                    break;
+
+            }
+
+
+
         }
 
         protected override void EventDispatcher_MenuChanged(EventData eventData)
@@ -79,15 +113,14 @@ namespace GDLibrary
             {
                 this.StatusType = StatusType.Off;
                 this.isVisible = false;
-            }
-            else if (eventData.EventType == EventActionType.OnPause)
+            } else if (eventData.EventType == EventActionType.OnPause)
             {
                 this.StatusType = StatusType.Drawn | StatusType.Update;
                 this.isVisible = true;
             }
         }
-        
-        
+
+
 
         #endregion
 
@@ -97,8 +130,7 @@ namespace GDLibrary
             if (this.uiDictionary.ContainsKey(sceneID))
             {
                 this.uiDictionary[sceneID].Add(actor);
-            }
-            else
+            } else
             {
                 List<DrawnActor2D> newList = new List<DrawnActor2D>();
                 newList.Add(actor);
