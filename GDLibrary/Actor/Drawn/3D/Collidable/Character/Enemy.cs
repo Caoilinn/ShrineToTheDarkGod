@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using JigLibX.Collision;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GDLibrary
@@ -45,7 +46,7 @@ namespace GDLibrary
             //If the enemy is in motion, return
             if (this.InMotion) return;
 
-            #region Old Code
+            #region Movement Algorithm
             Vector3 playerPosition = playerPos.Translation;
             Vector3 enemyPosition = this.Transform.Translation;
 
@@ -108,14 +109,6 @@ namespace GDLibrary
                 }
             }
             #endregion
-
-            //Need to create a function that generates a translation and a rotation, based on the players position
-            //Function should feed the HandleMovement method
-
-            //Very simple test code
-            //Vector3 currentPosition = this.Transform.Translation;
-            //this.TargetPosition = new Vector3(254, 0, 0);
-            //this.Translation = (gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * this.Transform.Right);
         }
 
         public void TakeDamage(float damage)

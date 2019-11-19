@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GDLibrary
 {
-    class InteractableGate : MoveablePickupObject
+    public class InteractableGate : MoveablePickupObject
     {
         public InteractableGate(
             string id, 

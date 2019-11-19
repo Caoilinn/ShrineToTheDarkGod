@@ -84,6 +84,7 @@ namespace GDLibrary
             eventDispatcher.RemoveActorChanged += EventDispatcher_RemoveActorChanged;
             eventDispatcher.AddActorChanged += EventDispatcher_AddActorChanged;
             eventDispatcher.DoorEvent += EventDispatcher_DoorOpen;
+
             //Dont forget to call the base method to register for OnStart, OnPause events!
             base.RegisterForEventHandling(eventDispatcher);
         }
@@ -126,7 +127,7 @@ namespace GDLibrary
             if(eventData.EventType == EventActionType.OnDoorOpen)
             {
                 object[] additionalParameters = eventData.AdditionalParameters;
-                string gateID = (string)additionalParameters[0];
+                string gateID = (string) additionalParameters[0];
 
                 InteractableGate gate = GetGate(gateID);
 
@@ -136,9 +137,7 @@ namespace GDLibrary
                     this.opaqueDrawList.Remove(gate);
                 }
             }
-
         }
-
         #endregion
 
         #region Methods
@@ -383,10 +382,10 @@ namespace GDLibrary
                 new EventData(
                     EventActionType.OnDoorOpen,
                     EventCategoryType.Door,
-                    new object[] { gateID })
-                    );
+                    new object[] { gateID }
+                )
+            );
         }
-
         #endregion
     }
 }

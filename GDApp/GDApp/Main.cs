@@ -52,6 +52,7 @@ namespace GDApp
         private MyMenuManager menuManager;
         private UIManager uiManager;
         private PickingManager pickingManager;
+        private InventoryManager inventoryManager;
 
         //Dispatchers
         private EventDispatcher eventDispatcher;
@@ -375,6 +376,16 @@ namespace GDApp
             Components.Add(this.gameStateManager);
             #endregion
 
+            #region Inventory Manager
+            this.inventoryManager = new InventoryManager(
+                this,
+                this.eventDispatcher,
+                StatusType.Off
+                );
+
+            Components.Add(this.inventoryManager);
+            #endregion
+
             #region Manager Parameters
             this.managerParameters = new ManagerParameters(
                 this.object3DManager,
@@ -383,7 +394,8 @@ namespace GDApp
                 this.keyboardManager,
                 this.gamePadManager,
                 this.soundManager,
-                this.physicsManager
+                this.physicsManager,
+                this.inventoryManager
             );
             #endregion
 
@@ -398,7 +410,7 @@ namespace GDApp
                 StatusType.Off,
                 this.managerParameters, 
                 this.cameraManager,
-                PickingBehaviourType.PickAndRemove,
+                PickingBehaviourType.PickOnly,
                 AppData.PickStartDistance, 
                 AppData.PickEndDistance, 
                 collisionPredicate
@@ -1147,19 +1159,25 @@ namespace GDApp
 
         public void ConstructTrigger(int triggerType, Transform3D transform)
         {
-            Transform3D gateTransform = transform.Clone() as Transform3D;
+            Transform3D triggerTransform = transform.Clone() as Transform3D;
 
             //Determine trigger type
             switch (triggerType)
             {
                 case 1:
+                    //Create win trigger
                     this.staticModel = new ZoneObject(
                         "Win Zone",
-                        ActorType.Zone,
-                        gateTransform,
-                        this.effectDictionary[AppData.WinZoneEffectID],
+                        ActorType.Trigger,
+                        triggerTransform,
+                        this.effectDictionary[AppData.LitModelsEffectID],
                         this.collisionBoxDictionary["zoneCollision"]
                     );
+
+                    //Enable collision
+                    this.staticModel.Enable(true, 1);
+
+                    //Add to object manager list
                     this.object3DManager.Add(this.staticModel);
                     break;
 
@@ -1183,7 +1201,7 @@ namespace GDApp
             //Create model
             this.staticModel = new CollidableArchitecture(
                 "Gate " + gateType,
-                ActorType.CollidableArchitecture,
+                ActorType.Gate,
                 gateTransform,
                 effectParameters,
                 model,
@@ -1202,8 +1220,7 @@ namespace GDApp
         {
             this.playerPosition = transform.Clone() as Transform3D;
         }
-
-        //Pull all of this code out into a dictionary
+        
         public void SpawnEnemy(int enemyType, Transform3D transform)
         {
             //Setup id
@@ -1212,7 +1229,7 @@ namespace GDApp
             //Setup dimensions
             Transform3D enemyTransform = transform.Clone() as Transform3D;
             enemyTransform.Translation += new Vector3(127, 0, 127);
-            enemyTransform.Rotation = new Vector3(-90, 0, 0);
+            enemyTransform.Rotation = new Vector3(-90, -180, 0);
 
             //Load model and effect parameters
             BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
@@ -1243,7 +1260,7 @@ namespace GDApp
                     break;
                 case 2:
                     id = "Cultist";
-                    transform.Look = -Vector3.UnitX;
+                    transform.Look = Vector3.UnitX;
                     health = 100;
                     attack = 30;
                     defence = 30;

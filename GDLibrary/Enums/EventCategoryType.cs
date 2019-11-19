@@ -24,6 +24,7 @@
         ObjectPicking,
         Combat,
         Inventory,
-        Movement
+        Movement,
+        UI
     }
 }

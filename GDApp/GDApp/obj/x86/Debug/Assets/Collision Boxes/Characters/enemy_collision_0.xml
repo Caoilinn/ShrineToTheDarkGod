@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>enemy_collision_002</Name>
     <Identity>
-      <SourceFilename>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Collision Boxes\Characters\enemy_collision.FBX</SourceFilename>
+      <SourceFilename>C:\Users\james\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Collision Boxes\Characters\enemy_collision.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>

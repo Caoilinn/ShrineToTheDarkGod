@@ -49,6 +49,12 @@ namespace GDLibrary
         private float decelerationRate;
         private Vector3 translationOffset;
         private EventDispatcher eventDispatcher;
+
+        //Consts for collision range calculations
+        private const float MIN_CURRENT_CELL = 0.0f;
+        private const float MAX_CURRENT_CELL = 0.5f;
+        private const float MIN_ADJACENT_CELL = 0.5f;
+        private const float MAX_ADJACENT_CELL = 1.0f;
         #endregion
 
         #region Properties
@@ -291,18 +297,7 @@ namespace GDLibrary
 
         #region Methods
         public override void HandleKeyboardInput(GameTime gameTime, Actor3D parentActor)
-        {
-            /* Notice in the code below that we are NO LONGER simply changing the camera translation value. 
-             * Since this is now a collidable camera we, instead, modify the camera position by calling the PlayerObject move methods.
-             * 
-             * Q. Why do we still use the rotation methods of Transform3D? 
-             * A. Rotating the camera doesnt affect CD/CR since the camera is modelled by a player object which has a capsule shape.
-             *    A capsule's collision response won't alter as a result of any rotation since its cross-section is spherical across the XZ-plane.
-             */
-
-            //If it is not the players turn, return
-            if (!StateManager.playerTurn) return;
-
+        { 
             if (parentActor != null)
             {
                 #region Translation
@@ -361,10 +356,13 @@ namespace GDLibrary
 
         public override void HandleMovement(Actor3D parentActor)
         {
+            //Take turns!
+            if (!StateManager.playerTurn) return;
+            
             #region Translation
             if (this.Translation != Vector3.Zero)
             {
-                //Prevenet the player from walking into a wall
+                //Prevent the player from walking into a wall
                 if (PreventMovement(parentActor)) return;
 
                 //If the current positon is near the target position
@@ -388,13 +386,11 @@ namespace GDLibrary
                         )
                     );
 
-                    //Clear blocked paths
+                    //Clear sets
                     this.blockedPaths.Clear();
-
-                    //Clear collision set
                     this.collisionSet.Clear();
 
-                    //Check for collision
+                    //Check for collision around the players new position
                     DetectCollision(parentActor);
                 }
                 else
@@ -460,9 +456,6 @@ namespace GDLibrary
             //If the player is stationary
             if (!this.InMotion)
             {
-                //Detect collisions around the player
-                DetectCollision(parentActor);
-
                 //If the player is about to walk into a wall
                 if (this.blockedPaths.Contains(Vector3.Normalize(this.Translation)))
                 {
@@ -535,6 +528,7 @@ namespace GDLibrary
             float length = 254;
             Vector3 position = parentActor.Transform.Translation;
 
+            //Create a list of directions - n, s, e, w
             List<Vector3> directions = new List<Vector3>
             {
                 parentActor.Transform.Look,
@@ -543,97 +537,90 @@ namespace GDLibrary
                 -parentActor.Transform.Right
             };
 
+            //Checks for collision around the player
             foreach (Vector3 direction in directions)
             {
                 CheckForCollisionWithWall(position, direction, length);
                 CheckForCollisionWithPickup(position, direction, length);
                 CheckForCollisionWithEnemy(position, direction, length);
+                CheckForCollisionWithTrigger(position, direction, length);
+                CheckForCollisionWithGate(position, direction, length);
             }
+        }
+
+        public object[] CheckForCollision(Vector3 position, Vector3 direction, float length, ActorType actorType)
+        {
+            //Create a segment ray
+            Vector3 start = position;
+            Vector3 delta = direction * length;
+            Segment seg = new Segment(start, delta);
+            Vector3 x = seg.GetEnd();
+
+            //Returns true if segment intersects with a collidable object (that is not the player object)
+            CollidableObjectPredicate pred = new CollidableObjectPredicate(actorType);
+
+            //Use JigLib's in-built SegmentIntersect() method to check for collision with the ray
+            this.ManagerParameters.PhysicsManager.PhysicsSystem.CollisionSystem.SegmentIntersect(
+                out frac,
+                out skin,
+                out pos,
+                out normal,
+                seg,
+                pred
+            );
+
+            //Return an array of collision info
+            return new object[] { frac, skin, pos, normal };
         }
 
         //Uses a ray to check for collision with a wall, given a starting position, a cast direction, and a ray length
         public void CheckForCollisionWithWall(Vector3 position, Vector3 direction, float length)
         {
-            //Create a segment ray
-            Vector3 start = position;
-            Vector3 delta = direction * length;
-            Segment seg = new Segment(start, delta);
-
-            //Returns true if segment intersects with a collidable object (that is not the player object)
-            CollidableObjectPredicate pred = new CollidableObjectPredicate(ActorType.CollidableArchitecture);
-
-            //Use JigLib's in-built SegmentIntersect() method to check for collision with the ray
-            this.ManagerParameters.PhysicsManager.PhysicsSystem.CollisionSystem.SegmentIntersect(
-                out frac,
-                out skin,
-                out pos,
-                out normal,
-                seg,
-                pred
-            );
+            //Check for collision
+            object[] collisionInfo = CheckForCollision(position, direction, length, ActorType.CollidableArchitecture);
 
             //If a collision has taken place
-            if (skin != null && skin.Owner != null)
-            {
-                //Marked path as blocked
-                if (!this.blockedPaths.Contains(direction))
-                {
-                    this.blockedPaths.Add(direction);
+            if (collisionInfo[1] != null && (collisionInfo[1] as CollisionSkin).Owner != null)
+            
+                #region Current Cell
+                //If the collision takes place in the current cell
+                if ((float) collisionInfo[0] >= MIN_CURRENT_CELL && (float) collisionInfo[0] <= MAX_CURRENT_CELL)
+                {   
+                    //If we have not yet marked this path as blocked
+                    if (!this.blockedPaths.Contains(direction))
+
+                        //Mark the path as blocked
+                        this.blockedPaths.Add(direction);
                 }
-            }
+                #endregion
         }
 
         //Uses a ray to check for collision with a pickup, given a starting position, a cast direction, and a ray length
         public void CheckForCollisionWithPickup(Vector3 position, Vector3 direction, float length)
         {
-            //Create a segment ray
-            Vector3 start = position;
-            Vector3 delta = direction * length;
-            Segment seg = new Segment(start, delta);
-
-            //Returns true if segment intersects with a collidable object (that is not the player object)
-            CollidableObjectPredicate pred = new CollidableObjectPredicate(ActorType.CollidablePickup);
-
-            //Use JigLib's in-built SegmentIntersect() method to check for collision with the ray
-            this.ManagerParameters.PhysicsManager.PhysicsSystem.CollisionSystem.SegmentIntersect(
-                out frac,
-                out skin,
-                out pos,
-                out normal,
-                seg,
-                pred
-            );
+            //Check for collision
+            object[] collisionInfo = CheckForCollision(position, direction, length, ActorType.CollidablePickup);
 
             //If a collision has taken place
-            if (skin != null && skin.Owner != null)
+            if (collisionInfo[1] != null && (collisionInfo[1] as CollisionSkin).Owner != null)
             {
-                //Cast to collidable object
-                CollidableObject pickup = skin.Owner.ExternalData as CollidableObject;
+                //Cast the collision object to a collidable object
+                CollidableObject pickup = (collisionInfo[1] as CollisionSkin).Owner.ExternalData as CollidableObject;
 
-                //If the pickup is within the range (adjacent cell)
-                if (frac >= 0.5f && frac <= 1.0f)
+                //If a collision has already taken place with this object
+                if (this.collisionSet.Contains(pickup))
+
+                    //Return
+                    return;
+
+                //Otherwise, add pickup to the collision set
+                this.collisionSet.Add(pickup);
+
+                #region Current Cell
+                //If the collision takes place in the current cell
+                if ((float) collisionInfo[0] >= MIN_CURRENT_CELL && (float) collisionInfo[0] <= MAX_CURRENT_CELL)
                 {
-                    //If the pickup has not yet been realised
-                    if (!this.collisionSet.Contains(pickup))
-                    {
-                        //Add pickup to the collision set
-                        this.collisionSet.Add(pickup);
-
-                        //Publish event to play sound effect
-                        EventDispatcher.Publish(
-                            new EventData(
-                                EventActionType.OnPlay,
-                                EventCategoryType.Sound2D,
-                                new object[] { "item_twinkle" }
-                            )
-                        );
-                    }
-                }
-
-                //If the pickup is within the range (current cell)
-                if (frac <= 0.5f)
-                {
-                    //Publish event to remove pickup
+                    //Publish an event to remove the pickup
                     EventDispatcher.Publish(
                         new EventData(
                             pickup,
@@ -642,16 +629,16 @@ namespace GDLibrary
                         )
                     );
 
-                    //Publish event to add to inventory
+                    //Publish an event to add the pickup to inventory
                     EventDispatcher.Publish(
                         new EventData(
-                            EventActionType.OnAddToInventory,
-                            EventCategoryType.Pickup,
+                            EventActionType.OnItemAdded,
+                            EventCategoryType.Inventory,
                             new object[] { pickup }
                         )
                     );
 
-                    //Publish event to update hud
+                    //Publish an event to update the hud
                     EventDispatcher.Publish(
                         new EventData(
                             EventActionType.OnUpdateHud,
@@ -660,105 +647,209 @@ namespace GDLibrary
                         )
                     );
                 }
+                #endregion
+
+                #region Adjacent Cell
+                //If the collision takes place in an adjacent cell
+                if ((float) collisionInfo[0] >= MIN_ADJACENT_CELL && (float) collisionInfo[0] <= MAX_ADJACENT_CELL)
+                {
+                    //Publish event to play sound effect
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlay,
+                            EventCategoryType.Sound2D,
+                            new object[] { "item_twinkle" }
+                        )
+                    );
+                }
+                #endregion
             }
         }
 
-        //Uses a ray to check for collision with a pickup, given a starting position, a cast direction, and a ray length
+        //Uses a ray to check for collision with an enemy, given a starting position, a cast direction, and a ray length
         public void CheckForCollisionWithEnemy(Vector3 position, Vector3 direction, float length)
         {
-            //Create a segment ray
-            Vector3 start = position;
-            Vector3 delta = direction * length;
-            Segment seg = new Segment(start, delta);
-
-            //Returns true if segment intersects with a collidable object (that is not the player object)
-            CollidableObjectPredicate pred = new CollidableObjectPredicate(ActorType.Enemy);
-
-            //Use JigLib's in-built SegmentIntersect() method to check for collision with the ray
-            this.ManagerParameters.PhysicsManager.PhysicsSystem.CollisionSystem.SegmentIntersect(
-                out frac,
-                out skin,
-                out pos,
-                out normal,
-                seg,
-                pred
-            );
+            //Check for collision
+            object[] collisionInfo = CheckForCollision(position, direction, length, ActorType.Enemy);
 
             //If a collision has taken place
-            if (skin != null && skin.Owner != null)
+            if (collisionInfo[1] != null && (collisionInfo[1] as CollisionSkin).Owner != null)
             {
-                //Cast to collidable object
-                CollidableObject enemy = skin.Owner.ExternalData as CollidableObject;
+                //Cast the collision object to a collidable object
+                CollidableObject enemy = (collisionInfo[1] as CollisionSkin).Owner.ExternalData as CollidableObject;
 
-                //If the enemy is within the range (adjacent cell)
-                if (frac >= 0.0f && frac <= 1.0f)
+                #region Adjacent Cell
+                //If the collision takes place in this cell, or in an adjacent cell
+                if ((float) collisionInfo[0] >= MIN_ADJACENT_CELL && (float) collisionInfo[0] <= MAX_ADJACENT_CELL)
                 {
-                    //Marked path as blocked
+                    //If we have not yet marked this path as blocked
                     if (!this.blockedPaths.Contains(direction))
-                    {
+
+                        //Mark the path as blocked
                         this.blockedPaths.Add(direction);
-                    }
 
-                    //If the enemy has not yet been realised
-                    if (!this.collisionSet.Contains(enemy))
+                    //Publish an event to play battle music
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlay,
+                            EventCategoryType.Sound2D,
+                            new object[] { "battle_theme" }
+                        )
+                    );
+
+                    //Publish an event to initiate battle
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnInitiateBattle,
+                            EventCategoryType.Combat,
+                            new object[] { enemy }
+                        )
+                    );
+                }
+                #endregion
+            }
+        }
+
+        //Uses a ray to check for collision with a gate, given a starting position, a cast direction, and a ray length
+        public void CheckForCollisionWithGate(Vector3 position, Vector3 direction, float length)
+        {
+            //Check for collision
+            object[] collisionInfo = CheckForCollision(position, direction, length, ActorType.Gate);
+
+            //If a collision has taken place
+            if (collisionInfo[1] != null && (collisionInfo[1] as CollisionSkin).Owner != null)
+            {
+                //Cast the collision object to a collidable object
+                CollidableObject gate = (collisionInfo[1] as CollisionSkin).Owner.ExternalData as CollidableObject;
+
+                if (gate.Transform == null) return;
+
+                //If a collision has already taken place with this object
+                if (this.collisionSet.Contains(gate))
+
+                    //Return
+                    return;
+
+                //Otherwise, add pickup to the collision set
+                this.collisionSet.Add(gate);
+
+                #region Adjacent Cell
+                //If the collision takes place in an adjacent cell
+                if ((float) collisionInfo[0] >= MIN_CURRENT_CELL && (float) collisionInfo[0] <= MAX_ADJACENT_CELL)
+                {
+                    //If we have not yet marked this path as blocked
+                    if (!this.blockedPaths.Contains(direction))
+
+                        //Mark the path as blocked
+                        this.blockedPaths.Add(direction);
+
+                    if (this.ManagerParameters.InventoryManager.HasItem("Gate Key"))
                     {
-                        //Add enemy to the collision set
-                        this.collisionSet.Add(enemy);
-
-                        //Publish event to play music
-                        EventDispatcher.Publish(
-                            new EventData(
-                                EventActionType.OnPlay,
-                                EventCategoryType.Sound2D,
-                                new object[] { "battle_theme" }
-                            )
-                        );
-
-                        //
-                        EventDispatcher.Publish(
-                            new EventData(
-                                EventActionType.OnInitiateBattle,
-                                EventCategoryType.Combat,
-                                new object[] { enemy }
-                            )
-                        );
+                        //Remove Gate
+                        gate.Remove();
+                        this.ManagerParameters.ObjectManager.Remove(gate);
+                        this.blockedPaths.Remove(direction);
                     }
                 }
+                #endregion
+            }
+        }
+
+        public void CheckForCollisionWithTrigger(Vector3 position, Vector3 direction, float length)
+        {
+            //Check for collision
+            object[] collisionInfo = CheckForCollision(position, direction, length, ActorType.Trigger);
+
+            //If a collision has taken place
+            if (collisionInfo[1] != null && (collisionInfo[1] as CollisionSkin).Owner != null)
+            {
+                //Cast the collision object to a collidable object
+                CollidableObject trigger = (collisionInfo[1] as CollisionSkin).Owner.ExternalData as CollidableObject;
+
+                #region Current Cell
+                //If the collision takes place in the current cell
+                if ((float) collisionInfo[0] >= MIN_CURRENT_CELL && (float) collisionInfo[0] <= MAX_CURRENT_CELL)
+                {
+                    //Publish an event to play music
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlay,
+                            EventCategoryType.Sound2D,
+                            new object[] { "battle_theme" }
+                        )
+                    );
+                }
+                #endregion
             }
         }
         #endregion
-
-        public void CheckSounds()
-        {
-            if (this.ManagerParameters.SoundManager == null) return;
-
-            bool isEnemyFound = false;
-            bool isPickupFound = false;
-
-            foreach (CollidableObject collidableObject in this.collisionSet)
-                if (collidableObject.ActorType.Equals(ActorType.Enemy))
-                    isEnemyFound = true;
-                else if (collidableObject.ActorType.Equals(ActorType.CollidablePickup))
-                    isPickupFound = true;
-
-            if (!isEnemyFound)
-                this.ManagerParameters.SoundManager.PauseCue("battle_theme");
-
-            if (!isPickupFound)
-                EventDispatcher.Publish(
-                    new EventData(
-                        EventActionType.OnPause,
-                        EventCategoryType.Sound2D,
-                        new object[] { "item_twinkle" }
-                    )
-                );
-        }
 
         public override void Update(GameTime gameTime, IActor actor)
         {
             base.Update(gameTime, actor);
-            CheckSounds();
         }
         #endregion
     }
 }
+
+//If this is the first time that we have seen the pickup
+//if (!this.collisionSet.Contains(pickup))
+//{
+//Add the pickup to the collision set
+//this.collisionSet.Add(pickup);
+//}
+
+////If the enemy has not yet been realised
+//if (!this.collisionSet.Contains(enemy))
+//{
+//    //Add enemy to the collision set
+//    this.collisionSet.Add(enemy);
+//}
+
+////If the enemy has not yet been realised
+//if (!this.collisionSet.Contains(gate))
+//{
+//    //Add enemy to the collision set
+//    this.collisionSet.Add(gate);
+
+
+//if (this.ManagerParameters.InventoryManager.HasKey("Key"))
+//{
+
+//}
+
+//}
+
+////If the trigger has not yet been realised
+//if (!this.collisionSet.Contains(trigger))
+//{
+//    //Add enemy to collision set
+//    this.collisionSet.Add(trigger);
+//}
+
+//public void CheckSounds()
+//{
+//    if (this.ManagerParameters.SoundManager == null) return;
+
+//    bool isEnemyFound = false;
+//    bool isPickupFound = false;
+
+//    foreach (CollidableObject collidableObject in this.collisionSet)
+//        if (collidableObject.ActorType.Equals(ActorType.Enemy))
+//            isEnemyFound = true;
+//        else if (collidableObject.ActorType.Equals(ActorType.CollidablePickup))
+//            isPickupFound = true;
+
+//    if (!isEnemyFound)
+//        this.ManagerParameters.SoundManager.PauseCue("battle_theme");
+
+//    if (!isPickupFound)
+//        EventDispatcher.Publish(
+//            new EventData(
+//                EventActionType.OnPause,
+//                EventCategoryType.Sound2D,
+//                new object[] { "item_twinkle" }
+//            )
+//        );
+//}
+//CheckSounds();
