@@ -358,7 +358,10 @@ namespace GDLibrary
         {
             //Take turns!
             if (!StateManager.playerTurn) return;
-            
+
+            //Finish the fight!
+            if (CombatManager.inCombat) return;
+
             #region Translation
             if (this.Translation != Vector3.Zero)
             {

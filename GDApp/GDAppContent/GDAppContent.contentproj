@@ -173,7 +173,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\Models\Characters\" />
     <Folder Include="Assets\Debug\Fonts\" />
     <Folder Include="Assets\Debug\Textures\" />
     <Folder Include="Assets\Models\Zones\" />
