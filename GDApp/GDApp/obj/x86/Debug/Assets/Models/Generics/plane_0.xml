@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>Plane001</Name>
     <Identity>
-      <SourceFilename>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Generics\plane.FBX</SourceFilename>
+      <SourceFilename>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Generics\plane.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>

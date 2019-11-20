@@ -987,8 +987,10 @@ namespace GDApp
 
             //Load model and effect parameters
             BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
+            effectParameters.Texture = this.textureDictionary["roomTexture" + roomType];
             Model model = this.modelDictionary["roomModel" + roomType];
 
+           
             //Load collision box
             Model collisionBox = this.collisionBoxDictionary["roomCollision" + roomType];
 
@@ -1097,6 +1099,7 @@ namespace GDApp
 
             //Load model and effect parameters
             BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
+            effectParameters.Texture = this.textureDictionary["gateTexture" + gateType];
             Model model = this.modelDictionary["gateModel" + gateType];
 
             //Load collision box
@@ -1375,6 +1378,8 @@ namespace GDApp
             #endregion
 
             #region Generic Textures
+            this.textureDictionary.Load("Assets/Textures/Props/Gates/gate_texture_001", "gateTexture1");
+            this.textureDictionary.Load("Assets/Textures/Props/Gates/gate_texture_002", "gateTexture2");
             this.textureDictionary.Load("Assets/Textures/Props/Crates/crate1");
             this.textureDictionary.Load("Assets/Textures/Props/Crates/crate2");
             this.textureDictionary.Load("Assets/Textures/Foliage/Ground/grass1");

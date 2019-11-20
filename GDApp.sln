@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDApp", "GDApp\GDApp\GDApp.csproj", "{E699B3D6-728E-4ABE-AC44-CD93E549D9D6}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "GDAppContent", "GDApp\GDAppContent\GDAppContent.contentproj", "{B2C6EC9E-432C-40C9-86FC-DA60962DB184}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDAppContent", "GDApp\GDAppContent\GDAppContent.contentproj", "{B2C6EC9E-432C-40C9-86FC-DA60962DB184}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDLibrary", "GDLibrary\GDLibrary.csproj", "{2ED0B0C9-D1D7-472E-868C-AFFFF00EA06B}"
 EndProject
