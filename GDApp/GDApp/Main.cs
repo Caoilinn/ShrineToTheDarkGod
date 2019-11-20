@@ -1105,6 +1105,7 @@ namespace GDApp
             EffectParameters effectParameters = this.effectDictionary["roomEffect" + roomType];
             Model model = this.modelDictionary["roomModel" + roomType];
 
+           
             //Load collision box
             Model collisionBox = this.collisionBoxDictionary["roomCollision" + roomType];
 
@@ -1447,6 +1448,8 @@ namespace GDApp
             #endregion
 
             #region Generic Textures
+            this.textureDictionary.Load("Assets/Textures/Props/Gates/gate_texture_001", "gateTexture1");
+            this.textureDictionary.Load("Assets/Textures/Props/Gates/gate_texture_002", "gateTexture2");
             this.textureDictionary.Load("Assets/Textures/Props/Crates/crate1");
             this.textureDictionary.Load("Assets/Textures/Props/Crates/crate2");
             this.textureDictionary.Load("Assets/Textures/Foliage/Ground/grass1");
