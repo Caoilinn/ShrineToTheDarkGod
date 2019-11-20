@@ -85,15 +85,17 @@ namespace GDLibrary
             eventDispatcher.AddActorChanged += EventDispatcher_AddActorChanged;
             eventDispatcher.DoorEvent += EventDispatcher_DoorOpen;
             eventDispatcher.EnemyDeathEvent += EventDispacter_EnemyDeath;
+
             //Dont forget to call the base method to register for OnStart, OnPause events!
             base.RegisterForEventHandling(eventDispatcher);
         }
 
         private void EventDispacter_EnemyDeath(EventData eventData)
         {
-            
+            (eventData.AdditionalParameters[0] as Enemy).Remove();
             this.opaqueDrawList.Remove((eventData.AdditionalParameters[0] as Enemy));
         }
+
         private void EventDispatcher_AddActorChanged(EventData eventData)
         {
             if (eventData.EventType == EventActionType.OnAddActor)
@@ -146,7 +148,6 @@ namespace GDLibrary
         #endregion
 
         #region Methods
-
         private InteractableGate GetGate(string gateID)
         {
             return this.opaqueDrawList.Find(x => x.ID == gateID) as InteractableGate;
@@ -168,7 +169,6 @@ namespace GDLibrary
             //Transparent objects
             this.rasterizerStateTransparent = new RasterizerState();
             this.rasterizerStateTransparent.CullMode = CullMode.None;
-
         }
 
         private void SetGraphicsStateObjects(bool isOpaque)

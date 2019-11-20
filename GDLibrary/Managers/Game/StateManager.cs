@@ -103,15 +103,15 @@ namespace GDLibrary
             //Did the event come from the player making a move?
             else if (eventData.EventType == EventActionType.PlayerTurn)
             {
-                this.PlayerTurn = true;
                 this.EnemyTurn = false;
+                this.PlayerTurn = true;
             }
 
             //Did the event come from an enemy making a move?
             else if (eventData.EventType == EventActionType.EnemyTurn)
             {
-                //this.EnemyTurn = true;
-                //this.PlayerTurn = false;
+                this.EnemyTurn = true;
+                this.PlayerTurn = false;
             }
         }
         #endregion

@@ -41,7 +41,7 @@ namespace GDLibrary
     {
         #region Fields
         private PlayerObject playerObject;
-        private float width;
+        private float radius;
         private float height;
         private float mass;
         private float jumpHeight;
@@ -66,15 +66,15 @@ namespace GDLibrary
             }
         }
 
-        public float Width
+        public float Radius
         {
             get
             {
-                return this.width;
+                return this.radius;
             }
             set
             {
-                this.width = (value > 0) ? value : 1;
+                this.radius = (value > 0) ? value : 1;
             }
         }
 
@@ -152,9 +152,8 @@ namespace GDLibrary
             Vector3 movementVector,
             Vector3 rotationVector,
             IActor parentActor,
-            float width,
+            float radius,
             float height,
-            float depth,
             float accelerationRate,
             float decelerationRate,
             float mass,
@@ -172,15 +171,15 @@ namespace GDLibrary
             movementVector,
             rotationVector,
             parentActor,
-            width,
+            translationOffset,
+
+            null,
+            mass,
+            radius,
             height,
-            depth,
             accelerationRate,
             decelerationRate,
-            mass,
             jumpHeight,
-            translationOffset,
-            null,
             eventDispatcher
         ) {
         }
@@ -197,22 +196,21 @@ namespace GDLibrary
             Vector3 movementVector,
             Vector3 rotationVector,
             IActor parentActor,
-            float width,
-            float height,
-            float depth,
-            float accelerationRate, 
-            float decelerationRate,
-            float mass, 
-            float jumpHeight, 
             Vector3 translationOffset,
             PlayerObject collidableObject,
+
+            float mass,
+            float radius,
+            float height,
+            float accelerationRate,
+            float decelerationRate,
+            float jumpHeight,
             EventDispatcher eventDispatcher
         ) : base(id, controllerType, moveKeys, moveSpeed, strafeSpeed, rotateSpeed, managerParameters, movementVector, rotationVector) {
-            this.width = width;
+            this.radius = radius;
             this.height = height;
             this.AccelerationRate = accelerationRate;
             this.DecelerationRate = decelerationRate;
-            this.Mass = mass;
             this.JumpHeight = jumpHeight;
 
             //Allows us to tweak the camera position within the player object 
@@ -242,22 +240,21 @@ namespace GDLibrary
                     transform,
                     null,
                     null,
-                    width,
+                    radius,
                     height,
-                    depth,
                     accelerationRate,
                     decelerationRate,
                     movementVector,
                     rotationVector,
                     moveSpeed,
                     rotateSpeed,
-                    this.MoveKeys,
-                    translationOffset,
-                    this.ManagerParameters.KeyboardManager,
-                    jumpHeight,
                     health,
                     attack,
-                    defence
+                    defence,
+                    moveKeys,
+                    translationOffset,
+                    this.ManagerParameters.KeyboardManager,
+                    jumpHeight
                 );
             }
 
@@ -554,17 +551,6 @@ namespace GDLibrary
             }
         }
 
-        //public void DetectCollision(Actor3D parentActor, Vector3 direction)
-        //{
-        //    float length = 254;
-        //    Vector3 position = parentActor.Transform.Translation;
-        //    CheckForCollisionWithWall(position, direction, length);
-        //    CheckForCollisionWithPickup(position, direction, length);
-        //    CheckForCollisionWithEnemy(position, direction, length);
-        //    CheckForCollisionWithTrigger(position, direction, length);
-        //    CheckForCollisionWithGate(position, direction, length);
-        //}
-
         public object[] CheckForCollision(Vector3 position, Vector3 direction, float length, ActorType actorType)
         {
             //Create a segment ray
@@ -624,6 +610,8 @@ namespace GDLibrary
                 //Cast the collision object to a collidable object
                 CollidableObject pickup = (collisionInfo[1] as CollisionSkin).Owner.ExternalData as CollidableObject;
 
+                if (pickup.Transform == null) return;
+
                 //If a collision has already taken place with this object
                 if (this.collisionSet.Contains(pickup))
 
@@ -637,14 +625,9 @@ namespace GDLibrary
                 //If the collision takes place in the current cell
                 if ((float) collisionInfo[0] >= MIN_CURRENT_CELL && (float) collisionInfo[0] <= MAX_CURRENT_CELL)
                 {
-                    //Publish an event to remove the pickup
-                    EventDispatcher.Publish(
-                        new EventData(
-                            pickup,
-                            EventActionType.OnRemoveActor,
-                            EventCategoryType.SystemRemove
-                        )
-                    );
+                    //Remove pickup skin
+                    pickup.Remove();
+                    this.ManagerParameters.ObjectManager.Remove(pickup);
 
                     //Publish an event to add the pickup to inventory
                     EventDispatcher.Publish(
@@ -810,12 +793,14 @@ namespace GDLibrary
         }
         #endregion
 
-        public void CheckSounds()
+        public void CheckSounds(Actor3D actor)
         {
             if (this.ManagerParameters.SoundManager == null) return;
 
             bool isEnemyFound = false;
             bool isPickupFound = false;
+
+            DetectCollision(actor);
 
             foreach (CollidableObject collidableObject in this.collisionSet)
                 if (collidableObject.ActorType.Equals(ActorType.Enemy))
@@ -832,7 +817,7 @@ namespace GDLibrary
 
         public override void Update(GameTime gameTime, IActor actor)
         {
-            CheckSounds();
+            CheckSounds(actor as Actor3D);
             base.Update(gameTime, actor);
         }
         #endregion

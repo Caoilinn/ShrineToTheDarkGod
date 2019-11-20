@@ -60,6 +60,8 @@ Content\Assets\Collision Boxes\Props\gate_collision_002.xnb
 Content\Assets\Models\Characters\enemy_002.xnb
 Content\Assets\Models\Characters\enemy_001.xnb
 Content\Assets\Collision Boxes\Pickups\pickup_collision.xnb
+Content\Assets\Models\Pickups\sword.xnb
+Content\Assets\Models\Pickups\key.xnb
 Content\Assets\Textures\Foliage\Ground\foliage.xnb
 Content\Assets\Textures\Foliage\Ground\grass1.xnb
 Content\Assets\Textures\Foliage\Shrubs\shrub1.xnb
@@ -137,8 +139,6 @@ Content\Assets\Fonts\hudFont.xnb
 Content\Assets\Fonts\menu.xnb
 Content\SpriteFont1.xnb
 Content\Assets\Models\Rooms\room_001_001_0.xnb
-Content\Assets\Models\Pickups\sword.xnb
-Content\Assets\Models\Pickups\key.xnb
 Content\Assets\Audio\GameAudio.xgs
 Content\Assets\Audio\Movement.xwb
 Content\Assets\Audio\Movement.xsb

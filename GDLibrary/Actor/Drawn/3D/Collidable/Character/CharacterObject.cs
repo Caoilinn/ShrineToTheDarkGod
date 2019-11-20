@@ -222,9 +222,8 @@ namespace GDLibrary
             Transform3D transform,
             EffectParameters effectParameters,
             Model model,
-            float width,
+            float radius,
             float height,
-            float depth,
             float accelerationRate,
             float decelerationRate,
             Vector3 movementVector,
@@ -235,6 +234,7 @@ namespace GDLibrary
             float attack,
             float defence
         ) : base(id, actorType, transform, effectParameters, model) {
+
             this.Body = new Character(
                 accelerationRate,
                 decelerationRate
@@ -244,8 +244,7 @@ namespace GDLibrary
             this.Body.ExternalData = this;
             this.Body.CollisionSkin = this.Collision;
 
-            Capsule capsule = new Capsule(Vector3.Zero, Matrix.CreateRotationX(MathHelper.PiOver2), 76, 154);
-
+            Capsule capsule = new Capsule(Vector3.Zero, Matrix.CreateRotationX(MathHelper.PiOver2), radius, height);
             this.Collision.AddPrimitive(
                 capsule,
                 (int)MaterialTable.MaterialID.NormalSmooth
@@ -289,7 +288,7 @@ namespace GDLibrary
             this.HandleMovement();
 
             //Update actual position of the model e.g. used by rail camera controllers
-            //this.Transform.Translation = this.Body.Transform.Position;
+            this.Transform.Translation = this.Body.Transform.Position;
             base.Update(gameTime);
         }
         #endregion

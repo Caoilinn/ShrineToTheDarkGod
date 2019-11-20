@@ -1,18 +1,27 @@
-﻿using JigLibX.Collision;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace GDLibrary
 {
-    public class Enemy : CharacterObject
+    public class Enemy : PlayerObject
     {
         #region Fields
-        private float health;
-        private float attack;
-        private float defence;
+        private bool completeTurn;
         #endregion
 
         #region Properties
+        public bool CompleteTurn
+        {
+            get
+            {
+                return this.completeTurn;
+            }
+            set
+            {
+                this.completeTurn = value;
+            }
+        }
         #endregion
 
         #region Constructors
@@ -22,18 +31,22 @@ namespace GDLibrary
             Transform3D transform,
             EffectParameters effectParameters,
             Model model,
-            float width,
+            float radius,
             float height,
-            float depth,
+            float accelerationRate,
+            float decelerationRate,
             Vector3 movementVector,
             Vector3 rotationVector,
             float moveSpeed,
             float rotateSpeed,
             float health,
             float attack,
-            float defence
-        ) : base(id, actorType, transform, effectParameters, model, width, height, depth, 0, 0, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence) {
-
+            float defence,
+            Keys[] moveKeys,
+            Vector3 translationOffset,
+            KeyboardManager keyboardManager,
+            float jumpHeight
+        ) : base(id, actorType, transform, effectParameters, model, radius, height, accelerationRate, decelerationRate, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, moveKeys, translationOffset, keyboardManager, jumpHeight) {    
         }
         #endregion
 
@@ -68,8 +81,14 @@ namespace GDLibrary
 
                 if (!this.InMotion)
                 {
+                    //If infront of the player
+                    if (Vector3.Distance(enemyPosition, playerPosition) == Vector3.Distance(new Vector3(0, 0, 0), new Vector3(1, 0, 0)))
+                    {
+
+                    }
+                    
                     //Forward
-                    if (Vector3.Distance(enemyPosition, playerPosition) > Vector3.Distance(adjacentCellAhead, playerPosition))
+                    else if (Vector3.Distance(enemyPosition, playerPosition) > Vector3.Distance(adjacentCellAhead, playerPosition))
                     {
                         //Calculate target position, relative to the enemy
                         this.TargetPosition = (this.Transform.Right * movementVector);
@@ -114,11 +133,6 @@ namespace GDLibrary
             #endregion
         }
 
-        public void TakeDamage(float damage)
-        {
-            this.Health -= damage;
-        }
-
         public override void HandleMovement()
         {
             if (!StateManager.enemyTurn) return;
@@ -134,8 +148,6 @@ namespace GDLibrary
 
                     //Update collision
                     this.CharacterBody.Position = this.Transform.Translation;
-                    JigLibX.Math.Transform transform = this.Body.Transform;
-                    this.Body.CollisionSkin.SetNewTransform(ref transform);
 
                     //Reset vectors
                     this.Translation = Vector3.Zero;
@@ -145,12 +157,7 @@ namespace GDLibrary
                     this.InMotion = false;
 
                     //Update game state
-                    EventDispatcher.Publish(
-                        new EventData(
-                            EventActionType.PlayerTurn, 
-                            EventCategoryType.Game
-                        )
-                    );
+                    EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));
                 }
                 else
                 {
@@ -162,8 +169,6 @@ namespace GDLibrary
 
                     //Update collision
                     this.CharacterBody.Position = this.Transform.Translation;
-                    JigLibX.Math.Transform transform = this.Body.Transform;
-                    this.Body.CollisionSkin.SetNewTransform(ref transform);
 
                     //Update motion state
                     this.InMotion = true;
@@ -201,12 +206,6 @@ namespace GDLibrary
             }
             #endregion
         }
-
-        /*
-        public override int GetHashCode()
-        {
-            return ID.GetHashCode();
-        }*/
 
         public override void Update(GameTime gameTime)
         {

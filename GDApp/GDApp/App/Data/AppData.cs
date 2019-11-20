@@ -53,43 +53,34 @@ namespace GDLibrary
         public static readonly Keys[] CameraMoveKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.E, Keys.Space, Keys.C, Keys.LeftShift, Keys.RightShift};
         public static readonly Keys[] CombatKeys = {Keys.D1, Keys.D2, Keys.D3};
         public static readonly Keys[] CameraMoveKeys_Alt1 = { Keys.T, Keys.G, Keys.F, Keys.H };
-
-        public static readonly float CameraThirdPersonScrollSpeedDistanceMultiplier = 0.00125f;
-        public static readonly float CameraThirdPersonScrollSpeedElevatationMultiplier = 0.01f;
-        public static readonly float CameraThirdPersonDistance = 12;
-        public static readonly float CameraThirdPersonElevationAngleInDegrees = 150;
-
-        public static readonly float SecurityCameraRotationSpeedSlow = 0.5f;
-        public static readonly float SecurityCameraRotationSpeedMedium = 2 * SecurityCameraRotationSpeedSlow;
-        public static readonly float SecurityCameraRotationSpeedFast = 2 * SecurityCameraRotationSpeedMedium;
-
-        //yaw means to rotate around the Y-axis - this will confuse you at first since we're using UnitX but you need to look at Transform3D::RotateBy()
-        public static readonly Vector3 SecurityCameraRotationAxisYaw = Vector3.UnitX;
-        public static readonly Vector3 SecurityCameraRotationAxisPitch = Vector3.UnitY;
-        public static readonly Vector3 SecurityCameraRotationAxisRoll = Vector3.UnitZ;
         #endregion
 
-        #region Player
-        public static readonly string PlayerOneID = "player1";
-        public static readonly string PlayerTwoID = "player2";
+        #region Character
+        public static readonly float CharacterMass = 1;
+        public static readonly float CharacterRadius = 77;
+        public static readonly float CharacterHeight = 154;
+        public static readonly float CharacterJumpHeight = 1;
+        public static readonly float CharacterAccelerationRate = 1;
+        public static readonly float CharacterDecelerationRate = 1;
 
-        public static readonly Keys[] PlayerOneMoveKeys = { Keys.U, Keys.J, Keys.H, Keys.K, Keys.Y, Keys.I, Keys.N, Keys.M };
-        public static readonly Keys[] PlayerTwoMoveKeys = { Keys.NumPad8, Keys.NumPad5, Keys.NumPad4, Keys.NumPad6, Keys.NumPad7, Keys.NumPad9, Keys.NumPad2, Keys.NumPad3 };
-        public static readonly float PlayerMoveSpeed = 0.1f;
-        public static readonly float PlayerStrafeSpeed = 0.7f * PlayerMoveSpeed;
-        public static readonly float PlayerRotationSpeed = 0.08f;
-        public static readonly float PlayerRadius = 1.5f;
-        public static readonly float PlayerHeight = 4.5f;
-        public static readonly float PlayerMass = 25;
-        public static readonly float PlayerJumpHeight = 25;
+        public static readonly float CharacterMoveSpeed = 0.6f;
+        public static readonly float CharacterStrafeSpeed = 0.6f;
+        public static readonly float CharacterRotateSpeed = 0.3f;
 
-        public static readonly float SquirrelPlayerMoveSpeed = 0.4f;
-        public static readonly float SquirrelPlayerRotationSpeed = 0.2f;
-        public static readonly Keys[] SquirrelPlayerMoveKeys = { Keys.NumPad8, Keys.NumPad5, Keys.NumPad4, Keys.NumPad6, Keys.NumPad7, Keys.NumPad1, Keys.NumPad2, Keys.NumPad3 };
+        public static readonly Vector3 CharacterMovementVector = new Vector3(254, 254, 254);
+        public static readonly Vector3 CharacterRotationVector = new Vector3(90, 90, 90);
 
-        public static readonly float DudeMoveSpeed = 0.15f;
-        public static readonly float DudeRotationSpeed = 0.1f;
-        public static readonly float DudeJumpHeight = 25;
+        public static readonly Keys[] CharacterMoveKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.E, Keys.Space, Keys.C, Keys.LeftShift, Keys.RightShift };
+        #endregion
+
+        #region Enemy
+        public static readonly float SkeletonHealth = 80;
+        public static readonly float SkeletonAttack = 20;
+        public static readonly float SkeletonDefence = 20;
+
+        public static readonly float CultistHealth = 120;
+        public static readonly float CultistAttack = 30;
+        public static readonly float CultistDefence = 30;
         #endregion
 
         #region Menu
@@ -110,10 +101,7 @@ namespace GDLibrary
         #endregion
 
         #region UI
-        public static readonly string PlayerOneProgressID = PlayerOneID + " progress";
-        public static readonly string PlayerTwoProgressID = PlayerTwoID + " progress";
-        public static readonly string PlayerOneProgressControllerID = PlayerOneProgressID + " ctrllr";
-        public static readonly string PlayerTwoProgressControllerID = PlayerTwoProgressID + " ctrllr";
+
         #endregion
 
         #region JigLibX

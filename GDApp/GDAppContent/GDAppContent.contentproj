@@ -176,7 +176,6 @@
     <Folder Include="Assets\Debug\Fonts\" />
     <Folder Include="Assets\Debug\Textures\" />
     <Folder Include="Assets\Models\Zones\" />
-    <Folder Include="Assets\Textures\Debug\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Models\Generics\test.FBX">

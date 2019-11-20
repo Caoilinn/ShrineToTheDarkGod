@@ -7,8 +7,6 @@ namespace GDLibrary
 {
     public class CombatManager : PausableGameComponent
     {
-
-
         #region Fields
         public static bool inCombat;
         private Keys[] combatKeys;
@@ -19,6 +17,16 @@ namespace GDLibrary
         private ManagerParameters managerParameters;
         private Random random = new Random();
         private Enemy enemyOnFocus;
+        #endregion
+
+        #region Properties
+        public List<Enemy> Enemies
+        {
+            get
+            {
+                return this.enemies;
+            }
+        }
         #endregion
 
         #region Constructor
@@ -111,10 +119,9 @@ namespace GDLibrary
         public Enemy GetEnemy(string id)
         {
             if(enemies != null)
-            {
                 //Finds enemy where ID is equal to the passed ID
                 return this.enemies.Find(x => x.ID == id);
-            }
+
             return null;
         }
 
@@ -207,7 +214,7 @@ namespace GDLibrary
                         }
                         else
                         {
-                            player.TakeDamage(enemyOnFocus.Attack);
+                            this.player.TakeDamage(enemyOnFocus.Attack);
                         }
                     }
                 }
@@ -232,22 +239,26 @@ namespace GDLibrary
                 }
                 if(this.enemyOnFocus.Health <= 0)
                 {
-                    EventDispatcher.Publish(new EventData(
-                        EventActionType.OnEnemyDeath,
-                        EventCategoryType.EnemyDeath,
-                        new object[] { enemyOnFocus }));
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnEnemyDeath,
+                            EventCategoryType.EnemyDeath,
+                            new object[] { enemyOnFocus }
+                        )
+                    );
 
-                    EventDispatcher.Publish(new EventData(
-                        EventActionType.PlayerTurn,
-                        EventCategoryType.Game));
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.PlayerTurn,
+                            EventCategoryType.Game
+                        )
+                    );
 
-                    this.enemies.Remove(enemyOnFocus);
                     CombatManager.inCombat = false;
+                    this.enemies.Remove(enemyOnFocus);
+
                     Console.WriteLine("YOU HAVE WON!!!");
                 }
-                  
-
-
             }
         }
         #endregion

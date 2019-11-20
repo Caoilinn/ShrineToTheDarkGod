@@ -1,5 +1,4 @@
-﻿using JigLibX.Collision;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -11,9 +10,6 @@ namespace GDLibrary
     public class PlayerObject : CharacterObject
     {
         #region Variables
-        private float health;
-        private float attack;
-        private float defence;
         private Keys[] moveKeys;
         private Vector3 translationOffset;
         private KeyboardManager keyboardManager;
@@ -77,23 +73,22 @@ namespace GDLibrary
             Transform3D transform,
             EffectParameters effectParameters,
             Model model,
-            float width,
+            float radius,
             float height,
-            float depth,
             float accelerationRate,
-            float dececelerationRate,
+            float decelerationRate,
             Vector3 movementVector,
             Vector3 rotationVector,
             float moveSpeed,
             float rotateSpeed,
+            float health,
+            float attack,
+            float defence,
             Keys[] moveKeys,
             Vector3 translationOffset,
             KeyboardManager keyboardManager,
-            float jumpHeight,
-            float health,
-            float attack,
-            float defence
-        ) : base(id, actorType, transform, effectParameters, model, width, height, depth, 0, 0, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence) {
+            float jumpHeight
+        ) : base(id, actorType, transform, effectParameters, model, radius, height, 0, 0, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence) {
             this.MoveKeys = moveKeys;
             this.TranslationOffset = translationOffset;
             this.KeyboardManager = keyboardManager;

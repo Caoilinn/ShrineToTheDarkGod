@@ -71,6 +71,7 @@ namespace GDApp
         private ContentDictionary<SpriteFont> fontDictionary;
         private Dictionary<string, EffectParameters> effectDictionary;
         private Dictionary<string, PickupParameters> pickupParametersDictionary;
+        private Dictionary<string, Enemy> enemyDictionary;
 
         //Lists
         private List<string> soundEffectList = new List<String>();
@@ -110,7 +111,12 @@ namespace GDApp
         private Transform3D playerPosition;
         private PlayerObject player;
         private List<Enemy> enemies;
-        
+        private BasicEffect torchLitRoomEffect;
+        private BasicEffect standardRoomEffect;
+        private BasicEffect pickupEffect;
+        private BasicEffect gateEffect;
+        private BasicEffect enemyEffect;
+
         public Main()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -128,12 +134,12 @@ namespace GDApp
             this.resolution = ScreenUtility.WXGA;
             this.screenCentre = this.resolution / 2;
 
+
             InitializeGraphics();
-
-            LoadContent();
-
             InitializeEffects();
             InitializeEnemies();
+
+            LoadContent();
 
             InitializeEventDispatcher();
             InitializeManagers();
@@ -151,7 +157,7 @@ namespace GDApp
             InitializeUI();
 
             //InitializeDebug();
-           // InitializeDebugCollisionSkinInfo();
+            InitializeDebugCollisionSkinInfo();
 
             base.Initialize();
         }
@@ -184,25 +190,133 @@ namespace GDApp
 
         private void InitializeEffects()
         {
-            BasicEffect basicEffect = null;
+            BasicEffect basicEffect;
 
-            #region Lit Effect
+            #region Standard Room Effect
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
+                FogEnabled = true,
                 TextureEnabled = true,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
-                FogEnabled = true,
-                FogColor = new Vector3(0.05f, 0.0f, 0.05f),
-                FogStart = 127,
-                FogEnd = 400,
-                DiffuseColor = new Vector3(1, 0, 0),
-                AmbientLightColor = new Vector3(1f, 0, 0.05f),
-                EmissiveColor = new Vector3(1f, 0, 0.05f)
+                FogColor = new Vector3(0f, 0f, 0f),
+                FogStart = 50,
+                FogEnd = 400
             };
 
-            basicEffect.EnableDefaultLighting();
-            this.effectDictionary.Add(AppData.LitModelsEffectID, new BasicEffectParameters(basicEffect));
+            //Standard Light
+            basicEffect.DirectionalLight0.Enabled = true;
+            basicEffect.DirectionalLight0.Direction = new Vector3(-0.5f, -0.75f, -0.5f);
+            basicEffect.DirectionalLight0.DiffuseColor = new Vector3(0.5f, 0.4f, 0.3f);
+
+            //Standard Light
+            basicEffect.DirectionalLight1.Enabled = true;
+            basicEffect.DirectionalLight1.Direction = new Vector3(0.5f, 0f, 0.5f);
+            basicEffect.DirectionalLight1.DiffuseColor = new Vector3(0.5f, 0.4f, 0.3f);
+
+            //Add to dictionary
+            this.standardRoomEffect = basicEffect;
+            #endregion
+
+            #region Room With Torch Effect
+            basicEffect = new BasicEffect(graphics.GraphicsDevice)
+            {
+                FogEnabled = true,
+                TextureEnabled = true,
+                LightingEnabled = true,
+                PreferPerPixelLighting = true,
+                FogColor = new Vector3(0f, 0f, 0f),
+                FogStart = 50,
+                FogEnd = 400
+            };
+
+            //Standard Light
+            basicEffect.DirectionalLight0.Enabled = true;
+            basicEffect.DirectionalLight0.Direction = new Vector3(-0.5f, -0.75f, -0.5f);
+            basicEffect.DirectionalLight0.DiffuseColor = new Vector3(0.85f, 0.75f, 0.65f);
+
+            //Standard Light
+            basicEffect.DirectionalLight1.Enabled = true;
+            basicEffect.DirectionalLight1.Direction = new Vector3(0.5f, 0.75f, 0.5f);
+            basicEffect.DirectionalLight1.DiffuseColor = new Vector3(0.85f, 0.75f, 0.65f);
+
+            //Torch Light
+            basicEffect.DirectionalLight2.Enabled = true;
+            basicEffect.DirectionalLight2.DiffuseColor = Color.DarkOrange.ToVector3();
+            basicEffect.DirectionalLight2.Direction = new Vector3(0, 1f, 0);
+
+            //Add to dictionary
+            this.torchLitRoomEffect = basicEffect;
+            #endregion
+
+            #region Pickup Effect
+            basicEffect = new BasicEffect(graphics.GraphicsDevice)
+            {
+                FogEnabled = true,
+                TextureEnabled = true,
+                LightingEnabled = true,
+                PreferPerPixelLighting = true,
+                FogColor = new Vector3(0f, 0f, 0f),
+                FogStart = 50,
+                FogEnd = 400
+            };
+
+            //Standard Light
+            basicEffect.DirectionalLight0.Enabled = true;
+            basicEffect.DirectionalLight0.Direction = new Vector3(-0f, -1f, -0f);
+            basicEffect.DirectionalLight0.DiffuseColor = new Vector3(0.85f, 0.85f, 0.65f);
+
+            //Add to dictionary
+            this.pickupEffect = basicEffect;
+            #endregion
+
+            #region Pickup Effect
+            basicEffect = new BasicEffect(graphics.GraphicsDevice)
+            {
+                FogEnabled = true,
+                TextureEnabled = true,
+                LightingEnabled = true,
+                PreferPerPixelLighting = true,
+                FogColor = new Vector3(0f, 0f, 0f),
+                FogStart = 50,
+                FogEnd = 400
+            };
+
+            //Standard Light
+            basicEffect.DirectionalLight0.Enabled = true;
+            basicEffect.DirectionalLight0.Direction = new Vector3(-0.5f, -0.75f, -0.5f);
+            basicEffect.DirectionalLight0.DiffuseColor = new Vector3(0.85f, 0.75f, 0.65f);
+
+            //Standard Light
+            basicEffect.DirectionalLight1.Enabled = true;
+            basicEffect.DirectionalLight1.Direction = new Vector3(0.5f, 0.75f, 0.5f);
+            basicEffect.DirectionalLight1.DiffuseColor = new Vector3(0.85f, 0.75f, 0.65f);
+
+            //Add to dictionary
+            this.gateEffect = basicEffect;
+
+            basicEffect = new BasicEffect(graphics.GraphicsDevice)
+            {
+                FogEnabled = true,
+                TextureEnabled = true,
+                LightingEnabled = true,
+                PreferPerPixelLighting = true,
+                FogColor = new Vector3(0f, 0f, 0f),
+                FogStart = 50,
+                FogEnd = 400
+            };
+
+            //Standard Light
+            basicEffect.DirectionalLight0.Enabled = true;
+            basicEffect.DirectionalLight0.Direction = new Vector3(-0.5f, -0.75f, -0.5f);
+            basicEffect.DirectionalLight0.DiffuseColor = new Vector3(0.85f, 0.75f, 0.65f);
+
+            //Standard Light
+            basicEffect.DirectionalLight1.Enabled = true;
+            basicEffect.DirectionalLight1.Direction = new Vector3(0.5f, 0.75f, 0.5f);
+            basicEffect.DirectionalLight1.DiffuseColor = new Vector3(0.85f, 0.75f, 0.65f);
+
+            this.enemyEffect = basicEffect;
             #endregion
         }
 
@@ -675,12 +789,10 @@ namespace GDApp
 
             Vector3 movementVector = new Vector3(100, 100, 100) * 2.54f;
             Vector3 rotationVector = new Vector3(0, 90, 0);
-
-            float width = 100;
-            float height = 100;
-            float depth = 100;
-
             Vector3 translationalOffset = new Vector3(0, 0, 0);
+            
+            float radius = 127;
+            float height = 254;
 
             camera.AttachController(
                 new CollidableFirstPersonCameraController(
@@ -694,14 +806,14 @@ namespace GDApp
                     movementVector,
                     rotationVector,
                     camera,
-                    width,
-                    height,
-                    depth,
-                    1,
-                    1,
-                    AppData.CollidableCameraMass,
-                    AppData.CollidableCameraJumpHeight,
                     Vector3.Zero,
+                    null,
+                    AppData.CollidableCameraMass,
+                    radius,
+                    height,
+                    1,
+                    1,
+                    AppData.CollidableCameraJumpHeight,
                     this.eventDispatcher
                 )
             );
@@ -990,7 +1102,7 @@ namespace GDApp
             Transform3D roomTransform = transform.Clone() as Transform3D;
 
             //Load model and effect parameters
-            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
+            EffectParameters effectParameters = this.effectDictionary["roomEffect" + roomType];
             Model model = this.modelDictionary["roomModel" + roomType];
 
             //Load collision box
@@ -1020,7 +1132,7 @@ namespace GDApp
             Transform3D pickupTransform = transform.Clone() as Transform3D;
 
             //Load model and effect parameters
-            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
+            EffectParameters effectParameters = this.effectDictionary["pickupEffect" + pickupType];
             Model model = this.modelDictionary["pickupModel" + pickupType];
 
             //Load collision box
@@ -1100,7 +1212,7 @@ namespace GDApp
             Transform3D gateTransform = transform.Clone() as Transform3D;
 
             //Load model and effect parameters
-            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
+            EffectParameters effectParameters = this.effectDictionary["propEffect" + gateType];
             Model model = this.modelDictionary["gateModel" + gateType];
 
             //Load collision box
@@ -1130,67 +1242,21 @@ namespace GDApp
         }
         
         public void SpawnEnemy(int enemyType, Transform3D transform)
-        {
-            //Setup id
-            string id = "Enemy";
-
-            //Setup dimensions
-            Transform3D enemyTransform = transform.Clone() as Transform3D;
-            enemyTransform.Translation += new Vector3(127, 0, 127);
-            enemyTransform.Rotation = new Vector3(-90, 0, 0);
-
-            //Load model and effect parameters
-            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
-            Model model = this.modelDictionary["enemyModel" + enemyType];
-
-            //Load collision box
-            Model collisionBox = this.collisionBoxDictionary["enemyCollision"];
-
-            float width = 154;
-            float height = 154;
-            float depth = 154;
-
-            Vector3 movementVector = new Vector3(254, 254, 254);
-            Vector3 rotationVector = new Vector3(90, 90, 90);
-
-            float health = 100;
-            float attack = 100;
-            float defence = 100;
-
+        {   
             //Select attributes - to be pulled out into a dictionary
-            switch(enemyType) {
+            switch (enemyType) {
                 case 1:
-                    id = "Skeleton";
-                    health = 80;
-                    attack = 20;
-                    defence = 20;
+                    this.staticModel = this.enemyDictionary["Skeleton"];
                     break;
                 case 2:
-                    id = "Cultist";
-                    health = 100;
-                    attack = 30;
-                    defence = 30;
+                    this.staticModel = this.enemyDictionary["Cultist"];
                     break;
             }
 
-            //Create enemy
-            this.staticModel = new Enemy(
-                id,
-                ActorType.Enemy,
-                enemyTransform,
-                effectParameters,
-                model,
-                width,
-                height,
-                depth,
-                movementVector,
-                rotationVector,
-                AppData.CameraMoveSpeed,
-                AppData.CameraRotationSpeed,
-                health,
-                attack,
-                defence
-            );
+            //Position character
+            this.staticModel.Transform = transform.Clone() as Transform3D;
+            this.staticModel.Transform.Translation += new Vector3(127, 0, 127);
+            this.staticModel.Transform.Rotation += new Vector3(-90, 0, 0);
 
             //Add collision
             this.staticModel.Enable(true, 1);
@@ -1240,6 +1306,9 @@ namespace GDApp
 
             //Pickup parameters
             this.pickupParametersDictionary = new Dictionary<string, PickupParameters>();
+
+            //Enemies
+            this.enemyDictionary = new Dictionary<string, Enemy>();
         }
 
         private void LoadAssets()
@@ -1260,16 +1329,16 @@ namespace GDApp
             LoadEffects();
             #endregion
 
-            #region Sounds
-            LoadSounds();
-            #endregion
-
             #region Fonts
             LoadFonts();
             #endregion
 
             #region Pickup Parameters
             LoadPickupParameters();
+            #endregion
+
+            #region Enemies
+            LoadEnemies();
             #endregion
         }
 
@@ -1303,8 +1372,8 @@ namespace GDApp
             #endregion
 
             #region Character Models
-            this.modelDictionary.Load("Assets/Models/Characters/enemy_001", "enemyModel1");
-            this.modelDictionary.Load("Assets/Models/Characters/enemy_002", "enemyModel2");
+            this.modelDictionary.Load("Assets/Models/Characters/enemy_001", "skeletonModel");
+            this.modelDictionary.Load("Assets/Models/Characters/enemy_002", "cultistModel");
             #endregion
 
             #region Prop Models
@@ -1392,7 +1461,6 @@ namespace GDApp
             #region Dual Textures
             this.textureDictionary.Load("Assets/Textures/Foliage/Ground/grass_midlevel");
             this.textureDictionary.Load("Assets/Textures/Foliage/Ground/grass_highlevel");
-            //this.textureDictionary.Load("Assets/Debug/Textures/checkerboard_greywhite");
             #endregion
 
             #region Menu Buttons
@@ -1415,54 +1483,45 @@ namespace GDApp
             this.textureDictionary.Load("Assets/Textures/Architecture/Buildings/house-low-texture");
             this.textureDictionary.Load("Assets/Textures/Architecture/Walls/wall");
             #endregion
-
-            #region Debug
-            //this.textureDictionary.Load("Assets/Debug/Textures/checkerboard");
-            //this.textureDictionary.Load("Assets/Debug/Textures/ml");
-            //this.textureDictionary.Load("Assets/Debug/Textures/checkerboard");
-            #endregion
         }
 
         public void LoadEffects()
         {
             #region Room Effects
-            this.effectDictionary.Add("roomEffect1", new EffectParameters(this.modelEffect, null, Color.Blue, 1));
-            this.effectDictionary.Add("roomEffect2", new EffectParameters(this.modelEffect, null, Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect3", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture3"], Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect4", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture4"], Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect5", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture5"], Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect6", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture6"], Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect7", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture7"], Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect8", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture8"], Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect9", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture9"], Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect10", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture10"], Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect11", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture11"], Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect12", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture12"], Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect13", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture13"], Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect14", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture14"], Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect15", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture15"], Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect16", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture16"], Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect17", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture16"], Color.DarkGray, 1));
-            this.effectDictionary.Add("roomEffect18", new EffectParameters(this.modelEffect, this.textureDictionary["roomTexture16"], Color.DarkGray, 1));
+            this.effectDictionary.Add("roomEffect1", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect2", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect3", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect4", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect5", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect6", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect7", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect8", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect9", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect18", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect11", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect12", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect13", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect14", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect15", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect16", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect17", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect10", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
 
             #region Pickup Effects
-            this.effectDictionary.Add("pickupEffect1", new EffectParameters(this.modelEffect, null, Color.White, 1));
-            this.effectDictionary.Add("pickupEffect2", new EffectParameters(this.modelEffect, null, Color.White, 1));
-            this.effectDictionary.Add("pickupEffect3", new EffectParameters(this.modelEffect, null, Color.White, 1));
-            this.effectDictionary.Add("pickupEffect4", new EffectParameters(this.modelEffect, null, Color.White, 1));
+            this.effectDictionary.Add("pickupEffect1", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(1.0f, 1.0f, 1.0f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("pickupEffect2", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(1.0f, 0.7f, 0.0f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("pickupEffect3", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(1.0f, 0.2f, 0.2f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
 
-            #region Zone Effects
-            #endregion
-        }
-
-        public void LoadSounds()
-        {
-            #region Sound Effects
+            #region Gate Effects
+            this.effectDictionary.Add("propEffect1", new BasicEffectParameters(this.gateEffect, null, new Color(new Vector3(0.9f, 0.6f, 0.3f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("propEffect2", new BasicEffectParameters(this.gateEffect, null, new Color(new Vector3(0.9f, 0.6f, 0.3f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
 
-            #region Music
+            #region Enemy Effects
+            this.effectDictionary.Add("skeletonEffect", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.3f, 0.2f, 0.1f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("cultistEffect", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.9f, 0.7f, 0.7f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
         }
 
@@ -1471,7 +1530,6 @@ namespace GDApp
             #region Game Fonts
             this.fontDictionary.Load("Assets/Fonts/hudFont", "hudFont");
             this.fontDictionary.Load("Assets/Fonts/menu", "menu");
-            //this.fontDictionary.Load("Assets/Debug/Fonts/debugFont", "debugFont");
             #endregion
         }
 
@@ -1480,6 +1538,61 @@ namespace GDApp
             this.pickupParametersDictionary.Add("sword", new PickupParameters("Steel Sword", 1, PickupType.Sword));
             this.pickupParametersDictionary.Add("key", new PickupParameters("Gate Key", 2, PickupType.Key));
             this.pickupParametersDictionary.Add("potion", new PickupParameters("Health Potion", 3, PickupType.Health));
+        }
+
+        public void LoadEnemies()
+        {
+            this.enemyDictionary.Add(
+                "Skeleton",
+                    new Enemy(
+                    "Skeleton",
+                    ActorType.Enemy,
+                    Transform3D.Zero,
+                    this.effectDictionary["skeletonEffect"],
+                    this.modelDictionary["skeletonModel"],
+                    AppData.CharacterRadius,
+                    AppData.CharacterHeight,
+                    AppData.CharacterAccelerationRate,
+                    AppData.CharacterDecelerationRate,
+                    AppData.CharacterMovementVector,
+                    AppData.CharacterRotationVector,
+                    AppData.CharacterMoveSpeed,
+                    AppData.CharacterRotateSpeed,
+                    AppData.SkeletonHealth,
+                    AppData.SkeletonAttack,
+                    AppData.SkeletonDefence,
+                    AppData.CharacterMoveKeys,
+                    Vector3.Zero,
+                    keyboardManager,
+                    AppData.CharacterJumpHeight
+                )
+            );
+
+            this.enemyDictionary.Add(
+                "Cultist",
+                    new Enemy(
+                    "Cultist",
+                    ActorType.Enemy,
+                    Transform3D.Zero,
+                    this.effectDictionary["cultistEffect"],
+                    this.modelDictionary["cultistModel"],
+                    AppData.CharacterRadius,
+                    AppData.CharacterHeight,
+                    AppData.CharacterAccelerationRate,
+                    AppData.CharacterDecelerationRate,
+                    AppData.CharacterMovementVector,
+                    AppData.CharacterRotationVector,
+                    AppData.CharacterMoveSpeed,
+                    AppData.CharacterRotateSpeed,
+                    AppData.CultistHealth,
+                    AppData.CultistAttack,
+                    AppData.CultistDefence,
+                    AppData.CharacterMoveKeys,
+                    Vector3.Zero,
+                    keyboardManager,
+                    AppData.CharacterJumpHeight
+                )
+            );
         }
         #endregion
 
@@ -1510,22 +1623,6 @@ namespace GDApp
 
         #region Debug
         #if DEBUG
-        private void InitializeDebug()
-        {
-            Components.Add(
-                new DebugDrawer(
-                    this,
-                    this.cameraManager,
-                    this.eventDispatcher,
-                    StatusType.Off,
-                    this.spriteBatch,
-                    this.fontDictionary["debugFont"],
-                    new Vector2(20, 20),
-                    Color.White
-                )
-            );
-        }
-
         private void InitializeDebugCollisionSkinInfo()
         {
             this.physicsDebugDrawer = new PhysicsDebugDrawer(
