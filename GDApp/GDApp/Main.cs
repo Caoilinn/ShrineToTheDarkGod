@@ -157,7 +157,7 @@ namespace GDApp
             InitializeUI();
 
             //InitializeDebug();
-            InitializeDebugCollisionSkinInfo();
+            //InitializeDebugCollisionSkinInfo();
 
             base.Initialize();
         }
@@ -169,22 +169,8 @@ namespace GDApp
 
         private void InitializeGraphics()
         {
-            //Set the preferred resolution
-            //See https://en.wikipedia.org/wiki/Display_resolution#/media/File:Vector_Video_Standards8.svg
             this.graphics.PreferredBackBufferWidth = resolution.X;
             this.graphics.PreferredBackBufferHeight = resolution.Y;
-
-            ////Solves the skybox border problem
-            //SamplerState samplerState = new SamplerState
-            //{
-            //    AddressU = TextureAddressMode.Clamp,
-            //    AddressV = TextureAddressMode.Clamp
-            //};
-
-            //this.graphics.GraphicsDevice.SamplerStates[0] = samplerState;
-
-            ////Enable alpha transparency - see ColorParameters
-            //this.graphics.GraphicsDevice.BlendState = BlendState.AlphaBlend;
             this.graphics.ApplyChanges();
         }
 
@@ -1491,24 +1477,24 @@ namespace GDApp
         public void LoadEffects()
         {
             #region Room Effects
-            this.effectDictionary.Add("roomEffect1", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect2", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect3", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect4", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect5", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect6", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect7", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect8", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect9", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect18", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect11", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect12", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect13", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect14", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect15", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect16", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect17", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect10", new BasicEffectParameters(this.standardRoomEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect1", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture1"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect2", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture2"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect3", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture3"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect4", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture4"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect5", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture5"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect6", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture6"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect7", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture7"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect8", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture8"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect9", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture9"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect18", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture10"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect11", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture11"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect12", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture12"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect13", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture13"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect14", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture14"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect15", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture15"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect16", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture16"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect17", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture17"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect10", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture18"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
 
             #region Pickup Effects

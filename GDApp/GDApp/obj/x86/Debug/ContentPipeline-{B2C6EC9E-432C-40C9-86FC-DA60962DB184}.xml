@@ -138,12 +138,11 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4107196+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_001_0.xml</Key>
-        <Value>2019-11-20T09:29:23.0980421+00:00</Value>
+        <Value>2019-11-20T15:32:28.2922497+00:00</Value>
       </Dependency>
-      <Request>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001_001_0.xnb</Request>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_002.FBX</Source>
@@ -152,10 +151,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_002.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4127149+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_002_0.xml</Key>
-        <Value>2019-11-20T09:29:23.6371091+00:00</Value>
+        <Value>2019-11-20T15:32:28.4458384+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -165,10 +164,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_003.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4137121+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_003_0.xml</Key>
-        <Value>2019-11-20T09:29:23.6839841+00:00</Value>
+        <Value>2019-11-20T15:32:28.4917157+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -178,11 +177,12 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_004.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4356538+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_004_0.xml</Key>
-        <Value>2019-11-20T09:29:23.7438225+00:00</Value>
+        <Value>2019-11-20T15:32:28.5705057+00:00</Value>
       </Dependency>
+      <Request>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\uvw2_0.xnb</Request>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_005.FBX</Source>
@@ -191,10 +191,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_005.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4376476+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_005_0.xml</Key>
-        <Value>2019-11-20T09:29:23.8076552+00:00</Value>
+        <Value>2019-11-20T15:32:29.5688632+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -204,10 +204,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_006.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.439642+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_006_0.xml</Key>
-        <Value>2019-11-20T09:29:23.873479+00:00</Value>
+        <Value>2019-11-20T15:32:29.637652+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -217,10 +217,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_007.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4416371+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_007_0.xml</Key>
-        <Value>2019-11-20T09:29:23.9203546+00:00</Value>
+        <Value>2019-11-20T15:32:29.6845581+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -230,10 +230,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_008.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4426351+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_008_0.xml</Key>
-        <Value>2019-11-20T09:29:23.9642367+00:00</Value>
+        <Value>2019-11-20T15:32:29.7264145+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -243,10 +243,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_009.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4446293+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_009_0.xml</Key>
-        <Value>2019-11-20T09:29:24.0086208+00:00</Value>
+        <Value>2019-11-20T15:32:29.7712943+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -256,10 +256,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_010.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4466241+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_010_0.xml</Key>
-        <Value>2019-11-20T09:29:24.0564923+00:00</Value>
+        <Value>2019-11-20T15:32:29.8161742+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -269,10 +269,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_011.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4486188+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_011_0.xml</Key>
-        <Value>2019-11-20T09:29:24.1063591+00:00</Value>
+        <Value>2019-11-20T15:32:29.8640465+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -282,10 +282,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_012.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.450614+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_012_0.xml</Key>
-        <Value>2019-11-20T09:29:24.1552281+00:00</Value>
+        <Value>2019-11-20T15:32:29.9149102+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -295,10 +295,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_013.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4526082+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_013_0.xml</Key>
-        <Value>2019-11-20T09:29:24.2070895+00:00</Value>
+        <Value>2019-11-20T15:32:29.960788+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -308,10 +308,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_014.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4555998+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_014_0.xml</Key>
-        <Value>2019-11-20T09:29:24.2489779+00:00</Value>
+        <Value>2019-11-20T15:32:30.0036736+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -321,10 +321,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_015.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4565972+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_015_0.xml</Key>
-        <Value>2019-11-20T09:29:24.2958527+00:00</Value>
+        <Value>2019-11-20T15:32:30.0515455+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -334,10 +334,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_016.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4585917+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_016_0.xml</Key>
-        <Value>2019-11-20T09:29:24.3367428+00:00</Value>
+        <Value>2019-11-20T15:32:30.0974226+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -373,10 +373,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_017.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4605865+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_017_0.xml</Key>
-        <Value>2019-11-20T09:29:24.4634081+00:00</Value>
+        <Value>2019-11-20T15:32:30.147289+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -386,10 +386,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_018.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4625816+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_018_0.xml</Key>
-        <Value>2019-11-20T09:29:24.5092819+00:00</Value>
+        <Value>2019-11-20T15:32:30.1931664+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -399,10 +399,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\gate.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4027408+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Generics\gate_0.xml</Key>
-        <Value>2019-11-20T09:29:24.5581509+00:00</Value>
+        <Value>2019-11-20T15:32:30.2420356+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -724,11 +724,12 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_001.xnb</Output>
-      <Time>2019-11-17T21:44:29+00:00</Time>
+      <Time>2019-11-20T15:24:44.4057331+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Props\gate_001_0.xml</Key>
-        <Value>2019-11-20T09:29:25.55751+00:00</Value>
+        <Value>2019-11-20T15:32:30.3018755+00:00</Value>
       </Dependency>
+      <Request>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\grey_metal_0.xnb</Request>
     </Item>
     <Item>
       <Source>Assets\Models\Props\gate_002.FBX</Source>
@@ -737,11 +738,12 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_002.xnb</Output>
-      <Time>2019-11-17T21:44:29+00:00</Time>
+      <Time>2019-11-20T15:24:44.4087247+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Props\gate_002_0.xml</Key>
-        <Value>2019-11-20T09:29:25.6078829+00:00</Value>
+        <Value>2019-11-20T15:32:30.6988153+00:00</Value>
       </Dependency>
+      <Request>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\grey_metal_1.xnb</Request>
     </Item>
     <Item>
       <Source>Assets\Collision Boxes\Props\gate_collision_001.FBX</Source>
@@ -1012,7 +1014,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_001.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4835248+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_003.png</Source>
@@ -1021,7 +1023,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_003.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.52342+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_004.png</Source>
@@ -1030,7 +1032,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_004.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.5433669+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_005.png</Source>
@@ -1039,7 +1041,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_005.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.5623144+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_006.png</Source>
@@ -1048,7 +1050,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_006.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.5822612+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_007.png</Source>
@@ -1057,7 +1059,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_007.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.6022078+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_008.png</Source>
@@ -1066,7 +1068,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_008.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.6221544+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_009.png</Source>
@@ -1075,7 +1077,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_009.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.6430987+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_010.png</Source>
@@ -1084,7 +1086,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_010.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.6670343+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_011.png</Source>
@@ -1093,7 +1095,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_011.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.6830247+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_012.png</Source>
@@ -1102,7 +1104,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_012.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.7049653+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_013.png</Source>
@@ -1111,7 +1113,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_013.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.7358513+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_014.png</Source>
@@ -1120,7 +1122,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_014.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.7488155+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_015.png</Source>
@@ -1129,7 +1131,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_015.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.7617816+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_016.png</Source>
@@ -1138,7 +1140,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_016.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.7757434+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_002.png</Source>
@@ -1147,7 +1149,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_002.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.5034718+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_017.png</Source>
@@ -1156,7 +1158,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_017.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.7956901+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_018.png</Source>
@@ -1165,7 +1167,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_018.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.8166345+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Architecture\Buildings\house-low-texture.jpg</Source>
@@ -1593,128 +1595,112 @@
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_001_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
-    </Item>
-    <Item>
-      <Source>Assets\Models\Rooms\room_001_001.tga</Source>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Parameters>
-        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
-        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
-        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
-        <Data Key="GenerateMipmaps" Type="bool">true</Data>
-        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
-        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001_001_0.xnb</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4107196+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_002.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_002_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4127149+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_003.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_003_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4137121+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_004.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_004_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4356538+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_005.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_005_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4376476+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_006.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_006_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.439642+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_007.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_007_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4416371+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_008.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_008_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4426351+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_009.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_009_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4446293+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_010.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_010_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4466241+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_011.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_011_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4486188+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_012.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_012_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.450614+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_013.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_013_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4526082+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_014.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_014_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4555998+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_015.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_015_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4565972+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_016.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_016_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4585917+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Generics\box.FBX</Source>
@@ -1735,21 +1721,21 @@
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_017_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4605865+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_018.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_018_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4625816+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Generics\gate.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Generics\gate_0.xml</Output>
-      <Time>2019-11-17T21:42:10+00:00</Time>
+      <Time>2019-11-20T15:24:44.4027408+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Collision Boxes\Rooms\room_collision_001.FBX</Source>
@@ -1924,14 +1910,14 @@
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Props\gate_001_0.xml</Output>
-      <Time>2019-11-17T21:44:29+00:00</Time>
+      <Time>2019-11-20T15:24:44.4057331+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Props\gate_002.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Props\gate_002_0.xml</Output>
-      <Time>2019-11-17T21:44:29+00:00</Time>
+      <Time>2019-11-20T15:24:44.4087247+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Collision Boxes\Props\gate_collision_001.FBX</Source>
@@ -1981,6 +1967,54 @@
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\key_0.xml</Output>
       <Time>2019-11-19T13:13:51.0445915+00:00</Time>
+    </Item>
+    <Item>
+      <Source>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\FBX\FEEB32FE\room_004.fbm\uvw2.png</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\uvw2_0.xnb</Output>
+      <Time>2019-11-20T15:32:28.5306125+00:00</Time>
+    </Item>
+    <Item>
+      <Source>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\FBX\FDE432E3\gate_001.fbm\grey_metal.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\grey_metal_0.xnb</Output>
+      <Time>2019-11-20T15:32:30.2839239+00:00</Time>
+    </Item>
+    <Item>
+      <Source>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\FBX\FDE932E4\gate_002.fbm\grey_metal.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\grey_metal_1.xnb</Output>
+      <Time>2019-11-20T15:32:30.679865+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
