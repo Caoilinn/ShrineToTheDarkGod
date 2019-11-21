@@ -158,7 +158,7 @@ namespace GDApp
             InitializeUI();
 
             //InitializeDebug();
-            InitializeDebugCollisionSkinInfo();
+            //InitializeDebugCollisionSkinInfo();
 
             base.Initialize();
         }
@@ -296,7 +296,7 @@ namespace GDApp
             //Standard Light
             basicEffect.DirectionalLight0.Enabled = true;
             basicEffect.DirectionalLight0.Direction = new Vector3(-0.5f, -0.75f, -0.5f);
-            basicEffect.DirectionalLight0.DiffuseColor = new Vector3(0.85f, 0.75f, 0.65f);
+            basicEffect.DirectionalLight0.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
 
             //Standard Light
             basicEffect.DirectionalLight1.Enabled = true;
@@ -1514,7 +1514,7 @@ namespace GDApp
 
             #region Enemy Effects
             this.effectDictionary.Add("skeletonEffect", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.3f, 0.2f, 0.1f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("cultistEffect", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.9f, 0.7f, 0.7f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("cultistEffect", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.6f, 0.1f, 0.1f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
         }
 
