@@ -621,7 +621,13 @@ namespace GDLibrary
                         sound = "equip_sword";
                     } else if ((pickup as ImmovablePickupObject).PickupParameters.PickupType == PickupType.Health)
                     {
-                        sound = "equip_sword";
+                        EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.PlayerHealthPickup,
+                            EventCategoryType.Combat));
+                    
+
+                    sound = "equip_sword";
                     }
 
                     //Publish an event to play a sound once a pickup is encountered

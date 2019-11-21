@@ -134,6 +134,12 @@ namespace GDLibrary
                 //Exit the game for now
                 this.Game.Exit();
             }
+            else if(eventData.EventType == EventActionType.PlayerHealthPickup)
+            {
+                Console.WriteLine("Player Health before: " + this.player.Health);
+                this.player.Health += 10;
+                Console.WriteLine("Player Health after: " + this.player.Health);    
+            }
         }
         #endregion
 
