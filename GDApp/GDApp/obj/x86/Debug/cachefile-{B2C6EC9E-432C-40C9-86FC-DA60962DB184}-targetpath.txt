@@ -135,12 +135,6 @@ Content\Assets\Audio\main_theme.xnb
 Content\Assets\Audio\item_twinkle.xnb
 Content\Assets\Audio\battle_theme.xnb
 Content\Assets\Audio\wall_bump.xnb
-Content\Assets\Fonts\hudFont.xnb
-Content\Assets\Fonts\menu.xnb
-Content\SpriteFont1.xnb
-Content\uvw2_0.xnb
-Content\grey_metal_0.xnb
-Content\grey_metal_1.xnb
 Content\Assets\Audio\block.xnb
 Content\Assets\Audio\death.xnb
 Content\Assets\Audio\dodge.xnb
@@ -155,6 +149,12 @@ Content\Assets\Audio\m_attack.xnb
 Content\Assets\Audio\player_health_low.xnb
 Content\Assets\Audio\punch_01.xnb
 Content\Assets\Audio\punch_02.xnb
+Content\Assets\Fonts\hudFont.xnb
+Content\Assets\Fonts\menu.xnb
+Content\SpriteFont1.xnb
+Content\uvw2_0.xnb
+Content\grey_metal_0.xnb
+Content\grey_metal_1.xnb
 Content\Assets\Audio\GameAudio.xgs
 Content\Assets\Audio\Movement.xwb
 Content\Assets\Audio\Movement.xsb

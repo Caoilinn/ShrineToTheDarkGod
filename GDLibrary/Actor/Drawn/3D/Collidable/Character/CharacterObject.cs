@@ -283,6 +283,12 @@ namespace GDLibrary
         {
         }
 
+        public void AddWeaponDamage()
+        {
+            this.attack += 10;
+        }
+
+
         public override void Update(GameTime gameTime)
         {
             this.HandleMovement();
@@ -357,6 +363,8 @@ namespace GDLibrary
             this.jumpHeight = jumpHeight;
             this.isJumping = true;
         }
+
+        
 
         public override void AddExternalForces(float dt)
         {

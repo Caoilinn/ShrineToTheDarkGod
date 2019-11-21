@@ -58,8 +58,8 @@ namespace GDLibrary
             {
 
                 if (this.managerParameters.InventoryManager.HasSword())
-                    this.player.Attack += 10;
-
+                    this.player.AddWeaponDamage();
+                    
                 Console.WriteLine("UPDATED PLAYER DAMAGE: " + this.player.Attack);
 
                 //Combat started
