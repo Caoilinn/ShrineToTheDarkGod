@@ -1473,7 +1473,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\item_twinkle.xnb</Output>
-      <Time>2019-11-21T11:13:44.1510451+00:00</Time>
+      <Time>2019-11-21T15:01:36.5247027+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\battle_theme.wav</Source>
@@ -1482,7 +1482,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\battle_theme.xnb</Output>
-      <Time>2019-11-21T11:13:44.0981861+00:00</Time>
+      <Time>2019-11-21T15:01:36.4399278+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\wall_bump.wav</Source>
@@ -2023,7 +2023,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\block.xnb</Output>
-      <Time>2019-11-21T11:13:44.1011784+00:00</Time>
+      <Time>2019-11-21T15:01:36.4459124+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\death.wav</Source>
@@ -2032,7 +2032,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\death.xnb</Output>
-      <Time>2019-11-21T11:13:44.1061646+00:00</Time>
+      <Time>2019-11-21T15:01:36.4538906+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\dodge.wav</Source>
@@ -2041,7 +2041,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\dodge.xnb</Output>
-      <Time>2019-11-21T11:13:44.1081603+00:00</Time>
+      <Time>2019-11-21T15:01:36.4558857+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\door_locked.wav</Source>
@@ -2050,7 +2050,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\door_locked.xnb</Output>
-      <Time>2019-11-21T11:13:44.1101544+00:00</Time>
+      <Time>2019-11-21T15:01:36.4608718+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\drink_potion.wav</Source>
@@ -2059,7 +2059,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\drink_potion.xnb</Output>
-      <Time>2019-11-21T11:13:44.1161388+00:00</Time>
+      <Time>2019-11-21T15:01:36.4658595+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\equip_sword.wav</Source>
@@ -2068,7 +2068,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\equip_sword.xnb</Output>
-      <Time>2019-11-21T11:13:44.1181328+00:00</Time>
+      <Time>2019-11-21T15:01:36.469882+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\gate_open.wav</Source>
@@ -2077,7 +2077,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_open.xnb</Output>
-      <Time>2019-11-21T11:13:44.120128+00:00</Time>
+      <Time>2019-11-21T15:01:36.4718763+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\gate_unlocked.wav</Source>
@@ -2086,7 +2086,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_unlocked.xnb</Output>
-      <Time>2019-11-21T11:13:44.1231194+00:00</Time>
+      <Time>2019-11-21T15:01:36.4808184+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\h_attack.wav</Source>
@@ -2095,7 +2095,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\h_attack.xnb</Output>
-      <Time>2019-11-21T11:13:44.124117+00:00</Time>
+      <Time>2019-11-21T15:01:36.4828131+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\l_attack.wav</Source>
@@ -2104,7 +2104,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\l_attack.xnb</Output>
-      <Time>2019-11-21T11:13:44.1530394+00:00</Time>
+      <Time>2019-11-21T15:01:36.5276929+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\m_attack.wav</Source>
@@ -2113,7 +2113,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\m_attack.xnb</Output>
-      <Time>2019-11-21T11:13:44.1540369+00:00</Time>
+      <Time>2019-11-21T15:01:36.5296887+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\player_health_low.wav</Source>
@@ -2122,7 +2122,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\player_health_low.xnb</Output>
-      <Time>2019-11-21T11:13:44.1620154+00:00</Time>
+      <Time>2019-11-21T15:01:36.5466743+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\punch_01.wav</Source>
@@ -2131,7 +2131,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_01.xnb</Output>
-      <Time>2019-11-21T11:13:44.1650082+00:00</Time>
+      <Time>2019-11-21T15:01:36.5526263+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\punch_02.wav</Source>
@@ -2140,7 +2140,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_02.xnb</Output>
-      <Time>2019-11-21T11:13:44.167002+00:00</Time>
+      <Time>2019-11-21T15:01:36.5566164+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

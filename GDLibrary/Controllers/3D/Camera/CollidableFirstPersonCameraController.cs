@@ -616,9 +616,14 @@ namespace GDLibrary
                     if ((pickup as ImmovablePickupObject).PickupParameters.PickupType == PickupType.Sword)
                     {
                         sound = "equip_sword";
-                    } else if ((pickup as ImmovablePickupObject).PickupParameters.PickupType == PickupType.Key)
+                    }
+                    else if ((pickup as ImmovablePickupObject).PickupParameters.PickupType == PickupType.Key)
                     {
                         sound = "equip_sword";
+                    }
+                    else if ((pickup as ImmovablePickupObject).PickupParameters.PickupType == PickupType.Health)
+                    {
+                        sound = "drink_potion";
                     }
 
                     //Publish an event to play a sound once a pickup is encountered

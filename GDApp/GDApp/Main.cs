@@ -762,7 +762,7 @@ namespace GDApp
         private void AddFirstPersonCamera(ProjectionParameters projectionParameters, Viewport viewport, float drawDepth)
         {
             this.playerPosition.Translation += new Vector3(127, 127, 127);
-            viewport = new Viewport(100, 100, graphics.PreferredBackBufferWidth - 400, graphics.PreferredBackBufferHeight - 250);   
+            viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);   
 
             Camera3D camera = new Camera3D(
                 "CFP Cam 1",
