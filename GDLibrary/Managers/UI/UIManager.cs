@@ -68,6 +68,7 @@ namespace GDLibrary
         {
             eventDispatcher.UIChanged += EventDispatcher_MenuChanged;
             eventDispatcher.UIChanged += EventDispatcher_UICombat;
+            eventDispatcher.UIChanged += EventDispatcher_UIHealth;
             base.RegisterForEventHandling(eventDispatcher);
         }
 
@@ -104,6 +105,22 @@ namespace GDLibrary
 
 
 
+        }
+
+        protected void EventDispatcher_UIHealth(EventData eventData)
+        {
+            if(eventData.EventType == EventActionType.PlayerHealthUpdate)
+            {
+                float playerHealth = (float)eventData.AdditionalParameters[0];
+
+                Console.WriteLine("Player Health: " + playerHealth);
+
+            } else
+            {
+                float enemyHealth = (float)eventData.AdditionalParameters[0];
+
+                Console.WriteLine("Enemy Health: " + enemyHealth);
+            }
         }
 
         protected override void EventDispatcher_MenuChanged(EventData eventData)

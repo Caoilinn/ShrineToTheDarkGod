@@ -51,6 +51,8 @@
         OnPlayerDodge,
         OnEnemyAttack,
         OnEnemyDeath,
+        PlayerHealthUpdate,
+        EnemyHealthUpdate,
 
         //Sent by Object Manager
         OnDoorOpen,
