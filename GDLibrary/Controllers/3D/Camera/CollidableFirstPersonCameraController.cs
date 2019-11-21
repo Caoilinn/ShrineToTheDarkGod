@@ -607,12 +607,21 @@ namespace GDLibrary
                     pickup.Remove();
                     this.ManagerParameters.ObjectManager.Remove(pickup);
 
+                    string sound = "";
+                    if ((pickup as ImmovablePickupObject).PickupParameters.PickupType == PickupType.Sword)
+                    {
+                        sound = "equip_sword";
+                    } else if ((pickup as ImmovablePickupObject).PickupParameters.PickupType == PickupType.Key)
+                    {
+                        sound = "equip_sword";
+                    }
+
                     //Publish an event to play a sound once a pickup is encountered
                     EventDispatcher.Publish(
                         new EventData(
                             EventActionType.OnPlay,
                             EventCategoryType.Sound2D,
-                            new object[] { "wall_bump" }
+                            new object[] { sound }
                         )
                     );
 
