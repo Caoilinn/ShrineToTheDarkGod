@@ -82,7 +82,7 @@ namespace GDLibrary
         public static readonly float SkeletonAttack = 20;
         public static readonly float SkeletonDefence = 20;
 
-        public static readonly float CultistHealth = 15.0f;
+        public static readonly float CultistHealth = 35;
         public static readonly float CultistAttack = 30;
         public static readonly float CultistDefence = 30;
         #endregion

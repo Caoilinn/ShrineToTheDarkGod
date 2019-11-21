@@ -58,8 +58,8 @@ namespace GDLibrary
             {
 
                 if (this.managerParameters.InventoryManager.HasSword())
-                    this.player.Attack += 10;
-
+                    this.player.AddWeaponDamage();
+                    
                 Console.WriteLine("UPDATED PLAYER DAMAGE: " + this.player.Attack);
 
                 //Combat started
@@ -133,6 +133,12 @@ namespace GDLibrary
             {
                 //Exit the game for now
                 this.Game.Exit();
+            }
+            else if(eventData.EventType == EventActionType.PlayerHealthPickup)
+            {
+                Console.WriteLine("Player Health before: " + this.player.Health);
+                this.player.Health += 10;
+                Console.WriteLine("Player Health after: " + this.player.Health);    
             }
         }
         #endregion

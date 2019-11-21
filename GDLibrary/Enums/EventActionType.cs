@@ -66,5 +66,6 @@
         OnAddToInventory,
         OnUpdateHud,
         OnWayBlocked,
+        PlayerHealthPickup,
     }
 }

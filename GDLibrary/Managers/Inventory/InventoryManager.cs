@@ -30,7 +30,7 @@ namespace GDLibrary
         protected void EventDispatcher_InventoryChanged(EventData eventData)
         {
             //If an add item event has been published
-            if(eventData.EventType == EventActionType.OnItemAdded)
+            if (eventData.EventType == EventActionType.OnItemAdded)
             {
                 ImmovablePickupObject itemToAdd = eventData.AdditionalParameters[0] as ImmovablePickupObject;
                 this.AddItem(itemToAdd);
@@ -50,6 +50,8 @@ namespace GDLibrary
                         new object[] { itemToAdd.PickupParameters.PickupType }
                     )
                 );
+
+                      
             }
 
             //If a remove item eveNT has been published

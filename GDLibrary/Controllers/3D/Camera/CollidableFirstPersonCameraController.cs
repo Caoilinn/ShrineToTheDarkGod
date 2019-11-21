@@ -620,6 +620,15 @@ namespace GDLibrary
                     else if ((pickup as ImmovablePickupObject).PickupParameters.PickupType == PickupType.Key)
                     {
                         sound = "equip_sword";
+                    } else if ((pickup as ImmovablePickupObject).PickupParameters.PickupType == PickupType.Health)
+                    {
+                        EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.PlayerHealthPickup,
+                            EventCategoryType.Combat));
+                    
+
+                    sound = "equip_sword";
                     }
                     else if ((pickup as ImmovablePickupObject).PickupParameters.PickupType == PickupType.Health)
                     {
