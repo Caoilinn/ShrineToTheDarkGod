@@ -93,7 +93,7 @@ namespace GDLibrary
         private void EventDispacter_EnemyDeath(EventData eventData)
         {
             (eventData.AdditionalParameters[0] as Enemy).Remove();
-            this.opaqueDrawList.Remove((eventData.AdditionalParameters[0] as Enemy));
+            this.Remove(eventData.AdditionalParameters[0] as Enemy);
         }
 
         private void EventDispatcher_AddActorChanged(EventData eventData)

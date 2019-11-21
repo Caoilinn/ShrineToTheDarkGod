@@ -61,7 +61,8 @@ namespace GDApp
         private Vector2 screenCentre;
 
         //Models
-        private CollidableObject staticModel;
+        private CollidableObject collidableModel;
+        private ModelObject staticModel;
 
         //Dictionaries
         private ContentDictionary<Model> modelDictionary;
@@ -157,7 +158,7 @@ namespace GDApp
             InitializeUI();
 
             //InitializeDebug();
-            //InitializeDebugCollisionSkinInfo();
+            InitializeDebugCollisionSkinInfo();
 
             base.Initialize();
         }
@@ -799,8 +800,7 @@ namespace GDApp
                     height,
                     1,
                     1,
-                    AppData.CollidableCameraJumpHeight,
-                    this.eventDispatcher
+                    AppData.CollidableCameraJumpHeight
                 )
             );
             
@@ -1096,7 +1096,7 @@ namespace GDApp
             Model collisionBox = this.collisionBoxDictionary["roomCollision" + roomType];
 
             //Create model
-            this.staticModel = new CollidableArchitecture(
+            this.collidableModel = new CollidableArchitecture(
                 "Room " + roomType,
                 ActorType.CollidableArchitecture,
                 roomTransform,
@@ -1107,10 +1107,10 @@ namespace GDApp
             );
 
             //Add collision
-            this.staticModel.Enable(true, 1);
+            this.collidableModel.Enable(true, 1);
 
             //Add to object manager list
-            this.object3DManager.Add(staticModel);
+            this.object3DManager.Add(collidableModel);
         }
 
         public void ConstructPickup(int pickupType, Transform3D transform)
@@ -1129,7 +1129,7 @@ namespace GDApp
             PickupParameters pickupParameters = SelectPickupParameters(pickupType);
 
             //Create model
-            this.staticModel = new ImmovablePickupObject(
+            this.collidableModel = new ImmovablePickupObject(
                 "Pickup " + pickupType,
                 ActorType.CollidablePickup,
                 pickupTransform,
@@ -1140,11 +1140,13 @@ namespace GDApp
                 pickupParameters
             );
 
+            this.collidableModel.AttachController(new SpinController("pickupSpin" + pickupType, ControllerType.Spin, 1));
+
             //Add collision
-            this.staticModel.Enable(true, 1);
+            this.collidableModel.Enable(true, 1);
 
             //Add to object manager list
-            this.object3DManager.Add(staticModel);
+            this.object3DManager.Add(collidableModel);
         }
 
         PickupParameters SelectPickupParameters(int pickupType)
@@ -1170,22 +1172,24 @@ namespace GDApp
             switch (triggerType)
             {
                 case 1:
-                    ////Create win trigger
-                    //this.staticModel = new ZoneObject(
-                    //    "Win Zone",
-                    //    ActorType.Trigger,
-                    //    triggerTransform,
-                    //    this.effectDictionary[AppData.LitModelsEffectID],
-                    //    null
-                    //);
+                    //Create win trigger
+                    triggerTransform.Translation += new Vector3(127, 127, 127);
 
-                    ////this.staticModel.AddPrimitive();
+                    this.collidableModel = new ZoneObject(
+                        "Win Zone",
+                        ActorType.Trigger,
+                        triggerTransform,
+                        this.effectDictionary["roomEffect1"],
+                        null
+                    );
 
-                    ////Enable collision
-                    //this.staticModel.Enable(true, 1);
+                    this.collidableModel.AddPrimitive(new Capsule(Vector3.Zero, Matrix.CreateRotationX(MathHelper.PiOver2), 77, 77), new MaterialProperties());
+
+                    //Enable collision
+                    this.collidableModel.Enable(true, 1);
 
                     //Add to object manager list
-                    this.object3DManager.Add(this.staticModel);
+                    this.object3DManager.Add(this.collidableModel);
                     break;
 
                 default:
@@ -1206,7 +1210,7 @@ namespace GDApp
             Model collisionBox = this.collisionBoxDictionary["gateCollision" + gateType];
 
             //Create model
-            this.staticModel = new CollidableArchitecture(
+            this.collidableModel = new CollidableArchitecture(
                 "Gate " + gateType,
                 ActorType.Gate,
                 gateTransform,
@@ -1217,10 +1221,10 @@ namespace GDApp
             );
 
             //Add collision
-            this.staticModel.Enable(true, 1);
+            this.collidableModel.Enable(true, 1);
 
             //Add to object manager list
-            this.object3DManager.Add(staticModel);
+            this.object3DManager.Add(collidableModel);
         }
 
         public void SpawnPlayer(Transform3D transform)
@@ -1233,25 +1237,25 @@ namespace GDApp
             //Select attributes - to be pulled out into a dictionary
             switch (enemyType) {
                 case 1:
-                    this.staticModel = this.enemyDictionary["Skeleton"];
+                    this.collidableModel = this.enemyDictionary["Skeleton"];
                     break;
                 case 2:
-                    this.staticModel = this.enemyDictionary["Cultist"];
+                    this.collidableModel = this.enemyDictionary["Cultist"];
                     break;
             }
 
             //Position character
-            this.staticModel.Transform = transform.Clone() as Transform3D;
-            this.staticModel.Transform.Translation += new Vector3(127, 0, 127);
-            this.staticModel.Transform.Rotation += new Vector3(-90, 0, 0);
+            this.collidableModel.Transform = transform.Clone() as Transform3D;
+            this.collidableModel.Transform.Translation += new Vector3(127, 0, 127);
+            this.collidableModel.Transform.Rotation += new Vector3(-90, 0, 0);
 
             //Add collision
-            this.staticModel.Enable(true, 1);
+            this.collidableModel.Enable(true, 1);
             
             //Add to lists
-            this.enemies.Add(this.staticModel as Enemy);
-            this.combatManager.PopulateEnemies(this.staticModel as Enemy);
-            this.object3DManager.Add(this.staticModel);
+            this.enemies.Add(this.collidableModel as Enemy);
+            this.combatManager.PopulateEnemies(this.collidableModel as Enemy);
+            this.object3DManager.Add(this.collidableModel);
         }
 
         private void InitializeEnemies()

@@ -131,7 +131,6 @@ namespace GDLibrary
             base.Update(gameTime);
         }
 
-
         public void PrintStats(Enemy enemy)
         {
             Console.WriteLine(
@@ -237,8 +236,20 @@ namespace GDLibrary
                 {
                     Game.Exit();
                 }
+
                 if(this.enemyOnFocus.Health <= 0)
                 {
+                    CombatManager.inCombat = false;
+                    Console.WriteLine("YOU HAVE WON!!!");
+
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPause,
+                            EventCategoryType.Sound2D,
+                            new object[] { "battle_theme" }
+                        )
+                    );
+
                     EventDispatcher.Publish(
                         new EventData(
                             EventActionType.OnEnemyDeath,
@@ -254,10 +265,7 @@ namespace GDLibrary
                         )
                     );
 
-                    CombatManager.inCombat = false;
                     this.enemies.Remove(enemyOnFocus);
-
-                    Console.WriteLine("YOU HAVE WON!!!");
                 }
             }
         }

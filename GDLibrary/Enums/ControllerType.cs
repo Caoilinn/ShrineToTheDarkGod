@@ -20,5 +20,6 @@ namespace GDLibrary
         Security,       //applied to camera
         Track,
         CollidableCamera,
+        Spin,
     }
 }

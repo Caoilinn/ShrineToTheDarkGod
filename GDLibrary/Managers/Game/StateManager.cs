@@ -110,8 +110,9 @@ namespace GDLibrary
             //Did the event come from an enemy making a move?
             else if (eventData.EventType == EventActionType.EnemyTurn)
             {
-                this.EnemyTurn = true;
-                this.PlayerTurn = false;
+                //Turned off for release 1
+                //this.EnemyTurn = true;
+                //this.PlayerTurn = false;
             }
         }
         #endregion

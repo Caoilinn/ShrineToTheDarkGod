@@ -105,6 +105,8 @@ namespace GDLibrary
 
         public override bool Equals(object obj)
         {
+            if ((obj as ModelObject).Model == null || this.model == null) return false;
+
             if (!(obj is ModelObject other))
                 return false;
             else if (this == other)
@@ -116,7 +118,7 @@ namespace GDLibrary
         public override int GetHashCode()
         {
             int hash = 1;
-            hash = hash * 11 + this.model.GetHashCode();
+            if (model != null) hash = hash * 11 + this.model.GetHashCode();
             hash = hash * 17 + base.GetHashCode();
             return hash;
         }

@@ -33,16 +33,16 @@ namespace GDLibrary
             if(eventData.EventType == EventActionType.OnItemAdded)
             {
                 ImmovablePickupObject itemToAdd = eventData.AdditionalParameters[0] as ImmovablePickupObject;
-
-                EventDispatcher.Publish(new EventData(
-                    EventActionType.OnInventoryPickUp,
-                    EventCategoryType.UIMenu,
-                    new object[] { itemToAdd })
-                    );
-
                 this.AddItem(itemToAdd);
 
-               
+                EventDispatcher.Publish(
+                    new EventData(
+                        EventActionType.OnInventoryPickUp,
+                        EventCategoryType.UIMenu,
+                        new object[] { itemToAdd }
+                    )
+                );
+
                 EventDispatcher.Publish(
                     new EventData(
                         EventActionType.OnUpdateHud,
@@ -50,11 +50,9 @@ namespace GDLibrary
                         new object[] { itemToAdd.PickupParameters.PickupType }
                     )
                 );
-
-                
             }
 
-            //If a remove item evetn has been published
+            //If a remove item eveNT has been published
             else if(eventData.EventType == EventActionType.OnItemRemoved)
             {
                 //Create item
@@ -82,19 +80,22 @@ namespace GDLibrary
                 items.Add(item);
         }
 
-        public ImmovablePickupObject GetItem(string itemID)
+        public ImmovablePickupObject GetItemByDescription(string description)
         {
-            if(items != null)
-                return this.items.Find(x => x.ID == itemID);
+            if (items != null)
+                foreach (ImmovablePickupObject item in this.items)
+                    if (item.PickupParameters.Description == description)
+                        return item;
 
             return null;
         }
 
         public bool HasItem(string itemID)
         {
-            foreach (object item in this.items)
-                if ((item as ImmovablePickupObject).PickupParameters.PickupType == PickupType.Key)
-                    return true;
+            if (items != null);
+                foreach (ImmovablePickupObject item in this.items)
+                    if (item.PickupParameters.PickupType == PickupType.Key)
+                        return true;
 
             return false;
         }
@@ -104,13 +105,6 @@ namespace GDLibrary
             if (item != null)
             {
                 items.Remove(item);
-
-                EventDispatcher.Publish(
-                    new EventData(
-                        EventActionType.OnItemRemoved,
-                        EventCategoryType.Inventory
-                    )
-                );
             }
         }
 

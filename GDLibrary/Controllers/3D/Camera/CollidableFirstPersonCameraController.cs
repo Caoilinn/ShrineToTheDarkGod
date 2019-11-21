@@ -140,7 +140,6 @@ namespace GDLibrary
         #endregion
 
         #region Constructors 
-        //Uses the default PlayerObject as the collidable object for the camera
         public CollidableFirstPersonCameraController(
             string id,
             ControllerType controllerType,
@@ -158,8 +157,7 @@ namespace GDLibrary
             float decelerationRate,
             float mass,
             float jumpHeight,
-            Vector3 translationOffset,
-            EventDispatcher eventDispatcher
+            Vector3 translationOffset
         ) : this(
             id,
             controllerType,
@@ -172,19 +170,16 @@ namespace GDLibrary
             rotationVector,
             parentActor,
             translationOffset,
-
             null,
             mass,
             radius,
             height,
             accelerationRate,
             decelerationRate,
-            jumpHeight,
-            eventDispatcher
+            jumpHeight
         ) {
         }
-
-        //Allows developer to specify the type of collidable object to be used as basis for the camera
+        
         public CollidableFirstPersonCameraController(
             string id,
             ControllerType controllerType,
@@ -204,8 +199,7 @@ namespace GDLibrary
             float height,
             float accelerationRate,
             float decelerationRate,
-            float jumpHeight,
-            EventDispatcher eventDispatcher
+            float jumpHeight
         ) : base(id, controllerType, moveKeys, moveSpeed, strafeSpeed, rotateSpeed, managerParameters, movementVector, rotationVector) {
             this.radius = radius;
             this.height = height;
@@ -259,39 +253,9 @@ namespace GDLibrary
             }
 
             this.playerObject.Enable(true, 1);
-
-            this.eventDispatcher = eventDispatcher;
-            RegisterForEventHandling(eventDispatcher);
         }
         #endregion
-
-        #region Event Handling
-        public void RegisterForEventHandling(EventDispatcher eventDispatcher)
-        {
-            this.eventDispatcher.PlayerChanged += EventDispatcher_PlayerChanged;
-            this.eventDispatcher.GameChanged += EventDispatcher_GameChanged;
-        }
-
-        private void EventDispatcher_GameChanged(EventData eventData)
-        {
-            if (eventData.EventType == EventActionType.PlayerTurn)
-            {
-            }
-        }
-
-        private void EventDispatcher_PlayerChanged(EventData eventData)
-        {
-            if (eventData.EventType == EventActionType.OnWayBlocked)
-            {
-                Vector3 direction = (Vector3) eventData.AdditionalParameters[0];
-                if (!this.blockedPaths.Contains(direction))
-                {
-                    this.blockedPaths.Add(direction);
-                }
-            }
-        }
-        #endregion
-
+        
         #region Methods
         public override void HandleKeyboardInput(GameTime gameTime, Actor3D parentActor)
         { 
@@ -353,15 +317,27 @@ namespace GDLibrary
 
         public override void HandleMovement(Actor3D parentActor)
         {
+
             //Take turns!
-            if (!StateManager.playerTurn) return;
-
-            //Finish the fight!
-            if (CombatManager.inCombat) return;
-
+            if (!StateManager.playerTurn)
+            {
+                this.Translation = Vector3.Zero;
+                this.Rotation = Vector3.Zero;
+                return;
+            }
+            
             #region Translation
             if (this.Translation != Vector3.Zero)
-            {
+            {    
+                //Finish the fight!
+                if (CombatManager.inCombat)
+                {
+                    this.Translation = Vector3.Zero;
+                    return;
+                }
+
+                this.blockedPaths.Clear();
+
                 //Prevent the player from walking into a wall
                 if (PreventMovement(parentActor)) return;
 
@@ -386,8 +362,7 @@ namespace GDLibrary
                         )
                     );
 
-                    //Clear sets
-                    this.blockedPaths.Clear();
+
                     this.collisionSet.Clear();
 
                     //Check for collision around the players new position
@@ -625,9 +600,21 @@ namespace GDLibrary
                 //If the collision takes place in the current cell
                 if ((float) collisionInfo[0] >= MIN_CURRENT_CELL && (float) collisionInfo[0] <= MAX_CURRENT_CELL)
                 {
+                    //Remove pickup from the collision set
+                    this.collisionSet.Remove(pickup);
+
                     //Remove pickup skin
                     pickup.Remove();
                     this.ManagerParameters.ObjectManager.Remove(pickup);
+
+                    //Publish an event to play a sound once a pickup is encountered
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlay,
+                            EventCategoryType.Sound2D,
+                            new object[] { "wall_bump" }
+                        )
+                    );
 
                     //Publish an event to add the pickup to inventory
                     EventDispatcher.Publish(
@@ -677,6 +664,8 @@ namespace GDLibrary
             {
                 //Cast the collision object to a collidable object
                 CollidableObject enemy = (collisionInfo[1] as CollisionSkin).Owner.ExternalData as CollidableObject;
+
+                if (enemy.Transform == null) return;
 
                 //If a collision has already taken place with this object
                 if (this.collisionSet.Contains(enemy))
@@ -733,15 +722,6 @@ namespace GDLibrary
 
                 if (gate.Transform == null) return;
 
-                //If a collision has already taken place with this object
-                if (this.collisionSet.Contains(gate))
-
-                    //Return
-                    return;
-
-                //Otherwise, add pickup to the collision set
-                this.collisionSet.Add(gate);
-
                 #region Adjacent Cell
                 //If the collision takes place in an adjacent cell
                 if ((float) collisionInfo[0] >= MIN_CURRENT_CELL && (float) collisionInfo[0] <= MAX_ADJACENT_CELL)
@@ -758,14 +738,25 @@ namespace GDLibrary
                         gate.Remove();
                         this.ManagerParameters.ObjectManager.Remove(gate);
                         this.blockedPaths.Remove(direction);
+
+                        //Remove key from inventory
+                        EventDispatcher.Publish(
+                            new EventData(
+                                EventActionType.OnItemRemoved,
+                                EventCategoryType.Inventory,
+                                new object[] { this.ManagerParameters.InventoryManager.GetItemByDescription("Gate Key") }
+                            )
+                        );
                     }
                 }
                 #endregion
             }
         }
-
+        bool gameWon = false;
         public void CheckForCollisionWithTrigger(Vector3 position, Vector3 direction, float length)
         {
+            if (gameWon) return;
+
             //Check for collision
             object[] collisionInfo = CheckForCollision(position, direction, length, ActorType.Trigger);
 
@@ -787,6 +778,13 @@ namespace GDLibrary
                             new object[] { "battle_theme" }
                         )
                     );
+
+                    gameWon = true;
+
+                    //End the players turn
+                    StateManager.playerTurn = false;
+                    
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
                 }
                 #endregion
             }
@@ -797,20 +795,11 @@ namespace GDLibrary
         {
             if (this.ManagerParameters.SoundManager == null) return;
 
-            bool isEnemyFound = false;
             bool isPickupFound = false;
-
-            DetectCollision(actor);
-
             foreach (CollidableObject collidableObject in this.collisionSet)
-                if (collidableObject.ActorType.Equals(ActorType.Enemy))
-                    isEnemyFound = true;
-                else if (collidableObject.ActorType.Equals(ActorType.CollidablePickup))
+                if (collidableObject.ActorType.Equals(ActorType.CollidablePickup))
                     isPickupFound = true;
-
-            if (!isEnemyFound)
-                this.ManagerParameters.SoundManager.PauseCue("battle_theme");
-
+            
             if (!isPickupFound)
                 this.ManagerParameters.SoundManager.PauseCue("item_twinkle");
         }
@@ -823,38 +812,3 @@ namespace GDLibrary
         #endregion
     }
 }
-
-//If this is the first time that we have seen the pickup
-//if (!this.collisionSet.Contains(pickup))
-//{
-//Add the pickup to the collision set
-//this.collisionSet.Add(pickup);
-//}
-
-////If the enemy has not yet been realised
-//if (!this.collisionSet.Contains(enemy))
-//{
-//    //Add enemy to the collision set
-//    this.collisionSet.Add(enemy);
-//}
-
-////If the enemy has not yet been realised
-//if (!this.collisionSet.Contains(gate))
-//{
-//    //Add enemy to the collision set
-//    this.collisionSet.Add(gate);
-
-
-//if (this.ManagerParameters.InventoryManager.HasKey("Key"))
-//{
-
-//}
-
-//}
-
-////If the trigger has not yet been realised
-//if (!this.collisionSet.Contains(trigger))
-//{
-//    //Add enemy to collision set
-//    this.collisionSet.Add(trigger);
-//}
