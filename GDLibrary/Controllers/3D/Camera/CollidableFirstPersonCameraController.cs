@@ -155,6 +155,9 @@ namespace GDLibrary
             float height,
             float accelerationRate,
             float decelerationRate,
+            float health,
+            float attack,
+            float defence,
             float mass,
             float jumpHeight,
             Vector3 translationOffset
@@ -171,6 +174,9 @@ namespace GDLibrary
             parentActor,
             translationOffset,
             null,
+            health, 
+            attack,
+            defence,
             mass,
             radius,
             height,
@@ -193,7 +199,9 @@ namespace GDLibrary
             IActor parentActor,
             Vector3 translationOffset,
             PlayerObject collidableObject,
-
+            float health,
+            float attack,
+            float defence,
             float mass,
             float radius,
             float height,
@@ -224,10 +232,6 @@ namespace GDLibrary
             {
                 Transform3D transform = (parentActor as Actor3D).Transform;
 
-                float health = 100;
-                float attack = 100;
-                float defence = 100;
-
                 this.playerObject = new PlayerObject(
                     this.ID + " - Player Object",
                     ActorType.CollidableCamera,
@@ -248,6 +252,7 @@ namespace GDLibrary
                     moveKeys,
                     translationOffset,
                     this.ManagerParameters.KeyboardManager,
+                    this.ManagerParameters,
                     jumpHeight
                 );
             }
@@ -754,6 +759,15 @@ namespace GDLibrary
                                 EventActionType.OnItemRemoved,
                                 EventCategoryType.Inventory,
                                 new object[] { this.ManagerParameters.InventoryManager.GetItemByDescription("Gate Key") }
+                            )
+                        );
+
+                        //Publish an event to play a sound once the gate is opened
+                        EventDispatcher.Publish(
+                            new EventData(
+                                EventActionType.OnPlay,
+                                EventCategoryType.Sound2D,
+                                new object[] { "gate_open" }
                             )
                         );
                     }

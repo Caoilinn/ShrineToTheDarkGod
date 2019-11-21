@@ -45,8 +45,9 @@ namespace GDLibrary
             Keys[] moveKeys,
             Vector3 translationOffset,
             KeyboardManager keyboardManager,
+            ManagerParameters managerParameters,
             float jumpHeight
-        ) : base(id, actorType, transform, effectParameters, model, radius, height, accelerationRate, decelerationRate, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, moveKeys, translationOffset, keyboardManager, jumpHeight) {    
+        ) : base(id, actorType, transform, effectParameters, model, radius, height, accelerationRate, decelerationRate, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, moveKeys, translationOffset, keyboardManager, managerParameters, jumpHeight) {    
         }
         #endregion
 

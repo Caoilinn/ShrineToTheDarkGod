@@ -92,12 +92,23 @@ namespace GDLibrary
 
         public bool HasItem(string itemID)
         {
-            if (items != null);
+            if (items != null)
                 foreach (ImmovablePickupObject item in this.items)
                     if (item.PickupParameters.PickupType == PickupType.Key)
                         return true;
 
             return false;
+        }
+
+        public bool HasSword()
+        {
+            if (items != null)
+                foreach (ImmovablePickupObject item in this.items)
+                    if (item.PickupParameters.PickupType == PickupType.Sword)
+                        return true;
+
+            return false;
+
         }
 
         public void UseItem(ImmovablePickupObject item)

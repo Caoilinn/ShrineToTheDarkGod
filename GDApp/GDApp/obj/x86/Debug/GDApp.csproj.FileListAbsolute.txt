@@ -817,3 +817,17 @@ C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\G
 C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\uvw2_0.xnb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\grey_metal_0.xnb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\grey_metal_1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\block.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\death.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\dodge.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\door_locked.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\drink_potion.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\equip_sword.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_open.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_unlocked.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\h_attack.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\l_attack.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\m_attack.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\player_health_low.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_01.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_02.xnb

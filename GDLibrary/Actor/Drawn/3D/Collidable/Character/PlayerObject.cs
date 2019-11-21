@@ -29,6 +29,8 @@ namespace GDLibrary
             }
         }
 
+        private ManagerParameters managerParameters;
+
         public float JumpHeight
         {
             get
@@ -87,11 +89,13 @@ namespace GDLibrary
             Keys[] moveKeys,
             Vector3 translationOffset,
             KeyboardManager keyboardManager,
+            ManagerParameters managerParameters,
             float jumpHeight
         ) : base(id, actorType, transform, effectParameters, model, radius, height, 0, 0, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence) {
             this.MoveKeys = moveKeys;
             this.TranslationOffset = translationOffset;
             this.KeyboardManager = keyboardManager;
+            this.managerParameters = managerParameters;
             this.JumpHeight = jumpHeight;
         }
         #endregion
@@ -110,6 +114,15 @@ namespace GDLibrary
         {
             this.Health -= damage;
         }
+
+        /*
+        public bool HasWeapon()
+        {
+            if (this.managerParameters.InventoryManager.HasSword("Sword"))
+                return true;
+            else
+                return false;
+        } */
 
         protected virtual void HandleMouseInput(GameTime gameTime)
         {

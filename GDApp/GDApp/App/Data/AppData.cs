@@ -73,12 +73,16 @@ namespace GDLibrary
         public static readonly Keys[] CharacterMoveKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.E, Keys.Space, Keys.C, Keys.LeftShift, Keys.RightShift };
         #endregion
 
-        #region Enemy
-        public static readonly float SkeletonHealth = 80;
+        #region Character Stats
+        public static readonly float PlayerHealth = 100;
+        public static readonly float PlayerAttack = 25;
+        public static readonly float PlayerDefence = 25;
+
+        public static readonly float SkeletonHealth = 10;
         public static readonly float SkeletonAttack = 20;
         public static readonly float SkeletonDefence = 20;
 
-        public static readonly float CultistHealth = 120;
+        public static readonly float CultistHealth = 15.0f;
         public static readonly float CultistAttack = 30;
         public static readonly float CultistDefence = 30;
         #endregion

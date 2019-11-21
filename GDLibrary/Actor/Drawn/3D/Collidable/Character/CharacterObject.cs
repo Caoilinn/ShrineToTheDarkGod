@@ -198,7 +198,7 @@ namespace GDLibrary
             }
             set
             {
-                this.attack = value;
+                this.attack += value;
             }
         }
 

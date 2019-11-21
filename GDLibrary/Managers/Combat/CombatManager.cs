@@ -56,6 +56,12 @@ namespace GDLibrary
         {
             if (eventData.EventType == EventActionType.OnInitiateBattle)
             {
+
+                if (this.managerParameters.InventoryManager.HasSword())
+                    this.player.Attack += 10;
+
+                Console.WriteLine("UPDATED PLAYER DAMAGE: " + this.player.Attack);
+
                 //Combat started
                 CombatManager.inCombat = true;
                 this.enemyOnFocus = eventData.AdditionalParameters[0] as Enemy;
@@ -65,18 +71,58 @@ namespace GDLibrary
                 Console.WriteLine("Player Attack Event");
                 //Object[] additionalParameters = {"playerAttack"};
                 //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerAttack, EventCategoryType.Sound2D, additionalParameters));
+                if (this.managerParameters.InventoryManager.HasItem("Sword"))
+                {
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlay,
+                            EventCategoryType.Sound2D,
+                            new object[] { "h_attack" }
+                        )
+                    );
+                }
+                else
+                {
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlay,
+                            EventCategoryType.Sound2D,
+                            new object[] { "punch_01" }
+                        )
+                    );
+                }
+
             }
             else if (eventData.EventType == EventActionType.OnPlayerDefend)
             {
                 Console.WriteLine("Player Defend Event");
                 //Object[] additionalParameters = {"playerDefend"};
                 //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.Sound2D, additionalParameters));
+
+
+                EventDispatcher.Publish(
+                    new EventData(
+                        EventActionType.OnPlay,
+                        EventCategoryType.Sound2D,
+                        new object[] { "block" }
+                    )
+                );
+
             }
             else if (eventData.EventType == EventActionType.OnEnemyAttack)
             {
                 Console.WriteLine("Enemy Attack Event");
                 //Object[] additionalParameters = {"enemyAttack"};
                 //EventDispatcher.Publish(new EventData(EventActionType.OnEnemyAttack, EventCategoryType.Sound2D, additionalParameters));
+
+                EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlay,
+                            EventCategoryType.Sound2D,
+                            new object[] { "m_attack" }
+                        )
+                    );
+
             }
             else if (eventData.EventType == EventActionType.OnBattleEnd)
             {
@@ -209,6 +255,14 @@ namespace GDLibrary
                                 EventCategoryType.Combat)
                             );
 
+                            EventDispatcher.Publish(
+                                new EventData(
+                                    EventActionType.OnPlay,
+                                    EventCategoryType.Sound2D,
+                                    new object[] { "dodge" }
+                                )
+                            );
+
                             return;
                         }
                         else
@@ -228,13 +282,31 @@ namespace GDLibrary
                         )
                     );
 
+                    
+
                     this.player.TakeDamage(enemyAttack);
                     this.playerTurn = true;
                 }
 
-                if(this.player.Health <= 0)
+                if(this.player.Health <= 30)
                 {
-                    Game.Exit();
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlay,
+                            EventCategoryType.Sound2D,
+                            new object[] { "player_health_low" }
+                        )
+                    );
+                }
+                else
+                {
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPause,
+                            EventCategoryType.Sound2D,
+                            new object[] { "player_health_low" }
+                        )
+                    );
                 }
 
                 if(this.enemyOnFocus.Health <= 0)
@@ -247,6 +319,14 @@ namespace GDLibrary
                             EventActionType.OnPause,
                             EventCategoryType.Sound2D,
                             new object[] { "battle_theme" }
+                        )
+                    );
+
+                    EventDispatcher.Publish(
+                        new EventData(
+                            EventActionType.OnPlay,
+                            EventCategoryType.Sound2D,
+                            new object[] { "death" }
                         )
                     );
 
@@ -266,6 +346,12 @@ namespace GDLibrary
                     );
 
                     this.enemies.Remove(enemyOnFocus);
+                    this.playerTurn = true;
+                }
+
+                if(this.player.Health <= 0)
+                {
+                    Game.Exit();
                 }
             }
         }

@@ -795,6 +795,9 @@ namespace GDApp
                     camera,
                     Vector3.Zero,
                     null,
+                    AppData.PlayerHealth,
+                    AppData.PlayerAttack,
+                    AppData.PlayerDefence,
                     AppData.CollidableCameraMass,
                     radius,
                     height,
@@ -1557,6 +1560,7 @@ namespace GDApp
                     AppData.CharacterMoveKeys,
                     Vector3.Zero,
                     keyboardManager,
+                    managerParameters,
                     AppData.CharacterJumpHeight
                 )
             );
@@ -1583,6 +1587,7 @@ namespace GDApp
                     AppData.CharacterMoveKeys,
                     Vector3.Zero,
                     keyboardManager,
+                    managerParameters,
                     AppData.CharacterJumpHeight
                 )
             );
