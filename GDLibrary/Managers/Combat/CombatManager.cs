@@ -60,7 +60,6 @@ namespace GDLibrary
             if (eventData.EventType.Equals(EventActionType.EnemyTurn))
             {
                 EnemyTurn();
-                return;
             }
         }
 
@@ -330,89 +329,5 @@ namespace GDLibrary
                 this.enemyOnFocus = character as EnemyObject;
         }
         #endregion
-
-        //}
-        //else
-        //{
-        //    PrintStats(enemyOnFocus);
-        //    float enemyAttack = enemyOnFocus.Attack;
-        //    EventDispatcher.Publish(
-        //        new EventData(
-        //            EventActionType.OnEnemyAttack,
-        //            EventCategoryType.Combat
-        //        )
-        //    );
-
-
-
-        //    //this.player.TakeDamage(enemyAttack);
-        //    this.playerTurn = true;
-        //}
-
-        //if(this.player.Health <= 30)
-        //{
-        //    EventDispatcher.Publish(
-        //        new EventData(
-        //            EventActionType.OnPlay,
-        //            EventCategoryType.Sound2D,
-        //            new object[] { "player_health_low" }
-        //        )
-        //    );
-        //}
-        //else
-        //{
-        //    EventDispatcher.Publish(
-        //        new EventData(
-        //            EventActionType.OnPause,
-        //            EventCategoryType.Sound2D,
-        //            new object[] { "player_health_low" }
-        //        )
-        //    );
-        //}
-
-        //if(this.enemyOnFocus.Health <= 0)
-        //{
-        //    CombatManager.inCombat = false;
-        //    Console.WriteLine("YOU HAVE WON!!!");
-
-        //    EventDispatcher.Publish(
-        //        new EventData(
-        //            EventActionType.OnPause,
-        //            EventCategoryType.Sound2D,
-        //            new object[] { "battle_theme" }
-        //        )
-        //    );
-
-        //    EventDispatcher.Publish(
-        //        new EventData(
-        //            EventActionType.OnPlay,
-        //            EventCategoryType.Sound2D,
-        //            new object[] { "death" }
-        //        )
-        //    );
-
-        //    EventDispatcher.Publish(
-        //        new EventData(
-        //            EventActionType.OnEnemyDeath,
-        //            EventCategoryType.EnemyDeath,
-        //            new object[] { enemyOnFocus }
-        //        )
-        //    );
-
-        //    EventDispatcher.Publish(
-        //        new EventData(
-        //            EventActionType.PlayerTurn,
-        //            EventCategoryType.Game
-        //        )
-        //    );
-
-        //    this.enemies.Remove(enemyOnFocus);
-        //    this.playerTurn = true;
-        //}
-
-        //if(this.player.Health <= 0)
-        //{
-        //    Game.Exit();
-        //}
     }
 }
