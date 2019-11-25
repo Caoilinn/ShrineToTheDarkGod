@@ -316,6 +316,7 @@ namespace GDLibrary
                 if (this.BlockedDirections.Contains(Vector3.Normalize(this.Translation)))
                 {
                     //Play wall bump sound
+
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "wall_bump" }));
                     this.Translation = Vector3.Zero;
                     return;

@@ -18,6 +18,7 @@ namespace GDApp
         }
 
 
+
         // private void changeText(EventData eventdata)
         // {
         //     switch(eventdata.ID)
@@ -35,9 +36,7 @@ namespace GDApp
             //Then generate sound events particular to your game e.g. play background music in a menu
             if (eventData.EventType == EventActionType.OnStart)
             {
-                //Add event to stop background menu music here...
-                //Object[] additionalParameters = { "in-game background music", 1 };
-                //EventDispatcher.Publish(new EventData(EventActionType.OnStop, EventCategoryType.Sound2D, additionalParameters));
+                
             }
             else if (eventData.EventType == EventActionType.OnPause)
             {
@@ -84,10 +83,6 @@ namespace GDApp
             base.RegisterForEventHandling(eventDispatcher);
         }
 
-        private void clearTextbox()
-        {
-            this.TextboxText = "";
-        }
 
         public void Update()
         {
