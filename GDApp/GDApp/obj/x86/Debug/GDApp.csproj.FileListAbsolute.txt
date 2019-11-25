@@ -1036,3 +1036,7 @@ C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CopyComplete
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.exe
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\growl.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\keys_jingle.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\enemy_attack.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\button_click.xnb

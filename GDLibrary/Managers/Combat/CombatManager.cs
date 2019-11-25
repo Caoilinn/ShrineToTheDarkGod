@@ -207,6 +207,9 @@ namespace GDLibrary
                 //If the player has killed the enemy
                 if (this.enemyOnFocus.Health <= 0)
                 {
+                    //Publish sound event
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "death" }));
+
                     //Publish UI event
                     EventDispatcher.Publish(new EventData(EventActionType.OnEnemyDeath, EventCategoryType.UI));
 
@@ -321,7 +324,7 @@ namespace GDLibrary
                 if (this.player.Health <= 0) EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));
 
                 //Publish play attack sound event
-                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "l_attack" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "enemy_attack" }));
 
                 //Publish player attack event
                 EventDispatcher.Publish(new EventData(EventActionType.OnEnemyAttack, EventCategoryType.Combat));

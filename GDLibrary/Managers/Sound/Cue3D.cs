@@ -7,4 +7,4 @@ namespace GDLibrary
         public Cue Cue;
         public AudioEmitter Emitter;
     }
-} 
+}

@@ -279,6 +279,14 @@ namespace GDLibrary
                     inCombat = true;
                 }
 
+                //If the distance between the enemys' position and the players' position, is less than or equal to the distance between two adjacent cells
+                if (Vector3.Distance(enemy.Transform.Translation * vectorXZ, player.Transform.Translation * vectorXZ) == (distanceBetweenAdjacentCells * 2))
+                {
+                    //Publish enemy growl sound
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "growl" }));    
+                }
+
+
                 //If the player is looking towards the enemy
                 if (Vector3.Normalize(player.Transform.Look) == (Vector3.Normalize(player.Transform.Translation - enemy.Transform.Translation) *- 1))
                 {
@@ -355,7 +363,7 @@ namespace GDLibrary
 
                 //Play pickup key sound
                 case PickupType.Key:
-                    this.SoundManager.PlayCue("equip_sword");
+                    this.SoundManager.PlayCue("keys_jingle");
                     break;
 
                 //Play pickup potion sound

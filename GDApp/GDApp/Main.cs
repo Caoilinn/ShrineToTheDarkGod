@@ -100,7 +100,9 @@ namespace GDApp
         private BasicEffect pickupEffect;
         private BasicEffect gateEffect;
         private BasicEffect enemyEffect;
+
         private ProjectionParameters projectionParameters;
+
         private Viewport viewport;
         private float depth;
 
@@ -138,10 +140,10 @@ namespace GDApp
 
             InitializeMap(100, 100, 100, worldScale);
 
+            InitializeGrid();
+
             InitializeMenu();
             InitializeUI();
-
-            InitializeGrid();
 
             base.Initialize();
         }

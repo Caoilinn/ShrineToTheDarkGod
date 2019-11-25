@@ -2108,6 +2108,42 @@
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\key_0.xml</Output>
       <Time>2019-11-25T10:46:38.8014185+00:00</Time>
     </Item>
+    <Item>
+      <Source>Assets\Audio\growl.wav</Source>
+      <Name>Assets\Audio\growl</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\growl.xnb</Output>
+      <Time>2019-11-25T13:24:19.0442457+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\keys_jingle.wav</Source>
+      <Name>Assets\Audio\keys_jingle</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\keys_jingle.xnb</Output>
+      <Time>2019-11-25T13:16:39.3536102+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\enemy_attack.wav</Source>
+      <Name>Assets\Audio\enemy_attack</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\enemy_attack.xnb</Output>
+      <Time>2019-11-25T13:21:28.0946025+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\button_click.wav</Source>
+      <Name>Assets\Audio\button_click</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\button_click.xnb</Output>
+      <Time>2019-11-25T13:17:56.0826189+00:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{B2C6EC9E-432C-40C9-86FC-DA60962DB184}</ContentProjectGUID>

@@ -49,9 +49,7 @@ namespace GDLibrary
                         EventCategoryType.UI,
                         new object[] { itemToAdd.PickupParameters.PickupType }
                     )
-                );
-
-                      
+                );    
             }
 
             //If a remove item eveNT has been published
@@ -136,8 +134,7 @@ namespace GDLibrary
             HandleKeyboard(gameTime);
             base.Update(gameTime);
         }
-
-        //Testing adding and removing
+        
         protected override void HandleKeyboard(GameTime gameTime)
         {
             base.HandleKeyboard(gameTime);
