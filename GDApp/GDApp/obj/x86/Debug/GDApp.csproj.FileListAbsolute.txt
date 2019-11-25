@@ -852,8 +852,6 @@ C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\A
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_01.xnb
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_02.xnb
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\uvw2_0.xnb
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\grey_metal_0.xnb
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\grey_metal_1.xnb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\App\Data\mapData.txt
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\cylinder.xnb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\dome.xnb

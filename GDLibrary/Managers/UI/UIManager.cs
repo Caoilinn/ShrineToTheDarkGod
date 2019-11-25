@@ -150,7 +150,7 @@ namespace GDLibrary
 
 
         }
-
+        
         protected void EventDispatcher_UIHealth(EventData eventData)
         {
             if(eventData.EventType == EventActionType.PlayerHealthUpdate)
@@ -161,9 +161,11 @@ namespace GDLibrary
 
             } else
             {
-                float enemyHealth = (float)eventData.AdditionalParameters[0];
+                if(eventData.AdditionalParameters != null) { 
+                    float enemyHealth = (float)eventData.AdditionalParameters[0];
 
-                Console.WriteLine("Enemy Health: " + enemyHealth);
+                    Console.WriteLine("Enemy Health: " + enemyHealth);
+                }
             }
         }
 

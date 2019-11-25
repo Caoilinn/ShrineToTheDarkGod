@@ -21,19 +21,29 @@ namespace GDLibrary
         #endregion
 
         #region Properties
+
+        public PlayerObject Player {
+            get {
+                return this.player;
+            }
+
+        }
+
+
         #endregion
 
         #region Constructor
         public CombatManager(
-            Game game, 
-            EventDispatcher eventDispatcher, 
+            Game game,
+            EventDispatcher eventDispatcher,
             StatusType statusType,
             InventoryManager inventoryManager,
             KeyboardManager keyboardManager,
             ObjectManager objectManager,
             GridManager gridManager,
             Keys[] combatKeys
-        ) : base(game, eventDispatcher, statusType) {
+        ) : base(game, eventDispatcher, statusType)
+        {
             this.inventoryManager = inventoryManager;
             this.keyboardManager = keyboardManager;
             this.objectManager = objectManager;
@@ -69,20 +79,18 @@ namespace GDLibrary
             {
                 //Publish remove actor event
                 EventDispatcher.Publish(new EventData(EventActionType.OnRemoveActor, EventCategoryType.SystemRemove, eventData.AdditionalParameters));
-                
+
                 //Publish player turn event
                 EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));
 
                 //Update combat state
                 StateManager.InCombat = false;
-            }
-            else if (eventData.EventType == EventActionType.OnPlayerDeath)
+            } else if (eventData.EventType == EventActionType.OnPlayerDeath)
             {
                 //Exit to menu for now
                 EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu));
                 EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
-            }
-            else if(eventData.EventType == EventActionType.PlayerHealthPickup)
+            } else if (eventData.EventType == EventActionType.PlayerHealthPickup)
             {
                 //Update player health
                 Console.WriteLine("Player health before: " + this.player.Health);
@@ -137,24 +145,6 @@ namespace GDLibrary
 
         public override void Update(GameTime gameTime)
         {
-            ////Publishing event to the UI manager so that player health is always up to date and the enemy
-            ////health is updated during combat
-            //EventDispatcher.Publish(new EventData(
-            //                            EventActionType.PlayerHealthUpdate,
-            //                            EventCategoryType.UI,
-            //                            new object[] { this.player.Health }));
-
-            //if (StateManager.InCombat)
-            //{
-            //    do
-            //    {
-            //        EventDispatcher.Publish(new EventData(
-            //                                    EventActionType.EnemyHealthUpdate,
-            //                                    EventCategoryType.UI,
-            //                                    new object[] { this.enemyOnFocus.Health }));
-            //    } while (StateManager.InCombat);
-            //}
-
             HandleKeyboardInput(gameTime);
             base.Update(gameTime);
         }
@@ -184,10 +174,14 @@ namespace GDLibrary
             //If not the players' turn, return
             if (!StateManager.PlayerTurn) return;
 
+            EventDispatcher.Publish(new EventData(
+                                       EventActionType.PlayerHealthUpdate,
+                                       EventCategoryType.UI,
+                                       new object[] { this.player.Health }));
             #region Attack
             //If the player attacks
             if (this.keyboardManager.IsFirstKeyPress(this.combatKeys[0]))
-            {   
+            {
                 //Info
                 Console.WriteLine("Player attack event");
                 PrintStats(this.enemyOnFocus);
@@ -221,10 +215,14 @@ namespace GDLibrary
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "punch_01" }));
 
                 //Publish player attack event
-                EventDispatcher.Publish(new EventData(EventActionType.OnPlayerAttack, EventCategoryType.Combat));
+                //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerAttack, EventCategoryType.Combat));
+
+                //Publish a UI player attack event
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlayerAttack, EventCategoryType.UI, new object[] { damage }));
 
                 //Publish enemy turn event
                 EventDispatcher.Publish(new EventData(EventActionType.EnemyTurn, EventCategoryType.Game));
+
                 return;
             }
             #endregion
@@ -249,15 +247,23 @@ namespace GDLibrary
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "block" }));
 
                 //Publish player defend event
-                EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.Combat));
+                //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.Combat));
+
+                //Publish a UI player attack event
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.UI, new object[] { damage }));
+
+                //If the enemy has killed the player
+                if (this.player.Health <= 0) EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));
 
                 //Publish enemy turn event
-                EventDispatcher.Publish(new EventData(EventActionType.EnemyTurn, EventCategoryType.Game));
+                //EventDispatcher.Publish(new EventData(EventActionType.EnemyTurn, EventCategoryType.Game));
+
+
                 return;
             }
             #endregion
 
-            #region Block
+            #region Dodge
             //If the player dodges
             if (this.keyboardManager.IsFirstKeyPress(this.combatKeys[2]))
             {
@@ -271,20 +277,31 @@ namespace GDLibrary
                 //If the player has successfully dodged
                 if (dodge % 2 == 0)
                 {
+                    float damage = 0;
+
                     //Publish play dodge sound event
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "dodge" }));
-                    
+
                     //Publish player dodge event
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.Combat));
+                    //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.Combat));
+
+                    //Publish a UI player dodge event
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.UI, new object[] { damage }));
 
                     //Publish enemy turn event
-                    EventDispatcher.Publish(new EventData(EventActionType.EnemyTurn, EventCategoryType.Game));
+                    //EventDispatcher.Publish(new EventData(EventActionType.EnemyTurn, EventCategoryType.Game));
                     return;
-                }
-                else
+                } else
                 {
+                    //Publish a UI player dodge event
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.UI, new object[] { enemyOnFocus.Attack }));
+
                     //Take damage
                     this.player.TakeDamage(enemyOnFocus.Attack);
+
+                    //If the enemy has killed the player
+                    if (this.player.Health <= 0) EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));
+
                 }
             }
             #endregion
@@ -297,6 +314,11 @@ namespace GDLibrary
 
             //If not the enemys' turn, return
             if (!StateManager.EnemyTurn) return;
+
+            EventDispatcher.Publish(new EventData(
+                                                EventActionType.EnemyHealthUpdate,
+                                                EventCategoryType.UI,
+                                                new object[] { this.enemyOnFocus.Health }));
 
             #region Attack
             //Enemy Attack - Default for release 1
@@ -324,7 +346,10 @@ namespace GDLibrary
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "l_attack" }));
 
                 //Publish player attack event
-                EventDispatcher.Publish(new EventData(EventActionType.OnEnemyAttack, EventCategoryType.Combat));
+                //EventDispatcher.Publish(new EventData(EventActionType.OnEnemyAttack, EventCategoryType.Combat));
+
+                //Publish enemy attack event to the UI Manager
+                EventDispatcher.Publish(new EventData(EventActionType.OnEnemyAttack, EventCategoryType.UI, new object[] { damage }));
 
                 //Publish player game turn event
                 EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));
