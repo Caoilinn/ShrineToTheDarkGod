@@ -23,6 +23,7 @@ namespace GDLibrary
         #region Properties
         #endregion
 
+
         #region Constructor
         public CombatManager(
             Game game, 
@@ -102,7 +103,7 @@ namespace GDLibrary
 
         public void PopulateEnemies(EnemyObject enemy)
         {
-           this.enemies.Add(enemy);
+            this.enemies.Add(enemy);
         }
 
         public bool Remove(Predicate<EnemyObject> predicate)
@@ -132,19 +133,39 @@ namespace GDLibrary
                 //Finds enemy where ID is equal to the passed ID
                 return this.enemies.Find(x => x.ID == id);
 
+            }
+
             return null;
         }
 
         public override void Update(GameTime gameTime)
         {
-            HandleKeyboardInput(gameTime);
+            //Publishing event to the UI manager so that player health is always up to date and the enemy
+            //health is updated during combat
+            EventDispatcher.Publish(new EventData(
+                                        EventActionType.PlayerHealthUpdate,
+                                        EventCategoryType.UI,
+                                        new object[] { this.player.Health }));
+
+            if (CombatManager.inCombat)
+            {
+                do
+                {
+                    EventDispatcher.Publish(new EventData(
+                                                EventActionType.EnemyHealthUpdate,
+                                                EventCategoryType.UI,
+                                                new object[] { this.enemyOnFocus.Health }));
+                } while (CombatManager.inCombat);
+            }
+
+            HandleKeyBoardInput(gameTime);
             base.Update(gameTime);
         }
 
         public void PrintStats(EnemyObject enemy)
         {
             Console.WriteLine(
-                "Player: \n" 
+                "Player: \n"
                 + "Health: " + this.player.Health + "\n"
                 + " Attack: " + this.player.Attack + "\n"
                 + "Defence: " + this.player.Defence
@@ -316,7 +337,13 @@ namespace GDLibrary
             //To be implemented
             #endregion
 
-        }
+                    EventDispatcher.Publish(new EventData(
+                        EventActionType.OnEnemyDeath,
+                        EventCategoryType.UI));
+
+                    this.enemies.Remove(enemyOnFocus);
+                    this.playerTurn = true;
+                }
 
         public void InitiateBattle(CharacterObject character)
         {
