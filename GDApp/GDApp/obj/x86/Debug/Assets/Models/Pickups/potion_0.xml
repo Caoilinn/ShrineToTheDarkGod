@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>Cylinder</Name>
     <Identity>
-      <SourceFilename>C:\Users\james\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\potion.fbx</SourceFilename>
+      <SourceFilename>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\potion.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>
@@ -38,7 +38,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Material.001</Name>
       <Identity>
-        <SourceFilename>C:\Users\james\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\potion.fbx</SourceFilename>
+        <SourceFilename>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\potion.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -52,7 +52,7 @@
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>Material.006</Name>
       <Identity>
-        <SourceFilename>C:\Users\james\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\potion.fbx</SourceFilename>
+        <SourceFilename>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\potion.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

@@ -10,33 +10,15 @@ using System;
 
 namespace GDApp
 {
-    //Inner class used for ray picking
-    class ImmovableSkinPredicate : CollisionSkinPredicate1
-    {
-        public override bool ConsiderSkin(CollisionSkin skin0)
-        {
-            if (skin0.Owner.ExternalData is Actor3D)
-                if (!(skin0.Owner.ExternalData as Actor3D).ActorType.Equals(ActorType.CollidableCamera))
-                    return true;
-
-            return false;
-        }
-    }
-
     public class Main : Game
     {
         //Graphics
-        SpriteBatch spriteBatch;
-        GraphicsDeviceManager graphics;
         private Integer2 resolution;
+        private SpriteBatch spriteBatch;
+        private GraphicsDeviceManager graphics;
 
         //Vertices
         private VertexPositionColorTexture[] vertices;
-
-        //Effects
-        private BasicEffect modelEffect;
-        private BasicEffect texturedModelEffect;
-        private BasicEffect texturedVertexEffect;
 
         //Managers
         private StateManager gameStateManager;

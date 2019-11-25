@@ -249,6 +249,7 @@ namespace GDLibrary
                 DetectInteractionsWithItems(player);
                 DetectInteractionsWithGates(player);
                 DetectInteractionsWithTriggers(player);
+                UpdateSound();
             }
         }
         #endregion
@@ -479,18 +480,17 @@ namespace GDLibrary
         #region Base Methods
         private void UpdateSound()
         {
-            if (!StateManager.InProximityOfAnItem) this.SoundManager.PauseCue("item_twinkle");
+            if (!StateManager.InProximityOfAnItem) EventDispatcher.Publish(new EventData(EventActionType.OnStop, EventCategoryType.Sound2D, new object[] { "item_twinkle", 0 }));
 
             if (!StateManager.InCombat)
             {
-                this.SoundManager.PauseCue("battle_theme");
-                this.SoundManager.PlayCue("main_theme");
+                EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Sound2D, new object[] { "battle_theme" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "main_theme" }));
             }
         }
 
         public override void Update(GameTime gameTime)
         {
-            UpdateSound();
             base.Update(gameTime);
         }
         #endregion
