@@ -21,6 +21,7 @@ namespace GDLibrary
         private InventoryManager inventoryManager;
         private CombatManager combatManager;
         private UIManager uiManager;
+        private TextboxManager textboxManager;
         #endregion
 
         #region Properties
@@ -116,7 +117,8 @@ namespace GDLibrary
             PhysicsManager physicsManager,
             InventoryManager inventoryManager,
             CombatManager combatManager,
-            UIManager uiManager
+            UIManager uiManager,
+            TextboxManager textboxManager
         ) {
             this.objectManager = objectManager;
             this.cameraManager = cameraManager;
@@ -128,6 +130,7 @@ namespace GDLibrary
             this.inventoryManager = inventoryManager;
             this.combatManager = combatManager;
             this.uiManager = uiManager;
+            this.textboxManager = textboxManager;
         }
         #endregion
     }

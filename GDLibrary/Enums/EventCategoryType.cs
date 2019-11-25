@@ -27,6 +27,8 @@
         Movement,
         UI,
         EnemyDeath,
-        Enemy
+        Enemy,
+        Textbox
+
     }
 }

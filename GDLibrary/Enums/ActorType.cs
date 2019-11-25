@@ -36,5 +36,6 @@ namespace GDLibrary
         Enemy,
         Gate,
         Trigger,
+        HUD,
     }
 }

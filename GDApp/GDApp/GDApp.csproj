@@ -77,6 +77,8 @@
   <ItemGroup>
     <Compile Include="App\Data\AppData.cs" />
     <Compile Include="App\Menu\MyMenuManager.cs" />
+    <Compile Include="App\Menu\MyTextboxManager.cs" />
+    <Compile Include="App\Menu\MyUIManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Main.cs" />
