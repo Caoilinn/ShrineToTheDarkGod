@@ -138,10 +138,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001.xnb</Output>
-      <Time>2019-11-21T15:05:40.9951897+00:00</Time>
+      <Time>2019-11-22T13:30:10.9253358+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_001_0.xml</Key>
-        <Value>2019-11-21T15:05:50.0803076+00:00</Value>
+        <Value>2019-11-22T13:30:43.5558342+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -151,10 +151,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_002.xnb</Output>
-      <Time>2019-11-21T15:05:40.9972157+00:00</Time>
+      <Time>2019-11-22T13:30:10.928327+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_002_0.xml</Key>
-        <Value>2019-11-21T15:05:50.1235047+00:00</Value>
+        <Value>2019-11-22T13:30:43.7673816+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -164,10 +164,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_003.xnb</Output>
-      <Time>2019-11-21T15:05:41.0001189+00:00</Time>
+      <Time>2019-11-22T13:30:10.933314+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_003_0.xml</Key>
-        <Value>2019-11-21T15:05:50.20608+00:00</Value>
+        <Value>2019-11-22T13:30:43.8641584+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -177,10 +177,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_004.xnb</Output>
-      <Time>2019-11-21T15:05:41.0207624+00:00</Time>
+      <Time>2019-11-22T13:30:10.978194+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_004_0.xml</Key>
-        <Value>2019-11-21T15:05:50.3008261+00:00</Value>
+        <Value>2019-11-22T13:30:44.0395942+00:00</Value>
       </Dependency>
       <Request>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\uvw2_0.xnb</Request>
     </Item>
@@ -191,10 +191,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_005.xnb</Output>
-      <Time>2019-11-21T15:05:41.0237206+00:00</Time>
+      <Time>2019-11-22T13:30:10.9811868+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_005_0.xml</Key>
-        <Value>2019-11-21T15:05:51.1059181+00:00</Value>
+        <Value>2019-11-22T13:30:45.349137+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -204,10 +204,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_006.xnb</Output>
-      <Time>2019-11-21T15:05:41.0257336+00:00</Time>
+      <Time>2019-11-22T13:30:10.9835392+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_006_0.xml</Key>
-        <Value>2019-11-21T15:05:51.1637929+00:00</Value>
+        <Value>2019-11-22T13:30:45.4877705+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -217,10 +217,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_007.xnb</Output>
-      <Time>2019-11-21T15:05:41.0277443+00:00</Time>
+      <Time>2019-11-22T13:30:10.9871714+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_007_0.xml</Key>
-        <Value>2019-11-21T15:05:51.2096408+00:00</Value>
+        <Value>2019-11-22T13:30:45.5884977+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -230,10 +230,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_008.xnb</Output>
-      <Time>2019-11-21T15:05:41.0297045+00:00</Time>
+      <Time>2019-11-22T13:30:10.9901625+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_008_0.xml</Key>
-        <Value>2019-11-21T15:05:51.2515285+00:00</Value>
+        <Value>2019-11-22T13:30:45.69284+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -243,10 +243,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_009.xnb</Output>
-      <Time>2019-11-21T15:05:41.0315144+00:00</Time>
+      <Time>2019-11-22T13:30:10.9931538+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_009_0.xml</Key>
-        <Value>2019-11-21T15:05:51.2954112+00:00</Value>
+        <Value>2019-11-22T13:30:45.7625519+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -256,10 +256,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_010.xnb</Output>
-      <Time>2019-11-21T15:05:41.0330533+00:00</Time>
+      <Time>2019-11-22T13:30:10.9961464+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_010_0.xml</Key>
-        <Value>2019-11-21T15:05:51.3443092+00:00</Value>
+        <Value>2019-11-22T13:30:45.827989+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -269,10 +269,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_011.xnb</Output>
-      <Time>2019-11-21T15:05:41.035704+00:00</Time>
+      <Time>2019-11-22T13:30:10.9991376+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_011_0.xml</Key>
-        <Value>2019-11-21T15:05:51.4001609+00:00</Value>
+        <Value>2019-11-22T13:30:45.8978142+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -282,10 +282,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_012.xnb</Output>
-      <Time>2019-11-21T15:05:41.0372596+00:00</Time>
+      <Time>2019-11-22T13:30:11.0011326+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_012_0.xml</Key>
-        <Value>2019-11-21T15:05:51.4560115+00:00</Value>
+        <Value>2019-11-22T13:30:45.962639+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -295,10 +295,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_013.xnb</Output>
-      <Time>2019-11-21T15:05:41.0392539+00:00</Time>
+      <Time>2019-11-22T13:30:11.0041243+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_013_0.xml</Key>
-        <Value>2019-11-21T15:05:51.5088402+00:00</Value>
+        <Value>2019-11-22T13:30:46.021358+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -308,10 +308,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_014.xnb</Output>
-      <Time>2019-11-21T15:05:41.0412604+00:00</Time>
+      <Time>2019-11-22T13:30:11.0071199+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_014_0.xml</Key>
-        <Value>2019-11-21T15:05:51.5656887+00:00</Value>
+        <Value>2019-11-22T13:30:46.1081269+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -321,10 +321,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_015.xnb</Output>
-      <Time>2019-11-21T15:05:41.0432441+00:00</Time>
+      <Time>2019-11-22T13:30:11.009112+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_015_0.xml</Key>
-        <Value>2019-11-21T15:05:51.625528+00:00</Value>
+        <Value>2019-11-22T13:30:46.223782+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -334,10 +334,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_016.xnb</Output>
-      <Time>2019-11-21T15:05:41.0452392+00:00</Time>
+      <Time>2019-11-22T13:30:11.0121039+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_016_0.xml</Key>
-        <Value>2019-11-21T15:05:51.6793852+00:00</Value>
+        <Value>2019-11-22T13:30:46.3095871+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -373,10 +373,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_017.xnb</Output>
-      <Time>2019-11-21T15:05:41.0462503+00:00</Time>
+      <Time>2019-11-22T13:30:11.0140992+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_017_0.xml</Key>
-        <Value>2019-11-21T15:05:51.8050768+00:00</Value>
+        <Value>2019-11-22T13:30:46.405328+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -386,10 +386,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_018.xnb</Output>
-      <Time>2019-11-21T15:05:41.0482315+00:00</Time>
+      <Time>2019-11-22T13:30:11.0170899+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_018_0.xml</Key>
-        <Value>2019-11-21T15:05:51.8559546+00:00</Value>
+        <Value>2019-11-22T13:30:46.5420296+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -399,10 +399,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\gate.xnb</Output>
-      <Time>2019-11-21T15:05:40.9847937+00:00</Time>
+      <Time>2019-11-22T13:30:10.9093777+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Generics\gate_0.xml</Key>
-        <Value>2019-11-21T15:05:51.9078031+00:00</Value>
+        <Value>2019-11-22T13:30:46.6477446+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -724,10 +724,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_001.xnb</Output>
-      <Time>2019-11-21T15:05:40.9902385+00:00</Time>
+      <Time>2019-11-22T13:30:10.9193935+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Props\gate_001_0.xml</Key>
-        <Value>2019-11-21T15:05:52.8423845+00:00</Value>
+        <Value>2019-11-22T13:30:46.7228981+00:00</Value>
       </Dependency>
       <Request>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\grey_metal_0.xnb</Request>
     </Item>
@@ -738,10 +738,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_002.xnb</Output>
-      <Time>2019-11-21T15:05:40.993195+00:00</Time>
+      <Time>2019-11-22T13:30:10.9233406+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Props\gate_002_0.xml</Key>
-        <Value>2019-11-21T15:05:53.2336808+00:00</Value>
+        <Value>2019-11-22T13:30:47.5093542+00:00</Value>
       </Dependency>
       <Request>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\grey_metal_1.xnb</Request>
     </Item>
@@ -817,10 +817,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\sword.xnb</Output>
-      <Time>2019-11-21T15:05:40.9872113+00:00</Time>
+      <Time>2019-11-22T13:30:10.9134135+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\sword_0.xml</Key>
-        <Value>2019-11-21T15:05:53.9008958+00:00</Value>
+        <Value>2019-11-22T13:30:48.245168+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -830,10 +830,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\key.xnb</Output>
-      <Time>2019-11-21T15:05:40.9862459+00:00</Time>
+      <Time>2019-11-22T13:30:10.9113736+00:00</Time>
       <Dependency>
         <Key>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\key_0.xml</Key>
-        <Value>2019-11-21T15:05:53.9547824+00:00</Value>
+        <Value>2019-11-22T13:30:48.3060056+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -1014,7 +1014,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_001.xnb</Output>
-      <Time>2019-11-21T15:05:41.0682144+00:00</Time>
+      <Time>2019-11-22T13:30:11.060085+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_003.png</Source>
@@ -1023,7 +1023,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_003.xnb</Output>
-      <Time>2019-11-21T15:05:41.1071016+00:00</Time>
+      <Time>2019-11-22T13:30:11.1417557+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_004.png</Source>
@@ -1032,7 +1032,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_004.xnb</Output>
-      <Time>2019-11-21T15:05:41.1260954+00:00</Time>
+      <Time>2019-11-22T13:30:11.180652+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_005.png</Source>
@@ -1041,7 +1041,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_005.xnb</Output>
-      <Time>2019-11-21T15:05:41.1450768+00:00</Time>
+      <Time>2019-11-22T13:30:11.2236104+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_006.png</Source>
@@ -1050,7 +1050,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_006.xnb</Output>
-      <Time>2019-11-21T15:05:41.1640398+00:00</Time>
+      <Time>2019-11-22T13:30:11.26546+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_007.png</Source>
@@ -1059,7 +1059,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_007.xnb</Output>
-      <Time>2019-11-21T15:05:41.1839895+00:00</Time>
+      <Time>2019-11-22T13:30:11.3063168+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_008.png</Source>
@@ -1068,7 +1068,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_008.xnb</Output>
-      <Time>2019-11-21T15:05:41.2039361+00:00</Time>
+      <Time>2019-11-22T13:30:11.3671536+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_009.png</Source>
@@ -1077,7 +1077,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_009.xnb</Output>
-      <Time>2019-11-21T15:05:41.2269054+00:00</Time>
+      <Time>2019-11-22T13:30:11.4339732+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_010.png</Source>
@@ -1086,7 +1086,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_010.xnb</Output>
-      <Time>2019-11-21T15:05:41.2548333+00:00</Time>
+      <Time>2019-11-22T13:30:11.4748642+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_011.png</Source>
@@ -1095,7 +1095,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_011.xnb</Output>
-      <Time>2019-11-21T15:05:41.2717551+00:00</Time>
+      <Time>2019-11-22T13:30:11.4928179+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_012.png</Source>
@@ -1104,7 +1104,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_012.xnb</Output>
-      <Time>2019-11-21T15:05:41.2956914+00:00</Time>
+      <Time>2019-11-22T13:30:11.5278948+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_013.png</Source>
@@ -1113,7 +1113,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_013.xnb</Output>
-      <Time>2019-11-21T15:05:41.3306445+00:00</Time>
+      <Time>2019-11-22T13:30:11.581645+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_014.png</Source>
@@ -1122,7 +1122,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_014.xnb</Output>
-      <Time>2019-11-21T15:05:41.3455574+00:00</Time>
+      <Time>2019-11-22T13:30:11.6035199+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_015.png</Source>
@@ -1131,7 +1131,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_015.xnb</Output>
-      <Time>2019-11-21T15:05:41.3605174+00:00</Time>
+      <Time>2019-11-22T13:30:11.6306074+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_016.png</Source>
@@ -1140,7 +1140,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_016.xnb</Output>
-      <Time>2019-11-21T15:05:41.3745113+00:00</Time>
+      <Time>2019-11-22T13:30:11.6609272+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_002.png</Source>
@@ -1149,7 +1149,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_002.xnb</Output>
-      <Time>2019-11-21T15:05:41.0881343+00:00</Time>
+      <Time>2019-11-22T13:30:11.1028605+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_017.png</Source>
@@ -1158,7 +1158,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_017.xnb</Output>
-      <Time>2019-11-21T15:05:41.3974198+00:00</Time>
+      <Time>2019-11-22T13:30:11.7291708+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Environment\Rooms\room_texture_018.png</Source>
@@ -1167,7 +1167,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_018.xnb</Output>
-      <Time>2019-11-21T15:05:41.41936+00:00</Time>
+      <Time>2019-11-22T13:30:11.7816477+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\Architecture\Buildings\house-low-texture.jpg</Source>
@@ -1473,7 +1473,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\item_twinkle.xnb</Output>
-      <Time>2019-11-21T15:05:40.9655051+00:00</Time>
+      <Time>2019-11-22T13:30:10.8754688+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\battle_theme.wav</Source>
@@ -1482,7 +1482,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\battle_theme.xnb</Output>
-      <Time>2019-11-21T15:05:40.9182847+00:00</Time>
+      <Time>2019-11-22T13:30:10.796679+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\wall_bump.wav</Source>
@@ -1500,7 +1500,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\block.xnb</Output>
-      <Time>2019-11-21T15:05:40.9234028+00:00</Time>
+      <Time>2019-11-22T13:30:10.8001059+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\death.wav</Source>
@@ -1509,7 +1509,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\death.xnb</Output>
-      <Time>2019-11-21T15:05:40.9268258+00:00</Time>
+      <Time>2019-11-22T13:30:10.8046577+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\dodge.wav</Source>
@@ -1518,7 +1518,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\dodge.xnb</Output>
-      <Time>2019-11-21T15:05:40.9286234+00:00</Time>
+      <Time>2019-11-22T13:30:10.8066523+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\door_locked.wav</Source>
@@ -1527,7 +1527,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\door_locked.xnb</Output>
-      <Time>2019-11-21T15:05:40.9315683+00:00</Time>
+      <Time>2019-11-22T13:30:10.8096443+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\drink_potion.wav</Source>
@@ -1536,7 +1536,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\drink_potion.xnb</Output>
-      <Time>2019-11-21T15:05:40.93456+00:00</Time>
+      <Time>2019-11-22T13:30:10.8129961+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\equip_sword.wav</Source>
@@ -1545,7 +1545,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\equip_sword.xnb</Output>
-      <Time>2019-11-21T15:05:40.9366013+00:00</Time>
+      <Time>2019-11-22T13:30:10.8166267+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\gate_open.wav</Source>
@@ -1554,7 +1554,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_open.xnb</Output>
-      <Time>2019-11-21T15:05:40.9375816+00:00</Time>
+      <Time>2019-11-22T13:30:10.8176239+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\gate_unlocked.wav</Source>
@@ -1563,7 +1563,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_unlocked.xnb</Output>
-      <Time>2019-11-21T15:05:40.9415994+00:00</Time>
+      <Time>2019-11-22T13:30:10.8265996+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\h_attack.wav</Source>
@@ -1572,7 +1572,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\h_attack.xnb</Output>
-      <Time>2019-11-21T15:05:40.9425392+00:00</Time>
+      <Time>2019-11-22T13:30:10.8285942+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\l_attack.wav</Source>
@@ -1581,7 +1581,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\l_attack.xnb</Output>
-      <Time>2019-11-21T15:05:40.9670312+00:00</Time>
+      <Time>2019-11-22T13:30:10.8785033+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\m_attack.wav</Source>
@@ -1590,7 +1590,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\m_attack.xnb</Output>
-      <Time>2019-11-21T15:05:40.9680307+00:00</Time>
+      <Time>2019-11-22T13:30:10.882451+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\player_health_low.wav</Source>
@@ -1599,7 +1599,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\player_health_low.xnb</Output>
-      <Time>2019-11-21T15:05:40.976009+00:00</Time>
+      <Time>2019-11-22T13:30:10.8967533+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\punch_01.wav</Source>
@@ -1608,7 +1608,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_01.xnb</Output>
-      <Time>2019-11-21T15:05:40.9790019+00:00</Time>
+      <Time>2019-11-22T13:30:10.9014001+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\punch_02.wav</Source>
@@ -1617,7 +1617,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_02.xnb</Output>
-      <Time>2019-11-21T15:05:40.9817992+00:00</Time>
+      <Time>2019-11-22T13:30:10.9046239+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Fonts\hudFont.spritefont</Source>
@@ -1721,28 +1721,28 @@
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_001_0.xml</Output>
-      <Time>2019-11-21T15:05:40.9951897+00:00</Time>
+      <Time>2019-11-22T13:30:10.9253358+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_002.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_002_0.xml</Output>
-      <Time>2019-11-21T15:05:40.9972157+00:00</Time>
+      <Time>2019-11-22T13:30:10.928327+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_003.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_003_0.xml</Output>
-      <Time>2019-11-21T15:05:41.0001189+00:00</Time>
+      <Time>2019-11-22T13:30:10.933314+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_004.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_004_0.xml</Output>
-      <Time>2019-11-21T15:05:41.0207624+00:00</Time>
+      <Time>2019-11-22T13:30:10.978194+00:00</Time>
     </Item>
     <Item>
       <Source>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\FBX\6E6826B0\room_004.fbm\uvw2.png</Source>
@@ -1758,91 +1758,91 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\uvw2_0.xnb</Output>
-      <Time>2019-11-21T15:05:50.2489652+00:00</Time>
+      <Time>2019-11-22T13:30:43.9518249+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_005.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_005_0.xml</Output>
-      <Time>2019-11-21T15:05:41.0237206+00:00</Time>
+      <Time>2019-11-22T13:30:10.9811868+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_006.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_006_0.xml</Output>
-      <Time>2019-11-21T15:05:41.0257336+00:00</Time>
+      <Time>2019-11-22T13:30:10.9835392+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_007.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_007_0.xml</Output>
-      <Time>2019-11-21T15:05:41.0277443+00:00</Time>
+      <Time>2019-11-22T13:30:10.9871714+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_008.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_008_0.xml</Output>
-      <Time>2019-11-21T15:05:41.0297045+00:00</Time>
+      <Time>2019-11-22T13:30:10.9901625+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_009.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_009_0.xml</Output>
-      <Time>2019-11-21T15:05:41.0315144+00:00</Time>
+      <Time>2019-11-22T13:30:10.9931538+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_010.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_010_0.xml</Output>
-      <Time>2019-11-21T15:05:41.0330533+00:00</Time>
+      <Time>2019-11-22T13:30:10.9961464+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_011.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_011_0.xml</Output>
-      <Time>2019-11-21T15:05:41.035704+00:00</Time>
+      <Time>2019-11-22T13:30:10.9991376+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_012.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_012_0.xml</Output>
-      <Time>2019-11-21T15:05:41.0372596+00:00</Time>
+      <Time>2019-11-22T13:30:11.0011326+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_013.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_013_0.xml</Output>
-      <Time>2019-11-21T15:05:41.0392539+00:00</Time>
+      <Time>2019-11-22T13:30:11.0041243+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_014.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_014_0.xml</Output>
-      <Time>2019-11-21T15:05:41.0412604+00:00</Time>
+      <Time>2019-11-22T13:30:11.0071199+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_015.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_015_0.xml</Output>
-      <Time>2019-11-21T15:05:41.0432441+00:00</Time>
+      <Time>2019-11-22T13:30:11.009112+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_016.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_016_0.xml</Output>
-      <Time>2019-11-21T15:05:41.0452392+00:00</Time>
+      <Time>2019-11-22T13:30:11.0121039+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Generics\box.FBX</Source>
@@ -1863,21 +1863,21 @@
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_017_0.xml</Output>
-      <Time>2019-11-21T15:05:41.0462503+00:00</Time>
+      <Time>2019-11-22T13:30:11.0140992+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_018.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Rooms\room_018_0.xml</Output>
-      <Time>2019-11-21T15:05:41.0482315+00:00</Time>
+      <Time>2019-11-22T13:30:11.0170899+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Generics\gate.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Generics\gate_0.xml</Output>
-      <Time>2019-11-21T15:05:40.9847937+00:00</Time>
+      <Time>2019-11-22T13:30:10.9093777+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Collision Boxes\Rooms\room_collision_001.FBX</Source>
@@ -2052,7 +2052,7 @@
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Props\gate_001_0.xml</Output>
-      <Time>2019-11-21T15:05:40.9902385+00:00</Time>
+      <Time>2019-11-22T13:30:10.9193935+00:00</Time>
     </Item>
     <Item>
       <Source>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\FBX\6D612695\gate_001.fbm\grey_metal.jpg</Source>
@@ -2068,14 +2068,14 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\grey_metal_0.xnb</Output>
-      <Time>2019-11-21T15:05:52.8254332+00:00</Time>
+      <Time>2019-11-22T13:30:46.7014441+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Props\gate_002.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Props\gate_002_0.xml</Output>
-      <Time>2019-11-21T15:05:40.993195+00:00</Time>
+      <Time>2019-11-22T13:30:10.9233406+00:00</Time>
     </Item>
     <Item>
       <Source>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\FBX\6D662696\gate_002.fbm\grey_metal.jpg</Source>
@@ -2091,7 +2091,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\grey_metal_1.xnb</Output>
-      <Time>2019-11-21T15:05:53.2187217+00:00</Time>
+      <Time>2019-11-22T13:30:47.4834595+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Collision Boxes\Props\gate_collision_001.FBX</Source>
@@ -2133,14 +2133,14 @@
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\sword_0.xml</Output>
-      <Time>2019-11-21T15:05:40.9872113+00:00</Time>
+      <Time>2019-11-22T13:30:10.9134135+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Pickups\key.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\key_0.xml</Output>
-      <Time>2019-11-21T15:05:40.9862459+00:00</Time>
+      <Time>2019-11-22T13:30:10.9113736+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
