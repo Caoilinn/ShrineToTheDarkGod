@@ -368,6 +368,10 @@ namespace GDLibrary
 
                 //Play pickup potion sound
                 case PickupType.Health:
+                    EventDispatcher.Publish(new EventData(
+                                       EventActionType.PlayerHealthUpdate,
+                                       EventCategoryType.UI,
+                                       new object[] { this.combatManager.Player.Health}));
                     this.SoundManager.PlayCue("drink_potion");
                     break;
             }
