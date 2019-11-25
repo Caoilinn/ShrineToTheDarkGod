@@ -734,6 +734,129 @@ namespace GDApp
             clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
             #endregion
+
+            #region Begin Menu
+            sceneID = "begin menu";
+
+            //Retrieve the controls menu background texture
+            texture = this.textureDictionary["begingame"];
+
+            //Scale the texture to fit the entire screen
+            scale = new Vector2(
+                (float)graphics.PreferredBackBufferWidth / texture.Width,
+                (float)graphics.PreferredBackBufferHeight / texture.Height
+            );
+
+            transform = new Transform2D(scale);
+
+            this.menuManager.Add(
+                sceneID,
+                new UITextureObject(
+                    "beginmenuTexture",
+                    ActorType.UITexture,
+                    StatusType.Drawn, //notice we dont need to update a static texture
+                    transform,
+                    Color.White,
+                    SpriteEffects.None,
+                    1, //depth is 1 so its always sorted to the back of other menu elements
+                    texture
+                )
+            );
+
+            //Add back button - clone the audio button then just reset texture, ids etc in all the clones
+            clone = (UIButtonObject)uiButtonObject.Clone();
+
+            //Move down on Y-axis for next button
+            clone.Transform.Translation += new Vector2(700, 7 * verticalBtnSeparation);
+            clone.ID = "beginbtn";
+            clone.Text = "Begin";
+
+            //Change the texture blend color
+            clone.Color = Color.White;
+            this.menuManager.Add(sceneID, clone);
+            #endregion
+
+            #region Win Screen
+            sceneID = "win menu";
+
+            //Retrieve the controls menu background texture
+            texture = this.textureDictionary["wingame"];
+
+            //Scale the texture to fit the entire screen
+            scale = new Vector2(
+                (float)graphics.PreferredBackBufferWidth / texture.Width,
+                (float)graphics.PreferredBackBufferHeight / texture.Height
+            );
+
+            transform = new Transform2D(scale);
+
+            this.menuManager.Add(
+                sceneID,
+                new UITextureObject(
+                    "wingameTexture",
+                    ActorType.UITexture,
+                    StatusType.Drawn, //notice we dont need to update a static texture
+                    transform,
+                    Color.White,
+                    SpriteEffects.None,
+                    1, //depth is 1 so its always sorted to the back of other menu elements
+                    texture
+                )
+            );
+
+            //Add back button - clone the audio button then just reset texture, ids etc in all the clones
+            clone = (UIButtonObject)uiButtonObject.Clone();
+
+            //Move down on Y-axis for next button
+            clone.Transform.Translation += new Vector2(000, 4 * verticalBtnSeparation);
+            clone.ID = "menubtn";
+            clone.Text = "Return to Menu";
+
+            //Change the texture blend color
+            clone.Color = Color.White;
+            this.menuManager.Add(sceneID, clone);
+            #endregion
+
+            #region Lose Screen
+            sceneID = "lose menu";
+
+            //Retrieve the controls menu background texture
+            texture = this.textureDictionary["losegame"];
+
+            //Scale the texture to fit the entire screen
+            scale = new Vector2(
+                (float)graphics.PreferredBackBufferWidth / texture.Width,
+                (float)graphics.PreferredBackBufferHeight / texture.Height
+            );
+
+            transform = new Transform2D(scale);
+
+            this.menuManager.Add(
+                sceneID,
+                new UITextureObject(
+                    "losegameTexture",
+                    ActorType.UITexture,
+                    StatusType.Drawn, //notice we dont need to update a static texture
+                    transform,
+                    Color.White,
+                    SpriteEffects.None,
+                    1, //depth is 1 so its always sorted to the back of other menu elements
+                    texture
+                )
+            );
+
+            //Add back button - clone the audio button then just reset texture, ids etc in all the clones
+            clone = (UIButtonObject)uiButtonObject.Clone();
+
+            //Move down on Y-axis for next button
+            clone.Transform.Translation += new Vector2(0, 4 * verticalBtnSeparation);
+            clone.ID = "menubtn";
+            clone.Text = "Return to Menu";
+
+            //Change the texture blend color
+            clone.Color = Color.White;
+            this.menuManager.Add(sceneID, clone);
+            #endregion
         }
 
         private void InitializeUI()
@@ -1504,7 +1627,9 @@ namespace GDApp
             this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/mainmenu");
             this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/audiomenu");
             this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/controlsmenu");
-            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/exitmenuwithtrans");
+            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/begingame");
+            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/wingame");
+            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/losegame");
             #endregion
 
             #region UI Elements
