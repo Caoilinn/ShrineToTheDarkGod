@@ -132,32 +132,30 @@ namespace GDLibrary
                 //Finds enemy where ID is equal to the passed ID
                 return this.enemies.Find(x => x.ID == id);
 
-            }
-
             return null;
         }
 
         public override void Update(GameTime gameTime)
         {
-            //Publishing event to the UI manager so that player health is always up to date and the enemy
-            //health is updated during combat
-            EventDispatcher.Publish(new EventData(
-                                        EventActionType.PlayerHealthUpdate,
-                                        EventCategoryType.UI,
-                                        new object[] { this.player.Health }));
+            ////Publishing event to the UI manager so that player health is always up to date and the enemy
+            ////health is updated during combat
+            //EventDispatcher.Publish(new EventData(
+            //                            EventActionType.PlayerHealthUpdate,
+            //                            EventCategoryType.UI,
+            //                            new object[] { this.player.Health }));
 
-            if (CombatManager.inCombat)
-            {
-                do
-                {
-                    EventDispatcher.Publish(new EventData(
-                                                EventActionType.EnemyHealthUpdate,
-                                                EventCategoryType.UI,
-                                                new object[] { this.enemyOnFocus.Health }));
-                } while (CombatManager.inCombat);
-            }
+            //if (StateManager.InCombat)
+            //{
+            //    do
+            //    {
+            //        EventDispatcher.Publish(new EventData(
+            //                                    EventActionType.EnemyHealthUpdate,
+            //                                    EventCategoryType.UI,
+            //                                    new object[] { this.enemyOnFocus.Health }));
+            //    } while (StateManager.InCombat);
+            //}
 
-            HandleKeyBoardInput(gameTime);
+            HandleKeyboardInput(gameTime);
             base.Update(gameTime);
         }
 
@@ -207,14 +205,20 @@ namespace GDLibrary
                 if (damage > 0) this.enemyOnFocus.TakeDamage(damage);
 
                 //If the player has killed the enemy
-                if (this.enemyOnFocus.Health <= 0) EventDispatcher.Publish(new EventData(EventActionType.OnEnemyDeath, EventCategoryType.Combat, new object[] { this.enemyOnFocus }));
+                if (this.enemyOnFocus.Health <= 0)
+                {
+                    //Publish UI event
+                    EventDispatcher.Publish(new EventData(EventActionType.OnEnemyDeath, EventCategoryType.UI));
+
+                    //Publish enemy death event
+                    EventDispatcher.Publish(new EventData(EventActionType.OnEnemyDeath, EventCategoryType.Combat, new object[] { this.enemyOnFocus }));
+                }
 
                 //Publish play attack sound event
-                if (this.inventoryManager.HasItem(PickupType.Sword)) {
+                if (this.inventoryManager.HasItem(PickupType.Sword))
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "h_attack" }));
-                } else {
+                else
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "punch_01" }));
-                }
 
                 //Publish player attack event
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlayerAttack, EventCategoryType.Combat));
@@ -335,14 +339,7 @@ namespace GDLibrary
             #region Block
             //To be implemented
             #endregion
-
-                    EventDispatcher.Publish(new EventData(
-                        EventActionType.OnEnemyDeath,
-                        EventCategoryType.UI));
-
-                    this.enemies.Remove(enemyOnFocus);
-                    this.playerTurn = true;
-                }
+        }
 
         public void InitiateBattle(CharacterObject character)
         {

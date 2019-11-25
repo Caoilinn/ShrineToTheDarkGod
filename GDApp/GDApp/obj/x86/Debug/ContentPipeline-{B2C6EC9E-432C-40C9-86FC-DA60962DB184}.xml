@@ -646,10 +646,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\potion.xnb</Output>
-      <Time>2019-11-25T09:44:59.4986626+00:00</Time>
+      <Time>2019-11-25T10:46:38.8024153+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\potion_0.xml</Key>
-        <Value>2019-11-25T09:45:45.2017429+00:00</Value>
+        <Value>2019-11-25T10:55:08.8125553+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -724,10 +724,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_001.xnb</Output>
-      <Time>2019-11-25T09:44:59.5016549+00:00</Time>
+      <Time>2019-11-25T10:46:38.806406+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Props\gate_001_0.xml</Key>
-        <Value>2019-11-25T09:45:45.426144+00:00</Value>
+        <Value>2019-11-25T10:55:08.9142877+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -737,10 +737,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_002.xnb</Output>
-      <Time>2019-11-25T09:44:59.5026527+00:00</Time>
+      <Time>2019-11-25T10:46:38.8074021+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Props\gate_002_0.xml</Key>
-        <Value>2019-11-25T09:45:45.4720215+00:00</Value>
+        <Value>2019-11-25T10:55:08.9681367+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -750,10 +750,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_001.xnb</Output>
-      <Time>2019-11-25T09:44:59.4438133+00:00</Time>
+      <Time>2019-11-25T10:46:38.7934386+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Collision Boxes\Props\gate_collision_001_0.xml</Key>
-        <Value>2019-11-25T09:45:45.5079265+00:00</Value>
+        <Value>2019-11-25T10:55:09.0060093+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -763,10 +763,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_002.xnb</Output>
-      <Time>2019-11-25T09:44:59.4448068+00:00</Time>
+      <Time>2019-11-25T10:46:38.7964317+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Collision Boxes\Props\gate_collision_002_0.xml</Key>
-        <Value>2019-11-25T09:45:45.5418623+00:00</Value>
+        <Value>2019-11-25T10:55:09.041913+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -776,10 +776,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_002.xnb</Output>
-      <Time>2019-11-25T09:44:59.4757245+00:00</Time>
+      <Time>2019-11-25T10:46:38.8004203+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Characters\enemy_002_0.xml</Key>
-        <Value>2019-11-25T09:45:45.5857184+00:00</Value>
+        <Value>2019-11-25T10:55:09.0858234+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -789,10 +789,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_001.xnb</Output>
-      <Time>2019-11-25T09:44:59.4747295+00:00</Time>
+      <Time>2019-11-25T10:46:38.7994235+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Characters\enemy_001_0.xml</Key>
-        <Value>2019-11-25T09:45:45.6545348+00:00</Value>
+        <Value>2019-11-25T10:55:09.1546122+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -815,10 +815,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\sword.xnb</Output>
-      <Time>2019-11-25T09:44:59.4996605+00:00</Time>
+      <Time>2019-11-25T10:46:38.8044101+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\sword_0.xml</Key>
-        <Value>2019-11-25T09:45:45.739309+00:00</Value>
+        <Value>2019-11-25T10:55:09.2030198+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -828,10 +828,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\key.xnb</Output>
-      <Time>2019-11-25T09:44:59.4976657+00:00</Time>
+      <Time>2019-11-25T10:46:38.8014185+00:00</Time>
       <Dependency>
         <Key>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\key_0.xml</Key>
-        <Value>2019-11-25T09:45:45.7831914+00:00</Value>
+        <Value>2019-11-25T10:55:09.248898+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -1480,7 +1480,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\battle_theme.xnb</Output>
-      <Time>2019-11-25T09:44:59.0827727+00:00</Time>
+      <Time>2019-11-25T10:46:38.7894512+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\wall_bump.wav</Source>
@@ -1756,7 +1756,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\uvw2_0.xnb</Output>
-      <Time>2019-11-25T09:45:42.6964276+00:00</Time>
+      <Time>2019-11-25T10:46:38.5660461+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Rooms\room_005.FBX</Source>
@@ -2008,7 +2008,7 @@
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\potion_0.xml</Output>
-      <Time>2019-11-25T09:44:59.4986626+00:00</Time>
+      <Time>2019-11-25T10:46:38.8024153+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Pickups\box.FBX</Source>
@@ -2050,42 +2050,42 @@
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Props\gate_001_0.xml</Output>
-      <Time>2019-11-25T09:44:59.5016549+00:00</Time>
+      <Time>2019-11-25T10:46:38.806406+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Props\gate_002.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Props\gate_002_0.xml</Output>
-      <Time>2019-11-25T09:44:59.5026527+00:00</Time>
+      <Time>2019-11-25T10:46:38.8074021+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Collision Boxes\Props\gate_collision_001.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Collision Boxes\Props\gate_collision_001_0.xml</Output>
-      <Time>2019-11-25T09:44:59.4438133+00:00</Time>
+      <Time>2019-11-25T10:46:38.7934386+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Collision Boxes\Props\gate_collision_002.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Collision Boxes\Props\gate_collision_002_0.xml</Output>
-      <Time>2019-11-25T09:44:59.4448068+00:00</Time>
+      <Time>2019-11-25T10:46:38.7964317+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Characters\enemy_002.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Characters\enemy_002_0.xml</Output>
-      <Time>2019-11-25T09:44:59.4757245+00:00</Time>
+      <Time>2019-11-25T10:46:38.8004203+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Characters\enemy_001.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Characters\enemy_001_0.xml</Output>
-      <Time>2019-11-25T09:44:59.4747295+00:00</Time>
+      <Time>2019-11-25T10:46:38.7994235+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Collision Boxes\Pickups\pickup_collision.FBX</Source>
@@ -2099,14 +2099,14 @@
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\sword_0.xml</Output>
-      <Time>2019-11-25T09:44:59.4996605+00:00</Time>
+      <Time>2019-11-25T10:46:38.8044101+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Models\Pickups\key.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Assets\Models\Pickups\key_0.xml</Output>
-      <Time>2019-11-25T09:44:59.4976657+00:00</Time>
+      <Time>2019-11-25T10:46:38.8014185+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

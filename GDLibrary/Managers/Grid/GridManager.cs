@@ -400,14 +400,10 @@ namespace GDLibrary
                 //If the distance between the gates' position and the players' position, is less than or equal to the distance between two adjacent cells
                 if (Vector3.Distance(gate.Transform.Translation * vectorXZ, player.Transform.Translation * vectorXZ) <= distanceBetweenAdjacentCells)
                 {
-                    //And if the player is looking towards the gate
-                    if (Vector3.Normalize(player.Transform.Look) == (Vector3.Normalize(player.Transform.Translation - gate.Transform.Translation) * -1))
-                    {
-                        //Then the player is looking towards the gate, while standing in a cell that is adjacent to it
-                        HandlePlayerGateInteraction(gate as CollidableArchitecture);
-                        inProximityOfAGate = true;
-                        break;
-                    }
+                    //Then the player is looking towards the gate, while standing in a cell that is adjacent to it
+                    HandlePlayerGateInteraction(gate as CollidableArchitecture);
+                    inProximityOfAGate = true;
+                    break;
                 }
             }
 
