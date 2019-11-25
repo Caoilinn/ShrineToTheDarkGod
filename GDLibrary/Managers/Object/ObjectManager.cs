@@ -59,7 +59,7 @@ namespace GDLibrary
             int opaqueInitialSize,
             EventDispatcher eventDispatcher,
             StatusType statusType
-        ) : base(game, eventDispatcher, statusType) {
+        ) : base(game, statusType, eventDispatcher) {
             this.cameraManager = cameraManager;
 
             //Create two lists - opaque and transparent
@@ -92,8 +92,8 @@ namespace GDLibrary
 
         private void EventDispacter_EnemyDeath(EventData eventData)
         {
-            (eventData.AdditionalParameters[0] as Enemy).Remove();
-            this.Remove(eventData.AdditionalParameters[0] as Enemy);
+            (eventData.AdditionalParameters[0] as EnemyObject).Remove();
+            this.Remove(eventData.AdditionalParameters[0] as EnemyObject);
         }
 
         private void EventDispatcher_AddActorChanged(EventData eventData)
@@ -106,8 +106,12 @@ namespace GDLibrary
         private void EventDispatcher_RemoveActorChanged(EventData eventData)
         {
             if (eventData.EventType == EventActionType.OnRemoveActor)
+            {
                 if (eventData.Sender is DrawnActor3D actor)
                     this.Remove(actor);
+                else
+                    this.Remove(eventData.AdditionalParameters[0] as DrawnActor3D);
+            }
         }
 
         private void EventDispatcher_OpacityChanged(EventData eventData)

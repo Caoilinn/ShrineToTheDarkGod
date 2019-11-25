@@ -88,7 +88,7 @@ namespace GDLibrary
         public override int GetHashCode()
         {
             int hash = 1;
-            hash = hash * 31 + this.effectParameters.GetHashCode();
+            if (this.effectParameters != null) hash = hash * 31 + this.effectParameters.GetHashCode();
             hash = hash * 43 + base.GetHashCode();
             return hash;
         }

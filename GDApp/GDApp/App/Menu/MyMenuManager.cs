@@ -8,14 +8,13 @@ namespace GDApp
     {
         #region Constructors
         public MyMenuManager(
-            Game game, 
-            ManagerParameters managerParameters, 
-            CameraManager cameraManager,
-            SpriteBatch spriteBatch, 
+            Game game,
+            StatusType statusType,
             EventDispatcher eventDispatcher, 
-            StatusType statusType
-        ) : base(game, managerParameters, cameraManager, spriteBatch, eventDispatcher, statusType) {
-
+            CameraManager cameraManager,
+            MouseManager mouseManager,
+            SpriteBatch spriteBatch
+        ) : base(game, statusType, eventDispatcher, cameraManager, mouseManager, spriteBatch) {
         }
         #endregion
 
@@ -29,14 +28,14 @@ namespace GDApp
             if (eventData.EventType == EventActionType.OnStart)
             {
                 //Add event to stop background menu music here...
-                //Object[] additionalParameters = { "in-game background music", 1 };
-                //EventDispatcher.Publish(new EventData(EventActionType.OnStop, EventCategoryType.Sound2D, additionalParameters));
+                object[] additionalParameters = { "main_theme", 1 };
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, additionalParameters));
             }
             else if (eventData.EventType == EventActionType.OnPause)
             {
                 //Add event to play background menu music here...
-                //Object[] additionalParameters = { "menu elevator music" };
-                //EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, additionalParameters));
+                object[] additionalParameters = { "battle_theme" };
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, additionalParameters));
             }
         }
         #endregion
@@ -44,10 +43,10 @@ namespace GDApp
         #region Methods
         protected override void HandleMouseOver(DrawnActor2D uiObject, GameTime gameTime)
         {
-            if (uiObject.Transform.Bounds.Contains(this.ManagerParameters.MouseManager.Bounds))
+            if (uiObject.Transform.Bounds.Contains(this.MouseManager.Bounds))
             {
                 //Mouse is inside the bounds of the object - uiObject.ID
-                if (this.ManagerParameters.MouseManager.IsLeftButtonClicked())
+                if (this.MouseManager.IsLeftButtonClicked())
                     HandleMouseClick(uiObject, gameTime);
             }
         }

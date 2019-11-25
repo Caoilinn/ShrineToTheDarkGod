@@ -75,9 +75,10 @@
     <Compile Include="Actor\Drawn\3D\Collidable\Pickup\MoveablePickupObject.cs" />
     <Compile Include="Controllers\3D\Base\SpinController.cs" />
     <Compile Include="Managers\AI\AIManager.cs" />
+    <Compile Include="Managers\Grid\GridManager.cs" />
     <Compile Include="Parameters\Architecture\ArchitectureParameters.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Architecture\CollidableArchitecture.cs" />
-    <Compile Include="Actor\Drawn\3D\Collidable\Character\Enemy.cs" />
+    <Compile Include="Actor\Drawn\3D\Collidable\Character\EnemyObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Character\CharacterObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Base\CollidableObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Character\PlayerObject.cs" />
@@ -88,7 +89,6 @@
     <Compile Include="Actor\Drawn\3D\Primitives\PrimitiveObject.cs" />
     <Compile Include="Actor\Base\Actor.cs" />
     <Compile Include="Actor\Base\Actor3D.cs" />
-    <Compile Include="Controllers\3D\Base\DriveController.cs" />
     <Compile Include="Controllers\3D\Base\TargetController.cs" />
     <Compile Include="Controllers\3D\Base\ThirdPersonController.cs" />
     <Compile Include="Controllers\3D\Base\TrackController.cs" />
@@ -97,7 +97,6 @@
     <Compile Include="Controllers\3D\Camera\DollyCameraController.cs" />
     <Compile Include="Controllers\3D\Base\RailController.cs" />
     <Compile Include="Controllers\3D\Camera\FirstPersonCameraController.cs" />
-    <Compile Include="Controllers\3D\Camera\FlightCameraController.cs" />
     <Compile Include="Controllers\3D\Camera\SecurityCameraController.cs" />
     <Compile Include="Controllers\Base\Controller.cs" />
     <Compile Include="Controllers\Physics\PhysicsController.cs" />

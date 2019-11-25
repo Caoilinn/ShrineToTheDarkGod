@@ -141,13 +141,12 @@ namespace GDLibrary
             string id, 
             ControllerType controllerType, 
             Keys[] moveKeys, 
-            float moveSpeed, 
-            float strafeSpeed, 
+            float moveSpeed,
             float rotationSpeed, 
             ManagerParameters managerParameters,
             Vector3 movementVector,
             Vector3 rotationVector
-        ) : base(id, controllerType, moveKeys, moveSpeed, strafeSpeed, rotationSpeed, managerParameters) {
+        ) : base(id, controllerType, moveKeys, moveSpeed, rotationSpeed, managerParameters) {
             this.movementVector = movementVector;
             this.rotationVector = rotationVector;
         }

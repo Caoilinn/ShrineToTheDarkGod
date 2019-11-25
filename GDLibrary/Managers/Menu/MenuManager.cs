@@ -1,37 +1,31 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
+using System;
 
 namespace GDLibrary
 {
     public class MenuManager : PausableDrawableGameComponent
     {
         #region Fields
-        //stores the actors shown for a particular menu scene (e.g. for the "main menu" scene we would have actors: startBtn, ExitBtn, AudioBtn)
         private Dictionary<string, List<DrawnActor2D>> menuDictionary;
         private List<DrawnActor2D> activeList = null;
-
-        private SpriteBatch spriteBatch;
-        private ManagerParameters managerParameters;
         private CameraManager cameraManager;
+        private MouseManager mouseManager;
+        private SpriteBatch spriteBatch;
         private bool isVisible;
         #endregion
 
         #region Properties
-        public bool IsVisible
+        public Dictionary<string, List<DrawnActor2D>> MenuDictionary
         {
             get
             {
-                return this.isVisible;
+                return this.menuDictionary;
             }
-        }
-
-        public ManagerParameters ManagerParameters
-        {
-            get
+            set
             {
-                return this.managerParameters;
+                this.menuDictionary = value;
             }
         }
 
@@ -41,26 +35,77 @@ namespace GDLibrary
             {
                 return this.activeList;
             }
+            set
+            {
+                this.activeList = value;
+            }
+        }
+
+        public CameraManager CameraManager
+        {
+            get
+            {
+                return this.cameraManager;
+            }
+            set
+            {
+                this.cameraManager = value;
+            }
+        }
+
+        public MouseManager MouseManager
+        {
+            get
+            {
+                return this.mouseManager;
+            }
+            set
+            {
+                this.mouseManager = value;
+            }
+        }
+
+        public SpriteBatch SpriteBatch
+        {
+            get
+            {
+                return this.spriteBatch;
+            }
+            set
+            {
+                this.spriteBatch = value;
+            }
+        }
+
+        public bool IsVisible
+        {
+            get
+            {
+                return this.isVisible;
+            }
+            set
+            {
+                this.isVisible = value;
+            }
         }
         #endregion
 
+        #region Constructors
         public MenuManager(
-            Game game, 
-            ManagerParameters managerParameters,
-            CameraManager cameraManager, 
-            SpriteBatch spriteBatch, 
+            Game game,
+            StatusType statusType,
             EventDispatcher eventDispatcher,
-            StatusType statusType
-        ) : base(game, eventDispatcher, statusType) {
-            this.menuDictionary = new Dictionary<string, List<DrawnActor2D>>();
-
-            //Used to listen for input
-            this.managerParameters = managerParameters;
+            CameraManager cameraManager,
+            MouseManager mouseManager,
+            SpriteBatch spriteBatch
+        ) : base(game, statusType, eventDispatcher) {
             this.cameraManager = cameraManager;
-
-            //Used to render menu and UI elements
+            this.mouseManager = mouseManager;
             this.spriteBatch = spriteBatch;
+
+            this.menuDictionary = new Dictionary<string, List<DrawnActor2D>>();
         }
+        #endregion
 
         #region Event Handling
         protected override void EventDispatcher_MenuChanged(EventData eventData)
@@ -79,6 +124,7 @@ namespace GDLibrary
         }
         #endregion
 
+        #region Methods
         public void Add(string menuSceneID, DrawnActor2D actor)
         {
             if (this.menuDictionary.ContainsKey(menuSceneID))
@@ -87,16 +133,13 @@ namespace GDLibrary
             }
             else
             {
-                List<DrawnActor2D> newList = new List<DrawnActor2D>();
-                newList.Add(actor);
-                this.menuDictionary.Add(menuSceneID, newList);
+                this.menuDictionary.Add(menuSceneID, new List<DrawnActor2D>() { actor });
             }
 
             //If the user forgets to set the active list then set to the sceneID of the last added item
             if (this.activeList == null)
             {
                 SetActiveList(menuSceneID);
-
             }
         }
 
@@ -118,7 +161,7 @@ namespace GDLibrary
             return false;
         }
 
-        //e.g. return all the actor2D objects associated with the "main menu" or "audio menu"
+        //Return all the actor2D objects associated with the "main menu" or "audio menu"
         public List<DrawnActor2D> FindAllBySceneID(string menuSceneID)
         {
             if (this.menuDictionary.ContainsKey(menuSceneID))
@@ -146,7 +189,8 @@ namespace GDLibrary
                 //update all the updateable menu items (e.g. make buttons pulse etc)
                 foreach (DrawnActor2D currentUIObject in this.activeList)
                 {
-                    if ((currentUIObject.GetStatusType() & StatusType.Update) != 0) //if update flag is set
+                    //If update flag is set
+                    if ((currentUIObject.GetStatusType() & StatusType.Update) != 0)
                         currentUIObject.Update(gameTime);
                 }
             }
@@ -159,7 +203,8 @@ namespace GDLibrary
                 spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise);
                 foreach (DrawnActor2D currentUIObject in this.activeList)
                 {
-                    if ((currentUIObject.GetStatusType() & StatusType.Drawn) != 0) //if drawn flag is set
+                    //If drawn flag is set
+                    if ((currentUIObject.GetStatusType() & StatusType.Drawn) != 0)
                     {
                         currentUIObject.Draw(gameTime, spriteBatch);
                         HandleMouseOver(currentUIObject, gameTime);
@@ -171,12 +216,13 @@ namespace GDLibrary
 
         protected virtual void HandleMouseOver(DrawnActor2D uiObject, GameTime gameTime)
         {
-            //developer implements in subclass of MenuManager - see MyMenuManager.cs
+            //Developer implements in subclass of MenuManager - see MyMenuManager.cs
         }
 
         protected virtual void HandleMouseClick(DrawnActor2D uiObject, GameTime gameTime)
         {
-            //developer implements in subclass of MenuManager - see MyMenuManager.cs
+            //Developer implements in subclass of MenuManager - see MyMenuManager.cs
         }
+        #endregion
     }
 }

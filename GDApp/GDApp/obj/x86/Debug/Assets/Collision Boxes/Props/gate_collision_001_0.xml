@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics" xmlns:Framework="Microsoft.Xna.Framework">
   <Asset Type="Graphics:MeshContent">
-    <Name>Box002</Name>
+    <Name>gate_collision_002</Name>
     <Identity>
-      <SourceFilename>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Collision Boxes\Props\gate_collision_001.FBX</SourceFilename>
+      <SourceFilename>C:\Users\james\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Collision Boxes\Props\gate_collision_001.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>
-      <Data Key="MaxHandle" Type="int">1226</Data>
+      <Data Key="MaxHandle" Type="int">1227</Data>
     </OpaqueData>
-    <Transform>2.54 0 0 0 0 7.19523466E-16 -2.54 0 0 2.54 7.19523466E-16 0 127 25.4 127 1</Transform>
+    <Transform>2.54 0 0 0 0 7.19523466E-16 -2.54 0 0 2.54 7.19523466E-16 0 5.55134648E-06 -101.6 -2.87809361E-14 1</Transform>
     <Positions>-10 -40 0 10 -40 0 -10 40 0 10 40 0 -10 -40 80 10 -40 80 -10 40 80 10 40 80</Positions>
     <Geometry>
       <Batch>

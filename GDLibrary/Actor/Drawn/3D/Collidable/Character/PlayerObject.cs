@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -11,59 +12,18 @@ namespace GDLibrary
     {
         #region Variables
         private Keys[] moveKeys;
-        private Vector3 translationOffset;
-        private KeyboardManager keyboardManager;
-        private float jumpHeight;
         #endregion
 
         #region Properties
-        public KeyboardManager KeyboardManager
-        {
-            get
-            {
-                return keyboardManager;
-            }
-            set
-            {
-                this.keyboardManager = value;
-            }
-        }
-
-        private ManagerParameters managerParameters;
-
-        public float JumpHeight
-        {
-            get
-            {
-                return jumpHeight;
-            }
-            set
-            {
-                jumpHeight = (value > 0) ? value : 1;
-            }
-        }
-
-        public Vector3 TranslationOffset
-        {
-            get
-            {
-                return translationOffset;
-            }
-            set
-            {
-                translationOffset = value;
-            }
-        }
-
         public Keys[] MoveKeys
         {
             get
             {
-                return moveKeys;
+                return this.moveKeys;
             }
             set
             {
-                moveKeys = value;
+                this.moveKeys = value;
             }
         }
         #endregion
@@ -75,8 +35,6 @@ namespace GDLibrary
             Transform3D transform,
             EffectParameters effectParameters,
             Model model,
-            float radius,
-            float height,
             float accelerationRate,
             float decelerationRate,
             Vector3 movementVector,
@@ -86,56 +44,89 @@ namespace GDLibrary
             float health,
             float attack,
             float defence,
-            Keys[] moveKeys,
-            Vector3 translationOffset,
-            KeyboardManager keyboardManager,
             ManagerParameters managerParameters,
-            float jumpHeight
-        ) : base(id, actorType, transform, effectParameters, model, radius, height, 0, 0, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence) {
+            Keys[] moveKeys
+        ) : base(id, actorType, transform, effectParameters, model, accelerationRate, decelerationRate, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, managerParameters) {
             this.MoveKeys = moveKeys;
-            this.TranslationOffset = translationOffset;
-            this.KeyboardManager = keyboardManager;
-            this.managerParameters = managerParameters;
-            this.JumpHeight = jumpHeight;
         }
         #endregion
 
         #region Methods
-        public override Matrix GetWorldMatrix()
+        public virtual void HandleKeyboardInput(GameTime gameTime)
         {
-            return Matrix.CreateScale(this.Transform.Scale)
-                * this.Collision.GetPrimitiveLocal(0).Transform.Orientation
-                * this.Body.Orientation
-                * this.Transform.Orientation
-                * Matrix.CreateTranslation(this.Body.Position + translationOffset);
+            #region Rotation
+            //Anti-Clockwise
+            if (this.ManagerParameters.KeyboardManager.IsKeyDown(this.MoveKeys[4]) && !this.InMotion)
+            {
+                //Calculate target heading, relative to the camera
+                this.TargetHeading = (this.Transform.Up * this.RotationVector);
+                this.Rotation = (gameTime.ElapsedGameTime.Milliseconds * this.RotateSpeed * this.Transform.Up);
+                return;
+            }
+
+            //Clockwise
+            else if (this.ManagerParameters.KeyboardManager.IsKeyDown(this.MoveKeys[5]) && !this.InMotion)
+            {
+                //Calculate target heading, relative to the camera
+                this.TargetHeading = -(this.Transform.Up * this.RotationVector);
+                this.Rotation = -(gameTime.ElapsedGameTime.Milliseconds * this.RotateSpeed * this.Transform.Up);
+                return;
+            }
+            #endregion
+
+            #region Translation
+            //Forward
+            if (this.ManagerParameters.KeyboardManager.IsKeyDown(this.MoveKeys[0]) && !this.InMotion)
+            {
+                //Calculate target position, relative to the camera
+                this.TargetPosition = (this.Transform.Look * this.MovementVector);
+                this.Translation = (gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * this.Transform.Look);
+                return;
+            }
+
+            //Back
+            else if (this.ManagerParameters.KeyboardManager.IsKeyDown(this.MoveKeys[1]) && !this.InMotion)
+            {
+                //Calculate target position, relative to the camera
+                this.TargetPosition = -(this.Transform.Look * this.MovementVector);
+                this.Translation = -(gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * this.Transform.Look);
+                return;
+            }
+
+            //Left
+            if (this.ManagerParameters.KeyboardManager.IsKeyDown(this.MoveKeys[2]) && !this.InMotion)
+            {
+                //Calculate target position, relative to the camera
+                this.TargetPosition = -(this.Transform.Right * this.MovementVector);
+                this.Translation = -(gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * this.Transform.Right);
+                return;
+            }
+
+            //Right
+            else if (this.ManagerParameters.KeyboardManager.IsKeyDown(this.MoveKeys[3]) && !this.InMotion)
+            {
+                //Calculate target position, relative to the camera
+                this.TargetPosition = (this.Transform.Right * this.MovementVector);
+                this.Translation = (gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * this.Transform.Right);
+                return;
+            }
+            #endregion
         }
 
-        public void TakeDamage(float damage)
+        public override void TakeTurn(GameTime gameTime)
         {
-            this.Health -= damage;
-        }
+            //If it is not currently the players turn, return
+            if (!StateManager.PlayerTurn) return;
 
-        /*
-        public bool HasWeapon()
-        {
-            if (this.managerParameters.InventoryManager.HasSword("Sword"))
-                return true;
-            else
-                return false;
-        } */
+            //If the player is in battle, return
+            if (StateManager.InCombat) return;
 
-        protected virtual void HandleMouseInput(GameTime gameTime)
-        {
-        }
-
-        protected virtual void HandleKeyboardInput(GameTime gameTime)
-        {
+            HandleKeyboardInput(gameTime);
         }
 
         public override void Update(GameTime gameTime)
         {
-            HandleKeyboardInput(gameTime);
-            HandleMouseInput(gameTime);
+            TakeTurn(gameTime);
             base.Update(gameTime);
         }
         #endregion

@@ -32,7 +32,7 @@ namespace GDLibrary
             ObjectManager objectManager, 
             EventDispatcher eventDispatcher, 
             StatusType statusType
-        ) : base(game, eventDispatcher, statusType) {
+        ) : base(game, statusType, eventDispatcher) {
             this.cameraManager = cameraManager;
             this.objectManager = objectManager;
             this.vertexData = new List<VertexPositionColor>();

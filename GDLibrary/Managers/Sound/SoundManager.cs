@@ -17,8 +17,9 @@ namespace GDLibrary
         protected WaveBank waveBank;
         protected SoundBank soundBank;
 
-        protected List<Cue> playingCues;
-        protected List<Cue3D> cueList3D;
+        protected List<Cue> playingCues2D;
+        protected List<Cue3D> playingCues3D;
+        protected HashSet<string> playSet2D;
         protected HashSet<string> playSet3D;
 
         protected AudioListener audioListener;
@@ -53,10 +54,11 @@ namespace GDLibrary
             this.audioEngine = new AudioEngine(@"" + folderPath + "/" + audioEngineStr);
             this.waveBank = new WaveBank(audioEngine, @"" + folderPath + "/" + waveBankStr);
             this.soundBank = new SoundBank(audioEngine, @"" + folderPath + "/" + soundBankStr);
-            this.cueList3D = new List<Cue3D>();
+            this.playingCues2D = new List<Cue>();
+            this.playingCues3D = new List<Cue3D>();
+            this.playSet2D = new HashSet<string>();
             this.playSet3D = new HashSet<string>();
             this.audioListener = new AudioListener();
-            this.playingCues = new List<Cue>();
         }
         #endregion
 
@@ -212,6 +214,58 @@ namespace GDLibrary
         #endregion
 
         #region 2D Cues
+        ////Plays a 2D cue - Menu/Game Music etc.
+        //public void PlayCue(string cueName)
+        //{
+        //    if (!playSet2D.Contains(cueName))
+        //    {
+        //        playSet2D.Add(cueName);
+        //        Cue cue = this.soundBank.GetCue(cueName);
+        //        playingCues2D.Add(cue);
+        //        cue.Play();
+        //    }
+        //}
+
+        ////Pauses a 2D cue
+        //public void PauseCue(string cueName)
+        //{
+        //    //If we have not already been asked to play this in the current update loop then play it
+        //    if (!playSet3D.Contains(cueName))
+        //    {
+        //        Cue cue = this.soundBank.GetCue(cueName);
+        //        playingCues2D.Add(cue);
+        //        playin
+        //        cue.Play();
+        //    }
+        //}
+
+        ////Resumes a paused 2D cue
+        //public void ResumeCue(string cueName)
+        //{
+        //    if (!playSet2D.Contains(cueName))
+        //    {
+        //        playSet2D.Add(cueName);
+        //        Cue cue = this.soundBank.GetCue(cueName);
+        //        if ((cue != null) && (cue.IsPaused)) {
+        //            playingCues2D.Add(cue);
+        //            cue.Resume();
+        //        }
+        //    }
+        //}
+
+        ////Stops a 2D cue - AudioStopOptions: AsAuthored and Immediate
+        //public void StopCue(string cueName, AudioStopOptions audioStopOptions)
+        //{
+        //    if (!playSet2D.Contains(cueName))
+        //    {
+        //        playSet2D.Remove(cueName);
+        //        Cue cue = this.soundBank.GetCue(cueName);
+        //        if ((cue != null) && (cue.IsPlaying)) {
+        //            playingCues2D.Remove(cue);
+        //            cue.Stop(audioStopOptions);
+        //        }
+        //    }
+        //}
         //Plays a 2D cue - Menu/Game Music etc.
         public void PlayCue(string cueName)
         {
@@ -219,7 +273,7 @@ namespace GDLibrary
             if (!playSet3D.Contains(cueName))
             {
                 Cue cue = this.soundBank.GetCue(cueName);
-                playingCues.Add(cue);
+                playingCues2D.Add(cue);
                 cue.Play();
             }
         }
@@ -227,16 +281,16 @@ namespace GDLibrary
         //Pauses a 2D cue
         public void PauseCue(string cueName)
         {
-            Cue cue = playingCues.Find(x => x.Name == cueName);
+            Cue cue = playingCues2D.Find(x => x.Name == cueName);
 
-            if (playingCues.Contains(cue))
+            if (playingCues2D.Contains(cue))
             {
                 if (cue.IsPlaying)
                 {
                     cue.Pause();
-                    playingCues.Remove(cue);
+                    playingCues2D.Remove(cue);
                 }
-                }
+            }
             //Cue cue = this.soundBank.GetCue(cueName);
             //if ((cue != null) && (cue.IsPlaying))
             //    cue.Pause();
@@ -273,7 +327,7 @@ namespace GDLibrary
                 sound.Emitter = audioEmitter;
                 sound.Cue.Apply3D(audioListener, audioEmitter);
                 sound.Cue.Play();
-                this.cueList3D.Add(sound);
+                this.playingCues3D.Add(sound);
                 this.playSet3D.Add(cueName);
             }
         }
@@ -302,17 +356,17 @@ namespace GDLibrary
             {
                 cue3D.Cue.Stop(audioStopOptions);
                 this.playSet3D.Remove(cue3D.Cue.Name);
-                this.cueList3D.Remove(cue3D);
+                this.playingCues3D.Remove(cue3D);
             }
         }
 
         //Stops all 3D cues - AudioStopOptions: AsAuthored and Immediate
         public void StopAll3DCues(AudioStopOptions audioStopOptions)
         {
-            foreach (Cue3D cue3D in this.cueList3D)
+            foreach (Cue3D cue3D in this.playingCues3D)
             {
                 cue3D.Cue.Stop(audioStopOptions);
-                this.cueList3D.Remove(cue3D);
+                this.playingCues3D.Remove(cue3D);
                 this.playSet3D.Remove(cue3D.Cue.Name);
             }
         }
@@ -320,7 +374,7 @@ namespace GDLibrary
         //Retrieves a 3D cue from the list of currently active cues
         public Cue3D Get3DCue(string name)
         {
-            foreach (Cue3D cue3D in this.cueList3D)
+            foreach (Cue3D cue3D in this.playingCues3D)
             {
                 if (cue3D.Cue.Name.Equals(name))
                     return cue3D;
@@ -378,13 +432,13 @@ namespace GDLibrary
         //Pause All Playing Sounds
         public void PauseAll()
         {
-            foreach (Cue3D cue in cueList3D) cue.Cue.Pause();
+            foreach (Cue3D cue in playingCues3D) cue.Cue.Pause();
         }
 
         //Resume All Playing Sounds
         public void ResumeAll()
         {
-            foreach (Cue3D cue in cueList3D) cue.Cue.Resume();
+            foreach (Cue3D cue in playingCues3D) cue.Cue.Resume();
         }
 
         protected override void HandleInput(GameTime gameTime)
@@ -395,15 +449,15 @@ namespace GDLibrary
         public override void Update(GameTime gameTime)
         {
             this.audioEngine.Update();
-            for (int i = 0; i < cueList3D.Count; i++)
+            for (int i = 0; i < playingCues3D.Count; i++)
             {
-                if (this.cueList3D[i].Cue.IsPlaying)
-                    this.cueList3D[i].Cue.Apply3D(audioListener, this.cueList3D[i].Emitter);
+                if (this.playingCues3D[i].Cue.IsPlaying)
+                    this.playingCues3D[i].Cue.Apply3D(audioListener, this.playingCues3D[i].Emitter);
 
-                else if (this.cueList3D[i].Cue.IsStopped)
+                else if (this.playingCues3D[i].Cue.IsStopped)
                 {
-                    this.playSet3D.Remove(this.cueList3D[i].Cue.Name);
-                    this.cueList3D.RemoveAt(i--);
+                    this.playSet3D.Remove(this.playingCues3D[i].Cue.Name);
+                    this.playingCues3D.RemoveAt(i--);
                 }
             }
 

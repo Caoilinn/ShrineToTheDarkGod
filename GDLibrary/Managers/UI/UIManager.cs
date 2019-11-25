@@ -1,37 +1,31 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
+using System;
 
 namespace GDLibrary
 {
     public class UIManager : PausableDrawableGameComponent
     {
         #region Fields
-        //Stores the actors shown for a particular menu scene (e.g. for the "main menu" scene we would have actors: startBtn, ExitBtn, AudioBtn)
         private Dictionary<string, List<DrawnActor2D>> uiDictionary;
         private List<DrawnActor2D> activeList = null;
-
-        private SpriteBatch spriteBatch;
-        private ManagerParameters managerParameters;
         private CameraManager cameraManager;
+        private MouseManager mouseManager;
+        private SpriteBatch spriteBatch;
         private bool isVisible;
         #endregion
 
         #region Properties
-        public bool IsVisible
+        public Dictionary<string, List<DrawnActor2D>> ÙIDictionary
         {
             get
             {
-                return this.isVisible;
+                return this.uiDictionary;
             }
-        }
-
-        public ManagerParameters ManagerParameters
-        {
-            get
+            set
             {
-                return this.managerParameters;
+                this.uiDictionary = value;
             }
         }
 
@@ -41,31 +35,79 @@ namespace GDLibrary
             {
                 return this.activeList;
             }
+            set
+            {
+                this.activeList = value;
+            }
+        }
+
+        public CameraManager CameraManager
+        {
+            get
+            {
+                return this.cameraManager;
+            }
+            set
+            {
+                this.cameraManager = value;
+            }
+        }
+
+        public MouseManager MouseManager
+        {
+            get
+            {
+                return this.mouseManager;
+            }
+            set
+            {
+                this.mouseManager = value;
+            }
+        }
+
+        public SpriteBatch SpriteBatch
+        {
+            get
+            {
+                return this.spriteBatch;
+            }
+            set
+            {
+                this.spriteBatch = value;
+            }
+        }
+
+        public bool IsVisible
+        {
+            get
+            {
+                return this.isVisible;
+            }
+            set
+            {
+                this.isVisible = value;
+            }
         }
         #endregion
 
         #region Constructors
         public UIManager(
-            Game game, 
-            ManagerParameters managerParameters,
-            CameraManager cameraManager, 
-            SpriteBatch spriteBatch, 
+            Game game,
+            StatusType statusType,
             EventDispatcher eventDispatcher,
-            StatusType statusType
-        ) : base(game, eventDispatcher, statusType) {
-            this.uiDictionary = new Dictionary<string, List<DrawnActor2D>>();
-
-            //Used to listen for input
-            this.managerParameters = managerParameters;
+            CameraManager cameraManager,
+            MouseManager mouseManager,
+            SpriteBatch spriteBatch
+        ) : base(game, statusType, eventDispatcher) {
             this.cameraManager = cameraManager;
-
-            //Used to render menu and UI elements
+            this.mouseManager = mouseManager;
             this.spriteBatch = spriteBatch;
+
+            this.uiDictionary = new Dictionary<string, List<DrawnActor2D>>();
         }
         #endregion
 
         #region Event Handling
-
         protected override void RegisterForEventHandling(EventDispatcher eventDispatcher)
         {
             eventDispatcher.UIChanged += EventDispatcher_MenuChanged;
@@ -86,9 +128,6 @@ namespace GDLibrary
                 this.isVisible = true;
             }
         }
-        
-        
-
         #endregion
 
         #region Methods
@@ -128,7 +167,7 @@ namespace GDLibrary
             return false;
         }
 
-        //e.g. return all the actor2D objects associated with the "health ui" or "inventory ui"
+        //Return all the actor2D objects associated with the "health ui" or "inventory ui"
         public List<DrawnActor2D> FindAllBySceneID(string sceneID)
         {
             if (this.uiDictionary.ContainsKey(sceneID))
@@ -167,7 +206,8 @@ namespace GDLibrary
                 spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise);
                 foreach (DrawnActor2D currentUIObject in this.activeList)
                 {
-                    if ((currentUIObject.GetStatusType() & StatusType.Drawn) != 0) //if drawn flag is set
+                    //If drawn flag is set
+                    if ((currentUIObject.GetStatusType() & StatusType.Drawn) != 0)
                     {
                         currentUIObject.Draw(gameTime, spriteBatch);
                         HandleMouseOver(currentUIObject, gameTime);

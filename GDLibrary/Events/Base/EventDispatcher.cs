@@ -36,6 +36,7 @@ namespace GDLibrary
         public delegate void DoorEventHandler(EventData eventData);
         public delegate void InventoryEventHandler(EventData eventData);
         public delegate void PlayerEventHandler(EventData eventData);
+        public delegate void EnemyEventHandler(EventData eventData);
         public delegate void UIChangedEventHandler(EventData eventData);
         public delegate void EnemyDeathEventHandler(EventData eventData);
         #endregion
@@ -55,6 +56,7 @@ namespace GDLibrary
         public event DoorEventHandler DoorEvent;
         public event InventoryEventHandler InventoryEvent;
         public event PlayerEventHandler PlayerChanged;
+        public event EnemyEventHandler EnemyChanged;
         public event UIChangedEventHandler UIChanged;
         public event EnemyDeathEventHandler EnemyDeathEvent;
         #endregion
@@ -155,22 +157,35 @@ namespace GDLibrary
                 case EventCategoryType.Player:
                     OnPlayer(eventData);
                     break;
+
+                case EventCategoryType.Enemy:
+                    OnEnemy(eventData);
+                    break;
+
                 case EventCategoryType.UIMenu:
                     OnUIChanged(eventData);
                     break;
+
                 case EventCategoryType.EnemyDeath:
                     OnEnemyDeath(eventData);
                     break;
+
                 default:
                     break;
             }
         }
+
         #endregion
 
         #region Event Methods
         private void OnPlayer(EventData eventData)
         {
             PlayerChanged?.Invoke(eventData);
+        }
+
+        private void OnEnemy(EventData eventData)
+        {
+            EnemyChanged?.Invoke(eventData);
         }
 
         //Called when the game state has changed (next level, reset level etc.)

@@ -101,8 +101,8 @@ namespace GDLibrary
         {
             if (eventData.EventType == EventActionType.OnRemoveActor)
             {
-                //Using the "sender" property of the event to pass reference to object to be removed - use "as" to access Body since sender is defined as a raw object.
-                Remove(eventData.Sender as CollidableObject);
+                if (eventData.Sender != null)
+                    Remove(eventData.Sender as CollidableObject);
             }
         }
 

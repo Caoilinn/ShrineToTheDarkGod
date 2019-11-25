@@ -8,6 +8,7 @@ Fixes:			None
 */
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace GDLibrary
@@ -36,11 +37,15 @@ namespace GDLibrary
         #endregion
 
         #region Camera
-        public static readonly int CurveEvaluationPrecision = 4;
+        public static float FirstPersonCameraFieldOfView = MathHelper.ToRadians(45);
+        public static float FirstPersonCameraDrawDepth = 1f;
+        public static float FirstPersonCameraAspectRatio = (4.0f / 3.0f);
+        public static float FirstPersonCameraNearClipPlane = 0.1f;
+        public static float FirstPersonCameraFarClipPlane = 10000f;
 
+        public static readonly int CurveEvaluationPrecision = 4;
         public static readonly float CameraRotationSpeed = 0.3f;
         public static readonly float CameraMoveSpeed = 0.6f;
-        public static readonly float CameraStrafeSpeed = 0.6f * CameraMoveSpeed;
 
         //JigLib related collidable camera properties
         public static readonly float CollidableCameraJumpHeight = 12;
@@ -79,7 +84,7 @@ namespace GDLibrary
         public static readonly float PlayerDefence = 25;
 
         public static readonly float SkeletonHealth = 10;
-        public static readonly float SkeletonAttack = 20;
+        public static readonly float SkeletonAttack = 30;
         public static readonly float SkeletonDefence = 20;
 
         public static readonly float CultistHealth = 35;

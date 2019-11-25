@@ -15,7 +15,8 @@ namespace GDLibrary
     {
         #region Fields
         private Keys[] moveKeys;
-        private float moveSpeed, strafeSpeed, rotationSpeed;
+        private float moveSpeed;
+        private float rotationSpeed;
         private ManagerParameters managerParameters;
         #endregion
 
@@ -52,18 +53,6 @@ namespace GDLibrary
             }
         }
 
-        public float StrafeSpeed
-        {
-            get
-            {
-                return this.strafeSpeed;
-            }
-            set
-            {
-                this.strafeSpeed = value;
-            }
-        }
-
         public float RotationSpeed
         {
             get
@@ -81,14 +70,12 @@ namespace GDLibrary
             string id,
             ControllerType controllerType, 
             Keys[] moveKeys,
-            float moveSpeed, 
-            float strafeSpeed, 
+            float moveSpeed,
             float rotationSpeed, 
             ManagerParameters managerParameters
         ) : base(id, controllerType) {
             this.moveKeys = moveKeys;
             this.moveSpeed = moveSpeed;
-            this.strafeSpeed = strafeSpeed;
             this.rotationSpeed = rotationSpeed;
             this.managerParameters = managerParameters;
         }
@@ -105,7 +92,6 @@ namespace GDLibrary
 
         public virtual void HandleGamePadInput(GameTime gameTime, Actor3D parentActor)
         {
-
         }
 
         public virtual void HandleMouseInput(GameTime gameTime, Actor3D parentActor)

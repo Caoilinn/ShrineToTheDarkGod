@@ -21,6 +21,7 @@ namespace GDLibrary
         {
             Actor3D parent = actor as Actor3D;
             if (actor  != null) parent.Transform.TranslateBy((float) Math.Sin(gameTime.TotalGameTime.TotalSeconds) * new Vector3(0, 0.2f, 0));
+            if (actor  != null) parent.Transform.RotateBy(new Vector3(0, 1f, 0));
 
             base.Update(gameTime, actor);
         }

@@ -4,6 +4,8 @@ using JigLibX.Math;
 using JigLibX.Physics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using System;
 
 namespace GDLibrary
 {
@@ -27,6 +29,7 @@ namespace GDLibrary
 
         private Vector3 movementVector;
         private Vector3 rotationVector;
+
         private bool inMotion = false;
 
         private float moveSpeed;
@@ -35,17 +38,12 @@ namespace GDLibrary
         private float health;
         private float attack;
         private float defence;
+
+        private ManagerParameters managerParameters;
+        private HashSet<Vector3> blockedDirections;
         #endregion
 
         #region Properties
-        public Character CharacterBody
-        {
-            get
-            {
-                return this.Body as Character;
-            }
-        }
-
         public Vector3 Translation
         {
             get
@@ -182,7 +180,7 @@ namespace GDLibrary
         {
             get
             {
-                return health;
+                return this.health;
             }
             set
             {
@@ -194,7 +192,7 @@ namespace GDLibrary
         {
             get
             {
-                return attack;
+                return this.attack;
             }
             set
             {
@@ -206,11 +204,35 @@ namespace GDLibrary
         {
             get
             {
-                return defence;
+                return this.defence;
             }
             set
             {
                 this.defence = value;
+            }
+        }
+
+        public HashSet<Vector3> BlockedDirections
+        {
+            get
+            {
+                return this.blockedDirections;
+            }
+            set
+            {
+                this.blockedDirections = value;
+            }
+        }
+
+        public ManagerParameters ManagerParameters
+        {
+            get
+            {
+                return this.managerParameters;
+            }
+            set
+            {
+                this.managerParameters = value;
             }
         }
         #endregion
@@ -222,8 +244,6 @@ namespace GDLibrary
             Transform3D transform,
             EffectParameters effectParameters,
             Model model,
-            float radius,
-            float height,
             float accelerationRate,
             float decelerationRate,
             Vector3 movementVector,
@@ -232,24 +252,9 @@ namespace GDLibrary
             float rotateSpeed,
             float health,
             float attack,
-            float defence
+            float defence,
+            ManagerParameters managerParameters
         ) : base(id, actorType, transform, effectParameters, model) {
-
-            this.Body = new Character(
-                accelerationRate,
-                decelerationRate
-            );
-
-            this.Collision = new CollisionSkin(Body);
-            this.Body.ExternalData = this;
-            this.Body.CollisionSkin = this.Collision;
-
-            Capsule capsule = new Capsule(Vector3.Zero, Matrix.CreateRotationX(MathHelper.PiOver2), radius, height);
-            this.Collision.AddPrimitive(
-                capsule,
-                (int)MaterialTable.MaterialID.NormalSmooth
-            );
-
             this.MovementVector = movementVector;
             this.RotationVector = rotationVector;
             this.MoveSpeed = moveSpeed;
@@ -258,15 +263,195 @@ namespace GDLibrary
             this.Health = health;
             this.Attack = attack;
             this.Defence = defence;
+
+            this.ManagerParameters = managerParameters;
+            this.BlockedDirections = new HashSet<Vector3>();
         }
         #endregion
 
         #region Methods
+        //Handle Movement
+        public virtual void HandleMovement()
+        {
+            #region Rotation
+            if (this.Rotation != Vector3.Zero)
+            {
+                //Play turn sound
+                if (!this.InMotion) EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "turn_around" }));
+                
+                //If the current heading is near the target heading
+                if (Vector3.Distance(this.CurrentHeading, this.TargetHeading) <= 5)
+                {
+                    //Rotate to the target heading
+                    this.Transform.RotateBy((this.CurrentHeading - this.TargetHeading) * -Vector3.One);
+
+                    //Reset vectors
+                    this.Rotation = Vector3.Zero;
+                    this.CurrentHeading = Vector3.Zero;
+
+                    //Update motion state
+                    this.InMotion = false;
+                }
+                else
+                {
+                    //Rotate actor
+                    this.Transform.RotateBy(this.Rotation);
+
+                    //Update current heading
+                    this.CurrentHeading += this.Rotation;
+
+                    //Update motion state
+                    this.InMotion = true;
+                }
+
+                //Prevents multiple movement actions from happening every update
+                return;
+            }
+            #endregion
+
+            #region Translation
+            if (this.Translation != Vector3.Zero)
+            {
+                //If the direction of movement is blocked
+                if (this.BlockedDirections.Contains(Vector3.Normalize(this.Translation)))
+                {
+                    //Play wall bump sound
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "wall_bump" }));
+                    this.Translation = Vector3.Zero;
+                    return;
+                }
+
+                //Play move sound
+                if (!this.InMotion) EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "environment_stone_steps" }));
+
+                //If the current positon is near the target position
+                if (Vector3.Distance(this.CurrentPosition, this.TargetPosition) <= 10)
+                {
+                    //Move to the target position
+                    this.Transform.TranslateBy((this.CurrentPosition - this.TargetPosition) * -Vector3.One);
+
+                    //Reset Vectors
+                    this.Translation = Vector3.Zero;
+                    this.CurrentPosition = Vector3.Zero;
+
+                    //Update game state
+                    this.UpdateGameState();
+
+                    //Update motion state
+                    this.InMotion = false;
+                }
+                else
+                {
+                    //Translate actor
+                    this.Transform.TranslateBy(this.Translation);
+
+                    //Update current position
+                    this.CurrentPosition += this.Translation;
+
+                    //Update motion state
+                    this.InMotion = true;
+                }
+
+                //Prevents multiple movement actions from happening every update
+                return;
+            }
+            #endregion
+        }
+
+        private void UpdateGameState()
+        {
+            #region Enemy Turn
+            if (this.ActorType.Equals(ActorType.Player))
+            {
+                EventDispatcher.Publish(new EventData(EventActionType.EnemyTurn, EventCategoryType.Game));
+                return;
+            }
+            #endregion
+
+            #region Player Turn
+            if (this.ActorType.Equals(ActorType.Enemy))
+            {
+                EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));
+                return;
+            }
+            #endregion
+        }
+
+        public virtual void ResetCollision()
+        {
+            this.BlockedDirections.Clear();
+            this.UpdateCollision();
+        }
+
+        //Update Collision
+        public virtual void UpdateCollision()
+        {
+            //Set up origin
+            Vector3 position = this.Transform.Translation;
+
+            //Set up cast directions
+            Vector3 north = this.Transform.Look;
+            Vector3 south = -this.Transform.Look;
+            Vector3 east = this.Transform.Right;
+            Vector3 west = -this.Transform.Right;
+
+            //Set up ray length
+            float length = 254;
+
+            //Detect collision north of the character
+            if (DetectCollision(position, north, length))
+                this.blockedDirections.Add(north);
+
+            //Detect collision south of the character
+            if (DetectCollision(position, south, length))
+                this.blockedDirections.Add(south);
+
+            //Detect collision east of the character
+            if (DetectCollision(position, east, length))
+                this.blockedDirections.Add(east);
+
+            //Detect collision west of the character
+            if (DetectCollision(position, west, length))
+                this.blockedDirections.Add(west);
+        }
+
+        //Detect Collision
+        public virtual bool DetectCollision(Vector3 position, Vector3 direction, float length)
+        {
+            //Create a segment ray
+            Vector3 start = position;
+            Vector3 delta = direction * length;
+            Segment seg = new Segment(start, delta);
+
+            //Returns true if segment intersects with collidable architecture
+            ImpassableObjectPredicate pred = new ImpassableObjectPredicate();
+
+            //Use JigLib's in-built SegmentIntersect() method to check for collision with the ray
+            this.managerParameters.PhysicsManager.PhysicsSystem.CollisionSystem.SegmentIntersect(
+                out float frac,
+                out CollisionSkin skin,
+                out Vector3 pos,
+                out Vector3 normal,
+                seg,
+                pred
+            );
+
+            //Returns true if the ray has collided with a wall
+            return (skin != null);
+        }
+
+        public virtual void TakeTurn(GameTime gameTime)
+        {
+        }
+
+        public virtual void TakeDamage(float damage)
+        {
+            this.Health -= damage;
+        }
+
         public override Matrix GetWorldMatrix()
         {
             return Matrix.CreateScale(this.Transform.Scale)
-                * this.Collision.GetPrimitiveLocal(0).Transform.Orientation
-                * this.Body.Orientation
                 * this.Transform.Orientation
                 * Matrix.CreateTranslation(this.Body.Position);
         }
@@ -279,22 +464,9 @@ namespace GDLibrary
             Body.EnableBody();
         }
 
-        public virtual void HandleMovement()
-        {
-        }
-
-        public void AddWeaponDamage()
-        {
-            this.attack += 10;
-        }
-
-
         public override void Update(GameTime gameTime)
         {
-            this.HandleMovement();
-
-            //Update actual position of the model e.g. used by rail camera controllers
-            this.Transform.Translation = this.Body.Transform.Position;
+            HandleMovement();
             base.Update(gameTime);
         }
         #endregion
@@ -309,6 +481,26 @@ namespace GDLibrary
                 return true;
             else
                 return false;
+        }
+        #endregion
+    }
+
+    class ImpassableObjectPredicate : CollisionSkinPredicate1
+    {
+        #region Methods
+        public override bool ConsiderSkin(CollisionSkin skin0)
+        {
+            //If the collision skin has not yet been removed
+            if ((skin0.Owner.ExternalData as CollidableObject).Body != null)
+
+                //Returns true if the actor is a piece of collidable architecture, or a gate
+                if ((skin0.Owner.ExternalData as Actor3D).ActorType.Equals(ActorType.CollidableArchitecture) || (skin0.Owner.ExternalData as Actor3D).ActorType.Equals(ActorType.Gate))
+
+                    //Return true
+                    return true;
+
+            //Return false
+            return false;
         }
         #endregion
     }

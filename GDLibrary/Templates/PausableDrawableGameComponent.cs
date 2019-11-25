@@ -46,14 +46,14 @@ namespace GDLibrary
         #region Contructors
         public PausableDrawableGameComponent(
             Game game, 
-            EventDispatcher eventDispatcher, 
-            StatusType statusType
+            StatusType statusType,
+            EventDispatcher eventDispatcher 
         ) : base(game) {
-            //Store handle to event dispatcher for event registration and de-registration
-            this.eventDispatcher = eventDispatcher;
-
             //Allows us to start the game component with drawing and/or updating paused
             this.statusType = statusType;
+
+            //Store handle to event dispatcher for event registration and de-registration
+            this.eventDispatcher = eventDispatcher;
 
             //Register with the event dispatcher for the events of interest
             RegisterForEventHandling(eventDispatcher);

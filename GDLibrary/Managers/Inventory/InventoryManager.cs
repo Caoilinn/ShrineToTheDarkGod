@@ -14,7 +14,7 @@ namespace GDLibrary
         public InventoryManager(Game game, 
             EventDispatcher eventDispatcher, 
             StatusType statusType
-        ) : base(game, eventDispatcher, statusType) {
+        ) : base(game, statusType, eventDispatcher) {
             this.items = new List<ImmovablePickupObject>();
         }
         #endregion
@@ -92,25 +92,29 @@ namespace GDLibrary
             return null;
         }
 
-        public bool HasItem(string itemID)
+        public bool HasItem(PickupType itemType)
         {
             if (items != null)
                 foreach (ImmovablePickupObject item in this.items)
-                    if (item.PickupParameters.PickupType == PickupType.Key)
+                    if (item.PickupParameters.PickupType == itemType)
                         return true;
 
             return false;
         }
 
-        public bool HasSword()
+        public void UseItem(PickupType itemType)
         {
             if (items != null)
+            {
                 foreach (ImmovablePickupObject item in this.items)
-                    if (item.PickupParameters.PickupType == PickupType.Sword)
-                        return true;
-
-            return false;
-
+                {
+                    if (item.PickupParameters.PickupType == itemType)
+                    {
+                        items.Remove(item);
+                        return;
+                    }
+                }
+            }
         }
 
         public void UseItem(ImmovablePickupObject item)

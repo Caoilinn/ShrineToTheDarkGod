@@ -41,7 +41,8 @@ namespace GDApp
         //Managers
         private StateManager gameStateManager;
         private ManagerParameters managerParameters;
-        private ObjectManager object3DManager;
+        private GridManager gridManager;
+        private ObjectManager objectManager;
         private CameraManager cameraManager;
         private MouseManager mouseManager;
         private KeyboardManager keyboardManager;
@@ -72,7 +73,7 @@ namespace GDApp
         private ContentDictionary<SpriteFont> fontDictionary;
         private Dictionary<string, EffectParameters> effectDictionary;
         private Dictionary<string, PickupParameters> pickupParametersDictionary;
-        private Dictionary<string, Enemy> enemyDictionary;
+        private Dictionary<string, EnemyObject> enemyDictionary;
 
         //Lists
         private List<string> soundEffectList = new List<String>();
@@ -111,12 +112,15 @@ namespace GDApp
         //Player Posiiton
         private Transform3D playerPosition;
         private PlayerObject player;
-        private List<Enemy> enemies;
+        private List<EnemyObject> enemies;
         private BasicEffect torchLitRoomEffect;
         private BasicEffect standardRoomEffect;
         private BasicEffect pickupEffect;
         private BasicEffect gateEffect;
         private BasicEffect enemyEffect;
+        private ProjectionParameters projectionParameters;
+        private Viewport viewport;
+        private float depth;
 
         public Main()
         {
@@ -135,15 +139,14 @@ namespace GDApp
             this.resolution = ScreenUtility.WXGA;
             this.screenCentre = this.resolution / 2;
 
-
             InitializeGraphics();
             InitializeEffects();
             InitializeEnemies();
 
-            LoadContent();
-
             InitializeEventDispatcher();
             InitializeManagers();
+
+            LoadContent();
             
             float worldScale = 2.54f;
             SetupBitArray(0, 5, 4, 4, 3, 2, 3);
@@ -152,15 +155,18 @@ namespace GDApp
             LoadMapFromFile();
 
             InitializeMap(100, 100, 100, worldScale);
-            InitializeCameras(worldScale, 1920, 1080);
 
             InitializeMenu();
             InitializeUI();
 
-            //InitializeDebug();
-            //InitializeDebugCollisionSkinInfo();
+            InitializeGrid();
 
             base.Initialize();
+        }
+
+        private void InitializeGrid()
+        {
+            EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));
         }
 
         private void InitializeVertices()
@@ -179,6 +185,10 @@ namespace GDApp
         {
             BasicEffect basicEffect;
 
+            Vector3 fogColor = new Vector3(0f, 0f, 0f);
+            float fogStart = 0;
+            float fogEnd = 550;
+
             #region Standard Room Effect
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
@@ -186,9 +196,9 @@ namespace GDApp
                 TextureEnabled = true,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
-                FogColor = new Vector3(0f, 0f, 0f),
-                FogStart = 50,
-                FogEnd = 400
+                FogColor = fogColor,
+                FogStart = fogStart,
+                FogEnd = fogEnd
             };
 
             //Standard Light
@@ -212,9 +222,9 @@ namespace GDApp
                 TextureEnabled = true,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
-                FogColor = new Vector3(0f, 0f, 0f),
-                FogStart = 50,
-                FogEnd = 400
+                FogColor = fogColor,
+                FogStart = fogStart,
+                FogEnd = fogEnd
             };
 
             //Standard Light
@@ -243,9 +253,9 @@ namespace GDApp
                 TextureEnabled = true,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
-                FogColor = new Vector3(0f, 0f, 0f),
-                FogStart = 50,
-                FogEnd = 400
+                FogColor = fogColor,
+                FogStart = fogStart,
+                FogEnd = fogEnd
             };
 
             //Standard Light
@@ -264,9 +274,9 @@ namespace GDApp
                 TextureEnabled = true,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
-                FogColor = new Vector3(0f, 0f, 0f),
-                FogStart = 50,
-                FogEnd = 400
+                FogColor = fogColor,
+                FogStart = fogStart,
+                FogEnd = fogEnd
             };
 
             //Standard Light
@@ -288,9 +298,9 @@ namespace GDApp
                 TextureEnabled = true,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
-                FogColor = new Vector3(0f, 0f, 0f),
-                FogStart = 50,
-                FogEnd = 400
+                FogColor = fogColor,
+                FogStart = fogStart,
+                FogEnd = fogEnd
             };
 
             //Standard Light
@@ -321,14 +331,14 @@ namespace GDApp
             #endregion
 
             #region Object Manager
-            this.object3DManager = new ObjectManager(
+            this.objectManager = new ObjectManager(
                 this, 
                 this.cameraManager, 
                 this.eventDispatcher, 
                 StatusType.Off
             );
 
-            Components.Add(this.object3DManager);
+            Components.Add(this.objectManager);
             #endregion
 
             #region Physics Manager
@@ -393,47 +403,29 @@ namespace GDApp
             Components.Add(this.inventoryManager);
             #endregion
 
-            #region Manager Parameters
-            this.managerParameters = new ManagerParameters(
-                this.object3DManager,
-                this.cameraManager,
-                this.mouseManager,
-                this.keyboardManager,
-                this.gamePadManager,
-                this.soundManager,
-                this.physicsManager,
-                this.inventoryManager
-            );
-            #endregion
-
-            #region Picking Manager
-            //Use this predicate anytime we want to decide if a mouse over object is interesting to the PickingManager
-            Predicate<CollidableObject> collisionPredicate = new Predicate<CollidableObject>(CollisionUtility.IsCollidableObjectOfInterest);
-            
-            //Listens for picking with the mouse on valid (based on specified predicate) collidable objects and pushes notification events to listeners
-            this.pickingManager = new PickingManager(
+            #region Combat Manager
+            this.combatManager = new CombatManager(
                 this, 
                 this.eventDispatcher, 
-                StatusType.Off,
-                this.managerParameters, 
-                this.cameraManager,
-                PickingBehaviourType.PickOnly,
-                AppData.PickStartDistance, 
-                AppData.PickEndDistance, 
-                collisionPredicate
+                StatusType.Update, 
+                this.inventoryManager,
+                this.keyboardManager,
+                this.objectManager,
+                this.gridManager,
+                AppData.CombatKeys
             );
 
-            Components.Add(this.pickingManager);
+            Components.Add(this.combatManager);
             #endregion
 
             #region Menu Manager
             this.menuManager = new MyMenuManager(
-                this, 
-                this.managerParameters,
-                this.cameraManager, 
-                this.spriteBatch, 
+                this,
+                StatusType.Drawn | StatusType.Update,
                 this.eventDispatcher,
-                StatusType.Drawn | StatusType.Update
+                this.cameraManager,
+                this.mouseManager,
+                this.spriteBatch
             );
 
             Components.Add(this.menuManager);
@@ -442,26 +434,68 @@ namespace GDApp
             #region UI Manager
             this.uiManager = new UIManager(
                 this,
-                this.managerParameters,
-                this.cameraManager,
-                this.spriteBatch,
+                StatusType.Drawn | StatusType.Update,
                 this.eventDispatcher,
-                StatusType.Drawn | StatusType.Update
+                this.cameraManager,
+                this.mouseManager,
+                this.spriteBatch
             );
 
             Components.Add(this.uiManager);
             #endregion
 
-            #region Combat Manager
-            this.combatManager = new CombatManager(
-                this, 
-                this.eventDispatcher, 
-                StatusType.Update, 
-                this.managerParameters, 
-                AppData.CombatKeys
+            #region Manager Parameters
+            this.managerParameters = new ManagerParameters(
+                this.objectManager,
+                this.cameraManager,
+                this.mouseManager,
+                this.keyboardManager,
+                this.gamePadManager,
+                this.soundManager,
+                this.physicsManager,
+                this.inventoryManager,
+                this.combatManager,
+                this.uiManager
+            );
+            #endregion
+
+            #region Picking Manager
+            //Use this predicate anytime we want to decide if a mouse over object is interesting to the PickingManager
+            Predicate<CollidableObject> collisionPredicate = new Predicate<CollidableObject>(CollisionUtility.IsCollidableObjectOfInterest);
+
+            //Listens for picking with the mouse on valid (based on specified predicate) collidable objects and pushes notification events to listeners
+            this.pickingManager = new PickingManager(
+                this,
+                this.eventDispatcher,
+                StatusType.Off,
+                this.managerParameters,
+                this.cameraManager,
+                PickingBehaviourType.PickOnly,
+                AppData.PickStartDistance,
+                AppData.PickEndDistance,
+                collisionPredicate
             );
 
-            Components.Add(this.combatManager);
+            Components.Add(this.pickingManager);
+            #endregion
+
+            #region Grid Manager
+            this.gridManager = new GridManager(
+                this,
+                this.eventDispatcher,
+                StatusType.Update,
+                new HashSet<Actor3D>(),
+                new HashSet<Actor3D>(),
+                new HashSet<Actor3D>(),
+                new HashSet<Actor3D>(),
+                new HashSet<Actor3D>(),
+                this.objectManager,
+                this.soundManager,
+                this.inventoryManager,
+                this.combatManager
+            );
+
+            Components.Add(this.gridManager);
             #endregion
         }
 
@@ -734,81 +768,57 @@ namespace GDApp
         #endregion
 
         #region Cameras
-        private void InitializeCameras(float worldScale, int resolutionWidth, int resolutionHeight)
+        private void InitializeCameras(float fieldOfView, float aspectRatio, float nearClipPlane, float farClipPlane)
         {
-            float aspectRatio = (4.0f / 3.0f);
-            float nearClipPlane = 0.1f;
-            float farClipPlane = 10000;
-
-            ProjectionParameters projectionParameters;
-            Viewport viewport;
-            float depth;
-
-            #region First-Person Camera
-            projectionParameters = new ProjectionParameters(
-                MathHelper.ToRadians(45),
+            this.projectionParameters = new ProjectionParameters(
+                fieldOfView,
                 aspectRatio,
                 nearClipPlane,
                 farClipPlane
             );
-
-            viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
-            depth = 0f;
-
-            AddFirstPersonCamera(projectionParameters, viewport, depth);
-            #endregion
         }
 
-        private void AddFirstPersonCamera(ProjectionParameters projectionParameters, Viewport viewport, float drawDepth)
+        private void AddFirstPersonCamera(Transform3D playerTransform)
         {
-            this.playerPosition.Translation += new Vector3(127, 127, 127);
-            viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);   
+            //Setup projection parameters
+            ProjectionParameters projectionParameters = new ProjectionParameters(
+                AppData.FirstPersonCameraFieldOfView,
+                AppData.FirstPersonCameraAspectRatio,
+                AppData.FirstPersonCameraNearClipPlane,
+                AppData.FirstPersonCameraFarClipPlane
+            );
 
+            //Setup viewport and draw depth
+            Viewport viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            float drawDepth = 0f;
+
+            //Create a camera
             Camera3D camera = new Camera3D(
-                "CFP Cam 1",
+                "First Person Camera",
                 ActorType.CollidableCamera,
                 StatusType.Update,
-                this.playerPosition,
+                playerTransform,
                 projectionParameters,
                 viewport,
                 drawDepth
             );
 
-            Vector3 movementVector = new Vector3(100, 100, 100) * 2.54f;
-            Vector3 rotationVector = new Vector3(0, 90, 0);
-            Vector3 translationalOffset = new Vector3(0, 0, 0);
-            
-            float radius = 127;
-            float height = 254;
-
+            //Attach a first person camera controller
             camera.AttachController(
                 new CollidableFirstPersonCameraController(
-                    camera + " Controller",
+                    camera + " - Collidable First Person Camera Controller",
                     ControllerType.CollidableCamera,
                     AppData.CameraMoveKeys,
                     AppData.CameraMoveSpeed,
-                    AppData.CameraStrafeSpeed,
                     AppData.CameraRotationSpeed,
                     this.managerParameters,
-                    movementVector,
-                    rotationVector,
-                    camera,
-                    Vector3.Zero,
-                    null,
-                    AppData.PlayerHealth,
-                    AppData.PlayerAttack,
-                    AppData.PlayerDefence,
-                    AppData.CollidableCameraMass,
-                    radius,
-                    height,
-                    1,
-                    1,
-                    AppData.CollidableCameraJumpHeight
+                    AppData.CharacterMovementVector,
+                    AppData.CharacterRotationVector
                 )
             );
-            
+
+            //Add to lists
             this.cameraManager.Add(camera);
-            this.combatManager.AddPlayer((camera.ControllerList[0] as CollidableFirstPersonCameraController).PlayerObject);
         }
         #endregion
 
@@ -835,18 +845,23 @@ namespace GDApp
         private void LoadLevelFromFile()
         {
             if (File.Exists("App/Data/currentLevel.txt"))
-                StateManager.currentLevel = int.Parse(File.ReadAllText("App/Data/currentLevel.txt"));
+                StateManager.CurrentLevel = int.Parse(File.ReadAllText("App/Data/currentLevel.txt"));
             else
-                StateManager.currentLevel = 1;
+                StateManager.CurrentLevel = 1;
         }
 
         private void WriteLevelToFile()
         {
-            File.WriteAllText("App/Data/mapData.txt", StateManager.currentLevel.ToString());
+            File.WriteAllText("App/Data/mapData.txt", StateManager.CurrentLevel.ToString());
         }
 
         private void LoadMapFromFile()
         {
+            #region Reset
+            //Reset map
+            this.objectManager.Clear();
+            #endregion
+
             #region Read File
             //Store all file data
             string fileText = File.ReadAllText("App/Data/mapData.txt");
@@ -855,7 +870,7 @@ namespace GDApp
             string[] levels = fileText.Split('*');
 
             //Split the current level into an array of layers (y axis)
-            string[] layers = levels[StateManager.currentLevel].Split('&');
+            string[] layers = levels[StateManager.CurrentLevel].Split('&');
             #endregion
 
             #region Determine Map Size
@@ -1055,7 +1070,7 @@ namespace GDApp
                         if (playerType > 0)
 
                             //Spawn player
-                            SpawnPlayer(transform);
+                            SpawnPlayer(playerType, transform);
                         #endregion
 
                         #region Spawn Enemies
@@ -1113,14 +1128,15 @@ namespace GDApp
             this.collidableModel.Enable(true, 1);
 
             //Add to object manager list
-            this.object3DManager.Add(collidableModel);
+            this.objectManager.Add(collidableModel);
         }
 
         public void ConstructPickup(int pickupType, Transform3D transform)
         {
             //Setup dimensions
             Transform3D pickupTransform = transform.Clone() as Transform3D;
-
+            pickupTransform.Translation += new Vector3(127, 127, 127);
+            
             //Load model and effect parameters
             EffectParameters effectParameters = this.effectDictionary["pickupEffect" + pickupType];
             Model model = this.modelDictionary["pickupModel" + pickupType];
@@ -1148,8 +1164,9 @@ namespace GDApp
             //Add collision
             this.collidableModel.Enable(true, 1);
 
-            //Add to object manager list
-            this.object3DManager.Add(collidableModel);
+            //Add to lists
+            this.objectManager.Add(collidableModel);
+            this.gridManager.Add(collidableModel);
         }
 
         PickupParameters SelectPickupParameters(int pickupType)
@@ -1191,8 +1208,9 @@ namespace GDApp
                     //Enable collision
                     this.collidableModel.Enable(true, 1);
 
-                    //Add to object manager list
-                    this.object3DManager.Add(this.collidableModel);
+                    //Add to lists
+                    this.objectManager.Add(this.collidableModel);
+                    this.gridManager.Add(this.collidableModel);
                     break;
 
                 default:
@@ -1204,6 +1222,7 @@ namespace GDApp
         {
             //Setup dimensions
             Transform3D gateTransform = transform.Clone() as Transform3D;
+            gateTransform.Translation += new Vector3(127, 127, 127);
 
             //Load model and effect parameters
             EffectParameters effectParameters = this.effectDictionary["propEffect" + gateType];
@@ -1227,17 +1246,51 @@ namespace GDApp
             this.collidableModel.Enable(true, 1);
 
             //Add to object manager list
-            this.object3DManager.Add(collidableModel);
+            this.objectManager.Add(collidableModel);
+            this.gridManager.Add(this.collidableModel);
         }
 
-        public void SpawnPlayer(Transform3D transform)
+        public void SpawnPlayer(int playerType, Transform3D transform)
         {
-            this.playerPosition = transform.Clone() as Transform3D;
+            //Position player
+            Transform3D playerTransform = transform.Clone() as Transform3D;
+            playerTransform.Translation += new Vector3(127, 127, 127);
+            
+            //Create first person camera
+            AddFirstPersonCamera(playerTransform);
+
+            //Create a player
+            this.collidableModel = new PlayerObject(
+                "Player" + playerType,
+                ActorType.Player,
+                playerTransform,
+                null,
+                null,
+                AppData.CharacterAccelerationRate,
+                AppData.CharacterDecelerationRate,
+                AppData.CharacterMovementVector,
+                AppData.CharacterRotationVector,
+                AppData.CharacterMoveSpeed,
+                AppData.CharacterRotateSpeed,
+                AppData.PlayerHealth,
+                AppData.PlayerAttack,
+                AppData.PlayerDefence,
+                this.managerParameters,
+                AppData.CameraMoveKeys
+            );
+
+            //Enable collision
+            this.collidableModel.Enable(true, 1);
+
+            //Add to lists
+            this.gridManager.Add(this.collidableModel);
+            this.combatManager.AddPlayer(this.collidableModel as PlayerObject);
+            this.objectManager.Add(this.collidableModel);
         }
         
         public void SpawnEnemy(int enemyType, Transform3D transform)
         {   
-            //Select attributes - to be pulled out into a dictionary
+            //Select enemy
             switch (enemyType) {
                 case 1:
                     this.collidableModel = this.enemyDictionary["Skeleton"];
@@ -1247,23 +1300,23 @@ namespace GDApp
                     break;
             }
 
-            //Position character
+            //Position enemy
             this.collidableModel.Transform = transform.Clone() as Transform3D;
-            this.collidableModel.Transform.Translation += new Vector3(127, 0, 127);
-            this.collidableModel.Transform.Rotation += new Vector3(-90, 0, 0);
+            this.collidableModel.Transform.Translation += new Vector3(127, 127, 127);
 
-            //Add collision
+            //Enable collision
             this.collidableModel.Enable(true, 1);
             
             //Add to lists
-            this.enemies.Add(this.collidableModel as Enemy);
-            this.combatManager.PopulateEnemies(this.collidableModel as Enemy);
-            this.object3DManager.Add(this.collidableModel);
+            this.gridManager.Add(this.collidableModel);
+            this.enemies.Add(this.collidableModel as EnemyObject);
+            this.combatManager.PopulateEnemies(this.collidableModel as EnemyObject);
+            this.objectManager.Add(this.collidableModel);
         }
 
         private void InitializeEnemies()
         {
-            this.enemies = new List<Enemy>();
+            this.enemies = new List<EnemyObject>();
         }
         #endregion
 
@@ -1302,7 +1355,7 @@ namespace GDApp
             this.pickupParametersDictionary = new Dictionary<string, PickupParameters>();
 
             //Enemies
-            this.enemyDictionary = new Dictionary<string, Enemy>();
+            this.enemyDictionary = new Dictionary<string, EnemyObject>();
         }
 
         private void LoadAssets()
@@ -1517,7 +1570,7 @@ namespace GDApp
 
             #region Enemy Effects
             this.effectDictionary.Add("skeletonEffect", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.3f, 0.2f, 0.1f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("cultistEffect", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.6f, 0.1f, 0.1f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("cultistEffect", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.0f, 0.0f, 0.0f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
         }
 
@@ -1540,14 +1593,12 @@ namespace GDApp
         {
             this.enemyDictionary.Add(
                 "Skeleton",
-                    new Enemy(
+                new EnemyObject(
                     "Skeleton",
                     ActorType.Enemy,
                     Transform3D.Zero,
                     this.effectDictionary["skeletonEffect"],
                     this.modelDictionary["skeletonModel"],
-                    AppData.CharacterRadius,
-                    AppData.CharacterHeight,
                     AppData.CharacterAccelerationRate,
                     AppData.CharacterDecelerationRate,
                     AppData.CharacterMovementVector,
@@ -1557,24 +1608,18 @@ namespace GDApp
                     AppData.SkeletonHealth,
                     AppData.SkeletonAttack,
                     AppData.SkeletonDefence,
-                    AppData.CharacterMoveKeys,
-                    Vector3.Zero,
-                    keyboardManager,
-                    managerParameters,
-                    AppData.CharacterJumpHeight
+                    this.managerParameters
                 )
             );
 
             this.enemyDictionary.Add(
                 "Cultist",
-                    new Enemy(
+                new EnemyObject(
                     "Cultist",
                     ActorType.Enemy,
                     Transform3D.Zero,
                     this.effectDictionary["cultistEffect"],
                     this.modelDictionary["cultistModel"],
-                    AppData.CharacterRadius,
-                    AppData.CharacterHeight,
                     AppData.CharacterAccelerationRate,
                     AppData.CharacterDecelerationRate,
                     AppData.CharacterMovementVector,
@@ -1584,11 +1629,7 @@ namespace GDApp
                     AppData.CultistHealth,
                     AppData.CultistAttack,
                     AppData.CultistDefence,
-                    AppData.CharacterMoveKeys,
-                    Vector3.Zero,
-                    keyboardManager,
-                    managerParameters,
-                    AppData.CharacterJumpHeight
+                    this.managerParameters
                 )
             );
         }
@@ -1626,7 +1667,7 @@ namespace GDApp
             this.physicsDebugDrawer = new PhysicsDebugDrawer(
                 this, 
                 this.cameraManager, 
-                this.object3DManager,
+                this.objectManager,
                 this.eventDispatcher, 
                 StatusType.Off
             );
@@ -1639,10 +1680,6 @@ namespace GDApp
         #region Update, Draw
         protected override void Update(GameTime gameTime)
         {
-            foreach (ModelObject modelObj in this.object3DManager.OpaqueDrawList)
-                if (modelObj.ActorType == ActorType.Enemy)
-                    (modelObj as Enemy).TrackPlayer(gameTime, this.playerPosition);
-
             base.Update(gameTime);
         }
 

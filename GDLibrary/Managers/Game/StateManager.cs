@@ -16,45 +16,85 @@ namespace GDLibrary
     public class StateManager : PausableGameComponent
     {
         #region Fields
-        static public int currentLevel;
-        static public bool playerTurn;
-        static public bool enemyTurn;
+        private static int currentLevel;
+        private static bool playerTurn;
+        private static bool enemyTurn;
+        private static bool inProximityOfAnItem;
+        private static bool inProximityOfAGate;
+        private static bool inCombat;
+        internal static bool InProximityOfATrigger;
         #endregion
 
         #region Properties
-        public int CurrentLevel
+        public static int CurrentLevel
         {
             get
             {
-                return StateManager.currentLevel;
+                return currentLevel;
             }
             set
             {
-                StateManager.currentLevel = value;
+                currentLevel = value;
             }
         }
 
-        public bool PlayerTurn
+        public static bool PlayerTurn
         {
             get
             {
-                return StateManager.playerTurn;
+                return playerTurn;
             }
             set
             {
-                StateManager.playerTurn = value;
+                playerTurn = value;
             }
         }
 
-        public bool EnemyTurn
+        public static bool EnemyTurn
         {
             get
             {
-                return StateManager.enemyTurn;
+                return enemyTurn;
             }
             set
             {
-                StateManager.enemyTurn = value;
+                enemyTurn = value;
+            }
+        }
+
+        public static bool InProximityOfAnItem
+        {
+            get
+            {
+                return inProximityOfAnItem;
+            }
+            set
+            {
+                inProximityOfAnItem = value;
+            }
+        }
+
+        public static bool InProximityOfAGate
+        {
+            get
+            {
+                return inProximityOfAGate;
+            }
+            set
+            {
+                inProximityOfAGate = value;
+            }
+        }
+
+        public static bool InCombat
+        {
+            get
+            {
+                return inCombat;
+            }
+            set
+            {
+                inCombat = value;
             }
         }
         #endregion
@@ -65,7 +105,11 @@ namespace GDLibrary
             EventDispatcher eventDispatcher, 
             StatusType statusType
         ) : base(game, eventDispatcher, statusType) {
-            this.PlayerTurn = true;
+            PlayerTurn = true;
+            EnemyTurn = false;
+            InProximityOfAnItem = false;
+            InProximityOfAGate = false;
+            InCombat = false;
         }
         #endregion
 
@@ -97,22 +141,21 @@ namespace GDLibrary
             //Did the event come from the game being won?
             if (eventData.EventType == EventActionType.OnWin)
             {
-                this.CurrentLevel++;
+                CurrentLevel++;
             }
 
             //Did the event come from the player making a move?
             else if (eventData.EventType == EventActionType.PlayerTurn)
             {
-                this.EnemyTurn = false;
-                this.PlayerTurn = true;
+                EnemyTurn = false;
+                PlayerTurn = true;
             }
 
             //Did the event come from an enemy making a move?
             else if (eventData.EventType == EventActionType.EnemyTurn)
             {
-                //Turned off for release 1
-                //this.EnemyTurn = true;
-                //this.PlayerTurn = false;
+                EnemyTurn = true;
+                PlayerTurn = false;
             }
         }
         #endregion

@@ -30,7 +30,7 @@ namespace GDLibrary
             SpriteFont spriteFont,
             Vector2 position,
             Color color
-        ) : base(game, eventDispatcher, statusType) {
+        ) : base(game, statusType, eventDispatcher) {
             this.spriteBatch = spriteBatch;
             this.cameraManager = cameraManager;
             this.spriteFont = spriteFont;

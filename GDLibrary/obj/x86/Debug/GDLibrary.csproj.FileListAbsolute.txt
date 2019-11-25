@@ -108,7 +108,6 @@ C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\G
 C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csproj.CopyComplete
 C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.dll
 C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.pdb
-C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csprojAssemblyReference.cache
 C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\GDLibrary.dll
 C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\GDLibrary.pdb
 C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.dll
@@ -131,3 +130,4 @@ C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.
 C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csproj.CopyComplete
 C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.dll
 C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.pdb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csprojAssemblyReference.cache

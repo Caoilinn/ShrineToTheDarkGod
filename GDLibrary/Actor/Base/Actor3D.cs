@@ -72,7 +72,6 @@ namespace GDLibrary
 
         public override int GetHashCode()
         {
-            //int hash = 31 + this.Transform.GetHashCode();
             int hash = 31 * (17 + base.GetHashCode());
             return hash;
         }
