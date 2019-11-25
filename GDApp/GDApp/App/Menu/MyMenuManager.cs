@@ -60,7 +60,7 @@ namespace GDApp
             {
                 case "startbtn":
 
-                    DoStart();
+                    SetActiveList("begin menu");
                     break;
 
                 case "exitbtn":
@@ -113,6 +113,18 @@ namespace GDApp
 
                     //Use sceneIDs specified when we created the menu scenes in Main::AddMenuElements()
                     SetActiveList("controls menu");
+                    break;
+
+                case "beginbtn":
+
+                    //Use sceneIDs specified when we created the menu scenes in Main::AddMenuElements()
+                    DoStart();
+                    break;
+
+                case "menubtn":
+
+                    //Use sceneIDs specified when we created the menu scenes in Main::AddMenuElements()
+                    SetActiveList("main menu");
                     break;
 
                 default:

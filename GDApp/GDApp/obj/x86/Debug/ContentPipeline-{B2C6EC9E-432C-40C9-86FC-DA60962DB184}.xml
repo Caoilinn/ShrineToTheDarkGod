@@ -1348,7 +1348,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\audiomenu.xnb</Output>
-      <Time>2019-11-19T14:08:24.2562755+00:00</Time>
+      <Time>2019-11-25T10:00:08.2703942+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\UI\Menu\Backgrounds\controlsmenu.png</Source>
@@ -1357,7 +1357,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\controlsmenu.xnb</Output>
-      <Time>2019-11-19T14:08:24.5040631+00:00</Time>
+      <Time>2019-11-25T09:59:23.8816653+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\UI\Menu\Backgrounds\exitmenu.png</Source>
@@ -1384,7 +1384,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\mainmenu.xnb</Output>
-      <Time>2019-11-19T14:14:44.9945675+00:00</Time>
+      <Time>2019-11-25T09:57:43.2357555+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\UI\Menu\Buttons\genericbtn.png</Source>
@@ -1447,7 +1447,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\item_twinkle.xnb</Output>
-      <Time>2019-11-19T14:14:43.9133552+00:00</Time>
+      <Time>2019-11-20T22:39:44.9520669+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\battle_theme.wav</Source>
@@ -1456,7 +1456,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\battle_theme.xnb</Output>
-      <Time>2019-11-19T14:14:43.8821511+00:00</Time>
+      <Time>2019-11-20T22:39:49.9684378+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Audio\wall_bump.wav</Source>
@@ -1483,7 +1483,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\menu.xnb</Output>
-      <Time>2019-11-19T14:14:44.9159407+00:00</Time>
+      <Time>2019-11-25T10:54:12.6334256+00:00</Time>
     </Item>
     <Item>
       <Source>SpriteFont1.spritefont</Source>
@@ -1993,6 +1993,159 @@
       <Options>None</Options>
       <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\grey_metal_1.xnb</Output>
       <Time>2019-11-20T13:52:12.9798484+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\block.wav</Source>
+      <Name>Assets\Audio\block</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\block.xnb</Output>
+      <Time>2019-11-20T22:39:50.9907283+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\death.wav</Source>
+      <Name>Assets\Audio\death</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\death.xnb</Output>
+      <Time>2019-11-20T22:39:50.9018969+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\dodge.wav</Source>
+      <Name>Assets\Audio\dodge</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\dodge.xnb</Output>
+      <Time>2019-11-20T22:39:50.9378015+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\door_locked.wav</Source>
+      <Name>Assets\Audio\door_locked</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\door_locked.xnb</Output>
+      <Time>2019-11-20T22:39:47.4400084+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\drink_potion.wav</Source>
+      <Name>Assets\Audio\drink_potion</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\drink_potion.xnb</Output>
+      <Time>2019-11-20T22:39:45.0929177+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\equip_sword.wav</Source>
+      <Name>Assets\Audio\equip_sword</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\equip_sword.xnb</Output>
+      <Time>2019-11-20T22:39:45.3172571+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\gate_open.wav</Source>
+      <Name>Assets\Audio\gate_open</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_open.xnb</Output>
+      <Time>2019-11-20T22:39:47.5775049+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\gate_unlocked.wav</Source>
+      <Name>Assets\Audio\gate_unlocked</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_unlocked.xnb</Output>
+      <Time>2019-11-20T22:39:47.5120536+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\h_attack.wav</Source>
+      <Name>Assets\Audio\h_attack</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\h_attack.xnb</Output>
+      <Time>2019-11-20T22:39:50.8270976+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\l_attack.wav</Source>
+      <Name>Assets\Audio\l_attack</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\l_attack.xnb</Output>
+      <Time>2019-11-20T22:39:50.8630011+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\m_attack.wav</Source>
+      <Name>Assets\Audio\m_attack</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\m_attack.xnb</Output>
+      <Time>2019-11-20T22:39:50.6720113+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\player_health_low.wav</Source>
+      <Name>Assets\Audio\player_health_low</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\player_health_low.xnb</Output>
+      <Time>2019-11-20T22:39:50.3835527+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\punch_01.wav</Source>
+      <Name>Assets\Audio\punch_01</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_01.xnb</Output>
+      <Time>2019-11-20T22:39:50.2060266+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Audio\punch_02.wav</Source>
+      <Name>Assets\Audio\punch_02</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_02.xnb</Output>
+      <Time>2019-11-20T22:39:50.3286994+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Textures\UI\Menu\Backgrounds\begingame.png</Source>
+      <Name>Assets\Textures\UI\Menu\Backgrounds\begingame</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\begingame.xnb</Output>
+      <Time>2019-11-25T10:58:08.3222999+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Textures\UI\Menu\Backgrounds\losegame.png</Source>
+      <Name>Assets\Textures\UI\Menu\Backgrounds\losegame</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\losegame.xnb</Output>
+      <Time>2019-11-25T10:51:16.1665935+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Assets\Textures\UI\Menu\Backgrounds\wingame.png</Source>
+      <Name>Assets\Textures\UI\Menu\Backgrounds\wingame</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\wingame.xnb</Output>
+      <Time>2019-11-25T10:49:12.1076752+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
