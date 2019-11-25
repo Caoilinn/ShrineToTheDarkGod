@@ -64,13 +64,13 @@ namespace GDLibrary
         protected void EventDispatcher_CombatEvent(EventData eventData)
         {
 
-            #region Old If Statements
+
             if (eventData.EventType == EventActionType.OnInitiateBattle)
             {
 
                 if (this.managerParameters.InventoryManager.HasSword())
                     this.player.AddWeaponDamage();
-                    
+
                 Console.WriteLine("UPDATED PLAYER DAMAGE: " + this.player.Attack);
 
                 //Combat started
@@ -140,12 +140,11 @@ namespace GDLibrary
             {
                 //Exit the game for now
                 this.Game.Exit();
-            }
-            else if(eventData.EventType == EventActionType.PlayerHealthPickup)
+            } else if (eventData.EventType == EventActionType.PlayerHealthPickup)
             {
                 Console.WriteLine("Player Health before: " + this.player.Health);
                 this.player.Health += 10;
-                Console.WriteLine("Player Health after: " + this.player.Health);    
+                Console.WriteLine("Player Health after: " + this.player.Health);
             }
         }
         #endregion
@@ -183,6 +182,8 @@ namespace GDLibrary
                 //Finds enemy where ID is equal to the passed ID
                 return this.enemies.Find(x => x.ID == id);
 
+            }
+
             return null;
         }
 
@@ -195,14 +196,16 @@ namespace GDLibrary
                                         EventCategoryType.UI,
                                         new object[] { this.player.Health }));
 
-            do
+            if (CombatManager.inCombat)
             {
-                EventDispatcher.Publish(new EventData(
-                                            EventActionType.EnemyHealthUpdate,
-                                            EventCategoryType.UI,
-                                            new object[] { this.enemyOnFocus.Health }));
-            } while (CombatManager.inCombat);
-
+                do
+                {
+                    EventDispatcher.Publish(new EventData(
+                                                EventActionType.EnemyHealthUpdate,
+                                                EventCategoryType.UI,
+                                                new object[] { this.enemyOnFocus.Health }));
+                } while (CombatManager.inCombat);
+            }
 
             HandleKeyBoardInput(gameTime);
             base.Update(gameTime);
@@ -331,7 +334,7 @@ namespace GDLibrary
                     this.playerTurn = true;
                 }
 
-                if(this.player.Health <= 30)
+                if (this.player.Health <= 30)
                 {
                     EventDispatcher.Publish(
                         new EventData(
@@ -340,8 +343,7 @@ namespace GDLibrary
                             new object[] { "player_health_low" }
                         )
                     );
-                }
-                else
+                } else
                 {
                     EventDispatcher.Publish(
                         new EventData(
@@ -352,7 +354,7 @@ namespace GDLibrary
                     );
                 }
 
-                if(this.enemyOnFocus.Health <= 0)
+                if (this.enemyOnFocus.Health <= 0)
                 {
                     CombatManager.inCombat = false;
                     Console.WriteLine("YOU HAVE WON!!!");
@@ -396,7 +398,7 @@ namespace GDLibrary
                     this.playerTurn = true;
                 }
 
-                if(this.player.Health <= 0)
+                if (this.player.Health <= 0)
                 {
                     Game.Exit();
                 }
