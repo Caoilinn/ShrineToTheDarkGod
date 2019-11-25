@@ -175,7 +175,7 @@ namespace GDLibrary
             if (!StateManager.PlayerTurn) return;
 
             //Publish player health ui event
-            EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthUpdate, EventCategoryType.UI, new object[] { this.player.Health }));
+            EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthUpdate, EventCategoryType.Textbox, new object[] { this.player.Health }));
             
             #region Attack
             //If the player attacks
@@ -204,7 +204,7 @@ namespace GDLibrary
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "death" }));
 
                     //Publish UI event
-                    EventDispatcher.Publish(new EventData(EventActionType.OnEnemyDeath, EventCategoryType.UI));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnEnemyDeath, EventCategoryType.Textbox));
 
                     //Publish enemy death event
                     EventDispatcher.Publish(new EventData(EventActionType.OnEnemyDeath, EventCategoryType.Combat, new object[] { this.enemyOnFocus }));
@@ -220,7 +220,7 @@ namespace GDLibrary
                 //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerAttack, EventCategoryType.Combat));
 
                 //Publish a UI player attack event
-                EventDispatcher.Publish(new EventData(EventActionType.OnPlayerAttack, EventCategoryType.UI, new object[] { damage }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlayerAttack, EventCategoryType.Textbox, new object[] { damage }));
 
                 //Publish enemy turn event
                 EventDispatcher.Publish(new EventData(EventActionType.EnemyTurn, EventCategoryType.Game));
@@ -252,7 +252,7 @@ namespace GDLibrary
                 //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.Combat));
 
                 //Publish a UI player attack event
-                EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.UI, new object[] { damage }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.Textbox, new object[] { damage }));
 
                 //If the enemy has killed the player
                 if (this.player.Health <= 0) EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));
@@ -288,7 +288,7 @@ namespace GDLibrary
                     //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.Combat));
 
                     //Publish a UI player dodge event
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.UI, new object[] { damage }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.Textbox, new object[] { damage }));
 
                     //Publish enemy turn event
                     //EventDispatcher.Publish(new EventData(EventActionType.EnemyTurn, EventCategoryType.Game));
@@ -296,7 +296,7 @@ namespace GDLibrary
                 } else
                 {
                     //Publish a UI player dodge event
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.UI, new object[] { enemyOnFocus.Attack }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.Textbox, new object[] { enemyOnFocus.Attack }));
 
                     //Take damage
                     this.player.TakeDamage(enemyOnFocus.Attack);
@@ -318,7 +318,7 @@ namespace GDLibrary
             if (!StateManager.EnemyTurn) return;
 
             //Publish player health ui event
-            EventDispatcher.Publish(new EventData(EventActionType.EnemyHealthUpdate, EventCategoryType.UI, new object[] { this.enemyOnFocus.Health }));
+            EventDispatcher.Publish(new EventData(EventActionType.EnemyHealthUpdate, EventCategoryType.Textbox, new object[] { this.enemyOnFocus.Health }));
 
             #region Attack
             //Enemy Attack - Default for release 1
@@ -346,7 +346,7 @@ namespace GDLibrary
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "enemy_attack" }));
 
                 //Publish enemy attack event to the UI Manager
-                EventDispatcher.Publish(new EventData(EventActionType.OnEnemyAttack, EventCategoryType.UI, new object[] { damage }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnEnemyAttack, EventCategoryType.Textbox, new object[] { damage }));
 
                 //Publish player game turn event
                 EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));

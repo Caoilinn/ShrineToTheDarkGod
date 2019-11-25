@@ -437,7 +437,7 @@ namespace GDApp
                 this.managerParameters,
                 this.spriteBatch,
                 this.eventDispatcher,
-                StatusType.Update | StatusType.Drawn,
+                StatusType.Off,
                 this.textboxText
             );
 
@@ -502,7 +502,7 @@ namespace GDApp
            #region Draw order
            this.objectManager.DrawOrder = 1;
            this.uiManager.DrawOrder = 2;
-           this.textboxManager.DrawOrder = 3;
+           this.textboxManager.DrawOrder =3;
            this.menuManager.DrawOrder = 4;
            #endregion
         }
@@ -937,7 +937,7 @@ namespace GDApp
             Transform2D transformtext = new Transform2D(
                 new Vector2(940, 40),
                 0,
-                new Vector2(.6f, .6f),
+                new Vector2(.5f, .4f),
                 Vector2.Zero,
                 new Integer2(100, 25)
             );

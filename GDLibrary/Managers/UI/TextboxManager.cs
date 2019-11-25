@@ -61,16 +61,16 @@ namespace GDLibrary
             this.spriteBatch = spriteBatch;
 
             this.textboxtext = textboxtext;
-
         }
 
         protected override void RegisterForEventHandling(EventDispatcher eventDispatcher)
         {
             eventDispatcher.TextboxChanged += EventDispatcher_TextboxChanged;
+            eventDispatcher.TextboxChanged += EventDispatcher_UICombat;
             base.RegisterForEventHandling(eventDispatcher);
         }
 
-        #region Event Handling|
+        #region Event Handling
 
         protected virtual void EventDispatcher_TextboxChanged(EventData eventData)
         {
@@ -79,22 +79,101 @@ namespace GDLibrary
             {
                 this.StatusType = StatusType.Update | StatusType.Drawn;
                 this.TextboxText = eventData.AdditionalParameters[0] as string + " is fighting " + eventData.AdditionalParameters[1] as string;
-
             }
             else if (eventData.EventType == EventActionType.OnPause)
                 this.StatusType = StatusType.Off;
 
             if (eventData.EventType == EventActionType.OnInitiateBattle)
             {
-
                 this.textboxtext = "Battle start!";
-                Console.WriteLine("it workkssss dcxaadasfava");
                 this.StatusType = StatusType.Update;
             }
         }
         #endregion
 
+        private void clearTextbox()
+        {
+            this.TextboxText = "";
+        }
 
+        protected void EventDispatcher_UICombat(EventData eventData)
+        {
+            float damage = 0;
+            if (eventData.EventType != EventActionType.OnEnemyDeath)
+            {
+                damage = (float)eventData.AdditionalParameters[0];
+            }
+            switch (eventData.EventType)
+            {
+                case EventActionType.OnStart:
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    break;
+
+                case EventActionType.OnPlayerAttack:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText ="Player Attacked with damage of \n" + damage + "\n \n";
+                    break;
+
+                case EventActionType.OnPlayerDefend:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText = "Player Defended taking damage of \n" + damage ;
+                    break;
+
+                case EventActionType.OnPlayerDodge:
+                    if (damage <= 0)
+                    {
+                        clearTextbox();
+                        this.StatusType = StatusType.Update | StatusType.Drawn;
+                        this.TextboxText = "Player Dodged";
+                    }
+                    else {
+                        clearTextbox();
+                        this.StatusType = StatusType.Update | StatusType.Drawn;
+                        this.TextboxText = "Player Dodge Failed, the player took damage of " + damage;
+                        }
+                    break;
+
+                case EventActionType.OnEnemyAttack:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText = "Enemy Attatcked with damage of " + damage;
+                    break;
+
+                case EventActionType.OnInitiateBattle:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText = "Battle starts!";
+                    break;
+
+                case EventActionType.OnBattleEnd:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText = "Battle over";
+                    break;
+
+                case EventActionType.OnEnemyDeath:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText = "You'll never stop the \n dark god!";
+                    break;
+
+                case EventActionType.PlayerHealthPickup:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText = "Health up";
+                    break;
+
+                case EventActionType.OnItemAdded:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText = "Item added to inventory";
+                    break;
+
+
+            }
+        }
 
         public void Add(string sceneID, DrawnActor2D actor)
         {
@@ -110,10 +189,7 @@ namespace GDLibrary
             }
 
             //if the user forgets to set the active list then set to the sceneID of the last added item
-
             SetActiveList(sceneID);
-
-
         }
 
         public DrawnActor2D Find(string sceneID, Predicate<DrawnActor2D> predicate)
@@ -163,8 +239,11 @@ namespace GDLibrary
                 //update all the updateable menu items (e.g. make buttons pulse etc)
                 foreach (DrawnActor2D currentUIObject in this.activeList)
                 {
-                    if ((currentUIObject.GetStatusType() & StatusType.Update) != 0) //if update flag is set
+                    if ((currentUIObject.GetStatusType() & StatusType.Update) != StatusType.Update) //if update flag is set
+                    {
+                        (currentUIObject as UITextObject).Text = this.TextboxText;
                         currentUIObject.Update(gameTime);
+                    }
                 }
             }
 

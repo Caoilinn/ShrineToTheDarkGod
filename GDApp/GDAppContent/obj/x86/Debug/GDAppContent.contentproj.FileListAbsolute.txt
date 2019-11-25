@@ -11,3 +11,5 @@ C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDAppContent\obj\x86\Debug\G
 C:\Users\james\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDAppContent\obj\x86\Debug\GDAppContent.contentproj.CoreCompileInputs.cache
 C:\Users\james\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDAppContent\obj\x86\Debug\GDAppContent.contentprojAssemblyReference.cache
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDAppContent\obj\x86\Debug\GDAppContent.contentproj.CoreCompileInputs.cache
+C:\Users\Christian\Desktop\25112019\ShrineToTheDarkGod\GDApp\GDAppContent\obj\x86\Debug\GDAppContent.contentproj.CoreCompileInputs.cache
+C:\Users\Christian\Desktop\25112019\ShrineToTheDarkGod\GDApp\GDAppContent\obj\x86\Debug\GDAppContent.contentprojAssemblyReference.cache
