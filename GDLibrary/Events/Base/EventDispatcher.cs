@@ -38,6 +38,7 @@ namespace GDLibrary
         public delegate void PlayerEventHandler(EventData eventData);
         public delegate void EnemyEventHandler(EventData eventData);
         public delegate void UIChangedEventHandler(EventData eventData);
+        public delegate void TextboxChangedEventHandler(EventData eventData);
         public delegate void EnemyDeathEventHandler(EventData eventData);
         #endregion
 
@@ -58,6 +59,7 @@ namespace GDLibrary
         public event PlayerEventHandler PlayerChanged;
         public event EnemyEventHandler EnemyChanged;
         public event UIChangedEventHandler UIChanged;
+        public event TextboxChangedEventHandler TextboxChanged;
         public event EnemyDeathEventHandler EnemyDeathEvent;
         #endregion
 
@@ -162,6 +164,10 @@ namespace GDLibrary
                     OnEnemy(eventData);
                     break;
 
+                case EventCategoryType.Textbox:
+                    OnTextboxChanged(eventData);
+                    break;
+
                 case EventCategoryType.UIMenu:
                     OnUIChanged(eventData);
                     break;
@@ -198,6 +204,11 @@ namespace GDLibrary
         protected virtual void OnCameraChanged(EventData eventData)
         {
             CameraChanged?.Invoke(eventData);
+        }
+
+        protected virtual void OnTextboxChanged(EventData eventData)
+        {
+            TextboxChanged?.Invoke(eventData);
         }
 
         //Called when a menu change is requested

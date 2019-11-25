@@ -22,6 +22,7 @@ namespace GDLibrary
         private List<DrawnActor3D> removeList, opaqueDrawList, transparentDrawList;
         private RasterizerState rasterizerStateOpaque;
         private RasterizerState rasterizerStateTransparent;
+        private Viewport fullViewport;
         #endregion
 
         #region Properties   
@@ -47,9 +48,10 @@ namespace GDLibrary
             Game game,
             CameraManager cameraManager,
             EventDispatcher eventDispatcher,
-            StatusType statusType
+            StatusType statusType,
+            Viewport fullViewport
         ) : this(game, cameraManager, 10, 10, eventDispatcher, statusType) {
-
+            this.fullViewport = fullViewport;
         }
 
         public ObjectManager(
@@ -351,6 +353,8 @@ namespace GDLibrary
                 foreach (DrawnActor3D actor in this.transparentDrawList)
                     DrawActor(gameTime, actor, activeCamera);
             }
+
+            Game.GraphicsDevice.Viewport = this.fullViewport;
 
             base.ApplyDraw(gameTime);
         }

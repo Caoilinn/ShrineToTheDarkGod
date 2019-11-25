@@ -51,7 +51,8 @@ namespace GDApp
         private CombatManager combatManager;
         private PhysicsManager physicsManager;
         private MyMenuManager menuManager;
-        private UIManager uiManager;
+        private MyUIManager uiManager;
+        private MyTextboxManager textboxManager;
         private PickingManager pickingManager;
         private InventoryManager inventoryManager;
 
@@ -111,6 +112,7 @@ namespace GDApp
 
         //Player Posiiton
         private Transform3D playerPosition;
+        private Transform3D uiPosition;
         private PlayerObject player;
         private List<EnemyObject> enemies;
         private BasicEffect torchLitRoomEffect;
@@ -121,6 +123,7 @@ namespace GDApp
         private ProjectionParameters projectionParameters;
         private Viewport viewport;
         private float depth;
+        private string textboxText;
 
         public Main()
         {
@@ -155,12 +158,12 @@ namespace GDApp
             LoadMapFromFile();
 
             InitializeMap(100, 100, 100, worldScale);
-
+   
             InitializeMenu();
+            InitializeTextbox();
             InitializeUI();
 
             InitializeGrid();
-
             base.Initialize();
         }
 
@@ -335,7 +338,8 @@ namespace GDApp
                 this, 
                 this.cameraManager, 
                 this.eventDispatcher, 
-                StatusType.Off
+                StatusType.Off,
+                new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight)
             );
 
             Components.Add(this.objectManager);
@@ -432,16 +436,28 @@ namespace GDApp
             #endregion
 
             #region UI Manager
-            this.uiManager = new UIManager(
+            this.uiManager = new MyUIManager(
                 this,
-                StatusType.Drawn | StatusType.Update,
+                this.managerParameters,
+                this.spriteBatch,
                 this.eventDispatcher,
-                this.cameraManager,
-                this.mouseManager,
-                this.spriteBatch
+                StatusType.Off
             );
 
             Components.Add(this.uiManager);
+            #endregion
+
+            #region textbox Manager
+            this.textboxManager = new MyTextboxManager(
+                this,
+                this.managerParameters,
+                this.spriteBatch,
+                this.eventDispatcher,
+                StatusType.Update | StatusType.Drawn,
+                this.textboxText
+            );
+
+            Components.Add(this.textboxManager);
             #endregion
 
             #region Manager Parameters
@@ -455,7 +471,8 @@ namespace GDApp
                 this.physicsManager,
                 this.inventoryManager,
                 this.combatManager,
-                this.uiManager
+                this.uiManager,
+                this.textboxManager
             );
             #endregion
 
@@ -497,6 +514,13 @@ namespace GDApp
 
             Components.Add(this.gridManager);
             #endregion
+
+           #region Draw order
+           this.objectManager.DrawOrder = 1;
+           this.uiManager.DrawOrder = 2;
+           this.textboxManager.DrawOrder = 3;
+           this.menuManager.DrawOrder = 4;
+           #endregion
         }
 
         private void InitializeEventDispatcher()
@@ -756,27 +780,103 @@ namespace GDApp
         {
             Transform2D transform = new Transform2D(
                 new Vector2(100, 200),
+                0, 
+                Vector2.One, 
+                Vector2.Zero, 
+                new Integer2(100, 25)
+            );
+
+            Texture2D texture = this.textureDictionary["HUD"];
+            string sceneID = "UI";
+            DrawnActor2D text;
+
+            //Scale the texture to fit the entire screen
+            Vector2 scale = new Vector2(
+                (float)graphics.PreferredBackBufferWidth / texture.Width,
+                (float)graphics.PreferredBackBufferHeight / texture.Height
+            );
+
+            transform = new Transform2D(scale);
+            text = new UITextureObject(
+                "uiTexture",
+                ActorType.UITexture,
+                StatusType.Drawn,       //Notice we dont need to update a static texture
+                transform,
+                Color.White,
+                SpriteEffects.None,
+                0,                      //Depth is 1 so its always sorted to the back of other menu elements
+                texture
+            );
+
+            this.uiManager.Add(sceneID, text);
+
+            //AddUICamera(
+            //    new Transform3D(
+            //        new Vector3(400, 400, 400),
+            //        Vector3.Zero,
+            //        Vector3.One,
+            //        Vector3.Forward,
+            //        Vector3.Up
+            //    )
+            //);
+        }
+
+        private void InitializeTextbox()
+        {
+            #region Text box
+            string sceneID = "TextboxID";
+            this.textboxText = this.textboxManager.TextboxText;
+
+            Transform2D transformtext = new Transform2D(
+                new Vector2(940, 40),
                 0,
-                Vector2.One,
+                new Vector2(.6f, .6f),
                 Vector2.Zero,
                 new Integer2(100, 25)
             );
 
-            //UITextObject uiTextObject = new UITextObject("Greeting", ActorType.UIText, StatusType.Update | StatusType.Drawn, transform, Color.Red, SpriteEffects.None, 1, "Hello World", this.fontDictionary["menu"]);
-            //this.uiManager.Add("main_ui", uiTextObject);
+            UITextObject uiTextObj = new UITextObject(
+                sceneID,
+                ActorType.UIText,
+                StatusType.Drawn,
+                transformtext,
+                Color.Cyan,
+                SpriteEffects.None,
+                0,
+                this.textboxText,
+                this.fontDictionary["menu"]
+            );
+
+            this.textboxManager.Add("textbox", uiTextObj);
+            #endregion
         }
         #endregion
 
         #region Cameras
-        private void InitializeCameras(float fieldOfView, float aspectRatio, float nearClipPlane, float farClipPlane)
+        private void InitializeCameras(float worldScale, int resolutionWidth, int resolutionHeight)
         {
-            this.projectionParameters = new ProjectionParameters(
-                fieldOfView,
+            float aspectRatio = (4.0f / 3.0f);
+            float nearClipPlane = 0.1f;
+            float farClipPlane = 10000;
+
+            ProjectionParameters projectionParameters;
+            Viewport viewport;
+            float depth;
+
+            #region First-Person Camera
+            projectionParameters = new ProjectionParameters(
+                MathHelper.ToRadians(45),
                 aspectRatio,
                 nearClipPlane,
                 farClipPlane
             );
+
+            viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            depth = 0;
+
+            
         }
+        #endregion
 
         private void AddFirstPersonCamera(Transform3D playerTransform)
         {
@@ -789,8 +889,8 @@ namespace GDApp
             );
 
             //Setup viewport and draw depth
-            Viewport viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
-            float drawDepth = 0f;
+            Viewport viewport = new Viewport(10, 10, graphics.PreferredBackBufferWidth - 400, graphics.PreferredBackBufferHeight- 250);
+            float drawDepth = 0;
 
             //Create a camera
             Camera3D camera = new Camera3D(
@@ -803,10 +903,10 @@ namespace GDApp
                 drawDepth
             );
 
-            //Attach a first person camera controller
+            //Attacha first person camera controller
             camera.AttachController(
                 new CollidableFirstPersonCameraController(
-                    camera + " - Collidable First Person Camera Controller",
+                    camera + " Controller",
                     ControllerType.CollidableCamera,
                     AppData.CameraMoveKeys,
                     AppData.CameraMoveSpeed,
@@ -820,8 +920,50 @@ namespace GDApp
             //Add to lists
             this.cameraManager.Add(camera);
         }
-        #endregion
 
+        private void AddUICamera(Transform3D uiTransform)
+        {
+            this.uiPosition.Translation += new Vector3(400, 400, 400);
+            
+            //Setup projection parameters
+            ProjectionParameters projectionParameters = new ProjectionParameters(
+                AppData.FirstPersonCameraFieldOfView,
+                AppData.FirstPersonCameraAspectRatio,
+                AppData.FirstPersonCameraNearClipPlane,
+                AppData.FirstPersonCameraFarClipPlane
+            );
+
+            viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            float drawDepth = 0f;
+
+            Camera3D camera = new Camera3D(
+                "UICam",
+                ActorType.CollidableCamera,
+                StatusType.Update,
+                this.uiPosition,
+                projectionParameters,
+                viewport,
+                drawDepth
+            );
+
+            camera.AttachController(
+                new FirstPersonCameraController(
+                    camera + " Controller",
+                    ControllerType.CollidableCamera,
+                    AppData.CameraMoveKeys,
+                    AppData.CameraMoveSpeed,
+                    AppData.CameraRotationSpeed,
+                    this.managerParameters,
+                    AppData.CharacterMovementVector,
+                    AppData.CharacterRotationVector
+                )
+            );
+            
+            this.cameraManager.Add(camera);
+            //this.combatManager.AddPlayer((camera.ControllerList[0] as CollidableFirstPersonCameraController).PlayerObject);
+        }
+        #endregion
+        
         #region Map Setup
         private void SetupBitArray(int roomsShiftPosition, int reservedRoomBits, int reservedPickupBits, int reservedTriggerBits, int reservedPlayerBits, int reservedEnemyBits, int reservedGateBits)
         {
@@ -1253,17 +1395,19 @@ namespace GDApp
         public void SpawnPlayer(int playerType, Transform3D transform)
         {
             //Position player
-            Transform3D playerTransform = transform.Clone() as Transform3D;
-            playerTransform.Translation += new Vector3(127, 127, 127);
-            
+            this.playerPosition = transform.Clone() as Transform3D;
+            this.playerPosition.Translation += new Vector3(127, 127, 127);
+            this.uiPosition = transform.Clone() as Transform3D;
+
             //Create first person camera
-            AddFirstPersonCamera(playerTransform);
+            AddFirstPersonCamera(this.playerPosition);
+            AddUICamera(this.uiPosition);
 
             //Create a player
             this.collidableModel = new PlayerObject(
                 "Player" + playerType,
                 ActorType.Player,
-                playerTransform,
+                playerPosition,
                 null,
                 null,
                 AppData.CharacterAccelerationRate,
@@ -1526,6 +1670,7 @@ namespace GDApp
             #region UI Elements
             this.textureDictionary.Load("Assets/Textures/UI/HUD/reticuleDefault");
             this.textureDictionary.Load("Assets/Textures/UI/HUD/progress_gradient");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/HUD");
             #endregion
 
             #region Architecture
