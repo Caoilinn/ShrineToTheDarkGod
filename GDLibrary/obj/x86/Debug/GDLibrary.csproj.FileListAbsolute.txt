@@ -147,7 +147,6 @@ C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.Video.xml
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.Xact.xml
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
-C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csprojAssemblyReference.cache
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csproj.CoreCompileInputs.cache
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csproj.CopyComplete

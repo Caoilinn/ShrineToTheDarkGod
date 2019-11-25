@@ -34,11 +34,14 @@ namespace GDLibrary
         }
         #endregion
 
-        public UIManager(Game game, ManagerParameters managerParameters,
-            SpriteBatch spriteBatch, EventDispatcher eventDispatcher,
-            StatusType statusType)
-            : base(game, statusType, eventDispatcher)
-        {
+        #region Constructors
+        public UIManager(
+            Game game, 
+            ManagerParameters managerParameters,
+            SpriteBatch spriteBatch, 
+            EventDispatcher eventDispatcher,
+            StatusType statusType
+        ) : base(game, statusType, eventDispatcher) {
             this.uiDictionary = new Dictionary<string, List<DrawnActor2D>>();
 
             //used to listen for input
@@ -46,9 +49,10 @@ namespace GDLibrary
 
             //used to render menu and UI elements
             this.spriteBatch = spriteBatch;
-
         }
+        #endregion
 
+        #region Event Handling
         protected override void RegisterForEventHandling(EventDispatcher eventDispatcher)
         {
             eventDispatcher.UIChanged += EventDispatcher_MenuChanged;
@@ -60,7 +64,6 @@ namespace GDLibrary
         protected void EventDispatcher_UICombat(EventData eventData)
         {
             float damage = 0;
-
             if (eventData.EventType != EventActionType.OnEnemyDeath)
             {
                 damage = (float)eventData.AdditionalParameters[0];
@@ -70,26 +73,26 @@ namespace GDLibrary
                 case EventActionType.OnPlayerAttack:
                     Console.WriteLine("Player Attatcked with damage of " + damage);
                     break;
+
                 case EventActionType.OnPlayerDefend:
                     Console.WriteLine("Player Defended taking damage of " + damage);
                     break;
+
                 case EventActionType.OnPlayerDodge:
                     if (damage <= 0)
                         Console.WriteLine("Player Dodged");
                     else
                         Console.WriteLine("Player Dodge Failed, the player took damage of " + damage);
                     break;
+
                 case EventActionType.OnEnemyAttack:
                     Console.WriteLine("Enemy Attatcked with damage of " + damage);
                     break;
+
                 case EventActionType.OnEnemyDeath:
                     Console.WriteLine("YOU HAVE BEATEN THE ENEMY");
                     break;
-
             }
-
-
-
         }
         
         protected void EventDispatcher_UIHealth(EventData eventData)
@@ -97,16 +100,12 @@ namespace GDLibrary
             if(eventData.EventType == EventActionType.PlayerHealthUpdate)
             {
                 float playerHealth = (float)eventData.AdditionalParameters[0];
-
                 Console.WriteLine("Player Health: " + playerHealth);
-
-            } else
-            {
-                if(eventData.AdditionalParameters != null) { 
-                    float enemyHealth = (float)eventData.AdditionalParameters[0];
-
-                    Console.WriteLine("Enemy Health: " + enemyHealth);
-                }
+            }
+            else if(eventData.AdditionalParameters != null)
+            { 
+                float enemyHealth = (float)eventData.AdditionalParameters[0];
+                Console.WriteLine("Enemy Health: " + enemyHealth);
             }
         }
 
@@ -117,13 +116,8 @@ namespace GDLibrary
 
             else if (eventData.EventType == EventActionType.OnPause)
                 this.StatusType = StatusType.Off;
-
-
-
         }
         #endregion
-
-
 
         public void Add(string sceneID, DrawnActor2D actor)
         {
@@ -138,11 +132,7 @@ namespace GDLibrary
                 this.uiDictionary.Add(sceneID, newList);
             }
 
-            //if the user forgets to set the active list then set to the sceneID of the last added item
-
             SetActiveList(sceneID);
-
-
         }
 
         public DrawnActor2D Find(string sceneID, Predicate<DrawnActor2D> predicate)
@@ -156,7 +146,6 @@ namespace GDLibrary
         public bool Remove(string sceneID, Predicate<DrawnActor2D> predicate)
         {
             DrawnActor2D foundUIObject = Find(sceneID, predicate);
-
             if (foundUIObject != null)
                 return this.uiDictionary[sceneID].Remove(foundUIObject);
 
@@ -186,10 +175,11 @@ namespace GDLibrary
         protected override void ApplyUpdate(GameTime gameTime)
         {
             if (this.activeList != null)
+            //Update all the updateable menu items (e.g. make buttons pulse etc)
+            foreach (DrawnActor2D currentUIObject in this.activeList)
+            {
 
-                //Update all the updateable menu items (e.g. make buttons pulse etc)
-                foreach (DrawnActor2D currentUIObject in this.activeList)
-
+            }
         }
 
         protected override void ApplyDraw(GameTime gameTime)

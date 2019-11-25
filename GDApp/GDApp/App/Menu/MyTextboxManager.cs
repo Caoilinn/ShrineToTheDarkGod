@@ -1,18 +1,19 @@
 ﻿using GDLibrary;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace GDApp
 {
     public class MyTextboxManager : TextboxManager
     {
-        public MyTextboxManager(Game game, ManagerParameters managerParameters, SpriteBatch spriteBatch, EventDispatcher eventDispatcher, StatusType statusType, string textboxtext)
-            : base(game, managerParameters, spriteBatch, eventDispatcher, statusType, textboxtext)
-        {
+        public MyTextboxManager(
+            Game game, 
+            ManagerParameters managerParameters, 
+            SpriteBatch spriteBatch, 
+            EventDispatcher eventDispatcher, 
+            StatusType statusType, 
+            string textboxtext
+        ) : base(game, managerParameters, spriteBatch, eventDispatcher, statusType, textboxtext) {
             this.TextboxText = "combat manager";
         }
 

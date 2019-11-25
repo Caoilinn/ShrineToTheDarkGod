@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>room_018</Name>
     <Identity>
-      <SourceFilename>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\room_018.FBX</SourceFilename>
+      <SourceFilename>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\room_018.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>
@@ -53,21 +53,21 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Material #36</Name>
       <Identity>
-        <SourceFilename>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\room_018.FBX</SourceFilename>
+        <SourceFilename>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\room_018.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
     </Resource>
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>Material #37</Name>
       <Identity>
-        <SourceFilename>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\room_018.FBX</SourceFilename>
+        <SourceFilename>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\room_018.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
     </Resource>
     <Resource ID="#Resource3" Type="Graphics:BasicMaterialContent">
       <Name>Material #38</Name>
       <Identity>
-        <SourceFilename>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\room_018.FBX</SourceFilename>
+        <SourceFilename>C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\room_018.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
     </Resource>
