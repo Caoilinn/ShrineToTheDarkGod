@@ -152,3 +152,26 @@ C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csproj.CopyComplete
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.dll
 C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csprojAssemblyReference.cache
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\GDLibrary.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\GDLibrary.pdb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.Game.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.Video.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.Xact.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.xml
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.Game.xml
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.xml
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.xml
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.Video.xml
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.Xact.xml
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csprojAssemblyReference.cache
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csproj.CoreCompileInputs.cache
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csproj.CopyComplete
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.pdb

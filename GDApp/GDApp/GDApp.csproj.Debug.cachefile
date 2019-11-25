@@ -123,11 +123,12 @@ Content\Assets\Textures\UI\HUD\reticuleOpen.xnb
 Content\Assets\Textures\UI\HUD\white.xnb
 Content\Assets\Textures\UI\Menu\Backgrounds\audiomenu.xnb
 Content\Assets\Textures\UI\Menu\Backgrounds\controlsmenu.xnb
-Content\Assets\Textures\UI\Menu\Backgrounds\exitmenu.xnb
-Content\Assets\Textures\UI\Menu\Backgrounds\exitmenuwithtrans.xnb
 Content\Assets\Textures\UI\Menu\Backgrounds\mainmenu.xnb
 Content\Assets\Textures\UI\Menu\Buttons\genericbtn.xnb
 Content\Assets\Textures\Props\Crates\wc1_diffuse.xnb
+Content\Assets\Textures\UI\Menu\Backgrounds\begingame.xnb
+Content\Assets\Textures\UI\Menu\Backgrounds\losegame.xnb
+Content\Assets\Textures\UI\Menu\Backgrounds\wingame.xnb
 Content\Assets\Audio\boing.xnb
 Content\Assets\Audio\environment_stone_steps.xnb
 Content\Assets\Audio\turn_around.xnb

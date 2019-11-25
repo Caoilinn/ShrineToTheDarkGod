@@ -665,16 +665,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Textures\UI\Menu\Backgrounds\exitmenu.png">
-      <Name>exitmenu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Assets\Textures\UI\Menu\Backgrounds\exitmenuwithtrans.png">
-      <Name>exitmenuwithtrans</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Assets\Textures\UI\Menu\Backgrounds\mainmenu.PNG">
       <Name>mainmenu</Name>
       <Importer>TextureImporter</Importer>
@@ -906,6 +896,23 @@
       <Name>button_click</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Textures\UI\Menu\Backgrounds\begingame.png">
+      <Name>begingame</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Textures\UI\Menu\Backgrounds\losegame.png">
+      <Name>losegame</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Textures\UI\Menu\Backgrounds\wingame.png">
+      <Name>wingame</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
