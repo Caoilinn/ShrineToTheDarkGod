@@ -1348,7 +1348,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\audiomenu.xnb</Output>
-      <Time>2019-11-25T10:00:08.2703942+00:00</Time>
+      <Time>2019-11-25T12:45:31.67585+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\UI\Menu\Backgrounds\controlsmenu.png</Source>
@@ -1357,7 +1357,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\controlsmenu.xnb</Output>
-      <Time>2019-11-25T09:59:23.8816653+00:00</Time>
+      <Time>2019-11-25T12:46:56.6679717+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\UI\Menu\Backgrounds\exitmenu.png</Source>
@@ -1384,7 +1384,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\mainmenu.xnb</Output>
-      <Time>2019-11-25T09:57:43.2357555+00:00</Time>
+      <Time>2019-11-25T12:44:13.7362291+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\UI\Menu\Buttons\genericbtn.png</Source>
@@ -2127,7 +2127,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\begingame.xnb</Output>
-      <Time>2019-11-25T10:58:08.3222999+00:00</Time>
+      <Time>2019-11-25T12:43:44.492923+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\UI\Menu\Backgrounds\losegame.png</Source>
@@ -2136,7 +2136,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\losegame.xnb</Output>
-      <Time>2019-11-25T10:51:16.1665935+00:00</Time>
+      <Time>2019-11-25T12:47:48.8550919+00:00</Time>
     </Item>
     <Item>
       <Source>Assets\Textures\UI\Menu\Backgrounds\wingame.png</Source>
@@ -2145,7 +2145,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nate\Source\Repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\wingame.xnb</Output>
-      <Time>2019-11-25T10:49:12.1076752+00:00</Time>
+      <Time>2019-11-25T12:48:56.2378977+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
