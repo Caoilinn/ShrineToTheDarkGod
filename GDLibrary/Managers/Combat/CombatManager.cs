@@ -174,10 +174,9 @@ namespace GDLibrary
             //If not the players' turn, return
             if (!StateManager.PlayerTurn) return;
 
-            EventDispatcher.Publish(new EventData(
-                                       EventActionType.PlayerHealthUpdate,
-                                       EventCategoryType.UI,
-                                       new object[] { this.player.Health }));
+            //Publish player health ui event
+            EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthUpdate, EventCategoryType.UI, new object[] { this.player.Health }));
+            
             #region Attack
             //If the player attacks
             if (this.keyboardManager.IsFirstKeyPress(this.combatKeys[0]))
@@ -318,10 +317,8 @@ namespace GDLibrary
             //If not the enemys' turn, return
             if (!StateManager.EnemyTurn) return;
 
-            EventDispatcher.Publish(new EventData(
-                                                EventActionType.EnemyHealthUpdate,
-                                                EventCategoryType.UI,
-                                                new object[] { this.enemyOnFocus.Health }));
+            //Publish player health ui event
+            EventDispatcher.Publish(new EventData(EventActionType.EnemyHealthUpdate, EventCategoryType.UI, new object[] { this.enemyOnFocus.Health }));
 
             #region Attack
             //Enemy Attack - Default for release 1
@@ -347,9 +344,6 @@ namespace GDLibrary
 
                 //Publish play attack sound event
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "enemy_attack" }));
-
-                //Publish player attack event
-                //EventDispatcher.Publish(new EventData(EventActionType.OnEnemyAttack, EventCategoryType.Combat));
 
                 //Publish enemy attack event to the UI Manager
                 EventDispatcher.Publish(new EventData(EventActionType.OnEnemyAttack, EventCategoryType.UI, new object[] { damage }));
