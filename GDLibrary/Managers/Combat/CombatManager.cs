@@ -23,7 +23,6 @@ namespace GDLibrary
         #region Properties
         #endregion
 
-
         #region Constructor
         public CombatManager(
             Game game, 
