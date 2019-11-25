@@ -155,7 +155,7 @@ namespace GDLibrary
                 case EventCategoryType.Player:
                     OnPlayer(eventData);
                     break;
-                case EventCategoryType.UIMenu:
+                case EventCategoryType.UI:
                     OnUIChanged(eventData);
                     break;
                 case EventCategoryType.EnemyDeath:
