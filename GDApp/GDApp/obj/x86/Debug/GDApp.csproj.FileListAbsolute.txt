@@ -1,0 +1,1228 @@
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\App\Data\mapData.txt
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\cylinder.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\dome.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\hedra.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\octahedron.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\prism.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\sphere.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\spindle.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\torus.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\torusknot.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\test.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_003.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_004.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_005.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_006.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_007.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_008.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_009.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_010.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_011.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_012.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_013.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_014.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_015.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_016.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\box.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\plane.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_017.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_018.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\gate.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_003.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_004.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_005.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_006.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_007.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_008.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_009.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_010.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_011.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_012.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_013.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_014.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_015.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_016.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_017.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_018.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\potion.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\test.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\foliage.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub2.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub3.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree2.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree3.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree4.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree5.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\tv.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\back.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\front.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\ground.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\left.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\right.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\sky.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_003.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_004.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_005.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_006.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_007.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_008.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_009.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_010.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_011.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_012.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_013.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_014.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_015.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_016.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Debug\Textures\checkerboard.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Debug\Textures\checkerboard_greywhite.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Debug\Textures\ml.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Debug\Textures\slj.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_017.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_018.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\CubeDiffuseMap.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\boing.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\environment_stone_steps.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\turn_around.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\hudFont.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\menu.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Debug\Fonts\debugFont.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001_001_0.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\GameAudio.xgs
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xwb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xsb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.exe
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDLibrary.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\JigLibX.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDLibrary.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csprojAssemblyReference.cache
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CoreCompileInputs.cache
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CopyComplete
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.exe
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.pdb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Buildings\house-low-texture.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence1.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence2.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence3.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence4.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\backwall.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\sidewall.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\wall.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Common\white64x64.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass_highlevel.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass_midlevel.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Landscape\canyon.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate1.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate2.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skydome\skydome.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\mouseicons.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\progress_gradient.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\progress_white.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleClosed.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleDefault.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleOpen.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\white.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\audiomenu.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\controlsmenu.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\exitmenu.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\exitmenuwithtrans.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\mainmenu.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Buttons\genericbtn.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\wc1_diffuse.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\SpriteFont1.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\App\Data\mapData.txt
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\cylinder.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\dome.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\hedra.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\octahedron.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\prism.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\sphere.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\spindle.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\torus.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\torusknot.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\test.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_002.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_003.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_004.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_005.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_006.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_007.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_008.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_009.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_010.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_011.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_012.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_013.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_014.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_015.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_016.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\box.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\plane.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_017.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_018.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\gate.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_001.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_002.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_003.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_004.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_005.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_006.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_007.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_008.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_009.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_010.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_011.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_012.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_013.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_014.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_015.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_016.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_017.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_018.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\potion.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\test.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\foliage.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass1.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub1.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub2.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub3.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree1.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree2.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree3.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree4.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree5.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate_001.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate_002.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\tv.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\back.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\front.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\ground.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\left.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\right.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\sky.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_001.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_003.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_004.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_005.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_006.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_007.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_008.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_009.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_010.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_011.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_012.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_013.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_014.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_015.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_016.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_002.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_017.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_018.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Buildings\house-low-texture.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence1.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence2.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence3.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence4.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\backwall.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\sidewall.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\wall.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Common\white64x64.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass_highlevel.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass_midlevel.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Landscape\canyon.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate1.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate2.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skydome\skydome.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\mouseicons.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\progress_gradient.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\progress_white.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleClosed.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleDefault.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleOpen.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\white.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\audiomenu.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\controlsmenu.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\exitmenu.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\exitmenuwithtrans.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\mainmenu.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Buttons\genericbtn.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\wc1_diffuse.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\boing.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\environment_stone_steps.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\turn_around.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\hudFont.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\menu.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\SpriteFont1.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\GameAudio.xgs
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xwb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xsb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.exe
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.pdb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDLibrary.dll
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.dll
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.dll
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.dll
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.dll
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.dll
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.dll
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDLibrary.pdb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.xml
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.xml
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.xml
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.xml
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.xml
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csprojAssemblyReference.cache
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CoreCompileInputs.cache
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CopyComplete
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.exe
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.pdb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csprojAssemblyReference.cache
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CoreCompileInputs.cache
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.exe
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.pdb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\App\Data\mapData.txt
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\cylinder.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\dome.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\hedra.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\octahedron.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\prism.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\sphere.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\spindle.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\torus.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\torusknot.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\test.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_002.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_003.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_004.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_005.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_006.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_007.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_008.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_009.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_010.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_011.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_012.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_013.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_014.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_015.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_016.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\box.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\plane.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_017.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_018.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\gate.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_001.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_002.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_003.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_004.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_005.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_006.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_007.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_008.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_009.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_010.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_011.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_012.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_013.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_014.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_015.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_016.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_017.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_018.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\potion.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\test.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box_collision.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Characters\enemy_collision.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Zones\zone_collision.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_001.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_002.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_001.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_002.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_002.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_001.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Pickups\pickup_collision.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\foliage.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass1.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub1.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub2.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub3.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree1.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree2.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree3.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree4.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree5.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate_001.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate_002.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\tv.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\back.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\front.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\ground.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\left.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\right.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\sky.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_001.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_003.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_004.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_005.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_006.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_007.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_008.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_009.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_010.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_011.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_012.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_013.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_014.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_015.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_016.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_002.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_017.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_018.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Buildings\house-low-texture.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence1.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence2.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence3.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence4.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\backwall.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\sidewall.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\wall.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Common\white64x64.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass_highlevel.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass_midlevel.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Landscape\canyon.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate1.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate2.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skydome\skydome.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\mouseicons.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\progress_gradient.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\progress_white.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleClosed.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleDefault.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleOpen.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\white.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\audiomenu.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\controlsmenu.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\exitmenu.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\exitmenuwithtrans.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\mainmenu.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Buttons\genericbtn.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\wc1_diffuse.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\boing.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\environment_stone_steps.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\turn_around.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\main_theme.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\item_twinkle.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\battle_theme.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\wall_bump.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\hudFont.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\menu.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\SpriteFont1.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001_001_0.xnb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\GameAudio.xgs
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xwb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xsb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.exe
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.pdb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDLibrary.dll
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.dll
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.dll
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.dll
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.dll
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.dll
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.dll
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDLibrary.pdb
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.xml
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.xml
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.xml
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.xml
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.xml
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CopyComplete
+C:\Users\james\Desktop\asd\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\JigLibX.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\obj\x86\Debug\GDApp.exe
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\obj\x86\Debug\GDApp.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\obj\x86\Debug\GDApp.csprojAssemblyReference.cache
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CoreCompileInputs.cache
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\App\Data\mapData.txt
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\cylinder.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\dome.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\hedra.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\octahedron.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\prism.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\sphere.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\spindle.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\torus.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\torusknot.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\test.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_003.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_004.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_005.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_006.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_007.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_008.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_009.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_010.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_011.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_012.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_013.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_014.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_015.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_016.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\box.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\plane.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_017.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_018.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\gate.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_003.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_004.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_005.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_006.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_007.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_008.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_009.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_010.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_011.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_012.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_013.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_014.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_015.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_016.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_017.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_018.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\potion.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\test.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box_collision.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Characters\enemy_collision.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Zones\zone_collision.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Pickups\pickup_collision.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\foliage.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub2.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub3.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree2.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree3.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree4.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree5.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\tv.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\back.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\front.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\ground.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\left.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\right.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\sky.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_003.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_004.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_005.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_006.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_007.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_008.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_009.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_010.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_011.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_012.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_013.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_014.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_015.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_016.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_017.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_018.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Buildings\house-low-texture.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence2.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence3.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence4.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\backwall.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\sidewall.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\wall.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Common\white64x64.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass_highlevel.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass_midlevel.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Landscape\canyon.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate2.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skydome\skydome.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\mouseicons.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\progress_gradient.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\progress_white.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleClosed.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleDefault.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleOpen.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\white.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\audiomenu.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\controlsmenu.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\exitmenu.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\exitmenuwithtrans.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\mainmenu.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Buttons\genericbtn.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\wc1_diffuse.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\boing.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\environment_stone_steps.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\turn_around.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\main_theme.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\item_twinkle.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\battle_theme.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\wall_bump.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\hudFont.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\menu.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\SpriteFont1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001_001_0.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\GameAudio.xgs
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xwb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xsb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\GDApp.exe
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\GDApp.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\GDLibrary.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\JigLibX.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\GDLibrary.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod_02\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CopyComplete
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\App\Data\mapData.txt
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\cylinder.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\dome.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\hedra.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\octahedron.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\prism.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\sphere.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\spindle.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\torus.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\torusknot.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\test.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_003.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_004.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_005.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_006.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_007.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_008.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_009.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_010.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_011.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_012.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_013.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_014.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_015.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_016.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\box.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\plane.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_017.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_018.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\gate.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_003.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_004.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_005.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_006.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_007.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_008.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_009.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_010.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_011.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_012.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_013.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_014.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_015.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_016.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_017.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_018.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\potion.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\test.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box_collision.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Characters\enemy_collision.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Zones\zone_collision.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Pickups\pickup_collision.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\foliage.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub2.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub3.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree2.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree3.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree4.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree5.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\tv.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\back.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\front.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\ground.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\left.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\right.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\sky.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_003.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_004.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_005.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_006.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_007.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_008.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_009.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_010.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_011.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_012.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_013.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_014.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_015.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_016.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_017.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_018.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Buildings\house-low-texture.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence2.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence3.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence4.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\backwall.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\sidewall.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\wall.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Common\white64x64.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass_highlevel.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass_midlevel.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Landscape\canyon.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate2.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skydome\skydome.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\mouseicons.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\progress_gradient.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\progress_white.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleClosed.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleDefault.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleOpen.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\white.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\audiomenu.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\controlsmenu.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\exitmenu.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\exitmenuwithtrans.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\mainmenu.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Buttons\genericbtn.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\wc1_diffuse.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\boing.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\environment_stone_steps.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\turn_around.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\main_theme.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\item_twinkle.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\battle_theme.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\wall_bump.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\hudFont.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\menu.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\SpriteFont1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\GameAudio.xgs
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xwb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xsb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.exe
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDLibrary.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\JigLibX.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDLibrary.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csprojAssemblyReference.cache
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CoreCompileInputs.cache
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CopyComplete
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.exe
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\sword.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\key.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\uvw2_0.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\block.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\death.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\dodge.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\door_locked.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\drink_potion.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\equip_sword.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_open.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_unlocked.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\h_attack.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\l_attack.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\m_attack.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\player_health_low.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_01.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\#\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_02.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box_collision.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Characters\enemy_collision.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Zones\zone_collision.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_001.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_002.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_001.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_002.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_002.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_001.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Pickups\pickup_collision.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\sword.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\key.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\main_theme.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\item_twinkle.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\battle_theme.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\wall_bump.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\block.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\death.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\dodge.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\door_locked.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\drink_potion.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\equip_sword.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_open.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_unlocked.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\h_attack.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\l_attack.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\m_attack.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\player_health_low.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_01.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_02.xnb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\uvw2_0.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\App\Data\mapData.txt
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\cylinder.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\dome.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\hedra.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\octahedron.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\prism.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\sphere.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\spindle.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\torus.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\torusknot.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\test.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_003.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_004.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_005.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_006.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_007.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_008.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_009.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_010.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_011.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_012.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_013.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_014.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_015.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_016.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\box.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\plane.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_017.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_018.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\gate.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_003.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_004.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_005.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_006.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_007.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_008.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_009.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_010.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_011.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_012.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_013.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_014.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_015.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_016.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_017.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_018.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\potion.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\test.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box_collision.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Characters\enemy_collision.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Zones\zone_collision.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Pickups\pickup_collision.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\sword.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\key.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\foliage.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub2.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub3.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree2.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree3.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree4.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree5.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\tv.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\back.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\front.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\ground.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\left.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\right.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\sky.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_001.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_003.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_004.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_005.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_006.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_007.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_008.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_009.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_010.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_011.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_012.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_013.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_014.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_015.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_016.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_002.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_017.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_018.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Buildings\house-low-texture.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence2.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence3.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence4.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\backwall.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\sidewall.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\wall.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Common\white64x64.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass_highlevel.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass_midlevel.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Landscape\canyon.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate2.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skydome\skydome.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\mouseicons.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\progress_gradient.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\progress_white.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleClosed.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleDefault.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleOpen.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\white.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\audiomenu.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\controlsmenu.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\mainmenu.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Buttons\genericbtn.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\wc1_diffuse.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\boing.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\environment_stone_steps.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\turn_around.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\main_theme.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\item_twinkle.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\battle_theme.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\wall_bump.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\block.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\death.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\dodge.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\door_locked.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\drink_potion.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\equip_sword.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_open.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_unlocked.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\h_attack.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\l_attack.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\m_attack.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\player_health_low.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_01.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_02.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\hudFont.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\menu.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\SpriteFont1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\uvw2_0.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\GameAudio.xgs
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xwb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xsb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.exe
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDLibrary.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\JigLibX.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDLibrary.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csprojAssemblyReference.cache
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CoreCompileInputs.cache
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CopyComplete
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.exe
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\growl.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\keys_jingle.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\enemy_attack.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\button_click.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\begingame.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\losegame.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\UDP\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\wingame.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\App\Data\mapData.txt
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\cylinder.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\dome.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\hedra.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\octahedron.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\prism.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\sphere.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\spindle.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\torus.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\torusknot.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\test.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_002.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_003.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_004.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_005.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_006.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_007.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_008.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_009.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_010.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_011.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_012.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_013.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_014.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_015.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_016.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\box.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\plane.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_017.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_018.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Generics\gate.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_001.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_002.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_003.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_004.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_005.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_006.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_007.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_008.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_009.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_010.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_011.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_012.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_013.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_014.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_015.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_016.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_017.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Rooms\room_collision_018.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\potion.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\test.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box_collision.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Characters\enemy_collision.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Zones\zone_collision.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_001.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_002.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_001.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_002.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_002.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_001.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Pickups\pickup_collision.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\sword.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\key.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\foliage.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass1.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub1.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub2.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Shrubs\shrub3.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree1.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree2.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree3.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree4.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Trees\tree5.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate_001.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate_002.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\tv.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\back.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\front.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\ground.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\left.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\right.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skybox\sky.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_001.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_003.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_004.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_005.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_006.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_007.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_008.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_009.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_010.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_011.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_012.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_013.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_014.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_015.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_016.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_002.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_017.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_018.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Buildings\house-low-texture.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence1.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence2.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence3.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Fence\fence4.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\backwall.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\sidewall.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Walls\wall.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Common\white64x64.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass_highlevel.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Foliage\Ground\grass_midlevel.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Landscape\canyon.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate1.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\crate2.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Skydome\skydome.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\mouseicons.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\progress_gradient.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\progress_white.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleClosed.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleDefault.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\reticuleOpen.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\white.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\audiomenu.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\controlsmenu.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\mainmenu.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Buttons\genericbtn.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\wc1_diffuse.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\begingame.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\losegame.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\wingame.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\boing.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\environment_stone_steps.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\turn_around.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\main_theme.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\item_twinkle.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\battle_theme.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\wall_bump.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\block.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\death.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\dodge.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\door_locked.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\drink_potion.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\equip_sword.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_open.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_unlocked.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\h_attack.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\l_attack.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\m_attack.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\player_health_low.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_01.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_02.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\growl.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\keys_jingle.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\enemy_attack.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\button_click.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\hudFont.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\menu.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\SpriteFont1.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\uvw2_0.xnb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\GameAudio.xgs
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xwb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xsb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.exe
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.pdb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDLibrary.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\JigLibX.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.dll
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDLibrary.pdb
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.xml
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.xml
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.xml
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.xml
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.xml
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csprojAssemblyReference.cache
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CoreCompileInputs.cache
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CopyComplete
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.exe
+C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.pdb

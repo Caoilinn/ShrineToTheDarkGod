@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/GDApp/v15/-DESKTOP-2G8L771.suo
+/.vs/GDApp/v15/Server/sqlite3/db.lock
+/.vs/GDApp/v15/Server/sqlite3

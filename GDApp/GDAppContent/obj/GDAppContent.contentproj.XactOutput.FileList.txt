@@ -1,0 +1,3 @@
+Content\Assets\Audio\GameAudio.xgs
+Content\Assets\Audio\Movement.xwb
+Content\Assets\Audio\Movement.xsb
