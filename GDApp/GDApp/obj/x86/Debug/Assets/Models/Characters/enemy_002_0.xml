@@ -3,7 +3,11 @@
   <Asset Type="Graphics:MeshContent">
     <Name>enemy_002</Name>
     <Identity>
+<<<<<<< HEAD
       <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\enemy_002.FBX</SourceFilename>
+=======
+      <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\enemy_002.FBX</SourceFilename>
+>>>>>>> origin/master
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>

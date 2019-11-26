@@ -3,7 +3,11 @@
   <Asset Type="Graphics:MeshContent">
     <Name>Cylinder</Name>
     <Identity>
+<<<<<<< HEAD
       <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\potion.fbx</SourceFilename>
+=======
+      <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\potion.fbx</SourceFilename>
+>>>>>>> origin/master
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>
@@ -38,7 +42,11 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Material.001</Name>
       <Identity>
+<<<<<<< HEAD
         <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\potion.fbx</SourceFilename>
+=======
+        <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\potion.fbx</SourceFilename>
+>>>>>>> origin/master
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -52,7 +60,11 @@
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>Material.006</Name>
       <Identity>
+<<<<<<< HEAD
         <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\potion.fbx</SourceFilename>
+=======
+        <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\potion.fbx</SourceFilename>
+>>>>>>> origin/master
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

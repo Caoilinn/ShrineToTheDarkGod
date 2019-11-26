@@ -70,6 +70,9 @@
         OnUpdateHud,
         OnWayBlocked,
         PlayerHealthPickup,
+<<<<<<< HEAD
         OnDisplayInfo,
+=======
+>>>>>>> origin/master
     }
 }

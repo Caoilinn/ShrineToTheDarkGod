@@ -3,7 +3,11 @@
   <Asset Type="Graphics:MeshContent">
     <Name>room_collision_009</Name>
     <Identity>
+<<<<<<< HEAD
       <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Collision Boxes\Rooms\room_collision_009.FBX</SourceFilename>
+=======
+      <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Collision Boxes\Rooms\room_collision_009.FBX</SourceFilename>
+>>>>>>> origin/master
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>

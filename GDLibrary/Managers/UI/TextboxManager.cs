@@ -47,6 +47,7 @@ namespace GDLibrary
         }
         #endregion
 
+<<<<<<< HEAD
         #region Constructors
         public TextboxManager(
             Game game, 
@@ -64,6 +65,24 @@ namespace GDLibrary
         #endregion
 
         #region Event Handling
+=======
+        public TextboxManager(Game game, ManagerParameters managerParameters,
+            SpriteBatch spriteBatch, EventDispatcher eventDispatcher,
+            StatusType statusType, string textboxtext)
+            : base(game, statusType, eventDispatcher)
+        {
+            this.uiDictionary = new Dictionary<string, List<DrawnActor2D>>();
+
+            //used to listen for input
+            this.managerParameters = managerParameters;
+
+            //used to render menu and UI elements
+            this.spriteBatch = spriteBatch;
+
+            this.textboxtext = textboxtext;
+        }
+
+>>>>>>> origin/master
         protected override void RegisterForEventHandling(EventDispatcher eventDispatcher)
         {
             eventDispatcher.TextboxChanged += EventDispatcher_TextboxChanged;
@@ -71,17 +90,41 @@ namespace GDLibrary
             base.RegisterForEventHandling(eventDispatcher);
         }
 
+<<<<<<< HEAD
         protected virtual void EventDispatcher_TextboxChanged(EventData eventData)
         {
             if (eventData.EventType == EventActionType.OnPause)
             {
                 this.StatusType = StatusType.Off;
+=======
+        #region Event Handling
+
+        protected virtual void EventDispatcher_TextboxChanged(EventData eventData)
+        {
+
+            if (eventData.EventType == EventActionType.OnStart)
+            {
+                this.StatusType = StatusType.Update | StatusType.Drawn;
+                this.TextboxText = eventData.AdditionalParameters[0] as string + " is fighting " + eventData.AdditionalParameters[1] as string;
+            }
+            else if (eventData.EventType == EventActionType.OnPause)
+                this.StatusType = StatusType.Off;
+
+            if (eventData.EventType == EventActionType.OnInitiateBattle)
+            {
+                this.textboxtext = "Battle start!";
+                this.StatusType = StatusType.Update;
+>>>>>>> origin/master
             }
         }
         #endregion
 
+<<<<<<< HEAD
         #region Methods
         private void ClearTextbox()
+=======
+        private void clearTextbox()
+>>>>>>> origin/master
         {
             this.TextboxText = "";
         }
@@ -89,6 +132,7 @@ namespace GDLibrary
         protected void EventDispatcher_UICombat(EventData eventData)
         {
             float damage = 0;
+<<<<<<< HEAD
             float playerHealth = 0;
             float enemyHealth = 0;
             string item = "";
@@ -150,11 +194,34 @@ namespace GDLibrary
                         "Player blocked, taking damage of " + damage + "\n\n" +
                         "Player health " + playerHealth + "\n" +
                         "Enemy health " + enemyHealth;
+=======
+            if (eventData.EventType != EventActionType.OnEnemyDeath)
+            {
+                damage = (float)eventData.AdditionalParameters[0];
+            }
+            switch (eventData.EventType)
+            {
+                case EventActionType.OnStart:
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    break;
+
+                case EventActionType.OnPlayerAttack:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText ="Player Attacked with damage of \n" + damage + "\n \n";
+                    break;
+
+                case EventActionType.OnPlayerDefend:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText = "Player Defended taking damage of \n" + damage ;
+>>>>>>> origin/master
                     break;
 
                 case EventActionType.OnPlayerDodge:
                     if (damage <= 0)
                     {
+<<<<<<< HEAD
                         ClearTextbox();
                         this.StatusType = StatusType.Update | StatusType.Drawn;
                         this.TextboxText = 
@@ -242,6 +309,56 @@ namespace GDLibrary
                         "Game Log" + "\n\n" +
                         info;
                     break;
+=======
+                        clearTextbox();
+                        this.StatusType = StatusType.Update | StatusType.Drawn;
+                        this.TextboxText = "Player Dodged";
+                    }
+                    else {
+                        clearTextbox();
+                        this.StatusType = StatusType.Update | StatusType.Drawn;
+                        this.TextboxText = "Player Dodge Failed, the player took damage of " + damage;
+                        }
+                    break;
+
+                case EventActionType.OnEnemyAttack:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText = "Enemy Attatcked with damage of " + damage;
+                    break;
+
+                case EventActionType.OnInitiateBattle:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText = "Battle starts!";
+                    break;
+
+                case EventActionType.OnBattleEnd:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText = "Battle over";
+                    break;
+
+                case EventActionType.OnEnemyDeath:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText = "You'll never stop the \n dark god!";
+                    break;
+
+                case EventActionType.PlayerHealthPickup:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText = "Health up";
+                    break;
+
+                case EventActionType.OnItemAdded:
+                    clearTextbox();
+                    this.StatusType = StatusType.Update | StatusType.Drawn;
+                    this.TextboxText = "Item added to inventory";
+                    break;
+
+
+>>>>>>> origin/master
             }
         }
 
@@ -258,7 +375,11 @@ namespace GDLibrary
                 this.uiDictionary.Add(sceneID, newList);
             }
 
+<<<<<<< HEAD
             //If the user forgets to set the active list then set to the sceneID of the last added item
+=======
+            //if the user forgets to set the active list then set to the sceneID of the last added item
+>>>>>>> origin/master
             SetActiveList(sceneID);
         }
 
@@ -281,7 +402,11 @@ namespace GDLibrary
             return false;
         }
 
+<<<<<<< HEAD
         //Return all the actor2D objects associated with the "health ui" or "inventory ui"
+=======
+        //e.g. return all the actor2D objects associated with the "health ui" or "inventory ui"
+>>>>>>> origin/master
         public List<DrawnActor2D> FindAllBySceneID(string sceneID)
         {
             if (this.uiDictionary.ContainsKey(sceneID))
@@ -306,17 +431,28 @@ namespace GDLibrary
         {
             if (this.activeList != null)
             {
+<<<<<<< HEAD
                 //Update all the updateable menu items (e.g. make buttons pulse etc)
                 foreach (DrawnActor2D currentUIObject in this.activeList)
                 {
                     //If update flag is set
                     if ((currentUIObject.GetStatusType() & StatusType.Update) != StatusType.Update)
+=======
+                //update all the updateable menu items (e.g. make buttons pulse etc)
+                foreach (DrawnActor2D currentUIObject in this.activeList)
+                {
+                    if ((currentUIObject.GetStatusType() & StatusType.Update) != StatusType.Update) //if update flag is set
+>>>>>>> origin/master
                     {
                         (currentUIObject as UITextObject).Text = this.TextboxText;
                         currentUIObject.Update(gameTime);
                     }
                 }
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
         }
 
         protected override void ApplyDraw(GameTime gameTime)
@@ -345,6 +481,10 @@ namespace GDLibrary
         {
             //developer implements in subclass of MenuManager - see MyMenuManager.cs
         }
+<<<<<<< HEAD
         #endregion
+=======
+
+>>>>>>> origin/master
     }
 }
