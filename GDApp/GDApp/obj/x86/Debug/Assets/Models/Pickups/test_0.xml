@@ -3,11 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>Cube</Name>
     <Identity>
-<<<<<<< HEAD
-      <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\test.fbx</SourceFilename>
-=======
-      <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\test.fbx</SourceFilename>
->>>>>>> origin/master
+      <SourceFilename>C:\Users\James\Desktop\Files\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\test.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>

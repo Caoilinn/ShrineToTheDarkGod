@@ -3,11 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>enemy_collision_002</Name>
     <Identity>
-<<<<<<< HEAD
-      <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Collision Boxes\Characters\enemy_collision.FBX</SourceFilename>
-=======
-      <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Collision Boxes\Characters\enemy_collision.FBX</SourceFilename>
->>>>>>> origin/master
+      <SourceFilename>C:\Users\James\Desktop\Files\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Collision Boxes\Characters\enemy_collision.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>

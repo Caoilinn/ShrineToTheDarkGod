@@ -3,11 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>enemy_001</Name>
     <Identity>
-<<<<<<< HEAD
-      <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\enemy_001.FBX</SourceFilename>
-=======
-      <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\enemy_001.FBX</SourceFilename>
->>>>>>> origin/master
+      <SourceFilename>C:\Users\James\Desktop\Files\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\enemy_001.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>
@@ -42,11 +38,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>None.002</Name>
       <Identity>
-<<<<<<< HEAD
-        <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\enemy_001.FBX</SourceFilename>
-=======
-        <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\enemy_001.FBX</SourceFilename>
->>>>>>> origin/master
+        <SourceFilename>C:\Users\James\Desktop\Files\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\enemy_001.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -60,11 +52,7 @@
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>Material.008</Name>
       <Identity>
-<<<<<<< HEAD
-        <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\enemy_001.FBX</SourceFilename>
-=======
-        <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\enemy_001.FBX</SourceFilename>
->>>>>>> origin/master
+        <SourceFilename>C:\Users\James\Desktop\Files\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\enemy_001.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

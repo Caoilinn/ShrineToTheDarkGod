@@ -21,15 +21,13 @@ namespace GDLibrary
         #endregion
 
         #region Properties
-
-        public PlayerObject Player {
-            get {
+        public PlayerObject Player
+        {
+            get
+            {
                 return this.player;
             }
-
         }
-
-
         #endregion
 
         #region Constructor
@@ -85,7 +83,6 @@ namespace GDLibrary
 
                 //Update combat state
                 StateManager.InCombat = false;
-<<<<<<< HEAD
             }
             else if (eventData.EventType == EventActionType.OnPlayerDeath)
             {
@@ -93,14 +90,6 @@ namespace GDLibrary
                 Game.Exit();
             }
             else if (eventData.EventType == EventActionType.PlayerHealthPickup)
-=======
-            } else if (eventData.EventType == EventActionType.OnPlayerDeath)
-            {
-                //Exit to menu for now
-                EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu));
-                EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
-            } else if (eventData.EventType == EventActionType.PlayerHealthPickup)
->>>>>>> origin/master
             {
                 //Update player health
                 Console.WriteLine("Player health before: " + this.player.Health);
@@ -184,12 +173,6 @@ namespace GDLibrary
             //If not the players' turn, return
             if (!StateManager.PlayerTurn) return;
 
-<<<<<<< HEAD
-=======
-            //Publish player health ui event
-            EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthUpdate, EventCategoryType.Textbox, new object[] { this.player.Health }));
-            
->>>>>>> origin/master
             #region Attack
             //If the player attacks
             if (this.keyboardManager.IsFirstKeyPress(this.combatKeys[0]))
@@ -210,15 +193,12 @@ namespace GDLibrary
                 //If the player has dealt damage
                 if (damage > 0) this.enemyOnFocus.TakeDamage(damage);
 
-<<<<<<< HEAD
                 //Publish play attack sound event
                 if (this.inventoryManager.HasItem(PickupType.Sword))
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "h_attack" }));
                 else
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "punch_01" }));
 
-=======
->>>>>>> origin/master
                 //If the player has killed the enemy
                 if (this.enemyOnFocus.Health <= 0)
                 {
@@ -231,7 +211,6 @@ namespace GDLibrary
                     //Publish enemy death event
                     EventDispatcher.Publish(new EventData(EventActionType.OnEnemyDeath, EventCategoryType.Combat, new object[] { this.enemyOnFocus }));
                 }
-<<<<<<< HEAD
                 else
                 {
                     //Publish a UI player attack event
@@ -240,24 +219,6 @@ namespace GDLibrary
 
                 //Publish enemy turn event
                 EventDispatcher.Publish(new EventData(EventActionType.EnemyTurn, EventCategoryType.Game));
-=======
-
-                //Publish play attack sound event
-                if (this.inventoryManager.HasItem(PickupType.Sword))
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "h_attack" }));
-                else
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "punch_01" }));
-
-                //Publish player attack event
-                //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerAttack, EventCategoryType.Combat));
-
-                //Publish a UI player attack event
-                EventDispatcher.Publish(new EventData(EventActionType.OnPlayerAttack, EventCategoryType.Textbox, new object[] { damage }));
-
-                //Publish enemy turn event
-                EventDispatcher.Publish(new EventData(EventActionType.EnemyTurn, EventCategoryType.Game));
-
->>>>>>> origin/master
                 return;
             }
             #endregion
@@ -278,7 +239,6 @@ namespace GDLibrary
                 //If the player has taken damage
                 if (damage > 0) this.player.TakeDamage(damage);
 
-<<<<<<< HEAD
                 //If the enemy has killed the player
                 if (this.player.Health <= 0) EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));
 
@@ -287,24 +247,6 @@ namespace GDLibrary
 
                 //Publish a UI player attack event
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.Textbox, new object[] { damage, this.player.Health, this.enemyOnFocus.Health }));
-=======
-                //Publish play block sound event
-                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "block" }));
-
-                //Publish player defend event
-                //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.Combat));
-
-                //Publish a UI player attack event
-                EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.Textbox, new object[] { damage }));
-
-                //If the enemy has killed the player
-                if (this.player.Health <= 0) EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));
-
-                //Publish enemy turn event
-                //EventDispatcher.Publish(new EventData(EventActionType.EnemyTurn, EventCategoryType.Game));
-
-
->>>>>>> origin/master
                 return;
             }
             #endregion
@@ -328,44 +270,24 @@ namespace GDLibrary
                     //Publish play dodge sound event
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "dodge" }));
 
-<<<<<<< HEAD
                     //Publish a UI player dodge event
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.Textbox, new object[] { damage, this.player.Health, this.enemyOnFocus.Health }));
                     return;
                 }
                 else
                 {
-=======
-                    //Publish player dodge event
-                    //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.Combat));
-
-                    //Publish a UI player dodge event
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.Textbox, new object[] { damage }));
-
-                    //Publish enemy turn event
-                    //EventDispatcher.Publish(new EventData(EventActionType.EnemyTurn, EventCategoryType.Game));
-                    return;
-                } else
-                {
-                    //Publish a UI player dodge event
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.Textbox, new object[] { enemyOnFocus.Attack }));
-
->>>>>>> origin/master
                     //Take damage
                     this.player.TakeDamage(enemyOnFocus.Attack);
 
                     //If the enemy has killed the player
                     if (this.player.Health <= 0) EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));
 
-<<<<<<< HEAD
                     //Publish a UI player dodge event
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.Textbox, new object[] { this.enemyOnFocus.Attack, this.player.Health, this.enemyOnFocus.Health }));
-                    
+
                     //Publish enemy turn event
                     EventDispatcher.Publish(new EventData(EventActionType.EnemyTurn, EventCategoryType.Game));
                     return;
-=======
->>>>>>> origin/master
                 }
             }
             #endregion
@@ -379,12 +301,6 @@ namespace GDLibrary
             //If not the enemys' turn, return
             if (!StateManager.EnemyTurn) return;
 
-<<<<<<< HEAD
-=======
-            //Publish player health ui event
-            EventDispatcher.Publish(new EventData(EventActionType.EnemyHealthUpdate, EventCategoryType.Textbox, new object[] { this.enemyOnFocus.Health }));
-
->>>>>>> origin/master
             #region Attack
             //Enemy Attack - Default for release 1
             if (true)
@@ -411,11 +327,7 @@ namespace GDLibrary
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "enemy_attack" }));
 
                 //Publish enemy attack event to the UI Manager
-<<<<<<< HEAD
                 EventDispatcher.Publish(new EventData(EventActionType.OnEnemyAttack, EventCategoryType.Textbox, new object[] { damage, this.player.Health, this.enemyOnFocus.Health }));
-=======
-                EventDispatcher.Publish(new EventData(EventActionType.OnEnemyAttack, EventCategoryType.Textbox, new object[] { damage }));
->>>>>>> origin/master
 
                 //Publish player game turn event
                 EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));

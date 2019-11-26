@@ -59,8 +59,8 @@
         OnDoorOpen,
 
         //Sent By Inventory Manager
-        OnItemAdded, 
-        OnItemRemoved, 
+        OnItemAdded,
+        OnItemRemoved,
         OnCollideWith,
         NewTurn,
         OnMove,
@@ -70,9 +70,6 @@
         OnUpdateHud,
         OnWayBlocked,
         PlayerHealthPickup,
-<<<<<<< HEAD
         OnDisplayInfo,
-=======
->>>>>>> origin/master
     }
 }

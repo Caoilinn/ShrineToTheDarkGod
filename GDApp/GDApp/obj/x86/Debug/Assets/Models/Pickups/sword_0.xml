@@ -3,11 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>sword</Name>
     <Identity>
-<<<<<<< HEAD
-      <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\sword.FBX</SourceFilename>
-=======
-      <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\sword.FBX</SourceFilename>
->>>>>>> origin/master
+      <SourceFilename>C:\Users\James\Desktop\Files\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\sword.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>
@@ -32,11 +28,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Material</Name>
       <Identity>
-<<<<<<< HEAD
-        <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\sword.FBX</SourceFilename>
-=======
-        <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\sword.FBX</SourceFilename>
->>>>>>> origin/master
+        <SourceFilename>C:\Users\James\Desktop\Files\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\sword.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

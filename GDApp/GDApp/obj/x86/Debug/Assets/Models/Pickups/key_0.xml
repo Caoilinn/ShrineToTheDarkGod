@@ -3,11 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>Cube</Name>
     <Identity>
-<<<<<<< HEAD
-      <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
-=======
-      <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
->>>>>>> origin/master
+      <SourceFilename>C:\Users\James\Desktop\Files\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>
@@ -52,11 +48,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Material.001</Name>
       <Identity>
-<<<<<<< HEAD
-        <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
-=======
-        <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
->>>>>>> origin/master
+        <SourceFilename>C:\Users\James\Desktop\Files\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -70,11 +62,7 @@
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>Material.002</Name>
       <Identity>
-<<<<<<< HEAD
-        <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
-=======
-        <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
->>>>>>> origin/master
+        <SourceFilename>C:\Users\James\Desktop\Files\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -88,11 +76,7 @@
     <Resource ID="#Resource3" Type="Graphics:BasicMaterialContent">
       <Name>Material.005</Name>
       <Identity>
-<<<<<<< HEAD
-        <SourceFilename>C:\Users\james\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
-=======
-        <SourceFilename>C:\Users\James\Downloads\GD3_G-CA2_LOW_BATTERY\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
->>>>>>> origin/master
+        <SourceFilename>C:\Users\James\Desktop\Files\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

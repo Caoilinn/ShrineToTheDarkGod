@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace GDLibrary
@@ -72,7 +72,8 @@ namespace GDLibrary
             SoundManager soundManager,
             InventoryManager inventoryManager,
             CombatManager combatManager
-        ) : base(game, eventDispatcher, statusType) {
+        ) : base(game, eventDispatcher, statusType)
+        {
             this.players = players;
             this.enemies = enemies;
             this.items = items;
@@ -106,7 +107,7 @@ namespace GDLibrary
             {
                 DetectPlayerInteraction();
 
-                foreach(PlayerObject player in this.players)
+                foreach (PlayerObject player in this.players)
                 {
                     player.ResetCollision();
                 }
@@ -283,15 +284,11 @@ namespace GDLibrary
                 if (Vector3.Distance(enemy.Transform.Translation * vectorXZ, player.Transform.Translation * vectorXZ) == (distanceBetweenAdjacentCells * 2))
                 {
                     //Publish enemy growl sound
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "growl" }));    
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "growl" }));
                 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
                 //If the player is looking towards the enemy
-                if (Vector3.Normalize(player.Transform.Look) == (Vector3.Normalize(player.Transform.Translation - enemy.Transform.Translation) *- 1))
+                if (Vector3.Normalize(player.Transform.Look) == (Vector3.Normalize(player.Transform.Translation - enemy.Transform.Translation) * -1))
                 {
                     //Publish a ui event, to display the currently faced enemies health bar
                 }
@@ -309,15 +306,12 @@ namespace GDLibrary
 
         private void HandlePlayerEnemyInteraction(EnemyObject enemy)
         {
-<<<<<<< HEAD
             //Don't need to start combat twice
             if (StateManager.InCombat) return;
 
             //If the enemy has died, return
             if (enemy.Health <= 0) return;
 
-=======
->>>>>>> origin/master
             //Pause game music
             this.SoundManager.PauseCue("main_theme");
 
@@ -328,10 +322,7 @@ namespace GDLibrary
             this.CombatManager.InitiateBattle(enemy);
 
             //Update HUD
-<<<<<<< HEAD
             EventDispatcher.Publish(new EventData(EventActionType.OnInitiateBattle, EventCategoryType.Textbox));
-=======
->>>>>>> origin/master
         }
         #endregion
 
@@ -370,40 +361,27 @@ namespace GDLibrary
         private void HandlePlayerItemCollision(ImmovablePickupObject item)
         {
             //Select which sound to play, based on the pickup type
-            switch(item.PickupParameters.PickupType)
+            switch (item.PickupParameters.PickupType)
             {
                 //Play pickup sword sound
                 case PickupType.Sword:
-<<<<<<< HEAD
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.Textbox, new object[] { "Sword" }));
-=======
->>>>>>> origin/master
                     this.SoundManager.PlayCue("equip_sword");
                     break;
 
                 //Play pickup key sound
                 case PickupType.Key:
-<<<<<<< HEAD
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.Textbox, new object[] { "Key" }));
-=======
->>>>>>> origin/master
                     this.SoundManager.PlayCue("keys_jingle");
                     break;
 
                 //Play pickup potion sound
                 case PickupType.Health:
-<<<<<<< HEAD
                     EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthPickup, EventCategoryType.Textbox, new object[] { this.combatManager.Player.Health + 10 }));
-=======
-                    EventDispatcher.Publish(new EventData(
-                                       EventActionType.PlayerHealthUpdate,
-                                       EventCategoryType.UI,
-                                       new object[] { this.combatManager.Player.Health}));
->>>>>>> origin/master
                     this.SoundManager.PlayCue("drink_potion");
                     break;
             }
-            
+
             //Add item to the inventory
             this.InventoryManager.AddItem(item);
 
@@ -440,11 +418,7 @@ namespace GDLibrary
                 //If the distance between the gates' position and the players' position, is less than or equal to the distance between two adjacent cells
                 if (Vector3.Distance(gate.Transform.Translation * vectorXZ, player.Transform.Translation * vectorXZ) <= distanceBetweenAdjacentCells)
                 {
-<<<<<<< HEAD
                     //Then the player is standing in a cell that is adjacent to it
-=======
-                    //Then the player is looking towards the gate, while standing in a cell that is adjacent to it
->>>>>>> origin/master
                     HandlePlayerGateInteraction(gate as CollidableArchitecture);
                     inProximityOfAGate = true;
                     break;
@@ -468,16 +442,13 @@ namespace GDLibrary
             {
                 //Play a sound
                 this.SoundManager.PlayCue("gate_open");
-                
+
                 //Use a key to open the gate
                 this.InventoryManager.UseItem(PickupType.Key);
 
-<<<<<<< HEAD
                 //Update UI
                 EventDispatcher.Publish(new EventData(EventActionType.OnItemRemoved, EventCategoryType.Textbox, new object[] { "Key" }));
 
-=======
->>>>>>> origin/master
                 //Remove the gate
                 this.Remove(gate);
                 this.ObjectManager.Remove(gate);
@@ -487,11 +458,7 @@ namespace GDLibrary
             }
             else
             {
-<<<<<<< HEAD
                 EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "I will need a key to open this gate" }));
-=======
-                //Display a toast that prompts the user to collect a key
->>>>>>> origin/master
             }
         }
         #endregion
@@ -522,11 +489,7 @@ namespace GDLibrary
         private void HandlePlayerTriggerCollision(CollidableArchitecture gate)
         {
             //Quit to menu for now
-<<<<<<< HEAD
             EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu, new object[] { "win_scene" }));
-=======
-            EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu));
->>>>>>> origin/master
             EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
         }
         #endregion
