@@ -13,8 +13,7 @@ namespace GDLibrary
             string id,
             ControllerType controllerType,
             float rotationMagnitude
-        ) : base(id, controllerType)
-        {
+        ) : base(id, controllerType) {
             this.rotationMagnitude = rotationMagnitude;
         }
 

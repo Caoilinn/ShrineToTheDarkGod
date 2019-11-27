@@ -312,11 +312,18 @@ namespace GDLibrary
             #region Translation
             if (this.Translation != Vector3.Zero)
             {
+                //Prevent movement while in combat
+                if (StateManager.InCombat)
+                {
+                    //Display info
+                    EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "Cannot move while in combat" }));
+                    return;
+                }
+
                 //If the direction of movement is blocked
                 if (this.BlockedDirections.Contains(Vector3.Normalize(this.Translation)))
                 {
                     //Play wall bump sound
-
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "wall_bump" }));
                     this.Translation = Vector3.Zero;
                     return;

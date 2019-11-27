@@ -899,8 +899,8 @@ namespace GDApp
 
             //Scale the texture to fit the entire screen
             Vector2 scale = new Vector2(
-                (float)graphics.PreferredBackBufferWidth / texture.Width,
-                (float)graphics.PreferredBackBufferHeight / texture.Height
+                (float) graphics.PreferredBackBufferWidth / texture.Width,
+                (float) graphics.PreferredBackBufferHeight / texture.Height
             );
 
             transform = new Transform2D(scale);
@@ -950,31 +950,6 @@ namespace GDApp
         #endregion
 
         #region Cameras
-        private void InitializeCameras(float worldScale, int resolutionWidth, int resolutionHeight)
-        {
-            float aspectRatio = (4.0f / 3.0f);
-            float nearClipPlane = 0.1f;
-            float farClipPlane = 10000;
-
-            ProjectionParameters projectionParameters;
-            Viewport viewport;
-            float depth;
-
-            #region First-Person Camera
-            projectionParameters = new ProjectionParameters(
-                MathHelper.ToRadians(45),
-                aspectRatio,
-                nearClipPlane,
-                farClipPlane
-            );
-
-            viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
-            depth = 0;
-
-            
-        }
-        #endregion
-
         private void AddFirstPersonCamera(Transform3D playerTransform)
         {
             //Setup projection parameters

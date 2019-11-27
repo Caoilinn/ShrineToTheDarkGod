@@ -118,9 +118,6 @@ namespace GDLibrary
             //If it is not currently the players turn, return
             if (!StateManager.PlayerTurn) return;
 
-            //If the player is in battle, return
-            if (StateManager.InCombat) return;
-
             HandleKeyboardInput(gameTime);
         }
 

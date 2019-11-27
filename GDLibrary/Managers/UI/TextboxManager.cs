@@ -1,20 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
+using System;
 
 namespace GDLibrary
 {
     public class TextboxManager : PausableDrawableGameComponent
     {
         #region Fields
-        //stores the actors shown for a particular menu scene (e.g. for the "main menu" scene we would have actors: startBtn, ExitBtn, AudioBtn)
         private Dictionary<string, List<DrawnActor2D>> uiDictionary;
         private List<DrawnActor2D> activeList = null;
-
-        private SpriteBatch spriteBatch;
         private ManagerParameters managerParameters;
-
+        private SpriteBatch spriteBatch;
         private string textboxtext;
         #endregion
 
@@ -25,8 +22,12 @@ namespace GDLibrary
             {
                 return this.managerParameters;
             }
-
+            set
+            {
+                this.managerParameters = value;
+            }
         }
+
         public string TextboxText
         {
             get
@@ -38,11 +39,16 @@ namespace GDLibrary
                 this.textboxtext = value;
             }
         }
+
         public List<DrawnActor2D> ActiveList
         {
             get
             {
                 return this.activeList;
+            }
+            set
+            {
+                this.activeList = value;
             }
         }
         #endregion
