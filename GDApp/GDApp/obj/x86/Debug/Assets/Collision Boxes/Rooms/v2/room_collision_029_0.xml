@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics" xmlns:Framework="Microsoft.Xna.Framework">
+  <Asset Type="Graphics:MeshContent">
+    <Name>room_collision_029</Name>
+    <Identity>
+      <SourceFilename>C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Collision Boxes\Rooms\v2\room_collision_029.FBX</SourceFilename>
+      <SourceTool>FbxImporter</SourceTool>
+    </Identity>
+    <OpaqueData>
+      <Data Key="MaxHandle" Type="int">1314</Data>
+    </OpaqueData>
+    <Transform>2.54 0 0 0 0 7.19523466E-16 -2.54 0 0 2.54 7.19523466E-16 0 127 -3.59761727E-14 127 1</Transform>
+    <Positions>-50 -50 0 -50 50 0 50 50 0 50 -50 0 -50 -50 100 50 -50 100 50 50 100 -50 50 100 50 50 86 50 50 10 50 -33 86 50 -33 10 -50 -33.0000076 85.9999847 -50 50 10.0000076 -50 -32.9999924 10 -50 50 86</Positions>
+    <Geometry>
+      <Batch>
+        <Indices>2 1 0 0 3 2 6 5 4 4 7 6 10 9 8 8 11 10 14 13 12 12 15 14 18 17 16 16 19 18 22 21 20 20 23 22 26 25 24 24 27 26 30 29 28 28 31 30 34 33 32 35 34 32 35 32 36 37 35 36 38 37 36 39 38 36 42 41 40 42 40 43 44 42 43 44 43 45 44 45 46 47 44 46</Indices>
+        <Vertices>
+          <PositionIndices>0 1 2 3 4 5 6 7 0 3 5 4 9 2 1 13 15 7 6 8 10 12 15 8 12 10 11 14 14 11 9 13 10 8 6 5 11 3 2 9 7 15 12 4 14 0 1 13</PositionIndices>
+          <Channels>
+            <VertexChannel Name="Normal0" ElementType="Framework:Vector3">0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 6.729579E-08 8.10792642E-08 -1 1.52587873E-07 1.83840811E-07 -1 8.52920863E-08 1.02761554E-07 -0.99999994 0 0 -1 1.31652218E-08 0.99999994 1.17709455E-07 -7.629395E-08 1 0 -1.31652351E-08 1 8.306411E-08 7.62939436E-08 1 2.0077357E-07 4.26460538E-08 -5.13807947E-08 1 0 0 1 3.36478969E-08 -4.05396356E-08 1 7.62939436E-08 -9.192042E-08 1 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0.99999994 0 0 1 0 0 -1 0 0 -0.99999994 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0</VertexChannel>
+            <VertexChannel Name="TextureCoordinate0" ElementType="Framework:Vector2">1 1 1 0 0 0 0 1 0 1 1 1 1 0 0 0 0 1 1 1 1 0 0 0 0 0.9 0 1 1 1 0.99999994 0.8999999 1 0.139999986 1 0 0 0 4.47034836E-08 0.139999986 0 1 0 0 1.00000024 -1.1920929E-07 1 1 0.9999999 0 1 1.00000012 7.10542736E-15 0.99999994 1.78813934E-07 -1.1920929E-07 1 0 0.99999994 0.99999994 -2.842171E-14 0.999999762 2.38418579E-07 -2.38418579E-07 0.17 0.139999986 1 0.139999986 1 0 0 0 0.170000076 0.8999999 0 1 1 1 1 0.9 0 0 0 0.140000045 0.830000043 0.140000224 1 0 0.8299999 0.9 1 1 0 1 0 0.8999999</VertexChannel>
+          </Channels>
+        </Vertices>
+      </Batch>
+    </Geometry>
+  </Asset>
+</XnaContent>

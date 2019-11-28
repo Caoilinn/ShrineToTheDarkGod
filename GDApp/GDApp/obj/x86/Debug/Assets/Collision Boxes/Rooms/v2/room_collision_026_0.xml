@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics" xmlns:Framework="Microsoft.Xna.Framework">
+  <Asset Type="Graphics:MeshContent">
+    <Name>room_collision_026</Name>
+    <Identity>
+      <SourceFilename>C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Collision Boxes\Rooms\v2\room_collision_026.FBX</SourceFilename>
+      <SourceTool>FbxImporter</SourceTool>
+    </Identity>
+    <OpaqueData>
+      <Data Key="MaxHandle" Type="int">1418</Data>
+    </OpaqueData>
+    <Transform>2.54 0 0 0 0 1.55530138E-16 -2.54 0 0 2.54 1.55530138E-16 0 127 -7.776507E-15 127 1</Transform>
+    <Positions>-50 -50 0 -50 50 0 50 50 0 50 -50 0 -50 -50 100 50 -50 100 50 50 100 -50 50 100 50 -50 10 -50 -50 10 50 50 10 -50 50 10 -50 50 86 50 50 86 -50 -50 86 50 -50 86</Positions>
+    <Geometry>
+      <Batch>
+        <Indices>2 1 0 0 3 2 6 5 4 4 7 6 10 9 8 8 11 10 14 13 12 12 15 14 18 17 16 16 19 18 22 21 20 20 23 22 26 25 24 24 27 26 30 29 28 28 31 30 34 33 32 32 35 34 38 37 36 36 39 38 42 41 40 40 43 42 46 45 44 44 47 46</Indices>
+        <Vertices>
+          <PositionIndices>0 1 2 3 9 0 3 8 8 3 2 10 10 2 1 11 11 1 0 9 9 8 10 11 4 5 6 7 14 4 7 12 14 12 13 15 12 7 6 13 13 6 5 15 15 5 4 14</PositionIndices>
+          <Channels>
+            <VertexChannel Name="Normal0" ElementType="Framework:Vector3">0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0</VertexChannel>
+            <VertexChannel Name="TextureCoordinate0" ElementType="Framework:Vector2">1 1 1 0 0 0 0 1 0 0.9 0 1 1 1 1 0.9 0 0.9 0 1 1 1 1 0.9 0 0.9 0 1 1 1 1 0.9 0 0.9 0 1 1 1 1 0.9 1 1 0 1 0 0 1 0 0 1 1 1 1 0 0 0 1 0.139999986 1 0 0 0 4.47034836E-08 0.139999986 0 1 0 0 1 0 1 1 1 0.139999986 1 0 0 0 4.47034836E-08 0.139999986 1 0.139999986 1 0 0 0 4.47034836E-08 0.139999986 1 0.139999986 1 0 0 0 4.47034836E-08 0.139999986</VertexChannel>
+          </Channels>
+        </Vertices>
+      </Batch>
+    </Geometry>
+  </Asset>
+</XnaContent>

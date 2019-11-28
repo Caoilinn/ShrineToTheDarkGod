@@ -8,45 +8,9 @@ Content\Assets\Models\Generics\spindle.xnb
 Content\Assets\Models\Generics\torus.xnb
 Content\Assets\Models\Generics\torusknot.xnb
 Content\Assets\Models\Generics\test.xnb
-Content\Assets\Models\Rooms\room_001.xnb
-Content\Assets\Models\Rooms\room_002.xnb
-Content\Assets\Models\Rooms\room_003.xnb
-Content\Assets\Models\Rooms\room_004.xnb
-Content\Assets\Models\Rooms\room_005.xnb
-Content\Assets\Models\Rooms\room_006.xnb
-Content\Assets\Models\Rooms\room_007.xnb
-Content\Assets\Models\Rooms\room_008.xnb
-Content\Assets\Models\Rooms\room_009.xnb
-Content\Assets\Models\Rooms\room_010.xnb
-Content\Assets\Models\Rooms\room_011.xnb
-Content\Assets\Models\Rooms\room_012.xnb
-Content\Assets\Models\Rooms\room_013.xnb
-Content\Assets\Models\Rooms\room_014.xnb
-Content\Assets\Models\Rooms\room_015.xnb
-Content\Assets\Models\Rooms\room_016.xnb
 Content\Assets\Models\Generics\box.xnb
 Content\Assets\Models\Generics\plane.xnb
-Content\Assets\Models\Rooms\room_017.xnb
-Content\Assets\Models\Rooms\room_018.xnb
 Content\Assets\Models\Generics\gate.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_001.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_002.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_003.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_004.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_005.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_006.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_007.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_008.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_009.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_010.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_011.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_012.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_013.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_014.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_015.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_016.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_017.xnb
-Content\Assets\Collision Boxes\Rooms\room_collision_018.xnb
 Content\Assets\Models\Pickups\potion.xnb
 Content\Assets\Models\Pickups\box.xnb
 Content\Assets\Models\Pickups\test.xnb
@@ -157,7 +121,133 @@ Content\Assets\Audio\button_click.xnb
 Content\Assets\Fonts\hudFont.xnb
 Content\Assets\Fonts\menu.xnb
 Content\SpriteFont1.xnb
-Content\uvw2_0.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_001.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_002.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_003.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_004.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_005.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_006.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_007.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_008.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_009.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_010.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_011.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_012.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_013.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_014.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_015.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_016.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_017.xnb
+Content\Assets\Collision Boxes\Rooms\v1\room_collision_018.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_001.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_002.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_003.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_004.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_005.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_006.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_007.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_008.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_009.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_010.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_011.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_012.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_013.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_014.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_015.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_016.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_017.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_018.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_019.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_020.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_021.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_022.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_023.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_024.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_025.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_026.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_027.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_028.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_029.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_030.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_031.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_032.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_033.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_034.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_035.xnb
+Content\Assets\Collision Boxes\Rooms\v2\room_collision_036.xnb
+Content\Assets\Models\Rooms\v1\room_001.xnb
+Content\Assets\Models\Rooms\v1\room_002.xnb
+Content\Assets\Models\Rooms\v1\room_003.xnb
+Content\Assets\Models\Rooms\v1\room_004.xnb
+Content\Assets\Models\Rooms\v1\room_005.xnb
+Content\Assets\Models\Rooms\v1\room_006.xnb
+Content\Assets\Models\Rooms\v1\room_007.xnb
+Content\Assets\Models\Rooms\v1\room_008.xnb
+Content\Assets\Models\Rooms\v1\room_009.xnb
+Content\Assets\Models\Rooms\v1\room_010.xnb
+Content\Assets\Models\Rooms\v1\room_011.xnb
+Content\Assets\Models\Rooms\v1\room_012.xnb
+Content\Assets\Models\Rooms\v1\room_013.xnb
+Content\Assets\Models\Rooms\v1\room_014.xnb
+Content\Assets\Models\Rooms\v1\room_015.xnb
+Content\Assets\Models\Rooms\v1\room_016.xnb
+Content\Assets\Models\Rooms\v1\room_017.xnb
+Content\Assets\Models\Rooms\v1\room_018.xnb
+Content\Assets\Models\Rooms\v2\room_001.xnb
+Content\Assets\Models\Rooms\v2\room_002.xnb
+Content\Assets\Models\Rooms\v2\room_003.xnb
+Content\Assets\Models\Rooms\v2\room_004.xnb
+Content\Assets\Models\Rooms\v2\room_005.xnb
+Content\Assets\Models\Rooms\v2\room_006.xnb
+Content\Assets\Models\Rooms\v2\room_007.xnb
+Content\Assets\Models\Rooms\v2\room_008.xnb
+Content\Assets\Models\Rooms\v2\room_009.xnb
+Content\Assets\Models\Rooms\v2\room_010.xnb
+Content\Assets\Models\Rooms\v2\room_011.xnb
+Content\Assets\Models\Rooms\v2\room_012.xnb
+Content\Assets\Models\Rooms\v2\room_013.xnb
+Content\Assets\Models\Rooms\v2\room_014.xnb
+Content\Assets\Models\Rooms\v2\room_015.xnb
+Content\Assets\Models\Rooms\v2\room_016.xnb
+Content\Assets\Models\Rooms\v2\room_017.xnb
+Content\Assets\Models\Rooms\v2\room_018.xnb
+Content\Assets\Models\Rooms\v2\room_019.xnb
+Content\Assets\Models\Rooms\v2\room_020.xnb
+Content\Assets\Models\Rooms\v2\room_021.xnb
+Content\Assets\Models\Rooms\v2\room_022.xnb
+Content\Assets\Models\Rooms\v2\room_023.xnb
+Content\Assets\Models\Rooms\v2\room_024.xnb
+Content\Assets\Models\Rooms\v2\room_025.xnb
+Content\Assets\Models\Rooms\v2\room_026.xnb
+Content\Assets\Models\Rooms\v2\room_027.xnb
+Content\Assets\Models\Rooms\v2\room_028.xnb
+Content\Assets\Models\Rooms\v2\room_029.xnb
+Content\Assets\Models\Rooms\v2\room_030.xnb
+Content\Assets\Models\Rooms\v2\room_031.xnb
+Content\Assets\Models\Rooms\v2\room_032.xnb
+Content\Assets\Models\Rooms\v2\room_033.xnb
+Content\Assets\Models\Rooms\v2\room_034.xnb
+Content\Assets\Models\Rooms\v2\room_035.xnb
+Content\Assets\Models\Rooms\v2\room_036.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_019.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_020.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_021.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_022.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_023.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_024.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_025.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_026.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_027.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_028.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_029.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_030.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_031.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_032.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_033.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_034.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_035.xnb
+Content\Assets\Textures\Environment\Rooms\room_texture_036.xnb
+Content\uvw2_1.xnb
 Content\Assets\Audio\GameAudio.xgs
 Content\Assets\Audio\Movement.xwb
 Content\Assets\Audio\Movement.xsb
