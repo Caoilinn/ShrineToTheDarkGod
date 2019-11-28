@@ -317,13 +317,16 @@ namespace GDLibrary
                 {
                     //Display info
                     EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "Cannot move while in combat" }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "wall_bump" }));
+                    this.Translation = Vector3.Zero;
                     return;
                 }
 
                 //If the direction of movement is blocked
                 if (this.BlockedDirections.Contains(Vector3.Normalize(this.Translation)))
                 {
-                    //Play wall bump sound
+                    //Display info
+                    EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "Cannot walk through walls!" }));
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "wall_bump" }));
                     this.Translation = Vector3.Zero;
                     return;

@@ -1,12 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace GDLibrary
 {
     public class EnemyObject : CharacterObject
     {
         #region Fields
+        //Local vars
+        private double startMoveTime;
+        private double moveInterval = 2;
+        bool moveStarted;
         #endregion
 
         #region Properties
@@ -41,13 +46,30 @@ namespace GDLibrary
 
         public override void TakeTurn(GameTime gameTime)
         {
+            //Set up move time
+            if (!moveStarted) this.startMoveTime = gameTime.TotalGameTime.TotalSeconds;
+
             //If it is not currently the enemys' turn, return
             if (!StateManager.EnemyTurn) return;
 
             //If the enemy is in combat
             if (StateManager.InCombat) return;
 
-            TrackPlayer(gameTime);
+            //Set some interval turn timer
+            TurnTimer(gameTime);
+        }
+
+        public virtual void TurnTimer(GameTime gameTime)
+        {
+            if ((this.startMoveTime + this.moveInterval) < gameTime.TotalGameTime.TotalSeconds)
+            {
+                this.moveStarted = false;
+                TrackPlayer(gameTime);
+            }
+            else
+            {
+                this.moveStarted = true;
+            }
         }
 
         public override void Update(GameTime gameTime)

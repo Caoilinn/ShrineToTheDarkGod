@@ -85,29 +85,20 @@ C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_014.xnb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_015.xnb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_016.xnb
-C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Debug\Textures\checkerboard.xnb
-C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Debug\Textures\checkerboard_greywhite.xnb
-C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Debug\Textures\ml.xnb
-C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Debug\Textures\slj.xnb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_002.xnb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_017.xnb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_018.xnb
-C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001_001.xnb
-C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\CubeDiffuseMap.xnb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\boing.xnb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\environment_stone_steps.xnb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\turn_around.xnb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\hudFont.xnb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\menu.xnb
-C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Debug\Fonts\debugFont.xnb
-C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Rooms\room_001_001_0.xnb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\GameAudio.xgs
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xwb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\Movement.xsb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.exe
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.pdb
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDLibrary.dll
-C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\JigLibX.dll
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.dll
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.dll
 C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.dll
@@ -151,8 +142,6 @@ C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP
 C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\white.xnb
 C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\audiomenu.xnb
 C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\controlsmenu.xnb
-C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\exitmenu.xnb
-C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\exitmenuwithtrans.xnb
 C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\mainmenu.xnb
 C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Buttons\genericbtn.xnb
 C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Props\Crates\wc1_diffuse.xnb
@@ -1413,3 +1402,41 @@ C:\Users\James\Desktop\Files\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.
 C:\Users\James\Desktop\Files\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CopyComplete
 C:\Users\James\Desktop\Files\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.exe
 C:\Users\James\Desktop\Files\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.pdb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\box_collision.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Characters\enemy_collision.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Zones\zone_collision.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_001.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Props\gate_002.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_001.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Props\gate_collision_002.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_002.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\enemy_001.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Pickups\pickup_collision.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\sword.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\key.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\begingame.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\losegame.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\wingame.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\main_theme.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\item_twinkle.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\battle_theme.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\wall_bump.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\block.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\death.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\dodge.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\door_locked.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\drink_potion.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\equip_sword.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_open.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\gate_unlocked.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\h_attack.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\l_attack.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\m_attack.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\player_health_low.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_01.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\punch_02.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\growl.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\keys_jingle.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\enemy_attack.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\button_click.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\uvw2_0.xnb
