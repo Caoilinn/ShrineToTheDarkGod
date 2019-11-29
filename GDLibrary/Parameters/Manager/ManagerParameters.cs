@@ -11,17 +11,17 @@ namespace GDLibrary
     public class ManagerParameters
     {
         #region Fields
-        private ObjectManager objectManager;
-        private CameraManager cameraManager;
-        private MouseManager mouseManager;
-        private KeyboardManager keyboardManager;
-        private GamePadManager gamePadManager;
-        private SoundManager soundManager;
-        private PhysicsManager physicsManager;
-        private InventoryManager inventoryManager;
-        private CombatManager combatManager;
-        private UIManager uiManager;
-        private TextboxManager textboxManager;
+        private readonly ObjectManager objectManager;
+        private readonly CameraManager cameraManager;
+        private readonly MouseManager mouseManager;
+        private readonly KeyboardManager keyboardManager;
+        private readonly GamepadManager gamepadManager;
+        private readonly SoundManager soundManager;
+        private readonly PhysicsManager physicsManager;
+        private readonly InventoryManager inventoryManager;
+        private readonly CombatManager combatManager;
+        private readonly UIManager uiManager;
+        private readonly TextboxManager textboxManager;
         #endregion
 
         #region Properties
@@ -57,11 +57,11 @@ namespace GDLibrary
             }
         }
 
-        public GamePadManager GamePadManager
+        public GamepadManager GamepadManager
         {
             get
             {
-                return this.gamePadManager;
+                return this.gamepadManager;
             }
         }
 
@@ -104,6 +104,14 @@ namespace GDLibrary
                 return this.uiManager;
             }
         }
+
+        public TextboxManager TextboxManager
+        {
+            get
+            {
+                return this.textboxManager;
+            }
+        }
         #endregion
 
         #region Constructors
@@ -112,7 +120,7 @@ namespace GDLibrary
             CameraManager cameraManager,
             MouseManager mouseManager,
             KeyboardManager keyboardManager,
-            GamePadManager gamePadManager,
+            GamepadManager gamepadManager,
             SoundManager soundManager,
             PhysicsManager physicsManager,
             InventoryManager inventoryManager,
@@ -124,7 +132,7 @@ namespace GDLibrary
             this.cameraManager = cameraManager;
             this.mouseManager = mouseManager;
             this.keyboardManager = keyboardManager;
-            this.gamePadManager = gamePadManager;
+            this.gamepadManager = gamepadManager;
             this.soundManager = soundManager;
             this.physicsManager = physicsManager;
             this.inventoryManager = inventoryManager;

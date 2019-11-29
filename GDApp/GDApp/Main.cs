@@ -28,7 +28,7 @@ namespace GDApp
         private CameraManager cameraManager;
         private MouseManager mouseManager;
         private KeyboardManager keyboardManager;
-        private GamePadManager gamePadManager;
+        private GamepadManager gamepadManager;
         private SoundManager soundManager;
         private CombatManager combatManager;
         private PhysicsManager physicsManager;
@@ -135,13 +135,12 @@ namespace GDApp
 
             LoadContent();
             
-            float worldScale = 2.54f;
-            SetupBitArray(0, 5, 4, 4, 3, 2, 3);
+            SetupBitArray();
 
             LoadLevelFromFile();
             LoadMapFromFile();
 
-            InitializeMap(100, 100, 100, worldScale);
+            InitializeMap();
 
             InitializeMenu();
             InitializeTextbox();
@@ -180,7 +179,7 @@ namespace GDApp
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
                 FogEnabled = true,
-                TextureEnabled = true,
+                TextureEnabled = false,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
                 FogColor = fogColor,
@@ -206,7 +205,7 @@ namespace GDApp
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
                 FogEnabled = true,
-                TextureEnabled = true,
+                TextureEnabled = false,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
                 FogColor = fogColor,
@@ -357,6 +356,15 @@ namespace GDApp
             Components.Add(this.mouseManager);
             #endregion
 
+            #region GamePad Manager
+            this.gamepadManager = new GamepadManager(
+                this,
+                1
+            );
+
+            Components.Add(this.gamepadManager);
+            #endregion
+
             #region Sound Manager
             this.soundManager = new SoundManager(
                 this,
@@ -398,8 +406,11 @@ namespace GDApp
                 StatusType.Update, 
                 this.inventoryManager,
                 this.keyboardManager,
+                this.gamepadManager,
                 this.objectManager,
                 this.gridManager,
+                PlayerIndex.One,
+                AppData.CombatButtons,
                 AppData.CombatKeys
             );
 
@@ -450,7 +461,7 @@ namespace GDApp
                 this.cameraManager,
                 this.mouseManager,
                 this.keyboardManager,
-                this.gamePadManager,
+                this.gamepadManager,
                 this.soundManager,
                 this.physicsManager,
                 this.inventoryManager,
@@ -1037,17 +1048,20 @@ namespace GDApp
         #endregion
         
         #region Map Setup
-        private void SetupBitArray(int roomsShiftPosition, int reservedRoomBits, int reservedPickupBits, int reservedTriggerBits, int reservedPlayerBits, int reservedEnemyBits, int reservedGateBits)
+        private void SetupBitArray()
         {
-            //Reserve bits for each map component
-            this.reservedRoomBits = reservedRoomBits;
-            this.reservedPickupBits = reservedPickupBits;
-            this.reservedTriggerBits = reservedTriggerBits;
-            this.reservedPlayerBits = reservedPlayerBits;
-            this.reservedEnemyBits = reservedEnemyBits;
-            this.reservedGateBits = reservedGateBits;
+            //Start at the 0th bit of the array
+            int roomsShiftPosition = 0;
 
-            //Calculate shift for each map component, relative to previous component
+            //Reserve bits for each map component
+            this.reservedRoomBits = AppData.ReservedRoomBits;
+            this.reservedPickupBits = AppData.ReservedPickupBits;
+            this.reservedTriggerBits = AppData.ReservedTriggerBits;
+            this.reservedPlayerBits = AppData.ReservedPlayerBits;
+            this.reservedEnemyBits = AppData.ReservedEnemyBits;
+            this.reservedGateBits = AppData.ReservedGateBits;
+
+            //Calculate the shift for each map component, relative to previous component
             this.roomsShiftPosition = roomsShiftPosition;
             this.pickupsShiftPosition = this.roomsShiftPosition + this.reservedRoomBits;
             this.triggersShiftPosition = this.pickupsShiftPosition + this.reservedPickupBits;
@@ -1215,13 +1229,13 @@ namespace GDApp
             }
         }
 
-        private void InitializeMap(float cellWidth, float cellHeight, float cellDepth, float worldScale)
+        private void InitializeMap()
         {
             #region Calculate Cell Dimensions
             //Calculate the width, height and depth of each cell
-            float width = (cellWidth * worldScale);
-            float height = (cellHeight * worldScale);
-            float depth = (cellDepth * worldScale);
+            float width = (AppData.CellWidth * AppData.MaxToXNAUnitScale);
+            float height = (AppData.CellHeight * AppData.MaxToXNAUnitScale);
+            float depth = (AppData.CellDepth * AppData.MaxToXNAUnitScale);
             #endregion
 
             #region Construct Cells
@@ -1323,7 +1337,6 @@ namespace GDApp
             EffectParameters effectParameters = this.effectDictionary["roomEffect" + roomType];
             Model model = this.modelDictionary["roomModel" + roomType];
 
-           
             //Load collision box
             Model collisionBox = this.collisionBoxDictionary["roomCollision" + roomType];
 
@@ -1349,7 +1362,7 @@ namespace GDApp
         {
             //Setup dimensions
             Transform3D pickupTransform = transform.Clone() as Transform3D;
-            pickupTransform.Translation += new Vector3(127, 127, 127);
+            pickupTransform.Translation += AppData.ObjectOffset;
             
             //Load model and effect parameters
             EffectParameters effectParameters = this.effectDictionary["pickupEffect" + pickupType];
@@ -1401,14 +1414,13 @@ namespace GDApp
         public void ConstructTrigger(int triggerType, Transform3D transform)
         {
             Transform3D triggerTransform = transform.Clone() as Transform3D;
+            triggerTransform.Translation += AppData.ObjectOffset;
 
             //Determine trigger type
             switch (triggerType)
             {
                 case 1:
                     //Create win trigger
-                    triggerTransform.Translation += new Vector3(127, 127, 127);
-
                     this.collidableModel = new ZoneObject(
                         "Win Zone",
                         ActorType.Trigger,
@@ -1436,7 +1448,7 @@ namespace GDApp
         {
             //Setup dimensions
             Transform3D gateTransform = transform.Clone() as Transform3D;
-            gateTransform.Translation += new Vector3(127, 127, 127);
+            gateTransform.Translation += AppData.ObjectOffset;
 
             //Load model and effect parameters
             EffectParameters effectParameters = this.effectDictionary["propEffect" + gateType];
@@ -1468,7 +1480,7 @@ namespace GDApp
         {
             //Position player
             this.playerPosition = transform.Clone() as Transform3D;
-            this.playerPosition.Translation += new Vector3(127, 127, 127);
+            this.playerPosition.Translation += AppData.ObjectOffset;
             this.uiPosition = transform.Clone() as Transform3D;
 
             //Create first person camera
@@ -1492,6 +1504,8 @@ namespace GDApp
                 AppData.PlayerAttack,
                 AppData.PlayerDefence,
                 this.managerParameters,
+                (PlayerIndex)playerType - 1,
+                AppData.CameraMoveButtons,
                 AppData.CameraMoveKeys
             );
 
@@ -1518,11 +1532,11 @@ namespace GDApp
 
             //Position enemy
             this.collidableModel.Transform = transform.Clone() as Transform3D;
-            this.collidableModel.Transform.Translation += new Vector3(127, 127, 127);
+            this.collidableModel.Transform.Translation += AppData.ObjectOffset;
 
             //Enable collision
             this.collidableModel.Enable(true, 1);
-            
+
             //Add to lists
             this.gridManager.Add(this.collidableModel);
             this.enemies.Add(this.collidableModel as EnemyObject);
@@ -1608,24 +1622,42 @@ namespace GDApp
         public void LoadModels()
         {
             #region Room Models
-            this.modelDictionary.Load("Assets/Models/Rooms/room_001", "roomModel1");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_002", "roomModel2");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_003", "roomModel3");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_004", "roomModel4");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_005", "roomModel5");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_006", "roomModel6");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_007", "roomModel7");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_008", "roomModel8");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_009", "roomModel9");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_010", "roomModel10");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_011", "roomModel11");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_012", "roomModel12");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_013", "roomModel13");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_014", "roomModel14");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_015", "roomModel15");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_016", "roomModel16");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_017", "roomModel17");
-            this.modelDictionary.Load("Assets/Models/Rooms/room_018", "roomModel18");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_001", "roomModel1");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_002", "roomModel2");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_003", "roomModel3");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_004", "roomModel4");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_005", "roomModel5");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_006", "roomModel6");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_007", "roomModel7");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_008", "roomModel8");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_009", "roomModel9");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_010", "roomModel10");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_011", "roomModel11");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_012", "roomModel12");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_013", "roomModel13");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_014", "roomModel14");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_015", "roomModel15");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_016", "roomModel16");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_017", "roomModel17");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_018", "roomModel18");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_019", "roomModel19");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_020", "roomModel20");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_021", "roomModel21");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_022", "roomModel22");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_023", "roomModel23");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_024", "roomModel24");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_025", "roomModel25");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_026", "roomModel26");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_027", "roomModel27");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_028", "roomModel28");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_029", "roomModel29");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_030", "roomModel30");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_031", "roomModel31");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_032", "roomModel32");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_033", "roomModel33");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_034", "roomModel34");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_035", "roomModel35");
+            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_036", "roomModel36");
             #endregion
 
             #region Pickup Models
@@ -1648,24 +1680,42 @@ namespace GDApp
         public void LoadCollisionBoxes()
         {
             #region Room Collision
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_001", "roomCollision1");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_002", "roomCollision2");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_003", "roomCollision3");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_004", "roomCollision4");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_005", "roomCollision5");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_006", "roomCollision6");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_007", "roomCollision7");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_008", "roomCollision8");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_009", "roomCollision9");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_010", "roomCollision10");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_011", "roomCollision11");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_012", "roomCollision12");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_013", "roomCollision13");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_014", "roomCollision14");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_015", "roomCollision15");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_016", "roomCollision16");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_017", "roomCollision17");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/room_collision_018", "roomCollision18");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_001", "roomCollision1");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_002", "roomCollision2");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_003", "roomCollision3");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_004", "roomCollision4");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_005", "roomCollision5");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_006", "roomCollision6");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_007", "roomCollision7");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_008", "roomCollision8");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_009", "roomCollision9");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_010", "roomCollision10");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_011", "roomCollision11");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_012", "roomCollision12");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_013", "roomCollision13");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_014", "roomCollision14");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_015", "roomCollision15");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_016", "roomCollision16");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_017", "roomCollision17");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_018", "roomCollision18");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_019", "roomCollision19");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_020", "roomCollision20");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_021", "roomCollision21");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_022", "roomCollision22");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_023", "roomCollision23");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_024", "roomCollision24");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_025", "roomCollision25");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_026", "roomCollision26");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_027", "roomCollision27");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_028", "roomCollision28");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_029", "roomCollision29");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_030", "roomCollision30");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_031", "roomCollision31");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_032", "roomCollision32");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_033", "roomCollision33");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_034", "roomCollision34");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_035", "roomCollision35");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_036", "roomCollision36");
             #endregion
 
             #region Pickup Collision
@@ -1707,6 +1757,25 @@ namespace GDApp
             this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_016", "roomTexture16");
             this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_017", "roomTexture17");
             this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_018", "roomTexture18");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_018", "roomTexture18");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_019", "roomTexture19");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_020", "roomTexture20");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_021", "roomTexture21");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_022", "roomTexture22");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_023", "roomTexture23");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_024", "roomTexture24");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_025", "roomTexture25");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_026", "roomTexture26");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_027", "roomTexture27");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_028", "roomTexture28");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_029", "roomTexture29");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_030", "roomTexture30");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_031", "roomTexture31");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_032", "roomTexture32");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_033", "roomTexture33");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_034", "roomTexture34");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_035", "roomTexture35");
+            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_036", "roomTexture36");
             #endregion
 
             #region Generic Textures
@@ -1765,7 +1834,7 @@ namespace GDApp
             this.effectDictionary.Add("roomEffect7", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture7"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
             this.effectDictionary.Add("roomEffect8", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture8"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
             this.effectDictionary.Add("roomEffect9", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture9"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect18", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture10"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect10", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture10"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
             this.effectDictionary.Add("roomEffect11", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture11"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
             this.effectDictionary.Add("roomEffect12", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture12"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
             this.effectDictionary.Add("roomEffect13", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture13"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
@@ -1773,7 +1842,25 @@ namespace GDApp
             this.effectDictionary.Add("roomEffect15", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture15"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
             this.effectDictionary.Add("roomEffect16", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture16"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
             this.effectDictionary.Add("roomEffect17", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture17"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect10", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture18"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect18", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture18"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect19", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture19"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect20", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture20"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect21", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture21"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect22", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture22"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect23", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture23"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect24", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture24"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect25", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture25"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect26", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture26"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect27", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture27"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect28", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture28"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect29", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture29"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect30", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture30"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect31", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture31"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect32", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture32"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect33", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture33"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect34", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture34"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect35", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture35"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect36", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture36"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
 
             #region Pickup Effects

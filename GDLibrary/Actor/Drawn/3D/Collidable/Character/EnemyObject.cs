@@ -46,8 +46,8 @@ namespace GDLibrary
 
         public override void TakeTurn(GameTime gameTime)
         {
-            //Set up move time
-            if (!moveStarted) this.startMoveTime = gameTime.TotalGameTime.TotalSeconds;
+            ////Set up move time
+            //if (!moveStarted) this.startMoveTime = gameTime.TotalGameTime.TotalSeconds;
 
             //If it is not currently the enemys' turn, return
             if (!StateManager.EnemyTurn) return;
@@ -55,8 +55,10 @@ namespace GDLibrary
             //If the enemy is in combat
             if (StateManager.InCombat) return;
 
-            //Set some interval turn timer
-            TurnTimer(gameTime);
+            ////Set some interval turn timer
+            //TurnTimer(gameTime);
+
+            TrackPlayer(gameTime);
         }
 
         public virtual void TurnTimer(GameTime gameTime)

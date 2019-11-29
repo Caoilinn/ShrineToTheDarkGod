@@ -1,19 +1,18 @@
 ﻿using GDLibrary;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace GDApp
 {
     public class MyUIManager : UIManager
     {
-        public MyUIManager(Game game, ManagerParameters managerParameters, SpriteBatch spriteBatch, EventDispatcher eventDispatcher, StatusType statusType)
-            : base(game, managerParameters, spriteBatch, eventDispatcher, statusType)
-        {
-
+        public MyUIManager(
+            Game game, 
+            ManagerParameters managerParameters, 
+            SpriteBatch spriteBatch, 
+            EventDispatcher eventDispatcher, 
+            StatusType statusType
+        ) : base(game, managerParameters, spriteBatch, eventDispatcher, statusType) {
         }
 
         protected override void HandleGamePad(GameTime gameTime)

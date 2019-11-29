@@ -14,14 +14,17 @@ namespace GDLibrary
     /// <summary>
     /// Provides methods to determine the state of gamepad buttons and sticks.
     /// </summary>
-    public class GamePadManager : GameComponent
+    public class GamepadManager : GameComponent
     {
         #region Fields 
-        //xna uses special PlayerIndex variable to refer to controller number not simple 1-4
+        //XNA uses special PlayerIndex variable to refer to controller number not simple 1-4
         private static readonly PlayerIndex[] playerIndices = { PlayerIndex.One, PlayerIndex.Two, PlayerIndex.Three, PlayerIndex.Four };
-        //similar to keyboard and mouse except we can have as many as 4 states (i.e. 4 connected controllers)
-        protected GamePadState[] newState, oldState;
-        //how many players
+
+        //Similar to keyboard and mouse except we can have as many as 4 states (i.e. 4 connected controllers)
+        protected GamePadState[] newState;
+        protected GamePadState[] oldState;
+        
+        //How many players
         private int numberOfConnectedPlayers;
         #endregion
 
@@ -34,9 +37,10 @@ namespace GDLibrary
             }
             set
             {
-                //max number of 4 connected players with an XBox controller
+                //Max number of 4 connected players with an XBox controller
                 numberOfConnectedPlayers = (value > 0 && value <= 4) ? value : 1;
-                //a new and old state for each of the 1-4 controllers
+
+                //A new and old state for each of the 1-4 controllers
                 newState = new GamePadState[numberOfConnectedPlayers];
                 oldState = new GamePadState[numberOfConnectedPlayers];
             }
@@ -44,7 +48,7 @@ namespace GDLibrary
         #endregion
 
         #region Constructor
-        public GamePadManager(
+        public GamepadManager(
             Game game, 
             int numberOfConnectedPlayers
         ) : base(game) {
@@ -145,8 +149,6 @@ namespace GDLibrary
                 return true;
             else
                 return false;
-            //or more aggressively we can throw an exception
-                //throw new GamePadException(DebugUtility.GetCurrentMethod(), playerIndex, "not connected");
         }
         #endregion
     }

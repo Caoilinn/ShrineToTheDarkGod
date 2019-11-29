@@ -70,7 +70,6 @@
     <Compile Include="Actor\Drawn\2D\UI\UIObject.cs" />
     <Compile Include="Actor\Drawn\2D\UI\UITextObject.cs" />
     <Compile Include="Actor\Drawn\2D\UI\UITextureObject.cs" />
-    <Compile Include="Actor\Drawn\3D\Collidable\InteractableGate.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Pickup\ImmovablePickupObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Pickup\MoveablePickupObject.cs" />
     <Compile Include="Controllers\3D\Base\SpinController.cs" />

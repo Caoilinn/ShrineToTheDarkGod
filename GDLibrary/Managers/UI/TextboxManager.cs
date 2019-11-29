@@ -85,13 +85,6 @@ namespace GDLibrary
                 this.StatusType = StatusType.Off;
             }
         }
-        #endregion
-
-        #region Methods
-        private void ClearTextbox()
-        {
-            this.TextboxText = "";
-        }
 
         protected void EventDispatcher_UICombat(EventData eventData)
         {
@@ -250,6 +243,13 @@ namespace GDLibrary
                         info;
                     break;
             }
+        }
+        #endregion
+
+        #region Methods
+        private void ClearTextbox()
+        {
+            this.TextboxText = "";
         }
 
         public void Add(string sceneID, DrawnActor2D actor)

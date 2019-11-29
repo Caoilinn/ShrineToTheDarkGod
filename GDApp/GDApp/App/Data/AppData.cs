@@ -42,7 +42,6 @@ namespace GDLibrary
         public static float FirstPersonCameraAspectRatio = (4.0f / 3.0f);
         public static float FirstPersonCameraNearClipPlane = 0.1f;
         public static float FirstPersonCameraFarClipPlane = 10000f;
-
         public static readonly int CurveEvaluationPrecision = 4;
         public static readonly float CameraRotationSpeed = 0.3f;
         public static readonly float CameraMoveSpeed = 0.6f;
@@ -56,8 +55,30 @@ namespace GDLibrary
         public static readonly float CollidableCameraMass = 10;
 
         public static readonly Keys[] CameraMoveKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.E, Keys.Space, Keys.C, Keys.LeftShift, Keys.RightShift};
-        public static readonly Keys[] CombatKeys = {Keys.D1, Keys.D2, Keys.D3};
         public static readonly Keys[] CameraMoveKeys_Alt1 = { Keys.T, Keys.G, Keys.F, Keys.H };
+        public static readonly Keys[] CombatKeys = {Keys.D1, Keys.D2, Keys.D3};
+
+        public static readonly Buttons[] CameraMoveButtons = { Buttons.DPadUp, Buttons.DPadDown, Buttons.DPadLeft, Buttons.DPadRight, Buttons.LeftShoulder, Buttons.RightShoulder, Buttons.A };
+        public static readonly Buttons[] CombatButtons = { Buttons.RightTrigger, Buttons.LeftTrigger, Buttons.X };
+        #endregion
+
+        #region Map
+        //Determines the position of each component in the bit-shifted 3D array of map values
+        public static int ReservedRoomBits = 6;       //2^6 (64) Rooms Types
+        public static int ReservedPickupBits = 4;     //2^4 (16) Pickup Types
+        public static int ReservedTriggerBits = 4;    //2^4 (16) Trigger Types
+        public static int ReservedPlayerBits = 2;     //2^2 (4)  Max 4 Players
+        public static int ReservedEnemyBits = 3;      //2^3 (8)  Enemy Types
+        public static int ReservedGateBits = 3;       //2^3 (8)  Gate Types       - Current Total: 22 bits
+        public static int CellWidth = 100;
+        public static int CellHeight = 100;
+        public static int CellDepth = 100;
+
+        //Used for converting units from 3DS Max to XNA 
+        public static float MaxToXNAUnitScale = 2.54f;
+
+        //USed for offsetting an element from the origin (bottom left), to the center of a cell
+        internal static Vector3 ObjectOffset = new Vector3((CellWidth * MaxToXNAUnitScale) / 2, (CellHeight * MaxToXNAUnitScale) / 2, (CellDepth * MaxToXNAUnitScale) / 2);
         #endregion
 
         #region Character

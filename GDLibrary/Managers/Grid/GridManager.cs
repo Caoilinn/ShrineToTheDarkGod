@@ -366,6 +366,7 @@ namespace GDLibrary
                 //Play pickup sword sound
                 case PickupType.Sword:
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.Textbox, new object[] { "Sword" }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.UI, new object[] { "Sword" }));
                     this.SoundManager.PlayCue("equip_sword");
                     break;
 

@@ -55,10 +55,18 @@ namespace GDLibrary
         #region Event Handling
         protected override void RegisterForEventHandling(EventDispatcher eventDispatcher)
         {
+            eventDispatcher.UIChanged += EventDispatcher_UIChanged;
             eventDispatcher.UIChanged += EventDispatcher_MenuChanged;
             eventDispatcher.UIChanged += EventDispatcher_UICombat;
             eventDispatcher.UIChanged += EventDispatcher_UIHealth;
             base.RegisterForEventHandling(eventDispatcher);
+        }
+
+        private void EventDispatcher_UIChanged(EventData eventData)
+        {
+            if (eventData.EventType.Equals(EventActionType.OnItemAdded))
+            {
+            }
         }
 
         protected void EventDispatcher_UICombat(EventData eventData)
