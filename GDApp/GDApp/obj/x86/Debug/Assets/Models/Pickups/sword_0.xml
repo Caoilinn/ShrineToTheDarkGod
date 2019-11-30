@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>sword</Name>
     <Identity>
-      <SourceFilename>C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\sword.FBX</SourceFilename>
+      <SourceFilename>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\sword.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>
@@ -28,7 +28,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Material</Name>
       <Identity>
-        <SourceFilename>C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\sword.FBX</SourceFilename>
+        <SourceFilename>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\sword.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

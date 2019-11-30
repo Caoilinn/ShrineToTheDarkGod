@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>room_003</Name>
     <Identity>
-      <SourceFilename>C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v1\room_003.FBX</SourceFilename>
+      <SourceFilename>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v1\room_003.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>
@@ -53,21 +53,21 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Material #13</Name>
       <Identity>
-        <SourceFilename>C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v1\room_003.FBX</SourceFilename>
+        <SourceFilename>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v1\room_003.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
     </Resource>
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>Material #15</Name>
       <Identity>
-        <SourceFilename>C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v1\room_003.FBX</SourceFilename>
+        <SourceFilename>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v1\room_003.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
     </Resource>
     <Resource ID="#Resource3" Type="Graphics:BasicMaterialContent">
       <Name>Material #14</Name>
       <Identity>
-        <SourceFilename>C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v1\room_003.FBX</SourceFilename>
+        <SourceFilename>C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v1\room_003.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
     </Resource>
