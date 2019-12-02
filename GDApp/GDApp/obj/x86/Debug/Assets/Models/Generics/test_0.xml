@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>RootNode</Name>
     <Identity>
-      <SourceFilename>C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Generics\test.FBX</SourceFilename>
+      <SourceFilename>C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Generics\test.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>

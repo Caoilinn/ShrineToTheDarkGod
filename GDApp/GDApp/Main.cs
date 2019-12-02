@@ -33,7 +33,7 @@ namespace GDApp
         private CombatManager combatManager;
         private PhysicsManager physicsManager;
         private MyMenuManager menuManager;
-        private MyUIManager uiManager;
+        private UIManager uiManager;
         private MyTextboxManager textboxManager;
         private PickingManager pickingManager;
         private InventoryManager inventoryManager;
@@ -57,6 +57,7 @@ namespace GDApp
         private Dictionary<string, EffectParameters> effectDictionary;
         private Dictionary<string, PickupParameters> pickupParametersDictionary;
         private Dictionary<string, EnemyObject> enemyDictionary;
+        private Dictionary<string, UITextureObject> uiDictionary;
 
         //Lists
         private List<string> soundEffectList = new List<String>();
@@ -105,9 +106,12 @@ namespace GDApp
 
         private ProjectionParameters projectionParameters;
 
+        private Vector2 inventoryTranslation = new Vector2(-63, 640);
+        private Vector2 inventorySpacing = new Vector2(110, 0);
+
+        private string textboxText;
         private Viewport viewport;
         private float depth;
-        private string textboxText;
 
         public Main()
         {
@@ -431,11 +435,11 @@ namespace GDApp
             #endregion
 
             #region UI Manager
-            this.uiManager = new MyUIManager(
+            this.uiManager = new UIManager(
                 this,
-                this.managerParameters,
                 this.spriteBatch,
                 this.eventDispatcher,
+                10,
                 StatusType.Off
             );
 
@@ -896,22 +900,23 @@ namespace GDApp
 
         private void InitializeUI()
         {
+            eventDispatcher.UIChanged += EventDispatcher_UIChanged;
+
             Transform2D transform = new Transform2D(
                 new Vector2(100, 200),
-                0, 
-                Vector2.One, 
-                Vector2.Zero, 
+                0,
+                Vector2.One,
+                Vector2.Zero,
                 new Integer2(100, 25)
             );
 
             Texture2D texture = this.textureDictionary["HUD"];
-            string sceneID = "UI";
             DrawnActor2D text;
 
             //Scale the texture to fit the entire screen
             Vector2 scale = new Vector2(
-                (float) graphics.PreferredBackBufferWidth / texture.Width,
-                (float) graphics.PreferredBackBufferHeight / texture.Height
+                (float)graphics.PreferredBackBufferWidth / texture.Width,
+                (float)graphics.PreferredBackBufferHeight / texture.Height
             );
 
             transform = new Transform2D(scale);
@@ -922,11 +927,60 @@ namespace GDApp
                 transform,
                 Color.White,
                 SpriteEffects.None,
-                0,                      //Depth is 1 so its always sorted to the back of other menu elements
+                0.1f,                      //Depth is 1 so its always sorted to the back of other menu elements
                 texture
             );
 
-            this.uiManager.Add(sceneID, text);
+            this.uiManager.Add(text);
+        }
+
+        private void EventDispatcher_UIChanged(EventData eventData)
+        {
+            if (eventData.EventType.Equals(EventActionType.OnItemAdded))
+            {
+                UITextureObject inventoryItem = null;
+
+                if (eventData.AdditionalParameters[0].Equals("Sword")) {
+                    inventoryItem = this.uiDictionary["Sword"];
+                    inventoryItem.Transform.Translation = (inventoryTranslation += inventorySpacing);
+                }
+
+                if (eventData.AdditionalParameters[0].Equals("Key")) {
+                    inventoryItem = this.uiDictionary["Key"];
+                    inventoryItem.Transform.Translation = (inventoryTranslation += inventorySpacing);
+                }
+
+                if (eventData.AdditionalParameters[0].Equals("Potion")) {
+                    inventoryItem = this.uiDictionary["Potion"];
+                    inventoryItem.Transform.Translation = (inventoryTranslation += inventorySpacing);
+                }
+
+                if (inventoryItem != null) this.uiManager.Add(inventoryItem);
+                return;
+            }
+
+            if (eventData.EventType.Equals(EventActionType.OnItemRemoved))
+            {
+                UITextureObject inventoryItem = null;
+
+                if (eventData.AdditionalParameters[0].Equals("Sword")) {
+                    inventoryItem = this.uiDictionary["Sword"];
+                    inventoryTranslation -= inventorySpacing;
+                }
+
+                if (eventData.AdditionalParameters[0].Equals("Key")) {
+                    inventoryItem = this.uiDictionary["Key"];
+                    inventoryTranslation -= inventorySpacing;
+                }
+
+                if (eventData.AdditionalParameters[0].Equals("Potion")) {
+                    inventoryItem = this.uiDictionary["Potion"];
+                    inventoryTranslation -= inventorySpacing;
+                }
+
+                if (inventoryItem != null) this.uiManager.Remove(inventoryItem);
+                return;
+            }
         }
 
         private void InitializeTextbox()
@@ -936,7 +990,7 @@ namespace GDApp
             this.textboxText = this.textboxManager.TextboxText;
 
             Transform2D transformtext = new Transform2D(
-                new Vector2(940, 40),
+                new Vector2(940, 60),
                 0,
                 new Vector2(0.55f, 0.55f),
                 Vector2.Zero,
@@ -1586,6 +1640,9 @@ namespace GDApp
 
             //Enemies
             this.enemyDictionary = new Dictionary<string, EnemyObject>();
+
+            //UI
+            this.uiDictionary = new Dictionary<string, UITextureObject>();
         }
 
         private void LoadAssets()
@@ -1616,6 +1673,10 @@ namespace GDApp
 
             #region Enemies
             LoadEnemies();
+            #endregion
+
+            #region UI
+            LoadUI();
             #endregion
         }
 
@@ -1781,20 +1842,6 @@ namespace GDApp
             #region Generic Textures
             this.textureDictionary.Load("Assets/Textures/Props/Gates/gate_texture_001", "gateTexture1");
             this.textureDictionary.Load("Assets/Textures/Props/Gates/gate_texture_002", "gateTexture2");
-            this.textureDictionary.Load("Assets/Textures/Props/Crates/crate1");
-            this.textureDictionary.Load("Assets/Textures/Props/Crates/crate2");
-            this.textureDictionary.Load("Assets/Textures/Foliage/Ground/grass1");
-            this.textureDictionary.Load("Assets/Textures/Skybox/back");
-            this.textureDictionary.Load("Assets/Textures/Skybox/left");
-            this.textureDictionary.Load("Assets/Textures/Skybox/right");
-            this.textureDictionary.Load("Assets/Textures/Skybox/sky");
-            this.textureDictionary.Load("Assets/Textures/Skybox/front");
-            this.textureDictionary.Load("Assets/Textures/Foliage/Trees/tree2");
-            #endregion
-
-            #region Dual Textures
-            this.textureDictionary.Load("Assets/Textures/Foliage/Ground/grass_midlevel");
-            this.textureDictionary.Load("Assets/Textures/Foliage/Ground/grass_highlevel");
             #endregion
 
             #region Menu Buttons
@@ -1814,53 +1861,51 @@ namespace GDApp
             this.textureDictionary.Load("Assets/Textures/UI/HUD/reticuleDefault");
             this.textureDictionary.Load("Assets/Textures/UI/HUD/progress_gradient");
             this.textureDictionary.Load("Assets/Textures/UI/HUD/HUD");
-            #endregion
-
-            #region Architecture
-            this.textureDictionary.Load("Assets/Textures/Architecture/Buildings/house-low-texture");
-            this.textureDictionary.Load("Assets/Textures/Architecture/Walls/wall");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/sword");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/potion");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/key");
             #endregion
         }
 
         public void LoadEffects()
         {
             #region Room Effects
-            this.effectDictionary.Add("roomEffect1", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture1"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect2", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture2"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect3", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture3"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect4", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture4"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect5", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture5"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect6", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture6"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect7", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture7"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect8", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture8"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect9", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture9"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect10", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture10"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect11", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture11"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect12", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture12"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect13", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture13"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect14", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture14"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect15", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture15"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect16", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture16"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect17", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture17"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect18", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture18"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect19", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture19"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect20", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture20"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect21", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture21"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect22", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture22"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect23", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture23"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect24", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture24"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect25", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture25"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect26", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture26"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect27", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture27"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect28", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture28"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect29", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture29"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect30", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture30"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect31", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture31"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect32", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture32"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect33", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture33"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect34", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture34"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect35", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture35"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect36", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture36"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect1", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture1"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect2", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture2"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect3", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture3"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect4", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture4"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect5", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture5"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect6", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture6"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect7", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture7"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect8", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture8"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect9", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture9"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect10", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture10"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect11", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture11"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect12", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture12"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect13", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture13"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect14", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture14"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect15", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture15"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect16", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture16"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect17", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture17"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect18", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture18"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect19", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture19"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect20", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture20"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect21", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture21"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect22", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture22"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect23", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture23"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect24", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture24"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect25", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture25"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect26", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture26"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect27", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture27"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect28", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture28"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect29", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture29"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect30", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture30"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect31", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture31"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect32", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture32"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect33", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture33"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect34", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture34"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect35", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture35"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect36", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture36"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
 
             #region Pickup Effects
@@ -1936,6 +1981,51 @@ namespace GDApp
                     AppData.CultistAttack,
                     AppData.CultistDefence,
                     this.managerParameters
+                )
+            );
+        }
+
+        public void LoadUI()
+        {
+            this.uiDictionary.Add(
+                "Sword",
+                new UITextureObject(
+                    "uiSwordTexture",
+                    ActorType.UITexture,
+                    StatusType.Drawn,
+                    Transform2D.Zero,
+                    Color.White,
+                    SpriteEffects.None,
+                    0,
+                    this.textureDictionary["sword"]
+                )
+            );
+
+            this.uiDictionary.Add(
+                "Key",
+                new UITextureObject(
+                    "uiKeyTexture",
+                    ActorType.UITexture,
+                    StatusType.Drawn,
+                    Transform2D.Zero,
+                    Color.White,
+                    SpriteEffects.None,
+                    0,
+                    this.textureDictionary["key"]
+                )
+            );
+
+            this.uiDictionary.Add(
+                "Potion",
+                new UITextureObject(
+                    "uiPotionTexture",
+                    ActorType.UITexture,
+                    StatusType.Drawn,
+                    Transform2D.Zero,
+                    Color.White,
+                    SpriteEffects.None,
+                    0,
+                    this.textureDictionary["potion"]
                 )
             );
         }

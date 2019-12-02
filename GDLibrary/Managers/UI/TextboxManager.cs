@@ -12,7 +12,7 @@ namespace GDLibrary
         private List<DrawnActor2D> activeList = null;
         private ManagerParameters managerParameters;
         private SpriteBatch spriteBatch;
-        private string textboxtext;
+        private string textboxText;
         #endregion
 
         #region Properties
@@ -32,11 +32,11 @@ namespace GDLibrary
         {
             get
             {
-                return this.textboxtext;
+                return this.textboxText;
             }
             set
             {
-                this.textboxtext = value;
+                this.textboxText = value;
             }
         }
 
@@ -60,13 +60,12 @@ namespace GDLibrary
             SpriteBatch spriteBatch,
             EventDispatcher eventDispatcher,
             StatusType statusType,
-            string textboxtext
-        ) : base(game, statusType, eventDispatcher)
-        {
+            string textboxText
+        ) : base(game, statusType, eventDispatcher) {
             this.uiDictionary = new Dictionary<string, List<DrawnActor2D>>();
             this.managerParameters = managerParameters;
             this.spriteBatch = spriteBatch;
-            this.textboxtext = textboxtext;
+            this.textboxText = textboxText;
         }
         #endregion
 

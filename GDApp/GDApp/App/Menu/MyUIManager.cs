@@ -7,12 +7,12 @@ namespace GDApp
     public class MyUIManager : UIManager
     {
         public MyUIManager(
-            Game game, 
-            ManagerParameters managerParameters, 
+            Game game,
             SpriteBatch spriteBatch, 
-            EventDispatcher eventDispatcher, 
+            EventDispatcher eventDispatcher,
+            int initialSize,
             StatusType statusType
-        ) : base(game, managerParameters, spriteBatch, eventDispatcher, statusType) {
+        ) : base(game, spriteBatch, eventDispatcher, initialSize, statusType) {
         }
 
         protected override void HandleGamePad(GameTime gameTime)
@@ -35,15 +35,15 @@ namespace GDApp
             base.HandleMouse(gameTime);
         }
 
-        protected override void HandleMouseClick(DrawnActor2D uiObject, GameTime gameTime)
-        {
-            base.HandleMouseClick(uiObject, gameTime);
-        }
+        //protected override void HandleMouseClick(DrawnActor2D uiObject, GameTime gameTime)
+        //{
+        //    base.HandleMouseClick(uiObject, gameTime);
+        //}
 
-        protected override void HandleMouseOver(DrawnActor2D uiObject, GameTime gameTime)
-        {
-            base.HandleMouseOver(uiObject, gameTime);
-        }
+        //protected override void HandleMouseOver(DrawnActor2D uiObject, GameTime gameTime)
+        //{
+        //    base.HandleMouseOver(uiObject, gameTime);
+        //}
 
         protected override void RegisterForEventHandling(EventDispatcher eventDispatcher)
         {

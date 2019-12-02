@@ -366,19 +366,21 @@ namespace GDLibrary
                 //Play pickup sword sound
                 case PickupType.Sword:
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.Textbox, new object[] { "Sword" }));
-                    EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.UI, new object[] { "Sword" }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.UIMenu, new object[] { "Sword" }));
                     this.SoundManager.PlayCue("equip_sword");
                     break;
 
                 //Play pickup key sound
                 case PickupType.Key:
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.Textbox, new object[] { "Key" }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.UIMenu, new object[] { "Key" }));
                     this.SoundManager.PlayCue("keys_jingle");
                     break;
 
                 //Play pickup potion sound
                 case PickupType.Health:
                     EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthPickup, EventCategoryType.Textbox, new object[] { this.combatManager.Player.Health + 10 }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.UIMenu, new object[] { "Potion" }));
                     this.SoundManager.PlayCue("drink_potion");
                     break;
             }
@@ -449,6 +451,7 @@ namespace GDLibrary
 
                 //Update UI
                 EventDispatcher.Publish(new EventData(EventActionType.OnItemRemoved, EventCategoryType.Textbox, new object[] { "Key" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnItemRemoved, EventCategoryType.UIMenu, new object[] { "Key" }));
 
                 //Remove the gate
                 this.Remove(gate);

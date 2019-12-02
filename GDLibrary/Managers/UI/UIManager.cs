@@ -1,221 +1,121 @@
-﻿using Microsoft.Xna.Framework;
+﻿/*
+Function: 		Store, update, and draw all visible UI objects based on PausableDrawableGameComponent
+Author: 		NMCG
+Version:		1.0
+Date Updated:	10/11/17
+Bugs:			None
+Fixes:			None
+*/
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
+using System;
 
 namespace GDLibrary
 {
     public class UIManager : PausableDrawableGameComponent
     {
-        #region Fields
-        //stores the actors shown for a particular menu scene (e.g. for the "main menu" scene we would have actors: startBtn, ExitBtn, AudioBtn)
-        private Dictionary<string, List<DrawnActor2D>> uiDictionary;
-        private List<DrawnActor2D> activeList = null;
-        private CameraManager cameraManager;
-        private MouseManager mouseManager;
+        #region Variables
+        private List<Actor2D> drawList, removeList;
         private SpriteBatch spriteBatch;
-        private ManagerParameters managerParameters;
         #endregion
 
         #region Properties
-        public ManagerParameters ManagerParameters
-        {
-            get
-            {
-                return this.managerParameters;
-            }
-        }
-        public List<DrawnActor2D> ActiveList
-        {
-            get
-            {
-                return this.activeList;
-            }
-        }
         #endregion
 
-        #region Constructors
         public UIManager(
             Game game, 
-            ManagerParameters managerParameters,
             SpriteBatch spriteBatch, 
-            EventDispatcher eventDispatcher,
+            EventDispatcher eventDispatcher, 
+            int initialSize, 
             StatusType statusType
         ) : base(game, statusType, eventDispatcher) {
-            this.uiDictionary = new Dictionary<string, List<DrawnActor2D>>();
-
-            //used to listen for input
-            this.managerParameters = managerParameters;
-
-            //used to render menu and UI elements
             this.spriteBatch = spriteBatch;
-        }
-        #endregion
 
-        #region Event Handling
-        protected override void RegisterForEventHandling(EventDispatcher eventDispatcher)
-        {
-            eventDispatcher.UIChanged += EventDispatcher_UIChanged;
-            eventDispatcher.UIChanged += EventDispatcher_MenuChanged;
-            eventDispatcher.UIChanged += EventDispatcher_UICombat;
-            eventDispatcher.UIChanged += EventDispatcher_UIHealth;
-            base.RegisterForEventHandling(eventDispatcher);
+            this.drawList = new List<Actor2D>(initialSize);
+            this.removeList = new List<Actor2D>(initialSize);
         }
 
-        private void EventDispatcher_UIChanged(EventData eventData)
-        {
-            if (eventData.EventType.Equals(EventActionType.OnItemAdded))
-            {
-            }
-        }
-
-        protected void EventDispatcher_UICombat(EventData eventData)
-        {
-            float damage = 0;
-            if (eventData.EventType != EventActionType.OnEnemyDeath)
-            {
-                damage = (float)eventData.AdditionalParameters[0];
-            }
-            switch (eventData.EventType)
-            {
-                case EventActionType.OnPlayerAttack:
-                    Console.WriteLine("Player Attatcked with damage of " + damage);
-                    break;
-
-                case EventActionType.OnPlayerDefend:
-                    Console.WriteLine("Player Defended taking damage of " + damage);
-                    break;
-
-                case EventActionType.OnPlayerDodge:
-                    if (damage <= 0)
-                        Console.WriteLine("Player Dodged");
-                    else
-                        Console.WriteLine("Player Dodge Failed, the player took damage of " + damage);
-                    break;
-
-                case EventActionType.OnEnemyAttack:
-                    Console.WriteLine("Enemy Attatcked with damage of " + damage);
-                    break;
-
-                case EventActionType.OnEnemyDeath:
-                    Console.WriteLine("YOU HAVE BEATEN THE ENEMY");
-                    break;
-            }
-        }
-        
-        protected void EventDispatcher_UIHealth(EventData eventData)
-        {
-            if(eventData.EventType == EventActionType.PlayerHealthUpdate)
-            {
-                float playerHealth = (float)eventData.AdditionalParameters[0];
-                Console.WriteLine("Player Health: " + playerHealth);
-            }
-            else if(eventData.AdditionalParameters != null)
-            { 
-                float enemyHealth = (float)eventData.AdditionalParameters[0];
-                Console.WriteLine("Enemy Health: " + enemyHealth);
-            }
-        }
-
+        //See MenuManager::EventDispatcher_MenuChanged to see how it does the reverse i.e. they are mutually exclusive
         protected override void EventDispatcher_MenuChanged(EventData eventData)
         {
+            //Did the event come from the main menu and is it a start game event
             if (eventData.EventType == EventActionType.OnStart)
-                this.StatusType = StatusType.Drawn | StatusType.Update;
+            {
+                //Turn on update and draw i.e. hide the menu
+                this.StatusType = StatusType.Update | StatusType.Drawn;
+            }
 
+            //Did the event come from the main menu and is it a start game event
             else if (eventData.EventType == EventActionType.OnPause)
+            {
+                //Turn off update and draw i.e. show the menu since the game is paused
                 this.StatusType = StatusType.Off;
-        }
-        #endregion
-
-        public void Add(string sceneID, DrawnActor2D actor)
-        {
-            if (this.uiDictionary.ContainsKey(sceneID))
-            {
-                this.uiDictionary[sceneID].Add(actor);
             }
-            else
+        }
+
+        public void Add(Actor2D actor)
+        {
+            this.drawList.Add(actor);
+        }
+
+        //Call when we want to remove a drawn object from the scene
+        public void Remove(Actor2D actor)
+        {
+            this.removeList.Add(actor);
+        }
+
+        public int Remove(Predicate<Actor2D> predicate)
+        {
+            List<Actor2D> resultList = null;
+            resultList = this.drawList.FindAll(predicate);
+            
+            //The actor(s) were found in the opaque list
+            if ((resultList != null) && (resultList.Count != 0))
             {
-                List<DrawnActor2D> newList = new List<DrawnActor2D>();
-                newList.Add(actor);
-                this.uiDictionary.Add(sceneID, newList);
-            }
-
-            SetActiveList(sceneID);
-        }
-
-        public DrawnActor2D Find(string sceneID, Predicate<DrawnActor2D> predicate)
-        {
-            if (this.uiDictionary.ContainsKey(sceneID))
-                return this.uiDictionary[sceneID].Find(predicate);
-
-            return null;
-        }
-
-        public bool Remove(string sceneID, Predicate<DrawnActor2D> predicate)
-        {
-            DrawnActor2D foundUIObject = Find(sceneID, predicate);
-            if (foundUIObject != null)
-                return this.uiDictionary[sceneID].Remove(foundUIObject);
-
-            return false;
-        }
-
-        //Return all the actor2D objects associated with the "health ui" or "inventory ui"
-        public List<DrawnActor2D> FindAllBySceneID(string sceneID)
-        {
-            if (this.uiDictionary.ContainsKey(sceneID))
-                return this.uiDictionary[sceneID];
-
-            return null;
-        }
-
-        public bool SetActiveList(string sceneID)
-        {
-            if (this.uiDictionary.ContainsKey(sceneID))
-            {
-                this.activeList = this.uiDictionary[sceneID];
-                return true;
+                foreach (Actor2D actor in resultList)
+                    this.removeList.Add(actor);
             }
 
-            return false;
+            return resultList != null ? resultList.Count : 0;
+        }
+        
+        //Batch remove on all objects that were requested to be removed
+        protected virtual void ApplyRemove()
+        {
+            foreach (Actor2D actor in this.removeList)
+            {
+                this.drawList.Remove(actor);
+            }
+
+            this.removeList.Clear();
         }
 
         protected override void ApplyUpdate(GameTime gameTime)
         {
-            if (this.activeList != null)
-            //Update all the updateable menu items (e.g. make buttons pulse etc)
-            foreach (DrawnActor2D currentUIObject in this.activeList)
-            {
+            //remove any outstanding objects since the last update
+            ApplyRemove();
 
+            foreach (Actor2D actor in this.drawList)
+            {
+                if ((actor.StatusType & StatusType.Update) == StatusType.Update)
+                {
+                    actor.Update(gameTime);
+                }
             }
         }
 
         protected override void ApplyDraw(GameTime gameTime)
         {
-            if (this.activeList != null)
+            this.spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
+            foreach (Actor2D actor in this.drawList)
             {
-                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise);
-                foreach (DrawnActor2D currentUIObject in this.activeList)
+                if ((actor.StatusType & StatusType.Drawn) == StatusType.Drawn)
                 {
-                    if ((currentUIObject.GetStatusType() & StatusType.Drawn) != 0) //if drawn flag is set
-                    {
-                        currentUIObject.Draw(gameTime, spriteBatch);
-                        HandleMouseOver(currentUIObject, gameTime);
-                    }
+                    actor.Draw(gameTime, spriteBatch);
                 }
-                spriteBatch.End();
             }
+            this.spriteBatch.End();
         }
-
-        protected virtual void HandleMouseOver(DrawnActor2D uiObject, GameTime gameTime)
-        {
-            //developer implements in subclass of MenuManager - see MyMenuManager.cs
-        }
-
-        protected virtual void HandleMouseClick(DrawnActor2D uiObject, GameTime gameTime)
-        {
-            //developer implements in subclass of MenuManager - see MyMenuManager.cs
-        }
-
     }
 }

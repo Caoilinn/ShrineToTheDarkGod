@@ -1529,4 +1529,8 @@ C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP
 C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_034.xnb
 C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_035.xnb
 C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Environment\Rooms\room_texture_036.xnb
-C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\uvw2_1.xnb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\uvw2_0.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\key.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\potion.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\sword.xnb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\HUD.xnb

@@ -14,6 +14,14 @@ namespace GDLibrary
     public class Transform2D : ICloneable
     {
         #region Statics
+        public static Transform2D Zero
+        {
+            get
+            {
+                return new Transform2D(Vector2.Zero, 0, Vector2.One, Vector2.Zero, Integer2.One);
+            }
+        }
+
         public static Transform2D One
         {
             get
@@ -163,9 +171,13 @@ namespace GDLibrary
         #endregion
 
         //used by dynamic sprites i.e. which need a look and right vector for movement
-        public Transform2D(Vector2 translation, float rotationInDegrees, Vector2 scale,
-            Vector2 origin, Integer2 dimensions)
-        {
+        public Transform2D(
+            Vector2 translation, 
+            float rotationInDegrees, 
+            Vector2 scale,
+            Vector2 origin, 
+            Integer2 dimensions
+        ) {
             Initialize(translation, rotationInDegrees, scale, origin, dimensions);
 
             //store original values in case of reset
@@ -176,13 +188,11 @@ namespace GDLibrary
         //used by static background sprites that cover the entire screen OR more than the entire screen
         public Transform2D(Vector2 scale) : this(Vector2.Zero, 0, scale, Vector2.Zero, Integer2.Zero)
         {
-
         }
 
         //used internally when creating the originalTransform object
         private Transform2D()
         {
-
         }
 
         //called by constructor to setup the object
@@ -201,8 +211,7 @@ namespace GDLibrary
         //called if we ever wish to completely reset the object (e.g. after modifying a menu button with a controller we want to reset the button's position etc)
         public virtual void Reset()
         {
-            Initialize(this.originalTransform2D.Translation, this.originalTransform2D.RotationInDegrees,
-                this.originalTransform2D.Scale, this.originalTransform2D.Origin, this.originalTransform2D.originalDimensions);
+            Initialize(this.originalTransform2D.Translation, this.originalTransform2D.RotationInDegrees, this.originalTransform2D.Scale, this.originalTransform2D.Origin, this.originalTransform2D.originalDimensions);
         }
 
         public override bool Equals(object obj)
