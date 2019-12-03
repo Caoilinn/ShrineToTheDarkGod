@@ -768,6 +768,17 @@ namespace GDApp
             //Change the texture blend color
             clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
+
+            clone = (UIButtonObject)uiButtonObject.Clone();
+
+            //Move down on Y-axis for next button
+            clone.Transform.Translation += new Vector2(-175, 7 * verticalBtnSeparation);
+            clone.ID = "bindbtn";
+            clone.Text = "Rebind";
+
+            //Change the texture blend color
+            clone.Color = Color.White;
+            this.menuManager.Add(sceneID, clone);
             #endregion
 
             #region Begin Menu

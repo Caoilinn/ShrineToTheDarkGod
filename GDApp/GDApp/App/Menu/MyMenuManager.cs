@@ -137,6 +137,11 @@ namespace GDApp
                     SetActiveList("main menu");
                     break;
 
+                case "bindbtn":
+
+                    DoBind();
+                    break;
+
                 default:
                     break;
             }
@@ -161,6 +166,11 @@ namespace GDApp
         private void DoExit()
         {
             this.Game.Exit();
+        }
+
+        private void DoBind()
+        {
+            EventDispatcher.Publish(new EventData(EventActionType.OnKeybind, EventCategoryType.Keybind));
         }
         #endregion
     }

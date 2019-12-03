@@ -28,7 +28,8 @@
         UI,
         EnemyDeath,
         Enemy,
-        Textbox
+        Textbox,
+        Keybind
 
     }
 }

@@ -40,6 +40,7 @@ namespace GDLibrary
         public delegate void UIChangedEventHandler(EventData eventData);
         public delegate void TextboxChangedEventHandler(EventData eventData);
         public delegate void EnemyDeathEventHandler(EventData eventData);
+        public delegate void KeybindEventHandler(EventData eventData);
         #endregion
 
         #region Events
@@ -61,6 +62,7 @@ namespace GDLibrary
         public event UIChangedEventHandler UIChanged;
         public event TextboxChangedEventHandler TextboxChanged;
         public event EnemyDeathEventHandler EnemyDeathEvent;
+        public event KeybindEventHandler KeybindEvent;
         #endregion
 
         #region Constuctors
@@ -282,6 +284,11 @@ namespace GDLibrary
         protected virtual void OnInventoryChanged(EventData eventData)
         {
             InventoryEvent?.Invoke(eventData);
+        }
+
+        protected virtual void OnKeybind(EventData eventData)
+        {
+            KeybindEvent?.Invoke(eventData);
         }
         #endregion
     }

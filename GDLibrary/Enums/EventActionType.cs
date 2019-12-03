@@ -20,6 +20,7 @@
         OnUnMute,
         OnExit,
         OnInventoryPickUp,
+        OnKeybind,
 
 
         //Sent by Mouse or Gamepad Manager
