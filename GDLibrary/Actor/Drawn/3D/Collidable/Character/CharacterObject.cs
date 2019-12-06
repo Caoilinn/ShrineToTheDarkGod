@@ -46,200 +46,160 @@ namespace GDLibrary
         #region Properties
         public Vector3 Translation
         {
-            get
-            {
+            get {
                 return this.translation;
             }
-            set
-            {
+            set {
                 this.translation = value;
             }
         }
 
         public Vector3 Rotation
         {
-            get
-            {
+            get {
                 return this.rotation;
             }
-            set
-            {
+            set {
                 this.rotation = value;
             }
         }
 
         public Vector3 TargetPosition
         {
-            get
-            {
+            get {
                 return this.targetPosition;
             }
-            set
-            {
+            set {
                 this.targetPosition = value;
             }
         }
 
         public Vector3 CurrentPosition
         {
-            get
-            {
+            get {
                 return this.currentPosition;
             }
-            set
-            {
+            set {
                 this.currentPosition = value;
             }
         }
 
         public Vector3 TargetHeading
         {
-            get
-            {
+            get {
                 return this.targetHeading;
             }
-            set
-            {
+            set {
                 this.targetHeading = value;
             }
         }
 
         public Vector3 CurrentHeading
         {
-            get
-            {
+            get {
                 return this.currentHeading;
             }
-            set
-            {
+            set {
                 this.currentHeading = value;
             }
         }
 
         public Vector3 MovementVector
         {
-            get
-            {
+            get {
                 return this.movementVector;
             }
-            set
-            {
+            set {
                 this.movementVector = value;
             }
         }
 
         public Vector3 RotationVector
         {
-            get
-            {
+            get {
                 return this.rotationVector;
             }
-            set
-            {
+            set {
                 this.rotationVector = value;
             }
         }
 
         public bool InMotion
         {
-            get
-            {
+            get {
                 return this.inMotion;
             }
-            set
-            {
+            set {
                 this.inMotion = value;
             }
         }
 
         public float MoveSpeed
         {
-            get
-            {
+            get {
                 return this.moveSpeed;
             }
-            set
-            {
+            set {
                 this.moveSpeed = value;
             }
         }
 
         public float RotateSpeed
         {
-            get
-            {
+            get {
                 return this.rotateSpeed;
             }
-            set
-            {
+            set {
                 this.rotateSpeed = value;
             }
         }
 
         public float Health
         {
-            get
-            {
+            get {
                 return this.health;
             }
-            set
-            {
+            set {
                 this.health = value;
             }
         }
 
         public float Attack
         {
-            get
-            {
+            get {
                 return this.attack;
             }
-            set
-            {
+            set {
                 this.attack += value;
             }
         }
 
         public float Defence
         {
-            get
-            {
+            get {
                 return this.defence;
             }
-            set
-            {
+            set {
                 this.defence = value;
-            }
-        }
-
-        public Character CharacterBody
-        {
-            get
-            {
-                return this.Body as Character;
             }
         }
 
         public HashSet<Vector3> BlockedDirections
         {
-            get
-            {
+            get {
                 return this.blockedDirections;
             }
-            set
-            {
+            set {
                 this.blockedDirections = value;
             }
         }
 
         public ManagerParameters ManagerParameters
         {
-            get
-            {
+            get {
                 return this.managerParameters;
             }
-            set
-            {
+            set {
                 this.managerParameters = value;
             }
         }
@@ -262,7 +222,8 @@ namespace GDLibrary
             float attack,
             float defence,
             ManagerParameters managerParameters
-        ) : base(id, actorType, transform, effectParameters, model) {
+        ) : base(id, actorType, transform, effectParameters, model)
+        {
             this.MovementVector = movementVector;
             this.RotationVector = rotationVector;
             this.MoveSpeed = moveSpeed;
@@ -286,7 +247,7 @@ namespace GDLibrary
             {
                 //Play turn sound
                 if (!this.InMotion) EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "turn_around" }));
-                
+
                 //If the current heading is near the target heading
                 if (Vector3.Distance(this.CurrentHeading, this.TargetHeading) <= 5)
                 {
@@ -299,8 +260,7 @@ namespace GDLibrary
 
                     //Update motion state
                     this.InMotion = false;
-                }
-                else
+                } else
                 {
                     //Rotate actor
                     this.Transform.RotateBy(this.Rotation);
@@ -320,21 +280,10 @@ namespace GDLibrary
             #region Translation
             if (this.Translation != Vector3.Zero)
             {
-                //Prevent movement while in combat
-                if (StateManager.InCombat)
-                {
-                    //Display info
-                    EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "Cannot move while in combat" }));
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "wall_bump" }));
-                    this.Translation = Vector3.Zero;
-                    return;
-                }
-
                 //If the direction of movement is blocked
                 if (this.BlockedDirections.Contains(Vector3.Normalize(this.Translation)))
                 {
-                    //Display info
-                    EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "Cannot walk through walls!" }));
+                    //Play wall bump sound
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "wall_bump" }));
                     this.Translation = Vector3.Zero;
                     return;
@@ -358,8 +307,7 @@ namespace GDLibrary
 
                     //Update motion state
                     this.InMotion = false;
-                }
-                else
+                } else
                 {
                     //Translate actor
                     this.Transform.TranslateBy(this.Translation);
@@ -539,20 +487,17 @@ namespace GDLibrary
         #region Properties
         public bool IsJumping
         {
-            get
-            {
+            get {
                 return this.isJumping;
             }
         }
 
         public bool IsCrouching
         {
-            get
-            {
+            get {
                 return this.isCrouching;
             }
-            set
-            {
+            set {
                 this.isCrouching = value;
             }
         }
@@ -560,9 +505,10 @@ namespace GDLibrary
 
         #region Constructor
         public Character(
-            float accelerationRate, 
+            float accelerationRate,
             float decelerationRate
-        ) : base() {
+        ) : base()
+        {
             this.accelerationRate = accelerationRate;
             this.decelerationRate = decelerationRate;
         }
@@ -575,7 +521,7 @@ namespace GDLibrary
             this.isJumping = true;
         }
 
-        
+
 
         public override void AddExternalForces(float dt)
         {

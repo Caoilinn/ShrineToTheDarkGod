@@ -53,47 +53,55 @@ namespace GDLibrary
         #region Properties
         public AnimationStateType AnimationState
         {
-            get
-            {
+            get {
                 return this.animationState;
             }
-            set
-            {
+            set {
                 this.animationState = value;
             }
         }
         public AnimationPlayer AnimationPlayer
         {
-            get
-            {
+            get {
                 return this.animationPlayer;
             }
         }
         #endregion
 
         public AnimatedPlayerObject(
-            string id, 
-            ActorType actorType, 
+            string id,
+            ActorType actorType,
             Transform3D transform,
             EffectParameters effectParameters,
-            Keys[] moveKeys, 
-            float radius, 
-            float height,
-            float accelerationRate, 
-            float decelerationRate, 
-            Vector3 translationOffset, 
-            KeyboardManager keyboardManager)
+            Model model,
+            float accelerationRate,
+            float decelerationRate,
+            Vector3 movementVector,
+            Vector3 rotationVector,
+            float moveSpeed,
+            float rotateSpeed,
+            float health,
+            float attack,
+            float defence,
+            ManagerParameters managerParameters,
+            Keys[] moveKeys)
             : base(
-                  id, 
+                  id,
                   actorType,
-                  transform, 
+                  transform,
                   effectParameters,
-                  null,
-                  moveKeys, 
+                  model,
                   accelerationRate,
                   decelerationRate,
-                  translationOffset,
-                  keyboardManager
+                  movementVector,
+                  rotationVector,
+                  moveSpeed,
+                  rotateSpeed,
+                  health,
+                  attack,
+                  defence,
+                  managerParameters,
+                  moveKeys
                   )
         {
             //initialize dictionaries

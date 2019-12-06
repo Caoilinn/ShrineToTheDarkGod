@@ -219,3 +219,5 @@ C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.
 C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.csproj.CopyComplete
 C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.dll
 C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\obj\x86\Debug\GDLibrary.pdb
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\SkinnedModel.dll
+C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDLibrary\bin\x86\Debug\SkinnedModel.pdb

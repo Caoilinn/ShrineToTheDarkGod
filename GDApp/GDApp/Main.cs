@@ -1559,8 +1559,6 @@ namespace GDApp
                 AppData.PlayerAttack,
                 AppData.PlayerDefence,
                 this.managerParameters,
-                (PlayerIndex)playerType - 1,
-                AppData.CameraMoveButtons,
                 AppData.CameraMoveKeys
             );
 
