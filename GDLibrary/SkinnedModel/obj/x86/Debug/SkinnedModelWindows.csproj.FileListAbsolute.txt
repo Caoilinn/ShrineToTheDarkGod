@@ -1,0 +1,6 @@
+C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\bin\x86\Debug\SkinnedModel.dll
+C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\bin\x86\Debug\SkinnedModel.pdb
+C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModelWindows.csproj.CoreCompileInputs.cache
+C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModel.dll
+C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModel.pdb

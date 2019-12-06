@@ -1391,6 +1391,40 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Animated\Cultist\ATTACK.blend">
+      <Name>ATTACK</Name>
+    </Compile>
+    <Compile Include="Assets\Animated\Cultist\DEFENDblend.blend">
+      <Name>DEFENDblend</Name>
+    </Compile>
+    <Compile Include="Assets\Animated\Cultist\IDLE_textured.blend">
+      <Name>IDLE_textured</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Animated\Skeleton\attacked.blend">
+      <Name>attacked</Name>
+    </Compile>
+    <Compile Include="Assets\Animated\Skeleton\attacking.blend">
+      <Name>attacking</Name>
+    </Compile>
+    <Compile Include="Assets\Animated\Skeleton\idle.blend">
+      <Name>idle</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Textures\Characters\cultisyUVMAP.png">
+      <Name>cultisyUVMAP</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Textures\Characters\skeletonUVMAP.png">
+      <Name>skeletonUVMAP</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

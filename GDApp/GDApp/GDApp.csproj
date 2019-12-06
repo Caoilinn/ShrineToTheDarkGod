@@ -75,6 +75,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\Actors\EnemyAnimatedPlayerObject.cs" />
     <Compile Include="App\Data\AppData.cs" />
     <Compile Include="App\Menu\MyMenuManager.cs" />
     <Compile Include="App\Menu\MyTextboxManager.cs" />
@@ -97,9 +98,17 @@
       <Project>{2ed0b0c9-d1d7-472e-868c-affff00ea06b}</Project>
       <Name>GDLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\GDLibrary\SkinnedModel\SkinnedModelWindows.csproj">
+      <Project>{0d41e29b-829f-4255-bca5-64dc2677da6d}</Project>
+      <Name>SkinnedModelWindows</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GDAppContent\GDAppContent.contentproj">
       <Name>GDAppContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+    </ProjectReference>
+    <ProjectReference Include="..\SkinnedModelPipeline\SkinnedModelPipeline.csproj">
+      <Project>{4636c7e1-b845-4b83-b96d-64a11b8a4515}</Project>
+      <Name>SkinnedModelPipeline</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -212,6 +212,14 @@ namespace GDLibrary
             }
         }
 
+        public Character CharacterBody
+        {
+            get
+            {
+                return this.Body as Character;
+            }
+        }
+
         public HashSet<Vector3> BlockedDirections
         {
             get

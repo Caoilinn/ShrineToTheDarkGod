@@ -14,6 +14,15 @@ namespace GDLibrary
         private PlayerIndex playerIndex;
         private Buttons[] moveButtons;
         private Keys[] moveKeys;
+        private string id;
+        private ActorType actorType;
+        private Transform3D transform;
+        private EffectParameters effectParameters;
+        private object p;
+        private float accelerationRate;
+        private float decelerationRate;
+        private Vector3 translationOffset;
+        private KeyboardManager keyboardManager;
         #endregion
 
         #region Properties
@@ -79,6 +88,23 @@ namespace GDLibrary
             this.MoveButtons = moveButtons;
             this.MoveKeys = moveKeys;
         }
+
+        public PlayerObject(
+            string id, 
+            ActorType actorType,
+            Transform3D transform, 
+            EffectParameters effectParameters, 
+            object p, 
+            Keys[] moveKeys,
+            float accelerationRate, 
+            float decelerationRate, 
+            Vector3 translationOffset, 
+            KeyboardManager keyboardManager)
+            : base(id, actorType, transform, effectParameters, p, moveKeys, accelerationRate, decelerationRate, translationOffset, keyboardManager)
+        {
+
+        }
+
         #endregion
 
         #region Methods
