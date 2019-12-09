@@ -10,7 +10,7 @@ namespace GDLibrary
         #region Fields
         //Local vars
         private double startMoveTime;
-        private double moveInterval = 2;
+        private double moveInterval = 0.25f;
         bool moveStarted;
         #endregion
 
@@ -46,19 +46,21 @@ namespace GDLibrary
 
         public override void TakeTurn(GameTime gameTime)
         {
-            ////Set up move time
-            //if (!moveStarted) this.startMoveTime = gameTime.TotalGameTime.TotalSeconds;
-
+            
             //If it is not currently the enemys' turn, return
             if (!StateManager.EnemyTurn) return;
-
+            
+            //Set up move time
+            if (!moveStarted) this.startMoveTime = gameTime.TotalGameTime.TotalSeconds;
+            
             //If the enemy is in combat
             if (StateManager.InCombat) return;
 
-            ////Set some interval turn timer
-            //TurnTimer(gameTime);
+            //Set some interval turn timer
+            TurnTimer(gameTime);
 
-            TrackPlayer(gameTime);
+            //Track player
+            //TrackPlayer(gameTime);
         }
 
         public virtual void TurnTimer(GameTime gameTime)
@@ -72,6 +74,13 @@ namespace GDLibrary
             {
                 this.moveStarted = true;
             }
+        }
+
+        public override void TakeDamage(float damage)
+        {
+            //Update player xp
+            EventDispatcher.Publish(new EventData(EventActionType.EnemyHealthUpdate, EventCategoryType.UIMenu, new object[] {damage }));
+            base.TakeDamage(damage);
         }
 
         public override void Update(GameTime gameTime)

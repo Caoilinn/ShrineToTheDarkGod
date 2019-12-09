@@ -436,36 +436,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Textures\UI\HUD\mouseicons.png">
-      <Name>mouseicons</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Assets\Textures\UI\HUD\progress_gradient.png">
-      <Name>progress_gradient</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Assets\Textures\UI\HUD\progress_white.png">
-      <Name>progress_white</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Assets\Textures\UI\HUD\reticuleClosed.png">
-      <Name>reticuleClosed</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Assets\Textures\UI\HUD\reticuleDefault.png">
-      <Name>reticuleDefault</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Assets\Textures\UI\HUD\reticuleOpen.png">
-      <Name>reticuleOpen</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Assets\Textures\UI\HUD\white.png">
       <Name>white</Name>
       <Importer>TextureImporter</Importer>
@@ -481,13 +451,13 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Textures\UI\Menu\Backgrounds\mainmenu.PNG">
+    <Compile Include="Assets\Textures\UI\Menu\Backgrounds\mainmenu.png">
       <Name>mainmenu</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Textures\UI\Menu\Buttons\genericbtn.png">
-      <Name>genericbtn</Name>
+    <Compile Include="Assets\Textures\UI\Menu\Buttons\button.png">
+      <Name>button</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -497,13 +467,6 @@
       <Name>wc1_diffuse</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="SpriteFont1.spritefont">
-      <Name>SpriteFont1</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -566,15 +529,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Models\Characters\enemy_002.FBX">
-      <Name>enemy_002</Name>
+    <Compile Include="Assets\Models\Characters\cultist_001.FBX">
+      <Name>cultist_001</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Models\Characters\enemy_001.FBX">
-      <Name>enemy_001</Name>
+    <Compile Include="Assets\Models\Characters\skeleton_001.FBX">
+      <Name>skeleton_001</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
@@ -1385,8 +1348,68 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Models\Characters\skeleton_002.FBX">
+      <Name>skeleton_002</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Textures\UI\HUD\HUD.png">
       <Name>HUD</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Fonts\gameLog.spritefont">
+      <Name>gameLog</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Textures\UI\HUD\healthProgressBar.png">
+      <Name>healthProgressBar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Textures\UI\HUD\xpProgressBar.png">
+      <Name>xpProgressBar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Textures\Billboards\UI\block_billboard.png">
+      <Name>block_billboard</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Textures\Billboards\UI\dodge_left_billboard.png">
+      <Name>dodge_left_billboard</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Textures\Billboards\UI\dodge_right_billboard.png">
+      <Name>dodge_right_billboard</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Textures\Billboards\UI\impact_billboard.png">
+      <Name>impact_billboard</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Textures\Billboards\UI\slash_billboard_01.png">
+      <Name>slash_billboard_01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Textures\Billboards\UI\slash_billboard_02.png">
+      <Name>slash_billboard_02</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

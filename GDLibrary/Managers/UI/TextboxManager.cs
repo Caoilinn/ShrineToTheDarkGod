@@ -102,13 +102,13 @@ namespace GDLibrary
 
             if (combatEventActionTypes.Contains(eventData.EventType))
             {
-                damage = (float)eventData.AdditionalParameters[0];
-                playerHealth = (float)eventData.AdditionalParameters[1];
-                enemyHealth = (float)eventData.AdditionalParameters[2];
+                damage = (float) eventData.AdditionalParameters[0];
+                playerHealth = (float) eventData.AdditionalParameters[1];
+                enemyHealth = (float) eventData.AdditionalParameters[2];
             }
             else if (eventData.EventType.Equals(EventActionType.PlayerHealthPickup))
             {
-                playerHealth = (float)eventData.AdditionalParameters[0];
+                playerHealth = (float) eventData.AdditionalParameters[0];
             }
             else if (eventData.EventType.Equals(EventActionType.OnItemAdded) || eventData.EventType.Equals(EventActionType.OnItemRemoved))
             {
@@ -168,7 +168,8 @@ namespace GDLibrary
                         this.StatusType = StatusType.Update | StatusType.Drawn;
                         this.TextboxText =
                             "Game Log" + "\n\n" +
-                            "Player dodge failed, the player took damage of " + damage + "\n\n" +
+                            "Dodge failed!" + "\n\n" + 
+                            "The player took damage of " + damage + "\n\n" +
                             "Player health " + playerHealth + "\n" +
                             "Enemy health " + enemyHealth;
                     }
@@ -209,7 +210,7 @@ namespace GDLibrary
                         "You'll never stop the dark god!";
                     break;
 
-                case EventActionType.PlayerHealthPickup:
+                case EventActionType.PlayerHealthUpdate:
                     ClearTextbox();
                     this.StatusType = StatusType.Update | StatusType.Drawn;
                     this.TextboxText =

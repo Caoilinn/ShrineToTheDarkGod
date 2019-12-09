@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>gate_collision_002</Name>
     <Identity>
-      <SourceFilename>C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Collision Boxes\Props\gate_collision_001.FBX</SourceFilename>
+      <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Collision Boxes\Props\gate_collision_001.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>

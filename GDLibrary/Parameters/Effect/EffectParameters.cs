@@ -168,6 +168,11 @@ namespace GDLibrary
             this.effect.CurrentTechnique.Passes[0].Apply();
         }
 
+        //Used by billboards
+        public virtual void SetParameters(Camera3D camera, BillboardOrientationParameters billboardParameters)
+        {
+        }
+
         public virtual void SetWorld(Matrix world)
         {
         }

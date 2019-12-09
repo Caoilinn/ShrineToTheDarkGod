@@ -220,6 +220,16 @@ namespace GDLibrary
 
                 //Handle keyboard input
                 HandleKeyboardInput(gameTime);
+
+            //Update position
+            this.ManagerParameters.SoundManager.UpdateListenerPosition(this.Transform.Translation, this.Transform.Look);
+        }
+
+        public override void TakeDamage(float damage)
+        {
+            //Update player health
+            EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthUpdate, EventCategoryType.UIMenu, new object[] { damage }));
+            base.TakeDamage(damage);
         }
 
         public override void Update(GameTime gameTime)

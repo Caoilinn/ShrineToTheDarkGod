@@ -14,6 +14,9 @@ namespace GDLibrary
         private MouseManager mouseManager;
         private SpriteBatch spriteBatch;
         private bool isVisible;
+
+        //Tracks last object mouse-ed over by the cursor
+        private UIObject oldUIObjectMouseOver;
         #endregion
 
         #region Properties
@@ -192,6 +195,45 @@ namespace GDLibrary
                     //If update flag is set
                     if ((currentUIObject.GetStatusType() & StatusType.Update) != 0)
                         currentUIObject.Update(gameTime);
+                }
+            }
+
+            //Check for mouse over and mouse click on a menu item
+            CheckMouseOverAndClick(gameTime);
+        }
+
+        private void CheckMouseOverAndClick(GameTime gameTime)
+        {
+            foreach (UIObject currentUIObject in this.activeList)
+            {
+                //only handle mouseover and mouse click for buttons
+                if (currentUIObject.ActorType == ActorType.UIButton)
+                {
+                    //add an if to check that this is a interactive UIButton object
+                    if (currentUIObject.Transform.Bounds.Intersects(this.mouseManager.Bounds))
+                    {
+                        //if mouse is over a new ui object then set old to "IsMouseOver=false"
+                        if (this.oldUIObjectMouseOver != null && this.oldUIObjectMouseOver != currentUIObject)
+                        {
+                            oldUIObjectMouseOver.MouseOverState.Update(false);
+                        }
+
+                        //update the current state of the currently mouse-over'ed ui object
+                        currentUIObject.MouseOverState.Update(true);
+
+                        //apply any mouse over or mouse click actions
+                        HandleMouseOver(currentUIObject, gameTime);
+                        if (this.mouseManager.IsLeftButtonClickedOnce())
+                            HandleMouseClick(currentUIObject, gameTime);
+
+                        //store the current as old for the next update
+                        this.oldUIObjectMouseOver = currentUIObject;
+                    }
+                    else
+                    {
+                        //set the mouse as not being over the current ui object
+                        currentUIObject.MouseOverState.Update(false);
+                    }
                 }
             }
         }

@@ -56,6 +56,23 @@ namespace GDLibrary
                 (int)MathHelper.Lerp(a.A, b.A, lerpFactor)
             );
         }
+
+        public static float SineLerpByElapsedTime(TrigonometricParameters trigonometricParameters, float totalElapsedTime)
+        {
+            //Range: - Max Amplitude -> + Max Amplitude
+            float lerpFactor = (float) (trigonometricParameters.MaxAmplitude
+                * Math.Sin(trigonometricParameters.AngularFrequency
+                * MathHelper.ToRadians(totalElapsedTime) + trigonometricParameters.PhaseAngle)
+            );
+            
+            //Range 0 -> 2 * Max Amplitude
+            lerpFactor += trigonometricParameters.MaxAmplitude;
+            
+            //Range 0 -> Max Amplitude
+            lerpFactor /= 2.0f;
+
+            return lerpFactor;
+        }
         #endregion
 
         #region Trig

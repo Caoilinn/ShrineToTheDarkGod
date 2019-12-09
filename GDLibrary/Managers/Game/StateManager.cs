@@ -17,12 +17,14 @@ namespace GDLibrary
     {
         #region Fields
         private static int currentLevel;
+
         private static bool playerTurn;
         private static bool enemyTurn;
+        private static bool inCombat;
+
+        private static bool inProximityOfATrigger;
         private static bool inProximityOfAnItem;
         private static bool inProximityOfAGate;
-        private static bool inCombat;
-        internal static bool InProximityOfATrigger;
         #endregion
 
         #region Properties
@@ -62,6 +64,18 @@ namespace GDLibrary
             }
         }
 
+        public static bool InCombat
+        {
+            get
+            {
+                return inCombat;
+            }
+            set
+            {
+                inCombat = value;
+            }
+        }
+
         public static bool InProximityOfAnItem
         {
             get
@@ -86,15 +100,15 @@ namespace GDLibrary
             }
         }
 
-        public static bool InCombat
+        public static bool InProximityOfATrigger
         {
             get
             {
-                return inCombat;
+                return inProximityOfATrigger;
             }
             set
             {
-                inCombat = value;
+                inProximityOfATrigger = value;
             }
         }
         #endregion

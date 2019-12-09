@@ -1,4 +1,5 @@
- using System.Collections.Generic;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework;
 
 namespace GDLibrary
@@ -264,6 +265,10 @@ namespace GDLibrary
             //For each enemy in the enemies list
             foreach (Actor3D enemy in this.enemies)
             {
+                //Create item audio emitter
+                AudioEmitter enemyAudioEmitter = new AudioEmitter();
+                enemyAudioEmitter.Position = enemy.Transform.Translation;
+
                 //If the enemys' position is equal to the players' position
                 if (enemy.Transform.Translation.Equals(player.Transform.Translation))
                 {
@@ -284,7 +289,7 @@ namespace GDLibrary
                 if (Vector3.Distance(enemy.Transform.Translation * vectorXZ, player.Transform.Translation * vectorXZ) == (distanceBetweenAdjacentCells * 2))
                 {
                     //Publish enemy growl sound
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "growl" }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "growl", enemyAudioEmitter }));
                 }
 
                 //If the player is looking towards the enemy
@@ -335,11 +340,15 @@ namespace GDLibrary
             //For each item in the items list
             foreach (Actor3D item in this.items)
             {
+                //Create item audio emitter
+                AudioEmitter itemAudioEmitter = new AudioEmitter();
+                itemAudioEmitter.Position = item.Transform.Translation;
+
                 //If the items' Xz position is equal to the players' xz position
                 if ((item.Transform.Translation * vectorXZ).Equals(player.Transform.Translation * vectorXZ))
                 {
                     //Then the player is colliding with an item
-                    HandlePlayerItemCollision(item as ImmovablePickupObject);
+                    HandlePlayerItemCollision(item as ImmovablePickupObject, itemAudioEmitter);
                     inProximityOfAnItem = true;
                     break;
                 }
@@ -348,7 +357,7 @@ namespace GDLibrary
                 if (Vector3.Distance(item.Transform.Translation * vectorXZ, player.Transform.Translation * vectorXZ) <= distanceBetweenAdjacentCells)
                 {
                     //Then the player is standing in a cell that is adjacent to an item
-                    HandlePlayerItemIneraction(item as ImmovablePickupObject);
+                    HandlePlayerItemIneraction(item as ImmovablePickupObject, itemAudioEmitter);
                     inProximityOfAnItem = true;
                     break;
                 }
@@ -358,7 +367,7 @@ namespace GDLibrary
             StateManager.InProximityOfAnItem = inProximityOfAnItem;
         }
 
-        private void HandlePlayerItemCollision(ImmovablePickupObject item)
+        private void HandlePlayerItemCollision(ImmovablePickupObject item, AudioEmitter itemAudioEmitter)
         {
             //Select which sound to play, based on the pickup type
             switch (item.PickupParameters.PickupType)
@@ -367,21 +376,21 @@ namespace GDLibrary
                 case PickupType.Sword:
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.Textbox, new object[] { "Sword" }));
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.UIMenu, new object[] { "Sword" }));
-                    this.SoundManager.PlayCue("equip_sword");
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "equip_sword", itemAudioEmitter }));
                     break;
 
                 //Play pickup key sound
                 case PickupType.Key:
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.Textbox, new object[] { "Key" }));
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.UIMenu, new object[] { "Key" }));
-                    this.SoundManager.PlayCue("keys_jingle");
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "keys_jingle", itemAudioEmitter }));
                     break;
 
                 //Play pickup potion sound
                 case PickupType.Health:
-                    EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthPickup, EventCategoryType.Textbox, new object[] { this.combatManager.Player.Health + 10 }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.Textbox, new object[] { "Potion" }));
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.UIMenu, new object[] { "Potion" }));
-                    this.SoundManager.PlayCue("drink_potion");
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "drink_potion", itemAudioEmitter }));
                     break;
             }
 
@@ -393,10 +402,10 @@ namespace GDLibrary
             this.Remove(item);
         }
 
-        private void HandlePlayerItemIneraction(ImmovablePickupObject item)
+        private void HandlePlayerItemIneraction(ImmovablePickupObject item, AudioEmitter itemAudioEmitter)
         {
             //Play sound
-            this.SoundManager.PlayCue("item_twinkle");
+            EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "item_twinkle", itemAudioEmitter }));
         }
         #endregion
 
@@ -409,11 +418,15 @@ namespace GDLibrary
             //For each gate in the gates list
             foreach (Actor3D gate in this.gates)
             {
+                //Create item audio emitter
+                AudioEmitter gateAudioEmitter = new AudioEmitter();
+                gateAudioEmitter.Position = gate.Transform.Translation;
+
                 //If the gates' position is equal to the player's position
                 if (gate.Transform.Translation.Equals(player.Transform.Translation))
                 {
                     //Then the player is colliding with a gate
-                    HandlePlayerGateCollision(gate as CollidableArchitecture);
+                    HandlePlayerGateCollision(gate as CollidableArchitecture, gateAudioEmitter);
                     inProximityOfAGate = true;
                     break;
                 }
@@ -422,7 +435,7 @@ namespace GDLibrary
                 if (Vector3.Distance(gate.Transform.Translation * vectorXZ, player.Transform.Translation * vectorXZ) <= distanceBetweenAdjacentCells)
                 {
                     //Then the player is standing in a cell that is adjacent to it
-                    HandlePlayerGateInteraction(gate as CollidableArchitecture);
+                    HandlePlayerGateInteraction(gate as CollidableArchitecture, gateAudioEmitter);
                     inProximityOfAGate = true;
                     break;
                 }
@@ -432,26 +445,26 @@ namespace GDLibrary
             StateManager.InProximityOfAGate = inProximityOfAGate;
         }
 
-        private void HandlePlayerGateCollision(CollidableArchitecture gate)
+        private void HandlePlayerGateCollision(CollidableArchitecture gate, AudioEmitter gateAudioEmitter)
         {
             //This should never happen
             //Prevent this elsewhere
         }
 
-        private void HandlePlayerGateInteraction(CollidableArchitecture gate)
+        private void HandlePlayerGateInteraction(CollidableArchitecture gate, AudioEmitter gateAudioEmitter)
         {
             //If the player is holding a key
             if (this.InventoryManager.HasItem(PickupType.Key))
             {
-                //Play a sound
-                this.SoundManager.PlayCue("gate_open");
-
                 //Use a key to open the gate
                 this.InventoryManager.UseItem(PickupType.Key);
 
                 //Update UI
                 EventDispatcher.Publish(new EventData(EventActionType.OnItemRemoved, EventCategoryType.Textbox, new object[] { "Key" }));
                 EventDispatcher.Publish(new EventData(EventActionType.OnItemRemoved, EventCategoryType.UIMenu, new object[] { "Key" }));
+                
+                //Play a sound
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "gate_open", gateAudioEmitter }));
 
                 //Remove the gate
                 this.Remove(gate);
@@ -462,6 +475,7 @@ namespace GDLibrary
             }
             else
             {
+                //Display Info
                 EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "I will need a key to open this gate" }));
             }
         }
@@ -501,7 +515,7 @@ namespace GDLibrary
         #region Base Methods
         private void UpdateSound()
         {
-            if (!StateManager.InProximityOfAnItem) EventDispatcher.Publish(new EventData(EventActionType.OnStop, EventCategoryType.Sound2D, new object[] { "item_twinkle", 0 }));
+            if (!StateManager.InProximityOfAnItem) EventDispatcher.Publish(new EventData(EventActionType.OnStop, EventCategoryType.Sound3D, new object[] { "item_twinkle", 0 }));
 
             if (!StateManager.InCombat)
             {

@@ -21,5 +21,7 @@ namespace GDLibrary
         Track,
         CollidableCamera,
         Spin,
+        SineScaleLerp,
+        Rotation,
     }
 }

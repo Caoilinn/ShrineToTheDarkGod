@@ -41,12 +41,12 @@ namespace GDApp
         //Dispatchers
         private EventDispatcher eventDispatcher;
 
-        //Vectors
+        //Viewport
         private Vector2 screenCentre;
+        private Viewport viewport;
 
         //Models
         private CollidableObject collidableModel;
-        private ModelObject staticModel;
 
         //Dictionaries
         private ContentDictionary<Model> modelDictionary;
@@ -58,10 +58,12 @@ namespace GDApp
         private Dictionary<string, PickupParameters> pickupParametersDictionary;
         private Dictionary<string, EnemyObject> enemyDictionary;
         private Dictionary<string, UITextureObject> uiDictionary;
+        private Dictionary<string, IVertexData> vertexDataDictionary;
 
         //Lists
-        private List<string> soundEffectList = new List<String>();
-        private List<TriggerVolume> triggerList = new List<TriggerVolume>();
+        private readonly List<string> soundEffectList = new List<String>();
+        private readonly List<TriggerVolume> triggerList = new List<TriggerVolume>();
+        private List<EnemyObject> enemies;
 
         //Debug
         private PhysicsDebugDrawer physicsDebugDrawer;
@@ -70,12 +72,12 @@ namespace GDApp
         private int[,,] levelMap;
 
         //Array Position
-        private int roomsStartPosition = 1;
-        private int pickupsStartPosition = 2;
-        private int triggersStartPosition = 3;
-        private int playersStartPosition = 4;
-        private int enemiesStartPosition = 5;
-        private int gatesStartPosition = 6;
+        private int roomsStartPosition;
+        private int pickupsStartPosition;
+        private int triggersStartPosition;
+        private int playersStartPosition;
+        private int enemiesStartPosition;
+        private int gatesStartPosition;
 
         //Array Shift Position
         private int roomsShiftPosition;
@@ -96,22 +98,20 @@ namespace GDApp
         //Player Posiiton
         private Transform3D playerPosition;
         private Transform3D uiPosition;
-        private PlayerObject player;
-        private List<EnemyObject> enemies;
+
+        //Effects
         private BasicEffect torchLitRoomEffect;
         private BasicEffect standardRoomEffect;
         private BasicEffect pickupEffect;
         private BasicEffect gateEffect;
         private BasicEffect enemyEffect;
 
-        private ProjectionParameters projectionParameters;
-
+        //UI
         private Vector2 inventoryTranslation = new Vector2(-63, 640);
         private Vector2 inventorySpacing = new Vector2(110, 0);
-
+        private UITextureObject healthBar;
+        private UITextureObject xpBar;
         private string textboxText;
-        private Viewport viewport;
-        private float depth;
 
         public Main()
         {
@@ -123,8 +123,6 @@ namespace GDApp
         protected override void Initialize()
         {
             Window.Title = "Shrine to the Dark God";
-
-            InitializeVertices();
 
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
             this.resolution = ScreenUtility.WXGA;
@@ -138,7 +136,6 @@ namespace GDApp
             InitializeManagers();
 
             LoadContent();
-            
             SetupBitArray();
 
             LoadLevelFromFile();
@@ -146,11 +143,17 @@ namespace GDApp
 
             InitializeMap();
 
+            InitializeVertices();
+            InitializeBillboardVertices();
+            InitializePrimitives();
+
             InitializeMenu();
             InitializeTextbox();
             InitializeUI();
+            InitializeUIMousePointer();
 
             InitializeGrid();
+
             base.Initialize();
         }
 
@@ -162,6 +165,76 @@ namespace GDApp
         private void InitializeVertices()
         {
             this.vertices = VertexFactory.GetVertexPositionColorTextureQuad();
+        }
+
+        private void InitializeBillboardVertices()
+        {
+            IVertexData vertexData = null;
+
+            #region Textured Quad
+            //Get vertices for textured quad
+            VertexPositionColorTexture[] vertices = VertexFactory.GetTextureQuadVertices(out Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType, out int primitiveCount);
+
+            //Make a vertex data object to store and draw the vertices
+            vertexData = new BufferedVertexData<VertexPositionColorTexture>(this.graphics.GraphicsDevice, vertices, primitiveType, primitiveCount);
+
+            //Add to the dictionary for use by things like billboards - see InitializeBillboards()
+            this.vertexDataDictionary.Add(AppData.TexturedQuadID, vertexData);
+            #endregion
+
+            #region Billboard Quad - we must use this type when creating billboards
+            //Get vertices for textured billboard
+            VertexBillboard[] verticesBillboard = VertexFactory.GetVertexBillboard(1, out primitiveType, out primitiveCount);
+
+            //Make a vertex data object to store and draw the vertices
+            vertexData = new BufferedVertexData<VertexBillboard>(this.graphics.GraphicsDevice, verticesBillboard, primitiveType, primitiveCount);
+
+            //Add to the dictionary for use by things like billboards - see InitializeBillboards()
+            this.vertexDataDictionary.Add(AppData.TexturedBillboardQuadID, vertexData);
+            #endregion
+        }
+
+        private void InitializePrimitives()
+        {
+            //Get a copy of the effect parameters
+            BasicEffectParameters effectParameters = this.effectDictionary["roomEffect1"].Clone() as BasicEffectParameters;
+            effectParameters.Texture = this.textureDictionary["HUD"];
+            effectParameters.DiffuseColor = Color.Yellow;
+            effectParameters.Alpha = 0.4f;
+
+            //Define location
+            Transform3D transform = new Transform3D(
+                new Vector3(1143, 381, 1143), 
+                new Vector3(30, 60, 45),
+                Vector3.One,
+                Vector3.Forward,
+                Vector3.Up
+            );
+
+            //Create primitive
+            PrimitiveObject primitiveObject = new PrimitiveObject(
+                "Simple primitive",
+                ActorType.Primitive,
+                transform, 
+                effectParameters,
+                this.vertexDataDictionary[AppData.TexturedQuadID]
+            ) {
+                StatusType = StatusType.Drawn | StatusType.Update
+            };
+
+            PrimitiveObject clonedPrimitiveObject = null;
+
+            for (int i = 1; i <= 4; i++)
+            {
+                clonedPrimitiveObject = primitiveObject.Clone() as PrimitiveObject;
+                clonedPrimitiveObject.Transform.Translation += new Vector3(0, 5 * i, 0);
+
+                //We could also attach controllers here instead to give each a different rotation
+                clonedPrimitiveObject.AttachController(new RotationController("Rotation Controller", ControllerType.Rotation, new Vector3(0.1f * i, 0, 0)));
+
+                //Add to manager
+                this.objectManager.Add(clonedPrimitiveObject);
+            }
         }
 
         private void InitializeGraphics()
@@ -534,14 +607,16 @@ namespace GDApp
         private void InitializeMenu()
         {
             Vector2 position = Vector2.Zero;
-            Transform2D transform = null;
+
             Texture2D texture = null;
-            UIButtonObject uiButtonObject = null;
+            Transform2D transform = null;
             UIButtonObject clone = null;
+            UIButtonObject uiButtonObject = null;
+
             string sceneID = "";
             string buttonID = "";
             string buttonText = "";
-            int verticalBtnSeparation = 55;
+            int verticalBtnSeparation = 60;
 
             #region Main Menu
             sceneID = "main menu";
@@ -551,8 +626,8 @@ namespace GDApp
             
             //Scale the texture to fit the entire screen
             Vector2 scale = new Vector2(
-                (float)graphics.PreferredBackBufferWidth / texture.Width,
-                (float)graphics.PreferredBackBufferHeight / texture.Height
+                (float) graphics.PreferredBackBufferWidth / texture.Width,
+                (float) graphics.PreferredBackBufferHeight / texture.Height
             );
 
             transform = new Transform2D(scale);
@@ -571,44 +646,53 @@ namespace GDApp
                 )
             );
 
-            //Add start button
+            #region Start Button
             buttonID = "startbtn";
             buttonText = "Start";
 
             position = new Vector2(
-                graphics.PreferredBackBufferWidth / 4.0f, 
-                300
+                375, 
+                325
             );
 
-            texture = this.textureDictionary["genericbtn"];
+            texture = this.textureDictionary["button"];
 
             transform = new Transform2D(
                 position,
                 0, 
-                new Vector2(1.8f, 1f),
-                new Vector2(texture.Width / 2.0f, 
-                texture.Height / 2.0f), 
+                new Vector2(1.5f, 1f),
+                new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), 
                 new Integer2(texture.Width, texture.Height)
             );
 
             uiButtonObject = new UIButtonObject(
-                buttonID, 
-                ActorType.UIButton, 
+                buttonID,
+                ActorType.UIButton,
                 StatusType.Update | StatusType.Drawn,
-                transform, 
-                Color.White, 
-                SpriteEffects.None, 
-                0.1f, 
-                texture, 
+                transform,
+                Color.White,
+                SpriteEffects.None,
+                0.1f,
+                texture,
                 buttonText,
                 this.fontDictionary["menu"],
-                Color.Black, 
-                new Vector2(0, 2)
+                Color.Black,
+                new Vector2(0, 6)
+            );
+
+            //Attach controller
+            uiButtonObject.AttachController(
+                new UIScaleSineLerpController(
+                    "SineScaleLerpController1",
+                    ControllerType.SineScaleLerp,
+                    new TrigonometricParameters(0.1f, 0.2f, 1)
+                )
             );
 
             this.menuManager.Add(sceneID, uiButtonObject);
+            #endregion
 
-            //Add audio button - clone the audio button then just reset texture, ids etc in all the clones
+            #region Audio Button
             clone = (UIButtonObject)uiButtonObject.Clone();
             clone.ID = "audiobtn";
             clone.Text = "Audio";
@@ -619,8 +703,9 @@ namespace GDApp
             //Change the texture blend color
             clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
+            #endregion
 
-            //Add controls button - clone the audio button then just reset texture, ids etc in all the clones
+            #region Controls Button
             clone = (UIButtonObject)uiButtonObject.Clone();
             clone.ID = "controlsbtn";
             clone.Text = "Controls";
@@ -631,8 +716,9 @@ namespace GDApp
             //Change the texture blend color
             clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
+            #endregion
 
-            //Add exit button - clone the audio button then just reset texture, ids etc in all the clones
+            #region Exit Button
             clone = (UIButtonObject)uiButtonObject.Clone();
             clone.ID = "exitbtn";
             clone.Text = "Exit";
@@ -646,6 +732,7 @@ namespace GDApp
             //Store the original color since if we modify with a controller and need to reset
             clone.OriginalColor = clone.Color;
             this.menuManager.Add(sceneID, clone);
+            #endregion
             #endregion
 
             #region Audio Menu
@@ -688,7 +775,7 @@ namespace GDApp
             clone = (UIButtonObject)uiButtonObject.Clone();
             
             //Move down on Y-axis for next button
-            clone.Transform.Translation += new Vector2(0, verticalBtnSeparation);
+            clone.Transform.Translation += new Vector2(0, 1 * verticalBtnSeparation);
             clone.ID = "volumeDownbtn";
             clone.Text = "Volume Down";
 
@@ -702,7 +789,7 @@ namespace GDApp
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(0, 2 * verticalBtnSeparation);
             clone.ID = "volumeMutebtn";
-            clone.Text = "Volume Mute";
+            clone.Text = "Mute";
             
             //Change the texture blend color
             clone.Color = Color.White;
@@ -714,7 +801,7 @@ namespace GDApp
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(0, 3 * verticalBtnSeparation);
             clone.ID = "volumeUnMutebtn";
-            clone.Text = "Volume Un-mute";
+            clone.Text = "Un-mute";
             
             //Change the texture blend color
             clone.Color = Color.White;
@@ -741,14 +828,14 @@ namespace GDApp
 
             //Scale the texture to fit the entire screen
             scale = new Vector2(
-                (float)graphics.PreferredBackBufferWidth / texture.Width,
-                (float)graphics.PreferredBackBufferHeight / texture.Height
+                (float) graphics.PreferredBackBufferWidth / texture.Width,
+                (float) graphics.PreferredBackBufferHeight / texture.Height
             );
 
             transform = new Transform2D(scale);
 
             this.menuManager.Add(
-                sceneID, 
+                sceneID,
                 new UITextureObject(
                     "controlsmenuTexture", 
                     ActorType.UITexture,
@@ -765,7 +852,11 @@ namespace GDApp
             clone = (UIButtonObject)uiButtonObject.Clone();
             
             //Move down on Y-axis for next button
-            clone.Transform.Translation += new Vector2(700, 7 * verticalBtnSeparation);
+            clone.Transform.Translation += new Vector2(
+                625, 
+                360
+            );
+
             clone.ID = "backbtn";
             clone.Text = "Back";
             
@@ -782,8 +873,8 @@ namespace GDApp
 
             //Scale the texture to fit the entire screen
             scale = new Vector2(
-                (float)graphics.PreferredBackBufferWidth / texture.Width,
-                (float)graphics.PreferredBackBufferHeight / texture.Height
+                (float) graphics.PreferredBackBufferWidth / texture.Width,
+                (float) graphics.PreferredBackBufferHeight / texture.Height
             );
 
             transform = new Transform2D(scale);
@@ -823,8 +914,8 @@ namespace GDApp
 
             //Scale the texture to fit the entire screen
             scale = new Vector2(
-                (float)graphics.PreferredBackBufferWidth / texture.Width,
-                (float)graphics.PreferredBackBufferHeight / texture.Height
+                (float) graphics.PreferredBackBufferWidth / texture.Width,
+                (float) graphics.PreferredBackBufferHeight / texture.Height
             );
 
             transform = new Transform2D(scale);
@@ -864,8 +955,8 @@ namespace GDApp
 
             //Scale the texture to fit the entire screen
             scale = new Vector2(
-                (float)graphics.PreferredBackBufferWidth / texture.Width,
-                (float)graphics.PreferredBackBufferHeight / texture.Height
+                (float) graphics.PreferredBackBufferWidth / texture.Width,
+                (float) graphics.PreferredBackBufferHeight / texture.Height
             );
 
             transform = new Transform2D(scale);
@@ -902,40 +993,125 @@ namespace GDApp
         {
             eventDispatcher.UIChanged += EventDispatcher_UIChanged;
 
-            Transform2D transform = new Transform2D(
-                new Vector2(100, 200),
-                0,
-                Vector2.One,
-                Vector2.Zero,
-                new Integer2(100, 25)
-            );
-
-            Texture2D texture = this.textureDictionary["HUD"];
+            Transform2D transform;
             DrawnActor2D text;
+            Texture2D texture;
 
-            //Scale the texture to fit the entire screen
-            Vector2 scale = new Vector2(
-                (float)graphics.PreferredBackBufferWidth / texture.Width,
-                (float)graphics.PreferredBackBufferHeight / texture.Height
-            );
+            #region Background
+            texture = this.textureDictionary["HUD"];
 
-            transform = new Transform2D(scale);
             text = new UITextureObject(
                 "uiTexture",
                 ActorType.UITexture,
-                StatusType.Drawn,       //Notice we dont need to update a static texture
-                transform,
+                StatusType.Drawn,
+                new Transform2D(
+                    new Vector2(
+                        (float)graphics.PreferredBackBufferWidth / texture.Width,
+                        (float)graphics.PreferredBackBufferHeight / texture.Height
+                    )
+                ),
                 Color.White,
                 SpriteEffects.None,
-                0.1f,                      //Depth is 1 so its always sorted to the back of other menu elements
+                0.1f,
                 texture
             );
 
             this.uiManager.Add(text);
+            #endregion
+
+            #region Health Bar
+            texture = this.textureDictionary["health"];
+
+            transform = new Transform2D(
+                new Vector2(105, 563),
+                0,
+                new Vector2(1, 1),
+                Vector2.Zero,
+                new Integer2(100, 25)
+            );
+
+            this.healthBar = new UITextureObject(
+                "uiHealthBar",
+                ActorType.UITexture,
+                StatusType.Drawn,
+                transform,
+                Color.White,
+                SpriteEffects.None,
+                0.1f,
+                texture
+            );
+
+            this.uiManager.Add(healthBar);
+            #endregion
+
+            #region XP Bar
+            texture = this.textureDictionary["xp"];
+
+            transform = new Transform2D(
+                new Vector2(105, 599),
+                0,
+                new Vector2(0, 1),
+                Vector2.Zero,
+                new Integer2(100, 25)
+            );
+
+            this.xpBar = new UITextureObject(
+                "uiHealthBar",
+                ActorType.UITexture,
+                StatusType.Drawn,
+                transform,
+                Color.White,
+                SpriteEffects.None,
+                0.1f,
+                texture
+            );
+
+            this.uiManager.Add(xpBar);
+            #endregion
+        }
+
+        private void InitializeUIMousePointer()
+        {
+            //Texture2D texture = this.textureDictionary["HUD"];
+            
+            ////Show complete texture
+            //Microsoft.Xna.Framework.Rectangle sourceRectangle = new Microsoft.Xna.Framework.Rectangle(0, 0, texture.Width, texture.Height);
+
+            ////Listens for object picking events from the object picking manager
+            //UIPickingMouseObject myUIMouseObject = new UIPickingMouseObject(
+            //    "Picking Mouse Object",
+            //    ActorType.UITexture,
+            //    new Transform2D(Vector2.One),
+            //    this.fontDictionary["menu"],
+            //    "",
+            //    new Vector2(0, 40),
+            //    texture,
+            //    this.mouseManager,
+            //    this.eventDispatcher
+            //);
+
+            //this.uiManager.Add(myUIMouseObject);
         }
 
         private void EventDispatcher_UIChanged(EventData eventData)
         {
+            //Health bar
+            if (eventData.EventType.Equals(EventActionType.PlayerHealthUpdate)) {
+                this.healthBar.Transform.Scale = new Vector2(
+                    this.healthBar.Transform.Scale.X - ((float) eventData.AdditionalParameters[0] / 100),
+                    this.healthBar.Transform.Scale.Y
+                );
+            }
+
+            //XP bar
+            if (eventData.EventType.Equals(EventActionType.EnemyHealthUpdate)) {
+                this.xpBar.Transform.Scale = new Vector2(
+                    this.xpBar.Transform.Scale.X + ((float) eventData.AdditionalParameters[0] / 100),
+                    this.xpBar.Transform.Scale.Y
+                );
+            }
+
+            //If item added
             if (eventData.EventType.Equals(EventActionType.OnItemAdded))
             {
                 UITextureObject inventoryItem = null;
@@ -959,6 +1135,7 @@ namespace GDApp
                 return;
             }
 
+            //If item removed
             if (eventData.EventType.Equals(EventActionType.OnItemRemoved))
             {
                 UITextureObject inventoryItem = null;
@@ -1006,7 +1183,7 @@ namespace GDApp
                 SpriteEffects.None,
                 0,
                 this.textboxText,
-                this.fontDictionary["menu"]
+                this.fontDictionary["gameLog"]
             );
 
             this.textboxManager.Add("textbox", uiTextObj);
@@ -1104,6 +1281,14 @@ namespace GDApp
         #region Map Setup
         private void SetupBitArray()
         {
+            //Determine starting position of each component in the LevelData text file
+            this.roomsStartPosition = AppData.RoomsStartPosition;
+            this.pickupsStartPosition = AppData.PickupsStartPosition;
+            this.triggersStartPosition = AppData.TriggersStartPosition;
+            this.playersStartPosition = AppData.PlayersStartPosition;
+            this.enemiesStartPosition = AppData.EnemiesStartPosition;
+            this.gatesStartPosition = AppData.GatesStartPosition;
+            
             //Start at the 0th bit of the array
             int roomsShiftPosition = 0;
 
@@ -1134,7 +1319,7 @@ namespace GDApp
 
         private void WriteLevelToFile()
         {
-            File.WriteAllText("App/Data/mapData.txt", StateManager.CurrentLevel.ToString());
+            File.WriteAllText("App/Data/LevelData.txt", StateManager.CurrentLevel.ToString());
         }
 
         private void LoadMapFromFile()
@@ -1146,7 +1331,7 @@ namespace GDApp
 
             #region Read File
             //Store all file data
-            string fileText = File.ReadAllText("App/Data/mapData.txt");
+            string fileText = File.ReadAllText("App/Data/LevelData.txt");
 
             //Split the file into an array of levels
             string[] levels = fileText.Split('*');
@@ -1577,10 +1762,13 @@ namespace GDApp
             //Select enemy
             switch (enemyType) {
                 case 1:
-                    this.collidableModel = this.enemyDictionary["Skeleton"];
+                    this.collidableModel = this.enemyDictionary["Skeleton1"];
                     break;
                 case 2:
-                    this.collidableModel = this.enemyDictionary["Cultist"];
+                    this.collidableModel = this.enemyDictionary["Skeleton2"];
+                    break;
+                case 3:
+                    this.collidableModel = this.enemyDictionary["Cultist1"];
                     break;
             }
 
@@ -1643,6 +1831,9 @@ namespace GDApp
 
             //UI
             this.uiDictionary = new Dictionary<string, UITextureObject>();
+
+            //Vertex Data
+            this.vertexDataDictionary = new Dictionary<string, IVertexData>();
         }
 
         private void LoadAssets()
@@ -1728,8 +1919,9 @@ namespace GDApp
             #endregion
 
             #region Character Models
-            this.modelDictionary.Load("Assets/Models/Characters/enemy_001", "skeletonModel");
-            this.modelDictionary.Load("Assets/Models/Characters/enemy_002", "cultistModel");
+            this.modelDictionary.Load("Assets/Models/Characters/skeleton_001", "skeletonModel1");
+            this.modelDictionary.Load("Assets/Models/Characters/skeleton_002", "skeletonModel2");
+            this.modelDictionary.Load("Assets/Models/Characters/cultist_001", "cultistModel1");
             #endregion
 
             #region Prop Models
@@ -1845,7 +2037,7 @@ namespace GDApp
             #endregion
 
             #region Menu Buttons
-            this.textureDictionary.Load("Assets/Textures/UI/Menu/Buttons/genericbtn");
+            this.textureDictionary.Load("Assets/Textures/UI/Menu/Buttons/button");
             #endregion
 
             #region Menu Backgrounds
@@ -1858,54 +2050,64 @@ namespace GDApp
             #endregion
 
             #region UI Elements
-            this.textureDictionary.Load("Assets/Textures/UI/HUD/reticuleDefault");
-            this.textureDictionary.Load("Assets/Textures/UI/HUD/progress_gradient");
-            this.textureDictionary.Load("Assets/Textures/UI/HUD/HUD");
-            this.textureDictionary.Load("Assets/Textures/UI/HUD/sword");
-            this.textureDictionary.Load("Assets/Textures/UI/HUD/potion");
-            this.textureDictionary.Load("Assets/Textures/UI/HUD/key");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/healthProgressBar", "health");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/xpProgressBar", "xp");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/HUD", "HUD");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/sword", "sword");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/potion", "potion");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/key", "key");
+            #endregion
+
+            #region Billboards
+            this.textureDictionary.Load("Assets/Textures/Billboards/UI/block_billboard", "block_billboard");
+            this.textureDictionary.Load("Assets/Textures/Billboards/UI/dodge_left_billboard", "dodge_left_billboard");
+            this.textureDictionary.Load("Assets/Textures/Billboards/UI/dodge_right_billboard", "dodge_right_billboard");
+            this.textureDictionary.Load("Assets/Textures/Billboards/UI/impact_billboard", "impact_billboard");
+            this.textureDictionary.Load("Assets/Textures/Billboards/UI/slash_billboard_01", "slash_billboard_01");
+            this.textureDictionary.Load("Assets/Textures/Billboards/UI/slash_billboard_02", "slash_billboard_02");
+            this.textureDictionary.Load("Assets/Textures/Props/tv");
             #endregion
         }
 
         public void LoadEffects()
         {
             #region Room Effects
-            this.effectDictionary.Add("roomEffect1", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture1"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect2", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture2"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect3", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture3"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect4", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture4"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect5", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture5"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect6", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture6"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect7", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture7"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect8", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture8"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect9", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture9"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect10", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture10"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect11", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture11"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect12", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture12"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect13", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture13"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect14", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture14"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect15", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture15"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect16", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture16"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect17", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture17"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect18", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture18"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect19", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture19"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect20", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture20"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect21", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture21"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect22", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture22"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect23", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture23"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect24", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture24"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect25", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture25"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect26", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture26"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect27", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture27"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect28", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture28"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect29", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture29"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect30", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture30"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect31", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture31"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect32", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture32"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect33", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture33"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect34", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture34"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect35", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture35"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("roomEffect36", new BasicEffectParameters(this.standardRoomEffect, null /*this.textureDictionary["roomTexture36"]*/, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect1", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture1"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect2", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture2"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect3", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture3"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect4", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture4"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect5", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture5"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect6", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture6"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect7", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture7"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect8", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture8"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect9", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture9"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect10", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture10"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect11", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture11"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect12", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture12"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect13", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture13"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect14", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture14"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect15", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture15"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect16", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture16"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect17", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture17"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect18", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture18"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect19", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture19"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect20", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture20"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect21", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture21"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect22", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture22"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect23", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture23"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect24", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture24"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect25", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture25"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect26", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture26"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect27", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture27"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect28", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture28"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect29", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture29"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect30", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture30"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect31", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture31"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect32", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture32"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect33", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture33"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect34", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture34"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect35", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture35"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("roomEffect36", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture36"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
 
             #region Pickup Effects
@@ -1930,6 +2132,7 @@ namespace GDApp
             #region Game Fonts
             this.fontDictionary.Load("Assets/Fonts/hudFont", "hudFont");
             this.fontDictionary.Load("Assets/Fonts/menu", "menu");
+            this.fontDictionary.Load("Assets/Fonts/gameLog", "gameLog");
             #endregion
         }
 
@@ -1943,13 +2146,13 @@ namespace GDApp
         public void LoadEnemies()
         {
             this.enemyDictionary.Add(
-                "Skeleton",
+                "Skeleton1",
                 new EnemyObject(
-                    "Skeleton",
+                    "Skeleton1",
                     ActorType.Enemy,
                     Transform3D.Zero,
                     this.effectDictionary["skeletonEffect"],
-                    this.modelDictionary["skeletonModel"],
+                    this.modelDictionary["skeletonModel1"],
                     AppData.CharacterAccelerationRate,
                     AppData.CharacterDecelerationRate,
                     AppData.CharacterMovementVector,
@@ -1964,13 +2167,34 @@ namespace GDApp
             );
 
             this.enemyDictionary.Add(
-                "Cultist",
+                "Skeleton2",
                 new EnemyObject(
-                    "Cultist",
+                    "Skeleton2",
+                    ActorType.Enemy,
+                    Transform3D.Zero,
+                    this.effectDictionary["skeletonEffect"],
+                    this.modelDictionary["skeletonModel2"],
+                    AppData.CharacterAccelerationRate,
+                    AppData.CharacterDecelerationRate,
+                    AppData.CharacterMovementVector,
+                    AppData.CharacterRotationVector,
+                    AppData.CharacterMoveSpeed,
+                    AppData.CharacterRotateSpeed,
+                    AppData.SkeletonHealth,
+                    AppData.SkeletonAttack,
+                    AppData.SkeletonDefence,
+                    this.managerParameters
+                )
+            );
+
+            this.enemyDictionary.Add(
+                "Cultist1",
+                new EnemyObject(
+                    "Cultist1",
                     ActorType.Enemy,
                     Transform3D.Zero,
                     this.effectDictionary["cultistEffect"],
-                    this.modelDictionary["cultistModel"],
+                    this.modelDictionary["cultistModel1"],
                     AppData.CharacterAccelerationRate,
                     AppData.CharacterDecelerationRate,
                     AppData.CharacterMovementVector,
@@ -1987,6 +2211,34 @@ namespace GDApp
 
         public void LoadUI()
         {
+            this.uiDictionary.Add(
+                "Health",
+                new UITextureObject(
+                    "uiHealthTexture",
+                    ActorType.UITexture,
+                    StatusType.Drawn,
+                    Transform2D.Zero,
+                    Color.White,
+                    SpriteEffects.None,
+                    0,
+                    this.textureDictionary["health"]
+                )
+            );
+
+            this.uiDictionary.Add(
+                "XP",
+                new UITextureObject(
+                    "uiXPTexture",
+                    ActorType.UITexture,
+                    StatusType.Drawn,
+                    Transform2D.Zero,
+                    Color.White,
+                    SpriteEffects.None,
+                    0,
+                    this.textureDictionary["xp"]
+                )
+            );
+
             this.uiDictionary.Add(
                 "Sword",
                 new UITextureObject(

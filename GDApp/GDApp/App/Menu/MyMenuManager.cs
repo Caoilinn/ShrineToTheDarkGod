@@ -101,14 +101,14 @@ namespace GDApp
 
                 case "volumeMutebtn":
                     {
-                        object[] additionalParameters = { 0.0f, "Xact category name for game sounds goes here..." };
+                        object[] additionalParameters = { 0.0f, "main_theme" };
                         EventDispatcher.Publish(new EventData(EventActionType.OnMute, EventCategoryType.GlobalSound, additionalParameters));
                     }
                     break;
 
                 case "volumeUnMutebtn":
                     {
-                        object[] additionalParameters = { 0.5f, "Xact category name for game sounds goes here..." };
+                        object[] additionalParameters = { 0.5f, "main_theme" };
                         EventDispatcher.Publish(new EventData(EventActionType.OnUnMute, EventCategoryType.GlobalSound, additionalParameters));
                     }
                     break;

@@ -38,6 +38,7 @@ namespace GDLibrary
         public delegate void PlayerEventHandler(EventData eventData);
         public delegate void EnemyEventHandler(EventData eventData);
         public delegate void UIChangedEventHandler(EventData eventData);
+        public delegate void ObjectPickingEventHandler(EventData eventData);
         public delegate void TextboxChangedEventHandler(EventData eventData);
         public delegate void EnemyDeathEventHandler(EventData eventData);
         #endregion
@@ -59,6 +60,7 @@ namespace GDLibrary
         public event PlayerEventHandler PlayerChanged;
         public event EnemyEventHandler EnemyChanged;
         public event UIChangedEventHandler UIChanged;
+        public event ObjectPickingEventHandler ObjectPickChanged;
         public event TextboxChangedEventHandler TextboxChanged;
         public event EnemyDeathEventHandler EnemyDeathEvent;
         #endregion
@@ -162,6 +164,10 @@ namespace GDLibrary
 
                 case EventCategoryType.Enemy:
                     OnEnemy(eventData);
+                    break;
+
+                case EventCategoryType.ObjectPicking:
+                    OnObjectPicking(eventData);
                     break;
 
                 case EventCategoryType.Textbox:
@@ -272,6 +278,12 @@ namespace GDLibrary
         protected virtual void OnCombat(EventData eventData)
         {
             CombatEvent?.Invoke(eventData);
+        }
+
+        //Called when the PickingManager picks an object
+        protected virtual void OnObjectPicking(EventData eventData)
+        {
+            ObjectPickChanged?.Invoke(eventData);
         }
 
         protected virtual void OnDoorOpen(EventData eventData)

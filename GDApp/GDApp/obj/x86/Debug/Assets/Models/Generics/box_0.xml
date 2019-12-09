@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>Box001</Name>
     <Identity>
-      <SourceFilename>C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\UDP\Code\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Generics\box.FBX</SourceFilename>
+      <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Generics\box.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>

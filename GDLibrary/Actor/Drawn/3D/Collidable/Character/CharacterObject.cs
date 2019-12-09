@@ -1,11 +1,11 @@
-using JigLibX.Collision;
-using JigLibX.Geometry;
-using JigLibX.Math;
-using JigLibX.Physics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using System;
+using JigLibX.Collision;
+using JigLibX.Geometry;
+using JigLibX.Physics;
+using JigLibX.Math;
 
 namespace GDLibrary
 {
@@ -312,12 +312,17 @@ namespace GDLibrary
             #region Translation
             if (this.Translation != Vector3.Zero)
             {
+                //Create audio emitter
+                AudioEmitter audioEmitter = new AudioEmitter {
+                    Position = (this.Transform.Translation + this.TargetPosition)
+                };
+
                 //Prevent movement while in combat
                 if (StateManager.InCombat)
                 {
                     //Display info
                     EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "Cannot move while in combat" }));
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "wall_bump" }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "wall_bump", audioEmitter }));
                     this.Translation = Vector3.Zero;
                     return;
                 }
@@ -327,13 +332,13 @@ namespace GDLibrary
                 {
                     //Display info
                     EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "Cannot walk through walls!" }));
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "wall_bump" }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "wall_bump", audioEmitter }));
                     this.Translation = Vector3.Zero;
                     return;
                 }
 
                 //Play move sound
-                if (!this.InMotion) EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "environment_stone_steps" }));
+                if (!this.InMotion) EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "environment_stone_steps", audioEmitter }));
 
                 //If the current positon is near the target position
                 if (Vector3.Distance(this.CurrentPosition, this.TargetPosition) <= 10)

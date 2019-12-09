@@ -425,22 +425,25 @@ namespace GDLibrary
             Console.WriteLine("Player defend event");
             PrintStats(this.enemyOnFocus);
 
-            //Calculate player defend damage
-            float playerDefence = this.player.Defence;
-            float enemyAttack = this.enemyOnFocus.Attack;
-            float damage = enemyAttack - playerDefence;
-
-            //If the player has taken damage
-            if (damage > 0) this.player.TakeDamage(damage);
-
-            //If the enemy has killed the player
-            if (this.player.Health <= 0) EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));
-
             //Publish play block sound event
             EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "block" }));
 
-            //Publish a UI player attack event
-            EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.Textbox, new object[] { damage, this.player.Health, this.enemyOnFocus.Health }));
+            //Enemy Attack
+            EnemyAttack();
+
+            ////Calculate player defend damage
+            //float playerDefence = this.player.Defence;
+            //float enemyAttack = this.enemyOnFocus.Attack;
+            //float damage = enemyAttack - playerDefence;
+
+            ////If the player has taken damage
+            //if (damage > 0) this.player.TakeDamage(damage);
+
+            ////If the enemy has killed the player
+            //if (this.player.Health <= 0) EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));
+
+            ////Publish a UI player attack event
+            //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.Textbox, new object[] { damage, this.player.Health, this.enemyOnFocus.Health }));
         }
 
         public void PlayerDodge()
@@ -510,7 +513,31 @@ namespace GDLibrary
             if (damage > 0) this.player.TakeDamage(damage);
 
             //If the players' health is low
-            if (this.player.Health <= 30) EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "player_health_low" }));
+            if (this.player.Health <= 30) {
+
+                //If the player has a health potion
+                if (this.InventoryManager.HasItem(PickupType.Health)) {
+
+                    //Use a key to open the gate
+                    this.InventoryManager.UseItem(PickupType.Health);
+
+                    //Hard coded for now
+                    float potionHealth = 20;
+
+                    //Update player health
+                    EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthUpdate, EventCategoryType.Textbox, new object[] { this.Player.Health += potionHealth }));
+                    EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthUpdate, EventCategoryType.UIMenu, new object[] { (-potionHealth) }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnItemRemoved, EventCategoryType.UIMenu, new object[] { "Potion" }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "drink_potion" }));
+                }
+
+                //Otherwise
+                else {
+
+                    //Publish health low sound event
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "player_health_low" }));
+                }
+            }
 
             //If the enemy has killed the player
             if (this.player.Health <= 0) EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));

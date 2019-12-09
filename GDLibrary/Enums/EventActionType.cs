@@ -71,5 +71,7 @@
         OnWayBlocked,
         PlayerHealthPickup,
         OnDisplayInfo,
+        OnHealthDelta,
+        OnHealthSet,
     }
 }

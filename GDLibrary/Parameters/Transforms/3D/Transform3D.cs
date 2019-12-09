@@ -195,13 +195,19 @@ namespace GDLibrary
 
         #region Constructors
         //Used by drawn objects
-        public Transform3D(Vector3 translation, Vector3 rotation, Vector3 scale, Vector3 look, Vector3 up)
-        {
+        public Transform3D(Vector3 translation, Vector3 rotation, Vector3 scale, Vector3 look, Vector3 up) {
             Initialize(translation, rotation, scale, look, up);
 
             //Store original values in case of reset
             this.originalTransform3D = new Transform3D();
             this.originalTransform3D.Initialize(translation, rotation, scale, look, up);
+        }
+
+        //Used by zone objects
+        public Transform3D(
+            Vector3 translation,
+            Vector3 scale
+        ) : this(translation, Vector3.Zero, scale, Vector3.UnitX, Vector3.UnitY) {
         }
 
         //used internally when creating the originalTransform object

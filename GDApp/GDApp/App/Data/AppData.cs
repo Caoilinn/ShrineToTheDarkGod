@@ -63,13 +63,22 @@ namespace GDLibrary
         #endregion
 
         #region Map
-        //Determines the position of each component in the bit-shifted 3D array of map values
+        //Determines the amount of bits assigned to each component in the bit-shifted 3D array of map values
         public static int ReservedRoomBits = 6;       //2^6 (64) Rooms Types
         public static int ReservedPickupBits = 4;     //2^4 (16) Pickup Types
         public static int ReservedTriggerBits = 4;    //2^4 (16) Trigger Types
         public static int ReservedPlayerBits = 2;     //2^2 (4)  Max 4 Players
         public static int ReservedEnemyBits = 3;      //2^3 (8)  Enemy Types
         public static int ReservedGateBits = 3;       //2^3 (8)  Gate Types       - Current Total: 22 bits
+
+        //Determines the position of each component in the level data text file
+        public static readonly int RoomsStartPosition = 1;
+        public static readonly int PickupsStartPosition = 2;
+        public static readonly int TriggersStartPosition = 3;
+        public static readonly int PlayersStartPosition = 4;
+        public static readonly int EnemiesStartPosition = 5;
+        public static readonly int GatesStartPosition = 6;
+
         public static int CellWidth = 100;
         public static int CellHeight = 100;
         public static int CellDepth = 100;
@@ -144,7 +153,7 @@ namespace GDLibrary
         public static readonly string ControllerIDSuffix = " controller";
         #endregion
 
-        #region Primitive ids used by vertexData dictionary
+        #region Primitive ID's used by vertexData dictionary
         public static readonly string TexturedQuadID = "textured quad";
         public static readonly string TexturedBillboardQuadID = "textured billboard quad";
         #endregion
@@ -157,6 +166,8 @@ namespace GDLibrary
         public static readonly string UnlitBillboardsEffectID = "unlit billboards basic effect";
         public static readonly string WinZoneEffectID = "win zone basic effect";
         public static readonly string PickupEffectID = "pickup basic effect";
+
+        public static readonly string UnlitTexturedBillboardVertexDataID = "unlit tex billboard vertexdata";
         #endregion
     }
 }

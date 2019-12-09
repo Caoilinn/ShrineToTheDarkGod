@@ -74,6 +74,12 @@ namespace GDLibrary
         }
         #endregion
 
+        #region Event Handling
+        protected virtual void RegisterForEventHandling(EventDispatcher eventDispatcher)
+        {
+        }
+        #endregion
+
         #region Methods
         public string GetID()
         {

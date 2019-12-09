@@ -403,8 +403,7 @@ namespace GDLibrary
                     soundCategory.SetVolume(this.volume);
                 }
             }
-            catch (InvalidOperationException e)
-            {
+            catch (InvalidOperationException e) {
                 System.Diagnostics.Debug.WriteLine("Does category (soundCategoryStr) exist in your Xact file?");
             }
         }
@@ -421,8 +420,7 @@ namespace GDLibrary
                     soundCategory.SetVolume(this.volume);
                 }
             }
-            catch (InvalidOperationException e)
-            {
+            catch (InvalidOperationException e) {
                 System.Diagnostics.Debug.WriteLine("Does category (soundCategoryStr) exist in your Xact file?");
             }
         }
@@ -430,9 +428,10 @@ namespace GDLibrary
 
         #region Methods
         //Called by the listener to update relative positions (i.e. everytime the 1st Person camera moves it should call this method so that the 3D sounds heard reflect the new camera position)
-        public void UpdateListenerPosition(Vector3 position)
+        public void UpdateListenerPosition(Vector3 position, Vector3 forward)
         {
             this.audioListener.Position = position;
+            this.audioListener.Forward = forward;
         }
 
         //Pause All Playing Sounds
