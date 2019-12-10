@@ -222,8 +222,9 @@ namespace GDLibrary
             }
             else if (eventData.EventType == EventActionType.OnPlayerDeath)
             {
-                //Exit to menu for now
-                Game.Exit();
+                //Quit to menu for now
+                EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu, new object[] { "win_scene" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
             }
             else if (eventData.EventType == EventActionType.PlayerHealthPickup)
             {

@@ -150,7 +150,6 @@ namespace GDApp
             InitializeMenu();
             InitializeTextbox();
             InitializeUI();
-            InitializeUIMousePointer();
 
             InitializeGrid();
 
@@ -897,7 +896,11 @@ namespace GDApp
             clone = (UIButtonObject)uiButtonObject.Clone();
 
             //Move down on Y-axis for next button
-            clone.Transform.Translation += new Vector2(700, 7 * verticalBtnSeparation);
+            clone.Transform.Translation += new Vector2(
+                625,
+                360
+            );
+
             clone.ID = "beginbtn";
             clone.Text = "Begin";
 
@@ -1070,29 +1073,6 @@ namespace GDApp
             #endregion
         }
 
-        private void InitializeUIMousePointer()
-        {
-            //Texture2D texture = this.textureDictionary["HUD"];
-            
-            ////Show complete texture
-            //Microsoft.Xna.Framework.Rectangle sourceRectangle = new Microsoft.Xna.Framework.Rectangle(0, 0, texture.Width, texture.Height);
-
-            ////Listens for object picking events from the object picking manager
-            //UIPickingMouseObject myUIMouseObject = new UIPickingMouseObject(
-            //    "Picking Mouse Object",
-            //    ActorType.UITexture,
-            //    new Transform2D(Vector2.One),
-            //    this.fontDictionary["menu"],
-            //    "",
-            //    new Vector2(0, 40),
-            //    texture,
-            //    this.mouseManager,
-            //    this.eventDispatcher
-            //);
-
-            //this.uiManager.Add(myUIMouseObject);
-        }
-
         private void EventDispatcher_UIChanged(EventData eventData)
         {
             //Health bar
@@ -1188,6 +1168,12 @@ namespace GDApp
 
             this.textboxManager.Add("textbox", uiTextObj);
             #endregion
+        }
+
+        private void StartGame()
+        {
+            //Will be received by the menu manager and screen manager and set the menu to be shown and game to be paused
+            EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.MainMenu));
         }
         #endregion
 
