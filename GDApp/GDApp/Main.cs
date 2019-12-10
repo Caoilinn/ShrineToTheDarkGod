@@ -37,6 +37,7 @@ namespace GDApp
         private MyTextboxManager textboxManager;
         private PickingManager pickingManager;
         private InventoryManager inventoryManager;
+        private KeybindManager keybindManager;
 
         //Dispatchers
         private EventDispatcher eventDispatcher;
@@ -411,7 +412,7 @@ namespace GDApp
                 this.gridManager,
                 PlayerIndex.One,
                 AppData.CombatButtons,
-                AppData.CombatKeys
+                GDLibraryData.CombatKeys
             );
 
             Components.Add(this.combatManager);
@@ -453,6 +454,18 @@ namespace GDApp
             );
 
             Components.Add(this.textboxManager);
+
+            this.keybindManager = new KeybindManager(
+                this,
+                StatusType.Off,
+                this.eventDispatcher,
+                this.mouseManager,
+                this.keyboardManager,
+                this.spriteBatch
+                
+                );
+
+            Components.Add(this.keybindManager);
             #endregion
 
             #region Manager Parameters
@@ -773,7 +786,7 @@ namespace GDApp
 
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(-175, 7 * verticalBtnSeparation);
-            clone.ID = "bindbtn";
+            clone.ID = "bindattackbtn";
             clone.Text = "Rebind";
 
             //Change the texture blend color
@@ -1002,7 +1015,7 @@ namespace GDApp
                 new CollidableFirstPersonCameraController(
                     camera + " Controller",
                     ControllerType.CollidableCamera,
-                    AppData.CameraMoveKeys,
+                    GDLibraryData.CameraMoveKeys,
                     AppData.CameraMoveSpeed,
                     AppData.CameraRotationSpeed,
                     this.managerParameters,
@@ -1044,7 +1057,7 @@ namespace GDApp
                 new FirstPersonCameraController(
                     camera + " Controller",
                     ControllerType.CollidableCamera,
-                    AppData.CameraMoveKeys,
+                    GDLibraryData.CameraMoveKeys,
                     AppData.CameraMoveSpeed,
                     AppData.CameraRotationSpeed,
                     this.managerParameters,
@@ -1517,7 +1530,7 @@ namespace GDApp
                 this.managerParameters,
                 (PlayerIndex)playerType - 1,
                 AppData.CameraMoveButtons,
-                AppData.CameraMoveKeys
+                GDLibraryData.CameraMoveKeys
             );
 
             //Enable collision

@@ -54,12 +54,10 @@ namespace GDLibrary
         public static readonly float CollidableCameraViewHeight = 8; //how tall is the first person player?
         public static readonly float CollidableCameraMass = 10;
 
-        public static readonly Keys[] CameraMoveKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.E, Keys.Space, Keys.C, Keys.LeftShift, Keys.RightShift};
-        public static readonly Keys[] CameraMoveKeys_Alt1 = { Keys.T, Keys.G, Keys.F, Keys.H };
-        public static readonly Keys[] CombatKeys = {Keys.D1, Keys.D2, Keys.D3};
+        
 
-        public static readonly Buttons[] CameraMoveButtons = { Buttons.DPadUp, Buttons.DPadDown, Buttons.DPadLeft, Buttons.DPadRight, Buttons.LeftShoulder, Buttons.RightShoulder, Buttons.A };
-        public static readonly Buttons[] CombatButtons = { Buttons.RightTrigger, Buttons.LeftTrigger, Buttons.X };
+        public static Buttons[] CameraMoveButtons = { Buttons.DPadUp, Buttons.DPadDown, Buttons.DPadLeft, Buttons.DPadRight, Buttons.LeftShoulder, Buttons.RightShoulder, Buttons.A };
+        public static Buttons[] CombatButtons = { Buttons.RightTrigger, Buttons.LeftTrigger, Buttons.X };
         #endregion
 
         #region Map

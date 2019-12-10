@@ -22,6 +22,7 @@ namespace GDLibrary
         private static bool inProximityOfAnItem;
         private static bool inProximityOfAGate;
         private static bool inCombat;
+        private static bool isKeyBinding;
         internal static bool InProximityOfATrigger;
         #endregion
 
@@ -97,6 +98,18 @@ namespace GDLibrary
                 inCombat = value;
             }
         }
+
+        public static bool IsKeyBinding
+        {
+            get
+            {
+                return isKeyBinding;
+            }
+            set
+            {
+                isKeyBinding = value;
+            }
+        }
         #endregion
 
         #region Constructor
@@ -110,6 +123,7 @@ namespace GDLibrary
             InProximityOfAnItem = false;
             InProximityOfAGate = false;
             InCombat = false;
+            isKeyBinding = false;
         }
         #endregion
 

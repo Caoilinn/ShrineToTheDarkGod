@@ -178,6 +178,10 @@ namespace GDLibrary
                     OnEnemyDeath(eventData);
                     break;
 
+                case EventCategoryType.Keybind:
+                    OnKeybind(eventData);
+                    break;
+
                 default:
                     break;
             }

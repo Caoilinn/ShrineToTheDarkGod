@@ -72,9 +72,11 @@
     <Compile Include="Actor\Drawn\2D\UI\UITextureObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Pickup\ImmovablePickupObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Pickup\MoveablePickupObject.cs" />
+    <Compile Include="Constants\GDLibraryData.cs" />
     <Compile Include="Controllers\3D\Base\SpinController.cs" />
     <Compile Include="Managers\AI\AIManager.cs" />
     <Compile Include="Managers\Grid\GridManager.cs" />
+    <Compile Include="Managers\Input\KeybindManager.cs" />
     <Compile Include="Managers\UI\TextboxManager.cs" />
     <Compile Include="Parameters\Architecture\ArchitectureParameters.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Architecture\CollidableArchitecture.cs" />

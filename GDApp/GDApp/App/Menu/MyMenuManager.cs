@@ -1,6 +1,8 @@
 ﻿using GDLibrary;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+
 
 namespace GDApp
 {
@@ -56,10 +58,16 @@ namespace GDApp
         {
             if (uiObject.Transform.Bounds.Contains(this.MouseManager.Bounds))
             {
+                //uiObject.Color = Color.Red;
                 //Mouse is inside the bounds of the object - uiObject.ID
                 if (this.MouseManager.IsLeftButtonClicked())
                     HandleMouseClick(uiObject, gameTime);
             }
+            //else
+            //{
+            //    uiObject.Color = Color.White;
+            //}
+            
         }
 
         //Add the code here to say how click events are handled by your code
@@ -122,6 +130,7 @@ namespace GDApp
                 case "controlsbtn":
 
                     //Use sceneIDs specified when we created the menu scenes in Main::AddMenuElements()
+                    StateManager.IsKeyBinding = true;
                     SetActiveList("controls menu");
                     break;
 
@@ -137,10 +146,23 @@ namespace GDApp
                     SetActiveList("main menu");
                     break;
 
-                case "bindbtn":
+                case "bindattackbtn":
 
-                    DoBind();
-                    break;
+                    if(StateManager.IsKeyBinding == true)
+                    {
+                        KeyboardState keydown = Keyboard.GetState();
+                        if (keydown.GetPressedKeys().Length != 0)
+                        {
+                            DoBind("Attack", keydown.GetPressedKeys()[0]);
+                        }
+                        else
+                        {
+                            
+                        }
+                    }
+                    
+
+                    break; 
 
                 default:
                     break;
@@ -168,10 +190,14 @@ namespace GDApp
             this.Game.Exit();
         }
 
-        private void DoBind()
+        private void DoBind(string action, Keys key)
         {
-            EventDispatcher.Publish(new EventData(EventActionType.OnKeybind, EventCategoryType.Keybind));
+            //send the action and the key pressed to the KeybindManager for processing
+            
+            object[] additionalParameters = { action, key };
+            EventDispatcher.Publish(new EventData(EventActionType.OnKeybind, EventCategoryType.Keybind, additionalParameters));
         }
+        
         #endregion
     }
 }
