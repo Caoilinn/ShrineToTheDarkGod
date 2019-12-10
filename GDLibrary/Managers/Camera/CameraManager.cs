@@ -77,6 +77,11 @@ namespace GDLibrary
             this.cameraList.Sort((a, b) => (a.DrawDepth <= b.DrawDepth ? 1 : -1));
         }
 
+        public Camera3D GetCameraByID(string ID)
+        {
+            return this.cameraList.Find(x => x.ID.Equals(ID));
+        }
+
         public bool Remove(Predicate<Camera3D> predicate)
         {
             Camera3D foundCamera = this.cameraList.Find(predicate);

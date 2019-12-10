@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>Cube</Name>
     <Identity>
-      <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
+      <SourceFilename>C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>
@@ -48,7 +48,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Material.001</Name>
       <Identity>
-        <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
+        <SourceFilename>C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -62,7 +62,7 @@
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>Material.002</Name>
       <Identity>
-        <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
+        <SourceFilename>C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -76,7 +76,7 @@
     <Resource ID="#Resource3" Type="Graphics:BasicMaterialContent">
       <Name>Material.005</Name>
       <Identity>
-        <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
+        <SourceFilename>C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Pickups\key.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

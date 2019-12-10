@@ -8,6 +8,7 @@ Fixes:			None
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace GDLibrary
 {
@@ -19,6 +20,13 @@ namespace GDLibrary
         private Viewport viewport;
         private Vector2 viewportCentre;
         private float drawDepth;
+        private static readonly Random random = new Random();
+        private bool shaking;
+        private float shakeMag;
+        private float shakeDuration;
+        private float shakeTimer;
+        private Vector3 shakeOffset;
+        private Vector3 origionalLook;
         #endregion
 
         #region Properties
@@ -140,9 +148,7 @@ namespace GDLibrary
         {
             return "Camera: " + this.ID;
         }
-        #endregion
 
-        #region Methods
         public override bool Equals(object obj)
         {
             if (!(obj is Camera3D other))
@@ -185,6 +191,48 @@ namespace GDLibrary
                 + ", Look: " + MathUtility.Round(this.Transform.Look, 0)
                 + ", Up: " + MathUtility.Round(this.Transform.Up, 0)
                 + ", Depth: " + this.drawDepth;
+        }
+
+        private float RandFloat()
+        {
+            return (float) random.NextDouble() * 2f - 1f;
+        }
+
+        public void Shake(float mag, float dur)
+        {
+            this.origionalLook = this.Transform.Look;
+            if (!shaking)
+            {
+                shaking = true;
+                shakeMag = mag;
+                shakeDuration = dur;
+                shakeTimer = 0f;
+            }
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            if (shaking)
+            {
+                shakeTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (shakeTimer >= shakeDuration)
+                {
+                    shaking = false;
+                    this.Transform.Look = origionalLook;
+                    return;
+                }
+
+                float progress = shakeTimer / shakeDuration;
+
+                float magnitude = shakeMag * (progress);
+
+                shakeOffset = new Vector3(RandFloat(), RandFloat(), RandFloat()) * magnitude;
+
+                this.Transform.Look += shakeOffset;
+            }
+
+            base.Update(gameTime);
         }
         #endregion
     }

@@ -480,6 +480,7 @@ namespace GDApp
                 this, 
                 this.eventDispatcher, 
                 StatusType.Update, 
+                this.cameraManager,
                 this.inventoryManager,
                 this.keyboardManager,
                 this.gamepadManager,
@@ -943,7 +944,7 @@ namespace GDApp
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(000, 6 * verticalBtnSeparation);
             clone.ID = "menubtn";
-            clone.Text = "Return to Menu";
+            clone.Text = "Return";
 
             //Change the texture blend color
             clone.Color = Color.White;
@@ -1260,7 +1261,6 @@ namespace GDApp
             );
             
             this.cameraManager.Add(camera);
-            //this.combatManager.AddPlayer((camera.ControllerList[0] as CollidableFirstPersonCameraController).PlayerObject);
         }
         #endregion
         

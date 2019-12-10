@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System;
@@ -8,7 +9,9 @@ namespace GDLibrary
     public class CombatManager : PausableGameComponent
     {
         #region Fields
+        private readonly GraphicsDeviceManager graphics;
         private List<EnemyObject> enemies;
+        private CameraManager cameraManager;
         private InventoryManager inventoryManager;
         private KeyboardManager keyboardManager;
         private GamepadManager gamepadManager;
@@ -35,6 +38,18 @@ namespace GDLibrary
             set
             {
                 this.enemies = value;
+            }
+        }
+
+        public CameraManager CameraManager
+        {
+            get
+            {
+                return this.cameraManager;
+            }
+            set
+            {
+                this.cameraManager = value;
             }
         }
 
@@ -176,6 +191,7 @@ namespace GDLibrary
             Game game,
             EventDispatcher eventDispatcher,
             StatusType statusType,
+            CameraManager cameraManager,
             InventoryManager inventoryManager,
             KeyboardManager keyboardManager,
             GamepadManager gamepadManager,
@@ -185,6 +201,7 @@ namespace GDLibrary
             Buttons[] combatButtons,
             Keys[] combatKeys
         ) : base(game, eventDispatcher, statusType) {
+            this.CameraManager = cameraManager;
             this.InventoryManager = inventoryManager;
             this.KeyboardManager = keyboardManager;
             this.GamepadManager = gamepadManager;
@@ -225,6 +242,7 @@ namespace GDLibrary
                 //Quit to menu for now
                 EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu, new object[] { "win_scene" }));
                 EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
+                return;
             }
             else if (eventData.EventType == EventActionType.PlayerHealthPickup)
             {
@@ -513,6 +531,9 @@ namespace GDLibrary
             //If the enemy has dealt damage
             if (damage > 0) this.player.TakeDamage(damage);
 
+            //Shake camera
+            this.cameraManager.GetCameraByID("First Person Camera").Shake(0.04f, 0.2f);
+
             //If the players' health is low
             if (this.player.Health <= 30) {
 
@@ -577,6 +598,62 @@ namespace GDLibrary
             TakeTurn(gameTime);
             base.Update(gameTime);
         }
+
+        public void TurnRed()
+        {
+            Vector3 fogColor = new Vector3(0f, 0f, 0f);
+            float fogStart = 0;
+            float fogEnd = 550;
+
+            BasicEffect enemyBasicEffect = new BasicEffect(graphics.GraphicsDevice)
+            {
+                FogEnabled = true,
+                TextureEnabled = true,
+                LightingEnabled = true,
+                PreferPerPixelLighting = true,
+                FogColor = fogColor,
+                FogStart = fogStart,
+                FogEnd = fogEnd
+            };
+
+            enemyBasicEffect.DirectionalLight0.Enabled = true;
+            enemyBasicEffect.DirectionalLight0.Direction = new Vector3(0.5f, -0.75f, -0.5f);
+            enemyBasicEffect.DirectionalLight0.DiffuseColor = new Vector3(1f, 0.2f, 0.2f);
+            enemyBasicEffect.DirectionalLight0.SpecularColor = new Vector3(0, 1, 0);
+
+            this.enemyOnFocus.EffectParameters.Effect = enemyBasicEffect;
+        }
+
+        public void NormalLighting()
+        {
+            Vector3 fogColor = new Vector3(0f, 0f, 0f);
+            float fogStart = 0;
+            float fogEnd = 550;
+
+            BasicEffect basicEffect = new BasicEffect(graphics.GraphicsDevice)
+            {
+                FogEnabled = true,
+                TextureEnabled = true,
+                LightingEnabled = true,
+                PreferPerPixelLighting = true,
+                FogColor = fogColor,
+                FogStart = fogStart,
+                FogEnd = fogEnd
+            };
+
+            //Standard Light
+            basicEffect.DirectionalLight0.Enabled = true;
+            basicEffect.DirectionalLight0.Direction = new Vector3(-0.5f, -0.75f, -0.5f);
+            basicEffect.DirectionalLight0.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
+
+            //Standard Light
+            basicEffect.DirectionalLight1.Enabled = true;
+            basicEffect.DirectionalLight1.Direction = new Vector3(0.5f, 0.75f, 0.5f);
+            basicEffect.DirectionalLight1.DiffuseColor = new Vector3(0.85f, 0.75f, 0.65f);
+
+            this.enemyOnFocus.EffectParameters.Effect = basicEffect;
+        }
+
         #endregion
     }
 }
