@@ -112,7 +112,6 @@ namespace GDLibrary
             }
         }
 
-
         public virtual void TurnTimer(GameTime gameTime)
         {
 
