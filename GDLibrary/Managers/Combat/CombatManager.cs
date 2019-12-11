@@ -420,14 +420,12 @@ namespace GDLibrary
             float enemyDefence = this.enemyOnFocus.Defence;
             float damage = playerAttack - enemyDefence;
 
-
             //If the player has dealt damage
             if (damage > 0) this.enemyOnFocus.TakeDamage(damage);
             this.timeManager.StartTimer(1000f);
 
             //Create audio emitter
-            AudioEmitter audioEmitter = new AudioEmitter
-            {
+            AudioEmitter audioEmitter = new AudioEmitter {
                 Position = this.enemyOnFocus.Transform.Translation
             };
 
