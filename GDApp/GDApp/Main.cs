@@ -21,7 +21,7 @@ namespace GDApp
         private VertexPositionColorTexture[] vertices;
 
         //Managers
-        private StateManager gameStateManager;
+        public StateManager gameStateManager;
         private ManagerParameters managerParameters;
         private GridManager gridManager;
         private ObjectManager objectManager;
@@ -498,6 +498,7 @@ namespace GDApp
             this.menuManager = new MyMenuManager(
                 this,
                 StatusType.Drawn | StatusType.Update,
+                this.objectManager,
                 this.eventDispatcher,
                 this.cameraManager,
                 this.mouseManager,
@@ -1175,7 +1176,38 @@ namespace GDApp
         {
             //Will be received by the menu manager and screen manager and set the menu to be shown and game to be paused
             EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.MainMenu));
+           
         }
+
+        private void Reinitialize()
+        {
+
+            InitializeGraphics();
+            InitializeEffects();
+            InitializeEnemies();
+
+            InitializeEventDispatcher();
+            InitializeManagers();
+
+            LoadContent();
+            SetupBitArray();
+
+            LoadLevelFromFile();
+            LoadMapFromFile();
+
+            InitializeMap();
+
+            InitializeVertices();
+            InitializeBillboardVertices();
+            InitializePrimitives();
+
+            InitializeMenu();
+            InitializeTextbox();
+            InitializeUI();
+
+            InitializeGrid();
+        }
+
         #endregion
 
         #region Cameras
@@ -2314,6 +2346,11 @@ namespace GDApp
         #region Update, Draw
         protected override void Update(GameTime gameTime)
         {
+            if (this.menuManager.ActiveList.Equals("win_scene"))
+            {
+                Reinitialize();
+            }
+
             base.Update(gameTime);
         }
 

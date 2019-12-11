@@ -21,6 +21,7 @@ namespace GDLibrary
         private static bool playerTurn;
         private static bool enemyTurn;
         private static bool inCombat;
+        private static bool restart;
 
         private static bool inProximityOfATrigger;
         private static bool inProximityOfAnItem;
@@ -73,6 +74,16 @@ namespace GDLibrary
             set
             {
                 inCombat = value;
+            }
+        }
+
+        public  bool Restart
+        {
+            get {
+                return restart;
+            }
+            set {
+                restart = value;
             }
         }
 
