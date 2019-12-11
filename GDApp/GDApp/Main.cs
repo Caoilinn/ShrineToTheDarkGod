@@ -69,6 +69,7 @@ namespace GDApp
 
         //Debug
         private PhysicsDebugDrawer physicsDebugDrawer;
+        private AnimatedPlayerObject animatedHeroPlayerObject;
 
         //Map
         private int[,,] levelMap;
@@ -1781,8 +1782,6 @@ namespace GDApp
                 AppData.PlayerAttack,
                 AppData.PlayerDefence,
                 this.managerParameters,
-                (PlayerIndex)playerType - 1,
-                AppData.CameraMoveButtons,
                 AppData.CameraMoveKeys
             );
 
@@ -1965,6 +1964,10 @@ namespace GDApp
             #region Prop Models
             this.modelDictionary.Load("Assets/Models/Props/gate_001", "gateModel1");
             this.modelDictionary.Load("Assets/Models/Props/gate_002", "gateModel2");
+            #endregion
+
+            #region animations
+            this.modelDictionary.Load("assets/Models/Animated/Animations");
             #endregion
         }
 
@@ -2246,6 +2249,46 @@ namespace GDApp
                     this.managerParameters
                 )
             );
+        }
+
+        public void InitializeSkeletonAnimationPlayer()
+        {
+            Transform3D transform3D = null;
+
+            transform3D = new Transform3D(new Vector3(0, 20, 40),
+                new Vector3(-90, 0, 0), //y-z are reversed because the capsule is rotation by 90 degrees around X-axis - See CharacterObject constructor
+                 0.1f * Vector3.One,
+                 -Vector3.UnitZ, Vector3.UnitY);
+
+            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
+            //remember we can set diffuse color and alpha too but not specular, emissive, directional lights as I dont read those parameters in ObjectManager::DrawObject() - this was purely a time constraint on my part.
+            effectParameters.DiffuseColor = Color.White;
+            effectParameters.Alpha = 1;
+            //if we dont specify a texture then the object manager will draw using whatever textures were baked into the animation in 3DS Max
+            effectParameters.Texture = null;
+
+            this.animatedHeroPlayerObject = new EnemyAnimatedPlayerObject("Skeleton",
+                    ActorType.Player, transform3D,
+                effectParameters,
+                AppData.CharacterMoveKeys,
+                AppData.CharacterRadius,
+                AppData.CharacterHeight,
+                AppData.CharacterAccelerationRate,
+                AppData.CharacterDecelerationRate,
+                AppData.CharacterMoveSpeed,
+                AppData.CharacterRotateSpeed,
+                new Vector3(0, -3.5f, 0), //offset inside capsule - purely cosmetic
+                this.keyboardManager);
+            this.animatedHeroPlayerObject.Enable(false, AppData.PlayerMass);
+
+            string takeName = "Take 001";
+            string fileNameNoSuffix = "dude";
+            this.animatedHeroPlayerObject.AddAnimation(takeName, fileNameNoSuffix, this.modelDictionary[fileNameNoSuffix]);
+
+            //set the start animtion
+            this.animatedHeroPlayerObject.SetAnimation("Take 001", "dude"); //basically take name (default from 3DS Max) and FBX file name with no suffix
+
+            this.objectManager.Add(animatedHeroPlayerObject);
         }
 
         public void LoadUI()

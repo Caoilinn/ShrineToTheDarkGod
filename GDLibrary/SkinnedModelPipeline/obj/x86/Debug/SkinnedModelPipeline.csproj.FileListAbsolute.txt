@@ -1,0 +1,2 @@
+C:\Users\Christian\Desktop\3dgd\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csprojAssemblyReference.cache
+C:\Users\Christian\Desktop\3dgd\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csproj.CoreCompileInputs.cache

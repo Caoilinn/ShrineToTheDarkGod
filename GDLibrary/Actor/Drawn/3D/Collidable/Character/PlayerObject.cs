@@ -11,44 +11,16 @@ namespace GDLibrary
     public class PlayerObject : CharacterObject
     {
         #region Variables
-        private PlayerIndex playerIndex;
-        private Buttons[] moveButtons;
         private Keys[] moveKeys;
         #endregion
 
         #region Properties
-        public PlayerIndex PlayerIndex
-        {
-            get
-            {
-                return this.playerIndex;
-            }
-            set
-            {
-                this.playerIndex = value;
-            }
-        }
-
-        public Buttons[] MoveButtons
-        {
-            get
-            {
-                return this.moveButtons;
-            }
-            set
-            {
-                this.moveButtons = value;
-            }
-        }
-
         public Keys[] MoveKeys
         {
-            get
-            {
+            get {
                 return this.moveKeys;
             }
-            set
-            {
+            set {
                 this.moveKeys = value;
             }
         }
@@ -71,12 +43,9 @@ namespace GDLibrary
             float attack,
             float defence,
             ManagerParameters managerParameters,
-            PlayerIndex playerIndex,
-            Buttons[] moveButtons,
             Keys[] moveKeys
-        ) : base(id, actorType, transform, effectParameters, model, accelerationRate, decelerationRate, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, managerParameters) {
-            this.PlayerIndex = playerIndex;
-            this.MoveButtons = moveButtons;
+        ) : base(id, actorType, transform, effectParameters, model, accelerationRate, decelerationRate, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, managerParameters)
+        {
             this.MoveKeys = moveKeys;
         }
         #endregion
@@ -134,67 +103,6 @@ namespace GDLibrary
 
             //Right
             else if (this.ManagerParameters.KeyboardManager.IsKeyDown(this.MoveKeys[3]) && !this.InMotion)
-            {
-                //Calculate target position, relative to the camera
-                this.TargetPosition = (this.Transform.Right * this.MovementVector);
-                this.Translation = (gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * this.Transform.Right);
-                return;
-            }
-            #endregion
-        }
-
-        public virtual void HandleGamepadInput(GameTime gameTime)
-        {
-            #region Rotation
-            //Anti-Clockwise
-            if (this.ManagerParameters.GamepadManager.IsButtonPressed(this.PlayerIndex, this.MoveButtons[4]) && !this.InMotion)
-            {
-                //Calculate target heading, relative to the camera
-                this.TargetHeading = (this.Transform.Up * this.RotationVector);
-                this.Rotation = (gameTime.ElapsedGameTime.Milliseconds * this.RotateSpeed * this.Transform.Up);
-                return;
-            }
-
-            //Clockwise
-            else if (this.ManagerParameters.GamepadManager.IsButtonPressed(this.PlayerIndex, this.MoveButtons[5]) && !this.InMotion)
-            {
-                //Calculate target heading, relative to the camera
-                this.TargetHeading = -(this.Transform.Up * this.RotationVector);
-                this.Rotation = -(gameTime.ElapsedGameTime.Milliseconds * this.RotateSpeed * this.Transform.Up);
-                return;
-            }
-            #endregion
-
-            #region Translation
-            //Forward
-            if (this.ManagerParameters.GamepadManager.IsButtonPressed(this.PlayerIndex, this.MoveButtons[0]) && !this.InMotion)
-            {
-                //Calculate target position, relative to the camera
-                this.TargetPosition = (this.Transform.Look * this.MovementVector);
-                this.Translation = (gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * this.Transform.Look);
-                return;
-            }
-
-            //Back
-            else if (this.ManagerParameters.GamepadManager.IsButtonPressed(this.PlayerIndex, this.MoveButtons[1]) && !this.InMotion)
-            {
-                //Calculate target position, relative to the camera
-                this.TargetPosition = -(this.Transform.Look * this.MovementVector);
-                this.Translation = -(gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * this.Transform.Look);
-                return;
-            }
-
-            //Left
-            if (this.ManagerParameters.GamepadManager.IsButtonPressed(this.PlayerIndex, this.MoveButtons[2]) && !this.InMotion)
-            {
-                //Calculate target position, relative to the camera
-                this.TargetPosition = -(this.Transform.Right * this.MovementVector);
-                this.Translation = -(gameTime.ElapsedGameTime.Milliseconds * this.MoveSpeed * this.Transform.Right);
-                return;
-            }
-
-            //Right
-            else if (this.ManagerParameters.GamepadManager.IsButtonPressed(this.PlayerIndex, this.MoveButtons[3]) && !this.InMotion)
             {
                 //Calculate target position, relative to the camera
                 this.TargetPosition = (this.Transform.Right * this.MovementVector);
