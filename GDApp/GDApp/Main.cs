@@ -40,7 +40,6 @@ namespace GDApp
         private InventoryManager inventoryManager;
         private TimeManager timeManager;
 
-
         //Dispatchers
         private EventDispatcher eventDispatcher;
 
