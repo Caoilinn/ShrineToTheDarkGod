@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System;
@@ -8,7 +9,9 @@ namespace GDLibrary
     public class CombatManager : PausableGameComponent
     {
         #region Fields
+        private readonly GraphicsDeviceManager graphics;
         private List<EnemyObject> enemies;
+        private CameraManager cameraManager;
         private InventoryManager inventoryManager;
         private KeyboardManager keyboardManager;
         private GamepadManager gamepadManager;
@@ -28,144 +31,130 @@ namespace GDLibrary
         #region Properties
         public List<EnemyObject> Enemies
         {
-            get
-            {
+            get {
                 return this.enemies;
             }
-            set
-            {
+            set {
                 this.enemies = value;
+            }
+        }
+
+        public CameraManager CameraManager
+        {
+            get {
+                return this.cameraManager;
+            }
+            set {
+                this.cameraManager = value;
             }
         }
 
         public InventoryManager InventoryManager
         {
-            get
-            {
+            get {
                 return this.inventoryManager;
             }
-            set
-            {
+            set {
                 this.inventoryManager = value;
             }
         }
 
         public KeyboardManager KeyboardManager
         {
-            get
-            {
+            get {
                 return this.keyboardManager;
             }
-            set
-            {
+            set {
                 this.keyboardManager = value;
             }
         }
 
         public GamepadManager GamepadManager
         {
-            get
-            {
+            get {
                 return this.gamepadManager;
             }
-            set
-            {
+            set {
                 this.gamepadManager = value;
             }
         }
 
         public ObjectManager ObjectManager
         {
-            get
-            {
+            get {
                 return this.objectManager;
             }
-            set
-            {
+            set {
                 this.objectManager = value;
             }
         }
 
         public GridManager GridManager
         {
-            get
-            {
+            get {
                 return this.gridManager;
             }
-            set
-            {
+            set {
                 this.gridManager = value;
             }
         }
 
         public PlayerIndex PlayerIndex
         {
-            get
-            {
+            get {
                 return this.playerIndex;
             }
-            set
-            {
+            set {
                 this.playerIndex = value;
             }
         }
 
         public Buttons[] CombatButtons
         {
-            get
-            {
+            get {
                 return this.combatButtons;
             }
-            set
-            {
+            set {
                 this.combatButtons = value;
             }
         }
 
         public Keys[] CombatKeys
         {
-            get
-            {
+            get {
                 return this.combatKeys;
             }
-            set
-            {
+            set {
                 this.combatKeys = value;
             }
         }
 
         public EnemyObject EnemyOnFocus
         {
-            get
-            {
+            get {
                 return this.enemyOnFocus;
             }
-            set
-            {
+            set {
                 this.enemyOnFocus = value;
             }
         }
 
         public PlayerObject Player
         {
-            get
-            {
+            get {
                 return this.player;
             }
-            set
-            {
+            set {
                 this.player = value;
             }
         }
 
         public Random Random
         {
-            get
-            {
+            get {
                 return this.random;
             }
-            set
-            {
+            set {
                 this.random = value;
             }
         }
@@ -176,6 +165,7 @@ namespace GDLibrary
             Game game,
             EventDispatcher eventDispatcher,
             StatusType statusType,
+            CameraManager cameraManager,
             InventoryManager inventoryManager,
             KeyboardManager keyboardManager,
             GamepadManager gamepadManager,
@@ -184,7 +174,9 @@ namespace GDLibrary
             PlayerIndex playerIndex,
             Buttons[] combatButtons,
             Keys[] combatKeys
-        ) : base(game, eventDispatcher, statusType) {
+        ) : base(game, eventDispatcher, statusType)
+        {
+            this.CameraManager = cameraManager;
             this.InventoryManager = inventoryManager;
             this.KeyboardManager = keyboardManager;
             this.GamepadManager = gamepadManager;
@@ -206,7 +198,7 @@ namespace GDLibrary
 
             base.RegisterForEventHandling(eventDispatcher);
         }
-        
+
         protected void EventDispatcher_CombatEvent(EventData eventData)
         {
             if (eventData.EventType == EventActionType.OnEnemyDeath)
@@ -222,14 +214,16 @@ namespace GDLibrary
             }
             else if (eventData.EventType == EventActionType.OnPlayerDeath)
             {
-                //Exit to menu for now
-                Game.Exit();
+                //Quit to menu for now
+                EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu, new object[] { "win_scene" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
+                return;
             }
             else if (eventData.EventType == EventActionType.PlayerHealthPickup)
             {
                 //Update player health
-                Console.WriteLine("Player health before: " + this.player.Health);
-                Console.WriteLine("Player health after: " + (this.player.Health += 10));
+                //Console.WriteLine("Player health before: " + this.player.Health);
+                //Console.WriteLine("Player health after: " + (this.player.Health += 10));
 
                 //If the player has regained enough health
                 if (this.player.Health > 30) EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Sound2D, new object[] { "player_health_low" }));
@@ -500,6 +494,8 @@ namespace GDLibrary
 
         public void EnemyAttack()
         {
+            //EventDispatcher.Publish(new EventData(EventActionType.));
+
             //Info
             Console.WriteLine("Enemy attack event");
             PrintStats(this.enemyOnFocus);
@@ -512,11 +508,16 @@ namespace GDLibrary
             //If the enemy has dealt damage
             if (damage > 0) this.player.TakeDamage(damage);
 
+            //Shake camera
+            this.cameraManager.GetCameraByID("First Person Camera").Shake(0.04f, 0.2f);
+
             //If the players' health is low
-            if (this.player.Health <= 30) {
+            if (this.player.Health <= 30)
+            {
 
                 //If the player has a health potion
-                if (this.InventoryManager.HasItem(PickupType.Health)) {
+                if (this.InventoryManager.HasItem(PickupType.Health))
+                {
 
                     //Use a key to open the gate
                     this.InventoryManager.UseItem(PickupType.Health);
@@ -532,7 +533,8 @@ namespace GDLibrary
                 }
 
                 //Otherwise
-                else {
+                else
+                {
 
                     //Publish health low sound event
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "player_health_low" }));
@@ -566,7 +568,7 @@ namespace GDLibrary
         {
             StateManager.InCombat = true;
             StateManager.PlayerTurn = true;
-            
+
             if (character.ActorType.Equals(ActorType.Enemy))
                 this.enemyOnFocus = character as EnemyObject;
         }
@@ -576,6 +578,67 @@ namespace GDLibrary
             TakeTurn(gameTime);
             base.Update(gameTime);
         }
+
+        public void TurnRed()
+        {
+            Vector3 fogColor = new Vector3(0f, 0f, 0f);
+            float fogStart = 0;
+            float fogEnd = 550;
+
+            BasicEffect enemyBasicEffect = new BasicEffect(graphics.GraphicsDevice)
+            {
+                FogEnabled = true,
+                TextureEnabled = true,
+                LightingEnabled = true,
+                PreferPerPixelLighting = true,
+                FogColor = fogColor,
+                FogStart = fogStart,
+                FogEnd = fogEnd
+            };
+
+            enemyBasicEffect.DirectionalLight0.Enabled = true;
+            enemyBasicEffect.DirectionalLight0.Direction = new Vector3(0.5f, -0.75f, -0.5f);
+            enemyBasicEffect.DirectionalLight0.DiffuseColor = new Vector3(1f, 0.2f, 0.2f);
+            enemyBasicEffect.DirectionalLight0.SpecularColor = new Vector3(0, 1, 0);
+
+            this.enemyOnFocus.EffectParameters.Effect = enemyBasicEffect;
+        }
+
+        public void NormalLighting()
+        {
+            Vector3 fogColor = new Vector3(0f, 0f, 0f);
+            float fogStart = 0;
+            float fogEnd = 550;
+
+            BasicEffect basicEffect = new BasicEffect(graphics.GraphicsDevice)
+            {
+                FogEnabled = true,
+                TextureEnabled = true,
+                LightingEnabled = true,
+                PreferPerPixelLighting = true,
+                FogColor = fogColor,
+                FogStart = fogStart,
+                FogEnd = fogEnd
+            };
+
+            //Standard Light
+            basicEffect.DirectionalLight0.Enabled = true;
+            basicEffect.DirectionalLight0.Direction = new Vector3(-0.5f, -0.75f, -0.5f);
+            basicEffect.DirectionalLight0.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
+
+            //Standard Light
+            basicEffect.DirectionalLight1.Enabled = true;
+            basicEffect.DirectionalLight1.Direction = new Vector3(0.5f, 0.75f, 0.5f);
+            basicEffect.DirectionalLight1.DiffuseColor = new Vector3(0.85f, 0.75f, 0.65f);
+
+            this.enemyOnFocus.EffectParameters.Effect = basicEffect;
+        }
+
+        public void TimeOut(float duration)
+        {
+
+        }
+
         #endregion
     }
 }

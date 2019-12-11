@@ -6,15 +6,18 @@ namespace GDApp
 {
     public class MyMenuManager : MenuManager
     {
+        private ObjectManager objectManager;
         #region Constructors
         public MyMenuManager(
             Game game,
             StatusType statusType,
+            ObjectManager objectManager,
             EventDispatcher eventDispatcher, 
             CameraManager cameraManager,
             MouseManager mouseManager,
             SpriteBatch spriteBatch
         ) : base(game, statusType, eventDispatcher, cameraManager, mouseManager, spriteBatch) {
+            this.objectManager = objectManager;
         }
         #endregion
 
@@ -38,7 +41,9 @@ namespace GDApp
                     if (eventData.AdditionalParameters[0].Equals("win_scene"))
                     {
                         //Display the win menu
-                        SetActiveList("win menu");
+                        SetActiveList("win menu");                     
+                        this.objectManager.Clear();
+                        
                     }
                 }
             }
@@ -47,6 +52,9 @@ namespace GDApp
                 //Add event to play background menu music here...
                 object[] additionalParameters = { "battle_theme" };
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, additionalParameters));
+
+                //object [] additionalParameters = {2f, "battle_drums"};
+                //EventDispatcher.Publish(new EventData(EventActionType.OnVolumeUp, EventCategoryType.Sound2D, additionalParameters));
             }
         }
         #endregion
@@ -87,28 +95,28 @@ namespace GDApp
                 case "volumeUpbtn":
                     {
                         //Curly brackets scope additionalParameters to be local to this case
-                        object[] additionalParameters = { 0.1f };
-                        EventDispatcher.Publish(new EventData(EventActionType.OnVolumeUp, EventCategoryType.GlobalSound, additionalParameters));
+                        object[] additionalParameters = { 0.1f, "Global" };
+                        EventDispatcher.Publish(new EventData(EventActionType.OnVolumeChange, EventCategoryType.GlobalSound, additionalParameters));
                     }
                     break;
 
                 case "volumeDownbtn":
                     {
-                        object[] additionalParameters = { 0.1f };
-                        EventDispatcher.Publish(new EventData(EventActionType.OnVolumeDown, EventCategoryType.GlobalSound, additionalParameters));
+                        object[] additionalParameters = { -0.1f, "Global" };
+                        EventDispatcher.Publish(new EventData(EventActionType.OnVolumeChange, EventCategoryType.GlobalSound, additionalParameters));
                     }
                     break;
 
                 case "volumeMutebtn":
                     {
-                        object[] additionalParameters = { 0.0f, "main_theme" };
+                        object[] additionalParameters = { 0.0f, "Global" };
                         EventDispatcher.Publish(new EventData(EventActionType.OnMute, EventCategoryType.GlobalSound, additionalParameters));
                     }
                     break;
 
                 case "volumeUnMutebtn":
                     {
-                        object[] additionalParameters = { 0.5f, "main_theme" };
+                        object[] additionalParameters = { 0.5f, "Global" };
                         EventDispatcher.Publish(new EventData(EventActionType.OnUnMute, EventCategoryType.GlobalSound, additionalParameters));
                     }
                     break;

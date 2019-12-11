@@ -105,11 +105,11 @@ namespace GDLibrary
             else if (eventData.EventType == EventActionType.OnVolumeChange)
             {
                 //2D sounds
-                float volumeDelta = (float)eventData.AdditionalParameters[0];
+                float volumeDelta = (float) eventData.AdditionalParameters[0];
                 SoundEffect.MasterVolume = MathHelper.Clamp(SoundEffect.MasterVolume + volumeDelta, 0, 1);
                 
                 //3D sounds
-                string soundCategory = (string)eventData.AdditionalParameters[1];
+                string soundCategory = (string) eventData.AdditionalParameters[1];
                 ChangeVolume(volumeDelta, soundCategory);
             }
         }

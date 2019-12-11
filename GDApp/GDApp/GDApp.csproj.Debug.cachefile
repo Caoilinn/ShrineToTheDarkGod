@@ -191,6 +191,7 @@ Content\Assets\Textures\UI\HUD\white.xnb
 Content\Assets\Textures\UI\Menu\Backgrounds\audiomenu.xnb
 Content\Assets\Textures\UI\Menu\Backgrounds\controlsmenu.xnb
 Content\Assets\Textures\UI\Menu\Backgrounds\mainmenu.xnb
+Content\Assets\Textures\UI\Menu\Buttons\button.xnb
 Content\Assets\Textures\Props\Crates\wc1_diffuse.xnb
 Content\Assets\Textures\UI\Menu\Backgrounds\begingame.xnb
 Content\Assets\Textures\UI\Menu\Backgrounds\losegame.xnb
@@ -254,8 +255,13 @@ Content\Assets\Fonts\hudFont.xnb
 Content\Assets\Fonts\menu.xnb
 Content\Assets\Fonts\gameLog.xnb
 Content\uvw2_0.xnb
-Content\Assets\Textures\UI\Menu\Buttons\button.xnb
+Content\Assets\Audio\battle_drums.xnb
+Content\Assets\Audio\on_start_chords.xnb
+Content\Assets\Audio\melody_ notes.xnb
+Content\Assets\Audio\menu_wind.xnb
 Content\Assets\Audio\GameAudio.xgs
 Content\Assets\Audio\Movement.xwb
+Content\Assets\Audio\Wave Bank.xwb
 Content\Assets\Audio\Movement.xsb
+Content\Assets\Audio\Sound Bank.xsb
 App\Data\LevelData.txt

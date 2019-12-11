@@ -1,3 +1,5 @@
 Content\Assets\Audio\GameAudio.xgs
 Content\Assets\Audio\Movement.xwb
+Content\Assets\Audio\Wave Bank.xwb
 Content\Assets\Audio\Movement.xsb
+Content\Assets\Audio\Sound Bank.xsb

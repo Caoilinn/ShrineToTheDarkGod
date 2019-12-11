@@ -21,7 +21,7 @@ namespace GDApp
         private VertexPositionColorTexture[] vertices;
 
         //Managers
-        private StateManager gameStateManager;
+        public StateManager gameStateManager;
         private ManagerParameters managerParameters;
         private GridManager gridManager;
         private ObjectManager objectManager;
@@ -150,7 +150,6 @@ namespace GDApp
             InitializeMenu();
             InitializeTextbox();
             InitializeUI();
-            InitializeUIMousePointer();
 
             InitializeGrid();
 
@@ -481,6 +480,7 @@ namespace GDApp
                 this, 
                 this.eventDispatcher, 
                 StatusType.Update, 
+                this.cameraManager,
                 this.inventoryManager,
                 this.keyboardManager,
                 this.gamepadManager,
@@ -498,6 +498,7 @@ namespace GDApp
             this.menuManager = new MyMenuManager(
                 this,
                 StatusType.Drawn | StatusType.Update,
+                this.objectManager,
                 this.eventDispatcher,
                 this.cameraManager,
                 this.mouseManager,
@@ -897,7 +898,11 @@ namespace GDApp
             clone = (UIButtonObject)uiButtonObject.Clone();
 
             //Move down on Y-axis for next button
-            clone.Transform.Translation += new Vector2(700, 7 * verticalBtnSeparation);
+            clone.Transform.Translation += new Vector2(
+                625,
+                360
+            );
+
             clone.ID = "beginbtn";
             clone.Text = "Begin";
 
@@ -940,7 +945,7 @@ namespace GDApp
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(000, 6 * verticalBtnSeparation);
             clone.ID = "menubtn";
-            clone.Text = "Return to Menu";
+            clone.Text = "Return";
 
             //Change the texture blend color
             clone.Color = Color.White;
@@ -1070,29 +1075,6 @@ namespace GDApp
             #endregion
         }
 
-        private void InitializeUIMousePointer()
-        {
-            //Texture2D texture = this.textureDictionary["HUD"];
-            
-            ////Show complete texture
-            //Microsoft.Xna.Framework.Rectangle sourceRectangle = new Microsoft.Xna.Framework.Rectangle(0, 0, texture.Width, texture.Height);
-
-            ////Listens for object picking events from the object picking manager
-            //UIPickingMouseObject myUIMouseObject = new UIPickingMouseObject(
-            //    "Picking Mouse Object",
-            //    ActorType.UITexture,
-            //    new Transform2D(Vector2.One),
-            //    this.fontDictionary["menu"],
-            //    "",
-            //    new Vector2(0, 40),
-            //    texture,
-            //    this.mouseManager,
-            //    this.eventDispatcher
-            //);
-
-            //this.uiManager.Add(myUIMouseObject);
-        }
-
         private void EventDispatcher_UIChanged(EventData eventData)
         {
             //Health bar
@@ -1189,6 +1171,43 @@ namespace GDApp
             this.textboxManager.Add("textbox", uiTextObj);
             #endregion
         }
+
+        private void StartGame()
+        {
+            //Will be received by the menu manager and screen manager and set the menu to be shown and game to be paused
+            EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.MainMenu));
+           
+        }
+
+        private void Reinitialize()
+        {
+
+            InitializeGraphics();
+            InitializeEffects();
+            InitializeEnemies();
+
+            InitializeEventDispatcher();
+            InitializeManagers();
+
+            LoadContent();
+            SetupBitArray();
+
+            LoadLevelFromFile();
+            LoadMapFromFile();
+
+            InitializeMap();
+
+            InitializeVertices();
+            InitializeBillboardVertices();
+            InitializePrimitives();
+
+            InitializeMenu();
+            InitializeTextbox();
+            InitializeUI();
+
+            InitializeGrid();
+        }
+
         #endregion
 
         #region Cameras
@@ -1274,7 +1293,6 @@ namespace GDApp
             );
             
             this.cameraManager.Add(camera);
-            //this.combatManager.AddPlayer((camera.ControllerList[0] as CollidableFirstPersonCameraController).PlayerObject);
         }
         #endregion
         
@@ -2328,6 +2346,11 @@ namespace GDApp
         #region Update, Draw
         protected override void Update(GameTime gameTime)
         {
+            if (this.menuManager.ActiveList.Equals("win_scene"))
+            {
+                Reinitialize();
+            }
+
             base.Update(gameTime);
         }
 

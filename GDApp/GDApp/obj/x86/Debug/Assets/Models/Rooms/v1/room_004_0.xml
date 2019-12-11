@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>room_004</Name>
     <Identity>
-      <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v1\room_004.FBX</SourceFilename>
+      <SourceFilename>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v1\room_004.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>
@@ -31,7 +31,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>01 - Default</Name>
       <Identity>
-        <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v1\room_004.FBX</SourceFilename>
+        <SourceFilename>C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v1\room_004.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -52,6 +52,6 @@
     </Resource>
   </Resources>
   <ExternalReferences>
-    <ExternalReference ID="#External1" TargetType="Graphics:TextureContent">..\..\..\..\FBX\929280D\room_004.fbm\uvw2.png</ExternalReference>
+    <ExternalReference ID="#External1" TargetType="Graphics:TextureContent">..\..\..\..\FBX\E46227B3\room_004.fbm\uvw2.png</ExternalReference>
   </ExternalReferences>
 </XnaContent>
