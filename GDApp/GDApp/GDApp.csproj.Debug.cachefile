@@ -226,10 +226,6 @@ Content\Assets\Textures\Billboards\UI\dodge_right_billboard.xnb
 Content\Assets\Textures\Billboards\UI\impact_billboard.xnb
 Content\Assets\Textures\Billboards\UI\slash_billboard_01.xnb
 Content\Assets\Textures\Billboards\UI\slash_billboard_02.xnb
-Content\Assets\Fonts\hudFont.xnb
-Content\Assets\Fonts\menu.xnb
-Content\Assets\Fonts\gameLog.xnb
-Content\uvw2_0.xnb
 Content\Assets\Audio\v1\boing.xnb
 Content\Assets\Audio\v1\environment_stone_steps.xnb
 Content\Assets\Audio\v1\turn_around.xnb
@@ -290,6 +286,10 @@ Content\Assets\Audio\v2\player_turn.xnb
 Content\Assets\Audio\v2\skeleton_death.xnb
 Content\Assets\Audio\v2\ui_click.xnb
 Content\Assets\Audio\v2\music_main.xnb
+Content\Assets\Fonts\hudFont.xnb
+Content\Assets\Fonts\menu.xnb
+Content\Assets\Fonts\gameLog.xnb
+Content\uvw2_0.xnb
 Content\Assets\Audio\v1\GameAudio.xgs
 Content\Assets\Audio\v1\Movement.xwb
 Content\Assets\Audio\v1\Movement.xsb

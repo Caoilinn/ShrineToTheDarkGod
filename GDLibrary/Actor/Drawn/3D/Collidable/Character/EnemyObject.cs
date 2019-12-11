@@ -14,7 +14,7 @@ namespace GDLibrary
         private Color originalColor;
 
         //Should construct this later - use AppData to detemine move interval time
-        private double moveInterval = 0.5f;
+        private double moveInterval = 2000;
         #endregion
 
         #region Properties
@@ -98,29 +98,37 @@ namespace GDLibrary
             ManagerParameters managerParameters
         ) : base(id, actorType, transform, effectParameters, model, accelerationRate, decelerationRate, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, managerParameters) {
             this.MoveStarted = false;
+            this.OriginalColor = this.EffectParameters.DiffuseColor;
         }
         #endregion
 
         #region Methods
         public void TrackPlayer(GameTime gameTime)
         {
-            EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));
-        }
-
-        public override void TakeTurn(GameTime gameTime)
-        {                
             //If it is not currently the enemys' turn, return
             if (!StateManager.EnemyTurn) return;
 
             //If in combat, return
             if (StateManager.InCombat) return;
 
+            //Publish turn event
+            EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));
+        }
+
+        public override void TakeTurn(GameTime gameTime)
+        {                
             //Set some interval turn timer
             TurnTimer(gameTime);
         }
 
         public virtual void TurnTimer(GameTime gameTime)
         {
+            //Allow free movement until in combat
+            if (!StateManager.InCombat) {
+                EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));
+                return;
+            }
+ 
             //If first time called
             if (!this.MoveStarted)
             {
@@ -130,22 +138,22 @@ namespace GDLibrary
                 return;
             }
 
+            //If move has ended
+            if (gameTime.TotalGameTime.TotalMilliseconds > (this.StartMoveTime + (this.moveInterval / 1.0f)))
+            {
+                //Track player
+                this.EffectParameters.DiffuseColor = this.OriginalColor;
+                TrackPlayer(gameTime);
+
+                this.MoveStarted = false;
+            }
+
             //If move at midpoint
-            if (gameTime.TotalGameTime.TotalMilliseconds > (this.StartMoveTime + (this.moveInterval / 2.0f)))
+            else if (gameTime.TotalGameTime.TotalMilliseconds > (this.StartMoveTime + (this.moveInterval / 2.0f)))
             {
                 //Mark midpoint
                 this.EffectParameters.DiffuseColor = this.OriginalColor;
                 this.MoveMidpoint = true;
-                return;
-            }
-
-            //If move has ended
-            if (gameTime.TotalGameTime.TotalMilliseconds > (this.StartMoveTime + this.moveInterval))
-            {
-                //Stop move
-                EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));
-                this.MoveStarted = false;
-                return;
             }
         }
 

@@ -171,8 +171,7 @@ namespace GDLibrary
             return hash;
         }
 
-        public new object Clone()
-        {
+        public new object Clone() {
             return new Camera3D(
                 "Clone - " + this.ID,
                 this.ActorType, 
@@ -184,8 +183,7 @@ namespace GDLibrary
             );
         }
 
-        public override string ToString()
-        {
+        public override string ToString() {
             return this.ID
                 + ", Translation: " + MathUtility.Round(this.Transform.Translation, 0)
                 + ", Look: " + MathUtility.Round(this.Transform.Look, 0)
@@ -193,13 +191,11 @@ namespace GDLibrary
                 + ", Depth: " + this.drawDepth;
         }
 
-        private float RandFloat()
-        {
+        private float RandFloat() {
             return (float) random.NextDouble() * 2f - 1f;
         }
 
-        public void Shake(float mag, float dur)
-        {
+        public void Shake(float mag, float dur) {
             this.origionalLook = this.Transform.Look;
             if (!shaking)
             {

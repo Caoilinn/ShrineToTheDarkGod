@@ -329,8 +329,17 @@ namespace GDLibrary
             //Initialise battle
             this.CombatManager.InitiateBattle(enemy);
 
+            //For each player in the game
+            foreach(PlayerObject player in this.players) {
+
+                //Block their path
+                player.BlockedDirections.Add(Vector3.Normalize(enemy.Transform.Translation - player.Transform.Translation));
+            }
+
             //Update HUD
-            EventDispatcher.Publish(new EventData(EventActionType.OnInitiateBattle, EventCategoryType.Textbox));
+            if (!StateManager.Dodged) {
+                EventDispatcher.Publish(new EventData(EventActionType.OnInitiateBattle, EventCategoryType.Textbox));
+            }
         }
         #endregion
 

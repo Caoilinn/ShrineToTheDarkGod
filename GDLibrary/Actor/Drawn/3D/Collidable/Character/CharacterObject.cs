@@ -336,7 +336,7 @@ namespace GDLibrary
                 if (this.BlockedDirections.Contains(Vector3.Normalize(this.Translation)))
                 {
                     //Display info
-                    EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "Cannot walk through walls!" }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "Can't go that way!" }));
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "player_bump_001", audioEmitter }));
                     this.Translation = Vector3.Zero;
                     return;

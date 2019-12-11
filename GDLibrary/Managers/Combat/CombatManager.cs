@@ -238,13 +238,6 @@ namespace GDLibrary
                 //Update combat state
                 StateManager.InCombat = false;
             }
-            else if (eventData.EventType == EventActionType.OnPlayerDeath)
-            {
-                //Quit to menu for now
-                EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu, new object[] { "lose_scene" }));
-                EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
-                return;
-            }
             else if (eventData.EventType == EventActionType.PlayerHealthPickup)
             {
                 //Update player health
@@ -317,6 +310,11 @@ namespace GDLibrary
 
         protected virtual void TakeTurn(GameTime gameTime)
         {
+            //IF player died
+            if (this.player.Health <= 0) {
+                return;
+            }
+
             //If not in combat, return
             if (!StateManager.InCombat) return;
 
@@ -463,7 +461,7 @@ namespace GDLibrary
             EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "player_block", audioEmitter }));
 
             //Enemy Attack
-            EnemyAttack();
+            EnemyTurn();
         }
 
         public void PlayerDodge()
@@ -473,7 +471,7 @@ namespace GDLibrary
             PrintStats(this.enemyOnFocus);
 
             //Calculate dodge chance
-            int dodge = random.Next(1, 7);
+            int dodge = random.Next(0, 7);
 
             //If the player has successfully dodged
             if (dodge % 2 == 0)
@@ -482,8 +480,7 @@ namespace GDLibrary
                 float damage = 0;
                 
                 //Create audio emitter
-                AudioEmitter audioEmitter = new AudioEmitter
-                {
+                AudioEmitter audioEmitter = new AudioEmitter {
                     Position = this.player.Transform.Translation
                 };
 
@@ -505,14 +502,14 @@ namespace GDLibrary
                 //Take damage
                 this.player.TakeDamage(enemyOnFocus.Attack);
 
+                //Shake camera
+                this.cameraManager.GetCameraByID("First Person Camera").Shake(0.04f, 0.2f);
+
                 //If the enemy has killed the player
                 if (this.player.Health <= 0) EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));
 
                 //Publish a UI player dodge event
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.Textbox, new object[] { this.enemyOnFocus.Attack, this.player.Health, this.enemyOnFocus.Health }));
-
-                //Publish enemy turn event
-                EventDispatcher.Publish(new EventData(EventActionType.EnemyTurn, EventCategoryType.Game));
             }
         }
 
@@ -578,11 +575,11 @@ namespace GDLibrary
             //If the enemy has killed the player
             if (this.player.Health <= 0) {
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));
+                return;
             }
 
             //Create audio emitter
-            AudioEmitter audioEmitter = new AudioEmitter
-            {
+            AudioEmitter audioEmitter = new AudioEmitter {
                 Position = this.enemyOnFocus.Transform.Translation
             };
 
@@ -620,6 +617,13 @@ namespace GDLibrary
 
         public override void Update(GameTime gameTime)
         {
+            //Hacked in
+            if(this.Player.Health <= 0) {
+                //Quit to menu for now
+                EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu, new object[] { "lose_scene" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
+            }
+
             TakeTurn(gameTime);
             base.Update(gameTime);
         }
