@@ -276,8 +276,13 @@ namespace GDLibrary
             #region Rotation
             if (this.Rotation != Vector3.Zero)
             {
+                //Create audio emitter
+                AudioEmitter characterAudioEmitter = new AudioEmitter {
+                    Position = this.Transform.Translation
+                };
+
                 //Play turn sound
-                if (!this.InMotion) EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "turn_around" }));
+                if (!this.InMotion) EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "player_turn", characterAudioEmitter }));
                 
                 //If the current heading is near the target heading
                 if (Vector3.Distance(this.CurrentHeading, this.TargetHeading) <= 5)
@@ -318,11 +323,11 @@ namespace GDLibrary
                 };
 
                 //Prevent movement while in combat
-                if (StateManager.InCombat)
+                if (StateManager.InCombat && !StateManager.Dodged)
                 {
                     //Display info
                     EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "Cannot move while in combat" }));
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "wall_bump", audioEmitter }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "player_bump_001", audioEmitter }));
                     this.Translation = Vector3.Zero;
                     return;
                 }
@@ -331,14 +336,14 @@ namespace GDLibrary
                 if (this.BlockedDirections.Contains(Vector3.Normalize(this.Translation)))
                 {
                     //Display info
-                    EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "Cannot walk through walls!" }));
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "wall_bump", audioEmitter }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "Can't go that way!" }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "player_bump_001", audioEmitter }));
                     this.Translation = Vector3.Zero;
                     return;
                 }
 
                 //Play move sound
-                if (!this.InMotion) EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "environment_stone_steps", audioEmitter }));
+                if (!this.InMotion) EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "player_footsteps", audioEmitter }));
 
                 //If the current positon is near the target position
                 if (Vector3.Distance(this.CurrentPosition, this.TargetPosition) <= 10)
@@ -355,6 +360,9 @@ namespace GDLibrary
 
                     //Update motion state
                     this.InMotion = false;
+
+                    //Reset dodge
+                    StateManager.Dodged = false;
                 }
                 else
                 {
@@ -571,8 +579,6 @@ namespace GDLibrary
             this.jumpHeight = jumpHeight;
             this.isJumping = true;
         }
-
-        
 
         public override void AddExternalForces(float dt)
         {

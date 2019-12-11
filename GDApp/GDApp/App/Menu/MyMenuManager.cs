@@ -31,7 +31,7 @@ namespace GDApp
             if (eventData.EventType == EventActionType.OnStart)
             {
                 //Add event to stop background menu music here...
-                object[] additionalParameters = { "main_theme", 1 };
+                object[] additionalParameters = { "music_main", 1 };
                 EventDispatcher.Publish(new EventData(EventActionType.OnStop, EventCategoryType.Sound2D, additionalParameters));
 
                 //If additionaly parameters have been set
@@ -45,12 +45,19 @@ namespace GDApp
                         this.objectManager.Clear();
                         
                     }
+
+                    //If the event was a lose event
+                    if (eventData.AdditionalParameters[0].Equals("lose_scene"))
+                    {
+                        //Display the win menu
+                        SetActiveList("lose menu");
+                    }
                 }
             }
             else if (eventData.EventType == EventActionType.OnPause)
             {
                 //Add event to play background menu music here...
-                object[] additionalParameters = { "battle_theme" };
+                object[] additionalParameters = { "music_main" };
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, additionalParameters));
 
                 //object [] additionalParameters = {2f, "battle_drums"};
@@ -156,7 +163,7 @@ namespace GDApp
         private void DoMenuClickSound()
         {
             //e.g. Play a boing
-            object[] additionalParameters = { "wall_bump" };
+            object[] additionalParameters = { "ui_click" };
             EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, additionalParameters));
         }
 

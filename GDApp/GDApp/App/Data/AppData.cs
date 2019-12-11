@@ -48,8 +48,8 @@ namespace GDLibrary
 
         //JigLib related collidable camera properties
         public static readonly float CollidableCameraJumpHeight = 12;
-        public static readonly float CollidableCameraMoveSpeed = 0.6f;
-        public static readonly float CollidableCameraStrafeSpeed = 0.6f * CollidableCameraMoveSpeed;
+        public static readonly float CollidableCameraMoveSpeed = 0.2f;
+        public static readonly float CollidableCameraStrafeSpeed = 0.4f * CollidableCameraMoveSpeed;
         public static readonly float CollidableCameraCapsuleRadius = 2;
         public static readonly float CollidableCameraViewHeight = 8; //how tall is the first person player?
         public static readonly float CollidableCameraMass = 10;
@@ -98,8 +98,8 @@ namespace GDLibrary
         public static readonly float CharacterAccelerationRate = 1;
         public static readonly float CharacterDecelerationRate = 1;
 
-        public static readonly float CharacterMoveSpeed = 0.6f;
-        public static readonly float CharacterStrafeSpeed = 0.6f;
+        public static readonly float CharacterMoveSpeed = 0.5f;
+        public static readonly float CharacterStrafeSpeed = 0.5f;
         public static readonly float CharacterRotateSpeed = 0.3f;
 
         public static readonly Vector3 CharacterMovementVector = new Vector3(254, 254, 254);
@@ -113,12 +113,12 @@ namespace GDLibrary
         public static readonly float PlayerAttack = 25;
         public static readonly float PlayerDefence = 25;
 
-        public static readonly float SkeletonHealth = 10;
+        public static readonly float SkeletonHealth = 40;
         public static readonly float SkeletonAttack = 30;
         public static readonly float SkeletonDefence = 20;
 
-        public static readonly float CultistHealth = 35;
-        public static readonly float CultistAttack = 30;
+        public static readonly float CultistHealth = 50;
+        public static readonly float CultistAttack = 40;
         public static readonly float CultistDefence = 30;
         #endregion
 

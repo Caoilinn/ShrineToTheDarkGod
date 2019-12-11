@@ -288,8 +288,11 @@ namespace GDLibrary
                 //If the distance between the enemys' position and the players' position, is less than or equal to the distance between two adjacent cells
                 if (Vector3.Distance(enemy.Transform.Translation * vectorXZ, player.Transform.Translation * vectorXZ) == (distanceBetweenAdjacentCells * 2))
                 {
-                    //Publish enemy growl sound
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "growl", enemyAudioEmitter }));
+                    //Publish sound event
+                    if (enemy.GetID().Equals("Cultist1"))
+                        EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "cultist_growl", enemyAudioEmitter }));
+                    else
+                        EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "skeleton_growl", enemyAudioEmitter }));
                 }
 
                 //If the player is looking towards the enemy
@@ -318,16 +321,25 @@ namespace GDLibrary
             if (enemy.Health <= 0) return;
 
             //Pause game music
-            this.SoundManager.PauseCue("main_theme");
+            this.SoundManager.PauseCue("music_main");
 
             //Play battle music
-            this.SoundManager.PlayCue("battle_theme");
+            this.SoundManager.PlayCue("music_battle_001");
 
             //Initialise battle
             this.CombatManager.InitiateBattle(enemy);
 
+            //For each player in the game
+            foreach(PlayerObject player in this.players) {
+
+                //Block their path
+                player.BlockedDirections.Add(Vector3.Normalize(enemy.Transform.Translation - player.Transform.Translation));
+            }
+
             //Update HUD
-            EventDispatcher.Publish(new EventData(EventActionType.OnInitiateBattle, EventCategoryType.Textbox));
+            if (!StateManager.Dodged) {
+                EventDispatcher.Publish(new EventData(EventActionType.OnInitiateBattle, EventCategoryType.Textbox));
+            }
         }
         #endregion
 
@@ -376,21 +388,21 @@ namespace GDLibrary
                 case PickupType.Sword:
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.Textbox, new object[] { "Sword" }));
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.UIMenu, new object[] { "Sword" }));
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "equip_sword", itemAudioEmitter }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "pickup_sword", itemAudioEmitter }));
                     break;
 
                 //Play pickup key sound
                 case PickupType.Key:
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.Textbox, new object[] { "Key" }));
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.UIMenu, new object[] { "Key" }));
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "keys_jingle", itemAudioEmitter }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "pickup_keys", itemAudioEmitter }));
                     break;
 
                 //Play pickup potion sound
                 case PickupType.Health:
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.Textbox, new object[] { "Potion" }));
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemAdded, EventCategoryType.UIMenu, new object[] { "Potion" }));
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "drink_potion", itemAudioEmitter }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "pickup_potion", itemAudioEmitter }));
                     break;
             }
 
@@ -405,7 +417,7 @@ namespace GDLibrary
         private void HandlePlayerItemIneraction(ImmovablePickupObject item, AudioEmitter itemAudioEmitter)
         {
             //Play sound
-            EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "item_twinkle", itemAudioEmitter }));
+            EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "pickup_twinkle", itemAudioEmitter }));
         }
         #endregion
 
@@ -515,12 +527,12 @@ namespace GDLibrary
         #region Base Methods
         private void UpdateSound()
         {
-            if (!StateManager.InProximityOfAnItem) EventDispatcher.Publish(new EventData(EventActionType.OnStop, EventCategoryType.Sound3D, new object[] { "item_twinkle", 0 }));
+            if (!StateManager.InProximityOfAnItem) EventDispatcher.Publish(new EventData(EventActionType.OnStop, EventCategoryType.Sound3D, new object[] { "pickup_twinkle", 0 }));
 
             if (!StateManager.InCombat)
             {
-                EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Sound2D, new object[] { "battle_theme" }));
-                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "main_theme" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Sound2D, new object[] { "music_battle_001" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "music_main" }));
             }
         }
 

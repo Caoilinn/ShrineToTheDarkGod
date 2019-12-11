@@ -1,3 +1,4 @@
+
 using GDLibrary;
 using JigLibX.Geometry;
 using JigLibX.Collision;
@@ -37,6 +38,8 @@ namespace GDApp
         private MyTextboxManager textboxManager;
         private PickingManager pickingManager;
         private InventoryManager inventoryManager;
+        private TimeManager timeManager;
+
 
         //Dispatchers
         private EventDispatcher eventDispatcher;
@@ -381,6 +384,13 @@ namespace GDApp
 
         private void InitializeManagers()
         {
+            #region Time Manager
+            this.timeManager = new TimeManager(this);
+
+            Components.Add(this.timeManager);
+
+            #endregion
+
             #region Camera Manager
             this.cameraManager = new CameraManager(
                 this, 
@@ -446,10 +456,10 @@ namespace GDApp
                 this,
                 this.eventDispatcher,
                 StatusType.Update,
-                "Content/Assets/Audio/",
+                "Content/Assets/Audio/v2",
                 "GameAudio.xgs",
-                "Movement.xwb",
-                "Movement.xsb"
+                "Wave Bank.xwb",
+                "Sound Bank.xsb"
             );
 
             Components.Add(this.soundManager);
@@ -488,7 +498,8 @@ namespace GDApp
                 this.gridManager,
                 PlayerIndex.One,
                 AppData.CombatButtons,
-                AppData.CombatKeys
+                AppData.CombatKeys,
+                this.timeManager
             );
 
             Components.Add(this.combatManager);
@@ -940,7 +951,7 @@ namespace GDApp
             );
 
             //Add back button - clone the audio button then just reset texture, ids etc in all the clones
-            clone = (UIButtonObject)uiButtonObject.Clone();
+            clone = (UIButtonObject) uiButtonObject.Clone();
 
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(000, 6 * verticalBtnSeparation);
@@ -981,12 +992,12 @@ namespace GDApp
             );
 
             //Add back button - clone the audio button then just reset texture, ids etc in all the clones
-            clone = (UIButtonObject)uiButtonObject.Clone();
+            clone = (UIButtonObject) uiButtonObject.Clone();
 
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(0, 6 * verticalBtnSeparation);
             clone.ID = "menubtn";
-            clone.Text = "Return to Menu";
+            clone.Text = "Return";
 
             //Change the texture blend color
             clone.Color = Color.White;
@@ -1091,6 +1102,16 @@ namespace GDApp
                     this.xpBar.Transform.Scale.X + ((float) eventData.AdditionalParameters[0] / 100),
                     this.xpBar.Transform.Scale.Y
                 );
+
+                if (this.xpBar.Transform.Scale.X.Equals(1)) {
+                    this.xpBar.Transform.Scale = new Vector2(
+                        0,
+                        1
+                    );
+                }
+
+                //Level up
+                this.textboxManager.TextboxText = "Level up!";
             }
 
             //If item added
@@ -2140,7 +2161,8 @@ namespace GDApp
             #endregion
 
             #region Enemy Effects
-            this.effectDictionary.Add("skeletonEffect", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.3f, 0.2f, 0.1f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("skeletonEffect1", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.3f, 0.2f, 0.1f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("skeletonEffect2", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.3f, 0.2f, 0.1f)), Color.Black, Color.Black, Color.Black, 0, 1));
             this.effectDictionary.Add("cultistEffect", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.0f, 0.0f, 0.0f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
         }
@@ -2169,7 +2191,7 @@ namespace GDApp
                     "Skeleton1",
                     ActorType.Enemy,
                     Transform3D.Zero,
-                    this.effectDictionary["skeletonEffect"],
+                    this.effectDictionary["skeletonEffect1"],
                     this.modelDictionary["skeletonModel1"],
                     AppData.CharacterAccelerationRate,
                     AppData.CharacterDecelerationRate,
@@ -2190,7 +2212,7 @@ namespace GDApp
                     "Skeleton2",
                     ActorType.Enemy,
                     Transform3D.Zero,
-                    this.effectDictionary["skeletonEffect"],
+                    this.effectDictionary["skeletonEffect2"],
                     this.modelDictionary["skeletonModel2"],
                     AppData.CharacterAccelerationRate,
                     AppData.CharacterDecelerationRate,
@@ -2324,10 +2346,21 @@ namespace GDApp
                 }
             }
         }
+
+        private void DemoToggleMenu()
+        {
+            if (this.keyboardManager.IsFirstKeyPress(AppData.MenuShowHideKey))
+            {
+                if (this.menuManager.IsVisible)
+                    EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu));
+                else
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
+            }
+        }
         #endregion
 
         #region Debug
-        #if DEBUG
+#if DEBUG
         private void InitializeDebugCollisionSkinInfo()
         {
             this.physicsDebugDrawer = new PhysicsDebugDrawer(
@@ -2351,6 +2384,7 @@ namespace GDApp
                 Reinitialize();
             }
 
+            DemoToggleMenu();
             base.Update(gameTime);
         }
 
