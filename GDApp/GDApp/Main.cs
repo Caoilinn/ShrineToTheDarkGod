@@ -446,10 +446,10 @@ namespace GDApp
                 this,
                 this.eventDispatcher,
                 StatusType.Update,
-                "Content/Assets/Audio/",
+                "Content/Assets/Audio/v2",
                 "GameAudio.xgs",
-                "Movement.xwb",
-                "Movement.xsb"
+                "Wave Bank.xwb",
+                "Sound Bank.xsb"
             );
 
             Components.Add(this.soundManager);
@@ -939,7 +939,7 @@ namespace GDApp
             );
 
             //Add back button - clone the audio button then just reset texture, ids etc in all the clones
-            clone = (UIButtonObject)uiButtonObject.Clone();
+            clone = (UIButtonObject) uiButtonObject.Clone();
 
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(000, 6 * verticalBtnSeparation);
@@ -980,12 +980,12 @@ namespace GDApp
             );
 
             //Add back button - clone the audio button then just reset texture, ids etc in all the clones
-            clone = (UIButtonObject)uiButtonObject.Clone();
+            clone = (UIButtonObject) uiButtonObject.Clone();
 
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(0, 6 * verticalBtnSeparation);
             clone.ID = "menubtn";
-            clone.Text = "Return to Menu";
+            clone.Text = "Return";
 
             //Change the texture blend color
             clone.Color = Color.White;

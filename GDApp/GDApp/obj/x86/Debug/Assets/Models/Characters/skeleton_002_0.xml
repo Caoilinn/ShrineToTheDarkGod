@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>enemy_001</Name>
     <Identity>
-      <SourceFilename>C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\skeleton_002.FBX</SourceFilename>
+      <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\skeleton_002.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>
@@ -38,7 +38,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>None.002</Name>
       <Identity>
-        <SourceFilename>C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\skeleton_002.FBX</SourceFilename>
+        <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\skeleton_002.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -52,7 +52,7 @@
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>Material.008</Name>
       <Identity>
-        <SourceFilename>C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\skeleton_002.FBX</SourceFilename>
+        <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\skeleton_002.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

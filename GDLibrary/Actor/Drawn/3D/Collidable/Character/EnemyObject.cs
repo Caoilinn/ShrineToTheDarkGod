@@ -8,13 +8,75 @@ namespace GDLibrary
     public class EnemyObject : CharacterObject
     {
         #region Fields
-        //Local vars
-        private double startMoveTime;
-        private double moveInterval = 0.25f;
-        bool moveStarted;
+        static private bool moveStarted;
+        static private bool moveMidpoint;
+        static private double startMoveTime;
+        private Color originalColor;
+
+        //Should construct this later - use AppData to detemine move interval time
+        private double moveInterval = 0.5f;
         #endregion
 
         #region Properties
+        public bool MoveStarted
+        {
+            get
+            {
+                return EnemyObject.moveStarted;
+            }
+            set
+            {
+                EnemyObject.moveStarted = value;
+            }
+        }
+
+        public bool MoveMidpoint
+        {
+            get
+            {
+                return EnemyObject.moveMidpoint; 
+            }
+            set
+            {
+                EnemyObject.moveMidpoint = value;
+            }
+        }
+
+        public double StartMoveTime
+        {
+            get
+            {
+                return EnemyObject.startMoveTime;
+            }
+            set
+            {
+                EnemyObject.startMoveTime = value;
+            }
+        }
+
+        public Color OriginalColor
+        {
+            get
+            {
+                return this.originalColor;
+            }
+            set
+            {
+                this.originalColor = value;
+            }
+        }
+
+        public double MoveInterval
+        {
+            get
+            {
+                return this.moveInterval;
+            }
+            set
+            {
+                this.moveInterval = value;
+            }
+        }
         #endregion
 
         #region Constructors
@@ -34,7 +96,8 @@ namespace GDLibrary
             float attack,
             float defence,
             ManagerParameters managerParameters
-        ) : base(id, actorType, transform, effectParameters, model, accelerationRate, decelerationRate, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, managerParameters) {    
+        ) : base(id, actorType, transform, effectParameters, model, accelerationRate, decelerationRate, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, managerParameters) {
+            this.MoveStarted = false;
         }
         #endregion
 
@@ -45,41 +108,57 @@ namespace GDLibrary
         }
 
         public override void TakeTurn(GameTime gameTime)
-        {
-            
+        {                
             //If it is not currently the enemys' turn, return
             if (!StateManager.EnemyTurn) return;
-            
-            //Set up move time
-            if (!moveStarted) this.startMoveTime = gameTime.TotalGameTime.TotalSeconds;
-            
-            //If the enemy is in combat
+
+            //If in combat, return
             if (StateManager.InCombat) return;
 
             //Set some interval turn timer
             TurnTimer(gameTime);
-
-            //Track player
-            //TrackPlayer(gameTime);
         }
 
         public virtual void TurnTimer(GameTime gameTime)
         {
-            if ((this.startMoveTime + this.moveInterval) < gameTime.TotalGameTime.TotalSeconds)
+            //If first time called
+            if (!this.MoveStarted)
             {
-                this.moveStarted = false;
-                TrackPlayer(gameTime);
+                //Start move
+                this.MoveStarted = true;
+                this.StartMoveTime = gameTime.TotalGameTime.TotalMilliseconds;
+                return;
             }
-            else
+
+            //If move at midpoint
+            if (gameTime.TotalGameTime.TotalMilliseconds > (this.StartMoveTime + (this.moveInterval / 2.0f)))
             {
-                this.moveStarted = true;
+                //Mark midpoint
+                this.EffectParameters.DiffuseColor = this.OriginalColor;
+                this.MoveMidpoint = true;
+                return;
+            }
+
+            //If move has ended
+            if (gameTime.TotalGameTime.TotalMilliseconds > (this.StartMoveTime + this.moveInterval))
+            {
+                //Stop move
+                EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));
+                this.MoveStarted = false;
+                return;
             }
         }
 
         public override void TakeDamage(float damage)
         {
-            //Update player xp
-            EventDispatcher.Publish(new EventData(EventActionType.EnemyHealthUpdate, EventCategoryType.UIMenu, new object[] {damage }));
+            //Make Enemy Flash Red
+            this.OriginalColor = this.EffectParameters.DiffuseColor;
+            this.EffectParameters.DiffuseColor = new Color(1.0f, 0.2f, 0.2f);
+
+            //Update Player XP
+            EventDispatcher.Publish(new EventData(EventActionType.EnemyHealthUpdate, EventCategoryType.UIMenu, new object[] { damage }));
+
+            //Update Enemy Health
             base.TakeDamage(damage);
         }
 

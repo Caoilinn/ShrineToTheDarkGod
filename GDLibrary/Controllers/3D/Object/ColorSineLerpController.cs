@@ -14,9 +14,9 @@ namespace GDLibrary
     public class ColorSineLerpController : SineLerpController
     {
         #region Fields
+        private int totalElapsedTime;
         private Color startColor;
         private Color endColor;
-        private int totalElapsedTime;
         #endregion
 
         #region Properties

@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>room_015</Name>
     <Identity>
-      <SourceFilename>C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v2\room_006.FBX</SourceFilename>
+      <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v2\room_006.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>
@@ -53,21 +53,21 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Material #37</Name>
       <Identity>
-        <SourceFilename>C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v2\room_006.FBX</SourceFilename>
+        <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v2\room_006.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
     </Resource>
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>Material #36</Name>
       <Identity>
-        <SourceFilename>C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v2\room_006.FBX</SourceFilename>
+        <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v2\room_006.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
     </Resource>
     <Resource ID="#Resource3" Type="Graphics:BasicMaterialContent">
       <Name>Material #38</Name>
       <Identity>
-        <SourceFilename>C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v2\room_006.FBX</SourceFilename>
+        <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Rooms\v2\room_006.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
     </Resource>

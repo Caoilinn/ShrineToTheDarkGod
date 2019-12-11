@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System;
+using Microsoft.Xna.Framework.Audio;
 
 namespace GDLibrary
 {
@@ -240,7 +241,7 @@ namespace GDLibrary
             else if (eventData.EventType == EventActionType.OnPlayerDeath)
             {
                 //Quit to menu for now
-                EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu, new object[] { "win_scene" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu, new object[] { "lose_scene" }));
                 EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
                 return;
             }
@@ -251,7 +252,7 @@ namespace GDLibrary
                 Console.WriteLine("Player health after: " + (this.player.Health += 10));
 
                 //If the player has regained enough health
-                if (this.player.Health > 30) EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Sound2D, new object[] { "player_health_low" }));
+                if (this.player.Health > 30) EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Sound2D, new object[] { "player_low_health" }));
             }
         }
         #endregion
@@ -410,17 +411,26 @@ namespace GDLibrary
             //If the player has dealt damage
             if (damage > 0) this.enemyOnFocus.TakeDamage(damage);
 
+            //Create audio emitter
+            AudioEmitter audioEmitter = new AudioEmitter
+            {
+                Position = this.enemyOnFocus.Transform.Translation
+            };
+
             //Publish play attack sound event
             if (this.inventoryManager.HasItem(PickupType.Sword))
-                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "h_attack" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "player_attack_sword", audioEmitter }));
             else
-                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "punch_01" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "player_attack_punch", audioEmitter }));
 
             //If the player has killed the enemy
             if (this.enemyOnFocus.Health <= 0)
             {
                 //Publish sound event
-                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "death" }));
+                if (this.enemyOnFocus.GetID().Equals("Cultist1"))
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "cultist_death", audioEmitter }));
+                else
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "skeleton_death", audioEmitter }));
 
                 //Publish UI event
                 EventDispatcher.Publish(new EventData(EventActionType.OnEnemyDeath, EventCategoryType.Textbox));
@@ -441,28 +451,19 @@ namespace GDLibrary
         public void PlayerBlock()
         {
             //Info
-            Console.WriteLine("Player defend event");
+            Console.WriteLine("Player block event");
             PrintStats(this.enemyOnFocus);
 
+            //Create item audio emitter
+            AudioEmitter audioEmitter = new AudioEmitter {
+                Position = this.player.Transform.Translation
+            };
+
             //Publish play block sound event
-            EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "block" }));
+            EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "player_block", audioEmitter }));
 
             //Enemy Attack
             EnemyAttack();
-
-            ////Calculate player defend damage
-            //float playerDefence = this.player.Defence;
-            //float enemyAttack = this.enemyOnFocus.Attack;
-            //float damage = enemyAttack - playerDefence;
-
-            ////If the player has taken damage
-            //if (damage > 0) this.player.TakeDamage(damage);
-
-            ////If the enemy has killed the player
-            //if (this.player.Health <= 0) EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));
-
-            ////Publish a UI player attack event
-            //EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDefend, EventCategoryType.Textbox, new object[] { damage, this.player.Health, this.enemyOnFocus.Health }));
         }
 
         public void PlayerDodge()
@@ -479,12 +480,25 @@ namespace GDLibrary
             {
                 //Reset damage
                 float damage = 0;
+                
+                //Create audio emitter
+                AudioEmitter audioEmitter = new AudioEmitter
+                {
+                    Position = this.player.Transform.Translation
+                };
 
                 //Publish play dodge sound event
-                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "dodge" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "player_dodge", audioEmitter }));
 
                 //Publish a UI player dodge event
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.Textbox, new object[] { damage, this.player.Health, this.enemyOnFocus.Health }));
+
+                //Publish enemy turn event
+                EventDispatcher.Publish(new EventData(EventActionType.EnemyTurn, EventCategoryType.Game));
+
+                //End Combat
+                StateManager.InCombat = false;
+                StateManager.Dodged = true;
             }
             else
             {
@@ -550,22 +564,33 @@ namespace GDLibrary
                     EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthUpdate, EventCategoryType.Textbox, new object[] { this.Player.Health += potionHealth }));
                     EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthUpdate, EventCategoryType.UIMenu, new object[] { (-potionHealth) }));
                     EventDispatcher.Publish(new EventData(EventActionType.OnItemRemoved, EventCategoryType.UIMenu, new object[] { "Potion" }));
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "drink_potion" }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "pickup_potion" }));
                 }
 
                 //Otherwise
                 else {
 
                     //Publish health low sound event
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "player_health_low" }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "player_low_health" }));
                 }
             }
 
             //If the enemy has killed the player
-            if (this.player.Health <= 0) EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));
+            if (this.player.Health <= 0) {
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));
+            }
 
-            //Publish play attack sound event
-            EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "enemy_attack" }));
+            //Create audio emitter
+            AudioEmitter audioEmitter = new AudioEmitter
+            {
+                Position = this.enemyOnFocus.Transform.Translation
+            };
+
+            //Publish sound event
+            if (this.enemyOnFocus.GetID().Equals("Cultist1"))
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "cultist_attack", audioEmitter }));
+            else
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "skeleton_attack", audioEmitter }));
 
             //Publish enemy attack event to the UI Manager
             EventDispatcher.Publish(new EventData(EventActionType.OnEnemyAttack, EventCategoryType.Textbox, new object[] { damage, this.player.Health, this.enemyOnFocus.Health }));
@@ -598,62 +623,6 @@ namespace GDLibrary
             TakeTurn(gameTime);
             base.Update(gameTime);
         }
-
-        public void TurnRed()
-        {
-            Vector3 fogColor = new Vector3(0f, 0f, 0f);
-            float fogStart = 0;
-            float fogEnd = 550;
-
-            BasicEffect enemyBasicEffect = new BasicEffect(graphics.GraphicsDevice)
-            {
-                FogEnabled = true,
-                TextureEnabled = true,
-                LightingEnabled = true,
-                PreferPerPixelLighting = true,
-                FogColor = fogColor,
-                FogStart = fogStart,
-                FogEnd = fogEnd
-            };
-
-            enemyBasicEffect.DirectionalLight0.Enabled = true;
-            enemyBasicEffect.DirectionalLight0.Direction = new Vector3(0.5f, -0.75f, -0.5f);
-            enemyBasicEffect.DirectionalLight0.DiffuseColor = new Vector3(1f, 0.2f, 0.2f);
-            enemyBasicEffect.DirectionalLight0.SpecularColor = new Vector3(0, 1, 0);
-
-            this.enemyOnFocus.EffectParameters.Effect = enemyBasicEffect;
-        }
-
-        public void NormalLighting()
-        {
-            Vector3 fogColor = new Vector3(0f, 0f, 0f);
-            float fogStart = 0;
-            float fogEnd = 550;
-
-            BasicEffect basicEffect = new BasicEffect(graphics.GraphicsDevice)
-            {
-                FogEnabled = true,
-                TextureEnabled = true,
-                LightingEnabled = true,
-                PreferPerPixelLighting = true,
-                FogColor = fogColor,
-                FogStart = fogStart,
-                FogEnd = fogEnd
-            };
-
-            //Standard Light
-            basicEffect.DirectionalLight0.Enabled = true;
-            basicEffect.DirectionalLight0.Direction = new Vector3(-0.5f, -0.75f, -0.5f);
-            basicEffect.DirectionalLight0.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
-
-            //Standard Light
-            basicEffect.DirectionalLight1.Enabled = true;
-            basicEffect.DirectionalLight1.Direction = new Vector3(0.5f, 0.75f, 0.5f);
-            basicEffect.DirectionalLight1.DiffuseColor = new Vector3(0.85f, 0.75f, 0.65f);
-
-            this.enemyOnFocus.EffectParameters.Effect = basicEffect;
-        }
-
         #endregion
     }
 }
