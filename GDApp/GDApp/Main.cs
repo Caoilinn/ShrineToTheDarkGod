@@ -1,3 +1,4 @@
+
 using GDLibrary;
 using JigLibX.Geometry;
 using JigLibX.Collision;
@@ -37,6 +38,8 @@ namespace GDApp
         private MyTextboxManager textboxManager;
         private PickingManager pickingManager;
         private InventoryManager inventoryManager;
+        private TimeManager timeManager;
+
 
         //Dispatchers
         private EventDispatcher eventDispatcher;
@@ -381,6 +384,13 @@ namespace GDApp
 
         private void InitializeManagers()
         {
+            #region Time Manager
+            this.timeManager = new TimeManager(this);
+
+            Components.Add(this.timeManager);
+
+            #endregion
+
             #region Camera Manager
             this.cameraManager = new CameraManager(
                 this, 
@@ -488,7 +498,8 @@ namespace GDApp
                 this.gridManager,
                 PlayerIndex.One,
                 AppData.CombatButtons,
-                AppData.CombatKeys
+                AppData.CombatKeys,
+                this.timeManager
             );
 
             Components.Add(this.combatManager);

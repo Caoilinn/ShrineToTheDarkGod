@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System;
 using Microsoft.Xna.Framework.Audio;
+using System.Threading;
 
 namespace GDLibrary
 {
@@ -27,6 +28,10 @@ namespace GDLibrary
         private PlayerObject player;
 
         private Random random = new Random();
+
+        private bool isHap = false;
+        private float duration;
+        private float timer;
         #endregion
 
         #region Properties
@@ -150,6 +155,8 @@ namespace GDLibrary
             }
         }
 
+        private TimeManager timeManager;
+
         public EnemyObject EnemyOnFocus
         {
             get
@@ -185,6 +192,8 @@ namespace GDLibrary
                 this.random = value;
             }
         }
+
+        public Color OriginalColor { get; private set; }
         #endregion
 
         #region Constructor
@@ -200,8 +209,10 @@ namespace GDLibrary
             GridManager gridManager,
             PlayerIndex playerIndex,
             Buttons[] combatButtons,
-            Keys[] combatKeys
-        ) : base(game, eventDispatcher, statusType) {
+            Keys[] combatKeys,
+            TimeManager timeManager
+        ) : base(game, eventDispatcher, statusType)
+        {
             this.CameraManager = cameraManager;
             this.InventoryManager = inventoryManager;
             this.KeyboardManager = keyboardManager;
@@ -212,6 +223,7 @@ namespace GDLibrary
             this.CombatButtons = combatButtons;
             this.CombatKeys = combatKeys;
 
+            this.timeManager = timeManager;
             this.enemies = new List<EnemyObject>();
             RegisterForEventHandling(eventDispatcher);
         }
@@ -224,7 +236,7 @@ namespace GDLibrary
 
             base.RegisterForEventHandling(eventDispatcher);
         }
-        
+
         protected void EventDispatcher_CombatEvent(EventData eventData)
         {
             if (eventData.EventType == EventActionType.OnEnemyDeath)
@@ -311,7 +323,8 @@ namespace GDLibrary
         protected virtual void TakeTurn(GameTime gameTime)
         {
             //IF player died
-            if (this.player.Health <= 0) {
+            if (this.player.Health <= 0)
+            {
                 return;
             }
 
@@ -397,6 +410,7 @@ namespace GDLibrary
             Console.WriteLine("Player attack event");
             PrintStats(this.enemyOnFocus);
 
+
             //Calculate player attack damage
             float playerAttack = this.player.Attack;
 
@@ -406,8 +420,10 @@ namespace GDLibrary
             float enemyDefence = this.enemyOnFocus.Defence;
             float damage = playerAttack - enemyDefence;
 
+
             //If the player has dealt damage
             if (damage > 0) this.enemyOnFocus.TakeDamage(damage);
+            this.timeManager.StartTimer(1000f);
 
             //Create audio emitter
             AudioEmitter audioEmitter = new AudioEmitter
@@ -453,7 +469,8 @@ namespace GDLibrary
             PrintStats(this.enemyOnFocus);
 
             //Create item audio emitter
-            AudioEmitter audioEmitter = new AudioEmitter {
+            AudioEmitter audioEmitter = new AudioEmitter
+            {
                 Position = this.player.Transform.Translation
             };
 
@@ -478,9 +495,10 @@ namespace GDLibrary
             {
                 //Reset damage
                 float damage = 0;
-                
+
                 //Create audio emitter
-                AudioEmitter audioEmitter = new AudioEmitter {
+                AudioEmitter audioEmitter = new AudioEmitter
+                {
                     Position = this.player.Transform.Translation
                 };
 
@@ -515,17 +533,21 @@ namespace GDLibrary
 
         public void EnemyTurn()
         {
-            #region Attack
-            EnemyAttack();
-            #endregion
+            
+            if (!timeManager.Waiting)
+            {
+                #region Attack
+                EnemyAttack();
+                #endregion
 
-            #region Block
-            EnemyBlock();
-            #endregion
+                #region Block
+                EnemyBlock();
+                #endregion
 
-            #region Dodge
-            EnemyDodge();
-            #endregion
+                #region Dodge
+                EnemyDodge();
+                #endregion
+            }
         }
 
         public void EnemyAttack()
@@ -546,10 +568,12 @@ namespace GDLibrary
             this.cameraManager.GetCameraByID("First Person Camera").Shake(0.04f, 0.2f);
 
             //If the players' health is low
-            if (this.player.Health <= 30) {
+            if (this.player.Health <= 30)
+            {
 
                 //If the player has a health potion
-                if (this.InventoryManager.HasItem(PickupType.Health)) {
+                if (this.InventoryManager.HasItem(PickupType.Health))
+                {
 
                     //Use a key to open the gate
                     this.InventoryManager.UseItem(PickupType.Health);
@@ -565,7 +589,8 @@ namespace GDLibrary
                 }
 
                 //Otherwise
-                else {
+                else
+                {
 
                     //Publish health low sound event
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "player_low_health" }));
@@ -573,13 +598,15 @@ namespace GDLibrary
             }
 
             //If the enemy has killed the player
-            if (this.player.Health <= 0) {
+            if (this.player.Health <= 0)
+            {
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDeath, EventCategoryType.Combat));
                 return;
             }
 
             //Create audio emitter
-            AudioEmitter audioEmitter = new AudioEmitter {
+            AudioEmitter audioEmitter = new AudioEmitter
+            {
                 Position = this.enemyOnFocus.Transform.Translation
             };
 
@@ -610,7 +637,7 @@ namespace GDLibrary
         {
             StateManager.InCombat = true;
             StateManager.PlayerTurn = true;
-            
+
             if (character.ActorType.Equals(ActorType.Enemy))
                 this.enemyOnFocus = character as EnemyObject;
         }
@@ -618,7 +645,8 @@ namespace GDLibrary
         public override void Update(GameTime gameTime)
         {
             //Hacked in
-            if(this.Player.Health <= 0) {
+            if (this.Player.Health <= 0)
+            {
                 //Quit to menu for now
                 EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu, new object[] { "lose_scene" }));
                 EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));

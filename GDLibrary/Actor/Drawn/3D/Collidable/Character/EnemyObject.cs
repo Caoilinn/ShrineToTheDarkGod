@@ -116,18 +116,25 @@ namespace GDLibrary
         }
 
         public override void TakeTurn(GameTime gameTime)
-        {                
+        {
             //Set some interval turn timer
-            TurnTimer(gameTime);
+            //TurnTimer(gameTime);
+            //If it is not currently the enemys' turn, return
+            if (!StateManager.EnemyTurn) return;
+
+            //If in combat, return
+            if (StateManager.InCombat) return;
+
+            EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));
         }
 
         public virtual void TurnTimer(GameTime gameTime)
         {
-            //Allow free movement until in combat
-            if (!StateManager.InCombat) {
-                EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));
-                return;
-            }
+            ////Allow free movement until in combat
+            //if (!StateManager.InCombat) {
+            //    EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));
+            //    return;
+            //}
  
             //If first time called
             if (!this.MoveStarted)
@@ -152,6 +159,7 @@ namespace GDLibrary
             else if (gameTime.TotalGameTime.TotalMilliseconds > (this.StartMoveTime + (this.moveInterval / 2.0f)))
             {
                 //Mark midpoint
+                EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));
                 this.EffectParameters.DiffuseColor = this.OriginalColor;
                 this.MoveMidpoint = true;
             }
@@ -160,8 +168,8 @@ namespace GDLibrary
         public override void TakeDamage(float damage)
         {
             //Make Enemy Flash Red
-            this.OriginalColor = this.EffectParameters.DiffuseColor;
-            this.EffectParameters.DiffuseColor = new Color(1.0f, 0.2f, 0.2f);
+            //this.OriginalColor = this.EffectParameters.DiffuseColor;
+            //this.EffectParameters.DiffuseColor = new Color(1.0f, 0.2f, 0.2f);
 
             //Update Player XP
             EventDispatcher.Publish(new EventData(EventActionType.EnemyHealthUpdate, EventCategoryType.UIMenu, new object[] { damage }));

@@ -88,7 +88,7 @@
     <Compile Include="Enums\BillboardType.cs" />
     <Compile Include="Managers\AI\AIManager.cs" />
     <Compile Include="Managers\Grid\GridManager.cs" />
-    <Compile Include="Managers\Timer\TimeManager.cs" />
+    <Compile Include="Managers\Time\TimeManager.cs" />
     <Compile Include="Managers\UI\TextboxManager.cs" />
     <Compile Include="Parameters\Architecture\ArchitectureParameters.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Architecture\CollidableArchitecture.cs" />
