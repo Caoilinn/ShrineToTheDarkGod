@@ -10,3 +10,4 @@ C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Deb
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModelWindows.csproj.CoreCompileInputs.cache
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModel.dll
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModel.pdb
+C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModelWindows.csprojAssemblyReference.cache

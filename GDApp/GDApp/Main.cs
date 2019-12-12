@@ -201,7 +201,7 @@ namespace GDApp
         private void InitializePrimitives()
         {
             //Get a copy of the effect parameters
-            BasicEffectParameters effectParameters = this.effectDictionary["roomEffect1"].Clone() as BasicEffectParameters;
+            BasicEffectParameters effectParameters = this.effectDictionary[AppData.UnLitPrimitivesEffectID].Clone() as BasicEffectParameters;
             effectParameters.Texture = this.textureDictionary["HUD"];
             effectParameters.DiffuseColor = Color.Yellow;
             effectParameters.Alpha = 0.4f;
@@ -408,8 +408,11 @@ namespace GDApp
                 this, 
                 this.cameraManager, 
                 this.eventDispatcher,
-                50
+                StatusType.Off,
+                new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight)
             );
+
+            this.Components.Add(this.objectManager);
             #endregion
 
             #region Physics Manager
@@ -615,6 +618,7 @@ namespace GDApp
             #endregion
 
             #region Draw order
+            this.objectManager.DrawOrder = 1;
             this.uiManager.DrawOrder = 2;
             this.textboxManager.DrawOrder =3;
             this.menuManager.DrawOrder = 4;
@@ -1117,15 +1121,16 @@ namespace GDApp
                     this.xpBar.Transform.Scale.Y
                 );
 
-                if (this.xpBar.Transform.Scale.X.Equals(1)) {
+                //Player level up
+                if (this.xpBar.Transform.Scale.X > 1) {
                     this.xpBar.Transform.Scale = new Vector2(
                         0,
                         1
                     );
-                }
 
-                //Level up
-                this.textboxManager.TextboxText = "Level up!";
+                    //Level up
+                    this.textboxManager.TextboxText = "Level up!";
+                }
             }
 
             //If item added
@@ -2181,11 +2186,26 @@ namespace GDApp
             this.effectDictionary.Add("roomEffect36", new BasicEffectParameters(this.standardRoomEffect, this.textureDictionary["roomTexture36"], new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
 
+            #region Unlit Billboards
+            Effect billboardEffect = Content.Load<Effect>("Assets/Effects/billboard");
+            this.effectDictionary.Add(AppData.UnlitBillboardsEffectID, new BillboardEffectParameters(billboardEffect));
+            #endregion
+
+            #region Unlit Primitives
+            BasicEffect basicEffect = new BasicEffect(graphics.GraphicsDevice) {
+                TextureEnabled = true,
+                VertexColorEnabled = true
+            };
+
+            this.effectDictionary.Add(AppData.UnLitPrimitivesEffectID, new BasicEffectParameters(basicEffect));
+            #endregion
+
             #region Pickup Effects
             this.effectDictionary.Add("pickupEffect1", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(1.0f, 1.0f, 1.0f)), Color.Black, Color.Black, Color.Black, 0, 1));
             this.effectDictionary.Add("pickupEffect2", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(1.0f, 0.7f, 0.0f)), Color.Black, Color.Black, Color.Black, 0, 1));
             this.effectDictionary.Add("pickupEffect3", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(1.0f, 0.2f, 0.2f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
+
 
             #region Gate Effects
             this.effectDictionary.Add("propEffect1", new BasicEffectParameters(this.gateEffect, null, new Color(new Vector3(0.9f, 0.6f, 0.3f)), Color.Black, Color.Black, Color.Black, 0, 1));

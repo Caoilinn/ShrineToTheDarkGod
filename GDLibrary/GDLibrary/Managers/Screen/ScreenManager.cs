@@ -174,18 +174,18 @@ namespace GDLibrary
 
         protected override void ApplyDraw(GameTime gameTime)
         {
-            if (this.screenType == ScreenUtility.ScreenType.SingleScreen)
-            {
-                this.objectManager.Draw(gameTime, this.cameraManager.ActiveCamera);
-            }
-            else
-            {
-                //foreach is enabled by making CameraManager implement IEnumerator
-                foreach (Camera3D camera in cameraManager)
-                {
-                    this.objectManager.Draw(gameTime, camera);
-                }
-            }
+            //if (this.screenType == ScreenUtility.ScreenType.SingleScreen)
+            //{
+            //    this.objectManager.Draw(gameTime, this.cameraManager.ActiveCamera);
+            //}
+            //else
+            //{
+            //    //foreach is enabled by making CameraManager implement IEnumerator
+            //    foreach (Camera3D camera in cameraManager)
+            //    {
+            //        this.objectManager.Draw(gameTime, camera);
+            //    }
+            //}
 
             //reset the viewport to fullscreen
             this.Game.GraphicsDevice.Viewport = this.fullScreenViewport;

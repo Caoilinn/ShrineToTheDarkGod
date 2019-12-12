@@ -2273,3 +2273,4 @@ C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Squirrel\Red_Standing.xnb
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Squirrel\Red_Tailwhip.xnb
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Squirrel\Tiny_skin.xnb
+C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Effects\Billboard.xnb

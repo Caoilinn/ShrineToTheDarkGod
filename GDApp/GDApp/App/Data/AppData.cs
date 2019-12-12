@@ -98,7 +98,7 @@ namespace GDLibrary
         public static readonly float CharacterAccelerationRate = 1;
         public static readonly float CharacterDecelerationRate = 1;
 
-        public static readonly float CharacterMoveSpeed = 0.5f;
+        public static readonly float CharacterMoveSpeed = 0.4f;
         public static readonly float CharacterStrafeSpeed = 0.5f;
         public static readonly float CharacterRotateSpeed = 0.3f;
 

@@ -8,7 +8,7 @@ Function: 		This child class for drawing primitives where the vertex data is buf
 
 Author: 		NMCG
 Version:		1.0
-Date Updated:	
+Date Updated:	27/11/17
 Bugs:			None
 Fixes:			None
 */
@@ -53,22 +53,21 @@ namespace GDLibrary
         {
             this.graphicsDevice = graphicsDevice;
             this.VertexBuffer = vertexBuffer;
-            
+
             //set data on the reserved space
             this.vertexBuffer.SetData<T>(this.Vertices);
         }
-    
+
         //buffer is created INSIDE the class so each class has a buffer - not efficient
         public BufferedVertexData(GraphicsDevice graphicsDevice, T[] vertices, PrimitiveType primitiveType, int primitiveCount)
             : base(vertices, primitiveType, primitiveCount)
         {
             this.graphicsDevice = graphicsDevice;
             this.VertexBuffer = new VertexBuffer(graphicsDevice, typeof(T), vertices.Length, BufferUsage.None);
-            
+
             //set data on the reserved space
             this.vertexBuffer.SetData<T>(this.Vertices);
         }
-
 
         public void SetData(T[] vertices)
         {
@@ -83,7 +82,7 @@ namespace GDLibrary
             effect.GraphicsDevice.SetVertexBuffer(this.vertexBuffer);
 
             //draw!
-            effect.GraphicsDevice.DrawPrimitives(this.PrimitiveType, 0, this.PrimitiveCount);           
+            effect.GraphicsDevice.DrawPrimitives(this.PrimitiveType, 0, this.PrimitiveCount);
         }
 
         public new object Clone()
