@@ -4,18 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDApp", "GDApp\GDApp\GDApp.csproj", "{E699B3D6-728E-4ABE-AC44-CD93E549D9D6}"
-	ProjectSection(ProjectDependencies) = postProject
-		{0D41E29B-829F-4255-BCA5-64DC2677DA6D} = {0D41E29B-829F-4255-BCA5-64DC2677DA6D}
-		{4636C7E1-B845-4B83-B96D-64A11B8A4515} = {4636C7E1-B845-4B83-B96D-64A11B8A4515}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDAppContent", "GDApp\GDAppContent\GDAppContent.contentproj", "{B2C6EC9E-432C-40C9-86FC-DA60962DB184}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDLibrary", "GDLibrary\GDLibrary.csproj", "{2ED0B0C9-D1D7-472E-868C-AFFFF00EA06B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDLibrary", "GDLibrary\GDLibrary\GDLibrary.csproj", "{2ED0B0C9-D1D7-472E-868C-AFFFF00EA06B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkinnedModelWindows", "GDLibrary\SkinnedModel\SkinnedModelWindows.csproj", "{0D41E29B-829F-4255-BCA5-64DC2677DA6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkinnedModelPipeline", "GDApp\SkinnedModelPipeline\SkinnedModelPipeline.csproj", "{4636C7E1-B845-4B83-B96D-64A11B8A4515}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkinnedModelPipeline", "GDLibrary\SkinnedModelPipeline\SkinnedModelPipeline.csproj", "{4636C7E1-B845-4B83-B96D-64A11B8A4515}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

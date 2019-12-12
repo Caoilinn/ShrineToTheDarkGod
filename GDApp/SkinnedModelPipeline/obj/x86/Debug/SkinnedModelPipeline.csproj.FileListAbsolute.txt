@@ -4,3 +4,4 @@ C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDApp\SkinnedModelPipeline\obj\x86
 C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDApp\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csproj.CoreCompileInputs.cache
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csprojAssemblyReference.cache
 C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDApp\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csproj.CoreCompileInputs.cache
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csproj.CoreCompileInputs.cache

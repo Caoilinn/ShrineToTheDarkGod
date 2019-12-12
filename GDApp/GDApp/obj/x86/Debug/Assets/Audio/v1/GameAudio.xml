@@ -9,8 +9,8 @@
     Windows Bank Path Edited = 0;
     Seek Tables = 1;
     Compression Preset Name = &lt;none&gt;;
-    Bank Last Revised Low = 2903776614;
-    Bank Last Revised High = 30778259;
+    Bank Last Revised Low = 1701378666;
+    Bank Last Revised High = 30781351;
 
     Wave
     {
@@ -540,6 +540,118 @@
             Last Modified High = 30778259;
         }
     }
+
+    Wave
+    {
+        Name = menu_wind;
+        File = menu_wind.wav;
+        Build Settings Last Modified Low = 1511170339;
+        Build Settings Last Modified High = 30781351;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 15084064;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 693975040;
+            Last Modified High = 30780760;
+        }
+    }
+
+    Wave
+    {
+        Name = on_start_chords;
+        File = on_start_chords.wav;
+        Build Settings Last Modified Low = 1511170339;
+        Build Settings Last Modified High = 30781351;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 7542032;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 953975040;
+            Last Modified High = 30780760;
+        }
+    }
+
+    Wave
+    {
+        Name = battle_drums;
+        File = battle_drums.wav;
+        Build Settings Last Modified Low = 1511180309;
+        Build Settings Last Modified High = 30781351;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 7542032;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 33975040;
+            Last Modified High = 30780760;
+        }
+    }
+
+    Wave
+    {
+        Name = melody_ notes;
+        File = melody_ notes.wav;
+        Build Settings Last Modified Low = 1511180309;
+        Build Settings Last Modified High = 30781351;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 7542032;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 433975040;
+            Last Modified High = 30780760;
+        }
+    }
+}
+
+</WaveBank>
+  <WaveBank Name="Wave Bank">Wave Bank
+{
+    Name = Wave Bank;
+    Xbox File = Xbox\Wave Bank.xwb;
+    Windows File = Win\Wave Bank.xwb;
+    Xbox Bank Path Edited = 0;
+    Windows Bank Path Edited = 0;
+    Seek Tables = 1;
+    Compression Preset Name = &lt;none&gt;;
+    Xbox Bank Last Modified Low = 0;
+    Xbox Bank Last Modified High = 0;
+    PC Bank Last Modified Low = 0;
+    PC Bank Last Modified High = 0;
+    Header Last Modified Low = 0;
+    Header Last Modified High = 0;
+    Bank Last Revised Low = 1619030851;
+    Bank Last Revised High = 30781349;
 }
 
 </WaveBank>

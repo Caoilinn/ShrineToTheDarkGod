@@ -109,7 +109,7 @@ namespace SkinnedModelPipeline
             foreach (KeyValuePair<string, AnimationContent> animation in animations)
             {
                 AnimationClip processed = ProcessAnimation(animation.Value, boneMap);
-                
+
                 animationClips.Add(animation.Key, processed);
             }
 

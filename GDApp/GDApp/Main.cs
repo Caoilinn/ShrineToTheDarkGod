@@ -1,4 +1,3 @@
-
 using GDLibrary;
 using JigLibX.Geometry;
 using JigLibX.Collision;
@@ -45,6 +44,7 @@ namespace GDApp
 
         //Viewport
         private Vector2 screenCentre;
+        private ScreenUtility.ScreenType screenType;
         private Viewport viewport;
 
         //Models
@@ -58,18 +58,17 @@ namespace GDApp
         private ContentDictionary<SpriteFont> fontDictionary;
         private Dictionary<string, EffectParameters> effectDictionary;
         private Dictionary<string, PickupParameters> pickupParametersDictionary;
-        private Dictionary<string, EnemyObject> enemyDictionary;
+        private Dictionary<string, AnimatedEnemyObject> enemyDictionary;
         private Dictionary<string, UITextureObject> uiDictionary;
         private Dictionary<string, IVertexData> vertexDataDictionary;
 
         //Lists
         private readonly List<string> soundEffectList = new List<String>();
         private readonly List<TriggerVolume> triggerList = new List<TriggerVolume>();
-        private List<EnemyObject> enemies;
+        private List<AnimatedEnemyObject> enemies;
 
         //Debug
         private PhysicsDebugDrawer physicsDebugDrawer;
-        private AnimatedPlayerObject animatedHeroPlayerObject;
 
         //Map
         private int[,,] levelMap;
@@ -115,6 +114,8 @@ namespace GDApp
         private UITextureObject healthBar;
         private UITextureObject xpBar;
         private string textboxText;
+        private AnimatedEnemyObject animatedModel;
+        private ScreenManager screenManager;
 
         public Main()
         {
@@ -130,6 +131,7 @@ namespace GDApp
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
             this.resolution = ScreenUtility.WXGA;
             this.screenCentre = this.resolution / 2;
+            this.screenType = ScreenUtility.ScreenType.SingleScreen;
 
             InitializeGraphics();
             InitializeEffects();
@@ -388,7 +390,6 @@ namespace GDApp
             this.timeManager = new TimeManager(this);
 
             Components.Add(this.timeManager);
-
             #endregion
 
             #region Camera Manager
@@ -406,12 +407,9 @@ namespace GDApp
             this.objectManager = new ObjectManager(
                 this, 
                 this.cameraManager, 
-                this.eventDispatcher, 
-                StatusType.Off,
-                new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight)
+                this.eventDispatcher,
+                50
             );
-
-            Components.Add(this.objectManager);
             #endregion
 
             #region Physics Manager
@@ -449,6 +447,23 @@ namespace GDApp
             );
 
             Components.Add(this.gamepadManager);
+            #endregion
+
+            #region Screen Manager
+            this.screenManager = new ScreenManager(
+                this, 
+                graphics, 
+                this.resolution, 
+                this.screenType,
+                this.objectManager, 
+                this.cameraManager, 
+                this.keyboardManager,
+                AppData.KeyPauseShowMenu, 
+                this.eventDispatcher, 
+                StatusType.Off
+            );
+
+            Components.Add(this.screenManager);
             #endregion
 
             #region Sound Manager
@@ -600,7 +615,6 @@ namespace GDApp
             #endregion
 
             #region Draw order
-            this.objectManager.DrawOrder = 1;
             this.uiManager.DrawOrder = 2;
             this.textboxManager.DrawOrder =3;
             this.menuManager.DrawOrder = 4;
@@ -1782,6 +1796,8 @@ namespace GDApp
                 AppData.PlayerAttack,
                 AppData.PlayerDefence,
                 this.managerParameters,
+                (PlayerIndex)playerType - 1,
+                AppData.CameraMoveButtons,
                 AppData.CameraMoveKeys
             );
 
@@ -1799,33 +1815,40 @@ namespace GDApp
             //Select enemy
             switch (enemyType) {
                 case 1:
-                    this.collidableModel = this.enemyDictionary["Skeleton1"];
+                    this.animatedModel = this.enemyDictionary["Skeleton1"];
                     break;
                 case 2:
-                    this.collidableModel = this.enemyDictionary["Skeleton2"];
+                    this.animatedModel = this.enemyDictionary["Skeleton2"];
                     break;
                 case 3:
-                    this.collidableModel = this.enemyDictionary["Cultist1"];
+                    this.animatedModel = this.enemyDictionary["Cultist1"];
                     break;
             }
 
             //Position enemy
-            this.collidableModel.Transform = transform.Clone() as Transform3D;
-            this.collidableModel.Transform.Translation += AppData.ObjectOffset;
+            this.animatedModel.Transform = transform.Clone() as Transform3D;
+            this.animatedModel.Transform.Translation += AppData.ObjectOffset;
 
             //Enable collision
-            this.collidableModel.Enable(true, 1);
+            this.animatedModel.Enable(true, 1);
+
+            string takeName = "Take 001";
+            string fileNameNoSuffix = "Red_Idle";
+            this.animatedModel.AddAnimation(takeName, fileNameNoSuffix, this.modelDictionary[fileNameNoSuffix]);
+
+            //Set the start animtion
+            this.animatedModel.SetAnimation("Take 001", "Red_Idle");
 
             //Add to lists
-            this.gridManager.Add(this.collidableModel);
-            this.enemies.Add(this.collidableModel as EnemyObject);
-            this.combatManager.PopulateEnemies(this.collidableModel as EnemyObject);
-            this.objectManager.Add(this.collidableModel);
+            this.gridManager.Add(this.animatedModel);
+            this.enemies.Add(this.animatedModel as AnimatedEnemyObject);
+            this.combatManager.PopulateEnemies(this.animatedModel as AnimatedEnemyObject);
+            this.objectManager.Add(this.animatedModel);
         }
 
         private void InitializeEnemies()
         {
-            this.enemies = new List<EnemyObject>();
+            this.enemies = new List<AnimatedEnemyObject>();
         }
         #endregion
 
@@ -1864,7 +1887,7 @@ namespace GDApp
             this.pickupParametersDictionary = new Dictionary<string, PickupParameters>();
 
             //Enemies
-            this.enemyDictionary = new Dictionary<string, EnemyObject>();
+            this.enemyDictionary = new Dictionary<string, AnimatedEnemyObject>();
 
             //UI
             this.uiDictionary = new Dictionary<string, UITextureObject>();
@@ -1956,9 +1979,13 @@ namespace GDApp
             #endregion
 
             #region Character Models
-            this.modelDictionary.Load("Assets/Models/Characters/skeleton_001", "skeletonModel1");
-            this.modelDictionary.Load("Assets/Models/Characters/skeleton_002", "skeletonModel2");
-            this.modelDictionary.Load("Assets/Models/Characters/cultist_001", "cultistModel1");
+            //this.modelDictionary.Load("Assets/Models/Characters/skeleton_001", "skeletonModel1");
+            //this.modelDictionary.Load("Assets/Models/Characters/skeleton_002", "skeletonModel2");
+            //this.modelDictionary.Load("Assets/Models/Characters/cultist_001", "cultistModel1");
+            this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "Red_Idle");
+            this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel1");
+            this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel2");
+            this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "cultistModel1");
             #endregion
 
             #region Prop Models
@@ -1966,8 +1993,11 @@ namespace GDApp
             this.modelDictionary.Load("Assets/Models/Props/gate_002", "gateModel2");
             #endregion
 
-            #region animations
-            this.modelDictionary.Load("assets/Models/Animated/Animations");
+            #region Animations
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/attack", "cultsitAttack");
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/block", "cultistBlock");
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/skele", "skele");
+            this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/ss", "ss");
             #endregion
         }
 
@@ -2189,7 +2219,7 @@ namespace GDApp
         {
             this.enemyDictionary.Add(
                 "Skeleton1",
-                new EnemyObject(
+                new AnimatedEnemyObject(
                     "Skeleton1",
                     ActorType.Enemy,
                     Transform3D.Zero,
@@ -2210,7 +2240,7 @@ namespace GDApp
 
             this.enemyDictionary.Add(
                 "Skeleton2",
-                new EnemyObject(
+                new AnimatedEnemyObject(
                     "Skeleton2",
                     ActorType.Enemy,
                     Transform3D.Zero,
@@ -2231,7 +2261,7 @@ namespace GDApp
 
             this.enemyDictionary.Add(
                 "Cultist1",
-                new EnemyObject(
+                new AnimatedEnemyObject(
                     "Cultist1",
                     ActorType.Enemy,
                     Transform3D.Zero,
@@ -2249,46 +2279,6 @@ namespace GDApp
                     this.managerParameters
                 )
             );
-        }
-
-        public void InitializeSkeletonAnimationPlayer()
-        {
-            Transform3D transform3D = null;
-
-            transform3D = new Transform3D(new Vector3(0, 20, 40),
-                new Vector3(-90, 0, 0), //y-z are reversed because the capsule is rotation by 90 degrees around X-axis - See CharacterObject constructor
-                 0.1f * Vector3.One,
-                 -Vector3.UnitZ, Vector3.UnitY);
-
-            BasicEffectParameters effectParameters = this.effectDictionary[AppData.LitModelsEffectID].Clone() as BasicEffectParameters;
-            //remember we can set diffuse color and alpha too but not specular, emissive, directional lights as I dont read those parameters in ObjectManager::DrawObject() - this was purely a time constraint on my part.
-            effectParameters.DiffuseColor = Color.White;
-            effectParameters.Alpha = 1;
-            //if we dont specify a texture then the object manager will draw using whatever textures were baked into the animation in 3DS Max
-            effectParameters.Texture = null;
-
-            this.animatedHeroPlayerObject = new EnemyAnimatedPlayerObject("Skeleton",
-                    ActorType.Player, transform3D,
-                effectParameters,
-                AppData.CharacterMoveKeys,
-                AppData.CharacterRadius,
-                AppData.CharacterHeight,
-                AppData.CharacterAccelerationRate,
-                AppData.CharacterDecelerationRate,
-                AppData.CharacterMoveSpeed,
-                AppData.CharacterRotateSpeed,
-                new Vector3(0, -3.5f, 0), //offset inside capsule - purely cosmetic
-                this.keyboardManager);
-            this.animatedHeroPlayerObject.Enable(false, AppData.PlayerMass);
-
-            string takeName = "Take 001";
-            string fileNameNoSuffix = "dude";
-            this.animatedHeroPlayerObject.AddAnimation(takeName, fileNameNoSuffix, this.modelDictionary[fileNameNoSuffix]);
-
-            //set the start animtion
-            this.animatedHeroPlayerObject.SetAnimation("Take 001", "dude"); //basically take name (default from 3DS Max) and FBX file name with no suffix
-
-            this.objectManager.Add(animatedHeroPlayerObject);
         }
 
         public void LoadUI()

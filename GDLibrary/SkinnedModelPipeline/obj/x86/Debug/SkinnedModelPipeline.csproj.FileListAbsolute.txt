@@ -1,2 +1,18 @@
-C:\Users\Christian\Desktop\3dgd\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csprojAssemblyReference.cache
-C:\Users\Christian\Desktop\3dgd\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csproj.CoreCompileInputs.cache
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\3D Game Development\Exercises\Week10\GDApp - Final - All Functionality\GDLibrary\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.dll
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\3D Game Development\Exercises\Week10\GDApp - Final - All Functionality\GDLibrary\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.pdb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\3D Game Development\Exercises\Week10\GDApp - Final - All Functionality\GDLibrary\SkinnedModelPipeline\bin\x86\Debug\SkinnedModel.dll
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\3D Game Development\Exercises\Week10\GDApp - Final - All Functionality\GDLibrary\SkinnedModelPipeline\bin\x86\Debug\SkinnedModel.pdb
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\3D Game Development\Exercises\Week10\GDApp - Final - All Functionality\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csprojAssemblyReference.cache
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\3D Game Development\Exercises\Week10\GDApp - Final - All Functionality\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csproj.CoreCompileInputs.cache
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\3D Game Development\Exercises\Week10\GDApp - Final - All Functionality\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csproj.CopyComplete
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\3D Game Development\Exercises\Week10\GDApp - Final - All Functionality\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.dll
+C:\Users\james\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\3D Game Development\Exercises\Week10\GDApp - Final - All Functionality\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.pdb
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.dll
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.pdb
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\bin\x86\Debug\SkinnedModel.dll
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\bin\x86\Debug\SkinnedModel.pdb
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csprojAssemblyReference.cache
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csproj.CoreCompileInputs.cache
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csproj.CopyComplete
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.dll
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.pdb

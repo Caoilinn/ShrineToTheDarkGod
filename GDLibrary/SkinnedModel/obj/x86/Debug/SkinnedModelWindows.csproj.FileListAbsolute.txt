@@ -1,13 +1,12 @@
-C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\bin\x86\Debug\SkinnedModel.dll
-C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\bin\x86\Debug\SkinnedModel.pdb
-C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModelWindows.csproj.CoreCompileInputs.cache
-C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModel.dll
-C:\Users\Christian\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModel.pdb
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\bin\x86\Debug\SkinnedModel.dll
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\bin\x86\Debug\SkinnedModel.pdb
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModelWindows.csprojAssemblyReference.cache
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModelWindows.csproj.CoreCompileInputs.cache
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModel.dll
-C:\Users\Caoilinn\Desktop\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModel.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\3D Game Development\Exercises\Week10\GDApp - Final - All Functionality\GDLibrary\SkinnedModel\bin\x86\Debug\SkinnedModel.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\3D Game Development\Exercises\Week10\GDApp - Final - All Functionality\GDLibrary\SkinnedModel\bin\x86\Debug\SkinnedModel.pdb
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\3D Game Development\Exercises\Week10\GDApp - Final - All Functionality\GDLibrary\SkinnedModel\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\3D Game Development\Exercises\Week10\GDApp - Final - All Functionality\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModelWindows.csproj.CoreCompileInputs.cache
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\3D Game Development\Exercises\Week10\GDApp - Final - All Functionality\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModel.dll
+C:\Users\James\OneDrive - Dundalk Institute of Technology\College\Year3\Sem1\3D Game Development\Exercises\Week10\GDApp - Final - All Functionality\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModel.pdb
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModel\bin\x86\Debug\SkinnedModel.dll
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModel\bin\x86\Debug\SkinnedModel.pdb
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModelWindows.csproj.CoreCompileInputs.cache
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModel.dll
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModel\obj\x86\Debug\SkinnedModel.pdb
