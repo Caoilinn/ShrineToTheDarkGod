@@ -33,9 +33,7 @@ namespace SkinnedModelPipeline
         /// The main Process method converts an intermediate format content pipeline
         /// NodeContent tree to a ModelContent object with embedded animation data.
         /// </summary>
-        public override ModelContent Process(NodeContent input,
-                                             ContentProcessorContext context)
-        {
+        public override ModelContent Process(NodeContent input, ContentProcessorContext context) {
             ValidateMesh(input, context, null);
 
             // Find the skeleton.

@@ -201,14 +201,14 @@ namespace GDApp
         private void InitializePrimitives()
         {
             //Get a copy of the effect parameters
-            BasicEffectParameters effectParameters = this.effectDictionary[AppData.UnLitPrimitivesEffectID].Clone() as BasicEffectParameters;
+            BasicEffectParameters effectParameters = this.effectDictionary[AppData.UnlitBillboardsEffectID].Clone() as BasicEffectParameters;
             effectParameters.Texture = this.textureDictionary["HUD"];
             effectParameters.DiffuseColor = Color.Yellow;
             effectParameters.Alpha = 0.4f;
 
             //Define location
             Transform3D transform = new Transform3D(
-                new Vector3(1143, 381, 1143), 
+                new Vector3(1143, 254, 1143), 
                 new Vector3(30, 60, 45),
                 Vector3.One,
                 Vector3.Forward,
@@ -216,21 +216,21 @@ namespace GDApp
             );
 
             //Create primitive
-            PrimitiveObject primitiveObject = new PrimitiveObject(
+            BillboardPrimitiveObject primitiveObject = new BillboardPrimitiveObject(
                 "Simple primitive",
                 ActorType.Primitive,
-                transform, 
+                transform,
                 effectParameters,
-                this.vertexDataDictionary[AppData.TexturedQuadID]
-            ) {
-                StatusType = StatusType.Drawn | StatusType.Update
-            };
+                StatusType.Drawn | StatusType.Update,
+                this.vertexDataDictionary[AppData.TexturedQuadID],
+                BillboardType.Normal
+            );
 
-            PrimitiveObject clonedPrimitiveObject = null;
+            BillboardPrimitiveObject clonedPrimitiveObject = null;
 
             for (int i = 1; i <= 4; i++)
             {
-                clonedPrimitiveObject = primitiveObject.Clone() as PrimitiveObject;
+                clonedPrimitiveObject = primitiveObject.Clone() as BillboardPrimitiveObject;
                 clonedPrimitiveObject.Transform.Translation += new Vector3(0, 5 * i, 0);
 
                 //We could also attach controllers here instead to give each a different rotation
@@ -1833,16 +1833,17 @@ namespace GDApp
             //Position enemy
             this.animatedModel.Transform = transform.Clone() as Transform3D;
             this.animatedModel.Transform.Translation += AppData.ObjectOffset;
+            this.animatedModel.Transform.Scale = this.animatedModel.Transform.Scale * 10;
 
             //Enable collision
             this.animatedModel.Enable(true, 1);
 
-            string takeName = "Take 001";
+            string takeName = "Take 1";
             string fileNameNoSuffix = "Red_Idle";
             this.animatedModel.AddAnimation(takeName, fileNameNoSuffix, this.modelDictionary[fileNameNoSuffix]);
 
             //Set the start animtion
-            this.animatedModel.SetAnimation("Take 001", "Red_Idle");
+            this.animatedModel.SetAnimation("Take 1", "Red_Idle");
 
             //Add to lists
             this.gridManager.Add(this.animatedModel);
@@ -1987,7 +1988,10 @@ namespace GDApp
             //this.modelDictionary.Load("Assets/Models/Characters/skeleton_001", "skeletonModel1");
             //this.modelDictionary.Load("Assets/Models/Characters/skeleton_002", "skeletonModel2");
             //this.modelDictionary.Load("Assets/Models/Characters/cultist_001", "cultistModel1");
-            this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "Red_Idle");
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/ss", "ss");
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/idle", "Red_Idle");
+            this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/ATTACK", "Red_Idle");
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/idle_fella", "Red_Idle");
             this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel1");
             this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel2");
             this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "cultistModel1");
@@ -2002,7 +2006,6 @@ namespace GDApp
             //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/attack", "cultsitAttack");
             //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/block", "cultistBlock");
             //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/skele", "skele");
-            this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/ss", "ss");
             #endregion
         }
 
