@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>RootNode</Name>
     <Identity>
-      <SourceFilename>C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\Animated\Squirrel\Red_Jump.FBX</SourceFilename>
+      <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\Animated\Squirrel\Red_Jump.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -4005,7 +4005,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Standardmaterial</Name>
       <Identity>
-        <SourceFilename>C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\Animated\Squirrel\Red_Jump.FBX</SourceFilename>
+        <SourceFilename>C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\Assets\Models\Characters\Animated\Squirrel\Red_Jump.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

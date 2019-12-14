@@ -101,8 +101,8 @@ namespace GDLibrary
 
             }
 
-            //ChangeVolumeEvent
-            else if (eventData.EventType == EventActionType.OnVolumeChange)
+            //VolumeUpEvent
+            else if (eventData.EventType == EventActionType.OnVolumeUp)
             {
                 //2D sounds
                 float volumeDelta = (float) eventData.AdditionalParameters[0];
@@ -111,6 +111,18 @@ namespace GDLibrary
                 //3D sounds
                 string soundCategory = (string) eventData.AdditionalParameters[1];
                 ChangeVolume(volumeDelta, soundCategory);
+            }
+
+            //VolumeDownEvent
+            else if (eventData.EventType == EventActionType.OnVolumeDown)
+            {
+                //2D sounds
+                float volumeDelta = (float) eventData.AdditionalParameters[0];
+                SoundEffect.MasterVolume = MathHelper.Clamp(SoundEffect.MasterVolume - volumeDelta, 0, 1);
+
+                //3D sounds
+                string soundCategory = (string) eventData.AdditionalParameters[1];
+                SetVolume(SoundEffect.MasterVolume, soundCategory);
             }
         }
 

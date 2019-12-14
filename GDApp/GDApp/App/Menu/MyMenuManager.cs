@@ -72,7 +72,7 @@ namespace GDApp
             if (uiObject.Transform.Bounds.Contains(this.MouseManager.Bounds))
             {
                 //Mouse is inside the bounds of the object - uiObject.ID
-                if (this.MouseManager.IsLeftButtonClicked())
+                if (this.MouseManager.IsLeftButtonClickedOnce())
                     HandleMouseClick(uiObject, gameTime);
             }
         }
@@ -103,14 +103,14 @@ namespace GDApp
                     {
                         //Curly brackets scope additionalParameters to be local to this case
                         object[] additionalParameters = { 0.1f, "Global" };
-                        EventDispatcher.Publish(new EventData(EventActionType.OnVolumeChange, EventCategoryType.GlobalSound, additionalParameters));
+                        EventDispatcher.Publish(new EventData(EventActionType.OnVolumeUp, EventCategoryType.GlobalSound, additionalParameters));
                     }
                     break;
 
                 case "volumeDownbtn":
                     {
-                        object[] additionalParameters = { -0.1f, "Global" };
-                        EventDispatcher.Publish(new EventData(EventActionType.OnVolumeChange, EventCategoryType.GlobalSound, additionalParameters));
+                        object[] additionalParameters = { 0.1f, "Global" };
+                        EventDispatcher.Publish(new EventData(EventActionType.OnVolumeDown, EventCategoryType.GlobalSound, additionalParameters));
                     }
                     break;
 

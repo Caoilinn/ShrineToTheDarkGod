@@ -225,8 +225,10 @@ Wave Bank
     Windows Bank Path Edited = 0;
     Seek Tables = 1;
     Compression Preset Name = <none>;
-    Bank Last Revised Low = 2379576476;
-    Bank Last Revised High = 30781363;
+    Header Last Modified Low = 0;
+    Header Last Modified High = 0;
+    Bank Last Revised Low = 792512206;
+    Bank Last Revised High = 30781972;
 
     Wave
     {
@@ -339,29 +341,6 @@ Wave Bank
             Loop Region Length = 0;
             File Type = 1;
             Last Modified Low = 964167983;
-            Last Modified High = 30781352;
-        }
-    }
-
-    Wave
-    {
-        Name = enemy_death;
-        File = enemy_death.wav;
-        Build Settings Last Modified Low = 625652405;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 389972;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 1233554120;
             Last Modified High = 30781352;
         }
     }
@@ -736,29 +715,6 @@ Wave Bank
 
     Wave
     {
-        Name = skeleton_damage;
-        File = skeleton_damage.wav;
-        Build Settings Last Modified Low = 625712524;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 89860;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 3138589308;
-            Last Modified High = 30781353;
-        }
-    }
-
-    Wave
-    {
         Name = skeleton_death;
         File = skeleton_death.wav;
         Build Settings Last Modified Low = 625712524;
@@ -1064,6 +1020,8 @@ Sound Bank
     Windows File = Win\Sound Bank.xsb;
     Xbox Bank Path Edited = 0;
     Windows Bank Path Edited = 0;
+    Header Last Modified High = 0;
+    Header Last Modified Low = 0;
 
     Sound
     {
@@ -1105,7 +1063,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = music_start;
-                    Entry Index = 31;
+                    Entry Index = 29;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1152,7 +1110,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = music_win;
-                    Entry Index = 27;
+                    Entry Index = 25;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1200,7 +1158,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = pickup_twinkle;
-                    Entry Index = 28;
+                    Entry Index = 26;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1248,7 +1206,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = music_melody;
-                    Entry Index = 29;
+                    Entry Index = 27;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1296,7 +1254,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = music_menu;
-                    Entry Index = 30;
+                    Entry Index = 28;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1343,7 +1301,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = ui_click;
-                    Entry Index = 26;
+                    Entry Index = 24;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1390,7 +1348,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = skeleton_growl;
-                    Entry Index = 25;
+                    Entry Index = 23;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1437,7 +1395,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = skeleton_dodge;
-                    Entry Index = 24;
+                    Entry Index = 22;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1484,54 +1442,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = skeleton_death;
-                    Entry Index = 23;
-                    Weight = 255;
-                    Weight Min = 0;
-                }
-            }
-        }
-    }
-
-    Sound
-    {
-        Name = skeleton_damage;
-        Volume = -1200;
-        Pitch = 0;
-        Priority = 200;
-
-        Category Entry
-        {
-            Name = Default;
-        }
-
-        Track
-        {
-            Volume = 0;
-            Use Filter = 0;
-
-            Play Wave Event
-            {
-                Break Loop = 0;
-                Use Speaker Position = 0;
-                Use Center Speaker = 1;
-                New Speaker Position On Loop = 1;
-                Speaker Position Angle = 0.000000;
-                Speaker Position Arc = 0.000000;
-
-                Event Header
-                {
-                    Timestamp = 0;
-                    Relative = 0;
-                    Random Recurrence = 0;
-                    Random Offset = 0;
-                }
-
-                Wave Entry
-                {
-                    Bank Name = Wave Bank;
-                    Bank Index = 0;
-                    Entry Name = skeleton_damage;
-                    Entry Index = 22;
+                    Entry Index = 21;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1578,7 +1489,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = skeleton_block;
-                    Entry Index = 21;
+                    Entry Index = 20;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1625,7 +1536,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = skeleton_attack;
-                    Entry Index = 20;
+                    Entry Index = 19;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1672,7 +1583,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = player_turn;
-                    Entry Index = 19;
+                    Entry Index = 18;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1720,7 +1631,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = player_low_health;
-                    Entry Index = 18;
+                    Entry Index = 17;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1767,7 +1678,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = player_footsteps;
-                    Entry Index = 17;
+                    Entry Index = 16;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1814,7 +1725,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = player_dodge;
-                    Entry Index = 16;
+                    Entry Index = 15;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1861,7 +1772,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = player_death;
-                    Entry Index = 15;
+                    Entry Index = 14;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1908,7 +1819,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = player_bump_002;
-                    Entry Index = 14;
+                    Entry Index = 13;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1955,7 +1866,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = player_bump_001;
-                    Entry Index = 13;
+                    Entry Index = 12;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -2002,7 +1913,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = player_block;
-                    Entry Index = 12;
+                    Entry Index = 11;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -2049,7 +1960,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = player_attack_sword;
-                    Entry Index = 11;
+                    Entry Index = 10;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -2096,7 +2007,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = player_attack_punch;
-                    Entry Index = 10;
+                    Entry Index = 9;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -2143,7 +2054,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = pickup_sword;
-                    Entry Index = 9;
+                    Entry Index = 8;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -2190,7 +2101,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = pickup_potion;
-                    Entry Index = 8;
+                    Entry Index = 7;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -2237,7 +2148,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = pickup_keys;
-                    Entry Index = 7;
+                    Entry Index = 6;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -2284,53 +2195,6 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = gate_open;
-                    Entry Index = 6;
-                    Weight = 255;
-                    Weight Min = 0;
-                }
-            }
-        }
-    }
-
-    Sound
-    {
-        Name = enemy_death;
-        Volume = -1200;
-        Pitch = 0;
-        Priority = 210;
-
-        Category Entry
-        {
-            Name = Default;
-        }
-
-        Track
-        {
-            Volume = 0;
-            Use Filter = 0;
-
-            Play Wave Event
-            {
-                Break Loop = 0;
-                Use Speaker Position = 0;
-                Use Center Speaker = 1;
-                New Speaker Position On Loop = 1;
-                Speaker Position Angle = 0.000000;
-                Speaker Position Arc = 0.000000;
-
-                Event Header
-                {
-                    Timestamp = 0;
-                    Relative = 0;
-                    Random Recurrence = 0;
-                    Random Offset = 0;
-                }
-
-                Wave Entry
-                {
-                    Bank Name = Wave Bank;
-                    Bank Index = 0;
-                    Entry Name = enemy_death;
                     Entry Index = 5;
                     Weight = 255;
                     Weight Min = 0;
@@ -2613,7 +2477,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = music_main;
-                    Entry Index = 32;
+                    Entry Index = 30;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -2661,7 +2525,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = music_battle_001;
-                    Entry Index = 34;
+                    Entry Index = 32;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -2709,7 +2573,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = music_battle_002;
-                    Entry Index = 33;
+                    Entry Index = 31;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -2756,7 +2620,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = cultist_growl;
-                    Entry Index = 35;
+                    Entry Index = 33;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -2778,7 +2642,7 @@ Sound Bank
         Sound Entry
         {
             Name = music_lose;
-            Index = 31;
+            Index = 29;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -2798,7 +2662,7 @@ Sound Bank
         Sound Entry
         {
             Name = cultist_block;
-            Index = 29;
+            Index = 27;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -2818,7 +2682,7 @@ Sound Bank
         Sound Entry
         {
             Name = cultist_attack;
-            Index = 30;
+            Index = 28;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -2838,7 +2702,7 @@ Sound Bank
         Sound Entry
         {
             Name = cultist_death;
-            Index = 28;
+            Index = 26;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -2858,27 +2722,7 @@ Sound Bank
         Sound Entry
         {
             Name = cultist_dodge;
-            Index = 27;
-            Weight Min = 0;
-            Weight Max = 255;
-        }
-    }
-
-    Cue
-    {
-        Name = enemy_death;
-
-        Variation
-        {
-            Variation Type = 3;
-            Variation Table Type = 1;
-            New Variation on Loop = 0;
-        }
-
-        Sound Entry
-        {
-            Name = enemy_death;
-            Index = 26;
+            Index = 25;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -2898,7 +2742,7 @@ Sound Bank
         Sound Entry
         {
             Name = gate_open;
-            Index = 25;
+            Index = 24;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -2918,7 +2762,7 @@ Sound Bank
         Sound Entry
         {
             Name = pickup_keys;
-            Index = 24;
+            Index = 23;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -2938,7 +2782,7 @@ Sound Bank
         Sound Entry
         {
             Name = pickup_potion;
-            Index = 23;
+            Index = 22;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -2958,7 +2802,7 @@ Sound Bank
         Sound Entry
         {
             Name = pickup_sword;
-            Index = 22;
+            Index = 21;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -2978,7 +2822,7 @@ Sound Bank
         Sound Entry
         {
             Name = player_attack_punch;
-            Index = 21;
+            Index = 20;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -2998,7 +2842,7 @@ Sound Bank
         Sound Entry
         {
             Name = player_attack_sword;
-            Index = 20;
+            Index = 19;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -3018,7 +2862,7 @@ Sound Bank
         Sound Entry
         {
             Name = player_block;
-            Index = 19;
+            Index = 18;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -3038,7 +2882,7 @@ Sound Bank
         Sound Entry
         {
             Name = player_bump_001;
-            Index = 18;
+            Index = 17;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -3058,7 +2902,7 @@ Sound Bank
         Sound Entry
         {
             Name = player_bump_002;
-            Index = 17;
+            Index = 16;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -3078,7 +2922,7 @@ Sound Bank
         Sound Entry
         {
             Name = player_death;
-            Index = 16;
+            Index = 15;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -3098,7 +2942,7 @@ Sound Bank
         Sound Entry
         {
             Name = player_dodge;
-            Index = 15;
+            Index = 14;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -3118,7 +2962,7 @@ Sound Bank
         Sound Entry
         {
             Name = player_footsteps;
-            Index = 14;
+            Index = 13;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -3138,7 +2982,7 @@ Sound Bank
         Sound Entry
         {
             Name = player_low_health;
-            Index = 13;
+            Index = 12;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -3158,7 +3002,7 @@ Sound Bank
         Sound Entry
         {
             Name = player_turn;
-            Index = 12;
+            Index = 11;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -3178,7 +3022,7 @@ Sound Bank
         Sound Entry
         {
             Name = skeleton_attack;
-            Index = 11;
+            Index = 10;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -3198,26 +3042,6 @@ Sound Bank
         Sound Entry
         {
             Name = skeleton_block;
-            Index = 10;
-            Weight Min = 0;
-            Weight Max = 255;
-        }
-    }
-
-    Cue
-    {
-        Name = skeleton_damage;
-
-        Variation
-        {
-            Variation Type = 3;
-            Variation Table Type = 1;
-            New Variation on Loop = 0;
-        }
-
-        Sound Entry
-        {
-            Name = skeleton_damage;
             Index = 9;
             Weight Min = 0;
             Weight Max = 255;
@@ -3431,7 +3255,7 @@ Sound Bank
         Sound Entry
         {
             Name = music_main;
-            Index = 32;
+            Index = 30;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -3451,7 +3275,7 @@ Sound Bank
         Sound Entry
         {
             Name = music_battle_001;
-            Index = 33;
+            Index = 31;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -3471,7 +3295,7 @@ Sound Bank
         Sound Entry
         {
             Name = music_battle_002;
-            Index = 34;
+            Index = 32;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -3491,7 +3315,7 @@ Sound Bank
         Sound Entry
         {
             Name = cultist_growl;
-            Index = 35;
+            Index = 33;
             Weight Min = 0;
             Weight Max = 255;
         }

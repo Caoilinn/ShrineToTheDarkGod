@@ -288,6 +288,7 @@
       <Name>menu</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -1452,11 +1453,6 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Audio\v2\enemy_death.wav">
-      <Name>enemy_death</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
     <Compile Include="Assets\Audio\v2\gate_open.wav">
       <Name>gate_open</Name>
       <Importer>WavImporter</Importer>
@@ -1592,11 +1588,6 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Audio\v2\skeleton_damage.wav">
-      <Name>skeleton_damage</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
     <Compile Include="Assets\Audio\v2\skeleton_death.wav">
       <Name>skeleton_death</Name>
       <Importer>WavImporter</Importer>
@@ -1689,17 +1680,62 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Models\Characters\Animated\Cultist\idle_fella.fbx">
-      <Name>idle_fella</Name>
+    <Compile Include="Assets\Models\Characters\Animated\Cultist\attack.fbx">
+      <Name>attack</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Models\Characters\Animated\Cultist\test.FBX">
+      <Name>test</Name>
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Models\Characters\Animated\Cultist\attack.fbx">
-      <Name>attack</Name>
+    <Compile Include="Assets\Models\Characters\Animated\Cultist\cultist_attack.fbx">
+      <Name>cultist_attack</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Models\Characters\Animated\Cultist\dude.fbx">
+      <Name>dude</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Models\Characters\Animated\Cultist\test_idle_02.fbx">
+      <Name>test_idle_02</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Models\Characters\Animated\Cultist\DEFEND.FBX">
+      <Name>DEFEND</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Models\Characters\Animated\Cultist\New\attack.FBX">
+      <Name>attack</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Models\Characters\Animated\Cultist\New\block.FBX">
+      <Name>block</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Assets\Models\Characters\Animated\Cultist\New\idle.FBX">
+      <Name>idle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

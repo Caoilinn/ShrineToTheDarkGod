@@ -9,8 +9,10 @@
     Windows Bank Path Edited = 0;
     Seek Tables = 1;
     Compression Preset Name = &lt;none&gt;;
-    Bank Last Revised Low = 2379576476;
-    Bank Last Revised High = 30781363;
+    Header Last Modified Low = 0;
+    Header Last Modified High = 0;
+    Bank Last Revised Low = 792512206;
+    Bank Last Revised High = 30781972;
 
     Wave
     {
@@ -123,29 +125,6 @@
             Loop Region Length = 0;
             File Type = 1;
             Last Modified Low = 964167983;
-            Last Modified High = 30781352;
-        }
-    }
-
-    Wave
-    {
-        Name = enemy_death;
-        File = enemy_death.wav;
-        Build Settings Last Modified Low = 625652405;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 389972;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 1233554120;
             Last Modified High = 30781352;
         }
     }
@@ -514,29 +493,6 @@
             Loop Region Length = 0;
             File Type = 1;
             Last Modified Low = 2997633302;
-            Last Modified High = 30781353;
-        }
-    }
-
-    Wave
-    {
-        Name = skeleton_damage;
-        File = skeleton_damage.wav;
-        Build Settings Last Modified Low = 625712524;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 89860;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 3138589308;
             Last Modified High = 30781353;
         }
     }

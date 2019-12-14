@@ -2199,7 +2199,6 @@ C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\cultist_death.xnb
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\cultist_dodge.xnb
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\cultist_growl.xnb
-C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\enemy_death.xnb
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\gate_open.xnb
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\music_battle_001.xnb
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\music_battle_002.xnb
@@ -2227,7 +2226,6 @@ C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\player_turn.xnb
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\skeleton_attack.xnb
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\skeleton_block.xnb
-C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\skeleton_damage.xnb
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\skeleton_death.xnb
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\skeleton_dodge.xnb
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\skeleton_growl.xnb
@@ -2275,3 +2273,16 @@ C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Squirrel\Tiny_skin.xnb
 C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Effects\Billboard.xnb
 C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\attack.xnb
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\idle.xnb
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\test.xnb
+C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\cultist_attack.xnb
+C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\dude.xnb
+C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\head_0.xnb
+C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\jacket_0.xnb
+C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\pants_0.xnb
+C:\Users\James\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\upBodyC_0.xnb
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\test_idle_02.xnb
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\DEFEND.xnb
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\New\attack.xnb
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\New\block.xnb
+C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\New\idle.xnb

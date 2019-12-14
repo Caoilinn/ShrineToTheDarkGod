@@ -820,7 +820,7 @@ namespace GDLibrary
                 {
                     DrawObject(gameTime, actor as AnimatedPlayerObject, activeCamera);
                 }
-                if (actor is AnimatedEnemyObject)
+                else if (actor is AnimatedEnemyObject)
                 {
                     DrawObject(gameTime, actor as AnimatedEnemyObject, activeCamera);
                 }

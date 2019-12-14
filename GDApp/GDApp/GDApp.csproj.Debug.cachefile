@@ -142,6 +142,11 @@ Content\Assets\Models\Characters\Animated\Squirrel\Red_Jump.xnb
 Content\Assets\Models\Characters\Animated\Squirrel\Red_Punch.xnb
 Content\Assets\Models\Characters\Animated\Squirrel\Red_Standing.xnb
 Content\Assets\Models\Characters\Animated\Squirrel\Red_Tailwhip.xnb
+Content\Assets\Models\Characters\Animated\Cultist\idle.xnb
+Content\Assets\Models\Characters\Animated\Cultist\attack.xnb
+Content\Assets\Models\Characters\Animated\Cultist\test.xnb
+Content\Assets\Models\Characters\Animated\Cultist\cultist_attack.xnb
+Content\Assets\Models\Characters\Animated\Cultist\dude.xnb
 Content\Assets\Textures\Foliage\Ground\foliage.xnb
 Content\Assets\Textures\Foliage\Ground\grass1.xnb
 Content\Assets\Textures\Foliage\Shrubs\shrub1.xnb
@@ -271,7 +276,6 @@ Content\Assets\Audio\v2\cultist_block.xnb
 Content\Assets\Audio\v2\cultist_death.xnb
 Content\Assets\Audio\v2\cultist_dodge.xnb
 Content\Assets\Audio\v2\cultist_growl.xnb
-Content\Assets\Audio\v2\enemy_death.xnb
 Content\Assets\Audio\v2\gate_open.xnb
 Content\Assets\Audio\v2\music_battle_001.xnb
 Content\Assets\Audio\v2\music_battle_002.xnb
@@ -299,14 +303,21 @@ Content\Assets\Audio\v2\player_low_health.xnb
 Content\Assets\Audio\v2\player_turn.xnb
 Content\Assets\Audio\v2\skeleton_attack.xnb
 Content\Assets\Audio\v2\skeleton_block.xnb
-Content\Assets\Audio\v2\skeleton_damage.xnb
 Content\Assets\Audio\v2\skeleton_death.xnb
 Content\Assets\Audio\v2\skeleton_dodge.xnb
 Content\Assets\Audio\v2\skeleton_growl.xnb
 Content\Assets\Audio\v2\ui_click.xnb
-Content\uvw2_0.xnb
 Content\Assets\Effects\Billboard.xnb
-Content\Assets\Models\Characters\Animated\Cultist\attack.xnb
+Content\uvw2_0.xnb
+Content\Assets\Models\Characters\Animated\Cultist\head_0.xnb
+Content\Assets\Models\Characters\Animated\Cultist\jacket_0.xnb
+Content\Assets\Models\Characters\Animated\Cultist\pants_0.xnb
+Content\Assets\Models\Characters\Animated\Cultist\upBodyC_0.xnb
+Content\Assets\Models\Characters\Animated\Cultist\test_idle_02.xnb
+Content\Assets\Models\Characters\Animated\Cultist\DEFEND.xnb
+Content\Assets\Models\Characters\Animated\Cultist\New\block.xnb
+Content\Assets\Models\Characters\Animated\Cultist\New\idle.xnb
+Content\Assets\Models\Characters\Animated\Cultist\New\attack.xnb
 Content\Assets\Audio\v1\GameAudio.xgs
 Content\Assets\Audio\v1\Movement.xwb
 Content\Assets\Audio\v1\Wave Bank.xwb

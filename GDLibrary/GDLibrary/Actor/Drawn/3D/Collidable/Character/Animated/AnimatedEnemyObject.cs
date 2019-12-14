@@ -79,11 +79,7 @@ namespace GDLibrary
             defence,
             managerParameters
         ) {
-            //Add extra constructor parameters like health, inventory etc...
-            this.moveSpeed = moveSpeed;
-            this.rotateSpeed = rotateSpeed;
-
-            //initialize dictionaries
+            //Initialize dictionaries
             this.modelDictionary = new Dictionary<AnimationDictionaryKey, Model>();
             this.animationPlayerDictionary = new Dictionary<AnimationDictionaryKey, AnimationPlayer>();
             this.skinningDataDictionary = new Dictionary<AnimationDictionaryKey, SkinningData>();
@@ -142,6 +138,7 @@ namespace GDLibrary
                 animationPlayer.StartClip(skinningData.AnimationClips[key.takeName]);
             }
 
+
             //Store current key for comparison in next update to prevent re-setting the same animation in successive calls to SetAnimation()
             this.oldKey = key;
         }
@@ -180,7 +177,6 @@ namespace GDLibrary
             switch (this.AnimationState)
             {
                 case AnimationStateType.Attacking:
-                    //call SetAnimation() with your Running FBX file name and Take 001
                     SetAnimation("Take 001", "dude");
                     break;
 
@@ -189,7 +185,6 @@ namespace GDLibrary
                     break;
 
                 case AnimationStateType.Idle:
-                    //call SetAnimation() with your Jumping FBX file name and Take 001
                     break;
             }
         }

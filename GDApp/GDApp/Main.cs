@@ -200,45 +200,44 @@ namespace GDApp
 
         private void InitializePrimitives()
         {
-            //Get a copy of the effect parameters
-            BasicEffectParameters effectParameters = this.effectDictionary[AppData.UnlitBillboardsEffectID].Clone() as BasicEffectParameters;
-            effectParameters.Texture = this.textureDictionary["HUD"];
-            effectParameters.DiffuseColor = Color.Yellow;
-            effectParameters.Alpha = 0.4f;
+            ////Get a copy of the effect parameters
+            //BasicEffectParameters effectParameters = this.effectDictionary[AppData.UnlitBillboardsEffectID].Clone() as BasicEffectParameters;
+            //effectParameters.Texture = this.textureDictionary["HUD"];
+            //effectParameters.DiffuseColor = Color.Yellow;
+            //effectParameters.Alpha = 0.4f;
 
-            //Define location
-            Transform3D transform = new Transform3D(
-                new Vector3(1143, 254, 1143), 
-                new Vector3(30, 60, 45),
-                Vector3.One,
-                Vector3.Forward,
-                Vector3.Up
-            );
+            ////Define location
+            //Transform3D transform = new Transform3D(
+            //    new Vector3(1143, 254, 1143), o            //    new Vector3(30, 60, 45),
+            //    Vector3.One,
+            //    Vector3.Forward,
+            //    Vector3.Up
+            //);
 
-            //Create primitive
-            BillboardPrimitiveObject primitiveObject = new BillboardPrimitiveObject(
-                "Simple primitive",
-                ActorType.Primitive,
-                transform,
-                effectParameters,
-                StatusType.Drawn | StatusType.Update,
-                this.vertexDataDictionary[AppData.TexturedQuadID],
-                BillboardType.Normal
-            );
+            ////Create primitive
+            //BillboardPrimitiveObject primitiveObject = new BillboardPrimitiveObject(
+            //    "Simple primitive",
+            //    ActorType.Primitive,
+            //    transform,
+            //    effectParameters,
+            //    StatusType.Drawn | StatusType.Update,
+            //    this.vertexDataDictionary[AppData.TexturedQuadID],
+            //    BillboardType.Normal
+            //);
 
-            BillboardPrimitiveObject clonedPrimitiveObject = null;
+            //BillboardPrimitiveObject clonedPrimitiveObject = null;
 
-            for (int i = 1; i <= 4; i++)
-            {
-                clonedPrimitiveObject = primitiveObject.Clone() as BillboardPrimitiveObject;
-                clonedPrimitiveObject.Transform.Translation += new Vector3(0, 5 * i, 0);
+            //for (int i = 1; i <= 4; i++)
+            //{
+            //    clonedPrimitiveObject = primitiveObject.Clone() as BillboardPrimitiveObject;
+            //    clonedPrimitiveObject.Transform.Translation += new Vector3(0, 5 * i, 0);
 
-                //We could also attach controllers here instead to give each a different rotation
-                clonedPrimitiveObject.AttachController(new RotationController("Rotation Controller", ControllerType.Rotation, new Vector3(0.1f * i, 0, 0)));
+            //    //We could also attach controllers here instead to give each a different rotation
+            //    clonedPrimitiveObject.AttachController(new RotationController("Rotation Controller", ControllerType.Rotation, new Vector3(0.1f * i, 0, 0)));
 
-                //Add to manager
-                this.objectManager.Add(clonedPrimitiveObject);
-            }
+            //    //Add to manager
+            //    this.objectManager.Add(clonedPrimitiveObject);
+            //}
         }
 
         private void InitializeGraphics()
@@ -259,7 +258,7 @@ namespace GDApp
             #region Standard Room Effect
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
-                FogEnabled = true,
+                FogEnabled = false,
                 TextureEnabled = false,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
@@ -285,7 +284,7 @@ namespace GDApp
             #region Room With Torch Effect
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
-                FogEnabled = true,
+                FogEnabled = false,
                 TextureEnabled = false,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
@@ -316,7 +315,7 @@ namespace GDApp
             #region Pickup Effect
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
-                FogEnabled = true,
+                FogEnabled = false,
                 TextureEnabled = true,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
@@ -337,7 +336,7 @@ namespace GDApp
             #region Pickup Effect
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
-                FogEnabled = true,
+                FogEnabled = false,
                 TextureEnabled = true,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
@@ -681,7 +680,7 @@ namespace GDApp
             buttonText = "Start";
 
             position = new Vector2(
-                375, 
+                410, 
                 325
             );
 
@@ -1221,7 +1220,6 @@ namespace GDApp
 
         private void Reinitialize()
         {
-
             InitializeGraphics();
             InitializeEffects();
             InitializeEnemies();
@@ -1627,6 +1625,8 @@ namespace GDApp
 
         public void ConstructRoom(int roomType, Transform3D transform)
         {
+            return;
+
             //Setup dimensions
             Transform3D roomTransform = transform.Clone() as Transform3D;
 
@@ -1823,9 +1823,11 @@ namespace GDApp
                     this.animatedModel = this.enemyDictionary["Skeleton1"];
                     break;
                 case 2:
+                    return;
                     this.animatedModel = this.enemyDictionary["Skeleton2"];
                     break;
                 case 3:
+                    return;
                     this.animatedModel = this.enemyDictionary["Cultist1"];
                     break;
             }
@@ -1833,17 +1835,16 @@ namespace GDApp
             //Position enemy
             this.animatedModel.Transform = transform.Clone() as Transform3D;
             this.animatedModel.Transform.Translation += AppData.ObjectOffset;
-            this.animatedModel.Transform.Scale = this.animatedModel.Transform.Scale * 10;
 
             //Enable collision
             this.animatedModel.Enable(true, 1);
 
-            string takeName = "Take 1";
+            string takeName = "Take 001";
             string fileNameNoSuffix = "Red_Idle";
             this.animatedModel.AddAnimation(takeName, fileNameNoSuffix, this.modelDictionary[fileNameNoSuffix]);
 
             //Set the start animtion
-            this.animatedModel.SetAnimation("Take 1", "Red_Idle");
+            this.animatedModel.SetAnimation("Take 001", "Red_Idle");
 
             //Add to lists
             this.gridManager.Add(this.animatedModel);
@@ -1990,7 +1991,7 @@ namespace GDApp
             //this.modelDictionary.Load("Assets/Models/Characters/cultist_001", "cultistModel1");
             //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/ss", "ss");
             //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/idle", "Red_Idle");
-            this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/ATTACK", "Red_Idle");
+            this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/New/attack", "Red_Idle");
             //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/idle_fella", "Red_Idle");
             this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel1");
             this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel2");
@@ -2208,7 +2209,6 @@ namespace GDApp
             this.effectDictionary.Add("pickupEffect2", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(1.0f, 0.7f, 0.0f)), Color.Black, Color.Black, Color.Black, 0, 1));
             this.effectDictionary.Add("pickupEffect3", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(1.0f, 0.2f, 0.2f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
-
 
             #region Gate Effects
             this.effectDictionary.Add("propEffect1", new BasicEffectParameters(this.gateEffect, null, new Color(new Vector3(0.9f, 0.6f, 0.3f)), Color.Black, Color.Black, Color.Black, 0, 1));
@@ -2445,7 +2445,7 @@ namespace GDApp
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
 
             /*
              * Think of a sampler as a paint brush. The sampler state defines
