@@ -872,32 +872,31 @@ namespace GDLibrary
             }
         }
 
-        //Draw an animated player object
-        private void DrawObject(GameTime gameTime, AnimatedEnemyObject animatedEnemyObject, Camera3D activeCamera)
+        private void DrawObject(GameTime gameTime, AnimatedEnemyObject animatedPlayerObject, Camera3D activeCamera)
         {
-            //An array of the current positions of the model meshes
-            Matrix[] bones = animatedEnemyObject.AnimationPlayer.GetSkinTransforms();
-            Matrix world = animatedEnemyObject.GetWorldMatrix();
+            //an array of the current positions of the model meshes
+            Matrix[] bones = animatedPlayerObject.AnimationPlayer.GetSkinTransforms();
+            Matrix world = animatedPlayerObject.GetWorldMatrix();
 
             for (int i = 0; i < bones.Length; i++)
             {
                 bones[i] *= world;
             }
 
-            foreach (ModelMesh mesh in animatedEnemyObject.Model.Meshes)
+            foreach (ModelMesh mesh in animatedPlayerObject.Model.Meshes)
             {
                 foreach (SkinnedEffect skinnedEffect in mesh.Effects)
                 {
                     skinnedEffect.SetBoneTransforms(bones);
                     skinnedEffect.View = activeCamera.View;
                     skinnedEffect.Projection = activeCamera.Projection;
-                    
-                    //If you want to overwrite the texture you baked into the animation in 3DS Max then set your own texture
-                    if (animatedEnemyObject.EffectParameters.Texture != null)
-                        skinnedEffect.Texture = animatedEnemyObject.EffectParameters.Texture;
 
-                    skinnedEffect.DiffuseColor = animatedEnemyObject.EffectParameters.DiffuseColor.ToVector3();
-                    skinnedEffect.Alpha = animatedEnemyObject.Alpha;
+                    //if you want to overwrite the texture you baked into the animation in 3DS Max then set your own texture
+                    if (animatedPlayerObject.EffectParameters.Texture != null)
+                        skinnedEffect.Texture = animatedPlayerObject.EffectParameters.Texture;
+
+                    skinnedEffect.DiffuseColor = animatedPlayerObject.EffectParameters.DiffuseColor.ToVector3();
+                    skinnedEffect.Alpha = animatedPlayerObject.Alpha;
                     skinnedEffect.EnableDefaultLighting();
                     skinnedEffect.PreferPerPixelLighting = true;
                 }

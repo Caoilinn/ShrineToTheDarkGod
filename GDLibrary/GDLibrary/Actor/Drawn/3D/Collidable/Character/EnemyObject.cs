@@ -178,6 +178,14 @@ namespace GDLibrary
             base.TakeDamage(damage);
         }
 
+        public override Matrix GetWorldMatrix()
+        {
+            return Matrix.CreateScale(this.Transform.Scale) *
+                this.Body.Orientation *
+                this.Transform.Orientation *
+                Matrix.CreateTranslation(this.Body.Position);
+        }
+
         public override void Update(GameTime gameTime)
         {
             TakeTurn(gameTime);

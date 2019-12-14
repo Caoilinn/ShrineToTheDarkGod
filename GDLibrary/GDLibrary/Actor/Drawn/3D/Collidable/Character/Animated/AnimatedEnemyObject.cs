@@ -43,9 +43,6 @@ namespace GDLibrary
         }
         #endregion
 
-        private readonly float moveSpeed;
-        private readonly float rotateSpeed;
-
         public AnimatedEnemyObject(
             string id,
             ActorType actorType,            
@@ -83,37 +80,6 @@ namespace GDLibrary
             this.modelDictionary = new Dictionary<AnimationDictionaryKey, Model>();
             this.animationPlayerDictionary = new Dictionary<AnimationDictionaryKey, AnimationPlayer>();
             this.skinningDataDictionary = new Dictionary<AnimationDictionaryKey, SkinningData>();
-        }
-
-        //This methods defines how your player interacts with ALL collidable objects in the world - its really the players complete behaviour
-        private bool CollisionSkin_callbackFn(CollisionSkin collider, CollisionSkin collidee)
-        {
-            HandleCollisions(collider.Owner.ExternalData as CollidableObject, collidee.Owner.ExternalData as CollidableObject);
-            return true;
-        }
-
-        //want do we want to do now that we have collided with an object?
-        private void HandleCollisions(CollidableObject collidableObjectCollider, CollidableObject collidableObjectCollidee)
-        {
-            //did the "as" typecast return a valid object?
-            if (collidableObjectCollidee != null)
-            {
-                if (collidableObjectCollidee.ActorType == ActorType.CollidablePickup)
-                {
-                    #region demo removed from nialls code
-                    //do whatever you want here when you hit a collidable pickup...
-                    #endregion
-                }
-                //add else if statements here for all the responses that you want your player to have
-               // else if (collidableObjectCollidee.ActorType == ActorType.CollidableDoor)
-               // {
-               //
-               // }
-               // else if (collidableObjectCollidee.ActorType == ActorType.CollidableAmmo)
-               // {
-               //
-               // }
-            }
         }
 
         //Sets the first frame for the take and file (e.g. "Take 001", "dude")

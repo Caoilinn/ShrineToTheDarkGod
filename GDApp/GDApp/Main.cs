@@ -1625,8 +1625,6 @@ namespace GDApp
 
         public void ConstructRoom(int roomType, Transform3D transform)
         {
-            return;
-
             //Setup dimensions
             Transform3D roomTransform = transform.Clone() as Transform3D;
 
@@ -1831,20 +1829,20 @@ namespace GDApp
                     this.animatedModel = this.enemyDictionary["Cultist1"];
                     break;
             }
+            Transform3D gateTransform = transform.Clone() as Transform3D;
+            gateTransform.Translation += AppData.ObjectOffset;
 
             //Position enemy
-            this.animatedModel.Transform = transform.Clone() as Transform3D;
-            this.animatedModel.Transform.Translation += AppData.ObjectOffset;
+            this.animatedModel.Transform = gateTransform;
 
-            //Enable collision
             this.animatedModel.Enable(true, 1);
 
-            string takeName = "Take 001";
+            string takeName = "fd";
             string fileNameNoSuffix = "Red_Idle";
             this.animatedModel.AddAnimation(takeName, fileNameNoSuffix, this.modelDictionary[fileNameNoSuffix]);
 
             //Set the start animtion
-            this.animatedModel.SetAnimation("Take 001", "Red_Idle");
+            this.animatedModel.SetAnimation("fd", "Red_Idle");
 
             //Add to lists
             this.gridManager.Add(this.animatedModel);
@@ -1991,7 +1989,7 @@ namespace GDApp
             //this.modelDictionary.Load("Assets/Models/Characters/cultist_001", "cultistModel1");
             //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/ss", "ss");
             //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/idle", "Red_Idle");
-            this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/New/attack", "Red_Idle");
+            this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/New/idle", "Red_Idle");
             //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/idle_fella", "Red_Idle");
             this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel1");
             this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel2");
