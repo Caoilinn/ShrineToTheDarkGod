@@ -356,23 +356,24 @@ namespace GDLibrary
             foreach (Actor3D item in this.items)
             {
                 //Create item audio emitter
-                AudioEmitter itemAudioEmitter = new AudioEmitter();
-                itemAudioEmitter.Position = item.Transform.Translation;
+                AudioEmitter itemAudioEmitter = new AudioEmitter {
+                    Position = item.Transform.Translation
+                };
 
-                //If the items' Xz position is equal to the players' xz position
+                //If the items xz position is equal to the players xz position
                 if ((item.Transform.Translation * vectorXZ).Equals(player.Transform.Translation * vectorXZ))
                 {
                     //Then the player is colliding with an item
-                    HandlePlayerItemCollision(item as ImmovablePickupObject, itemAudioEmitter);
+                    HandlePlayerItemCollision(item as PickupObject, itemAudioEmitter);
                     inProximityOfAnItem = true;
                     break;
                 }
 
-                //If the distance between the items' xz position and the players' xz position, is less than or equal to the distance between two adjacent cells
+                //If the distance between the items xz position and the players xz position, is less than or equal to the distance between two adjacent cells
                 if (Vector3.Distance(item.Transform.Translation * vectorXZ, player.Transform.Translation * vectorXZ) <= distanceBetweenAdjacentCells)
                 {
                     //Then the player is standing in a cell that is adjacent to an item
-                    HandlePlayerItemIneraction(item as ImmovablePickupObject, itemAudioEmitter);
+                    HandlePlayerItemIneraction(item as PickupObject, itemAudioEmitter);
                     inProximityOfAnItem = true;
                     break;
                 }
@@ -382,7 +383,7 @@ namespace GDLibrary
             StateManager.InProximityOfAnItem = inProximityOfAnItem;
         }
 
-        private void HandlePlayerItemCollision(ImmovablePickupObject item, AudioEmitter itemAudioEmitter)
+        private void HandlePlayerItemCollision(PickupObject item, AudioEmitter itemAudioEmitter)
         {
             //Select which sound to play, based on the pickup type
             switch (item.PickupParameters.PickupType)
@@ -417,7 +418,7 @@ namespace GDLibrary
             this.Remove(item);
         }
 
-        private void HandlePlayerItemIneraction(ImmovablePickupObject item, AudioEmitter itemAudioEmitter)
+        private void HandlePlayerItemIneraction(PickupObject item, AudioEmitter itemAudioEmitter)
         {
             //Play sound
             EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "pickup_twinkle", itemAudioEmitter }));

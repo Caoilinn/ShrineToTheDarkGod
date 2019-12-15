@@ -7,7 +7,7 @@ namespace GDLibrary
     public class InventoryManager : PausableDrawableGameComponent
     {        
         #region Fields
-        private List<ImmovablePickupObject> items;
+        private List<PickupObject> items;
         #endregion
 
         #region Constructor
@@ -15,7 +15,7 @@ namespace GDLibrary
             EventDispatcher eventDispatcher, 
             StatusType statusType
         ) : base(game, statusType, eventDispatcher) {
-            this.items = new List<ImmovablePickupObject>();
+            this.items = new List<PickupObject>();
         }
         #endregion
 
@@ -32,7 +32,7 @@ namespace GDLibrary
             //If an add item event has been published
             if (eventData.EventType == EventActionType.OnItemAdded)
             {
-                ImmovablePickupObject itemToAdd = eventData.AdditionalParameters[0] as ImmovablePickupObject;
+                PickupObject itemToAdd = eventData.AdditionalParameters[0] as PickupObject;
                 this.AddItem(itemToAdd);
 
                 EventDispatcher.Publish(
@@ -56,7 +56,7 @@ namespace GDLibrary
             else if(eventData.EventType == EventActionType.OnItemRemoved)
             {
                 //Create item
-                ImmovablePickupObject item = eventData.AdditionalParameters[0] as ImmovablePickupObject;
+                PickupObject item = eventData.AdditionalParameters[0] as PickupObject;
 
                 //Publish UI event
                 EventDispatcher.Publish(
@@ -74,16 +74,16 @@ namespace GDLibrary
         #endregion
 
         #region Methods
-        public void AddItem(ImmovablePickupObject item)
+        public void AddItem(PickupObject item)
         {
             if(item != null)
                 items.Add(item);
         }
 
-        public ImmovablePickupObject GetItemByDescription(string description)
+        public PickupObject GetItemByDescription(string description)
         {
             if (items != null)
-                foreach (ImmovablePickupObject item in this.items)
+                foreach (PickupObject item in this.items)
                     if (item.PickupParameters.Description == description)
                         return item;
 
@@ -93,7 +93,7 @@ namespace GDLibrary
         public bool HasItem(PickupType itemType)
         {
             if (items != null)
-                foreach (ImmovablePickupObject item in this.items)
+                foreach (PickupObject item in this.items)
                     if (item.PickupParameters.PickupType == itemType)
                         return true;
 
@@ -104,7 +104,7 @@ namespace GDLibrary
         {
             if (items != null)
             {
-                foreach (ImmovablePickupObject item in this.items)
+                foreach (PickupObject item in this.items)
                 {
                     if (item.PickupParameters.PickupType == itemType)
                     {
@@ -115,7 +115,7 @@ namespace GDLibrary
             }
         }
 
-        public void UseItem(ImmovablePickupObject item)
+        public void UseItem(PickupObject item)
         {
             if (item != null)
             {
@@ -125,7 +125,7 @@ namespace GDLibrary
 
         public void PrintInventory()
         {
-           foreach (ImmovablePickupObject item in items)
+           foreach (PickupObject item in items)
                 Console.WriteLine("ID: " + item.ID);
         }
 

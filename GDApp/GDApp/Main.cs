@@ -48,6 +48,7 @@ namespace GDApp
         private Viewport viewport;
 
         //Models
+        private ModelObject staticModel;
         private CollidableObject collidableModel;
 
         //Dictionaries
@@ -251,6 +252,7 @@ namespace GDApp
         {
             BasicEffect basicEffect;
 
+            bool fogEnabled = false;
             Vector3 fogColor = new Vector3(0f, 0f, 0f);
             float fogStart = 0;
             float fogEnd = 550;
@@ -258,7 +260,7 @@ namespace GDApp
             #region Standard Room Effect
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
-                FogEnabled = false,
+                FogEnabled = fogEnabled,
                 TextureEnabled = false,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
@@ -284,7 +286,7 @@ namespace GDApp
             #region Room With Torch Effect
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
-                FogEnabled = false,
+                FogEnabled = fogEnabled,
                 TextureEnabled = false,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
@@ -315,7 +317,7 @@ namespace GDApp
             #region Pickup Effect
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
-                FogEnabled = false,
+                FogEnabled = fogEnabled,
                 TextureEnabled = true,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
@@ -336,7 +338,7 @@ namespace GDApp
             #region Pickup Effect
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
-                FogEnabled = false,
+                FogEnabled = fogEnabled,
                 TextureEnabled = true,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
@@ -360,7 +362,7 @@ namespace GDApp
 
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
-                FogEnabled = true,
+                FogEnabled = fogEnabled,
                 TextureEnabled = true,
                 LightingEnabled = true,
                 PreferPerPixelLighting = true,
@@ -651,7 +653,7 @@ namespace GDApp
             sceneID = "main menu";
 
             //Retrieve the background texture
-            texture = this.textureDictionary["mainmenu"];
+            texture = this.textureDictionary["main_menu"];
             
             //Scale the texture to fit the entire screen
             Vector2 scale = new Vector2(
@@ -768,7 +770,7 @@ namespace GDApp
             sceneID = "audio menu";
 
             //Retrieve the audio menu background texture
-            texture = this.textureDictionary["audiomenu"];
+            texture = this.textureDictionary["audio_menu"];
             
             //Scale the texture to fit the entire screen
             scale = new Vector2(
@@ -853,7 +855,7 @@ namespace GDApp
             sceneID = "controls menu";
 
             //Retrieve the controls menu background texture
-            texture = this.textureDictionary["controlsmenu"];
+            texture = this.textureDictionary["controls_menu"];
 
             //Scale the texture to fit the entire screen
             scale = new Vector2(
@@ -898,7 +900,7 @@ namespace GDApp
             sceneID = "begin menu";
 
             //Retrieve the controls menu background texture
-            texture = this.textureDictionary["begingame"];
+            texture = this.textureDictionary["start_screen"];
 
             //Scale the texture to fit the entire screen
             scale = new Vector2(
@@ -943,7 +945,7 @@ namespace GDApp
             sceneID = "win menu";
 
             //Retrieve the controls menu background texture
-            texture = this.textureDictionary["wingame"];
+            texture = this.textureDictionary["win_screen"];
 
             //Scale the texture to fit the entire screen
             scale = new Vector2(
@@ -984,7 +986,7 @@ namespace GDApp
             sceneID = "lose menu";
 
             //Retrieve the controls menu background texture
-            texture = this.textureDictionary["losegame"];
+            texture = this.textureDictionary["lose_screen"];
 
             //Scale the texture to fit the entire screen
             scale = new Vector2(
@@ -1625,6 +1627,8 @@ namespace GDApp
 
         public void ConstructRoom(int roomType, Transform3D transform)
         {
+            return;
+
             //Setup dimensions
             Transform3D roomTransform = transform.Clone() as Transform3D;
 
@@ -1663,47 +1667,25 @@ namespace GDApp
             EffectParameters effectParameters = this.effectDictionary["pickupEffect" + pickupType];
             Model model = this.modelDictionary["pickupModel" + pickupType];
 
-            //Load collision box
-            Model collisionBox = this.collisionBoxDictionary["pickupCollision"];
-
             //Select pickup parameters
             PickupParameters pickupParameters = SelectPickupParameters(pickupType);
 
             //Create model
-            this.collidableModel = new ImmovablePickupObject(
+            this.staticModel = new PickupObject(
                 "Pickup " + pickupType,
                 ActorType.CollidablePickup,
                 pickupTransform,
                 effectParameters,
                 model,
-                collisionBox,
-                new MaterialProperties(),
                 pickupParameters
             );
 
-            this.collidableModel.AttachController(new SpinController("pickupSpin" + pickupType, ControllerType.Spin, 1));
-
-            //Add collision
-            this.collidableModel.Enable(true, 1);
+            //Attach spin controller
+            this.staticModel.AttachController(new SpinController("pickupSpin" + pickupType, ControllerType.Spin, 1));
 
             //Add to lists
-            this.objectManager.Add(collidableModel);
-            this.gridManager.Add(collidableModel);
-        }
-
-        PickupParameters SelectPickupParameters(int pickupType)
-        {
-            switch (pickupType)
-            {
-                case 1:
-                    return this.pickupParametersDictionary["sword"];
-                case 2:
-                    return this.pickupParametersDictionary["key"];
-                case 3:
-                    return this.pickupParametersDictionary["potion"];
-                default:
-                    return null;
-            }
+            this.objectManager.Add(this.staticModel);
+            this.gridManager.Add(this.staticModel);
         }
 
         public void ConstructTrigger(int triggerType, Transform3D transform)
@@ -1738,7 +1720,7 @@ namespace GDApp
                     break;
             }
         }
-        
+
         public void ConstructGate(int gateType, Transform3D transform)
         {
             //Setup dimensions
@@ -1812,36 +1794,45 @@ namespace GDApp
             this.combatManager.AddPlayer(this.collidableModel as PlayerObject);
             this.objectManager.Add(this.collidableModel);
         }
-        
+
         public void SpawnEnemy(int enemyType, Transform3D transform)
-        {   
+        {
+            Transform3D enemyTransform = transform.Clone() as Transform3D;
+            enemyTransform.Translation += AppData.ObjectOffset;
+
             //Select enemy
             switch (enemyType) {
                 case 1:
-                    this.animatedModel = this.enemyDictionary["Skeleton1"];
+                    return;
                     break;
                 case 2:
                     return;
-                    this.animatedModel = this.enemyDictionary["Skeleton2"];
                     break;
                 case 3:
-                    return;
-                    this.animatedModel = this.enemyDictionary["Cultist1"];
+                    this.animatedModel = new AnimatedEnemyObject(
+                        "Skeleton1",
+                        ActorType.Enemy,
+                        enemyTransform,
+                        this.effectDictionary["skeletonEffect1"],
+                        AppData.CharacterAccelerationRate,
+                        AppData.CharacterDecelerationRate,
+                        AppData.CharacterMovementVector,
+                        AppData.CharacterRotationVector,
+                        AppData.CharacterMoveSpeed,
+                        AppData.CharacterRotateSpeed,
+                        AppData.SkeletonHealth,
+                        AppData.SkeletonAttack,
+                        AppData.SkeletonDefence,
+                        this.managerParameters
+                    );
                     break;
             }
-            Transform3D gateTransform = transform.Clone() as Transform3D;
-            gateTransform.Translation += AppData.ObjectOffset;
 
-            //Position enemy
-            this.animatedModel.Transform = gateTransform;
-
+            //Enable collision
             this.animatedModel.Enable(true, 1);
-
-            string takeName = "fd";
-            string fileNameNoSuffix = "Red_Idle";
-            this.animatedModel.AddAnimation(takeName, fileNameNoSuffix, this.modelDictionary[fileNameNoSuffix]);
-
-            //Set the start animtion
+            
+            //Add animation
+            this.animatedModel.AddAnimation("fd", "Red_Idle", this.modelDictionary["Red_Idle"]);
             this.animatedModel.SetAnimation("fd", "Red_Idle");
 
             //Add to lists
@@ -1939,42 +1930,47 @@ namespace GDApp
         public void LoadModels()
         {
             #region Room Models
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_001", "roomModel1");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_002", "roomModel2");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_003", "roomModel3");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_004", "roomModel4");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_005", "roomModel5");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_006", "roomModel6");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_007", "roomModel7");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_008", "roomModel8");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_009", "roomModel9");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_010", "roomModel10");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_011", "roomModel11");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_012", "roomModel12");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_013", "roomModel13");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_014", "roomModel14");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_015", "roomModel15");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_016", "roomModel16");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_017", "roomModel17");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_018", "roomModel18");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_019", "roomModel19");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_020", "roomModel20");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_021", "roomModel21");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_022", "roomModel22");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_023", "roomModel23");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_024", "roomModel24");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_025", "roomModel25");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_026", "roomModel26");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_027", "roomModel27");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_028", "roomModel28");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_029", "roomModel29");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_030", "roomModel30");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_031", "roomModel31");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_032", "roomModel32");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_033", "roomModel33");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_034", "roomModel34");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_035", "roomModel35");
-            this.modelDictionary.Load("Assets/Models/Rooms/v2/room_036", "roomModel36");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_001", "roomModel1");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_002", "roomModel2");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_003", "roomModel3");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_004", "roomModel4");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_005", "roomModel5");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_006", "roomModel6");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_007", "roomModel7");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_008", "roomModel8");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_009", "roomModel9");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_010", "roomModel10");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_011", "roomModel11");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_012", "roomModel12");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_013", "roomModel13");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_014", "roomModel14");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_015", "roomModel15");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_016", "roomModel16");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_017", "roomModel17");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_018", "roomModel18");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_019", "roomModel19");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_020", "roomModel20");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_021", "roomModel21");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_022", "roomModel22");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_023", "roomModel23");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_024", "roomModel24");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_025", "roomModel25");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_026", "roomModel26");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_027", "roomModel27");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_028", "roomModel28");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_029", "roomModel29");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_030", "roomModel30");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_031", "roomModel31");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_032", "roomModel32");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_033", "roomModel33");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_034", "roomModel34");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_035", "roomModel35");
+            this.modelDictionary.Load("Assets/Models/Architecture/Rooms/room_036", "roomModel36");
+            #endregion
+
+            #region Gate Models
+            this.modelDictionary.Load("Assets/Models/Architecture/Gates/gate_001", "gateModel1");
+            this.modelDictionary.Load("Assets/Models/Architecture/Gates/gate_002", "gateModel2");
             #endregion
 
             #region Pickup Models
@@ -1987,131 +1983,104 @@ namespace GDApp
             //this.modelDictionary.Load("Assets/Models/Characters/skeleton_001", "skeletonModel1");
             //this.modelDictionary.Load("Assets/Models/Characters/skeleton_002", "skeletonModel2");
             //this.modelDictionary.Load("Assets/Models/Characters/cultist_001", "cultistModel1");
-            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/ss", "ss");
-            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/idle", "Red_Idle");
-            this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/New/idle", "Red_Idle");
-            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/idle_fella", "Red_Idle");
-            this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel1");
-            this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel2");
-            this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "cultistModel1");
-            #endregion
-
-            #region Prop Models
-            this.modelDictionary.Load("Assets/Models/Props/gate_001", "gateModel1");
-            this.modelDictionary.Load("Assets/Models/Props/gate_002", "gateModel2");
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/block", "Red_Idle");
+            this.modelDictionary.Load("Assets/Models/Characters/Animated/Skeleton/idle", "Red_Idle");
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel1");
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel2");
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "cultistModel1");
             #endregion
 
             #region Animations
-            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/attack", "cultsitAttack");
-            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/block", "cultistBlock");
-            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/skele", "skele");
             #endregion
         }
 
         public void LoadCollisionBoxes()
         {
             #region Room Collision
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_001", "roomCollision1");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_002", "roomCollision2");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_003", "roomCollision3");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_004", "roomCollision4");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_005", "roomCollision5");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_006", "roomCollision6");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_007", "roomCollision7");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_008", "roomCollision8");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_009", "roomCollision9");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_010", "roomCollision10");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_011", "roomCollision11");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_012", "roomCollision12");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_013", "roomCollision13");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_014", "roomCollision14");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_015", "roomCollision15");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_016", "roomCollision16");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_017", "roomCollision17");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_018", "roomCollision18");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_019", "roomCollision19");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_020", "roomCollision20");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_021", "roomCollision21");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_022", "roomCollision22");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_023", "roomCollision23");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_024", "roomCollision24");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_025", "roomCollision25");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_026", "roomCollision26");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_027", "roomCollision27");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_028", "roomCollision28");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_029", "roomCollision29");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_030", "roomCollision30");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_031", "roomCollision31");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_032", "roomCollision32");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_033", "roomCollision33");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_034", "roomCollision34");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_035", "roomCollision35");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Rooms/v2/room_collision_036", "roomCollision36");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_001", "roomCollision1");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_002", "roomCollision2");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_003", "roomCollision3");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_004", "roomCollision4");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_005", "roomCollision5");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_006", "roomCollision6");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_007", "roomCollision7");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_008", "roomCollision8");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_009", "roomCollision9");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_010", "roomCollision10");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_011", "roomCollision11");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_012", "roomCollision12");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_013", "roomCollision13");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_014", "roomCollision14");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_015", "roomCollision15");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_016", "roomCollision16");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_017", "roomCollision17");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_018", "roomCollision18");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_019", "roomCollision19");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_020", "roomCollision20");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_021", "roomCollision21");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_022", "roomCollision22");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_023", "roomCollision23");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_024", "roomCollision24");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_025", "roomCollision25");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_026", "roomCollision26");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_027", "roomCollision27");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_028", "roomCollision28");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_029", "roomCollision29");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_030", "roomCollision30");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_031", "roomCollision31");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_032", "roomCollision32");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_033", "roomCollision33");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_034", "roomCollision34");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_035", "roomCollision35");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Rooms/room_collision_036", "roomCollision36");
             #endregion
 
-            #region Pickup Collision
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Pickups/pickup_collision", "pickupCollision");
-            #endregion
-
-            #region Enemy Collision
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Characters/enemy_collision", "enemyCollision");
-            #endregion
-
-            #region Zone Collision
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Zones/zone_collision", "zoneCollision");
-            #endregion
-
-            #region Prop Collision
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Props/gate_collision_001", "gateCollision1");
-            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Props/gate_collision_002", "gateCollision2");
+            #region Gate Collision
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Gates/gate_collision_001", "gateCollision1");
+            this.collisionBoxDictionary.Load("Assets/Collision Boxes/Architecture/Gates/gate_collision_002", "gateCollision2");
             #endregion
         }
 
         public void LoadTextures()
         {
             #region Room Textures
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_001", "roomTexture1");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_002", "roomTexture2");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_003", "roomTexture3");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_004", "roomTexture4");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_005", "roomTexture5");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_006", "roomTexture6");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_007", "roomTexture7");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_008", "roomTexture8");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_009", "roomTexture9");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_010", "roomTexture10");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_011", "roomTexture11");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_012", "roomTexture12");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_013", "roomTexture13");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_014", "roomTexture14");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_015", "roomTexture15");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_016", "roomTexture16");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_017", "roomTexture17");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_018", "roomTexture18");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_018", "roomTexture18");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_019", "roomTexture19");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_020", "roomTexture20");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_021", "roomTexture21");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_022", "roomTexture22");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_023", "roomTexture23");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_024", "roomTexture24");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_025", "roomTexture25");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_026", "roomTexture26");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_027", "roomTexture27");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_028", "roomTexture28");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_029", "roomTexture29");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_030", "roomTexture30");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_031", "roomTexture31");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_032", "roomTexture32");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_033", "roomTexture33");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_034", "roomTexture34");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_035", "roomTexture35");
-            this.textureDictionary.Load("Assets/Textures/Environment/Rooms/room_texture_036", "roomTexture36");
-            #endregion
-
-            #region Generic Textures
-            this.textureDictionary.Load("Assets/Textures/Props/Gates/gate_texture_001", "gateTexture1");
-            this.textureDictionary.Load("Assets/Textures/Props/Gates/gate_texture_002", "gateTexture2");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_001", "roomTexture1");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_002", "roomTexture2");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_003", "roomTexture3");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_004", "roomTexture4");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_005", "roomTexture5");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_006", "roomTexture6");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_007", "roomTexture7");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_008", "roomTexture8");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_009", "roomTexture9");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_010", "roomTexture10");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_011", "roomTexture11");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_012", "roomTexture12");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_013", "roomTexture13");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_014", "roomTexture14");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_015", "roomTexture15");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_016", "roomTexture16");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_017", "roomTexture17");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_018", "roomTexture18");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_018", "roomTexture18");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_019", "roomTexture19");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_020", "roomTexture20");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_021", "roomTexture21");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_022", "roomTexture22");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_023", "roomTexture23");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_024", "roomTexture24");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_025", "roomTexture25");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_026", "roomTexture26");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_027", "roomTexture27");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_028", "roomTexture28");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_029", "roomTexture29");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_030", "roomTexture30");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_031", "roomTexture31");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_032", "roomTexture32");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_033", "roomTexture33");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_034", "roomTexture34");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_035", "roomTexture35");
+            this.textureDictionary.Load("Assets/Textures/Architecture/Rooms/room_texture_036", "roomTexture36");
             #endregion
 
             #region Menu Buttons
@@ -2119,21 +2088,21 @@ namespace GDApp
             #endregion
 
             #region Menu Backgrounds
-            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/mainmenu");
-            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/audiomenu");
-            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/controlsmenu");
-            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/begingame");
-            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/wingame");
-            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/losegame");
+            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/main_menu");
+            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/audio_menu");
+            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/controls_menu");
+            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/start_screen");
+            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/win_screen");
+            this.textureDictionary.Load("Assets/Textures/UI/Menu/Backgrounds/lose_screen");
             #endregion
 
             #region UI Elements
-            this.textureDictionary.Load("Assets/Textures/UI/HUD/healthProgressBar", "health");
-            this.textureDictionary.Load("Assets/Textures/UI/HUD/xpProgressBar", "xp");
-            this.textureDictionary.Load("Assets/Textures/UI/HUD/HUD", "HUD");
-            this.textureDictionary.Load("Assets/Textures/UI/HUD/sword", "sword");
-            this.textureDictionary.Load("Assets/Textures/UI/HUD/potion", "potion");
-            this.textureDictionary.Load("Assets/Textures/UI/HUD/key", "key");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/Base/background", "HUD");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/Bars/health", "health");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/Bars/xp", "xp");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/Inventory/sword", "sword");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/Inventory/key", "key");
+            this.textureDictionary.Load("Assets/Textures/UI/HUD/Inventory/potion", "potion");
             #endregion
 
             #region Billboards
@@ -2143,7 +2112,6 @@ namespace GDApp
             this.textureDictionary.Load("Assets/Textures/Billboards/UI/impact_billboard", "impact_billboard");
             this.textureDictionary.Load("Assets/Textures/Billboards/UI/slash_billboard_01", "slash_billboard_01");
             this.textureDictionary.Load("Assets/Textures/Billboards/UI/slash_billboard_02", "slash_billboard_02");
-            this.textureDictionary.Load("Assets/Textures/Props/tv");
             #endregion
         }
 
@@ -2223,7 +2191,6 @@ namespace GDApp
         public void LoadFonts()
         {
             #region Game Fonts
-            this.fontDictionary.Load("Assets/Fonts/hudFont", "hudFont");
             this.fontDictionary.Load("Assets/Fonts/menu", "menu");
             this.fontDictionary.Load("Assets/Fonts/gameLog", "gameLog");
             #endregion
@@ -2245,7 +2212,6 @@ namespace GDApp
                     ActorType.Enemy,
                     Transform3D.Zero,
                     this.effectDictionary["skeletonEffect1"],
-                    this.modelDictionary["skeletonModel1"],
                     AppData.CharacterAccelerationRate,
                     AppData.CharacterDecelerationRate,
                     AppData.CharacterMovementVector,
@@ -2266,7 +2232,6 @@ namespace GDApp
                     ActorType.Enemy,
                     Transform3D.Zero,
                     this.effectDictionary["skeletonEffect2"],
-                    this.modelDictionary["skeletonModel2"],
                     AppData.CharacterAccelerationRate,
                     AppData.CharacterDecelerationRate,
                     AppData.CharacterMovementVector,
@@ -2287,7 +2252,6 @@ namespace GDApp
                     ActorType.Enemy,
                     Transform3D.Zero,
                     this.effectDictionary["cultistEffect"],
-                    this.modelDictionary["cultistModel1"],
                     AppData.CharacterAccelerationRate,
                     AppData.CharacterDecelerationRate,
                     AppData.CharacterMovementVector,
@@ -2374,6 +2338,21 @@ namespace GDApp
                 )
             );
         }
+
+        PickupParameters SelectPickupParameters(int pickupType)
+        {
+            switch (pickupType)
+            {
+                case 1:
+                    return this.pickupParametersDictionary["sword"];
+                case 2:
+                    return this.pickupParametersDictionary["key"];
+                case 3:
+                    return this.pickupParametersDictionary["potion"];
+                default:
+                    return null;
+            }
+        }
         #endregion
 
         #region Demos
@@ -2412,23 +2391,6 @@ namespace GDApp
         }
         #endregion
 
-        #region Debug
-#if DEBUG
-        private void InitializeDebugCollisionSkinInfo()
-        {
-            this.physicsDebugDrawer = new PhysicsDebugDrawer(
-                this, 
-                this.cameraManager, 
-                this.objectManager,
-                this.eventDispatcher, 
-                StatusType.Off
-            );
-
-            Components.Add(this.physicsDebugDrawer);
-        }
-        #endif
-        #endregion
-
         #region Update, Draw
         protected override void Update(GameTime gameTime)
         {
@@ -2443,7 +2405,7 @@ namespace GDApp
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Blue);
 
             /*
              * Think of a sampler as a paint brush. The sampler state defines

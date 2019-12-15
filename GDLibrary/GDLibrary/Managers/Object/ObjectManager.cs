@@ -874,7 +874,7 @@ namespace GDLibrary
 
         private void DrawObject(GameTime gameTime, AnimatedEnemyObject animatedPlayerObject, Camera3D activeCamera)
         {
-            //an array of the current positions of the model meshes
+            //An array of the current positions of the model meshes
             Matrix[] bones = animatedPlayerObject.AnimationPlayer.GetSkinTransforms();
             Matrix world = animatedPlayerObject.GetWorldMatrix();
 
@@ -891,7 +891,7 @@ namespace GDLibrary
                     skinnedEffect.View = activeCamera.View;
                     skinnedEffect.Projection = activeCamera.Projection;
 
-                    //if you want to overwrite the texture you baked into the animation in 3DS Max then set your own texture
+                    //If you want to overwrite the texture you baked into the animation in 3DS Max then set your own texture
                     if (animatedPlayerObject.EffectParameters.Texture != null)
                         skinnedEffect.Texture = animatedPlayerObject.EffectParameters.Texture;
 

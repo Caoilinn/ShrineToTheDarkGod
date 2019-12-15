@@ -97,8 +97,8 @@ namespace GDLibrary
             float defence,
             ManagerParameters managerParameters
         ) : base(id, actorType, transform, effectParameters, model, accelerationRate, decelerationRate, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, managerParameters) {
-            this.MoveStarted = false;
             this.OriginalColor = this.EffectParameters.DiffuseColor;
+            this.MoveStarted = false;
         }
         #endregion
 
@@ -117,8 +117,6 @@ namespace GDLibrary
 
         public override void TakeTurn(GameTime gameTime)
         {
-            //Set some interval turn timer
-            //TurnTimer(gameTime);
             //If it is not currently the enemys' turn, return
             if (!StateManager.EnemyTurn) return;
 
@@ -130,12 +128,6 @@ namespace GDLibrary
 
         public virtual void TurnTimer(GameTime gameTime)
         {
-            ////Allow free movement until in combat
-            //if (!StateManager.InCombat) {
-            //    EventDispatcher.Publish(new EventData(EventActionType.PlayerTurn, EventCategoryType.Game));
-            //    return;
-            //}
- 
             //If first time called
             if (!this.MoveStarted)
             {
@@ -167,10 +159,6 @@ namespace GDLibrary
 
         public override void TakeDamage(float damage)
         {
-            //Make Enemy Flash Red
-            //this.OriginalColor = this.EffectParameters.DiffuseColor;
-            //this.EffectParameters.DiffuseColor = new Color(1.0f, 0.2f, 0.2f);
-
             //Update Player XP
             EventDispatcher.Publish(new EventData(EventActionType.EnemyHealthUpdate, EventCategoryType.UIMenu, new object[] { damage }));
 

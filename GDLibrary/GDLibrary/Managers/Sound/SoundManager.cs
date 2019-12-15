@@ -76,7 +76,7 @@ namespace GDLibrary
         //Construct event to pass in volume (e.g. 0.5f) and category (game_sound_effects) that you group the sounds by in XACT
         protected virtual void EventDispatcher_GlobalSoundChanged(EventData eventData)
         {
-            //MuteEvent
+            //Mute Event
             if (eventData.EventType == EventActionType.OnMute)
             {
                 //2D sounds
@@ -88,7 +88,7 @@ namespace GDLibrary
                 SetVolume(volume, soundCategory);
             }
 
-            //UnMuteEvenet
+            //UnMute Evenet
             else if (eventData.EventType == EventActionType.OnUnMute)
             {
                 //2D sounds
@@ -101,7 +101,7 @@ namespace GDLibrary
 
             }
 
-            //VolumeUpEvent
+            //VolumeUp Event
             else if (eventData.EventType == EventActionType.OnVolumeUp)
             {
                 //2D sounds
@@ -113,7 +113,7 @@ namespace GDLibrary
                 ChangeVolume(volumeDelta, soundCategory);
             }
 
-            //VolumeDownEvent
+            //VolumeDown Event
             else if (eventData.EventType == EventActionType.OnVolumeDown)
             {
                 //2D sounds
@@ -126,11 +126,38 @@ namespace GDLibrary
             }
         }
 
+        //2D Sound Changed
+        protected virtual void EventDispatcher_Sound2DChanged(EventData eventData)
+        {
+            //ID - Name
+            string cueName = eventData.AdditionalParameters[0] as string;
+
+            //OnPlay Event
+            if (eventData.EventType == EventActionType.OnPlay)
+                this.PlayCue(cueName);
+
+            //OnPause Event
+            else if (eventData.EventType == EventActionType.OnPause)
+                this.PauseCue(cueName);
+
+            //OnResume Event
+            else if (eventData.EventType == EventActionType.OnResume)
+                this.ResumeCue(cueName);
+
+            //OnStop Event
+            else
+            {
+                //Sender
+                if ((int)eventData.AdditionalParameters[1] == 0)
+                    this.StopCue(cueName, AudioStopOptions.Immediate);
+                else
+                    this.StopCue(cueName, AudioStopOptions.AsAuthored);
+            }
+        }
+
         //3D Sound Changed
         protected virtual void EventDispatcher_Sound3DChanged(EventData eventData)
         {
-            //Control 3D sounds through events
-
             //If != OnStopAll Event
             if (eventData.EventType != EventActionType.OnStopAll)
             {
@@ -161,68 +188,12 @@ namespace GDLibrary
             //OnStopAll Event
             else
             {
-                //Since we can only pass refereneces in AdditionalParameters and AudioStopOption is an enum (i.e. a primitive type) then we need to hack the code a little.
-                //Notice that the AdditionalParameters[0] parameter is now used to send the stop option (vs. above where it sent the cue name). be careful!
-
-                if ((int) eventData.AdditionalParameters[0] == 0)
+                if ((int)eventData.AdditionalParameters[0] == 0)
                     this.StopAll3DCues(AudioStopOptions.Immediate);
                 else
                     this.StopAll3DCues(AudioStopOptions.AsAuthored);
             }
         }
-
-        //2D Sound Changed
-        protected virtual void EventDispatcher_Sound2DChanged(EventData eventData)
-        {
-            //ID - Name
-            string cueName = eventData.AdditionalParameters[0] as string;
-
-            //OnPlay Event
-            if (eventData.EventType == EventActionType.OnPlay)
-                this.PlayCue(cueName);
-
-            //OnPause Event
-            else if (eventData.EventType == EventActionType.OnPause)
-                this.PauseCue(cueName);
-
-            //OnResume Event
-            else if (eventData.EventType == EventActionType.OnResume)
-                this.ResumeCue(cueName);
-
-            //OnStop Event
-            else
-            {
-                //Since we can only pass refereneces in AdditionalParameters and AudioStopOption is an enum (i.e. a primitive type) then we need to hack the code a little
-
-                //Sender
-                if ((int) eventData.AdditionalParameters[1] == 0)
-                    this.StopCue(cueName, AudioStopOptions.Immediate);
-                else
-                    this.StopCue(cueName, AudioStopOptions.AsAuthored);
-            }
-        }
-
-        //Do we want sound to play in the menu? In this case, we should remove this code and set statusType to Update in the constructor.
-        //protected override void EventDispatcher_MenuChanged(EventData eventData)
-        //{
-        //    //Did the event come from the main menu?
-        //    //And is it a start game event?
-        //    if (eventData.EventType == EventActionType.OnStart)
-        //    {
-        //        //Turn on update and draw
-        //        //Hide the menu
-        //        this.StatusType = StatusType.Update;
-        //    }
-
-        //    //Did the event come from the main menu? 
-        //    //And is it a pause game event?
-        //    else if (eventData.EventType == EventActionType.OnPause)
-        //    {
-        //        //Turn off update and draw
-        //        //Show the menu since the game is paused
-        //        this.StatusType = StatusType.Off;
-        //    }
-        //}
         #endregion
 
         #region 2D Cues
@@ -286,65 +257,24 @@ namespace GDLibrary
                 }
             }
         }
-
-        ////Plays a 2D cue - Menu/Game Music etc.
-        //public void PlayCue(string cueName)
-        //{
-        //    //If we have not already been asked to play this in the current update loop then play it
-        //    if (!playSet3D.Contains(cueName))
-        //    {
-        //        Cue cue = this.soundBank.GetCue(cueName);
-        //        playingCues2D.Add(cue);
-        //        cue.Play();
-        //    }
-        //}
-
-        ////Pauses a 2D cue
-        //public void PauseCue(string cueName)
-        //{
-        //    Cue cue = playingCues2D.Find(x => x.Name == cueName);
-
-        //    if (playingCues2D.Contains(cue))
-        //    {
-        //        if (cue.IsPlaying)
-        //        {
-        //            cue.Pause();
-        //            playingCues2D.Remove(cue);
-        //        }
-        //    }
-        //}
-
-        ////Resumes a paused 2D cue
-        //public void ResumeCue(string cueName)
-        //{
-        //    Cue cue = this.soundBank.GetCue(cueName);
-        //    if ((cue != null) && (cue.IsPaused))
-        //        cue.Resume();
-        //}
-
-        ////Stops a 2D cue - AudioStopOptions: AsAuthored and Immediate
-        //public void StopCue(string cueName, AudioStopOptions audioStopOptions)
-        //{
-        //    Cue cue = this.soundBank.GetCue(cueName);
-        //    if ((cue != null) && (cue.IsPlaying))
-        //        cue.Stop(audioStopOptions);
-        //}
         #endregion
 
         #region 3D Cues
         //Plays a cue to be heard from the perspective of a player or camera in the game i.e. in 3D
         public void Play3DCue(string cueName, AudioEmitter audioEmitter)
         {
-            Cue3D sound = new Cue3D
-            {
+            //Retrieve sound from sound bank
+            Cue3D sound = new Cue3D {
                 Cue = soundBank.GetCue(cueName)
             };
 
-            if (!this.playSet3D.Contains(cueName)) //if we have not already been asked to play this in the current update loop then play it
+            //If we have not already been asked to play this in the current update loop then play it
+            if (!this.playSet3D.Contains(cueName))
             {
                 sound.Emitter = audioEmitter;
                 sound.Cue.Apply3D(audioListener, audioEmitter);
                 sound.Cue.Play();
+
                 this.playingCues3D.Add(sound);
                 this.playSet3D.Add(cueName);
             }
@@ -460,7 +390,6 @@ namespace GDLibrary
 
         protected override void HandleInput(GameTime gameTime)
         {
-
         }
 
         public override void Update(GameTime gameTime)

@@ -1,13 +1,9 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace GDLibrary
 {
-    /// <summary>
-    /// Represents your MOVEABLE player in the game. 
-    /// </summary>
     public class PlayerObject : CharacterObject
     {
         #region Variables
