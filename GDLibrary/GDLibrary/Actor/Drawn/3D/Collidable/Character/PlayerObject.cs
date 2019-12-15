@@ -57,8 +57,6 @@ namespace GDLibrary
             Transform3D transform,
             EffectParameters effectParameters,
             Model model,
-            float accelerationRate,
-            float decelerationRate,
             Vector3 movementVector,
             Vector3 rotationVector,
             float moveSpeed,
@@ -70,8 +68,7 @@ namespace GDLibrary
             PlayerIndex playerIndex,
             Buttons[] moveButtons,
             Keys[] moveKeys
-        ) : base(id, actorType, transform, effectParameters, model, accelerationRate, decelerationRate, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, managerParameters)
-        {
+        ) : base(id, actorType, transform, effectParameters, model, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, managerParameters) {
             this.PlayerIndex = playerIndex;
             this.MoveButtons = moveButtons;
             this.MoveKeys = moveKeys;

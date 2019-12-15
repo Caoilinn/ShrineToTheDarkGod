@@ -86,8 +86,6 @@ namespace GDLibrary
             Transform3D transform,
             EffectParameters effectParameters,
             Model model,
-            float accelerationRate,
-            float decelerationRate,
             Vector3 movementVector,
             Vector3 rotationVector,
             float moveSpeed,
@@ -96,7 +94,7 @@ namespace GDLibrary
             float attack,
             float defence,
             ManagerParameters managerParameters
-        ) : base(id, actorType, transform, effectParameters, model, accelerationRate, decelerationRate, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, managerParameters) {
+        ) : base(id, actorType, transform, effectParameters, model, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, managerParameters) {
             this.OriginalColor = this.EffectParameters.DiffuseColor;
             this.MoveStarted = false;
         }

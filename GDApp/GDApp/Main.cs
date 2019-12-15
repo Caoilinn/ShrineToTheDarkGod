@@ -67,10 +67,7 @@ namespace GDApp
         private readonly List<string> soundEffectList = new List<String>();
         private readonly List<TriggerVolume> triggerList = new List<TriggerVolume>();
         private List<AnimatedEnemyObject> enemies;
-
-        //Debug
-        private PhysicsDebugDrawer physicsDebugDrawer;
-
+        
         //Map
         private int[,,] levelMap;
 
@@ -81,6 +78,7 @@ namespace GDApp
         private int playersStartPosition;
         private int enemiesStartPosition;
         private int gatesStartPosition;
+        private int decoratorsStartPosition;
 
         //Array Shift Position
         private int roomsShiftPosition;
@@ -89,6 +87,7 @@ namespace GDApp
         private int playersShiftPosition;
         private int enemiesShiftPosition;
         private int gatesShiftPosition;
+        private int decoratorsShiftPosition;
 
         //Array Reserved Bits
         private int reservedRoomBits;
@@ -97,6 +96,7 @@ namespace GDApp
         private int reservedPlayerBits;
         private int reservedEnemyBits;
         private int reservedGateBits;
+        private int reservedDecoratorBits;
 
         //Player Posiiton
         private Transform3D playerPosition;
@@ -252,10 +252,10 @@ namespace GDApp
         {
             BasicEffect basicEffect;
 
-            bool fogEnabled = false;
-            Vector3 fogColor = new Vector3(0f, 0f, 0f);
-            float fogStart = 0;
             float fogEnd = 550;
+            float fogStart = 0;
+            bool fogEnabled = true;
+            Vector3 fogColor = new Vector3(0f, 0f, 0f);
 
             #region Standard Room Effect
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
@@ -1346,6 +1346,7 @@ namespace GDApp
             this.playersStartPosition = AppData.PlayersStartPosition;
             this.enemiesStartPosition = AppData.EnemiesStartPosition;
             this.gatesStartPosition = AppData.GatesStartPosition;
+            this.decoratorsStartPosition = AppData.DecoratorsStartPosition;
             
             //Start at the 0th bit of the array
             int roomsShiftPosition = 0;
@@ -1357,6 +1358,7 @@ namespace GDApp
             this.reservedPlayerBits = AppData.ReservedPlayerBits;
             this.reservedEnemyBits = AppData.ReservedEnemyBits;
             this.reservedGateBits = AppData.ReservedGateBits;
+            this.reservedDecoratorBits = AppData.ReservedDecoratorBits;
 
             //Calculate the shift for each map component, relative to previous component
             this.roomsShiftPosition = roomsShiftPosition;
@@ -1365,6 +1367,7 @@ namespace GDApp
             this.playersShiftPosition = this.triggersShiftPosition + this.reservedTriggerBits;
             this.enemiesShiftPosition = this.playersShiftPosition + this.reservedPlayerBits;
             this.gatesShiftPosition = this.enemiesShiftPosition + this.reservedEnemyBits;
+            this.decoratorsShiftPosition = this.gatesShiftPosition + this.reservedGateBits;
         }
 
         private void LoadLevelFromFile()
@@ -1493,6 +1496,10 @@ namespace GDApp
                     PlaceComponents(line, this.gatesStartPosition, this.gatesShiftPosition, x, y, z);
                     #endregion
 
+                    #region Place Gates
+                    PlaceComponents(line, this.decoratorsStartPosition, this.decoratorsShiftPosition, x, y, z);
+                    #endregion
+
                     //Iterate z
                     z++;
                 }
@@ -1619,6 +1626,17 @@ namespace GDApp
                             //Construct gate
                             ConstructGate(gateType, transform);
                         #endregion
+
+                        #region Construct Gates
+                        //Extract decorator from level map
+                        int decoratorType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], this.reservedDecoratorBits, this.decoratorsShiftPosition);
+
+                        //If a gate has been set
+                        if (decoratorType > 0)
+
+                            //Construct decorator
+                            ConstructDecorator(decoratorType, transform);
+                        #endregion
                     }
                 }
             }
@@ -1627,8 +1645,6 @@ namespace GDApp
 
         public void ConstructRoom(int roomType, Transform3D transform)
         {
-            return;
-
             //Setup dimensions
             Transform3D roomTransform = transform.Clone() as Transform3D;
 
@@ -1706,9 +1722,8 @@ namespace GDApp
                         null
                     );
 
-                    this.collidableModel.AddPrimitive(new Capsule(Vector3.Zero, Matrix.CreateRotationX(MathHelper.PiOver2), 77, 77), new MaterialProperties());
-
                     //Enable collision
+                    this.collidableModel.AddPrimitive(new Capsule(Vector3.Zero, Matrix.CreateRotationX(MathHelper.PiOver2), 77, 77), new MaterialProperties());
                     this.collidableModel.Enable(true, 1);
 
                     //Add to lists
@@ -1716,7 +1731,17 @@ namespace GDApp
                     this.gridManager.Add(this.collidableModel);
                     break;
 
-                default:
+                case 2:
+                    this.staticModel = new ModelObject(
+                        "Urn",
+                        ActorType.Decorator,
+                        triggerTransform,
+                        this.effectDictionary["urnEffect"],
+                        this.modelDictionary["urn"]
+                    );
+
+                    //Add to list
+                    this.objectManager.Add(this.staticModel);
                     break;
             }
         }
@@ -1753,6 +1778,81 @@ namespace GDApp
             this.gridManager.Add(this.collidableModel);
         }
 
+        public void ConstructDecorator(int decoratorType, Transform3D transform)
+        {
+            Transform3D decoratorTransform = transform.Clone() as Transform3D;
+            decoratorTransform.Translation += AppData.ObjectOffset;
+
+            //Determine decorator type
+            switch (decoratorType)
+            {
+                case 1:
+                    this.staticModel = new ModelObject(
+                        "Urn Front Left",
+                        ActorType.Decorator,
+                        decoratorTransform,
+                        this.effectDictionary["urnFrontLeftEffect"],
+                        this.modelDictionary["urnFrontLeft"]
+                    );
+
+                    //Add to list
+                    this.objectManager.Add(this.staticModel);
+                    break;
+
+                case 2:
+                    this.staticModel = new ModelObject(
+                        "Urn Family Back Right",
+                        ActorType.Decorator,
+                        decoratorTransform,
+                        this.effectDictionary["urnFamilyBackRightEffect"],
+                        this.modelDictionary["urnFamilyBackRight"]
+                    );
+
+                    //Add to list
+                    this.objectManager.Add(this.staticModel);
+                    break;
+
+                case 3:
+                    this.staticModel = new ModelObject(
+                        "Book Right",
+                        ActorType.Decorator,
+                        decoratorTransform,
+                        this.effectDictionary["bookRightEffect"],
+                        this.modelDictionary["bookRight"]
+                    );
+
+                    //Add to list
+                    this.objectManager.Add(this.staticModel);
+                    break;
+
+                case 4:
+                    this.staticModel = new ModelObject(
+                        "Crate Back Left",
+                        ActorType.Decorator,
+                        decoratorTransform,
+                        this.effectDictionary["crateBackLeftEffect"],
+                        this.modelDictionary["crateBackLeft"]
+                    );
+
+                    //Add to list
+                    this.objectManager.Add(this.staticModel);
+                    break;
+
+                case 5:
+                    this.staticModel = new ModelObject(
+                        "Crate Front Right",
+                        ActorType.Decorator,
+                        decoratorTransform,
+                        this.effectDictionary["crateFrontRightEffect"],
+                        this.modelDictionary["crateFrontRight"]
+                    );
+
+                    //Add to list
+                    this.objectManager.Add(this.staticModel);
+                    break;
+            }
+        }
+
         public void SpawnPlayer(int playerType, Transform3D transform)
         {
             //Position player
@@ -1771,8 +1871,6 @@ namespace GDApp
                 playerPosition,
                 null,
                 null,
-                AppData.CharacterAccelerationRate,
-                AppData.CharacterDecelerationRate,
                 AppData.CharacterMovementVector,
                 AppData.CharacterRotationVector,
                 AppData.CharacterMoveSpeed,
@@ -1812,10 +1910,8 @@ namespace GDApp
                     this.animatedModel = new AnimatedEnemyObject(
                         "Skeleton1",
                         ActorType.Enemy,
-                        enemyTransform,
+                        Transform3D.Zero,
                         this.effectDictionary["skeletonEffect1"],
-                        AppData.CharacterAccelerationRate,
-                        AppData.CharacterDecelerationRate,
                         AppData.CharacterMovementVector,
                         AppData.CharacterRotationVector,
                         AppData.CharacterMoveSpeed,
@@ -1827,9 +1923,6 @@ namespace GDApp
                     );
                     break;
             }
-
-            //Enable collision
-            this.animatedModel.Enable(true, 1);
             
             //Add animation
             this.animatedModel.AddAnimation("fd", "Red_Idle", this.modelDictionary["Red_Idle"]);
@@ -1979,12 +2072,22 @@ namespace GDApp
             this.modelDictionary.Load("Assets/Models/Pickups/potion", "pickupModel3");
             #endregion
 
+            #region Decorator Models
+            this.modelDictionary.Load("Assets/Models/Decorators/urn", "urn");
+            this.modelDictionary.Load("Assets/Models/Decorators/urn_front_left", "urnFrontLeft");
+            this.modelDictionary.Load("Assets/Models/Decorators/urn_family_back_right", "urnFamilyBackRight");
+            this.modelDictionary.Load("Assets/Models/Decorators/book_right", "bookRight");
+            this.modelDictionary.Load("Assets/Models/Decorators/crate_back_left", "crateBackLeft");
+            this.modelDictionary.Load("Assets/Models/Decorators/crate_front_right", "crateFrontRight");
+            #endregion
+
             #region Character Models
             //this.modelDictionary.Load("Assets/Models/Characters/skeleton_001", "skeletonModel1");
             //this.modelDictionary.Load("Assets/Models/Characters/skeleton_002", "skeletonModel2");
             //this.modelDictionary.Load("Assets/Models/Characters/cultist_001", "cultistModel1");
             //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/block", "Red_Idle");
-            this.modelDictionary.Load("Assets/Models/Characters/Animated/Skeleton/idle", "Red_Idle");
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Skeleton/idle", "Red_Idle");
+            this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/idle", "Red_Idle");
             //this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel1");
             //this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel2");
             //this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "cultistModel1");
@@ -2113,6 +2216,10 @@ namespace GDApp
             this.textureDictionary.Load("Assets/Textures/Billboards/UI/slash_billboard_01", "slash_billboard_01");
             this.textureDictionary.Load("Assets/Textures/Billboards/UI/slash_billboard_02", "slash_billboard_02");
             #endregion
+
+            #region Decorators
+            this.textureDictionary.Load("Assets/Textures/Decorators/urnTexture", "urnTexture");
+            #endregion
         }
 
         public void LoadEffects()
@@ -2186,6 +2293,14 @@ namespace GDApp
             this.effectDictionary.Add("skeletonEffect2", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.3f, 0.2f, 0.1f)), Color.Black, Color.Black, Color.Black, 0, 1));
             this.effectDictionary.Add("cultistEffect", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.0f, 0.0f, 0.0f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
+
+            #region Prop Effects
+            this.effectDictionary.Add("urnFrontLeftEffect", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("urnFamilyBackRightEffect", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("bookRightEffect", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("crateBackLeftEffect", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("crateFrontRightEffect", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            #endregion
         }
 
         public void LoadFonts()
@@ -2212,8 +2327,6 @@ namespace GDApp
                     ActorType.Enemy,
                     Transform3D.Zero,
                     this.effectDictionary["skeletonEffect1"],
-                    AppData.CharacterAccelerationRate,
-                    AppData.CharacterDecelerationRate,
                     AppData.CharacterMovementVector,
                     AppData.CharacterRotationVector,
                     AppData.CharacterMoveSpeed,
@@ -2232,8 +2345,6 @@ namespace GDApp
                     ActorType.Enemy,
                     Transform3D.Zero,
                     this.effectDictionary["skeletonEffect2"],
-                    AppData.CharacterAccelerationRate,
-                    AppData.CharacterDecelerationRate,
                     AppData.CharacterMovementVector,
                     AppData.CharacterRotationVector,
                     AppData.CharacterMoveSpeed,
@@ -2252,8 +2363,6 @@ namespace GDApp
                     ActorType.Enemy,
                     Transform3D.Zero,
                     this.effectDictionary["cultistEffect"],
-                    AppData.CharacterAccelerationRate,
-                    AppData.CharacterDecelerationRate,
                     AppData.CharacterMovementVector,
                     AppData.CharacterRotationVector,
                     AppData.CharacterMoveSpeed,
@@ -2405,7 +2514,7 @@ namespace GDApp
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Blue);
+            GraphicsDevice.Clear(Color.Black);
 
             /*
              * Think of a sampler as a paint brush. The sampler state defines

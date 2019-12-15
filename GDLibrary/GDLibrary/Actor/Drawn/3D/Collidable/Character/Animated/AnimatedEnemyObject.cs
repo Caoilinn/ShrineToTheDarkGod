@@ -47,8 +47,6 @@ namespace GDLibrary
             ActorType actorType,            
             Transform3D transform,
             EffectParameters effectParameters,
-            float accelerationRate,
-            float decelerationRate,
             Vector3 movementVector,
             Vector3 rotationVector,
             float moveSpeed,
@@ -63,8 +61,6 @@ namespace GDLibrary
             transform,
             effectParameters,
             null,
-            accelerationRate,
-            decelerationRate,
             movementVector,
             rotationVector,
             moveSpeed,
@@ -127,6 +123,14 @@ namespace GDLibrary
                 //Store the skinning data for the model 
                 this.skinningDataDictionary.Add(key, skinningData);
             }
+        }
+
+        public override Matrix GetWorldMatrix()
+        {
+            return Matrix.CreateScale(this.Transform.Scale) *
+                this.Body.Orientation *
+                this.Transform.Orientation *
+                Matrix.CreateTranslation(this.Body.Position);
         }
 
         public override void Update(GameTime gameTime)

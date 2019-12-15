@@ -94,8 +94,6 @@ namespace GDLibrary
             transform,
             effectParameters,
             model,
-            accelerationRate,
-            decelerationRate,
             movementVector,
             rotationVector,
             moveSpeed,
