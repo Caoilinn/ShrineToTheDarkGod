@@ -196,7 +196,6 @@ namespace GDApp
         {
             object[] additionalParameters = { action, key };
             EventDispatcher.Publish(new EventData(EventActionType.OnKeybind, EventCategoryType.Keybind, additionalParameters));
-
         }
 
         private void DoExit()

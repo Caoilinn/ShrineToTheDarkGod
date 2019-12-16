@@ -293,6 +293,7 @@ namespace GDLibrary
                     EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "Cannot move while in combat" }));
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "player_bump_001", audioEmitter }));
                     this.Translation = Vector3.Zero;
+                    this.inMotion = false;
                     return;
                 }
 
@@ -303,6 +304,7 @@ namespace GDLibrary
                     EventDispatcher.Publish(new EventData(EventActionType.OnDisplayInfo, EventCategoryType.Textbox, new object[] { "Can't go that way!" }));
                     EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "player_bump_001", audioEmitter }));
                     this.Translation = Vector3.Zero;
+                    this.inMotion = false;
                     return;
                 }
 

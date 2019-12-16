@@ -108,7 +108,7 @@ namespace GDApp
         private BasicEffect standardRoomEffect;
         private BasicEffect pickupEffect;
         private BasicEffect gateEffect;
-        private BasicEffect enemyEffect;
+        private BasicEffect propEffect;
 
         //UI
         private Vector2 inventoryTranslation = new Vector2(-63, 640);
@@ -336,7 +336,7 @@ namespace GDApp
             this.pickupEffect = basicEffect;
             #endregion
 
-            #region Pickup Effect
+            #region Gate Effect
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
                 FogEnabled = fogEnabled,
@@ -360,7 +360,9 @@ namespace GDApp
 
             //Add to dictionary
             this.gateEffect = basicEffect;
+            #endregion
 
+            #region Enemy Effects
             basicEffect = new BasicEffect(graphics.GraphicsDevice)
             {
                 FogEnabled = fogEnabled,
@@ -382,7 +384,33 @@ namespace GDApp
             basicEffect.DirectionalLight1.Direction = new Vector3(0.5f, 0.75f, 0.5f);
             basicEffect.DirectionalLight1.DiffuseColor = new Vector3(0.85f, 0.75f, 0.65f);
 
-            this.enemyEffect = basicEffect;
+            this.propEffect = basicEffect;
+            #endregion
+
+            #region Prop Effects
+            basicEffect = new BasicEffect(graphics.GraphicsDevice)
+            {
+                FogEnabled = fogEnabled,
+                TextureEnabled = true,
+                LightingEnabled = true,
+                PreferPerPixelLighting = true,
+                FogColor = fogColor,
+                FogStart = fogStart,
+                FogEnd = fogEnd
+            };
+
+            //Standard Light
+            basicEffect.DirectionalLight0.Enabled = true;
+            basicEffect.DirectionalLight0.Direction = new Vector3(-0f, -1f, -0f);
+            basicEffect.DirectionalLight0.DiffuseColor = new Vector3(0.3f, 0.3f, 0.2f);
+//#
+//            //Standard Light
+//            basicEffect.DirectionalLight0.Enabled = true;
+//            basicEffect.DirectionalLight0.Direction = new Vector3(-0f, -1f, -0f);
+//            basicEffect.DirectionalLight0.DiffuseColor = new Vector3(0.5f, 0.53f, 0.24f);
+
+            //Add to dictionary
+            this.propEffect = basicEffect;
             #endregion
         }
 
@@ -1769,16 +1797,57 @@ namespace GDApp
                     break;
 
                 case 2:
-                    this.staticModel = new ModelObject(
-                        "Urn",
-                        ActorType.Decorator,
+                    this.collidableModel = new ZoneObject(
+                        "Scream Sound Zone",
+                        ActorType.Trigger,
                         triggerTransform,
-                        this.effectDictionary["urnEffect"],
-                        this.modelDictionary["urn"]
+                        this.effectDictionary["roomEffect1"],
+                        null
                     );
 
-                    //Add to list
-                    this.objectManager.Add(this.staticModel);
+                    //Enable collision
+                    this.collidableModel.AddPrimitive(new Capsule(Vector3.Zero, Matrix.CreateRotationX(MathHelper.PiOver2), 77, 77), new MaterialProperties());
+                    this.collidableModel.Enable(true, 1);
+
+                    //Add to lists
+                    this.objectManager.Add(this.collidableModel);
+                    this.gridManager.Add(this.collidableModel);
+                    break;
+
+                case 3:
+                    this.collidableModel = new ZoneObject(
+                        "Rats Sound Zone",
+                        ActorType.Trigger,
+                        triggerTransform,
+                        this.effectDictionary["roomEffect1"],
+                        null
+                    );
+
+                    //Enable collision
+                    this.collidableModel.AddPrimitive(new Capsule(Vector3.Zero, Matrix.CreateRotationX(MathHelper.PiOver2), 77, 77), new MaterialProperties());
+                    this.collidableModel.Enable(true, 1);
+
+                    //Add to lists
+                    this.objectManager.Add(this.collidableModel);
+                    this.gridManager.Add(this.collidableModel);
+                    break;
+
+                case 4:
+                    this.collidableModel = new ZoneObject(
+                        "Chains Sound Zone",
+                        ActorType.Trigger,
+                        triggerTransform,
+                        this.effectDictionary["roomEffect1"],
+                        null
+                    );
+
+                    //Enable collision
+                    this.collidableModel.AddPrimitive(new Capsule(Vector3.Zero, Matrix.CreateRotationX(MathHelper.PiOver2), 77, 77), new MaterialProperties());
+                    this.collidableModel.Enable(true, 1);
+
+                    //Add to lists
+                    this.objectManager.Add(this.collidableModel);
+                    this.gridManager.Add(this.collidableModel);
                     break;
             }
         }
@@ -1916,7 +1985,7 @@ namespace GDApp
                 AppData.PlayerAttack,
                 AppData.PlayerDefence,
                 this.managerParameters,
-                (PlayerIndex)playerType - 1,
+                (PlayerIndex) playerType - 1,
                 AppData.CameraMoveButtons,
                 AppData.CameraMoveKeys
             );
@@ -1938,6 +2007,8 @@ namespace GDApp
             //Select enemy
             switch (enemyType) {
                 case 1:
+                    return;
+                    //Load Model
                     this.animatedModel = new AnimatedEnemyObject(
                         "Skeleton1",
                         ActorType.Enemy,
@@ -1952,14 +2023,23 @@ namespace GDApp
                         AppData.SkeletonDefence,
                         this.managerParameters
                     );
+
+                    //Enable collision
+                    this.animatedModel.Enable(true, 1);
+
+                    //Add animation
+                    this.animatedModel.AddAnimation("fd", "skeleton_idle", this.modelDictionary["skeleton_idle"]);
+                    this.animatedModel.SetAnimation("fd", "skeleton_idle");
                     break;
 
                 case 2:
+                    return;
+                    //Load Model
                     this.animatedModel = new AnimatedEnemyObject(
-                         "Skeleton1",
+                         "Skeleton2",
                          ActorType.Enemy,
                          enemyTransform,
-                         this.effectDictionary["skeletonEffect1"],
+                         this.effectDictionary["skeletonEffect2"],
                          AppData.CharacterMovementVector,
                          AppData.CharacterRotationVector,
                          AppData.CharacterMoveSpeed,
@@ -1969,14 +2049,23 @@ namespace GDApp
                          AppData.SkeletonDefence,
                          this.managerParameters
                     );
+
+
+                    //Enable collision
+                    this.animatedModel.Enable(true, 1);
+
+                    //Add animation
+                    this.animatedModel.AddAnimation("fd", "skeleton_idle", this.modelDictionary["skeleton_idle"]);
+                    this.animatedModel.SetAnimation("fd", "skeleton_idle");
                     break;
 
                 case 3:
+                    //Load Model
                     this.animatedModel = new AnimatedEnemyObject(
-                        "Skeleton1",
+                        "Cultist1",
                         ActorType.Enemy,
                         enemyTransform,
-                        this.effectDictionary["skeletonEffect1"],
+                        this.effectDictionary["cultistEffect1"],
                         AppData.CharacterMovementVector,
                         AppData.CharacterRotationVector,
                         AppData.CharacterMoveSpeed,
@@ -1986,15 +2075,15 @@ namespace GDApp
                         AppData.SkeletonDefence,
                         this.managerParameters
                     );
+
+                    //Enable collision
+                    this.animatedModel.Enable(true, 1);
+
+                    //Add animation
+                    this.animatedModel.AddAnimation("fd", "cultist_idle", this.modelDictionary["cultist_idle"]);
+                    this.animatedModel.SetAnimation("fd", "cultist_idle");
                     break;
             }
-
-            //Enable collision
-            this.animatedModel.Enable(true, 1);
-
-            //Add animation
-            this.animatedModel.AddAnimation("fd", "Red_Idle", this.modelDictionary["Red_Idle"]);
-            this.animatedModel.SetAnimation("fd", "Red_Idle");
 
             //Add to lists
             this.gridManager.Add(this.animatedModel);
@@ -2150,15 +2239,13 @@ namespace GDApp
             #endregion
 
             #region Character Models
-            //this.modelDictionary.Load("Assets/Models/Characters/skeleton_001", "skeletonModel1");
-            //this.modelDictionary.Load("Assets/Models/Characters/skeleton_002", "skeletonModel2");
-            //this.modelDictionary.Load("Assets/Models/Characters/cultist_001", "cultistModel1");
-            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/block", "Red_Idle");
-            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Skeleton/idle", "Red_Idle");
-            this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/idle", "Red_Idle");
-            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel1");
-            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "skeletonModel2");
-            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Squirrel/Red_Idle", "cultistModel1");
+            this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/idle", "cultist_idle");
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/block", "cultist_block");
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Cultist/attack", "cultist_attack");
+
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Skeleton/idle", "skeleton_idle");
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Skeleton/block", "skeleton_block");
+            //this.modelDictionary.Load("Assets/Models/Characters/Animated/Skeleton/attack", "skeleton_attack");
             #endregion
 
             #region Animations
@@ -2357,17 +2444,17 @@ namespace GDApp
             #endregion
 
             #region Enemy Effects
-            this.effectDictionary.Add("skeletonEffect1", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.3f, 0.2f, 0.1f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("skeletonEffect2", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.3f, 0.2f, 0.1f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("cultistEffect", new BasicEffectParameters(this.enemyEffect, null, new Color(new Vector3(0.0f, 0.0f, 0.0f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("skeletonEffect1", new BasicEffectParameters(this.propEffect, null, new Color(new Vector3(0.3f, 0.2f, 0.1f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("skeletonEffect2", new BasicEffectParameters(this.propEffect, null, new Color(new Vector3(0.3f, 0.2f, 0.1f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("cultistEffect1", new BasicEffectParameters(this.propEffect, null, new Color(new Vector3(0.0f, 0.0f, 0.0f)), Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
 
             #region Prop Effects
             this.effectDictionary.Add("urnFrontLeftEffect", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
             this.effectDictionary.Add("urnFamilyBackRightEffect", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("bookRightEffect", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("crateBackLeftEffect", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
-            this.effectDictionary.Add("crateFrontRightEffect", new BasicEffectParameters(this.pickupEffect, null, new Color(new Vector3(0.52f, 0.45f, 0.37f)), Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("bookRightEffect", new BasicEffectParameters(this.propEffect, null, Color.SaddleBrown, Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("crateBackLeftEffect", new BasicEffectParameters(this.propEffect, null, Color.Brown, Color.Black, Color.Black, Color.Black, 0, 1));
+            this.effectDictionary.Add("crateFrontRightEffect", new BasicEffectParameters(this.propEffect, null, Color.Brown, Color.Black, Color.Black, Color.Black, 0, 1));
             #endregion
         }
 
@@ -2430,7 +2517,7 @@ namespace GDApp
                     "Cultist1",
                     ActorType.Enemy,
                     Transform3D.Zero,
-                    this.effectDictionary["cultistEffect"],
+                    this.effectDictionary["cultistEffect1"],
                     AppData.CharacterMovementVector,
                     AppData.CharacterRotationVector,
                     AppData.CharacterMoveSpeed,

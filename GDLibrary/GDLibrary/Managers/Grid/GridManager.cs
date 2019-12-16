@@ -510,7 +510,7 @@ namespace GDLibrary
                 if ((trigger.Transform.Translation * vectorXZ).Equals(player.Transform.Translation * vectorXZ))
                 {
                     //Then the player is colliding with the trigger
-                    HandlePlayerTriggerCollision(trigger as CollidableArchitecture);
+                    HandlePlayerTriggerCollision(trigger as ZoneObject);
                     inProximityOfATrigger = true;
                     break;
                 }
@@ -520,11 +520,33 @@ namespace GDLibrary
             StateManager.InProximityOfATrigger = inProximityOfATrigger;
         }
 
-        private void HandlePlayerTriggerCollision(CollidableArchitecture gate)
+        private void HandlePlayerTriggerCollision(ZoneObject trigger)
         {
-            //Quit to menu for now
-            EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu, new object[] { "win_scene" }));
-            EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
+            AudioEmitter audioEmitter = new AudioEmitter {
+                Position = new Vector3(0, 0, 0)
+            };
+
+            if (trigger.ID.Equals("Scream Sound Zone"))
+            {
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "scream", audioEmitter }));
+            }
+
+            else if (trigger.ID.Equals("Rats Sound Zone"))
+            {
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "rats", audioEmitter }));
+            }
+
+            else if (trigger.ID.Equals("Chains Sound Zone"))
+            {
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "chains", audioEmitter }));
+            }
+
+            else if (trigger.ID.Equals("Win Zone"))
+            {
+                //Quit to menu for now
+                EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu, new object[] { "win_scene" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
+            }
         }
         #endregion
 

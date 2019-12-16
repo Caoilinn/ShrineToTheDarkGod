@@ -213,7 +213,6 @@ Content\Assets\Audio\v2\pickup_keys.xnb
 Content\Assets\Audio\v2\pickup_potion.xnb
 Content\Assets\Audio\v2\pickup_sword.xnb
 Content\Assets\Audio\v2\pickup_twinkle.xnb
-Content\Assets\Audio\v2\player_attack_punch.xnb
 Content\Assets\Audio\v2\player_attack_sword.xnb
 Content\Assets\Audio\v2\player_block.xnb
 Content\Assets\Audio\v2\player_bump_001.xnb
@@ -231,9 +230,10 @@ Content\Assets\Audio\v2\skeleton_death.xnb
 Content\Assets\Audio\v2\skeleton_dodge.xnb
 Content\Assets\Audio\v2\skeleton_growl.xnb
 Content\Assets\Audio\v2\ui_click.xnb
+Content\Assets\Audio\v2\player_take_damage.xnb
+Content\Assets\Audio\v2\player_attack_punch.xnb
 Content\Assets\Effects\Billboard.xnb
 Content\Barrell_oak_diffuse_0.xnb
-Content\Assets\Audio\v2\player_take_damage.xnb
 Content\Assets\Audio\v1\GameAudio.xgs
 Content\Assets\Audio\v1\Movement.xwb
 Content\Assets\Audio\v1\Wave Bank.xwb
