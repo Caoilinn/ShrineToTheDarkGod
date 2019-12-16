@@ -1,5 +1,4 @@
 ﻿using SkinnedModel;
-using JigLibX.Collision;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -48,9 +47,6 @@ namespace GDLibrary
             ActorType actorType,            
             Transform3D transform,
             EffectParameters effectParameters,
-            Model model,
-            float accelerationRate,
-            float decelerationRate,
             Vector3 movementVector,
             Vector3 rotationVector,
             float moveSpeed,
@@ -64,9 +60,7 @@ namespace GDLibrary
             actorType,
             transform,
             effectParameters,
-            model,
-            accelerationRate,
-            decelerationRate,
+            null,
             movementVector,
             rotationVector,
             moveSpeed,
@@ -129,6 +123,14 @@ namespace GDLibrary
                 //Store the skinning data for the model 
                 this.skinningDataDictionary.Add(key, skinningData);
             }
+        }
+
+        public override Matrix GetWorldMatrix()
+        {
+            return Matrix.CreateScale(this.Transform.Scale) *
+                this.Body.Orientation *
+                this.Transform.Orientation *
+                Matrix.CreateTranslation(this.Body.Position);
         }
 
         public override void Update(GameTime gameTime)

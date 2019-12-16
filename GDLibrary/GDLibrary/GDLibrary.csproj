@@ -74,10 +74,9 @@
     <Compile Include="Actor\Drawn\2D\UI\UITextureObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Character\Animated\AnimatedEnemyObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Character\Animated\AnimatedCharacterObject.cs" />
+    <Compile Include="Actor\Drawn\3D\Collidable\Pickup\PickupObject.cs" />
     <Compile Include="Actor\Drawn\3D\Primitives\BillboardPrimitiveObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Character\Animated\AnimatedPlayerObject.cs" />
-    <Compile Include="Actor\Drawn\3D\Collidable\Pickup\ImmovablePickupObject.cs" />
-    <Compile Include="Actor\Drawn\3D\Collidable\Pickup\MoveablePickupObject.cs" />
     <Compile Include="Comparer\CameraDepthComparer.cs" />
     <Compile Include="Controllers\2D\Base\UIController.cs" />
     <Compile Include="Controllers\2D\UI\UIColorSineLerpController.cs" />

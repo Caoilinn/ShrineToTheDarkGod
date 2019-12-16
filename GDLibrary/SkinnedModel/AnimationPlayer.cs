@@ -64,8 +64,7 @@ namespace SkinnedModel
         /// </summary>
         public void StartClip(AnimationClip clip)
         {
-            if (clip == null)
-                throw new ArgumentNullException("clip");
+            if (clip == null) throw new ArgumentNullException("clip");
 
             currentClipValue = clip;
             currentTimeValue = TimeSpan.Zero;
@@ -79,14 +78,12 @@ namespace SkinnedModel
         /// <summary>
         /// Advances the current animation position.
         /// </summary>
-        public void Update(TimeSpan time, bool relativeToCurrentTime,
-                           Matrix rootTransform)
+        public void Update(TimeSpan time, bool relativeToCurrentTime, Matrix rootTransform)
         {
             UpdateBoneTransforms(time, relativeToCurrentTime);
             UpdateWorldTransforms(rootTransform);
             UpdateSkinTransforms();
         }
-
 
         /// <summary>
         /// Helper used by the Update method to refresh the BoneTransforms data.

@@ -212,8 +212,6 @@ namespace GDLibrary
             Transform3D transform,
             EffectParameters effectParameters,
             Model model,
-            float accelerationRate,
-            float decelerationRate,
             Vector3 movementVector,
             Vector3 rotationVector,
             float moveSpeed,
@@ -222,8 +220,7 @@ namespace GDLibrary
             float attack,
             float defence,
             ManagerParameters managerParameters
-        ) : base(id, actorType, transform, effectParameters, model)
-        {
+        ) : base(id, actorType, transform, effectParameters, model) {
             this.MovementVector = movementVector;
             this.RotationVector = rotationVector;
             this.MoveSpeed = moveSpeed;
@@ -239,7 +236,6 @@ namespace GDLibrary
         #endregion
 
         #region Methods
-        //Handle Movement
         public virtual void HandleMovement()
         {
             #region Rotation
@@ -443,9 +439,8 @@ namespace GDLibrary
 
         public override Matrix GetWorldMatrix()
         {
-            return Matrix.CreateScale(this.Transform.Scale) 
-                * this.Body.Orientation 
-                * this.Transform.Orientation 
+            return Matrix.CreateScale(this.Transform.Scale)
+                * this.Transform.Orientation
                 * Matrix.CreateTranslation(this.Body.Position);
         }
 

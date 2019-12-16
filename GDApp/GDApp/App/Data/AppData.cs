@@ -8,7 +8,6 @@ Fixes:			None
 */
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace GDLibrary
@@ -69,7 +68,8 @@ namespace GDLibrary
         public static int ReservedTriggerBits = 4;    //2^4 (16) Trigger Types
         public static int ReservedPlayerBits = 2;     //2^2 (4)  Max 4 Players
         public static int ReservedEnemyBits = 3;      //2^3 (8)  Enemy Types
-        public static int ReservedGateBits = 3;       //2^3 (8)  Gate Types       - Current Total: 22 bits
+        public static int ReservedGateBits = 3;       //2^3 (8)  Gate Types
+        public static int ReservedDecoratorBits = 6;  //2^6 (64) Decorator Types - Current Total: 28 bits
 
         //Determines the position of each component in the level data text file
         public static readonly int RoomsStartPosition = 1;
@@ -78,6 +78,7 @@ namespace GDLibrary
         public static readonly int PlayersStartPosition = 4;
         public static readonly int EnemiesStartPosition = 5;
         public static readonly int GatesStartPosition = 6;
+        public static readonly int DecoratorsStartPosition = 7;
 
         public static int CellWidth = 100;
         public static int CellHeight = 100;

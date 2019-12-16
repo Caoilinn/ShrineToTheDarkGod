@@ -1,13 +1,10 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace GDLibrary
 {
-    /// <summary>
-    /// Represents your MOVEABLE player in the game. 
-    /// </summary>
     public class PlayerObject : CharacterObject
     {
         #region Variables
@@ -61,8 +58,6 @@ namespace GDLibrary
             Transform3D transform,
             EffectParameters effectParameters,
             Model model,
-            float accelerationRate,
-            float decelerationRate,
             Vector3 movementVector,
             Vector3 rotationVector,
             float moveSpeed,
@@ -74,8 +69,7 @@ namespace GDLibrary
             PlayerIndex playerIndex,
             Buttons[] moveButtons,
             Keys[] moveKeys
-        ) : base(id, actorType, transform, effectParameters, model, accelerationRate, decelerationRate, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, managerParameters)
-        {
+        ) : base(id, actorType, transform, effectParameters, model, movementVector, rotationVector, moveSpeed, rotateSpeed, health, attack, defence, managerParameters) {
             this.PlayerIndex = playerIndex;
             this.MoveButtons = moveButtons;
             this.MoveKeys = moveKeys;
@@ -228,8 +222,15 @@ namespace GDLibrary
 
         public override void TakeDamage(float damage)
         {
+            //Create audio emitter
+            AudioEmitter audioEmitter = new AudioEmitter {
+                Position = this.Transform.Translation,
+                Forward = this.Transform.Look
+            };
+
             //Update player health
             EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthUpdate, EventCategoryType.UIMenu, new object[] { damage }));
+            EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "player_take_damage", audioEmitter }));
             base.TakeDamage(damage);
         }
 

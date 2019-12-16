@@ -9,31 +9,29 @@
     Windows Bank Path Edited = 0;
     Seek Tables = 1;
     Compression Preset Name = &lt;none&gt;;
-    Header Last Modified Low = 0;
-    Header Last Modified High = 0;
-    Bank Last Revised Low = 792512206;
-    Bank Last Revised High = 30781972;
+    Bank Last Revised Low = 851772762;
+    Bank Last Revised High = 30782375;
 
     Wave
     {
-        Name = music_lose;
-        File = music_lose.wav;
-        Build Settings Last Modified Low = 625634407;
-        Build Settings Last Modified High = 30781354;
+        Name = enemy_take_damage;
+        File = enemy_take_damage.wav;
+        Build Settings Last Modified Low = 3799401258;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
             Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 44100;
+            Channels = 1;
+            Sampling Rate = 48000;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 2266180;
+            Play Region Length = 44930;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4294753068;
-            Last Modified High = 30781324;
+            Last Modified Low = 1851749836;
+            Last Modified High = 30781930;
         }
     }
 
@@ -41,22 +39,22 @@
     {
         Name = cultist_attack;
         File = cultist_attack.wav;
-        Build Settings Last Modified Low = 625642396;
-        Build Settings Last Modified High = 30781354;
+        Build Settings Last Modified Low = 3799401258;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
             Format Tag = 0;
-            Channels = 2;
+            Channels = 1;
             Sampling Rate = 48000;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 215524;
+            Play Region Length = 107762;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 409700331;
-            Last Modified High = 30781352;
+            Last Modified Low = 4107517008;
+            Last Modified High = 30781926;
         }
     }
 
@@ -64,22 +62,22 @@
     {
         Name = cultist_block;
         File = cultist_block.wav;
-        Build Settings Last Modified Low = 625642396;
-        Build Settings Last Modified High = 30781354;
+        Build Settings Last Modified Low = 3799401258;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
             Format Tag = 0;
-            Channels = 2;
+            Channels = 1;
             Sampling Rate = 48000;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 192000;
+            Play Region Length = 96000;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 638245970;
-            Last Modified High = 30781352;
+            Last Modified Low = 4230877137;
+            Last Modified High = 30781926;
         }
     }
 
@@ -87,22 +85,22 @@
     {
         Name = cultist_death;
         File = cultist_death.wav;
-        Build Settings Last Modified Low = 625642396;
-        Build Settings Last Modified High = 30781354;
+        Build Settings Last Modified Low = 3799411253;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
             Format Tag = 0;
-            Channels = 2;
+            Channels = 1;
             Sampling Rate = 48000;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 400064;
+            Play Region Length = 200032;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 742692147;
-            Last Modified High = 30781352;
+            Last Modified Low = 36010376;
+            Last Modified High = 30781927;
         }
     }
 
@@ -110,146 +108,8 @@
     {
         Name = cultist_dodge;
         File = cultist_dodge.wav;
-        Build Settings Last Modified Low = 625652405;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 112204;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 964167983;
-            Last Modified High = 30781352;
-        }
-    }
-
-    Wave
-    {
-        Name = gate_open;
-        File = gate_open.wav;
-        Build Settings Last Modified Low = 625652405;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 215524;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 1376029713;
-            Last Modified High = 30781352;
-        }
-    }
-
-    Wave
-    {
-        Name = pickup_keys;
-        File = pickup_keys.wav;
-        Build Settings Last Modified Low = 625662400;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 215524;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 1494593111;
-            Last Modified High = 30781352;
-        }
-    }
-
-    Wave
-    {
-        Name = pickup_potion;
-        File = pickup_potion.wav;
-        Build Settings Last Modified Low = 625662400;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 197896;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 1678503313;
-            Last Modified High = 30781352;
-        }
-    }
-
-    Wave
-    {
-        Name = pickup_sword;
-        File = pickup_sword.wav;
-        Build Settings Last Modified Low = 625662400;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 197896;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 2081069482;
-            Last Modified High = 30781352;
-        }
-    }
-
-    Wave
-    {
-        Name = player_attack_punch;
-        File = player_attack_punch.wav;
-        Build Settings Last Modified Low = 625672392;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 117684;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 2209972942;
-            Last Modified High = 30781352;
-        }
-    }
-
-    Wave
-    {
-        Name = player_attack_sword;
-        File = player_attack_sword.wav;
-        Build Settings Last Modified Low = 625672392;
-        Build Settings Last Modified High = 30781354;
+        Build Settings Last Modified Low = 3799411253;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
@@ -258,44 +118,21 @@
             Sampling Rate = 48000;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 107760;
+            Play Region Length = 56102;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2457617148;
-            Last Modified High = 30781352;
+            Last Modified Low = 120788837;
+            Last Modified High = 30781927;
         }
     }
 
     Wave
     {
-        Name = player_block;
-        File = player_block.wav;
-        Build Settings Last Modified Low = 625672392;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 215524;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 2605824860;
-            Last Modified High = 30781352;
-        }
-    }
-
-    Wave
-    {
-        Name = player_bump_001;
-        File = player_bump_001.wav;
-        Build Settings Last Modified Low = 625682389;
-        Build Settings Last Modified High = 30781354;
+        Name = cultist_growl;
+        File = cultist_growl.wav;
+        Build Settings Last Modified Low = 3799411253;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
@@ -304,173 +141,12 @@
             Sampling Rate = 48000;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 38292;
+            Play Region Length = 200032;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2855224914;
-            Last Modified High = 30781352;
-        }
-    }
-
-    Wave
-    {
-        Name = player_bump_002;
-        File = player_bump_002.wav;
-        Build Settings Last Modified Low = 625682389;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 76584;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 2966955137;
-            Last Modified High = 30781352;
-        }
-    }
-
-    Wave
-    {
-        Name = player_death;
-        File = player_death.wav;
-        Build Settings Last Modified Low = 625682389;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 172512;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 3153708746;
-            Last Modified High = 30781352;
-        }
-    }
-
-    Wave
-    {
-        Name = player_dodge;
-        File = player_dodge.wav;
-        Build Settings Last Modified Low = 625682389;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 63228;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 3299808273;
-            Last Modified High = 30781352;
-        }
-    }
-
-    Wave
-    {
-        Name = player_footsteps;
-        File = player_footsteps.wav;
-        Build Settings Last Modified Low = 625692383;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 115200;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 2215328441;
-            Last Modified High = 30781353;
-        }
-    }
-
-    Wave
-    {
-        Name = player_low_health;
-        File = player_low_health.wav;
-        Build Settings Last Modified Low = 625692383;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 395456;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 2403649302;
-            Last Modified High = 30781353;
-        }
-    }
-
-    Wave
-    {
-        Name = player_turn;
-        File = player_turn.wav;
-        Build Settings Last Modified Low = 625702370;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 28000;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 2723914090;
-            Last Modified High = 30781353;
-        }
-    }
-
-    Wave
-    {
-        Name = skeleton_attack;
-        File = skeleton_attack.wav;
-        Build Settings Last Modified Low = 625702370;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 48000;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 127556;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 2887092796;
-            Last Modified High = 30781353;
+            Last Modified Low = 209182206;
+            Last Modified High = 30781927;
         }
     }
 
@@ -478,22 +154,22 @@
     {
         Name = skeleton_block;
         File = skeleton_block.wav;
-        Build Settings Last Modified Low = 625702370;
-        Build Settings Last Modified High = 30781354;
+        Build Settings Last Modified Low = 3846274743;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
             Format Tag = 0;
-            Channels = 2;
+            Channels = 1;
             Sampling Rate = 48000;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 109280;
+            Play Region Length = 54640;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2997633302;
-            Last Modified High = 30781353;
+            Last Modified Low = 1685240904;
+            Last Modified High = 30781930;
         }
     }
 
@@ -501,22 +177,22 @@
     {
         Name = skeleton_death;
         File = skeleton_death.wav;
-        Build Settings Last Modified Low = 625712524;
-        Build Settings Last Modified High = 30781354;
+        Build Settings Last Modified Low = 3846274743;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
             Format Tag = 0;
-            Channels = 2;
+            Channels = 1;
             Sampling Rate = 48000;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 425540;
+            Play Region Length = 212770;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3232679548;
-            Last Modified High = 30781353;
+            Last Modified Low = 1949673933;
+            Last Modified High = 30781930;
         }
     }
 
@@ -524,22 +200,22 @@
     {
         Name = skeleton_dodge;
         File = skeleton_dodge.wav;
-        Build Settings Last Modified Low = 625712524;
-        Build Settings Last Modified High = 30781354;
+        Build Settings Last Modified Low = 3846284699;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
             Format Tag = 0;
-            Channels = 2;
+            Channels = 1;
             Sampling Rate = 48000;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 215524;
+            Play Region Length = 107762;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3521057719;
-            Last Modified High = 30781353;
+            Last Modified Low = 2045502864;
+            Last Modified High = 30781930;
         }
     }
 
@@ -547,22 +223,22 @@
     {
         Name = skeleton_growl;
         File = skeleton_growl.wav;
-        Build Settings Last Modified Low = 625722348;
-        Build Settings Last Modified High = 30781354;
+        Build Settings Last Modified Low = 3846284699;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
             Format Tag = 0;
-            Channels = 2;
+            Channels = 1;
             Sampling Rate = 48000;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 258000;
+            Play Region Length = 129000;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3857800864;
-            Last Modified High = 30781353;
+            Last Modified Low = 2137009052;
+            Last Modified High = 30781930;
         }
     }
 
@@ -570,100 +246,54 @@
     {
         Name = ui_click;
         File = ui_click.wav;
-        Build Settings Last Modified Low = 625722348;
-        Build Settings Last Modified High = 30781354;
+        Build Settings Last Modified Low = 3846284699;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
             Format Tag = 0;
-            Channels = 2;
+            Channels = 1;
             Sampling Rate = 48000;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 50368;
+            Play Region Length = 25184;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3960170036;
-            Last Modified High = 30781353;
+            Last Modified Low = 2218988466;
+            Last Modified High = 30781930;
         }
     }
 
     Wave
     {
-        Name = music_win;
-        File = music_win.wav;
-        Build Settings Last Modified Low = 625732337;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 44100;
-            Bits Per Sample = 1;
-            Play Region Offset = 116;
-            Play Region Length = 1058400;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 2447411968;
-            Last Modified High = 30779642;
-        }
-    }
-
-    Wave
-    {
-        Name = pickup_twinkle;
-        File = pickup_twinkle.wav;
-        Build Settings Last Modified Low = 625732337;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 44100;
-            Bits Per Sample = 1;
-            Play Region Offset = 736;
-            Play Region Length = 1587600;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 436521382;
-            Last Modified High = 30781317;
-        }
-    }
-
-    Wave
-    {
-        Name = music_melody;
-        File = music_melody.wav;
-        Build Settings Last Modified Low = 625742330;
-        Build Settings Last Modified High = 30781354;
+        Name = gate_open;
+        File = gate_open.wav;
+        Build Settings Last Modified Low = 3846294684;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
             Format Tag = 0;
             Channels = 1;
-            Sampling Rate = 44100;
+            Sampling Rate = 48000;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 7542032;
+            Play Region Length = 88084;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 962863212;
-            Last Modified High = 30781324;
+            Last Modified Low = 2681230370;
+            Last Modified High = 30781927;
         }
     }
 
     Wave
     {
-        Name = music_menu;
-        File = music_menu.wav;
-        Build Settings Last Modified Low = 625742330;
-        Build Settings Last Modified High = 30781354;
+        Name = music_battle_001;
+        File = music_battle_001.wav;
+        Build Settings Last Modified Low = 3846294684;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
@@ -672,58 +302,12 @@
             Sampling Rate = 44100;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 15084064;
+            Play Region Length = 5054700;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 962983135;
-            Last Modified High = 30781324;
-        }
-    }
-
-    Wave
-    {
-        Name = music_start;
-        File = music_start.wav;
-        Build Settings Last Modified Low = 625742330;
-        Build Settings Last Modified High = 30781354;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 1;
-            Sampling Rate = 44100;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 7542032;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 963063080;
-            Last Modified High = 30781324;
-        }
-    }
-
-    Wave
-    {
-        Name = music_main;
-        File = music_main.wav;
-        Build Settings Last Modified Low = 1314212176;
-        Build Settings Last Modified High = 30781356;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 1;
-            Sampling Rate = 44100;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 30971904;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 771706308;
-            Last Modified High = 30781356;
+            Last Modified Low = 2889136636;
+            Last Modified High = 30781925;
         }
     }
 
@@ -731,8 +315,8 @@
     {
         Name = music_battle_002;
         File = music_battle_002.wav;
-        Build Settings Last Modified Low = 3472488378;
-        Build Settings Last Modified High = 30781361;
+        Build Settings Last Modified Low = 3846294684;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
@@ -745,17 +329,17 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3613913539;
-            Last Modified High = 30781324;
+            Last Modified Low = 3103274112;
+            Last Modified High = 30781503;
         }
     }
 
     Wave
     {
-        Name = music_battle_001;
-        File = music_battle_001.wav;
-        Build Settings Last Modified Low = 3517117052;
-        Build Settings Last Modified High = 30781361;
+        Name = music_lose;
+        File = music_lose.wav;
+        Build Settings Last Modified Low = 3846304674;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
@@ -764,21 +348,67 @@
             Sampling Rate = 44100;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 20233344;
+            Play Region Length = 2266180;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2447411968;
-            Last Modified High = 30779642;
+            Last Modified Low = 3103274112;
+            Last Modified High = 30781503;
         }
     }
 
     Wave
     {
-        Name = cultist_growl;
-        File = cultist_growl.wav;
-        Build Settings Last Modified Low = 1692098180;
-        Build Settings Last Modified High = 30781363;
+        Name = music_main;
+        File = music_main.wav;
+        Build Settings Last Modified Low = 3846304674;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 30971904;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3113274112;
+            Last Modified High = 30781503;
+        }
+    }
+
+    Wave
+    {
+        Name = music_melody;
+        File = music_melody.wav;
+        Build Settings Last Modified Low = 3846304674;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 7542032;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3113274112;
+            Last Modified High = 30781503;
+        }
+    }
+
+    Wave
+    {
+        Name = music_menu;
+        File = music_menu.wav;
+        Build Settings Last Modified Low = 3846314681;
+        Build Settings Last Modified High = 30782341;
 
         Cache
         {
@@ -787,12 +417,472 @@
             Sampling Rate = 44100;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 367560;
+            Play Region Length = 15084064;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2447411968;
-            Last Modified High = 30779642;
+            Last Modified Low = 3113274112;
+            Last Modified High = 30781503;
+        }
+    }
+
+    Wave
+    {
+        Name = music_start;
+        File = music_start.wav;
+        Build Settings Last Modified Low = 3846314681;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 7542032;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3113274112;
+            Last Modified High = 30781503;
+        }
+    }
+
+    Wave
+    {
+        Name = music_win;
+        File = music_win.wav;
+        Build Settings Last Modified Low = 3846314681;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 116;
+            Play Region Length = 1058400;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3203274112;
+            Last Modified High = 30781503;
+        }
+    }
+
+    Wave
+    {
+        Name = pickup_keys;
+        File = pickup_keys.wav;
+        Build Settings Last Modified Low = 3846324670;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 107762;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 2877841548;
+            Last Modified High = 30781927;
+        }
+    }
+
+    Wave
+    {
+        Name = pickup_potion;
+        File = pickup_potion.wav;
+        Build Settings Last Modified Low = 3846324670;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 98948;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 2992613499;
+            Last Modified High = 30781927;
+        }
+    }
+
+    Wave
+    {
+        Name = pickup_sword;
+        File = pickup_sword.wav;
+        Build Settings Last Modified Low = 3846334664;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 82472;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3149082079;
+            Last Modified High = 30781927;
+        }
+    }
+
+    Wave
+    {
+        Name = pickup_twinkle;
+        File = pickup_twinkle.wav;
+        Build Settings Last Modified Low = 3846334664;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 864000;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3322900096;
+            Last Modified High = 30781927;
+        }
+    }
+
+    Wave
+    {
+        Name = player_attack_sword;
+        File = player_attack_sword.wav;
+        Build Settings Last Modified Low = 3846344649;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 107760;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 1245780411;
+            Last Modified High = 30781929;
+        }
+    }
+
+    Wave
+    {
+        Name = player_block;
+        File = player_block.wav;
+        Build Settings Last Modified Low = 3846344649;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 107762;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 4039256967;
+            Last Modified High = 30781929;
+        }
+    }
+
+    Wave
+    {
+        Name = player_bump_001;
+        File = player_bump_001.wav;
+        Build Settings Last Modified Low = 3846344649;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 38292;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 4182581219;
+            Last Modified High = 30781929;
+        }
+    }
+
+    Wave
+    {
+        Name = player_bump_002;
+        File = player_bump_002.wav;
+        Build Settings Last Modified Low = 3846354643;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 38292;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 60559646;
+            Last Modified High = 30781930;
+        }
+    }
+
+    Wave
+    {
+        Name = player_death;
+        File = player_death.wav;
+        Build Settings Last Modified Low = 3846354643;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 86256;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 158942462;
+            Last Modified High = 30781930;
+        }
+    }
+
+    Wave
+    {
+        Name = player_dodge;
+        File = player_dodge.wav;
+        Build Settings Last Modified Low = 3846364633;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 31614;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 273322552;
+            Last Modified High = 30781930;
+        }
+    }
+
+    Wave
+    {
+        Name = player_footsteps;
+        File = player_footsteps.wav;
+        Build Settings Last Modified Low = 3846364633;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 35462;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 379045832;
+            Last Modified High = 30781930;
+        }
+    }
+
+    Wave
+    {
+        Name = player_footsteps_01;
+        File = player_footsteps_01.wav;
+        Build Settings Last Modified Low = 3846364633;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 35554;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 491899927;
+            Last Modified High = 30781930;
+        }
+    }
+
+    Wave
+    {
+        Name = player_footsteps_02;
+        File = player_footsteps_02.wav;
+        Build Settings Last Modified Low = 3846374636;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 57600;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 577587681;
+            Last Modified High = 30781930;
+        }
+    }
+
+    Wave
+    {
+        Name = player_low_health;
+        File = player_low_health.wav;
+        Build Settings Last Modified Low = 3846374636;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 197728;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 931634008;
+            Last Modified High = 30781930;
+        }
+    }
+
+    Wave
+    {
+        Name = player_turn;
+        File = player_turn.wav;
+        Build Settings Last Modified Low = 3846374636;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 14000;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 1382087519;
+            Last Modified High = 30781930;
+        }
+    }
+
+    Wave
+    {
+        Name = skeleton_attack;
+        File = skeleton_attack.wav;
+        Build Settings Last Modified Low = 3846384630;
+        Build Settings Last Modified High = 30782341;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 63778;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 1507799634;
+            Last Modified High = 30781930;
+        }
+    }
+
+    Wave
+    {
+        Name = player_take_damage;
+        File = player_take_damage.wav;
+        Build Settings Last Modified Low = 1287492833;
+        Build Settings Last Modified High = 30782373;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 21548;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 107605426;
+            Last Modified High = 30782373;
+        }
+    }
+
+    Wave
+    {
+        Name = player_attack_punch;
+        File = player_attack_punch.wav;
+        Build Settings Last Modified Low = 810996765;
+        Build Settings Last Modified High = 30782375;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 48000;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 52146;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3598908566;
+            Last Modified High = 30782374;
         }
     }
 }

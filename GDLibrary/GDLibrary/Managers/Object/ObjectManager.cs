@@ -799,17 +799,6 @@ namespace GDLibrary
             base.ApplyDraw(gameTime);
         }
 
-        ////Calls the DrawObject() based on underlying object type
-        //private void DrawActor(GameTime gameTime, DrawnActor3D actor, Camera3D activeCamera)
-        //{
-        //    //Was the drawn enum value set?
-        //    if ((actor.StatusType & StatusType.Drawn) == StatusType.Drawn)
-        //        if (actor is ModelObject)
-        //            DrawObject(gameTime, actor as ModelObject, activeCamera);
-
-        //    //Add additional elseif statements here to render other object types (e.g model, animated, billboard etc)
-        //}
-
         //Calls the correct DrawObject() based on underlying object type
         private void DrawActor(GameTime gameTime, Actor3D actor, Camera3D activeCamera)
         {
@@ -872,18 +861,18 @@ namespace GDLibrary
             }
         }
 
-        private void DrawObject(GameTime gameTime, AnimatedEnemyObject animatedPlayerObject, Camera3D activeCamera)
+        private void DrawObject(GameTime gameTime, AnimatedEnemyObject animatedEnemyObject, Camera3D activeCamera)
         {
-            //an array of the current positions of the model meshes
-            Matrix[] bones = animatedPlayerObject.AnimationPlayer.GetSkinTransforms();
-            Matrix world = animatedPlayerObject.GetWorldMatrix();
+            //An array of the current positions of the model meshes
+            Matrix[] bones = animatedEnemyObject.AnimationPlayer.GetSkinTransforms();
+            Matrix world = animatedEnemyObject.GetWorldMatrix();
 
             for (int i = 0; i < bones.Length; i++)
             {
                 bones[i] *= world;
             }
 
-            foreach (ModelMesh mesh in animatedPlayerObject.Model.Meshes)
+            foreach (ModelMesh mesh in animatedEnemyObject.Model.Meshes)
             {
                 foreach (SkinnedEffect skinnedEffect in mesh.Effects)
                 {
@@ -891,12 +880,12 @@ namespace GDLibrary
                     skinnedEffect.View = activeCamera.View;
                     skinnedEffect.Projection = activeCamera.Projection;
 
-                    //if you want to overwrite the texture you baked into the animation in 3DS Max then set your own texture
-                    if (animatedPlayerObject.EffectParameters.Texture != null)
-                        skinnedEffect.Texture = animatedPlayerObject.EffectParameters.Texture;
+                    //If you want to overwrite the texture you baked into the animation in 3DS Max then set your own texture
+                    if (animatedEnemyObject.EffectParameters.Texture != null)
+                        skinnedEffect.Texture = animatedEnemyObject.EffectParameters.Texture;
 
-                    skinnedEffect.DiffuseColor = animatedPlayerObject.EffectParameters.DiffuseColor.ToVector3();
-                    skinnedEffect.Alpha = animatedPlayerObject.Alpha;
+                    skinnedEffect.DiffuseColor = animatedEnemyObject.EffectParameters.DiffuseColor.ToVector3();
+                    skinnedEffect.Alpha = animatedEnemyObject.Alpha;
                     skinnedEffect.EnableDefaultLighting();
                     skinnedEffect.PreferPerPixelLighting = true;
                 }

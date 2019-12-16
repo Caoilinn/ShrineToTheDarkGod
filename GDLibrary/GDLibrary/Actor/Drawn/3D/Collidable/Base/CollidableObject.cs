@@ -61,8 +61,7 @@ namespace GDLibrary
             EffectParameters effectParameters,
             Model model
         ) : base(id, actorType, transform, effectParameters, model) {
-            this.body = new Body
-            {
+            this.body = new Body {
                 ExternalData = this
             };
 

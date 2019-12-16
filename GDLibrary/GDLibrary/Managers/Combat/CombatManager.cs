@@ -462,13 +462,16 @@ namespace GDLibrary
                 float damage = 0;
 
                 //Create audio emitter
-                AudioEmitter audioEmitter = new AudioEmitter
-                {
+                AudioEmitter audioEmitter = new AudioEmitter {
                     Position = this.player.Transform.Translation
                 };
 
                 //Publish play dodge sound event
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "player_dodge", audioEmitter }));
+
+                //Pause combat music
+                EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Sound2D, new object[] { "music_battle_001" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "music_main" }));
 
                 //Publish a UI player dodge event
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlayerDodge, EventCategoryType.Textbox, new object[] { damage, this.player.Health, this.enemyOnFocus.Health }));
@@ -534,36 +537,6 @@ namespace GDLibrary
             //Shake camera
             this.cameraManager.GetCameraByID("First Person Camera").Shake(0.04f, 0.2f);
 
-            //If the players' health is low
-            if (this.player.Health <= 30)
-            {
-
-                //If the player has a health potion
-                if (this.InventoryManager.HasItem(PickupType.Health))
-                {
-
-                    //Use a key to open the gate
-                    this.InventoryManager.UseItem(PickupType.Health);
-
-                    //Hard coded for now
-                    float potionHealth = 20;
-
-                    //Update player health
-                    EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthUpdate, EventCategoryType.Textbox, new object[] { this.Player.Health += potionHealth }));
-                    EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthUpdate, EventCategoryType.UIMenu, new object[] { (-potionHealth) }));
-                    EventDispatcher.Publish(new EventData(EventActionType.OnItemRemoved, EventCategoryType.UIMenu, new object[] { "Potion" }));
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "pickup_potion" }));
-                }
-
-                //Otherwise
-                else
-                {
-
-                    //Publish health low sound event
-                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "player_low_health" }));
-                }
-            }
-
             //If the enemy has killed the player
             if (this.player.Health <= 0)
             {
@@ -611,23 +584,58 @@ namespace GDLibrary
 
         public override void Update(GameTime gameTime)
         {
-            //Hacked in
+            TakeTurn(gameTime);
+            CheckHealthStatus();
+            base.Update(gameTime);
+        }
+
+        public void CheckHealthStatus()
+        {
+            //If the players' health is low
+            if (this.player.Health <= 30)
+            {
+                //If the player has a health potion
+                if (this.InventoryManager.HasItem(PickupType.Health))
+                {
+                    //Use a key to open the gate
+                    this.InventoryManager.UseItem(PickupType.Health);
+
+                    //Hard coded for now
+                    float potionHealth = 20;
+
+                    //Update player health
+                    EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthUpdate, EventCategoryType.Textbox, new object[] { this.Player.Health += potionHealth }));
+                    EventDispatcher.Publish(new EventData(EventActionType.PlayerHealthUpdate, EventCategoryType.UIMenu, new object[] { (-potionHealth) }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnItemRemoved, EventCategoryType.UIMenu, new object[] { "Potion" }));
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "pickup_potion" }));
+                }
+
+                //Otherwise
+                else
+                {
+                    //Publish health low sound event
+                    EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "player_low_health" }));
+                }
+            }
+
+            //If the player has died
             if (this.Player.Health <= 0)
             {
                 //Quit to menu for now
                 EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu, new object[] { "lose_scene" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Sound3D, new object[] { "pickup_twinkle" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Sound2D, new object[] { "music_battle_001" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "player_death" }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "music_lose" }));
                 EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Menu));
+                this.Player.Health = 100;
             }
-
-            TakeTurn(gameTime);
-            base.Update(gameTime);
         }
 
         public void TimeOut(float duration)
         {
 
         }
-
         #endregion
     }
 }
