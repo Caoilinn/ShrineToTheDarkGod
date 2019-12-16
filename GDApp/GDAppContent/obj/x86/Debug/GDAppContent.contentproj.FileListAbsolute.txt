@@ -20,3 +20,5 @@ C:\Users\James\Desktop\SF\ShrineToTheDarkGod\GDApp\GDAppContent\obj\x86\Debug\GD
 C:\Users\James\Desktop\SF\ShrineToTheDarkGod\GDApp\GDAppContent\obj\x86\Debug\GDAppContent.contentproj.CoreCompileInputs.cache
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\obj\x86\Debug\GDAppContent.contentprojAssemblyReference.cache
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDAppContent\obj\x86\Debug\GDAppContent.contentproj.CoreCompileInputs.cache
+C:\Users\Caoilinn\Desktop\UDP\ShrineToTheDarkGod\GDApp\GDAppContent\obj\x86\Debug\GDAppContent.contentprojAssemblyReference.cache
+C:\Users\Caoilinn\Desktop\UDP\ShrineToTheDarkGod\GDApp\GDAppContent\obj\x86\Debug\GDAppContent.contentproj.CoreCompileInputs.cache

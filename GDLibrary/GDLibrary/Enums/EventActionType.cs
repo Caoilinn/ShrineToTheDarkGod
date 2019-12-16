@@ -15,6 +15,7 @@
         OnVolumeUp,
         OnVolumeDown,
         OnVolumeSet,
+        OnTrackVolumeChange,
         OnVolumeChange,
         OnMute,
         OnUnMute,

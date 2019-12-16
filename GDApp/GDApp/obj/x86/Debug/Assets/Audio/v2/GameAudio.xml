@@ -9,8 +9,14 @@
     Windows Bank Path Edited = 0;
     Seek Tables = 1;
     Compression Preset Name = &lt;none&gt;;
-    Bank Last Revised Low = 851772762;
-    Bank Last Revised High = 30782375;
+    Xbox Bank Last Modified Low = 0;
+    Xbox Bank Last Modified High = 0;
+    PC Bank Last Modified Low = 0;
+    PC Bank Last Modified High = 0;
+    Header Last Modified Low = 0;
+    Header Last Modified High = 0;
+    Bank Last Revised Low = 1436123505;
+    Bank Last Revised High = 30782459;
 
     Wave
     {
@@ -372,29 +378,6 @@
             Bits Per Sample = 1;
             Play Region Offset = 44;
             Play Region Length = 30971904;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 3113274112;
-            Last Modified High = 30781503;
-        }
-    }
-
-    Wave
-    {
-        Name = music_melody;
-        File = music_melody.wav;
-        Build Settings Last Modified Low = 3846304674;
-        Build Settings Last Modified High = 30782341;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 1;
-            Sampling Rate = 44100;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 7542032;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
@@ -883,6 +866,98 @@
             File Type = 1;
             Last Modified Low = 3598908566;
             Last Modified High = 30782374;
+        }
+    }
+
+    Wave
+    {
+        Name = battle_drums;
+        File = battle_drums.wav;
+        Build Settings Last Modified Low = 2678087253;
+        Build Settings Last Modified High = 30782458;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 7542032;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 1296759296;
+            Last Modified High = 30782374;
+        }
+    }
+
+    Wave
+    {
+        Name = melody_notes;
+        File = melody_notes.wav;
+        Build Settings Last Modified Low = 2988194179;
+        Build Settings Last Modified High = 30782458;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 6451568;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3846693888;
+            Last Modified High = 30782372;
+        }
+    }
+
+    Wave
+    {
+        Name = menu_wind;
+        File = menu_wind.wav;
+        Build Settings Last Modified Low = 3465078030;
+        Build Settings Last Modified High = 30782458;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 15084064;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3526693888;
+            Last Modified High = 30782372;
+        }
+    }
+
+    Wave
+    {
+        Name = on_start_chords;
+        File = on_start_chords.wav;
+        Build Settings Last Modified Low = 3619660939;
+        Build Settings Last Modified High = 30782458;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 7542032;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3066693888;
+            Last Modified High = 30782372;
         }
     }
 }

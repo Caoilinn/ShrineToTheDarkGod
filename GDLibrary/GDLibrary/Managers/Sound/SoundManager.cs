@@ -144,6 +144,14 @@ namespace GDLibrary
             else if (eventData.EventType == EventActionType.OnResume)
                 this.ResumeCue(cueName);
 
+            else if (eventData.EventType == EventActionType.OnTrackVolumeChange)
+            {
+                string catType = (string)eventData.AdditionalParameters[0];
+                float volume = (float)eventData.AdditionalParameters[1];
+
+                ChangeVolume(volume, catType);
+            }
+
             //OnStop Event
             else
             {

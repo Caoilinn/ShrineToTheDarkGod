@@ -16,3 +16,12 @@ C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\obj
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csproj.CopyComplete
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.dll
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.pdb
+C:\Users\Caoilinn\Desktop\UDP\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.dll
+C:\Users\Caoilinn\Desktop\UDP\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.pdb
+C:\Users\Caoilinn\Desktop\UDP\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\bin\x86\Debug\SkinnedModel.dll
+C:\Users\Caoilinn\Desktop\UDP\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\bin\x86\Debug\SkinnedModel.pdb
+C:\Users\Caoilinn\Desktop\UDP\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csprojAssemblyReference.cache
+C:\Users\Caoilinn\Desktop\UDP\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csproj.CoreCompileInputs.cache
+C:\Users\Caoilinn\Desktop\UDP\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csproj.CopyComplete
+C:\Users\Caoilinn\Desktop\UDP\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.dll
+C:\Users\Caoilinn\Desktop\UDP\ShrineToTheDarkGod\GDLibrary\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.pdb
