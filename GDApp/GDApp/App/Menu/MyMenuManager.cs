@@ -5,9 +5,12 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GDApp
 {
+    
     public class MyMenuManager : MenuManager
     {
         private readonly ObjectManager objectManager;
+        private DrawnActor2D keybinding;
+
         private string action;
         #region Constructors
         public MyMenuManager(
@@ -87,6 +90,7 @@ namespace GDApp
                 KeyboardState state = Keyboard.GetState();
                 Keys[] keys = state.GetPressedKeys();
                 DoBind(this.action, keys[0]);
+                this.action = "";
             }
         }
 
@@ -142,8 +146,9 @@ namespace GDApp
                     break;
 
                 case "backbtn":
-                    
+
                     //Use sceneIDs specified when we created the menu scenes in Main::AddMenuElements()
+                    StateManager.IsKeyBinding = false;
                     SetActiveList("main menu");
                     break;
 
@@ -164,11 +169,94 @@ namespace GDApp
                     break;
 
                 case "bindbtn":
-                    StateManager.IsKeyBinding = true;
+                    if (!StateManager.IsKeyBinding)
+                        StateManager.IsKeyBinding = true;
+
+                    else
+                        StateManager.IsKeyBinding = false;
+
                     break;
 
-                case "actionbtn":
-                    if (StateManager.IsKeyBinding) this.action = "action";
+                case "attack":
+                    if (StateManager.IsKeyBinding)
+                    {
+                        uiObject.Color = Color.LightSalmon;
+                        this.keybinding = uiObject;
+                        this.action = "Attack";
+                    }
+                    
+                    break;
+
+                case "defend":
+                    if (StateManager.IsKeyBinding)
+                    {
+                        uiObject.Color = Color.LightSalmon;
+                        this.keybinding = uiObject;
+                        this.action = "Defend";
+                    }
+                    break;
+
+                case "dodge":
+                    if (StateManager.IsKeyBinding)
+                    {
+                        uiObject.Color = Color.LightSalmon;
+                        this.keybinding = uiObject;
+                        this.action = "Dodge";
+                    }
+                    break;
+
+                case "forward":
+                    if (StateManager.IsKeyBinding)
+                    {
+                        uiObject.Color = Color.LightSalmon;
+                        this.keybinding = uiObject;
+                        this.action = "Forward";
+                    }
+                    break;
+
+                case "back":
+                    if (StateManager.IsKeyBinding)
+                    {
+                        uiObject.Color = Color.LightSalmon;
+                        this.keybinding = uiObject;
+                        this.action = "Back";
+                    }
+                    break;
+
+                case "left":
+                    if (StateManager.IsKeyBinding)
+                    {
+                        uiObject.Color = Color.LightSalmon;
+                        this.keybinding = uiObject;
+                        this.action = "Left";
+                    }
+                    break;
+
+                case "right":
+                    if (StateManager.IsKeyBinding)
+                    {
+                        uiObject.Color = Color.LightSalmon;
+                        this.keybinding = uiObject;
+                        this.action = "Right";
+                    }
+                    break;
+
+                case "tleft":
+                    if (StateManager.IsKeyBinding)
+                    {
+                        uiObject.Color = Color.LightSalmon;
+                        this.keybinding = uiObject;
+                        this.action = "TLeft";
+                    }
+                    break;
+
+                case "tright":
+                    if (StateManager.IsKeyBinding)
+                    {
+                        uiObject.Color = Color.LightSalmon;
+                        this.keybinding = uiObject;
+                        this.action = "TRight";
+                    }
                     break;
 
                 default:
@@ -196,7 +284,8 @@ namespace GDApp
         {
             object[] additionalParameters = { action, key };
             EventDispatcher.Publish(new EventData(EventActionType.OnKeybind, EventCategoryType.Keybind, additionalParameters));
-
+            (keybinding as UIButtonObject).Text = key.ToString();
+            (keybinding as UIButtonObject).Color = Color.White;
         }
 
         private void DoExit()

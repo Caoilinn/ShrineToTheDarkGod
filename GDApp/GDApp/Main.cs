@@ -507,9 +507,9 @@ namespace GDApp
 
             #region Combat Manager
             this.combatManager = new CombatManager(
-                this, 
-                this.eventDispatcher, 
-                StatusType.Update, 
+                this,
+                this.eventDispatcher,
+                StatusType.Update,
                 this.cameraManager,
                 this.inventoryManager,
                 this.keyboardManager,
@@ -518,7 +518,7 @@ namespace GDApp
                 this.gridManager,
                 PlayerIndex.One,
                 AppData.CombatButtons,
-                AppData.CombatKeys,
+                GDLibraryData.CombatKeys,
                 this.timeManager
             );
 
@@ -894,6 +894,7 @@ namespace GDApp
                 )
             );
 
+
             //Add back button - clone the audio button then just reset texture, ids etc in all the clones
             clone = (UIButtonObject)uiButtonObject.Clone();
             
@@ -909,11 +910,16 @@ namespace GDApp
             //Change the texture blend color
             clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
+            //---------------------------------------------------------
 
-            clone = (UIButtonObject)uiButtonObject.Clone();
+            clone = (UIButtonObject) uiButtonObject.Clone();
 
             //Move down on Y-axis for next button
-            clone.Transform.Translation = new Vector2(300, 6 * verticalBtnSeparation);
+            clone.Transform.Translation += new Vector2(
+                -150,
+                360
+            );
+
             clone.ID = "bindbtn";
             clone.Text = "Rebind";
 
@@ -921,16 +927,207 @@ namespace GDApp
             clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
+            #region Bind Buttons
+            #region Attack
+
+            texture = this.textureDictionary["keybind_button"];
+
+            float texturew = texture.Width / 2;
+            float textureh = texture.Height / 2;
+
+            buttonID = "attack";
+            buttonText = GDLibraryData.CombatKeys[0].ToString();
+            if (buttonText.Length > 1)
+                buttonText = buttonText.TrimStart('D');
+
+            position = new Vector2(
+                359 + texturew,
+                315 + textureh
+            );
+
+            transform = new Transform2D(
+                position,
+                0,
+                new Vector2(1f, 1f),
+                new Vector2(texture.Width/2, texture.Height/2),
+                new Integer2(texture.Width, texture.Height)
+            );
+
+            uiButtonObject = new UIButtonObject(
+                buttonID,
+                ActorType.UIButton,
+                StatusType.Update | StatusType.Drawn,
+                transform,
+                Color.White,
+                SpriteEffects.None,
+                0.1f,
+                texture,
+                buttonText,
+                this.fontDictionary["menu"],
+                Color.Black,
+                new Vector2(1, 6)
+            );
+
+
+            //Attach controller
+            uiButtonObject.AttachController(
+                new UIScaleSineLerpController(
+                    "SineScaleLerpController1",
+                    ControllerType.SineScaleLerp,
+                    new TrigonometricParameters(0.1f, 0.2f, 1)
+                )
+            );
+
+            this.menuManager.Add(sceneID, uiButtonObject);
+
+            #endregion
+
+            #region Defend
             clone = (UIButtonObject)uiButtonObject.Clone();
 
-            //Move down on Y-axis for next button
-            clone.Transform.Translation = new Vector2(300, 5 * verticalBtnSeparation);
-            clone.ID = "actionbtn";
-            clone.Text = "Action";
+            clone.Transform.Translation += new Vector2(
+                70,
+                0
+            );
+
+            clone.ID = "defend";
+            clone.Text = GDLibraryData.CombatKeys[1].ToString();
+            if (clone.Text.Length > 1)
+                clone.Text = clone.Text.TrimStart('D');
 
             //Change the texture blend color
             clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
+            #endregion
+
+            #region Dodge
+            clone = (UIButtonObject)uiButtonObject.Clone();
+
+            clone.Transform.Translation += new Vector2(
+                140,
+                0
+            );
+
+            clone.ID = "dodge";
+            clone.Text = GDLibraryData.CombatKeys[2].ToString();
+            if (clone.Text.Length > 1)
+                clone.Text = clone.Text.TrimStart('D');
+
+            //Change the texture blend color
+            clone.Color = Color.White;
+            this.menuManager.Add(sceneID, clone);
+            #endregion
+
+            #region Forward
+            clone = (UIButtonObject)uiButtonObject.Clone();
+
+            clone.Transform.Translation += new Vector2(
+                78,
+                155
+            );
+
+            clone.ID = "forward";
+            clone.Text = GDLibraryData.CameraMoveKeys[0].ToString();
+            if (clone.Text.Length > 1)
+                clone.Text = clone.Text.TrimStart('D');
+
+            //Change the texture blend color
+            clone.Color = Color.White;
+            this.menuManager.Add(sceneID, clone);
+            #endregion
+
+            #region Back
+            clone = (UIButtonObject)uiButtonObject.Clone();
+
+            clone.Transform.Translation += new Vector2(
+                78,
+                225
+            );
+
+            clone.ID = "back";
+            clone.Text = GDLibraryData.CameraMoveKeys[1].ToString();
+            if (clone.Text.Length > 1)
+                clone.Text = clone.Text.TrimStart('D');
+
+            //Change the texture blend color
+            clone.Color = Color.White;
+            this.menuManager.Add(sceneID, clone);
+            #endregion
+
+            #region Left
+            clone = (UIButtonObject)uiButtonObject.Clone();
+
+            clone.Transform.Translation += new Vector2(
+                8,
+                225
+            );
+
+            clone.ID = "left";
+            clone.Text = GDLibraryData.CameraMoveKeys[2].ToString();
+            if (clone.Text.Length > 1)
+                clone.Text = clone.Text.TrimStart('D');
+
+            //Change the texture blend color
+            clone.Color = Color.White;
+            this.menuManager.Add(sceneID, clone);
+            #endregion
+
+            #region Right
+            clone = (UIButtonObject)uiButtonObject.Clone();
+
+            clone.Transform.Translation += new Vector2(
+                148,
+                225
+            );
+
+            clone.ID = "right";
+            clone.Text = GDLibraryData.CameraMoveKeys[3].ToString();
+            if (clone.Text.Length > 1)
+                clone.Text = clone.Text.TrimStart('D');
+
+            //Change the texture blend color
+            clone.Color = Color.White;
+            this.menuManager.Add(sceneID, clone);
+            #endregion
+
+            #region tLeft
+            clone = (UIButtonObject)uiButtonObject.Clone();
+
+            clone.Transform.Translation += new Vector2(
+                -27,
+                114
+            );
+
+            clone.ID = "tleft";
+            clone.Text = GDLibraryData.CameraMoveKeys[4].ToString();
+            if (clone.Text.Length > 1)
+                clone.Text = clone.Text.TrimStart('D');
+
+            //Change the texture blend color
+            clone.Color = Color.White;
+            this.menuManager.Add(sceneID, clone);
+            #endregion
+
+            #region tRight
+            clone = (UIButtonObject)uiButtonObject.Clone();
+
+            clone.Transform.Translation += new Vector2(
+                184,
+                114
+            );
+
+            clone.ID = "tright";
+            clone.Text = GDLibraryData.CameraMoveKeys[5].ToString();
+            if (clone.Text.Length > 1)
+                clone.Text = clone.Text.TrimStart('D');
+
+            //Change the texture blend color
+            clone.Color = Color.White;
+            this.menuManager.Add(sceneID, clone);
+            #endregion
+
+            #endregion
+
             #endregion
 
             #region Begin Menu
@@ -960,6 +1157,48 @@ namespace GDApp
                     texture
                 )
             );
+            
+            buttonID = "startbtn";
+            buttonText = "Start";
+
+            position = new Vector2(
+                410,
+                325
+            );
+
+            texture = this.textureDictionary["button"];
+
+            transform = new Transform2D(
+                position,
+                0,
+                new Vector2(1.5f, 1f),
+                new Vector2(texture.Width / 2.0f, texture.Height / 2.0f),
+                new Integer2(texture.Width, texture.Height)
+            );
+
+            uiButtonObject = new UIButtonObject(
+                buttonID,
+                ActorType.UIButton,
+                StatusType.Update | StatusType.Drawn,
+                transform,
+                Color.White,
+                SpriteEffects.None,
+                0.1f,
+                texture,
+                buttonText,
+                this.fontDictionary["menu"],
+                Color.Black,
+                new Vector2(0, 6)
+            );
+
+            //Attach controller
+            uiButtonObject.AttachController(
+                new UIScaleSineLerpController(
+                    "SineScaleLerpController1",
+                    ControllerType.SineScaleLerp,
+                    new TrigonometricParameters(0.1f, 0.2f, 1)
+                )
+            );
 
             //Add back button - clone the audio button then just reset texture, ids etc in all the clones
             clone = (UIButtonObject)uiButtonObject.Clone();
@@ -976,6 +1215,7 @@ namespace GDApp
             //Change the texture blend color
             clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
+
             #endregion
 
             #region Win Screen
@@ -1318,7 +1558,7 @@ namespace GDApp
                 new CollidableFirstPersonCameraController(
                     camera + " Controller",
                     ControllerType.CollidableCamera,
-                    AppData.CameraMoveKeys,
+                    GDLibraryData.CameraMoveKeys,
                     AppData.CameraMoveSpeed,
                     AppData.CameraRotationSpeed,
                     this.managerParameters,
@@ -1360,7 +1600,7 @@ namespace GDApp
                 new FirstPersonCameraController(
                     camera + " Controller",
                     ControllerType.CollidableCamera,
-                    AppData.CameraMoveKeys,
+                    GDLibraryData.CameraMoveKeys,
                     AppData.CameraMoveSpeed,
                     AppData.CameraRotationSpeed,
                     this.managerParameters,
@@ -1918,7 +2158,7 @@ namespace GDApp
                 this.managerParameters,
                 (PlayerIndex)playerType - 1,
                 AppData.CameraMoveButtons,
-                AppData.CameraMoveKeys
+                GDLibraryData.CameraMoveKeys
             );
 
             //Enable collision
@@ -2256,6 +2496,7 @@ namespace GDApp
 
             #region Menu Buttons
             this.textureDictionary.Load("Assets/Textures/UI/Menu/Buttons/button");
+            this.textureDictionary.Load("Assets/Textures/UI/Menu/Buttons/keybind_button");
             #endregion
 
             #region Menu Backgrounds

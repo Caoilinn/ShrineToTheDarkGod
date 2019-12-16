@@ -2202,3 +2202,273 @@ C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\urn_front_right.xnb
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Barrell_oak_diffuse_0.xnb
 C:\Users\james\OneDrive\SF\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\player_take_damage.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\App\Data\LevelData.txt
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_001.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_003.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_004.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_005.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_006.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_007.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_008.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_009.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_010.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_011.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_012.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_013.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_014.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_015.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_016.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_002.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_017.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_018.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\audio_menu.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\controls_menu.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\main_menu.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Buttons\button.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\start_screen.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\lose_screen.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Backgrounds\win_screen.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_019.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_020.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_021.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_022.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_023.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_024.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_025.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_026.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_027.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_028.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_029.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_030.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_031.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_032.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_033.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_034.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_035.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Architecture\Rooms\room_texture_036.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\Inventory\key.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\Inventory\potion.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\Inventory\sword.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\Base\background.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\Bars\health.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\HUD\Bars\xp.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Billboards\UI\block_billboard.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Billboards\UI\dodge_left_billboard.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Billboards\UI\dodge_right_billboard.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Billboards\UI\impact_billboard.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Billboards\UI\slash_billboard_01.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Billboards\UI\slash_billboard_02.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Decorators\barrelTexture.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Decorators\benchTexture.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Decorators\bookTexture.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Decorators\crateTexture.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Decorators\hornTexture.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Decorators\urnTexture.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\Decorators\cartTexture.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\urnFamily.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\menu.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Fonts\gameLog.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\potion.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Gates\gate_001.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Gates\gate_002.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\cultist_001.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\skeleton_001.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\sword.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Pickups\key.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_001.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_002.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_003.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_004.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_005.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_006.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_007.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_008.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_009.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_010.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_011.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_012.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_013.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_014.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_015.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_016.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_017.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_018.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_019.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_020.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_021.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_022.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_023.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_024.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_025.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_026.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_027.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_028.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_029.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_030.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_031.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_032.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_033.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_034.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_035.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Rooms\room_collision_036.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_001.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_002.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_003.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_004.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_005.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_006.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_007.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_008.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_009.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_010.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_011.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_012.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_013.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_014.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_015.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_016.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_017.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_018.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_019.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_020.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_021.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_022.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_023.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_024.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_025.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_026.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_027.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_028.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_029.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_030.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_031.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_032.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_033.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_034.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_035.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Architecture\Rooms\room_036.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\skeleton_002.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\attack.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\block.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Characters\Animated\Cultist\idle.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Gates\gate_collision_001.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Collision Boxes\Architecture\Gates\gate_collision_002.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\barrel.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\bench.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\book.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\cart.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\crate.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\horn.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\urn.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\book_left.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\book_right.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\horn_front_left.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\urn_back_left.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\urn_back_right.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\urn_family_back_right.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\urn_family_front_left.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\urn_front_left.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\urn_front_right.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\crate_back_left.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Models\Decorators\crate_front_right.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\battle_drums.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\on_start_chords.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\melody_ notes.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\menu_wind.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\battle_theme.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\block.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\boing.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\button_click.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\death.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\dodge.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\door_locked.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\drink_potion.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\enemy_attack.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\environment_stone_steps.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\equip_sword.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\gate_open.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\gate_unlocked.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\growl.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\h_attack.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\item_twinkle.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\keys_jingle.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\l_attack.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\main_theme.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\m_attack.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\player_health_low.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\punch_01.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\punch_02.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\turn_around.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\wall_bump.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\cultist_attack.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\cultist_block.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\cultist_death.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\cultist_dodge.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\cultist_growl.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\gate_open.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\music_battle_001.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\music_battle_002.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\music_lose.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\music_main.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\music_melody.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\music_menu.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\music_start.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\music_win.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\pickup_keys.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\pickup_potion.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\pickup_sword.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\pickup_twinkle.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\player_attack_sword.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\player_block.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\player_bump_001.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\player_bump_002.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\player_death.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\player_dodge.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\player_footsteps.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\player_footsteps_01.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\player_footsteps_02.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\player_low_health.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\player_turn.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\skeleton_attack.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\skeleton_block.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\skeleton_death.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\skeleton_dodge.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\skeleton_growl.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\ui_click.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\player_take_damage.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\player_attack_punch.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Effects\Billboard.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Barrell_oak_diffuse_0.xnb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\GameAudio.xgs
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\Movement.xwb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\Wave Bank.xwb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\Movement.xsb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v1\Sound Bank.xsb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\GameAudio.xgs
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\Wave Bank.xwb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Audio\v2\Sound Bank.xsb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.exe
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDApp.pdb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDLibrary.dll
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.dll
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.dll
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.dll
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.dll
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\SkinnedModel.dll
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.dll
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.dll
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\GDLibrary.pdb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\SkinnedModel.pdb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.xml
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Game.xml
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.xml
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.xml
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Xact.xml
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csprojAssemblyReference.cache
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CoreCompileInputs.cache
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.csproj.CopyComplete
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.exe
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\obj\x86\Debug\GDApp.pdb
+C:\Users\Nate\source\repos\ShrineToTheDarkGod\GDApp\GDApp\bin\x86\Debug\Content\Assets\Textures\UI\Menu\Buttons\keybind_button.xnb
