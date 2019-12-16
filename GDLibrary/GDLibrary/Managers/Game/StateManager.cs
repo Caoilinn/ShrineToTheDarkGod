@@ -23,6 +23,7 @@ namespace GDLibrary
         private static bool inCombat;
         private static bool dodged;
         private static bool restart;
+        private static bool isKeyBinding;
 
         private static bool inProximityOfATrigger;
         private static bool inProximityOfAnItem;
@@ -90,13 +91,39 @@ namespace GDLibrary
             }
         }
 
-        public  bool Restart
+        public static bool Restart
         {
-            get {
+            get
+            {
                 return restart;
             }
-            set {
+            set
+            {
                 restart = value;
+            }
+        }
+
+        public static bool IsKeyBinding
+        {
+            get
+            {
+                return isKeyBinding;
+            }
+            set
+            {
+                isKeyBinding = value;
+            }
+        }
+
+        public static bool InProximityOfATrigger
+        {
+            get
+            {
+                return inProximityOfATrigger;
+            }
+            set
+            {
+                inProximityOfATrigger = value;
             }
         }
 
@@ -123,18 +150,6 @@ namespace GDLibrary
                 inProximityOfAGate = value;
             }
         }
-
-        public static bool InProximityOfATrigger
-        {
-            get
-            {
-                return inProximityOfATrigger;
-            }
-            set
-            {
-                inProximityOfATrigger = value;
-            }
-        }
         #endregion
 
         #region Constructor
@@ -145,6 +160,8 @@ namespace GDLibrary
         ) : base(game, eventDispatcher, statusType) {
             PlayerTurn = true;
             EnemyTurn = false;
+            IsKeyBinding = false;
+            InProximityOfATrigger = false;
             InProximityOfAnItem = false;
             InProximityOfAGate = false;
             InCombat = false;

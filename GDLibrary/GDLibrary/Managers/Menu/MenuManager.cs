@@ -12,6 +12,7 @@ namespace GDLibrary
         private List<DrawnActor2D> activeList = null;
         private CameraManager cameraManager;
         private MouseManager mouseManager;
+        private KeyboardManager keyboardManager;
         private SpriteBatch spriteBatch;
         private bool isVisible;
 
@@ -68,6 +69,18 @@ namespace GDLibrary
             }
         }
 
+        public KeyboardManager KeyboardManager
+        {
+            get
+            {
+                return this.keyboardManager;
+            }
+            set
+            {
+                this.keyboardManager = value;
+            }
+        }
+
         public SpriteBatch SpriteBatch
         {
             get
@@ -100,10 +113,12 @@ namespace GDLibrary
             EventDispatcher eventDispatcher,
             CameraManager cameraManager,
             MouseManager mouseManager,
+            KeyboardManager keyboardManager,
             SpriteBatch spriteBatch
         ) : base(game, statusType, eventDispatcher) {
             this.cameraManager = cameraManager;
             this.mouseManager = mouseManager;
+            this.keyboardManager = keyboardManager;
             this.spriteBatch = spriteBatch;
 
             this.menuDictionary = new Dictionary<string, List<DrawnActor2D>>();
@@ -226,6 +241,9 @@ namespace GDLibrary
                         if (this.mouseManager.IsLeftButtonClickedOnce())
                             HandleMouseClick(currentUIObject, gameTime);
 
+                        if (this.keyboardManager.IsAnyKeyPressed())
+                            HandleKeyboardInput();
+
                         //store the current as old for the next update
                         this.oldUIObjectMouseOver = currentUIObject;
                     }
@@ -264,6 +282,11 @@ namespace GDLibrary
         protected virtual void HandleMouseClick(DrawnActor2D uiObject, GameTime gameTime)
         {
             //Developer implements in subclass of MenuManager - see MyMenuManager.cs
+        }
+
+        protected virtual void HandleKeyboardInput()
+        {
+
         }
         #endregion
     }

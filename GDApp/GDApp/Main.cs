@@ -38,6 +38,7 @@ namespace GDApp
         private PickingManager pickingManager;
         private InventoryManager inventoryManager;
         private TimeManager timeManager;
+        private KeybindManager keybindManager;
 
         //Dispatchers
         private EventDispatcher eventDispatcher;
@@ -532,6 +533,7 @@ namespace GDApp
                 this.eventDispatcher,
                 this.cameraManager,
                 this.mouseManager,
+                this.keyboardManager,
                 this.spriteBatch
             );
 
@@ -616,6 +618,19 @@ namespace GDApp
             );
 
             Components.Add(this.gridManager);
+            #endregion
+
+            #region Keybind Manager
+            this.keybindManager = new KeybindManager(
+                this,
+                StatusType.Off,
+                this.eventDispatcher,
+                this.mouseManager,
+                this.keyboardManager,
+                this.spriteBatch
+            );
+
+            Components.Add(this.keybindManager);
             #endregion
 
             #region Draw order
@@ -891,6 +906,28 @@ namespace GDApp
             clone.ID = "backbtn";
             clone.Text = "Back";
             
+            //Change the texture blend color
+            clone.Color = Color.White;
+            this.menuManager.Add(sceneID, clone);
+
+            clone = (UIButtonObject)uiButtonObject.Clone();
+
+            //Move down on Y-axis for next button
+            clone.Transform.Translation = new Vector2(300, 6 * verticalBtnSeparation);
+            clone.ID = "bindbtn";
+            clone.Text = "Rebind";
+
+            //Change the texture blend color
+            clone.Color = Color.White;
+            this.menuManager.Add(sceneID, clone);
+
+            clone = (UIButtonObject)uiButtonObject.Clone();
+
+            //Move down on Y-axis for next button
+            clone.Transform.Translation = new Vector2(300, 5 * verticalBtnSeparation);
+            clone.ID = "actionbtn";
+            clone.Text = "Action";
+
             //Change the texture blend color
             clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);

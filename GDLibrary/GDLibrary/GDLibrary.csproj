@@ -78,6 +78,7 @@
     <Compile Include="Actor\Drawn\3D\Primitives\BillboardPrimitiveObject.cs" />
     <Compile Include="Actor\Drawn\3D\Collidable\Character\Animated\AnimatedPlayerObject.cs" />
     <Compile Include="Comparer\CameraDepthComparer.cs" />
+    <Compile Include="Constants\GDLibraryData.cs" />
     <Compile Include="Controllers\2D\Base\UIController.cs" />
     <Compile Include="Controllers\2D\UI\UIColorSineLerpController.cs" />
     <Compile Include="Controllers\2D\UI\UIProgressController.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Enums\SortDirectionType.cs" />
     <Compile Include="Managers\AI\AIManager.cs" />
     <Compile Include="Managers\Grid\GridManager.cs" />
+    <Compile Include="Managers\Keybind\KeybindManager.cs" />
     <Compile Include="Managers\Screen\ScreenManager.cs" />
     <Compile Include="Managers\Time\TimeManager.cs" />
     <Compile Include="Managers\UI\TextboxManager.cs" />

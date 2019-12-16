@@ -1,12 +1,14 @@
 ﻿using GDLibrary;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace GDApp
 {
     public class MyMenuManager : MenuManager
     {
-        private ObjectManager objectManager;
+        private readonly ObjectManager objectManager;
+        private string action;
         #region Constructors
         public MyMenuManager(
             Game game,
@@ -15,8 +17,9 @@ namespace GDApp
             EventDispatcher eventDispatcher, 
             CameraManager cameraManager,
             MouseManager mouseManager,
+            KeyboardManager keyboardManager,
             SpriteBatch spriteBatch
-        ) : base(game, statusType, eventDispatcher, cameraManager, mouseManager, spriteBatch) {
+        ) : base(game, statusType, eventDispatcher, cameraManager, mouseManager, keyboardManager, spriteBatch) {
             this.objectManager = objectManager;
         }
         #endregion
@@ -74,6 +77,16 @@ namespace GDApp
                 //Mouse is inside the bounds of the object - uiObject.ID
                 if (this.MouseManager.IsLeftButtonClickedOnce())
                     HandleMouseClick(uiObject, gameTime);
+            }
+        }
+
+        protected override void HandleKeyboardInput()
+        {
+            if (StateManager.IsKeyBinding && this.action != "")
+            {
+                KeyboardState state = Keyboard.GetState();
+                Keys[] keys = state.GetPressedKeys();
+                DoBind(this.action, keys[0]);
             }
         }
 
@@ -135,8 +148,6 @@ namespace GDApp
                     break;
 
                 case "controlsbtn":
-
-                    //Use sceneIDs specified when we created the menu scenes in Main::AddMenuElements()
                     SetActiveList("controls menu");
                     break;
 
@@ -150,6 +161,14 @@ namespace GDApp
 
                     //Use sceneIDs specified when we created the menu scenes in Main::AddMenuElements()
                     SetActiveList("main menu");
+                    break;
+
+                case "bindbtn":
+                    StateManager.IsKeyBinding = true;
+                    break;
+
+                case "actionbtn":
+                    if (StateManager.IsKeyBinding) this.action = "action";
                     break;
 
                 default:
@@ -171,6 +190,13 @@ namespace GDApp
         {
             //Will be received by the menu manager and screen manager and set the menu to be shown and game to be paused
             EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu));
+        }
+
+        private void DoBind(string action, Keys key)
+        {
+            object[] additionalParameters = { action, key };
+            EventDispatcher.Publish(new EventData(EventActionType.OnKeybind, EventCategoryType.Keybind, additionalParameters));
+
         }
 
         private void DoExit()
