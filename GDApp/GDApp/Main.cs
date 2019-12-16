@@ -68,7 +68,7 @@ namespace GDApp
         private readonly List<string> soundEffectList = new List<String>();
         private readonly List<TriggerVolume> triggerList = new List<TriggerVolume>();
         private List<AnimatedEnemyObject> enemies;
-        
+
         //Map
         private int[,,] levelMap;
 
@@ -159,6 +159,18 @@ namespace GDApp
             InitializeUI();
 
             InitializeGrid();
+
+            EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "melody_notes" }));
+            EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "battle_drums" }));
+            EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "on_start_chords" }));
+            EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "menu_wind" }));
+
+
+            EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "BattleMusic", 0.0f }));
+            EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "GamePlayMusic", 0.0f }));
+            EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "MenuMusic", 0.7f }));
+            EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "Chords", 0.7f }));
+
 
             base.Initialize();
         }
@@ -424,9 +436,9 @@ namespace GDApp
 
             #region Camera Manager
             this.cameraManager = new CameraManager(
-                this, 
-                2, 
-                this.eventDispatcher, 
+                this,
+                2,
+                this.eventDispatcher,
                 StatusType.Off
             );
 
@@ -435,8 +447,8 @@ namespace GDApp
 
             #region Object Manager
             this.objectManager = new ObjectManager(
-                this, 
-                this.cameraManager, 
+                this,
+                this.cameraManager,
                 this.eventDispatcher,
                 StatusType.Off,
                 new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight)
@@ -447,9 +459,9 @@ namespace GDApp
 
             #region Physics Manager
             this.physicsManager = new PhysicsManager(
-                this, 
-                this.eventDispatcher, 
-                StatusType.Off, 
+                this,
+                this.eventDispatcher,
+                StatusType.Off,
                 AppData.BigGravity
             );
 
@@ -464,8 +476,8 @@ namespace GDApp
             #region Mouse Manager
             bool bMouseVisible = true;
             this.mouseManager = new MouseManager(
-                this, 
-                bMouseVisible, 
+                this,
+                bMouseVisible,
                 this.physicsManager
             );
 
@@ -484,15 +496,15 @@ namespace GDApp
 
             #region Screen Manager
             this.screenManager = new ScreenManager(
-                this, 
-                graphics, 
-                this.resolution, 
+                this,
+                graphics,
+                this.resolution,
                 this.screenType,
-                this.objectManager, 
-                this.cameraManager, 
+                this.objectManager,
+                this.cameraManager,
                 this.keyboardManager,
-                AppData.KeyPauseShowMenu, 
-                this.eventDispatcher, 
+                AppData.KeyPauseShowMenu,
+                this.eventDispatcher,
                 StatusType.Off
             );
 
@@ -512,7 +524,7 @@ namespace GDApp
 
             Components.Add(this.soundManager);
             #endregion
-            
+
             #region State Manager
             this.gameStateManager = new StateManager(
                 this,
@@ -535,9 +547,9 @@ namespace GDApp
 
             #region Combat Manager
             this.combatManager = new CombatManager(
-                this, 
-                this.eventDispatcher, 
-                StatusType.Update, 
+                this,
+                this.eventDispatcher,
+                StatusType.Update,
                 this.cameraManager,
                 this.inventoryManager,
                 this.keyboardManager,
@@ -664,7 +676,7 @@ namespace GDApp
             #region Draw order
             this.objectManager.DrawOrder = 1;
             this.uiManager.DrawOrder = 2;
-            this.textboxManager.DrawOrder =3;
+            this.textboxManager.DrawOrder = 3;
             this.menuManager.DrawOrder = 4;
             #endregion
         }
@@ -697,23 +709,23 @@ namespace GDApp
 
             //Retrieve the background texture
             texture = this.textureDictionary["main_menu"];
-            
+
             //Scale the texture to fit the entire screen
             Vector2 scale = new Vector2(
-                (float) graphics.PreferredBackBufferWidth / texture.Width,
-                (float) graphics.PreferredBackBufferHeight / texture.Height
+                (float)graphics.PreferredBackBufferWidth / texture.Width,
+                (float)graphics.PreferredBackBufferHeight / texture.Height
             );
 
             transform = new Transform2D(scale);
 
             this.menuManager.Add(
-                sceneID, 
+                sceneID,
                 new UITextureObject(
                     "mainmenuTexture",
                     ActorType.UITexture,
                     StatusType.Drawn,       //Notice we dont need to update a static texture
-                    transform, 
-                    Color.White, 
+                    transform,
+                    Color.White,
                     SpriteEffects.None,
                     1,                      //Depth is 1 so its always sorted to the back of other menu elements
                     texture
@@ -725,7 +737,7 @@ namespace GDApp
             buttonText = "Start";
 
             position = new Vector2(
-                410, 
+                410,
                 325
             );
 
@@ -733,9 +745,9 @@ namespace GDApp
 
             transform = new Transform2D(
                 position,
-                0, 
+                0,
                 new Vector2(1.5f, 1f),
-                new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), 
+                new Vector2(texture.Width / 2.0f, texture.Height / 2.0f),
                 new Integer2(texture.Width, texture.Height)
             );
 
@@ -770,7 +782,7 @@ namespace GDApp
             clone = (UIButtonObject)uiButtonObject.Clone();
             clone.ID = "audiobtn";
             clone.Text = "Audio";
-            
+
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(0, verticalBtnSeparation);
 
@@ -802,7 +814,7 @@ namespace GDApp
 
             //Change the texture blend color
             clone.Color = Color.White;
-            
+
             //Store the original color since if we modify with a controller and need to reset
             clone.OriginalColor = clone.Color;
             this.menuManager.Add(sceneID, clone);
@@ -814,7 +826,7 @@ namespace GDApp
 
             //Retrieve the audio menu background texture
             texture = this.textureDictionary["audio_menu"];
-            
+
             //Scale the texture to fit the entire screen
             scale = new Vector2(
                 (float)graphics.PreferredBackBufferWidth / texture.Width,
@@ -824,12 +836,12 @@ namespace GDApp
             transform = new Transform2D(scale);
 
             this.menuManager.Add(
-                sceneID, 
+                sceneID,
                 new UITextureObject("audiomenuTexture",
                     ActorType.UITexture,
                     StatusType.Drawn,       //Notice we dont need to update a static texture
-                    transform, 
-                    Color.White, 
+                    transform,
+                    Color.White,
                     SpriteEffects.None,
                     1,                      //Depth is 1 so its always sorted to the back of other menu elements
                     texture
@@ -840,14 +852,14 @@ namespace GDApp
             clone = (UIButtonObject)uiButtonObject.Clone();
             clone.ID = "volumeUpbtn";
             clone.Text = "Volume Up";
-            
+
             //Change the texture blend color
             clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
             //Add volume down button - clone the audio button then just reset texture, ids etc in all the clones
             clone = (UIButtonObject)uiButtonObject.Clone();
-            
+
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(0, 1 * verticalBtnSeparation);
             clone.ID = "volumeDownbtn";
@@ -859,36 +871,36 @@ namespace GDApp
 
             //Add volume mute button - clone the audio button then just reset texture, ids etc in all the clones
             clone = (UIButtonObject)uiButtonObject.Clone();
-            
+
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(0, 2 * verticalBtnSeparation);
             clone.ID = "volumeMutebtn";
             clone.Text = "Mute";
-            
+
             //Change the texture blend color
             clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
             //Add volume mute button - clone the audio button then just reset texture, ids etc in all the clones
             clone = (UIButtonObject)uiButtonObject.Clone();
-            
+
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(0, 3 * verticalBtnSeparation);
             clone.ID = "volumeUnMutebtn";
             clone.Text = "Un-mute";
-            
+
             //Change the texture blend color
             clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
 
             //Add back button - clone the audio button then just reset texture, ids etc in all the clones
             clone = (UIButtonObject)uiButtonObject.Clone();
-            
+
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(0, 4 * verticalBtnSeparation);
             clone.ID = "backbtn";
             clone.Text = "Back";
-            
+
             //Change the texture blend color
             clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
@@ -902,8 +914,8 @@ namespace GDApp
 
             //Scale the texture to fit the entire screen
             scale = new Vector2(
-                (float) graphics.PreferredBackBufferWidth / texture.Width,
-                (float) graphics.PreferredBackBufferHeight / texture.Height
+                (float)graphics.PreferredBackBufferWidth / texture.Width,
+                (float)graphics.PreferredBackBufferHeight / texture.Height
             );
 
             transform = new Transform2D(scale);
@@ -911,11 +923,11 @@ namespace GDApp
             this.menuManager.Add(
                 sceneID,
                 new UITextureObject(
-                    "controlsmenuTexture", 
+                    "controlsmenuTexture",
                     ActorType.UITexture,
                     StatusType.Drawn, //notice we dont need to update a static texture
-                    transform, 
-                    Color.White, 
+                    transform,
+                    Color.White,
                     SpriteEffects.None,
                     1, //depth is 1 so its always sorted to the back of other menu elements
                     texture
@@ -924,16 +936,16 @@ namespace GDApp
 
             //Add back button - clone the audio button then just reset texture, ids etc in all the clones
             clone = (UIButtonObject)uiButtonObject.Clone();
-            
+
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(
-                625, 
+                625,
                 360
             );
 
             clone.ID = "backbtn";
             clone.Text = "Back";
-            
+
             //Change the texture blend color
             clone.Color = Color.White;
             this.menuManager.Add(sceneID, clone);
@@ -969,8 +981,8 @@ namespace GDApp
 
             //Scale the texture to fit the entire screen
             scale = new Vector2(
-                (float) graphics.PreferredBackBufferWidth / texture.Width,
-                (float) graphics.PreferredBackBufferHeight / texture.Height
+                (float)graphics.PreferredBackBufferWidth / texture.Width,
+                (float)graphics.PreferredBackBufferHeight / texture.Height
             );
 
             transform = new Transform2D(scale);
@@ -1014,8 +1026,8 @@ namespace GDApp
 
             //Scale the texture to fit the entire screen
             scale = new Vector2(
-                (float) graphics.PreferredBackBufferWidth / texture.Width,
-                (float) graphics.PreferredBackBufferHeight / texture.Height
+                (float)graphics.PreferredBackBufferWidth / texture.Width,
+                (float)graphics.PreferredBackBufferHeight / texture.Height
             );
 
             transform = new Transform2D(scale);
@@ -1035,11 +1047,11 @@ namespace GDApp
             );
 
             //Add back button - clone the audio button then just reset texture, ids etc in all the clones
-            clone = (UIButtonObject) uiButtonObject.Clone();
+            clone = (UIButtonObject)uiButtonObject.Clone();
 
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(000, 6 * verticalBtnSeparation);
-            clone.ID = "menubtn";
+            clone.ID = "restartbtn";
             clone.Text = "Return";
 
             //Change the texture blend color
@@ -1055,8 +1067,8 @@ namespace GDApp
 
             //Scale the texture to fit the entire screen
             scale = new Vector2(
-                (float) graphics.PreferredBackBufferWidth / texture.Width,
-                (float) graphics.PreferredBackBufferHeight / texture.Height
+                (float)graphics.PreferredBackBufferWidth / texture.Width,
+                (float)graphics.PreferredBackBufferHeight / texture.Height
             );
 
             transform = new Transform2D(scale);
@@ -1076,7 +1088,7 @@ namespace GDApp
             );
 
             //Add back button - clone the audio button then just reset texture, ids etc in all the clones
-            clone = (UIButtonObject) uiButtonObject.Clone();
+            clone = (UIButtonObject)uiButtonObject.Clone();
 
             //Move down on Y-axis for next button
             clone.Transform.Translation += new Vector2(0, 6 * verticalBtnSeparation);
@@ -1173,22 +1185,25 @@ namespace GDApp
         private void EventDispatcher_UIChanged(EventData eventData)
         {
             //Health bar
-            if (eventData.EventType.Equals(EventActionType.PlayerHealthUpdate)) {
+            if (eventData.EventType.Equals(EventActionType.PlayerHealthUpdate))
+            {
                 this.healthBar.Transform.Scale = new Vector2(
-                    this.healthBar.Transform.Scale.X - ((float) eventData.AdditionalParameters[0] / 100),
+                    this.healthBar.Transform.Scale.X - ((float)eventData.AdditionalParameters[0] / 100),
                     this.healthBar.Transform.Scale.Y
                 );
             }
 
             //XP bar
-            if (eventData.EventType.Equals(EventActionType.EnemyHealthUpdate)) {
+            if (eventData.EventType.Equals(EventActionType.EnemyHealthUpdate))
+            {
                 this.xpBar.Transform.Scale = new Vector2(
-                    this.xpBar.Transform.Scale.X + ((float) eventData.AdditionalParameters[0] / 100),
+                    this.xpBar.Transform.Scale.X + ((float)eventData.AdditionalParameters[0] / 100),
                     this.xpBar.Transform.Scale.Y
                 );
 
                 //Player level up
-                if (this.xpBar.Transform.Scale.X > 1) {
+                if (this.xpBar.Transform.Scale.X > 1)
+                {
                     this.xpBar.Transform.Scale = new Vector2(
                         0,
                         1
@@ -1204,17 +1219,20 @@ namespace GDApp
             {
                 UITextureObject inventoryItem = null;
 
-                if (eventData.AdditionalParameters[0].Equals("Sword")) {
+                if (eventData.AdditionalParameters[0].Equals("Sword"))
+                {
                     inventoryItem = this.uiDictionary["Sword"];
                     inventoryItem.Transform.Translation = (inventoryTranslation += inventorySpacing);
                 }
 
-                if (eventData.AdditionalParameters[0].Equals("Key")) {
+                if (eventData.AdditionalParameters[0].Equals("Key"))
+                {
                     inventoryItem = this.uiDictionary["Key"];
                     inventoryItem.Transform.Translation = (inventoryTranslation += inventorySpacing);
                 }
 
-                if (eventData.AdditionalParameters[0].Equals("Potion")) {
+                if (eventData.AdditionalParameters[0].Equals("Potion"))
+                {
                     inventoryItem = this.uiDictionary["Potion"];
                     inventoryItem.Transform.Translation = (inventoryTranslation += inventorySpacing);
                 }
@@ -1228,17 +1246,20 @@ namespace GDApp
             {
                 UITextureObject inventoryItem = null;
 
-                if (eventData.AdditionalParameters[0].Equals("Sword")) {
+                if (eventData.AdditionalParameters[0].Equals("Sword"))
+                {
                     inventoryItem = this.uiDictionary["Sword"];
                     inventoryTranslation -= inventorySpacing;
                 }
 
-                if (eventData.AdditionalParameters[0].Equals("Key")) {
+                if (eventData.AdditionalParameters[0].Equals("Key"))
+                {
                     inventoryItem = this.uiDictionary["Key"];
                     inventoryTranslation -= inventorySpacing;
                 }
 
-                if (eventData.AdditionalParameters[0].Equals("Potion")) {
+                if (eventData.AdditionalParameters[0].Equals("Potion"))
+                {
                     inventoryItem = this.uiDictionary["Potion"];
                     inventoryTranslation -= inventorySpacing;
                 }
@@ -1282,16 +1303,33 @@ namespace GDApp
         {
             //Will be received by the menu manager and screen manager and set the menu to be shown and game to be paused
             EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.MainMenu));
-           
+
         }
 
-        private void Reinitialize()
+        private void DisposeManagers()
         {
+            this.objectManager.Clear();
+            this.inventoryManager.Dispose();
+            this.keyboardManager.Dispose();
+            this.menuManager.Dispose();
+            this.uiManager.Dispose();
+            this.soundManager.Dispose();
+            this.eventDispatcher.Dispose();
+
+            Components.Clear();
+        }
+
+        private void RestartGame()
+        {
+            DisposeManagers();
+
+            this.inventoryTranslation = new Vector2(-63, 640);
+
             InitializeGraphics();
             InitializeEffects();
-            InitializeEnemies();
-
             InitializeEventDispatcher();
+
+            InitializeEnemies();
             InitializeManagers();
 
             LoadContent();
@@ -1302,13 +1340,17 @@ namespace GDApp
 
             InitializeMap();
 
+
             InitializeVertices();
             InitializeBillboardVertices();
             InitializePrimitives();
 
+
             InitializeMenu();
             InitializeTextbox();
             InitializeUI();
+            this.menuManager.SetActiveList("");
+            this.textboxManager.SetActiveList("");
 
             InitializeGrid();
         }
@@ -1327,7 +1369,7 @@ namespace GDApp
             );
 
             //Setup viewport and draw depth
-            Viewport viewport = new Viewport(10, 10, graphics.PreferredBackBufferWidth - 400, graphics.PreferredBackBufferHeight- 250);
+            Viewport viewport = new Viewport(10, 10, graphics.PreferredBackBufferWidth - 400, graphics.PreferredBackBufferHeight - 250);
             float drawDepth = 0;
 
             //Create a camera
@@ -1362,7 +1404,7 @@ namespace GDApp
         private void AddUICamera(Transform3D uiTransform)
         {
             this.uiPosition.Translation += new Vector3(400, 400, 400);
-            
+
             //Setup projection parameters
             ProjectionParameters projectionParameters = new ProjectionParameters(
                 AppData.FirstPersonCameraFieldOfView,
@@ -1396,11 +1438,11 @@ namespace GDApp
                     AppData.CharacterRotationVector
                 )
             );
-            
+
             this.cameraManager.Add(camera);
         }
         #endregion
-        
+
         #region Map Setup
         private void SetupBitArray()
         {
@@ -1412,7 +1454,7 @@ namespace GDApp
             this.enemiesStartPosition = AppData.EnemiesStartPosition;
             this.gatesStartPosition = AppData.GatesStartPosition;
             this.decoratorsStartPosition = AppData.DecoratorsStartPosition;
-            
+
             //Start at the 0th bit of the array
             int roomsShiftPosition = 0;
 
@@ -1631,8 +1673,8 @@ namespace GDApp
                         int roomType = BitwiseExtraction.extractKBitsFromNumberAtPositionP(this.levelMap[x, y, z], this.reservedRoomBits, this.roomsShiftPosition);
 
                         //If a room has been set
-                        if (roomType > 0) 
-                            
+                        if (roomType > 0)
+
                             //Construct room
                             ConstructRoom(roomType, transform);
                         #endregion
@@ -1643,7 +1685,7 @@ namespace GDApp
 
                         //If a pickup has been set
                         if (pickupType > 0)
-                            
+
                             //Construct pickup
                             ConstructPickup(pickupType, transform);
                         #endregion
@@ -1743,7 +1785,7 @@ namespace GDApp
             //Setup dimensions
             Transform3D pickupTransform = transform.Clone() as Transform3D;
             pickupTransform.Translation += AppData.ObjectOffset;
-            
+
             //Load model and effect parameters
             EffectParameters effectParameters = this.effectDictionary["pickupEffect" + pickupType];
             Model model = this.modelDictionary["pickupModel" + pickupType];
@@ -2005,7 +2047,8 @@ namespace GDApp
             enemyTransform.Translation += AppData.ObjectOffset;
 
             //Select enemy
-            switch (enemyType) {
+            switch (enemyType)
+            {
                 case 1:
                     return;
                     //Load Model
@@ -2424,7 +2467,8 @@ namespace GDApp
             #endregion
 
             #region Unlit Primitives
-            BasicEffect basicEffect = new BasicEffect(graphics.GraphicsDevice) {
+            BasicEffect basicEffect = new BasicEffect(graphics.GraphicsDevice)
+            {
                 TextureEnabled = true,
                 VertexColorEnabled = true
             };
@@ -2658,8 +2702,11 @@ namespace GDApp
         #region Update, Draw
         protected override void Update(GameTime gameTime)
         {
-            if (this.menuManager.ActiveList.Equals("win_scene") || this.menuManager.ActiveList.Equals("lose_scene")) {
-                Reinitialize();
+            if (this.menuManager.restartClicked)
+            {
+
+                RestartGame();
+
             }
 
             DemoToggleMenu();

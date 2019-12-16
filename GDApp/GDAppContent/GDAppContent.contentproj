@@ -982,11 +982,6 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Assets\Audio\v2\music_melody.wav">
-      <Name>music_melody</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
     <Compile Include="Assets\Audio\v2\music_menu.wav">
       <Name>music_menu</Name>
       <Importer>WavImporter</Importer>

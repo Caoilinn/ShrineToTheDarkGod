@@ -8,18 +8,20 @@ namespace GDApp
     public class MyMenuManager : MenuManager
     {
         private readonly ObjectManager objectManager;
+        public bool restartClicked = false;
         private string action;
         #region Constructors
         public MyMenuManager(
             Game game,
             StatusType statusType,
             ObjectManager objectManager,
-            EventDispatcher eventDispatcher, 
+            EventDispatcher eventDispatcher,
             CameraManager cameraManager,
             MouseManager mouseManager,
             KeyboardManager keyboardManager,
             SpriteBatch spriteBatch
-        ) : base(game, statusType, eventDispatcher, cameraManager, mouseManager, keyboardManager, spriteBatch) {
+        ) : base(game, statusType, eventDispatcher, cameraManager, mouseManager, keyboardManager, spriteBatch)
+        {
             this.objectManager = objectManager;
         }
         #endregion
@@ -44,9 +46,9 @@ namespace GDApp
                     if (eventData.AdditionalParameters[0].Equals("win_scene"))
                     {
                         //Display the win menu
-                        SetActiveList("win menu");                     
+                        SetActiveList("win menu");
                         this.objectManager.Clear();
-                        
+
                     }
 
                     //If the event was a lose event
@@ -142,7 +144,7 @@ namespace GDApp
                     break;
 
                 case "backbtn":
-                    
+
                     //Use sceneIDs specified when we created the menu scenes in Main::AddMenuElements()
                     SetActiveList("main menu");
                     break;
@@ -170,7 +172,9 @@ namespace GDApp
                 case "actionbtn":
                     if (StateManager.IsKeyBinding) this.action = "action";
                     break;
-
+                case "restartbtn":
+                    restartClicked = true;
+                    break;
                 default:
                     break;
             }
@@ -190,6 +194,8 @@ namespace GDApp
         {
             //Will be received by the menu manager and screen manager and set the menu to be shown and game to be paused
             EventDispatcher.Publish(new EventData(EventActionType.OnStart, EventCategoryType.Menu));
+            EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "GamePlayMusic", 1f }));
+            
         }
 
         private void DoBind(string action, Keys key)

@@ -216,6 +216,11 @@ namespace GDLibrary
 
                 //Update combat state
                 StateManager.InCombat = false;
+                EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "BattleMusic", -1f }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "GamePlayMusic", 1f }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "MenuMusic", 1f }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "Chords", 1f }));
+
             }
             else if (eventData.EventType == EventActionType.PlayerHealthPickup)
             {
@@ -392,7 +397,8 @@ namespace GDLibrary
             this.timeManager.StartTimer(1000f);
 
             //Create audio emitter
-            AudioEmitter audioEmitter = new AudioEmitter {
+            AudioEmitter audioEmitter = new AudioEmitter
+            {
                 Position = this.enemyOnFocus.Transform.Translation
             };
 
@@ -462,7 +468,8 @@ namespace GDLibrary
                 float damage = 0;
 
                 //Create audio emitter
-                AudioEmitter audioEmitter = new AudioEmitter {
+                AudioEmitter audioEmitter = new AudioEmitter
+                {
                     Position = this.player.Transform.Translation
                 };
 
@@ -481,6 +488,10 @@ namespace GDLibrary
 
                 //End Combat
                 StateManager.InCombat = false;
+                EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "BattleMusic", -1f }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "GamePlayMusic", 1f }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "MenuMusic", 1f }));
+                EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "Chords", 1f }));
                 StateManager.Dodged = true;
             }
             else
@@ -501,7 +512,7 @@ namespace GDLibrary
 
         public void EnemyTurn()
         {
-            
+
             if (!timeManager.Waiting)
             {
                 #region Attack
@@ -577,6 +588,12 @@ namespace GDLibrary
         {
             StateManager.InCombat = true;
             StateManager.PlayerTurn = true;
+
+            EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "BattleMusic", 1f }));
+            EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "GamePlayMusic", 0.7f }));
+            EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "MenuMusic", 0.7f }));
+            EventDispatcher.Publish(new EventData(EventActionType.OnTrackVolumeChange, EventCategoryType.Sound2D, new object[] { "Chords", 0.7f }));
+
 
             if (character.ActorType.Equals(ActorType.Enemy))
                 this.enemyOnFocus = character as AnimatedEnemyObject;

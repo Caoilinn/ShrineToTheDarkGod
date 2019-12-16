@@ -28,32 +28,28 @@ namespace GDLibrary
         #region Properties
         public ObjectManager ObjectManager
         {
-            get
-            {
+            get {
                 return this.objectManager;
             }
         }
 
         public SoundManager SoundManager
         {
-            get
-            {
+            get {
                 return this.soundManager;
             }
         }
 
         public InventoryManager InventoryManager
         {
-            get
-            {
+            get {
                 return this.inventoryManager;
             }
         }
 
         public CombatManager CombatManager
         {
-            get
-            {
+            get {
                 return this.combatManager;
             }
         }
@@ -265,7 +261,7 @@ namespace GDLibrary
             //For each enemy in the enemies list
             foreach (Actor3D enemy in this.enemies)
             {
-                if (enemy !=  null)
+                if (enemy != null)
                 {
                     //Create item audio emitter
                     AudioEmitter enemyAudioEmitter = new AudioEmitter();
@@ -327,21 +323,23 @@ namespace GDLibrary
             this.CombatManager.InitiateBattle(enemy);
 
             //For each player in the game
-            foreach(PlayerObject player in this.players) {
+            foreach (PlayerObject player in this.players)
+            {
 
                 //Block their path
                 player.BlockedDirections.Add(Vector3.Normalize(enemy.Transform.Translation - player.Transform.Translation));
             }
 
             //Update HUD
-            if (!StateManager.Dodged) {
+            if (!StateManager.Dodged)
+            {
                 EventDispatcher.Publish(new EventData(EventActionType.OnInitiateBattle, EventCategoryType.Textbox));
-                
+
                 //Pause game music
-                this.SoundManager.PauseCue("music_main");
-                
+                //this.SoundManager.PauseCue("music_main");
+
                 //Play battle music
-                this.SoundManager.PlayCue("music_battle_001");
+                //this.SoundManager.PlayCue("music_battle_001");
             }
         }
         #endregion
@@ -356,7 +354,8 @@ namespace GDLibrary
             foreach (Actor3D item in this.items)
             {
                 //Create item audio emitter
-                AudioEmitter itemAudioEmitter = new AudioEmitter {
+                AudioEmitter itemAudioEmitter = new AudioEmitter
+                {
                     Position = item.Transform.Translation
                 };
 
@@ -478,7 +477,7 @@ namespace GDLibrary
                 //Update UI
                 EventDispatcher.Publish(new EventData(EventActionType.OnItemRemoved, EventCategoryType.Textbox, new object[] { "Key" }));
                 EventDispatcher.Publish(new EventData(EventActionType.OnItemRemoved, EventCategoryType.UIMenu, new object[] { "Key" }));
-                
+
                 //Play a sound
                 EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound3D, new object[] { "gate_open", gateAudioEmitter }));
 
@@ -557,13 +556,12 @@ namespace GDLibrary
 
             if (!StateManager.InCombat)
             {
-                EventDispatcher.Publish(new EventData(EventActionType.OnPause, EventCategoryType.Sound2D, new object[] { "music_battle_001" }));
-                EventDispatcher.Publish(new EventData(EventActionType.OnPlay, EventCategoryType.Sound2D, new object[] { "music_main" }));
             }
         }
 
         public override void Update(GameTime gameTime)
         {
+            UpdateSound();
             base.Update(gameTime);
         }
         #endregion
